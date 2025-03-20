@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/iut45/Etudiants/o22401333/home_iut/Semestre2/SAE/Env_pour_SAE_java/librairies/junit-4.13.2.jar",
+        "/home/iut45/Etudiants/o22401333/home_iut/Semestre2/SAE/Env_pour_SAE_java/librairies/hamcrest-2.2.jar"
+    ]
+}

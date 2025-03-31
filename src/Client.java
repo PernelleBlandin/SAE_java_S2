@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
     private int id;
@@ -18,5 +19,12 @@ public class Client {
         this.ville = ville;
         this.commandes = new ArrayList<>();
     }
-    
+
+    public void commander(Commande commande){
+        
+    }
+
+    // public List<Livre> onVousRecommande(){
+
+    // }
 }

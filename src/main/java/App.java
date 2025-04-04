@@ -1,7 +1,7 @@
 public class App {
-    private boolean quitter;
-    public App() {
-        this.quitter = false;
+    private ChaineLibrairie chaineLibrairie;
+    public App(ChaineLibrairie chaineLibrairie) {
+        this.chaineLibrairie = chaineLibrairie;
     }
 
     public void run() {
@@ -22,28 +22,33 @@ public class App {
     }
 
     public void menu() {
-        System.out.println("╭──────────────────────────────╮");
-        System.out.println("│       Choix du compte        │");
-        System.out.println("│──────────────────────────────│");
-        System.out.println("│ C: Client                    │");
-        System.out.println("│ V: Vendeur                   │");
-        System.out.println("│ A: Administrateur            │");
-        System.out.println("│ Q: Quitter                   │");
-        System.out.println("╰──────────────────────────────╯");
-
-        String commandeBrute = System.console().readLine();
-        String commande = commandeBrute.strip().toLowerCase();
-        switch (commande) {
-            case "c": {
-                this.connexionClient();
-                break;
-            }
-            case "q":
-                break;
-            default: {
-                System.out.println("ERREUR: Choix invalide, veuillez réessayer...");
-                this.menu();
-                break;
+        boolean finCommande = false;
+        while (!finCommande) {
+            System.out.println("╭──────────────────────────────╮");
+            System.out.println("│       Choix du compte        │");
+            System.out.println("│──────────────────────────────│");
+            System.out.println("│ C: Client                    │");
+            System.out.println("│ V: Vendeur                   │");
+            System.out.println("│ A: Administrateur            │");
+            System.out.println("│ Q: Quitter                   │");
+            System.out.println("╰──────────────────────────────╯");
+    
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "c": {
+                    this.connexionClient();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.out.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    this.menu();
+                    break;
+                }
             }
         }
     }
@@ -55,25 +60,61 @@ public class App {
     }
 
     public void client(Client client) {
-        System.out.println("╭──────────────────────────────╮");
-        System.out.println("│            Client            │");
-        System.out.println("│──────────────────────────────│");
-        System.out.println("│ C: Commander                 │");
-        System.out.println("│ R: Recommandations           │");
-        System.out.println("│ L: Consulter le catalogue    │");
-        System.out.println("│ Q: Quitter                   │");
-        System.out.println("╰──────────────────────────────╯");
+        boolean finCommande = false;
+        while (!finCommande) {
+            System.out.println("╭──────────────────────────────╮");
+            System.out.println("│            Client            │");
+            System.out.println("│──────────────────────────────│");
+            System.out.println("│ C: Commander                 │");
+            System.out.println("│ R: Recommandations           │");
+            System.out.println("│ L: Catalogue de livres       │");
+            System.out.println("│ Q: Quitter                   │");
+            System.out.println("╰──────────────────────────────╯");
+    
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "c": 
+                    this.client(client);
+                    break;
+                case "l": {
+                    this.catalogueLivres(client);
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.out.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    this.menu();
+                }
+            }
+        }
+    }
 
-        String commandeBrute = System.console().readLine();
-        String commande = commandeBrute.strip().toLowerCase();
-        switch (commande) {
-            case "c": 
-                this.client();
-            case "q":
-                break;
-            default: {
-                System.out.println("ERREUR: Choix invalide, veuillez réessayer...");
-                this.menu();
+    public void catalogueLivres(Client client) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            System.out.println("╭──────────────────────────────╮");
+            System.out.println("│         Catalogue            │");
+            System.out.println("│──────────────────────────────│");
+            System.out.println("│ L: Liste                     │");
+            System.out.println("│ R: Rechercher                │");
+            System.out.println("│ Q: Quitter                   │");
+            System.out.println("╰──────────────────────────────╯");
+    
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.out.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    this.menu();
+                }
             }
         }
     }

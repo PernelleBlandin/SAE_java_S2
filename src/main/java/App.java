@@ -1,5 +1,10 @@
 public class App {
     private ChaineLibrairie chaineLibrairie;
+
+    /**
+     * Créer l'application en ligne de commandes.
+     * @param chaineLibrairie La chaîne de librairie.
+     */
     public App(ChaineLibrairie chaineLibrairie) {
         this.chaineLibrairie = chaineLibrairie;
     }
@@ -55,7 +60,7 @@ public class App {
 
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        Client client = new Client(1, "DUPONT", "Richard", "1 rue de la place", "45000", "Orléans");
+        Client client = this.chaineLibrairie.trouverClient("DUPONT", "Richard");
         this.client(client);
     }
 

@@ -13,6 +13,30 @@ public class ChaineLibrairie {
     }
 
     /**
+     * Obtenir la liste des livres de la chaîne de librairie.
+     * @return La liste des livres de la chaîne de librairie.
+     */
+    public List<Livre> getLivres() {
+        return this.livres;
+    }
+
+    /**
+     * Obtenir la liste des clients de la chaîne de librairie.
+     * @return La liste des clients de la chaîne de librairie.
+     */
+    public List<Client> getClients() {
+        return this.clients;
+    }
+
+    /**
+     * Obtenir la liste des magasins de la chaîne de librairie.
+     * @return La liste des magasins de la chaîne de librairie.
+     */
+    public List<Magasin> getMagasins() {
+        return this.magasins;
+    }
+
+    /**
      * Ajouter un livre à la chaîne de librairie.
      * @param livre Le livre à ajouter.
      */

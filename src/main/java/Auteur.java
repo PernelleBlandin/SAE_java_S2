@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Auteur extends Identifiable {
-    
     private Integer anneenais;
     private Integer anneedeces;
     private List<Livre> livres;// a modifier sur le mcd
@@ -12,12 +11,4 @@ public class Auteur extends Identifiable {
         this.anneenais = anneenais;
         this.anneedeces = anneedeces;
     }
-
 }
-
-
-
-
-
-
-

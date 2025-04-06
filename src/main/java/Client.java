@@ -1,12 +1,6 @@
 import java.util.List;
 
-public class Client {
-    private int id;
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String codePostal;
-    private String ville;
+public class Client extends Personne {
     private List<Commande> commandes;
     private Panier panier;
 
@@ -20,62 +14,9 @@ public class Client {
      * @param ville La ville du client.
      */
     public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, List<Commande> commandes, Panier panier) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-        this.codePostal= codePostal;
-        this.ville = ville;
+        super(id, nom, prenom, adresse, codePostal, ville);
         this.commandes = commandes;
         this.panier = panier;
-    }
-
-    /**
-     * Obtenir l'identifiant du client.
-     * @return Son identifiant.
-     */
-    public int getId() {
-        return this.id;
-    }
-
-    /**
-     * Obtenir le nom du client.
-     * @return Son nom.
-     */
-    public String getNom() {
-        return this.nom;
-    }
-
-    /**
-     * Obtenir le prénom du client.
-     * @return Son prénom.
-     */
-    public String getPrenom() {
-        return this.prenom;
-    }
-
-    /**
-     * Obtenir l'adresse du client.
-     * @return Son adresse.
-     */
-    public String getAdresse() {
-        return this.adresse;
-    }
-
-    /**
-     * Obtenir le code postal du client.
-     * @return Son code postal.
-     */
-    public String getCodePostal() {
-        return this.codePostal;
-    }
-
-    /**
-     * Obtenir la ville du client.
-     * @return Sa villes.
-     */
-    public String getVille() {
-        return this.ville;
     }
 
     /**
@@ -97,14 +38,4 @@ public class Client {
     // public void commander(Commande commande){
         
     // }
-
-    
-    /**
-     * Obtenir le prénom et le nom du client.
-     * @return Le prénom et le nom du client.
-     */
-    @Override
-    public String toString() {
-        return this.getPrenom() + " " + this.getNom();
-    }
 }

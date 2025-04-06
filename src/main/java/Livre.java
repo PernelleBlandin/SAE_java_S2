@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Livre {
     private String isbn;
@@ -18,17 +18,19 @@ public class Livre {
      * @param nbpages Le nombre de pages du livre.
      * @param datepubli La date de publication du livre.
      * @param prix Le prix du livre.
+     * @param auteurs Les auteurs du livre.
+     * @param editeurs Les éditeurs du livre.
+     * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, int nbpages, int datepubli, double prix) {
+    public Livre(String isbn, String titre, int nbpages, int datepubli, double prix, List<Auteur> auteurs, List<Editeur> editeurs, List<Classification> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
         this.datepubli = datepubli;
         this.prix = prix;
-        // TODO: A modifier
-        this.auteurs = new ArrayList<>();
-        this.editeurs = new ArrayList<>();
-        this.classifications = new ArrayList<>();
+        this.auteurs = auteurs;
+        this.editeurs = editeurs;
+        this.classifications = classifications;
     }
 
     /**
@@ -96,15 +98,41 @@ public class Livre {
     }
 
     /**
+     * Obtenir les auteurs d'un livre sous forme d'une chaîne de caractères.
+     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
+     * @return Une chaîne de caractères avec les auteurs du livre, délimité par une virgule.
+     */
+    public String joinNomAuteurs() {
+        if (this.auteurs.size() == 0) return "Inconnu";
+        return this.auteurs.stream().map(Auteur::getNom).collect(Collectors.joining(", "));
+    }
+
+    /**
+     * Obtenir les éditeurs d'un livre sous forme d'une chaîne de caractères.
+     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
+     * @return Une chaîne de caractères avec les éditeurs du livre, délimité par une virgule.
+     */
+    public String joinNomEditeurs() {
+        if (this.editeurs.size() == 0) return "Inconnu";
+        return this.editeurs.stream().map(Editeur::getNom).collect(Collectors.joining(", "));
+    }
+
+    /**
+     * Obtenir les classifications d'un livre sous forme d'une chaîne de caractères.
+     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
+     * @return Une chaîne de caractères avec les classifications du livre, délimité par une virgule.
+     */
+    public String joinClassifications() {
+        if (this.classifications.size() == 0) return "Inconnu";
+        return this.classifications.stream().map(Classification::getNom).collect(Collectors.joining(", "));
+    }
+
+    /**
      * Obtenir le livre sous forme d'une chaîne de caractères (Titre (par auteur)).
      * @return Le livre sous forme d'une chaîne de caractères.
      */
     @Override
     public String toString() {
-        List<String> auteursNom = new ArrayList<>();
-        for (Auteur auteur: this.auteurs) {
-            auteursNom.add(auteur.getNom());
-        }
-        return String.format("%s (par %s)", this.titre, String.join(", ", auteursNom));
+        return String.format("%s (par %s)", this.titre, this.joinNomAuteurs());
     }
 }

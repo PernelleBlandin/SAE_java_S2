@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
@@ -9,6 +8,7 @@ public class Client {
     private String codePostal;
     private String ville;
     private List<Commande> commandes;
+    private Panier panier;
 
     /**
      * Créer un client.
@@ -19,14 +19,15 @@ public class Client {
      * @param codePostal Le code postal du client.
      * @param ville La ville du client.
      */
-    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville) {
+    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, List<Commande> commandes, Panier panier) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.codePostal= codePostal;
         this.ville = ville;
-        this.commandes = new ArrayList<>();
+        this.commandes = commandes;
+        this.panier = panier;
     }
 
     /**
@@ -85,7 +86,25 @@ public class Client {
         return this.commandes;
     }
 
+    /**
+     * Obtenir le panier du client.
+     * @return Le panier du client.
+     */
+    public Panier getPanier() {
+        return this.panier;
+    }
+
     // public void commander(Commande commande){
         
     // }
+
+    
+    /**
+     * Obtenir le prénom et le nom du client.
+     * @return Le prénom et le nom du client.
+     */
+    @Override
+    public String toString() {
+        return this.getPrenom() + " " + this.getNom();
+    }
 }

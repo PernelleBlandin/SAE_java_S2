@@ -1,15 +1,33 @@
 public class DetailCommande {
-    private Commande commande;
     private Livre livre;
-    private int numlig;
-    private int qte;
-    private double prixvente;
+    private int numLigne;
+    private int quantite;
+    private double prixVente;
     
-    public DetailCommande(Commande commande, Livre livre, int numlig, int qte, double prixvente) {
-        this.commande = commande;
+    public DetailCommande(Livre livre, int numlig, int qte, double prixvente) {
         this.livre = livre;
-        this.numlig = numlig;
-        this.qte = qte;
-        this.prixvente = prixvente;
+        this.numLigne = numlig;
+        this.quantite = qte;
+        this.prixVente = prixvente;
+    }
+
+    public Livre getLivre() {
+        return this.livre;
+    }
+
+    public int getNumLigne() {
+        return this.numLigne;
+    }
+
+    public int getQuantite() {
+        return this.quantite;
+    }
+
+    public double getPrixVente() {
+        return this.prixVente;
+    }
+
+    public void ajouterQuantite() {
+        this.quantite++;
     }
 }

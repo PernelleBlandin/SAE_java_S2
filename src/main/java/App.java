@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
@@ -91,12 +90,12 @@ public class App {
     public void client(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
-            this.afficherTitre("Client");
+            this.afficherTitre(String.format("Menu Client - %s", client.toString()));
+            this.afficherTexte("L: Catalogue de livres");
             this.afficherTexte("P: Panier client");
             this.afficherTexte("R: Recommandations");
-            this.afficherTexte("L: Consulter le catalogue de livres");
             this.afficherTexte("S: Rechercher livres");
-            this.afficherTexte("Q: Quitter");
+            this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
     
             String commandeBrute = System.console().readLine();
@@ -104,6 +103,10 @@ public class App {
             switch (commande) {
                 case "l": {
                     this.selectionnerLivre(client, this.chaineLibrairie.getLivres());
+                    break;
+                }
+                case "p": {
+                    this.voirPanier(client);
                     break;
                 }
                 case "q": {
@@ -128,7 +131,10 @@ public class App {
             int maxLivresParPage = 10;
             int totalPages = livres.size() / maxLivresParPage;
             this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages + 1));
-            for (int i = nbPage * maxLivresParPage; i < livres.size() && i < maxLivresParPage * (nbPage + 1); i++) {
+            
+            int debutIndex = nbPage * maxLivresParPage;
+            int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());
+            for (int i = debutIndex; i < finIndex; i++) {
                 Livre livre = livres.get(i);
                 this.afficherTexte(String.format("%d - %s", i + 1, livre.toString()));
             }
@@ -137,7 +143,7 @@ public class App {
             this.afficherTexte("Nombre: Sélection d'un livre dans la liste");
             if (nbPage > 0) this.afficherTexte("P: Page précédente");
             if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
-            this.afficherTexte("Q: Quitter");
+            this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String commandeBrute = System.console().readLine();
@@ -157,9 +163,9 @@ public class App {
                 }
                 default: {
                     try {
-                        int choixNumero = Integer.parseInt(commande);
-                        if (choixNumero > nbPage * maxLivresParPage && choixNumero < livres.size()) {
-                            Livre livre = livres.get(choixNumero);
+                        int indLivre = Integer.parseInt(commande) - 1;                        
+                        if (indLivre >= debutIndex && indLivre < finIndex) {
+                            Livre livre = livres.get(indLivre);
                             this.afficherLivre(client, livre);
                         } else {
                             System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
@@ -174,19 +180,90 @@ public class App {
     }
 
     public void afficherLivre(Client client, Livre livre) {
-        List<String> auteursNom = new ArrayList<>();
-        for (Auteur auteur: livre.getAuteurs()) {
-            auteursNom.add(auteur.getNom());
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre(livre.getTitre());
+            this.afficherTexte(String.format("Auteurs : %s", livre.joinNomAuteurs()));
+            this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
+            this.afficherTexte(String.format("Classifications : %s", livre.joinClassifications()));
+            this.afficherTexte(String.format("Editeurs : %s", livre.joinNomEditeurs()));
+            // TODO: On pourrait ajouter un descriptif du livre
+    
+            this.afficherSeperateurMilieu();
+            this.afficherTexte("A: Ajouter au panier");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "a": {
+                    client.getPanier().ajouterLivre(livre);
+                    System.out.println("Livre ajouté au panier !");
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
         }
+    }
 
-        this.afficherTitre(livre.getTitre());
-        this.afficherTexte(String.format("Auteurs : %s", String.join(", ", auteursNom)));
-        this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
-        this.afficherTexte("Classifications : ");
-        this.afficherTexte("Editeurs : ");
-        // TODO: On pourrait ajouter un descriptif du livre
+    public void voirPanier(Client client) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            Panier panier = client.getPanier();
+            List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+            this.afficherTitre(String.format("Panier - %s", client.toString()));
+            if (detailCommandes.size() > 0) {
+                double totalCommande = 0.00;
+                this.afficherTexte("       ISBN                               Titre                                Qte   Prix  Total");
+                for (int i = 0; i < detailCommandes.size(); i++) {
+                    DetailCommande detailCommande = detailCommandes.get(i);
+                    Livre livre = detailCommande.getLivre();
+                    
+                    String numLigne = String.format("%2s", detailCommande.getNumLigne());
+                    String isbn = String.format("%13s", livre.getISBN());
+                    String titre = String.format("%-61s", livre.getTitre());
+                    String qte = String.format("%3s", detailCommande.getQuantite());
+                    String prix = String.format("%6.2f", detailCommande.getPrixVente());
+                    String total = String.format("%6.2f", detailCommande.getPrixVente() * detailCommande.getQuantite());
 
-        this.afficherSeperateurMilieu();
-        // TODO: Ajouter au panier, quitter
+                    totalCommande += detailCommande.getPrixVente() * detailCommande.getQuantite();
+                    this.afficherTexte(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
+                }
+                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 12) + "s%s", "", "--------"));
+                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 12) + "s%8.2f", "", totalCommande));
+            } else {
+                this.afficherTexte("Vous n'avez aucun livre dans votre panier !");
+            }
+
+            this.afficherSeperateurMilieu();
+            if (detailCommandes.size() > 0) {
+                this.afficherTexte("P: Passer la commande");
+                this.afficherTexte("S: Supprimer un livre");
+            }
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
     }
 }

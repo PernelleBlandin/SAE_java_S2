@@ -1,10 +1,24 @@
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class ClientTest {
-    private static Client client1 = new Client(1, "DUPONT", "Robin", "5 rue de la terre", "75000", "Paris");
-    private static Client client2 = new Client(2, "DUBOIS", "Sophie", "57 rue du lac", "13000", "Marseille");
-    private static Client client3 = new Client(3, "ROBERT", "Pierre", "9 route de la paix", "45000", "Orléans");
+    // TODO: Ajouter des livres aux commandes
+    private static List<Commande> commandes1 = new ArrayList<>();
+    private static List<Commande> commandes2 = new ArrayList<>();
+    private static List<Commande> commandes3 = new ArrayList<>();
+
+    // TODO: Ajouter données
+    private static Panier panier1 = new Panier();
+    private static Panier panier2 = new Panier();
+    private static Panier panier3 = new Panier();
+
+    private static Client client1 = new Client(1, "DUPONT", "Robin", "5 rue de la terre", "75000", "Paris", commandes1, panier1);
+    private static Client client2 = new Client(2, "DUBOIS", "Sophie", "57 rue du lac", "13000", "Marseille", commandes2, panier2);
+    private static Client client3 = new Client(3, "ROBERT", "Pierre", "9 route de la paix", "45000", "Orléans", commandes3, panier3);
 
     @Test
     public void testsGetId() {
@@ -47,4 +61,22 @@ public class ClientTest {
         assertEquals("Marseille", client2.getVille());
         assertEquals("Orléans", client3.getVille());
     }
+
+    // TODO: Implémenter
+    // @Test
+    // public void testsGetCommandes() {
+    //     assertEquals(new ArrayList<>());
+    // }
+
+    // TODO: Implémenter
+    // @Test
+    // public void testsGetPanier() {
+    //     assertEquals(new ArrayList<>());
+    // }
+
+    // TODO: Implémenter
+    // @Test
+    // public void toString() {
+    //     assertEquals(new ArrayList<>());
+    // }
 }

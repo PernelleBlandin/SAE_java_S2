@@ -9,13 +9,13 @@ public class DetailCommande {
      * @param livre Le livre
      * @param numLigne Le numéro de ligne (pour la facture/affichage).
      * @param quantite La quantité du livre.
-     * @param prixvente Le prix de vente du livre.
+     * @param prixVente Le prix de vente du livre.
      */
-    public DetailCommande(Livre livre, int numLigne, int quantite, double prixvente) {
+    public DetailCommande(Livre livre, int numLigne, int quantite, double prixVente) {
         this.livre = livre;
         this.numLigne = numLigne;
         this.quantite = quantite;
-        this.prixVente = prixvente;
+        this.prixVente = prixVente;
     }
 
     /**

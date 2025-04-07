@@ -6,8 +6,8 @@ public class Commande {
     private char enLigne;
     private char livraison;
 
-    public Commande(int num, Date date, char enLigne, char livraison){
-        this.id = num;
+    public Commande(int id, Date date, char enLigne, char livraison){
+        this.id = id;
         this.date = date;
         this.enLigne = enLigne;
         this.livraison = livraison;

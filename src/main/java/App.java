@@ -89,7 +89,7 @@ public class App {
 
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        // Voir aussi si on choisi le magasin à ce moment-làa
+        // Voir aussi si on choisi le magasin à ce moment-là
         Client client = this.chaineLibrairie.trouverClient("DUPONT", "Richard");
         this.client(client);
     }

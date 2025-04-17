@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class Client extends Personne {
+    private Magasin magasin;
     private List<Commande> commandes;
     private Panier panier;
 
@@ -13,10 +14,15 @@ public class Client extends Personne {
      * @param codePostal Le code postal du client.
      * @param ville La ville du client.
      */
-    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, List<Commande> commandes, Panier panier) {
+    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes, Panier panier) {
         super(id, nom, prenom, adresse, codePostal, ville);
+        this.magasin = magasin;
         this.commandes = commandes;
         this.panier = panier;
+    }
+
+    public Magasin getMagasin() {
+        return this.magasin;
     }
 
     /**
@@ -35,7 +41,11 @@ public class Client extends Personne {
         return this.panier;
     }
 
-    // public void commander(Commande commande){
-        
-    // }
+    /**
+     * Commander un livre pour un client.
+     * @param commande
+     */
+    public void commander(Commande commande){
+        this.commandes.add(commande);
+    }
 }

@@ -1,12 +1,12 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Commande {
     private int id;
-    private Date date;
+    private LocalDate date;
     private char enLigne;
     private char livraison;
 
-    public Commande(int id, Date date, char enLigne, char livraison){
+    public Commande(int id, LocalDate date, char enLigne, char livraison){
         this.id = id;
         this.date = date;
         this.enLigne = enLigne;
@@ -25,7 +25,7 @@ public class Commande {
      * Obtenir la date de la commande.
      * @return La date de la commande.
      */
-    public Date getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 }

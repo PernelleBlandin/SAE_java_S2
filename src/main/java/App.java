@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.List;
+// TODO: Voir pour supporter les Exceptions CTRL+C (poser la question)
 
 public class App {
     private int longueurAffichage;
@@ -19,13 +21,17 @@ public class App {
     }
 
     public void afficherTitre(String titre) {
-        int margeDebut = (this.longueurAffichage - 4 - titre.length()) / 2;
-        int margeFin = margeDebut;
-        if (titre.length() % 2 != 0) margeFin++;
-
         System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
-        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", titre, "") + " │");
+        this.afficherTexteCentrer(titre);
         this.afficherSeperateurMilieu();
+    }
+
+    public void afficherTexteCentrer(String texte) {
+        int margeDebut = (this.longueurAffichage - 4 - texte.length()) / 2;
+        int margeFin = margeDebut;
+        if (texte.length() % 2 != 0) margeFin++;
+
+        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", texte, "") + " │");
     }
 
     public void afficherTexte(String texte) {
@@ -83,6 +89,7 @@ public class App {
 
     public void connexionClient() {
         // TODO: Voir comment on fait ça
+        // Voir aussi si on choisi le magasin à ce moment-làa
         Client client = this.chaineLibrairie.trouverClient("DUPONT", "Richard");
         this.client(client);
     }
@@ -251,10 +258,13 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-
             String commandeBrute = System.console().readLine();
             String commande = commandeBrute.strip().toLowerCase();
             switch (commande) {
+                case "p": {
+                    this.commander(client, panier);
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -265,5 +275,57 @@ public class App {
                 }
             }
         }
+    }
+
+    public boolean commander(Client client, Panier panier) {
+        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+        if (detailCommandes.size() == 0) {
+            System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
+            return false;
+        }
+        
+        this.afficherTitre("Passer une commande");
+        Character modeLivraison = this.demanderModeLivraison();
+        if (modeLivraison != null) {
+            // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
+            Commande commande = new Commande(1, LocalDate.now(), 'O', modeLivraison.charValue());
+
+            client.commander(commande);
+            panier.viderPanier();
+            return true;
+        }
+        
+        return false;
+    }
+
+    public Character demanderModeLivraison() {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTexteCentrer("Voulez-vous récupérer la commande en ligne ou en magasin ?");
+            this.afficherSeperateurMilieu();
+            this.afficherTexte("C: Chez soi");
+            this.afficherTexte("M: En magasin");
+            this.afficherTexte("Q: Annuler");
+            this.afficherSeperateurMilieu();
+
+            String commandeBrute = System.console().readLine();
+            String commande = commandeBrute.strip().toLowerCase();
+            switch (commande) {
+                case "c": {
+                    return 'C';
+                }
+                case "m": {
+                    return 'M';
+                }
+                case "q": {
+                    return null;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+        return null;
     }
 }

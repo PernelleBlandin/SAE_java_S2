@@ -1,4 +1,4 @@
-public class Administrateur extends Personne {
+public class Administrateur extends Personnel {
     /**
      * Créer un administrateur.
      * @param id L'identifiant de l'administrateur.
@@ -9,6 +9,6 @@ public class Administrateur extends Personne {
      * @param ville La ville de l'administrateur.
      */
     public Administrateur(int id, String nom, String prenom, String adresse, String codePostal, String ville) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+        super(id, nom, prenom, adresse, codePostal, ville, "Administrateur");
     }
 }

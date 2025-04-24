@@ -1,4 +1,4 @@
-public class Vendeur extends Personne {
+public class Vendeur extends Personnel {
     /**
      * Créer un vendeur.
      * @param id L'identifiant du vendeur.
@@ -9,6 +9,6 @@ public class Vendeur extends Personne {
      * @param ville La ville du vendeur.
      */
     public Vendeur(int id, String nom, String prenom, String adresse, String codePostal, String ville) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+        super(id, nom, prenom, adresse, codePostal, ville, "Vendeur");
     }
 }

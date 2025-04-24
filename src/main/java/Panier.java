@@ -2,13 +2,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Panier {
+    private Magasin magasin;
     private List<DetailCommande> detailCommandes;
     
     /**
+     * Créer un panier client vide.
+     */
+    public Panier(Magasin magasin) {
+        this.magasin = magasin;
+        this.detailCommandes = new ArrayList<>();
+    }
+
+    /**
      * Créer un panier client.
      */
-    public Panier() {
-        this.detailCommandes = new ArrayList<>();
+    public Panier(Magasin magasin, List<DetailCommande> detailCommandes) {
+        this.magasin = magasin;
+        this.detailCommandes = detailCommandes;
+    }
+
+    /**
+     * Récupérer le magasin lié au panier.
+     * @return Le magasin lié au panier.
+     */
+    public Magasin getMagasin() {
+        return this.magasin;
     }
 
     /**

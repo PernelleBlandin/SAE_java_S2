@@ -1,7 +1,10 @@
+import java.util.List;
+
 public class Magasin extends Identifiable{
     private String adresse;
     private String codePostal;
     private String ville;
+    private List<Posseder> possessions; 
 
     /**
      * Créer un magasin.
@@ -11,11 +14,12 @@ public class Magasin extends Identifiable{
      * @param codePostal Le code postal du magasin.
      * @param ville La ville du magasin.
      */
-    public Magasin(String id, String nom, String adresse, String codePostal, String ville) {
+    public Magasin(String id, String nom, String adresse, String codePostal, String ville, List<Posseder> possessions) {
         super(id, nom);
         this.adresse = adresse;
         this.codePostal = codePostal;
         this.ville = ville;
+        this.possessions = possessions;
     }
 
     /**
@@ -42,4 +46,11 @@ public class Magasin extends Identifiable{
         return this.ville;
     }
     
+    /**
+     * Obtenir la liste des livres possédés par le magasin.
+     * @return La liste des livres possédés par le magasin.
+     */
+    public List<Posseder> getPossessions() {
+        return this.possessions;
+    }
 }

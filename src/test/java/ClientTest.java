@@ -6,8 +6,9 @@ import java.util.List;
 import org.junit.Test;
 
 public class ClientTest {
-    private static Magasin magasin1 = new Magasin("1", "Paris Centre", "2 Grande Rue", "75000", "Paris");
-    private static Magasin magasin2 = new Magasin("2", "Orléans Sud", "3 rue de l'olive", "45160", "Olivet");
+    private static List<Posseder> listePosessions = new ArrayList<>();
+    private static Magasin magasin1 = new Magasin("1", "Paris Centre", "2 Grande Rue", "75000", "Paris", listePosessions);
+    private static Magasin magasin2 = new Magasin("2", "Orléans Sud", "3 rue de l'olive", "45160", "Olivet", listePosessions);
 
     // TODO: Ajouter des livres aux commandes
     private static List<Commande> commandes1 = new ArrayList<>();
@@ -15,13 +16,12 @@ public class ClientTest {
     private static List<Commande> commandes3 = new ArrayList<>();
 
     // TODO: Ajouter données
-    private static Panier panier1 = new Panier();
-    private static Panier panier2 = new Panier();
-    private static Panier panier3 = new Panier();
+    private static Panier panier1 = new Panier(magasin1);
+    private static Panier panier2 = new Panier(magasin2);
 
     private static Client client1 = new Client(1, "DUPONT", "Robin", "5 rue de la terre", "75000", "Paris", magasin1, commandes1, panier1);
     private static Client client2 = new Client(2, "DUBOIS", "Sophie", "57 rue du lac", "13000", "Marseille", magasin2, commandes2, panier2);
-    private static Client client3 = new Client(3, "ROBERT", "Pierre", "9 route de la paix", "45000", "Orléans", magasin2, commandes3, panier3);
+    private static Client client3 = new Client(3, "ROBERT", "Pierre", "9 route de la paix", "45000", "Orléans", magasin2, commandes3, panier2);
 
     @Test
     public void testsGetId() {

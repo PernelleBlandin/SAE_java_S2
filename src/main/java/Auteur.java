@@ -10,4 +10,12 @@ public class Auteur extends Identifiable {
         this.anneenais = anneenais;
         this.anneedeces = anneedeces;
     }
-}
+
+    public Integer getAnneeNais() {
+        return this.anneenais;
+    }
+
+    public Integer getAneeeDeces() {
+        return this.anneedeces;
+    }
+ }

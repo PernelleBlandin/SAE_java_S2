@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 // TODO: Voir pour supporter les Exceptions CTRL+C (poser la question)
@@ -91,12 +92,22 @@ public class App {
         // TODO: Voir comment on fait ça
         // Voir aussi si on choisi le magasin à ce moment-là
         Client client = this.chaineLibrairie.trouverClient("DUPONT", "Richard");
+
+        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
+        // Faire un avertissement si panier avec des élements et changement de magasin
+
         this.client(client);
     }
 
     public void client(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
+            Panier panier = client.getPanier();
+            if (!panier.getMagasin().equals(client.getMagasin())) {
+                Panier nouveauPanier = new Panier(client.getMagasin());
+                client.setPanier(nouveauPanier);
+            }
+
             this.afficherTitre(String.format("Menu Client - %s", client.toString()));
             this.afficherTexte("L: Catalogue de livres");
             this.afficherTexte("P: Panier client");
@@ -288,7 +299,7 @@ public class App {
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
             // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-            Commande commande = new Commande(1, LocalDate.now(), 'O', modeLivraison.charValue());
+            Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison.charValue(), "En Attente", panier.getMagasin(), detailCommandes);
 
             client.commander(commande);
             panier.viderPanier();

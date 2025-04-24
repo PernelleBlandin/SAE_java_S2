@@ -4,11 +4,13 @@ import java.util.ArrayList;
 public class ChaineLibrairie {
     private List<Livre> livres;
     private List<Client> clients;
+    private List<Personnel> personnels;
     private List<Magasin> magasins;
 
     public ChaineLibrairie() {
         this.livres = new ArrayList<>();
         this.clients = new ArrayList<>();
+        this.personnels = new ArrayList<>();
         this.magasins = new ArrayList<>();
     }
 
@@ -26,6 +28,14 @@ public class ChaineLibrairie {
      */
     public List<Client> getClients() {
         return this.clients;
+    }
+
+    /**
+     * Obtenir la liste des personnels de la chaîne de librairie.
+     * @return La liste des personnels de la chaîne de librairie.
+     */
+    public List<Personnel> getPersonnels() {
+        return this.personnels;
     }
 
     /**

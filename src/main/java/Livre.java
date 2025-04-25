@@ -126,13 +126,4 @@ public class Livre {
         if (this.classifications.size() == 0) return "Inconnu";
         return this.classifications.stream().map(Classification::getNom).collect(Collectors.joining(", "));
     }
-
-    /**
-     * Obtenir le livre sous forme d'une chaîne de caractères (Titre (par auteur)).
-     * @return Le livre sous forme d'une chaîne de caractères.
-     */
-    @Override
-    public String toString() {
-        return String.format("%s (par %s)", this.titre, this.joinNomAuteurs());
-    }
 }

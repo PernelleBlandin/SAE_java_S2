@@ -103,6 +103,8 @@ public class App {
         boolean finCommande = false;
         while (!finCommande) {
             Panier panier = client.getPanier();
+
+            // TODO: Déplacer ça dans le menu de changement de magasin
             if (!panier.getMagasin().equals(client.getMagasin())) {
                 Panier nouveauPanier = new Panier(client.getMagasin());
                 client.setPanier(nouveauPanier);
@@ -147,18 +149,15 @@ public class App {
         boolean finCommande = false;
         
         int maxLivresParPage = 10;
-        // On doit convertir int/int en double (sinon on obtient un int en retour)
-        // Puis transformer ce double en int pour l'affichage
-        int totalPages = (int) Math.ceil((double) livres.size() / maxLivresParPage);
-
+        int totalPages = livres.size() / (maxLivresParPage + 1);
         while (!finCommande) {
-            this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages));
+            this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages + 1));
             
             int debutIndex = nbPage * maxLivresParPage;
             int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());
             for (int i = debutIndex; i < finIndex; i++) {
                 Livre livre = livres.get(i);
-                this.afficherTexte(String.format("%d - %s", i + 1, livre.toString()));
+                this.afficherTexte(String.format("%d - %s | par %s | %.2f€", i + 1, livre.getTitre(), livre.joinNomAuteurs(), livre.getPrix()));
             }
     
             this.afficherSeperateurMilieu();
@@ -220,8 +219,8 @@ public class App {
             String commande = commandeBrute.strip().toLowerCase();
             switch (commande) {
                 case "a": {
-                    client.getPanier().ajouterLivre(livre);
-                    System.out.println("Livre ajouté au panier !");
+                    int quantiteLivre = client.getPanier().ajouterLivre(livre);
+                    System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
                     break;
                 }
                 case "q": {
@@ -244,23 +243,23 @@ public class App {
             this.afficherTitre(String.format("Panier - %s", client.toString()));
             if (detailCommandes.size() > 0) {
                 double totalCommande = 0.00;
-                this.afficherTexte("       ISBN                               Titre                                Qte   Prix  Total");
+                this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
                 for (int i = 0; i < detailCommandes.size(); i++) {
                     DetailCommande detailCommande = detailCommandes.get(i);
                     Livre livre = detailCommande.getLivre();
                     
                     String numLigne = String.format("%2s", detailCommande.getNumLigne());
                     String isbn = String.format("%13s", livre.getISBN());
-                    String titre = String.format("%-61s", livre.getTitre());
+                    String titre = String.format("%-59s", livre.getTitre());
                     String qte = String.format("%3s", detailCommande.getQuantite());
-                    String prix = String.format("%6.2f", detailCommande.getPrixVente());
-                    String total = String.format("%6.2f", detailCommande.getPrixVente() * detailCommande.getQuantite());
+                    String prix = String.format("%6.2f€", detailCommande.getPrixVente());
+                    String total = String.format("%6.2f€", detailCommande.getPrixVente() * detailCommande.getQuantite());
 
                     totalCommande += detailCommande.getPrixVente() * detailCommande.getQuantite();
                     this.afficherTexte(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
                 }
-                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 12) + "s%s", "", "--------"));
-                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 12) + "s%8.2f", "", totalCommande));
+                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 11) + "s%s", "", "-------"));
+                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 11) + "s%6.2f€", "", totalCommande));
             } else {
                 this.afficherTexte("Vous n'avez aucun livre dans votre panier !");
             }
@@ -277,7 +276,7 @@ public class App {
             String commande = commandeBrute.strip().toLowerCase();
             switch (commande) {
                 case "p": {
-                    this.commander(client, panier);
+                    finCommande = this.commander(client, panier);
                     break;
                 }
                 case "q": {
@@ -307,6 +306,7 @@ public class App {
 
             client.commander(commande);
             panier.viderPanier();
+            System.out.println("Merci pour votre commande !");
             return true;
         }
         
@@ -321,7 +321,7 @@ public class App {
             this.afficherTexte("C: Chez soi");
             this.afficherTexte("M: En magasin");
             this.afficherTexte("Q: Annuler");
-            this.afficherSeperateurMilieu();
+            this.afficherTitreFin();
 
             String commandeBrute = System.console().readLine();
             String commande = commandeBrute.strip().toLowerCase();
@@ -333,7 +333,8 @@ public class App {
                     return 'M';
                 }
                 case "q": {
-                    return null;
+                    finCommande = true;
+                    break;
                 }
                 default: {
                     System.err.println("ERREUR: Choix invalide, veuillez réessayer...");

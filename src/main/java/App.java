@@ -145,10 +145,14 @@ public class App {
 
     public void selectionnerLivre(Client client, List<Livre> livres, int nbPage) {
         boolean finCommande = false;
+        
+        int maxLivresParPage = 10;
+        // On doit convertir int/int en double (sinon on obtient un int en retour)
+        // Puis transformer ce double en int pour l'affichage
+        int totalPages = (int) Math.ceil((double) livres.size() / maxLivresParPage);
+
         while (!finCommande) {
-            int maxLivresParPage = 10;
-            int totalPages = livres.size() / maxLivresParPage;
-            this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages + 1));
+            this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages));
             
             int debutIndex = nbPage * maxLivresParPage;
             int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());

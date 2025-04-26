@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 public class Livre {
     private String isbn;
     private String titre;
-    private int nbpages;
+    private Integer nbpages;
     private int datepubli;
     private double prix;
     private List<Auteur> auteurs;
@@ -22,7 +22,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, int nbpages, int datepubli, double prix, List<Auteur> auteurs, List<Editeur> editeurs, List<Classification> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<Editeur> editeurs, List<Classification> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -53,7 +53,7 @@ public class Livre {
      * Obtenir le nombre de pages d'un livre.
      * @return Le nombres de pages du livre.
      */
-    public int getNbPages() {
+    public Integer getNbPages() {
         return this.nbpages;
     }
 

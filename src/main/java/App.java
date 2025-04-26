@@ -174,7 +174,7 @@ public class App {
     }
 
     public ResultatSelectionLivre selectionnerLivre(List<Livre> livres, int nbPage, String titre) {
-        int maxLivresParPage = 10;
+        int maxLivresParPage = 5;
         int totalPages = livres.size() / (maxLivresParPage + 1);
 
         boolean finCommande = false;

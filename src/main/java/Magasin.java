@@ -31,4 +31,13 @@ public class Magasin extends Identifiable{
     public List<Posseder> getPossessions() {
         return this.possessions;
     }
+
+    /**
+     * Obtenir le magasin en chaîne de caractères.
+     * @return Le magasin en chaîne de caractères.
+     */
+    @Override
+    public String toString() {
+        return String.format("%s (%s)", this.getNom(), this.getVille());
+    }
 }

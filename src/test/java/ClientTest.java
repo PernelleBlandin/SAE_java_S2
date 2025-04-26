@@ -7,8 +7,8 @@ import org.junit.Test;
 
 public class ClientTest {
     private static List<Posseder> listePosessions = new ArrayList<>();
-    private static Magasin magasin1 = new Magasin("1", "Paris Centre", "2 Grande Rue", "75000", "Paris", listePosessions);
-    private static Magasin magasin2 = new Magasin("2", "Orléans Sud", "3 rue de l'olive", "45160", "Olivet", listePosessions);
+    private static Magasin magasin1 = new Magasin("1", "Paris Centre", "Paris", listePosessions);
+    private static Magasin magasin2 = new Magasin("2", "Orléans Sud", "Olivet", listePosessions);
 
     // TODO: Ajouter des livres aux commandes
     private static List<Commande> commandes1 = new ArrayList<>();

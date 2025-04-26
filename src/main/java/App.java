@@ -100,79 +100,6 @@ public class App {
         }
     }
 
-    // Client
-
-    public void connexionClient() {
-        // TODO: Voir comment on fait ça
-        // Voir aussi si on choisi le magasin à ce moment-là
-        Client client = this.chaineLibrairie.trouverClient("DUPONT", "Richard");
-
-        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
-        // Faire un avertissement si panier avec des élements et changement de magasin
-
-        this.client(client);
-    }
-
-    public void client(Client client) {
-        boolean finCommande = false;
-        while (!finCommande) {
-            Panier panier = client.getPanier();
-
-            // TODO: Déplacer ça dans le menu de changement de magasin
-            if (!panier.getMagasin().equals(client.getMagasin())) {
-                Panier nouveauPanier = new Panier(client.getMagasin());
-                client.setPanier(nouveauPanier);
-            }
-
-            this.afficherTitre(String.format("Menu Client - %s", client.toString()));
-            this.afficherTexte("L: Catalogue de livres");
-            this.afficherTexte("P: Panier client");
-            this.afficherTexte("R: Recommandations");
-            this.afficherTexte("S: Rechercher livres");
-            this.afficherTexte("Q: Retour");
-            this.afficherTitreFin();
-    
-            String commande = this.getUserCommandInput();
-            switch (commande) {
-                case "l": {
-                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
-                    break;
-                }
-                case "p": {
-                    this.voirPanier(client);
-                    break;
-                }
-                case "q": {
-                    finCommande = true;
-                    break;
-                }
-                case "s": {
-                    String recherche = this.demanderRecherche();
-                    if (recherche != null) {
-                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
-                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
-                    }
-                    break;
-                }
-                default: {
-                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                    break;
-                }
-            }
-        }
-    }
-
-    public void consulterCatalogueClient(Client client, List<Livre> livres, String titre) {
-        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
-        while (resultatSelectionLivre != null) {
-            resultatSelectionLivre = this.selectionnerLivre(livres, resultatSelectionLivre.getNbPage(), titre);
-            if (resultatSelectionLivre != null) {
-                Livre livre = resultatSelectionLivre.getLivre();
-                this.afficherLivre(client, livre);
-            }
-        }
-    }
-
     public ResultatSelectionLivre selectionnerLivre(List<Livre> livres, int nbPage, String titre) {
         int maxLivresParPage = 5;
         int totalPages = livres.size() / (maxLivresParPage + 1);
@@ -234,6 +161,91 @@ public class App {
         return null;
     }
 
+    public String demanderRecherche() {
+        this.afficherTitre(String.format("Quel est votre recherche ?"));
+        this.afficherTexte("Q: Retour");
+        this.afficherTitreFin();
+
+        String recherche = this.getUserCommandInput();
+        if (recherche.equals("q")) return null;
+
+        return recherche;
+    }
+
+    // Client
+
+    public void connexionClient() {
+        // TODO: Voir comment on fait ça
+        // Voir aussi si on choisi le magasin à ce moment-là
+        Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
+
+        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
+        // Faire un avertissement si panier avec des élements et changement de magasin
+
+        this.client(client);
+    }
+
+    public void client(Client client) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            Panier panier = client.getPanier();
+            Magasin magasin = client.getMagasin();
+
+            // TODO: Déplacer ça dans le menu de changement de magasin
+            if (!panier.getMagasin().equals(magasin)) {
+                Panier nouveauPanier = new Panier(magasin);
+                client.setPanier(nouveauPanier);
+            }
+
+            this.afficherTitre(String.format("Menu Client - %s | Magasin : %s", client.toString(), magasin.toString()));
+            this.afficherTexte("L: Catalogue de livres");
+            this.afficherTexte("P: Panier client");
+            this.afficherTexte("R: Recommandations");
+            this.afficherTexte("S: Rechercher livres");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+    
+            String commande = this.getUserCommandInput();
+            switch (commande) {
+                case "l": {
+                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
+                    break;
+                }
+                case "p": {
+                    this.voirPanier(client);
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                case "s": {
+                    String recherche = this.demanderRecherche();
+                    if (recherche != null) {
+                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
+                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                    }
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+    }
+
+    public void consulterCatalogueClient(Client client, List<Livre> livres, String titre) {
+        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+        while (resultatSelectionLivre != null) {
+            resultatSelectionLivre = this.selectionnerLivre(livres, resultatSelectionLivre.getNbPage(), titre);
+            if (resultatSelectionLivre != null) {
+                Livre livre = resultatSelectionLivre.getLivre();
+                this.afficherLivre(client, livre);
+            }
+        }
+    }
+
     public void afficherLivre(Client client, Livre livre) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -274,8 +286,10 @@ public class App {
         boolean finCommande = false;
         while (!finCommande) {
             Panier panier = client.getPanier();
+            Magasin magasin = client.getMagasin();
             List<DetailCommande> detailCommandes = panier.getDetailCommandes();
-            this.afficherTitre(String.format("Panier - %s", client.toString()));
+            this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
+            
             if (detailCommandes.size() > 0) {
                 double totalCommande = 0.00;
                 this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
@@ -449,16 +463,5 @@ public class App {
         if (reponseConfirmation.equals("o")) return quantite;
 
         return null;
-    }
-
-    public String demanderRecherche() {
-        this.afficherTitre(String.format("Quel est votre recherche ?"));
-        this.afficherTexte("Q: Retour");
-        this.afficherTitreFin();
-
-        String recherche = this.getUserCommandInput();
-        if (recherche.equals("q")) return null;
-
-        return recherche;
     }
 }

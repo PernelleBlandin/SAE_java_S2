@@ -85,6 +85,22 @@ public class ChaineLibrairie {
         return null;
     }
 
+    /**
+     * Rechercher un livre selon une recherche données.
+     * @param livres La liste des livres dans laquelle effectuer la recherche.
+     * @param recherche La recherche utilisateur.
+     * @return Les livres étant inclus dans la recherche.
+     */
+    public List<Livre> rechercherLivres(List<Livre> livres, String recherche) {
+        List<Livre> livresCorrespondants = new ArrayList<>();
+        for (Livre livre: livres) {
+            if (livre.estIncluDansRecherche(recherche)) {
+                livresCorrespondants.add(livre);
+            }
+        }
+        return livresCorrespondants;
+    }
+
     // public List<Livre> onVousRecommande(Client client){
 
     // }

@@ -126,4 +126,18 @@ public class Livre {
         if (this.classifications.size() == 0) return "Inconnu";
         return this.classifications.stream().map(Classification::getNom).collect(Collectors.joining(", "));
     }
+
+    /**
+     * Indique si un livre est inclu dans une recherche donnée.
+     * @param recherche Une recherche utilisateur.
+     * @return true si le livre est inclu dans la recherche donnée, sinon false.
+     */
+    public boolean estIncluDansRecherche(String recherche) {
+        String titreString = this.getTitre().toLowerCase();
+        String auteursString = this.joinNomAuteurs().toLowerCase();
+        String editeursString = this.joinNomEditeurs().toLowerCase();
+        String classificationsString = this.joinNomEditeurs().toLowerCase();
+
+        return titreString.contains(recherche) || auteursString.contains(recherche) || editeursString.contains(recherche) || classificationsString.contains(recherche);
+    }
 }

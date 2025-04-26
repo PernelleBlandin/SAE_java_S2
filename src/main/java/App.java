@@ -135,14 +135,7 @@ public class App {
             String commande = this.getUserCommandInput();
             switch (commande) {
                 case "l": {
-                    ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
-                    while (resultatSelectionLivre != null) {
-                        resultatSelectionLivre = this.selectionnerLivre("Catalogue de livres", this.chaineLibrairie.getLivres(), resultatSelectionLivre.getNbPage());
-                        if (resultatSelectionLivre != null) {
-                            Livre livre = resultatSelectionLivre.getLivre();
-                            this.afficherLivre(client, livre);
-                        }
-                    }
+                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
                     break;
                 }
                 case "p": {
@@ -153,6 +146,14 @@ public class App {
                     finCommande = true;
                     break;
                 }
+                case "s": {
+                    String recherche = this.demanderRecherche();
+                    if (recherche != null) {
+                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
+                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                    }
+                    break;
+                }
                 default: {
                     System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                     break;
@@ -161,7 +162,18 @@ public class App {
         }
     }
 
-    public ResultatSelectionLivre selectionnerLivre(String titre, List<Livre> livres, int nbPage) {
+    public void consulterCatalogueClient(Client client, List<Livre> livres, String titre) {
+        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+        while (resultatSelectionLivre != null) {
+            resultatSelectionLivre = this.selectionnerLivre(livres, resultatSelectionLivre.getNbPage(), titre);
+            if (resultatSelectionLivre != null) {
+                Livre livre = resultatSelectionLivre.getLivre();
+                this.afficherLivre(client, livre);
+            }
+        }
+    }
+
+    public ResultatSelectionLivre selectionnerLivre(List<Livre> livres, int nbPage, String titre) {
         int maxLivresParPage = 10;
         int totalPages = livres.size() / (maxLivresParPage + 1);
 
@@ -171,13 +183,19 @@ public class App {
             
             int debutIndex = nbPage * maxLivresParPage;
             int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());
-            for (int i = debutIndex; i < finIndex; i++) {
-                Livre livre = livres.get(i);
-                this.afficherTexte(String.format("%d - %s | par %s | %.2f€", i + 1, livre.getTitre(), livre.joinNomAuteurs(), livre.getPrix()));
+
+            boolean hasResults = debutIndex < finIndex;
+            if (hasResults) {
+                for (int i = debutIndex; i < finIndex; i++) {
+                    Livre livre = livres.get(i);
+                    this.afficherTexte(String.format("%d - %s | par %s | %.2f€", i + 1, livre.getTitre(), livre.joinNomAuteurs(), livre.getPrix()));
+                }
+            } else {
+                this.afficherTexte("Il n'y a aucun résultat.");
             }
-    
+
             this.afficherSeperateurMilieu();
-            this.afficherTexte("Nombre: Sélection d'un livre dans la liste");
+            if (hasResults) this.afficherTexte("Nombre: Sélection d'un livre dans la liste");
             if (nbPage > 0) this.afficherTexte("P: Page précédente");
             if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
             this.afficherTexte("Q: Retour");
@@ -372,7 +390,7 @@ public class App {
         List<Livre> livresPanier = panier.getLivres();
         ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
         while (resultatSelectionLivre != null) {
-            resultatSelectionLivre = this.selectionnerLivre("Supprimer un livre du panier", livresPanier, resultatSelectionLivre.getNbPage());
+            resultatSelectionLivre = this.selectionnerLivre(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
             if (resultatSelectionLivre != null) {
                 Livre livre = resultatSelectionLivre.getLivre();
                 DetailCommande detailCommande = panier.getDetailCommandeLivre(livre);
@@ -431,5 +449,16 @@ public class App {
         if (reponseConfirmation.equals("o")) return quantite;
 
         return null;
+    }
+
+    public String demanderRecherche() {
+        this.afficherTitre(String.format("Quel est votre recherche ?"));
+        this.afficherTexte("Q: Retour");
+        this.afficherTitreFin();
+
+        String recherche = this.getUserCommandInput();
+        if (recherche.equals("q")) return null;
+
+        return recherche;
     }
 }

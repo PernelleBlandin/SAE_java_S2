@@ -56,4 +56,12 @@ public class DetailCommande {
     public void ajouterQuantite() {
         this.quantite++;
     }
+
+    /**
+     * Définir la quantité d'un livre.
+     * @param quantite La nouvelle quantité d'un livre.
+     */
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
 }

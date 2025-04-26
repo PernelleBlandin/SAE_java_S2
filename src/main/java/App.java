@@ -100,6 +100,8 @@ public class App {
         }
     }
 
+    // Client
+
     public void connexionClient() {
         // TODO: Voir comment on fait ça
         // Voir aussi si on choisi le magasin à ce moment-là
@@ -248,6 +250,8 @@ public class App {
         }
     }
 
+    // Panier Client
+
     public void voirPanier(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -289,6 +293,10 @@ public class App {
             switch (commande) {
                 case "p": {
                     finCommande = this.commander(client, panier);
+                    break;
+                }
+                case "s": {
+                    this.supprimerLivrePanier(client, panier);
                     break;
                 }
                 case "q": {
@@ -351,6 +359,77 @@ public class App {
                 }
             }
         }
+        return null;
+    }
+
+    public boolean supprimerLivrePanier(Client client, Panier panier) {
+        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+        if (detailCommandes.size() == 0) {
+            System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
+            return false;
+        }
+
+        List<Livre> livresPanier = panier.getLivres();
+        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+        while (resultatSelectionLivre != null) {
+            resultatSelectionLivre = this.selectionnerLivre("Supprimer un livre du panier", livresPanier, resultatSelectionLivre.getNbPage());
+            if (resultatSelectionLivre != null) {
+                Livre livre = resultatSelectionLivre.getLivre();
+                DetailCommande detailCommande = panier.getDetailCommandeLivre(livre);
+
+                Integer quantite = this.demanderQuantiterSupprimer(detailCommande);
+                if (quantite != null) {
+                    System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
+                    panier.retirerQuantiteLivre(livre, quantite);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Integer demanderQuantiterSupprimer(DetailCommande detailCommande) {
+        Integer quantite = null;
+        int quantitePanier = detailCommande.getQuantite();
+        if (quantitePanier == 1) quantite = 1;
+
+        Livre livre = detailCommande.getLivre();
+        while (quantite == null) {
+            this.afficherTexteCentrer(String.format("Quelle est la quantité du livre %s que vous voulez retirer ?", livre.toString()));
+            this.afficherSeperateurMilieu();
+            this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailCommande.getQuantite()));
+            this.afficherSeperateurMilieu();
+            this.afficherTexte("Nombre: Quantité à retirer");
+            this.afficherTexte("Q: Annuler");
+            this.afficherTitreFin();
+
+            String entree = this.getUserCommandInput();
+            if (entree.equals("q")) return null;
+
+            try {
+                quantite = Integer.parseInt(entree);
+                if (quantite > 0) {
+                    if (quantite > quantitePanier) {
+                        System.out.println(String.format("INFO: Vous avez demandé à retirer %d exemplaire(s), mais le panier n'en contient que %d. La quantité a été automatiquement ajustée.", quantite, quantitePanier));
+                        quantite = quantitePanier;
+                    }
+                } else {
+                    System.err.println("ERREUR: Nombre invalide, merci d'indiquer une valeure supérieure ou égale à 1. Veuillez réessayer...");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+            }
+        }
+
+        this.afficherTitre(String.format("Confirmez-vous la suppression de %dx %s ?", quantite, livre.getTitre()));
+        this.afficherTexte("O: Oui");
+        this.afficherTexte("Autre réponse: Non");
+        this.afficherTitreFin();
+
+        String reponseConfirmation = this.getUserCommandInput();
+        if (reponseConfirmation.equals("o")) return quantite;
+
         return null;
     }
 }

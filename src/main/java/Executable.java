@@ -138,15 +138,19 @@ public class Executable {
 
         // Magasins
         List<Posseder> listePosessions = new ArrayList<>();
-        Magasin magasin1 = new Magasin("1", "Paris Centre", "2 Grande Rue", "75000", "Paris", listePosessions);
-        Magasin magasin2 = new Magasin("2", "Orléans Sud", "3 rue de l'olive", "45160", "Olivet", listePosessions);
+        Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
+        Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
+        Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes", listePosessions);
+        Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
         
-        chaineLibrairie.ajouterMagasin(magasin1);
-        chaineLibrairie.ajouterMagasin(magasin2);
+        chaineLibrairie.ajouterMagasin(magasinParis);
+        chaineLibrairie.ajouterMagasin(magasinMarseille);
+        chaineLibrairie.ajouterMagasin(magasinRennes);
+        chaineLibrairie.ajouterMagasin(magasinOrleans);
 
         // Clients 
-        Client client1 = new Client(1, "DUPONT", "Richard", "1 rue de la place", "45000", "Orléans", magasin2, new ArrayList<>());
-        Client client2 = new Client(1, "MICHEL", "Edouard", "3 grande rue", "75000", "Paris", magasin1, new ArrayList<>());
+        Client client1 = new Client(1, "DUPONT", "Richard", "1 rue de la place", "45000", "Orléans", magasinMarseille, new ArrayList<>());
+        Client client2 = new Client(1, "MICHEL", "Edouard", "3 grande rue", "75000", "Paris", magasinParis, new ArrayList<>());
         
         chaineLibrairie.ajouterClient(client1);
         chaineLibrairie.ajouterClient(client2);

@@ -50,10 +50,10 @@ public class App {
         try {
             String commandeBrute = System.console().readLine();
             return commandeBrute.strip().toLowerCase();
-        
-            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
-            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas. 
         } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
             System.out.println("Programme arrêté manuellement.");
             System.exit(0);
             return null;
@@ -133,7 +133,14 @@ public class App {
             String commande = this.getUserCommandInput();
             switch (commande) {
                 case "l": {
-                    this.selectionnerLivre(client, this.chaineLibrairie.getLivres());
+                    ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+                    while (resultatSelectionLivre != null) {
+                        resultatSelectionLivre = this.selectionnerLivre("Catalogue de livres", this.chaineLibrairie.getLivres(), resultatSelectionLivre.getNbPage());
+                        if (resultatSelectionLivre != null) {
+                            Livre livre = resultatSelectionLivre.getLivre();
+                            this.afficherLivre(client, livre);
+                        }
+                    }
                     break;
                 }
                 case "p": {
@@ -152,17 +159,13 @@ public class App {
         }
     }
 
-    public void selectionnerLivre(Client client, List<Livre> livres) {
-        this.selectionnerLivre(client, livres, 0);
-    }
-
-    public void selectionnerLivre(Client client, List<Livre> livres, int nbPage) {
-        boolean finCommande = false;
-        
+    public ResultatSelectionLivre selectionnerLivre(String titre, List<Livre> livres, int nbPage) {
         int maxLivresParPage = 10;
         int totalPages = livres.size() / (maxLivresParPage + 1);
+
+        boolean finCommande = false;
         while (!finCommande) {
-            this.afficherTitre(String.format("Catalogue des livres - page n°%d sur %d", nbPage + 1, totalPages + 1));
+            this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
             
             int debutIndex = nbPage * maxLivresParPage;
             int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());
@@ -197,7 +200,7 @@ public class App {
                         int indLivre = Integer.parseInt(commande) - 1;                        
                         if (indLivre >= debutIndex && indLivre < finIndex) {
                             Livre livre = livres.get(indLivre);
-                            this.afficherLivre(client, livre);
+                            return new ResultatSelectionLivre(nbPage, livre);
                         } else {
                             System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                         }
@@ -208,6 +211,7 @@ public class App {
                 }
             }
         }
+        return null;
     }
 
     public void afficherLivre(Client client, Livre livre) {
@@ -333,12 +337,10 @@ public class App {
 
             String commande = this.getUserCommandInput();
             switch (commande) {
-                case "c": {
+                case "c":
                     return 'C';
-                }
-                case "m": {
+                case "m":
                     return 'M';
-                }
                 case "q": {
                     finCommande = true;
                     break;

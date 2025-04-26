@@ -207,7 +207,7 @@ public class App {
             this.afficherTexte(String.format("Auteurs : %s", livre.joinNomAuteurs()));
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
             this.afficherTexte(String.format("Classifications : %s", livre.joinClassifications()));
-            this.afficherTexte(String.format("Editeurs : %s", livre.joinNomEditeurs()));
+            this.afficherTexte(String.format("Éditeurs : %s", livre.joinNomEditeurs()));
             // TODO: On pourrait ajouter un descriptif du livre
     
             this.afficherSeperateurMilieu();

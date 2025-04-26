@@ -1,7 +1,6 @@
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-// TODO: Voir pour supporter les Exceptions CTRL+C (poser la question)
 
 public class App {
     private int longueurAffichage;
@@ -47,6 +46,20 @@ public class App {
         System.out.println("╰" + "─".repeat(this.longueurAffichage - 2) + "╯");
     }
 
+    public String getUserCommandInput() {
+        try {
+            String commandeBrute = System.console().readLine();
+            return commandeBrute.strip().toLowerCase();
+        
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas. 
+        } catch (Exception e) {
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
     public void bienvenue() {
         System.out.println("╭──────────────────────────────────────────────────────────────────────────────────────────────────╮");
 		System.out.println("│ ██      ██ ██    ██ ██████  ███████     ███████ ██   ██ ██████  ██████  ███████ ███████ ███████  │");
@@ -69,8 +82,7 @@ public class App {
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
     
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "c": {
                     this.connexionClient();
@@ -118,8 +130,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
     
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "l": {
                     this.selectionnerLivre(client, this.chaineLibrairie.getLivres());
@@ -167,8 +178,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "p": {
                     if (nbPage > 0) nbPage--;
@@ -215,8 +225,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "a": {
                     int quantiteLivre = client.getPanier().ajouterLivre(livre);
@@ -272,8 +281,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "p": {
                     finCommande = this.commander(client, panier);
@@ -323,8 +331,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String commandeBrute = System.console().readLine();
-            String commande = commandeBrute.strip().toLowerCase();
+            String commande = this.getUserCommandInput();
             switch (commande) {
                 case "c": {
                     return 'C';

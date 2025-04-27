@@ -1,11 +1,11 @@
 public class Posseder {
     private Magasin magasin;
     private Livre livre;
-    private int qte;
+    private int quantite;
 
-    public Posseder(Magasin magasin, Livre livre, int qte) {
+    public Posseder(Magasin magasin, Livre livre, int quantite) {
         this.magasin = magasin;
         this.livre = livre;
-        this.qte = qte;
+        this.quantite = quantite;
     }
 }

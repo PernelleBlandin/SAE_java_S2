@@ -79,7 +79,7 @@ public class App {
             this.afficherTexte("A: Administrateur");
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
-    
+
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "c": {
@@ -106,7 +106,7 @@ public class App {
         boolean finCommande = false;
         while (!finCommande) {
             this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
-            
+
             int debutIndex = nbPage * maxElementsParPage;
             int finIndex = Math.min(debutIndex + maxElementsParPage, elements.size());
 
@@ -143,7 +143,7 @@ public class App {
                 }
                 default: {
                     try {
-                        int indElement = Integer.parseInt(entreeUtilisateur) - 1;                        
+                        int indElement = Integer.parseInt(entreeUtilisateur) - 1;
                         if (indElement >= debutIndex && indElement < finIndex) {
                             T element = elements.get(indElement);
                             return new ResultatSelection<>(nbPage, element);
@@ -215,7 +215,7 @@ public class App {
             this.afficherTexte("M: Changer de magasin");
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
-    
+
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "l": {
@@ -270,7 +270,7 @@ public class App {
             this.afficherTexte(String.format("Classifications : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeurs : %s", livre.joinNomEditeurs()));
             // TODO: On pourrait ajouter un descriptif du livre
-    
+
             this.afficherSeperateurMilieu();
             this.afficherTexte("A: Ajouter au panier");
             this.afficherTexte("Q: Retour");
@@ -304,14 +304,14 @@ public class App {
             Magasin magasin = client.getMagasin();
             List<DetailCommande> detailCommandes = panier.getDetailCommandes();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
-            
+
             if (detailCommandes.size() > 0) {
                 double totalCommande = 0.00;
                 this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
                 for (int i = 0; i < detailCommandes.size(); i++) {
                     DetailCommande detailCommande = detailCommandes.get(i);
                     Livre livre = detailCommande.getLivre();
-                    
+
                     String numLigne = String.format("%2s", detailCommande.getNumLigne());
                     String isbn = String.format("%13s", livre.getISBN());
                     String titre = String.format("%-59s", livre.getTitre());
@@ -364,7 +364,7 @@ public class App {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
             return false;
         }
-        
+
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
@@ -372,7 +372,7 @@ public class App {
             System.out.println("Merci pour votre commande !");
             return true;
         }
-        
+
         return false;
     }
 

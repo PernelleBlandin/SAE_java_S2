@@ -140,4 +140,14 @@ public class Livre {
 
         return titreString.contains(recherche) || auteursString.contains(recherche) || editeursString.contains(recherche) || classificationsString.contains(recherche);
     }
+
+    /**
+     * Obtenir sous forme d'une chaîne de caractères un livre.
+     * La chaîne de caractères contient le titre, les auteurs et le prix du livre.
+     * @return La chaîne de caractères avec les informations principales du livre.
+     */
+    @Override
+    public String toString() {
+        return String.format("%s | par %s | %.2f€", this.getTitre(), this.joinNomAuteurs(), this.getPrix());
+    }
 }

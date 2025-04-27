@@ -1,3 +1,5 @@
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Client extends Personne {
@@ -72,10 +74,24 @@ public class Client extends Personne {
     }
 
     /**
-     * Commander un livre pour un client.
-     * @param commande
+     * Définir le magasin pour un client.
+     * @param magasin Le nouveau magasin du client.
      */
-    public void commander(Commande commande){
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
+    /**
+     * Commander un livre pour un client.
+     * @param modeLivraison Le mode de livraison : M en magasin / C pour la livraison à domicile.
+     * @param detailCommandes Les livres de la commande
+     */
+    public void commander(char modeLivraison, List<DetailCommande> detailCommandes) {
+        // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
+        Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison, "En Attente", panier.getMagasin(), detailCommandes);
         this.commandes.add(commande);
+        
+        Panier panier = this.getPanier();
+        panier.viderPanier();
     }
 }

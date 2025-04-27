@@ -1,5 +1,3 @@
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 public class App {
@@ -115,7 +113,7 @@ public class App {
             if (hasResults) {
                 for (int i = debutIndex; i < finIndex; i++) {
                     Livre livre = livres.get(i);
-                    this.afficherTexte(String.format("%d - %s | par %s | %.2f€", i + 1, livre.getTitre(), livre.joinNomAuteurs(), livre.getPrix()));
+                    this.afficherTexte(String.format("%d - %s", i + 1, livre.toString()));
                 }
             } else {
                 this.afficherTexte("Il n'y a aucun résultat.");
@@ -161,6 +159,85 @@ public class App {
         return null;
     }
 
+    public ResultatSelectionMagasin selectionnerMagasin(List<Magasin> magasins, int nbPage, String titre) {
+        int maxMagasinsParPage = 5;
+        int totalPages = magasins.size() / (maxMagasinsParPage + 1);
+
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
+            
+            int debutIndex = nbPage * maxMagasinsParPage;
+            int finIndex = Math.min(debutIndex + maxMagasinsParPage, magasins.size());
+
+            boolean hasResults = debutIndex < finIndex;
+            if (hasResults) {
+                for (int i = debutIndex; i < finIndex; i++) {
+                    Magasin magasin = magasins.get(i);
+                    this.afficherTexte(String.format("%d - %s", i + 1, magasin.toString()));
+                }
+            } else {
+                this.afficherTexte("Il n'y a aucun résultat.");
+            }
+
+            this.afficherSeperateurMilieu();
+            if (hasResults) this.afficherTexte("Nombre: Sélection d'un magasin dans la liste");
+            if (nbPage > 0) this.afficherTexte("P: Page précédente");
+            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String entreeUtilisateur = this.getUserCommandInput();
+            switch (entreeUtilisateur) {
+                case "p": {
+                    if (nbPage > 0) nbPage--;
+                    break;
+                }
+                case "s": {
+                    if (nbPage + 1 <= totalPages) nbPage++;
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    try {
+                        int indMagasin = Integer.parseInt(entreeUtilisateur) - 1;                        
+                        if (indMagasin >= debutIndex && indMagasin < finIndex) {
+                            Magasin magasin = magasins.get(indMagasin);
+                            return new ResultatSelectionMagasin(nbPage, magasin);
+                        } else {
+                            System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                        }
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean demanderConfirmation(String titre) {
+        return this.demanderConfirmation(titre, null);
+    }
+
+    public boolean demanderConfirmation(String titre, String description) {
+        this.afficherTitre(titre);
+        if (description != null) {
+            this.afficherTexteCentrer(description);
+            this.afficherSeperateurMilieu();
+        }
+        this.afficherTexte("O: Oui");
+        this.afficherTexte("N: Non");
+        this.afficherTitreFin();
+
+        String confirm = this.getUserCommandInput();
+        return confirm.equals("o");
+    }
+
     public String demanderRecherche() {
         this.afficherTitre(String.format("Quel est votre recherche ?"));
         this.afficherTexte("Q: Retour");
@@ -188,20 +265,14 @@ public class App {
     public void client(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
-            Panier panier = client.getPanier();
             Magasin magasin = client.getMagasin();
-
-            // TODO: Déplacer ça dans le menu de changement de magasin
-            if (!panier.getMagasin().equals(magasin)) {
-                Panier nouveauPanier = new Panier(magasin);
-                client.setPanier(nouveauPanier);
-            }
 
             this.afficherTitre(String.format("Menu Client - %s | Magasin : %s", client.toString(), magasin.toString()));
             this.afficherTexte("L: Catalogue de livres");
             this.afficherTexte("P: Panier client");
             this.afficherTexte("R: Recommandations");
             this.afficherTexte("S: Rechercher livres");
+            this.afficherTexte("M: Changer de magasin");
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
     
@@ -225,6 +296,10 @@ public class App {
                         List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
                         this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
                     }
+                    break;
+                }
+                case "m": {
+                    this.changerMagasin(client);
                     break;
                 }
                 default: {
@@ -353,11 +428,7 @@ public class App {
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
-            // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-            Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison.charValue(), "En Attente", panier.getMagasin(), detailCommandes);
-
-            client.commander(commande);
-            panier.viderPanier();
+            client.commander(modeLivraison, detailCommandes);
             System.out.println("Merci pour votre commande !");
             return true;
         }
@@ -454,14 +525,34 @@ public class App {
             }
         }
 
-        this.afficherTitre(String.format("Confirmez-vous la suppression de %dx %s ?", quantite, livre.getTitre()));
-        this.afficherTexte("O: Oui");
-        this.afficherTexte("Autre réponse: Non");
-        this.afficherTitreFin();
-
-        String reponseConfirmation = this.getUserCommandInput();
-        if (reponseConfirmation.equals("o")) return quantite;
+        boolean confirmation = this.demanderConfirmation(String.format("Confirmez-vous la suppression de %dx %s ?", quantite, livre.getTitre()));
+        if (confirmation) return quantite;
 
         return null;
+    }
+
+    public void changerMagasin(Client client) {
+        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        ResultatSelectionMagasin resultatSelectionMagasin = this.selectionnerMagasin(magasins, 0, "Changer de magasin");
+        if (resultatSelectionMagasin != null) {
+            Panier panier = client.getPanier();
+            Magasin magasin = resultatSelectionMagasin.getMagasin();
+            boolean effectuerChangement = true;
+
+            if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {
+                effectuerChangement = this.demanderConfirmation(
+                    String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
+                    "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
+                );
+                if (effectuerChangement) client.setPanier(new Panier(magasin));
+            }
+
+            if (effectuerChangement) {
+                client.setMagasin(magasin);
+                System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+            } else {
+                System.out.println("Magasin non changé.");
+            }
+        }
     }
 }

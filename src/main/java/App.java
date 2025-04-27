@@ -44,7 +44,7 @@ public class App {
         System.out.println("╰" + "─".repeat(this.longueurAffichage - 2) + "╯");
     }
 
-    public String getUserCommandInput() {
+    public String obtenirEntreeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
             return commandeBrute.strip().toLowerCase();
@@ -80,7 +80,7 @@ public class App {
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
     
-            String commande = this.getUserCommandInput();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "c": {
                     this.connexionClient();
@@ -98,96 +98,36 @@ public class App {
         }
     }
 
-    public ResultatSelectionLivre selectionnerLivre(List<Livre> livres, int nbPage, String titre) {
-        int maxLivresParPage = 5;
-        int totalPages = livres.size() / (maxLivresParPage + 1);
+    // Aide pour les types génériques : https://www.baeldung.com/java-generics#generic-methods
+    public <T> ResultatSelection<T> selectionnerElement(List<T> elements, int nbPage, String titre) {
+        int maxElementsParPage = 5;
+        int totalPages = elements.size() / (maxElementsParPage + 1);
 
         boolean finCommande = false;
         while (!finCommande) {
             this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
             
-            int debutIndex = nbPage * maxLivresParPage;
-            int finIndex = Math.min(debutIndex + maxLivresParPage, livres.size());
+            int debutIndex = nbPage * maxElementsParPage;
+            int finIndex = Math.min(debutIndex + maxElementsParPage, elements.size());
 
             boolean hasResults = debutIndex < finIndex;
             if (hasResults) {
                 for (int i = debutIndex; i < finIndex; i++) {
-                    Livre livre = livres.get(i);
-                    this.afficherTexte(String.format("%d - %s", i + 1, livre.toString()));
+                    T element = elements.get(i);
+                    this.afficherTexte(String.format("%d - %s", i + 1, element.toString()));
                 }
             } else {
                 this.afficherTexte("Il n'y a aucun résultat.");
             }
 
             this.afficherSeperateurMilieu();
-            if (hasResults) this.afficherTexte("Nombre: Sélection d'un livre dans la liste");
+            if (hasResults) this.afficherTexte("Nombre: Sélection dans la liste");
             if (nbPage > 0) this.afficherTexte("P: Page précédente");
             if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.getUserCommandInput();
-            switch (commande) {
-                case "p": {
-                    if (nbPage > 0) nbPage--;
-                    break;
-                }
-                case "s": {
-                    if (nbPage + 1 <= totalPages) nbPage++;
-                    break;
-                }
-                case "q": {
-                    finCommande = true;
-                    break;
-                }
-                default: {
-                    try {
-                        int indLivre = Integer.parseInt(commande) - 1;                        
-                        if (indLivre >= debutIndex && indLivre < finIndex) {
-                            Livre livre = livres.get(indLivre);
-                            return new ResultatSelectionLivre(nbPage, livre);
-                        } else {
-                            System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                        }
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    public ResultatSelectionMagasin selectionnerMagasin(List<Magasin> magasins, int nbPage, String titre) {
-        int maxMagasinsParPage = 5;
-        int totalPages = magasins.size() / (maxMagasinsParPage + 1);
-
-        boolean finCommande = false;
-        while (!finCommande) {
-            this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
-            
-            int debutIndex = nbPage * maxMagasinsParPage;
-            int finIndex = Math.min(debutIndex + maxMagasinsParPage, magasins.size());
-
-            boolean hasResults = debutIndex < finIndex;
-            if (hasResults) {
-                for (int i = debutIndex; i < finIndex; i++) {
-                    Magasin magasin = magasins.get(i);
-                    this.afficherTexte(String.format("%d - %s", i + 1, magasin.toString()));
-                }
-            } else {
-                this.afficherTexte("Il n'y a aucun résultat.");
-            }
-
-            this.afficherSeperateurMilieu();
-            if (hasResults) this.afficherTexte("Nombre: Sélection d'un magasin dans la liste");
-            if (nbPage > 0) this.afficherTexte("P: Page précédente");
-            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
-            this.afficherTexte("Q: Retour");
-            this.afficherTitreFin();
-
-            String entreeUtilisateur = this.getUserCommandInput();
+            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
                     if (nbPage > 0) nbPage--;
@@ -203,10 +143,10 @@ public class App {
                 }
                 default: {
                     try {
-                        int indMagasin = Integer.parseInt(entreeUtilisateur) - 1;                        
-                        if (indMagasin >= debutIndex && indMagasin < finIndex) {
-                            Magasin magasin = magasins.get(indMagasin);
-                            return new ResultatSelectionMagasin(nbPage, magasin);
+                        int indElement = Integer.parseInt(entreeUtilisateur) - 1;                        
+                        if (indElement >= debutIndex && indElement < finIndex) {
+                            T element = elements.get(indElement);
+                            return new ResultatSelection<>(nbPage, element);
                         } else {
                             System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                         }
@@ -234,7 +174,7 @@ public class App {
         this.afficherTexte("N: Non");
         this.afficherTitreFin();
 
-        String confirm = this.getUserCommandInput();
+        String confirm = this.obtenirEntreeUtilisateur();
         return confirm.equals("o");
     }
 
@@ -243,7 +183,7 @@ public class App {
         this.afficherTexte("Q: Retour");
         this.afficherTitreFin();
 
-        String recherche = this.getUserCommandInput();
+        String recherche = this.obtenirEntreeUtilisateur();
         if (recherche.equals("q")) return null;
 
         return recherche;
@@ -276,7 +216,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
     
-            String commande = this.getUserCommandInput();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "l": {
                     this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
@@ -311,11 +251,11 @@ public class App {
     }
 
     public void consulterCatalogueClient(Client client, List<Livre> livres, String titre) {
-        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+        ResultatSelection<Livre> resultatSelectionLivre = new ResultatSelection<>();
         while (resultatSelectionLivre != null) {
-            resultatSelectionLivre = this.selectionnerLivre(livres, resultatSelectionLivre.getNbPage(), titre);
+            resultatSelectionLivre = this.selectionnerElement(livres, resultatSelectionLivre.getNbPage(), titre);
             if (resultatSelectionLivre != null) {
-                Livre livre = resultatSelectionLivre.getLivre();
+                Livre livre = resultatSelectionLivre.getElement();
                 this.afficherLivre(client, livre);
             }
         }
@@ -336,7 +276,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.getUserCommandInput();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "a": {
                     int quantiteLivre = client.getPanier().ajouterLivre(livre);
@@ -396,7 +336,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.getUserCommandInput();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "p": {
                     finCommande = this.commander(client, panier);
@@ -446,7 +386,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String commande = this.getUserCommandInput();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "c":
                     return 'C';
@@ -473,11 +413,11 @@ public class App {
         }
 
         List<Livre> livresPanier = panier.getLivres();
-        ResultatSelectionLivre resultatSelectionLivre = new ResultatSelectionLivre();
+        ResultatSelection<Livre> resultatSelectionLivre = new ResultatSelection<>();
         while (resultatSelectionLivre != null) {
-            resultatSelectionLivre = this.selectionnerLivre(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
+            resultatSelectionLivre = this.selectionnerElement(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
             if (resultatSelectionLivre != null) {
-                Livre livre = resultatSelectionLivre.getLivre();
+                Livre livre = resultatSelectionLivre.getElement();
                 DetailCommande detailCommande = panier.getDetailCommandeLivre(livre);
 
                 Integer quantite = this.demanderQuantiterSupprimer(detailCommande);
@@ -506,7 +446,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String entree = this.getUserCommandInput();
+            String entree = this.obtenirEntreeUtilisateur();
             if (entree.equals("q")) return null;
 
             try {
@@ -533,10 +473,10 @@ public class App {
 
     public void changerMagasin(Client client) {
         List<Magasin> magasins = this.chaineLibrairie.getMagasins();
-        ResultatSelectionMagasin resultatSelectionMagasin = this.selectionnerMagasin(magasins, 0, "Changer de magasin");
+        ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
         if (resultatSelectionMagasin != null) {
             Panier panier = client.getPanier();
-            Magasin magasin = resultatSelectionMagasin.getMagasin();
+            Magasin magasin = resultatSelectionMagasin.getElement();
             boolean effectuerChangement = true;
 
             if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {

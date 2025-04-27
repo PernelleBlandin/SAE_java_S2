@@ -474,25 +474,25 @@ public class App {
     public void changerMagasin(Client client) {
         List<Magasin> magasins = this.chaineLibrairie.getMagasins();
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
-        if (resultatSelectionMagasin != null) {
-            Panier panier = client.getPanier();
-            Magasin magasin = resultatSelectionMagasin.getElement();
-            boolean effectuerChangement = true;
+        if (resultatSelectionMagasin == null) return;
 
-            if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {
-                effectuerChangement = this.demanderConfirmation(
-                    String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
-                    "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
-                );
-                if (effectuerChangement) client.setPanier(new Panier(magasin));
-            }
+        Panier panier = client.getPanier();
+        Magasin magasin = resultatSelectionMagasin.getElement();
+        boolean effectuerChangement = true;
 
-            if (effectuerChangement) {
-                client.setMagasin(magasin);
-                System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
-            } else {
-                System.out.println("Magasin non changé.");
-            }
+        if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {
+            effectuerChangement = this.demanderConfirmation(
+                String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
+                "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
+            );
+            if (effectuerChangement) client.setPanier(new Panier(magasin));
+        }
+
+        if (effectuerChangement) {
+            client.setMagasin(magasin);
+            System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+        } else {
+            System.out.println("Magasin non changé.");
         }
     }
 }

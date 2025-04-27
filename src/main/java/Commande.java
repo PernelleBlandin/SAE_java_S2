@@ -43,4 +43,12 @@ public class Commande {
     public Magasin getMagasin() {
         return this.magasin;
     }
+
+    /**
+     * Obtenir les détails d'une commande.
+     * @return Les détails d'une commande (livre, quantité, ...).
+     */
+    public List<DetailCommande> getDetailCommandes() {
+        return this.detailCommandes;
+    }
 }

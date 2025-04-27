@@ -222,6 +222,11 @@ public class App {
                     this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
                     break;
                 }
+                case "r": {
+                    List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
+                    this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    break;
+                }
                 case "p": {
                     this.voirPanier(client);
                     break;

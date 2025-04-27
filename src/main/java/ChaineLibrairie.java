@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 public class ChaineLibrairie {
     private List<Livre> livres;
@@ -101,7 +103,105 @@ public class ChaineLibrairie {
         return livresCorrespondants;
     }
 
-    // public List<Livre> onVousRecommande(Client client){
+    /**
+     * Obtenir la liste de l'ensemble des commandes de la chaîne de librairie.
+     * @return La liste des commandes de la chaîne de librairie, tous magasins et clients confondus.
+     */
+    public List<Commande> getCommandes() {
+        List<Commande> commandes = new ArrayList<>();
+        
+        List<Client> clients = this.getClients();
+        for (Client client: clients) {
+            commandes.addAll(client.getCommandes());
+        }
+        return commandes;
+    }
 
-    // }
+    /**
+     * Obtenir le nombre de vente d'un livre dans toute la chaîne de librairie.
+     * @param livre Le livre concerné.
+     * @return Le nombre de vente du livre dans toute la chaîne de librairie.
+     */
+    public int getNombreVentesLivre(Livre livre) {
+        int nbVentes = 0;
+        List<Commande> commandes = this.getCommandes();
+        for (Commande commande: commandes) {
+            List<DetailCommande> detailCommandes = commande.getDetailCommandes();
+            for (DetailCommande detailCommande: detailCommandes) {
+                Livre livreCommande = detailCommande.getLivre();
+                if (livreCommande.equals(livre)) nbVentes++;
+            }
+        }
+        return nbVentes;
+    }
+
+    /**
+     * Obtenir la liste des livres triés par leur nombre de ventes.
+     * @return La liste de livres triés par leur nombre de ventes.
+     */
+    public List<Livre> getLivresTriesParVentes() {
+        ComparatorLivreParVentes comparerVentesLivre = new ComparatorLivreParVentes(this);
+
+        List<Livre> livresTries = new ArrayList<>(this.livres);
+        Collections.sort(livresTries, comparerVentesLivre);
+        return livresTries;
+    }
+
+    /**
+     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
+     * TODO: Voir si on déplace cela dans Client (ce qui serait le plus logique).
+     * @param client Le client.
+     * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
+     */
+    public List<Livre> onVousRecommande(Client client) {
+        List<Commande> commandesClient = client.getCommandes();
+        // TODO: Voir si on prend en compte le panier de l'utilisateur
+        if (commandesClient.size() == 0) return this.getLivresTriesParVentes();
+
+        // Aide : https://www.w3schools.com/java/java_hashmap.asp
+        HashMap<Livre, Integer> livresRecommandes = new HashMap<>();
+        for (Client clientQuelconque: this.clients) {
+            // On ne regarde pas le client lui-même.
+            if (client.equals(clientQuelconque)) continue;
+            
+            if (this.ontLivresCommuns(client, clientQuelconque)) {
+                List<Livre> livresNonPossedes = this.getLivresNonAchetesParClient1(client, clientQuelconque);
+                for (Livre livre: livresNonPossedes) {
+                    Integer curLivreRecommendations = livresRecommandes.get(livre);
+                    if (curLivreRecommendations == 0) curLivreRecommendations = 0;
+
+                    livresRecommandes.put(livre, curLivreRecommendations);
+                }
+            }
+        }
+
+        // TODO: Reprendre à partir de la, non fini
+
+        return this.getLivresTriesParVentes();
+    }
+
+    // TODO: Voir si on retourne un nombre, et priorisé selon leur pourcentage de "compatibilité".
+    // Voir aussi si on merge pas "ontLivresCommuns" && "getLivresNonAchetesParClient1"
+    public boolean ontLivresCommuns(Client client1, Client client2) {
+        List<Livre> livresClient1 = client1.getLivresAchetes();
+        List<Livre> livresClient2 = client2.getLivresAchetes();
+
+        for (Livre livre: livresClient2) {
+            if (livresClient1.contains(livre)) return true;
+        }
+        return false;
+    }
+
+    public List<Livre> getLivresNonAchetesParClient1(Client client1, Client client2) {
+        List<Livre> livresClient1 = client1.getLivresAchetes();
+        List<Livre> livresClient2 = client2.getLivresAchetes();
+
+        List<Livre> livresNonPossedesClient1 = new ArrayList<>();
+        for (Livre livre: livresClient2) {
+            if (!livresClient1.contains(livre)) {
+                livresNonPossedesClient1.add(livre);
+            }
+        }
+        return livresNonPossedesClient1;
+    }
 }

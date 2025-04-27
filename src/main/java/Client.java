@@ -1,5 +1,6 @@
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Personne {
@@ -93,5 +94,22 @@ public class Client extends Personne {
         
         Panier panier = this.getPanier();
         panier.viderPanier();
+    }
+
+    /**
+     * Obtenir la liste des livres achetés par un client.
+     * @return La liste des livres achetés par ce client.
+     */
+    public List<Livre> getLivresAchetes() {
+        List<Livre> livresAchetes = new ArrayList<>();
+        for (Commande commande: this.getCommandes()) {
+            for (DetailCommande detailCommande: commande.getDetailCommandes()) {
+                Livre livreCommande = detailCommande.getLivre();
+                if (!livresAchetes.contains(livreCommande)) {
+                    livresAchetes.add(livreCommande);
+                }
+            }
+        }
+        return livresAchetes;
     }
 }

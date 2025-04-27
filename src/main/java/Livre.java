@@ -150,4 +150,21 @@ public class Livre {
     public String toString() {
         return String.format("%s | par %s | %.2f€", this.getTitre(), this.joinNomAuteurs(), this.getPrix());
     }
+
+    /**
+     * Savoir si un objet est égal à un livre.
+     * @param o Un objet.
+     * @return true si l'objet est égal à ce livre, sinon false.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+
+        if (o == this) return true;
+
+        if (!(o instanceof Livre)) return false;
+
+        Livre livre2 = (Livre) o;
+        return this.getISBN().equals(livre2.getISBN());
+    }
 }

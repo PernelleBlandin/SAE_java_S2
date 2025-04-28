@@ -443,8 +443,7 @@ public class App {
 
         Livre livre = detailCommande.getLivre();
         while (quantite == null) {
-            this.afficherTexteCentrer(String.format("Quelle est la quantité du livre %s que vous voulez retirer ?", livre.toString()));
-            this.afficherSeperateurMilieu();
+            this.afficherTitre(String.format("Quelle est la quantité du livre %s que vous voulez retirer ?", livre.getTitre()));
             this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailCommande.getQuantite()));
             this.afficherSeperateurMilieu();
             this.afficherTexte("Nombre: Quantité à retirer");

@@ -270,10 +270,10 @@ public class App {
         boolean finCommande = false;
         while (!finCommande) {
             this.afficherTitre(livre.getTitre());
-            this.afficherTexte(String.format("Auteurs : %s", livre.joinNomAuteurs()));
+            this.afficherTexte(String.format("Auteur : %s", livre.joinNomAuteurs()));
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
-            this.afficherTexte(String.format("Classifications : %s", livre.joinClassifications()));
-            this.afficherTexte(String.format("Éditeurs : %s", livre.joinNomEditeurs()));
+            this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
+            this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
             // TODO: On pourrait ajouter un descriptif du livre
 
             this.afficherSeperateurMilieu();

@@ -8,8 +8,8 @@ public class Livre {
     private int datepubli;
     private double prix;
     private List<Auteur> auteurs;
-    private List<Editeur> editeurs;
-    private List<Classification> classifications;
+    private List<String> editeurs;
+    private List<String> classifications;
 
     /**
      * Créer un livre.
@@ -22,7 +22,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<Editeur> editeurs, List<Classification> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<String> editeurs, List<String> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -85,7 +85,7 @@ public class Livre {
      * Obtenir la liste des éditeurs d'un livre.
      * @return La liste des éditeurs du livre.
      */
-    public List<Editeur> getEditeurs() {
+    public List<String> getEditeurs() {
         return this.editeurs;
     }
 
@@ -93,7 +93,7 @@ public class Livre {
      * Obtenir la liste des classifications d'un livre.
      * @return La liste des classifications du livre.
      */
-    public List<Classification> getClassifications() {
+    public List<String> getClassifications() {
         return this.classifications;
     }
 
@@ -109,22 +109,20 @@ public class Livre {
 
     /**
      * Obtenir les éditeurs d'un livre sous forme d'une chaîne de caractères.
-     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
      * @return Une chaîne de caractères avec les éditeurs du livre, délimité par une virgule.
      */
     public String joinNomEditeurs() {
         if (this.editeurs.size() == 0) return "Inconnu";
-        return this.editeurs.stream().map(Editeur::getNom).collect(Collectors.joining(", "));
+        return String.join(", ", this.editeurs);
     }
 
     /**
      * Obtenir les classifications d'un livre sous forme d'une chaîne de caractères.
-     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
      * @return Une chaîne de caractères avec les classifications du livre, délimité par une virgule.
      */
     public String joinClassifications() {
         if (this.classifications.size() == 0) return "Inconnu";
-        return this.classifications.stream().map(Classification::getNom).collect(Collectors.joining(", "));
+        return String.join(", ", this.classifications);
     }
 
     /**

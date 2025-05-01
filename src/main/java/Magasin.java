@@ -1,6 +1,7 @@
 import java.util.List;
 
-public class Magasin extends Identifiable{
+/** Un magasin de la chaîne de librairie */
+public class Magasin extends Identifiable {
     private String ville;
     private List<Posseder> possessions; 
 
@@ -9,6 +10,7 @@ public class Magasin extends Identifiable{
      * @param id L'identifiant du magasin.
      * @param nom Le nom du magasin.
      * @param ville La ville du magasin.
+     * @param possessions Les "possessions" des livres du magasin.
      */
     public Magasin(String id, String nom, String ville, List<Posseder> possessions) {
         super(id, nom);

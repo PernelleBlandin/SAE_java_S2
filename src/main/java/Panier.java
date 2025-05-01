@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/** Un panier client */
 public class Panier {
     private Magasin magasin;
     private List<DetailCommande> detailCommandes;
     
     /**
      * Créer un panier client vide.
+     * @param magasin Le magasin du panier.
      */
     public Panier(Magasin magasin) {
         this.magasin = magasin;
@@ -15,6 +17,8 @@ public class Panier {
 
     /**
      * Créer un panier client.
+     * @param magasin Le magasin du panier.
+     * @param detailCommandes L'ensemble des éléments du panier.
      */
     public Panier(Magasin magasin, List<DetailCommande> detailCommandes) {
         this.magasin = magasin;

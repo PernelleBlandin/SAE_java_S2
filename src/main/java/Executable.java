@@ -3,7 +3,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/** L'exécutable de l'application. */
 public class Executable {
+    /** L'exécutable de l'application. */
+    public Executable() {}
+
+    /**
+     * Lancer l'application.
+     * @param args Les arguments.
+     */
     public static void main(String[] args) {
         ChaineLibrairie chaineLibrairie = new ChaineLibrairie();
 
@@ -131,7 +139,7 @@ public class Executable {
         // Clients
 
         DetailCommande detailCommande1 = new DetailCommande(livre1, 1, 2, 7.98);
-        Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', "Terminé", magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
+        Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
         Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, new ArrayList<>(Arrays.asList(commande1)));
         chaineLibrairie.ajouterClient(client1);
         
@@ -140,25 +148,25 @@ public class Executable {
 
         DetailCommande detailCommande2 = new DetailCommande(livre2, 1, 1, 16.4);
         DetailCommande detailCommande3 = new DetailCommande(livre3, 2, 4, 11.9);
-        Commande commande2 = new Commande(2, Date.valueOf("2021-09-01"), 'N', 'M', "Terminé", magasinParis, new ArrayList<>(Arrays.asList(detailCommande2, detailCommande3)));
+        Commande commande2 = new Commande(2, Date.valueOf("2021-09-01"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande2, detailCommande3)));
         Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, new ArrayList<>(Arrays.asList(commande2)));
         chaineLibrairie.ajouterClient(client3);
 
         DetailCommande detailCommande4 = new DetailCommande(livre2, 1, 2, 16.4);
         DetailCommande detailCommande5 = new DetailCommande(livre4, 2, 1, 66.99);
         DetailCommande detailCommande6 = new DetailCommande(livre5, 2, 1, 12.01);
-        Commande commande3 = new Commande(3, Date.valueOf("2022-12-01"), 'N', 'M', "Terminé", magasinMarseille, new ArrayList<>(Arrays.asList(detailCommande4)));
-        Commande commande4 = new Commande(4, Date.valueOf("2025-04-26"), 'O', 'C', "En cours", magasinParis, new ArrayList<>(Arrays.asList(detailCommande5, detailCommande6)));
+        Commande commande3 = new Commande(3, Date.valueOf("2022-12-01"), 'N', 'M', magasinMarseille, new ArrayList<>(Arrays.asList(detailCommande4)));
+        Commande commande4 = new Commande(4, Date.valueOf("2025-04-26"), 'O', 'C', magasinParis, new ArrayList<>(Arrays.asList(detailCommande5, detailCommande6)));
         Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", magasinMarseille, new ArrayList<>(Arrays.asList(commande3, commande4)));
         chaineLibrairie.ajouterClient(client4);
         
         DetailCommande detailCommande7 = new DetailCommande(livre1, 1, 1, 8.4);
-        Commande commande5 = new Commande(5, Date.valueOf("2025-04-27"), 'N', 'M', "En cours", magasinRennes, new ArrayList<>(Arrays.asList(detailCommande7)));
+        Commande commande5 = new Commande(5, Date.valueOf("2025-04-27"), 'N', 'M', magasinRennes, new ArrayList<>(Arrays.asList(detailCommande7)));
         Client client5 = new Client(5, "Ferrari", "Omar", "32 impasse de l'Université", "35000", "Rennes", magasinRennes, new ArrayList<>(Arrays.asList(commande5)));
         chaineLibrairie.ajouterClient(client5);
         
         DetailCommande detailCommande8 = new DetailCommande(livre6, 1, 1, 45.97);
-        Commande commande6 = new Commande(6, Date.valueOf("2025-04-27"), 'N', 'M', "Terminé", magasinParis, new ArrayList<>(Arrays.asList(detailCommande8)));
+        Commande commande6 = new Commande(6, Date.valueOf("2025-04-27"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande8)));
         DetailCommande detailCommande9 = new DetailCommande(livre1, 1, 3, 7.98);
         Panier panier6 = new Panier(magasinParis, new ArrayList<>(Arrays.asList(detailCommande9)));
         Client client6 = new Client(6, "Petit", "Louis", "98 route du Musée", "67000", "Strasbourg", magasinParis, new ArrayList<>(Arrays.asList(commande6)), panier6);

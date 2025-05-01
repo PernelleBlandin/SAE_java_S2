@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.stream.Collectors;
 
+/** Un livre */
 public class Livre {
     private String isbn;
     private String titre;

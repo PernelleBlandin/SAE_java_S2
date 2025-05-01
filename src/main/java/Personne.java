@@ -1,3 +1,4 @@
+/** Une personne */
 public abstract class Personne {
     private int id;
     private String nom;

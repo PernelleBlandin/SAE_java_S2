@@ -9,6 +9,9 @@ import java.util.Set;
 
 /** Un client */
 public class Client extends Personne {
+    private String adresse;
+    private String codePostal;
+    private String ville;
     private Magasin magasin;
     private List<Commande> commandes;
     private Panier panier;
@@ -26,7 +29,10 @@ public class Client extends Personne {
      * @param panier Le panier du client.
      */
     public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes, Panier panier) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+        super(id, nom, prenom);
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
         this.magasin = magasin;
         this.commandes = commandes;
         this.panier = panier;
@@ -45,6 +51,30 @@ public class Client extends Personne {
      */
     public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes) {
         this(id, nom, prenom, adresse, codePostal, ville, magasin, commandes, new Panier(magasin));
+    }
+
+    /**
+     * Obtenir l'adresse du client.
+     * @return Son adresse.
+     */
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    /**
+     * Obtenir le code postal du client.
+     * @return Son code postal.
+     */
+    public String getCodePostal() {
+        return this.codePostal;
+    }
+
+    /**
+     * Obtenir la ville du client.
+     * @return Sa ville.
+     */
+    public String getVille() {
+        return this.ville;
     }
 
     /**

@@ -7,13 +7,10 @@ public abstract class Personnel extends Personne {
      * @param id L'identifiant du personnel.
      * @param nom Le nom du prénom du personnel.
      * @param prenom Le prénom du personnel.
-     * @param adresse L'adresse du personnel.
-     * @param codePostal Le code postal du personnel.
-     * @param ville La ville du personnel.
      * @param role Le rôle du personnel (administrateur/vendeur).
      */
-    public Personnel(int id, String nom, String prenom, String adresse, String codePostal, String ville, String role) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+    public Personnel(int id, String nom, String prenom, String role) {
+        super(id, nom, prenom);
         this.role = role;
     }
 

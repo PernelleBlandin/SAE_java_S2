@@ -177,5 +177,5 @@ public class Executable {
     }
 
     //Vendeur
-    Vendeur vendeur = new Vendeur(1, null, null, null, null, null, null);
+    Vendeur vendeur = new Vendeur(1, "Grande", "Marie", null, null, null, null);
 }

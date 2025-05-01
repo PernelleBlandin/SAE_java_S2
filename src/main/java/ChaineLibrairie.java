@@ -1,14 +1,20 @@
 import java.util.List;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 
+/** La chaîne de librairie */
 public class ChaineLibrairie {
     private List<Livre> livres;
     private List<Client> clients;
     private List<Personnel> personnels;
     private List<Magasin> magasins;
 
+    /**
+     * Intiailiser la chaîne de librairie.
+     */
     public ChaineLibrairie() {
         this.livres = new ArrayList<>();
         this.clients = new ArrayList<>();
@@ -137,71 +143,162 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la liste des livres triés par leur nombre de ventes.
+     * @param listeLivres La liste de livres initial.
      * @return La liste de livres triés par leur nombre de ventes.
      */
-    public List<Livre> getLivresTriesParVentes() {
+    public List<Livre> getLivresTriesParVentes(List<Livre> listeLivres) {
         ComparatorLivreParVentes comparerVentesLivre = new ComparatorLivreParVentes(this);
 
-        List<Livre> livresTries = new ArrayList<>(this.livres);
+        List<Livre> livresTries = new ArrayList<>(listeLivres);
         Collections.sort(livresTries, comparerVentesLivre);
         return livresTries;
     }
 
     /**
      * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
-     * TODO: Voir si on déplace cela dans Client (ce qui serait le plus logique).
+     * On vérifie d'abord suivant les autres clients. Puis à defaut, les livres ayant les mêmes genres que ceux achetés par ce client, avec un tri selon le nombre de ventes nationals;
+     * Enfin, s'il y a toujours pas de résultat, on renvoie le classement des livres les plus vendus.
      * @param client Le client.
      * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
      */
     public List<Livre> onVousRecommande(Client client) {
+        Panier panierClient = client.getPanier();
+        List<DetailCommande> detailPanierClient = panierClient.getDetailCommandes();
+        
         List<Commande> commandesClient = client.getCommandes();
-        // TODO: Voir si on prend en compte le panier de l'utilisateur
-        if (commandesClient.size() == 0) return this.getLivresTriesParVentes();
+        if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
+            return this.getLivresTriesParVentes(this.livres);
+        } 
+
+        // -- Recommendations par rapport aux autres clients
 
         // Aide : https://www.w3schools.com/java/java_hashmap.asp
         HashMap<Livre, Integer> livresRecommandes = new HashMap<>();
         for (Client clientQuelconque: this.clients) {
             // On ne regarde pas le client lui-même.
             if (client.equals(clientQuelconque)) continue;
-            
-            if (this.ontLivresCommuns(client, clientQuelconque)) {
-                List<Livre> livresNonPossedes = this.getLivresNonAchetesParClient1(client, clientQuelconque);
+   
+            int pourcentageLivresCommuns = this.getPourcentageLivresCommuns(client, clientQuelconque);
+            // Si le pourcentage = 100, cela veut dire qu'ils ont déjà achetés les mêmes livres, dont pas la peine de vérifier davantage
+            if (pourcentageLivresCommuns > 0 && pourcentageLivresCommuns < 100) {
+                Set<Livre> livresNonPossedes = this.getLivresClient2NonAchetesParClient1(client, clientQuelconque);
                 for (Livre livre: livresNonPossedes) {
                     Integer curLivreRecommendations = livresRecommandes.get(livre);
-                    if (curLivreRecommendations == 0) curLivreRecommendations = 0;
+                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
 
+                    curLivreRecommendations += pourcentageLivresCommuns;
                     livresRecommandes.put(livre, curLivreRecommendations);
                 }
             }
         }
 
-        // TODO: Reprendre à partir de la, non fini
+        // -- Suivant les thèmes des livres précédents achetés + leur nombre de ventes
+        if (livresRecommandes.size() == 0) {
+            Set<Livre> livresAchetes = client.getLivresAchetes();
+            HashMap<String, Integer> classificationsOccurenceClient = client.getClassificationsOccurence();
 
-        return this.getLivresTriesParVentes();
-    }
-
-    // TODO: Voir si on retourne un nombre, et priorisé selon leur pourcentage de "compatibilité".
-    // Voir aussi si on merge pas "ontLivresCommuns" && "getLivresNonAchetesParClient1"
-    public boolean ontLivresCommuns(Client client1, Client client2) {
-        List<Livre> livresClient1 = client1.getLivresAchetes();
-        List<Livre> livresClient2 = client2.getLivresAchetes();
-
-        for (Livre livre: livresClient2) {
-            if (livresClient1.contains(livre)) return true;
+            List<Livre> listeLivre = this.getLivres();
+            for (Livre livre: listeLivre) {
+                // On ne mets pas en avant les livres que le client a déjà acheté
+                if (!livresAchetes.contains(livre)) {
+                    int occurenceClassificationLivreMax = 0;
+                    List<String> listeClassifications = livre.getClassifications();
+                    for (String classification: listeClassifications) {
+                        Integer occurenceClassification = classificationsOccurenceClient.get(classification);
+                        if (occurenceClassification != null) {
+                            if (occurenceClassification > occurenceClassificationLivreMax) {
+                                occurenceClassificationLivreMax = occurenceClassification;
+                            }
+                        }
+                    }
+    
+                    if (occurenceClassificationLivreMax != 0) {
+                        livresRecommandes.put(livre, occurenceClassificationLivreMax);
+                    }
+                }
+            }
         }
-        return false;
+
+        // Si livres en commun avec d'autres clients ou thèmes du livre
+        if (livresRecommandes.size() >= 1) {
+            List<Livre> listeLivresCopie = new ArrayList<>(this.getLivres());
+            ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(livresRecommandes);
+            Collections.sort(listeLivresCopie, comparatorRecommendation);
+
+            return listeLivresCopie;
+        }
+
+        // -- Valeur de secours
+        return this.getLivresTriesParVentes(this.livres);
     }
 
-    public List<Livre> getLivresNonAchetesParClient1(Client client1, Client client2) {
-        List<Livre> livresClient1 = client1.getLivresAchetes();
-        List<Livre> livresClient2 = client2.getLivresAchetes();
+    /**
+     * Obtenir le pourcentage de livres communs entre deux clients.
+     * @param client1 Le client 1.
+     * @param client2 Le client 2.
+     * @return Le pourcentage (sous forme d'entier) de livres en communs entre les deux clients.
+     */
+    public int getPourcentageLivresCommuns(Client client1, Client client2) {
+        Set<Livre> livresClient2 = client2.getLivresAchetes();
+        if (livresClient2.size() == 0) return 0;
+        
+        int nbLivreEnCommun = 0;
+        Set<Livre> livresClient1 = client1.getLivresAchetes();
+        for (Livre livre: livresClient2) {
+            if (livresClient1.contains(livre)) nbLivreEnCommun++;
+        }
 
-        List<Livre> livresNonPossedesClient1 = new ArrayList<>();
+        return (nbLivreEnCommun / livresClient2.size()) * 100;
+    }
+
+    /**
+     * Obtenir l'ensemble des livres d'un client B non acheté par un client A.
+     * @param client1 Le premier client.
+     * @param client2 Le deuxième client.
+     * @return Les livres du client B non acheté par le client A.
+     */
+    public Set<Livre> getLivresClient2NonAchetesParClient1(Client client1, Client client2) {
+        Set<Livre> livresClient1 = client1.getLivresAchetes();
+        Set<Livre> livresClient2 = client2.getLivresAchetes();
+
+        Set<Livre> livresNonPossedesClient1 = new HashSet<>();
         for (Livre livre: livresClient2) {
             if (!livresClient1.contains(livre)) {
                 livresNonPossedesClient1.add(livre);
             }
         }
         return livresNonPossedesClient1;
+    }
+
+    /**
+     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment. 
+     * @param detailCommandes Les détails des commandes (livres, quantité, ...).
+     * @param longueurAffichage La longueur d'affichage maximal.
+     * @return Une liste avec tout le texte nécessaire.
+     */
+    public List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
+        if (detailCommandes.size() == 0) return new ArrayList<>();
+
+        double totalCommande = 0.00;
+        List<String> res = new ArrayList<>();
+        res.add("       ISBN                               Titre                              Qte    Prix   Total");
+        for (int i = 0; i < detailCommandes.size(); i++) {
+            DetailCommande detailCommande = detailCommandes.get(i);
+            Livre livre = detailCommande.getLivre();
+
+            String numLigne = String.format("%2s", detailCommande.getNumLigne());
+            String isbn = String.format("%13s", livre.getISBN());
+            String titre = String.format("%-59s", livre.getTitre());
+            String qte = String.format("%3s", detailCommande.getQuantite());
+            String prix = String.format("%6.2f€", detailCommande.getPrixVente());
+            String total = String.format("%6.2f€", detailCommande.getPrixVente() * detailCommande.getQuantite());
+
+            totalCommande += detailCommande.getPrixVente() * detailCommande.getQuantite();
+            res.add(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
+        }
+
+        res.add(String.format("%-" + (longueurAffichage - 11) + "s%s", "", "-------"));
+        res.add(String.format("%-" + (longueurAffichage - 11) + "s%6.2f€", "", totalCommande));
+        return res;
     }
 }

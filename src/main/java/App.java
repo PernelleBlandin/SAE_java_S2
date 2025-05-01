@@ -18,9 +18,16 @@ public class App {
         this.menu();
     }
 
+    public String truncate(String texte) {
+        int maxCaracteres = this.longueurAffichage - 4;
+        if (texte.length() <= maxCaracteres) return texte;
+
+        return texte.substring(0, maxCaracteres - 3) + "...";
+    }
+
     public void afficherTitre(String titre) {
         System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
-        this.afficherTexteCentrer(titre);
+        this.afficherTexteCentrer(this.truncate(titre));
         this.afficherSeperateurMilieu();
     }
 
@@ -29,11 +36,11 @@ public class App {
         int margeFin = margeDebut;
         if (texte.length() % 2 != 0) margeFin++;
 
-        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", texte, "") + " │");
+        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", this.truncate(texte), "") + " │");
     }
 
     public void afficherTexte(String texte) {
-        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", texte));
+        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", this.truncate(texte)));
     }
 
     public void afficherSeperateurMilieu() {

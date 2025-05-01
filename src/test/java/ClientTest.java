@@ -65,6 +65,13 @@ public class ClientTest {
         assertEquals("Orléans", client3.getVille());
     }
 
+    @Test
+    public void testsToString() {
+        assertEquals("Robin DUPONT", client1.toString());
+        assertEquals("Sophie DUBOIS", client2.toString());
+        assertEquals("Pierre ROBERT", client3.toString());
+    }
+
     // TODO: Implémenter
     // @Test
     // public void testsGetCommandes() {

@@ -149,7 +149,7 @@ public class Client extends Personne {
                     classificationsOccurance.put(classification, 1);
                 } else {
                     Integer occuranceActuelle = classificationsOccurance.get(classification);
-                    classificationsOccurance.put(classification, occuranceActuelle++);
+                    classificationsOccurance.put(classification, occuranceActuelle + 1);
                 }
             }
         }

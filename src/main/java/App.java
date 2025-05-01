@@ -1,7 +1,12 @@
 import java.util.List;
 
+/**
+ * L'application sous le format ligne de commandes.
+ */
 public class App {
+    /** La longueur d'affichage des menus */
     private int longueurAffichage;
+    /** La chaîne de librairie */
     private ChaineLibrairie chaineLibrairie;
 
     /**
@@ -13,44 +18,77 @@ public class App {
         this.chaineLibrairie = chaineLibrairie;
     }
 
+    /**
+     * Lancer les fonctions nécéssaires au lancement de l'application.
+     */
     public void run() {
         this.bienvenue();
         this.menu();
     }
 
-    public String truncate(String texte) {
-        int maxCaracteres = this.longueurAffichage - 4;
+    /**
+     * Limiter la taille d'un texte.
+     * Si jamais le texte dépasse la longueur d'affichage, on ajoute des "..." à la fin pour le limiter à la taille maximal.
+     * @param texte Un texte
+     * @param longueurAffichage La longueur d'affichage.
+     * @return Le texte qui ne dépasse par la longueur d'affichage indiquée.
+     */
+    public static String truncate(String texte, int longueurAffichage) {
+        int maxCaracteres = longueurAffichage;
         if (texte.length() <= maxCaracteres) return texte;
 
         return texte.substring(0, maxCaracteres - 3) + "...";
     }
 
+    /**
+     * Afficher un titre dans le terminal de manière centrée, en y ajoutant une bordure au départ et un séparateur.
+     * @param titre Le titre a afficher.
+     */
     public void afficherTitre(String titre) {
         System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
-        this.afficherTexteCentrer(this.truncate(titre));
+        this.afficherTexteCentrer(App.truncate(titre, this.longueurAffichage - 4));
         this.afficherSeperateurMilieu();
     }
 
+    /**
+     * Afficher un texte de manière centrée, selon la longueur d'affichage dans les attributs de la classe.
+     * @param texte Un texte.
+     */
     public void afficherTexteCentrer(String texte) {
         int margeDebut = (this.longueurAffichage - 4 - texte.length()) / 2;
         int margeFin = margeDebut;
         if (texte.length() % 2 != 0) margeFin++;
 
-        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", this.truncate(texte), "") + " │");
+        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", App.truncate(texte, this.longueurAffichage - 4), "") + " │");
     }
 
+    /**
+     * Afficher un texte en respectant la "charte graphique" de l'application.
+     * @param texte Un texte.
+     */
     public void afficherTexte(String texte) {
-        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", this.truncate(texte)));
+        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", App.truncate(texte, this.longueurAffichage - 4)));
     }
 
+    /**
+     * Afficher un séparateur horizontal.
+     */
     public void afficherSeperateurMilieu() {
         System.out.println("│" + "─".repeat(this.longueurAffichage - 2) + "│");
     }
 
+    /**
+     * Afficher un "séparateur" lors de la fin d'un menu.
+     */
     public void afficherTitreFin() {
         System.out.println("╰" + "─".repeat(this.longueurAffichage - 2) + "╯");
     }
 
+    /**
+     * Obtenir l'entrée de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
     public String obtenirEntreeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
@@ -65,6 +103,9 @@ public class App {
         }
     }
 
+    /**
+     * Afficher dans le terminal une introduction en ASCII de l'application.
+     */
     public void bienvenue() {
         System.out.println("╭──────────────────────────────────────────────────────────────────────────────────────────────────╮");
 		System.out.println("│ ██      ██ ██    ██ ██████  ███████     ███████ ██   ██ ██████  ██████  ███████ ███████ ███████  │");
@@ -77,6 +118,9 @@ public class App {
         System.out.println("╰──────────────────────────────────────────────────────────────────────────────────────────────────╯");
     }
 
+    /**
+     * Afficher le menu principal en choisisant son compte (client/vendeur/administrateur).
+     */
     public void menu() {
         boolean finCommande = false;
         while (!finCommande) {
@@ -105,7 +149,15 @@ public class App {
         }
     }
 
-    // Aide pour les types génériques : https://www.baeldung.com/java-generics#generic-methods
+    /**
+     * Sélectionner un élément dans une liste de page.
+     * Aide pour les types génériques : https://www.baeldung.com/java-generics#generic-methods
+     * @param <T> Le type de l'élément
+     * @param elements La liste des éléments possible à sélectionner.
+     * @param nbPage La page actuelle.
+     * @param titre Le titre du menu.
+     * @return L'élément choisi
+     */
     public <T> ResultatSelection<T> selectionnerElement(List<T> elements, int nbPage, String titre) {
         int maxElementsParPage = 5;
         int totalPages = elements.size() / (maxElementsParPage + 1);
@@ -167,10 +219,21 @@ public class App {
         return null;
     }
 
+    /**
+     * Demander une confirmation à un utilisateur (Oui/Non).
+     * @param titre Le titre de la confirmation.
+     * @return true si c'est oui, false si c'est non.
+     */
     public boolean demanderConfirmation(String titre) {
         return this.demanderConfirmation(titre, null);
     }
 
+    /**
+     * Demander une confirmation à un utilisateur (Oui/Non).
+     * @param titre Le titre de la confirmation.
+     * @param description La description de la confirmation.
+     * @return true si c'est oui, false si c'est non.
+     */
     public boolean demanderConfirmation(String titre, String description) {
         this.afficherTitre(titre);
         if (description != null) {
@@ -185,6 +248,10 @@ public class App {
         return confirm.equals("o");
     }
 
+    /**
+     * Demander à l'utilisateur la recherche qu'il souhaite réaliser dans le terminal.
+     * @return La recherche de l'utilisateur, ou null s'il a annulé l'opération.
+     */
     public String demanderRecherche() {
         this.afficherTitre(String.format("Quel est votre recherche ?"));
         this.afficherTexte("Q: Retour");
@@ -198,6 +265,9 @@ public class App {
 
     // Client
 
+    /**
+     * Accéder à un menu de connexion pour choisir son compte client.
+     */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
         // Voir aussi si on choisi le magasin à ce moment-là
@@ -209,6 +279,10 @@ public class App {
         this.client(client);
     }
 
+    /**
+     * Accéder au menu pour un client donné.
+     * @param client Un client.
+     */
     public void client(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -220,6 +294,7 @@ public class App {
             this.afficherTexte("R: Recommandations");
             this.afficherTexte("S: Rechercher livres");
             this.afficherTexte("M: Changer de magasin");
+            this.afficherTexte("C: Dernières commandes");
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
@@ -254,6 +329,10 @@ public class App {
                     this.changerMagasin(client);
                     break;
                 }
+                case "c": {
+                    this.consulterCommandesClient(client);
+                    break;
+                }
                 default: {
                     System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                     break;
@@ -262,6 +341,12 @@ public class App {
         }
     }
 
+    /**
+     * Afficher la catalogue de livre sous forme de page et afficher les détails d'un livre choisi.
+     * @param client Un client.
+     * @param livres La liste des livres à afficher dans les pages.
+     * @param titre Le titre du menu.
+     */
     public void consulterCatalogueClient(Client client, List<Livre> livres, String titre) {
         ResultatSelection<Livre> resultatSelectionLivre = new ResultatSelection<>();
         while (resultatSelectionLivre != null) {
@@ -273,6 +358,11 @@ public class App {
         }
     }
 
+    /**
+     * Afficher les détails d'un livre et laisser la possibilité de l'ajouter dans son panier client.
+     * @param client Un client.
+     * @param livre Le livre choisi.
+     */
     public void afficherLivre(Client client, Livre livre) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -309,6 +399,10 @@ public class App {
 
     // Panier Client
 
+    /**
+     * Voir son panier client
+     * @param client Un client.
+     */
     public void voirPanier(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -318,24 +412,10 @@ public class App {
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
             if (detailCommandes.size() > 0) {
-                double totalCommande = 0.00;
-                this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
-                for (int i = 0; i < detailCommandes.size(); i++) {
-                    DetailCommande detailCommande = detailCommandes.get(i);
-                    Livre livre = detailCommande.getLivre();
-
-                    String numLigne = String.format("%2s", detailCommande.getNumLigne());
-                    String isbn = String.format("%13s", livre.getISBN());
-                    String titre = String.format("%-59s", livre.getTitre());
-                    String qte = String.format("%3s", detailCommande.getQuantite());
-                    String prix = String.format("%6.2f€", detailCommande.getPrixVente());
-                    String total = String.format("%6.2f€", detailCommande.getPrixVente() * detailCommande.getQuantite());
-
-                    totalCommande += detailCommande.getPrixVente() * detailCommande.getQuantite();
-                    this.afficherTexte(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
+                List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
+                for (String ligne: detailCommandeTextuel) {
+                    this.afficherTexte(ligne);
                 }
-                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 11) + "s%s", "", "-------"));
-                this.afficherTexte(String.format("%-" + (this.longueurAffichage - 11) + "s%6.2f€", "", totalCommande));
             } else {
                 this.afficherTexte("Vous n'avez aucun livre dans votre panier !");
             }
@@ -370,6 +450,12 @@ public class App {
         }
     }
 
+    /**
+     * Commander les éléments dans son panier.
+     * @param client Un client.
+     * @param panier Son panier.
+     * @return true si la commande a été réalisée, sinon false.
+     */
     public boolean commander(Client client, Panier panier) {
         List<DetailCommande> detailCommandes = panier.getDetailCommandes();
         if (detailCommandes.size() == 0) {
@@ -388,6 +474,10 @@ public class App {
         return false;
     }
 
+    /**
+     * Demander à un client son mode de livraison.
+     * @return Le mode de livraison du client (C: Chez lui, M: En magasin), ou null si demande annulée
+     */
     public Character demanderModeLivraison() {
         boolean finCommande = false;
         while (!finCommande) {
@@ -417,6 +507,12 @@ public class App {
         return null;
     }
 
+    /**
+     * Supprimer un livre de son panier.
+     * @param client Un client. 
+     * @param panier Son panier.
+     * @return true si un livre a été retiré de son panier, sinon false.
+     */
     public boolean supprimerLivrePanier(Client client, Panier panier) {
         List<DetailCommande> detailCommandes = panier.getDetailCommandes();
         if (detailCommandes.size() == 0) {
@@ -443,6 +539,11 @@ public class App {
         return false;
     }
 
+    /**
+     * Demander la quantité à supprimer du détail d'unecommande.
+     * @param detailCommande Le détail d'une commande.
+     * @return La quantité à supprimer, ou null si opération annulée.
+     */
     public Integer demanderQuantiterSupprimer(DetailCommande detailCommande) {
         Integer quantite = null;
         int quantitePanier = detailCommande.getQuantite();
@@ -482,6 +583,10 @@ public class App {
         return null;
     }
 
+    /**
+     * Changer de magasin client.
+     * @param client Le client.
+     */
     public void changerMagasin(Client client) {
         List<Magasin> magasins = this.chaineLibrairie.getMagasins();
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
@@ -504,6 +609,54 @@ public class App {
             System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
         } else {
             System.out.println("Magasin non changé.");
+        }
+    }
+
+    /**
+     * Permettre à un client de consulter la liste de ses commandes et de voir le détail d'une d'entre-elle.
+     * @param client Un client.
+     */
+    public void consulterCommandesClient(Client client) {
+        List<Commande> commandes = client.getCommandesTriesParDateDesc();
+        ResultatSelection<Commande> resultatSelectionCommande = new ResultatSelection<>();
+        while (resultatSelectionCommande != null) {
+            resultatSelectionCommande = this.selectionnerElement(commandes, resultatSelectionCommande.getNbPage(), "Sélectionner une commande à afficher");
+            if (resultatSelectionCommande != null) {
+                Commande commande = resultatSelectionCommande.getElement();
+                this.afficherCommande(commande);
+            }
+        }
+    }
+
+    /**
+     * Afficher les détails d'une commande.
+     * @param commande Une commande.
+     */
+    public void afficherCommande(Commande commande) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre(commande.toString());
+
+            List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
+            for (String ligne: detailCommandeTextuel) {
+                this.afficherTexte(ligne);
+            }
+
+            this.afficherSeperateurMilieu();
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            switch (entreeUtilisateur) {
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
         }
     }
 }

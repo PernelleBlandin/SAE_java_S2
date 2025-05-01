@@ -1,3 +1,4 @@
+/** Un administrateur */
 public class Administrateur extends Personnel {
     /**
      * Créer un administrateur.

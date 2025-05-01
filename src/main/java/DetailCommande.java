@@ -1,3 +1,4 @@
+/** Les détails d'une commande */
 public class DetailCommande {
     private Livre livre;
     private int numLigne;

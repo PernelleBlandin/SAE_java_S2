@@ -1,5 +1,6 @@
 import java.util.Comparator;
 
+/** Comparer deux livre par rapport à leurs nombre de ventes */
 public class ComparatorLivreParVentes implements Comparator<Livre> {
     private ChaineLibrairie chaineLibrairie;
     public ComparatorLivreParVentes(ChaineLibrairie chaineLibrairie) {

@@ -1,8 +1,13 @@
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+/** Un client */
 public class Client extends Personne {
     private Magasin magasin;
     private List<Commande> commandes;
@@ -89,7 +94,7 @@ public class Client extends Personne {
      */
     public void commander(char modeLivraison, List<DetailCommande> detailCommandes) {
         // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-        Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison, "En Attente", panier.getMagasin(), detailCommandes);
+        Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison, panier.getMagasin(), detailCommandes);
         this.commandes.add(commande);
         
         Panier panier = this.getPanier();
@@ -97,19 +102,71 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir la liste des livres achetés par un client.
-     * @return La liste des livres achetés par ce client.
+     * Obtenir les détails de l'ensemble des commandes et panier du client.
+     * @return La liste avec les détails de l'ensemble des commandes et panier du client.
      */
-    public List<Livre> getLivresAchetes() {
-        List<Livre> livresAchetes = new ArrayList<>();
+    public List<DetailCommande> getDetailCommandes() {
+        List<DetailCommande> detailCommandes = new ArrayList<>();
         for (Commande commande: this.getCommandes()) {
-            for (DetailCommande detailCommande: commande.getDetailCommandes()) {
-                Livre livreCommande = detailCommande.getLivre();
-                if (!livresAchetes.contains(livreCommande)) {
-                    livresAchetes.add(livreCommande);
+            detailCommandes.addAll(commande.getDetailCommandes());
+        }
+
+        Panier panier = this.getPanier();
+        detailCommandes.addAll(panier.getDetailCommandes());
+
+        return detailCommandes;
+    }
+
+    /**
+     * Obtenir la liste des livres achetés et mis dans le panier par un client.
+     * @return La liste des livres achetés et mis dans le panier par ce client.
+     */
+    public Set<Livre> getLivresAchetes() {
+        Set<Livre> livresAchetes = new HashSet<>();
+        List<DetailCommande> detailCommandesClient = this.getDetailCommandes();
+        for (DetailCommande detailCommande: detailCommandesClient) {
+            livresAchetes.add(detailCommande.getLivre());
+        }
+        return livresAchetes;
+    }
+
+    /**
+     * Obtenir un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
+     * @return Un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
+     */
+    public HashMap<String, Integer> getClassificationsOccurence() {
+        List<Commande> commandes = this.getCommandes();
+        if (commandes.size() == 0) return new HashMap<>();
+
+        HashMap<String, Integer> classificationsOccurance = new HashMap<>();
+        List<DetailCommande> detailCommandes = this.getDetailCommandes();
+        for (DetailCommande detailCommande: detailCommandes) {
+            Livre livreCommande = detailCommande.getLivre();
+
+            List<String> classifications = livreCommande.getClassifications();
+            for (String classification: classifications) {
+                if (classificationsOccurance.get(classification) == null) {
+                    classificationsOccurance.put(classification, 1);
+                } else {
+                    Integer occuranceActuelle = classificationsOccurance.get(classification);
+                    classificationsOccurance.put(classification, occuranceActuelle + 1);
                 }
             }
         }
-        return livresAchetes;
+        return classificationsOccurance;
+    }
+
+    /**
+     * Obtenir la liste des commandes triées de la plus récente à la plus ancienne.
+     * @return La liste des commandes du client triées de la plus récente à la plus ancienne.
+     */
+    public List<Commande> getCommandesTriesParDateDesc() {
+        List<Commande> commandes = this.getCommandes();
+        
+        List<Commande> commandesTries = new ArrayList<>(commandes);
+        ComparatorCommandeDateDesc comparator = new ComparatorCommandeDateDesc();
+        Collections.sort(commandesTries, comparator);
+        
+        return commandesTries;
     }
 }

@@ -1,3 +1,4 @@
+/** Un vendeur */
 public class Vendeur extends Personnel {
     /**
      * Créer un vendeur.

@@ -1,3 +1,4 @@
+/** Créer un identifiable (classe abstraite) */
 public abstract class Identifiable {
     private String id;
     private String nom;

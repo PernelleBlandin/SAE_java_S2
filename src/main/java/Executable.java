@@ -175,4 +175,7 @@ public class Executable {
         App app = new App(chaineLibrairie);
         app.run();
     }
+
+    //Vendeur
+    Vendeur vendeur = new Vendeur(1, null, null, null, null, null, null);
 }

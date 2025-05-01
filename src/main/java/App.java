@@ -137,6 +137,10 @@ public class App {
                     this.connexionClient();
                     break;
                 }
+                case "v": {
+                    this.connexionVendeur();
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -396,6 +400,46 @@ public class App {
             }
         }
     }
+
+    //Connexion Vendeur
+    public void connexionVendeur(){
+        Vendeur vendeur = this.chaineLibrairie.trouverVendeur("Grande", "Marie");
+        this.menuVendeur(vendeur);
+    }
+
+
+    public void menuVendeur(Vendeur vendeur) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            Magasin magasin = vendeur.getMagasin();
+
+            this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
+            this.afficherTexte("A : Ajouter livre");
+            this.afficherTexte("S: Accès stock magasins");
+            this.afficherTexte("M : Modifications stock magasin");
+            this.afficherTexte("C : Passeer commande client");
+            this.afficherTexte("T : Transférer Livre stock");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirEntreeUtilisateur();
+            switch (commande) {
+                /*case "A": {
+                *ajouter un livre avec ses caract dans la liste des possessions du magasin
+
+                }*/
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+            }
+
+        }
 
     // Panier Client
 

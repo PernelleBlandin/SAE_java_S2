@@ -9,6 +9,9 @@ import java.util.Set;
 
 /** Un client */
 public class Client extends Personne {
+    private String adresse;
+    private String codePostal;
+    private String ville;
     private Magasin magasin;
     private List<Commande> commandes;
     private Panier panier;
@@ -26,25 +29,45 @@ public class Client extends Personne {
      * @param panier Le panier du client.
      */
     public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes, Panier panier) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+        super(id, nom, prenom);
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
         this.magasin = magasin;
         this.commandes = commandes;
         this.panier = panier;
     }
 
     /**
-     * Créer un client sans panier rempli.
-     * @param id L'identifiant du client.
-     * @param nom Le nom du prénom du client.
-     * @param prenom Le prénom du client.
-     * @param adresse L'adresse du client.
-     * @param codePostal Le code postal du client.
-     * @param ville La ville du client.
-     * @param magasin Le magasin du client.
-     * @param commandes La liste des commandes du client.
+     * Créer une copie d'un client.
+     * @param client Un client.
      */
-    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes) {
-        this(id, nom, prenom, adresse, codePostal, ville, magasin, commandes, new Panier(magasin));
+    public Client(Client client) {
+        this(client.getId(), client.getNom(), client.getPrenom(), client.getAdresse(), client.getCodePostal(), client.getVille(), client.getMagasin(), client.getCommandes(), client.getPanier());
+    }
+
+    /**
+     * Obtenir l'adresse du client.
+     * @return Son adresse.
+     */
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    /**
+     * Obtenir le code postal du client.
+     * @return Son code postal.
+     */
+    public String getCodePostal() {
+        return this.codePostal;
+    }
+
+    /**
+     * Obtenir la ville du client.
+     * @return Sa ville.
+     */
+    public String getVille() {
+        return this.ville;
     }
 
     /**
@@ -90,15 +113,21 @@ public class Client extends Personne {
     /**
      * Commander un livre pour un client.
      * @param modeLivraison Le mode de livraison : M en magasin / C pour la livraison à domicile.
-     * @param detailCommandes Les livres de la commande
+     * @param enLigne O si en ligne, N si la commande a été passée en magasin.
+     * @return true si la commande a été passée, sinon false.
      */
-    public void commander(char modeLivraison, List<DetailCommande> detailCommandes) {
-        // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-        Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison, panier.getMagasin(), detailCommandes);
-        this.commandes.add(commande);
-        
+    public boolean commander(char modeLivraison, char enLigne) {
         Panier panier = this.getPanier();
-        panier.viderPanier();
+        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+        if (detailCommandes.size() > 0) {
+            // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
+            Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, panier.getMagasin(), detailCommandes);
+            this.commandes.add(commande);
+            
+            panier.viderPanier();
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -466,9 +466,9 @@ public class App {
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
-            client.commander(modeLivraison, detailCommandes);
-            System.out.println("Merci pour votre commande !");
-            return true;
+            boolean commandeReussie = client.commander(modeLivraison, 'O');
+            if (commandeReussie) System.out.println("Merci pour votre commande !");
+            return commandeReussie;
         }
 
         return false;

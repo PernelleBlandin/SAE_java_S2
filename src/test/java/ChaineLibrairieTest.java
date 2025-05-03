@@ -58,7 +58,29 @@ public class ChaineLibrairieTest {
         66.99,
         new ArrayList<>(Arrays.asList(this.peterson)),
         new ArrayList<>(Arrays.asList("Peterson'S")),
-        new ArrayList<>(Arrays.asList("éducation"))
+        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+    );
+
+    private Livre livre5 = new Livre(
+        "9780768939866",
+        "Master the new SAT 2025",
+        972,
+        2025,
+        66.99,
+        new ArrayList<>(Arrays.asList(this.peterson)),
+        new ArrayList<>(Arrays.asList("Peterson'S")),
+        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+    );
+
+    private Livre livreInconnu = new Livre(
+        "0000000000",
+        "Inconnu",
+        0,
+        2025,
+        99.99,
+        new ArrayList<>(Arrays.asList()),
+        new ArrayList<>(Arrays.asList()),
+        new ArrayList<>(Arrays.asList())
     );
 
     private List<Posseder> listePosessions = new ArrayList<>();
@@ -70,6 +92,7 @@ public class ChaineLibrairieTest {
 
     private DetailCommande detailCommande1 = new DetailCommande(this.livre1, 1, 2, 7.98);
     private Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande1)));
+    
     private DetailCommande detailCommande2 = new DetailCommande(this.livre2, 1, 1, 16.4);
     private List<DetailCommande> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(this.detailCommande2)); 
     private Panier panierClient1 = new Panier(this.magasinOrleans, this.detailCommandesPanierClient1);
@@ -80,11 +103,18 @@ public class ChaineLibrairieTest {
 
     private DetailCommande detailCommande3 = new DetailCommande(this.livre3, 2, 4, 11.9);
     private Commande commande2 = new Commande(2, Date.valueOf("2021-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande2, this.detailCommande2)));
+    
     private Panier panierClient3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande3)));
     private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande2)), this.panierClient3);
 
+    private DetailCommande detailCommande4 = new DetailCommande(this.livre4, 2, 4, 11.9);
+    private Commande commande3 = new Commande(3, Date.valueOf("2021-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande4)));
+
     private Panier panierClient4 = new Panier(this.magasinParis, new ArrayList<>());
-    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(), this.panierClient4);
+    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(Arrays.asList(this.commande3)), this.panierClient4);
+
+    private Panier panierClientInconnu = new Panier(this.magasinParis, new ArrayList<>());
+    private Client clientInconnu = new Client(666, "Inconnu", "Inconnu", "Inconnu", "66666", "Inconnu", this.magasinParis, new ArrayList<>(), this.panierClientInconnu);
 
     private ChaineLibrairie generatChaineLibrairie() {
         ChaineLibrairie chaineLibrairie = new ChaineLibrairie();
@@ -92,6 +122,8 @@ public class ChaineLibrairieTest {
         chaineLibrairie.ajouterLivre(this.livre1);
         chaineLibrairie.ajouterLivre(this.livre2);
         chaineLibrairie.ajouterLivre(this.livre3);
+        chaineLibrairie.ajouterLivre(this.livre4);
+        chaineLibrairie.ajouterLivre(this.livre5);
         
         chaineLibrairie.ajouterMagasin(this.magasinParis);
         chaineLibrairie.ajouterMagasin(this.magasinMarseille);
@@ -101,6 +133,7 @@ public class ChaineLibrairieTest {
         chaineLibrairie.ajouterClient(this.client1);
         chaineLibrairie.ajouterClient(this.client2);
         chaineLibrairie.ajouterClient(this.client3);
+        chaineLibrairie.ajouterClient(this.client4);
 
         return chaineLibrairie;
     }
@@ -110,7 +143,7 @@ public class ChaineLibrairieTest {
         assertEquals(new ArrayList<>(), this.chaineLibrairieVide.getLivres());
 
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
-        assertEquals(new ArrayList<>(Arrays.asList(this.livre1, this.livre2, this.livre3)), chaineLibrairie.getLivres());
+        assertEquals(new ArrayList<>(Arrays.asList(this.livre1, this.livre2, this.livre3, this.livre4, this.livre5)), chaineLibrairie.getLivres());
     }
 
     @Test
@@ -118,7 +151,7 @@ public class ChaineLibrairieTest {
         assertEquals(new ArrayList<>(), this.chaineLibrairieVide.getClients());
 
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
-        assertEquals(new ArrayList<>(Arrays.asList(this.client1, this.client2, this.client3)), chaineLibrairie.getClients());
+        assertEquals(new ArrayList<>(Arrays.asList(this.client1, this.client2, this.client3, this.client4)), chaineLibrairie.getClients());
     }
 
     @Test
@@ -134,12 +167,12 @@ public class ChaineLibrairieTest {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
         List<Livre> livres = chaineLibrairie.getLivres();
-        assertEquals(3, livres.size());
-        assertFalse(livres.contains(this.livre4));
+        assertEquals(5, livres.size());
+        assertFalse(livres.contains(this.livreInconnu));
 
-        chaineLibrairie.ajouterLivre(this.livre4);
-        assertEquals(4, livres.size());
-        assertTrue(livres.contains(this.livre4));
+        chaineLibrairie.ajouterLivre(this.livreInconnu);
+        assertEquals(6, livres.size());
+        assertTrue(livres.contains(this.livreInconnu));
     }
 
     @Test
@@ -147,12 +180,12 @@ public class ChaineLibrairieTest {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
         List<Client> clients = chaineLibrairie.getClients();
-        assertEquals(3, clients.size());
-        assertFalse(clients.contains(this.client4));
-        
-        chaineLibrairie.ajouterClient(this.client4);
         assertEquals(4, clients.size());
-        assertTrue(clients.contains(this.client4));
+        assertFalse(clients.contains(this.clientInconnu));
+        
+        chaineLibrairie.ajouterClient(this.clientInconnu);
+        assertEquals(5, clients.size());
+        assertTrue(clients.contains(this.clientInconnu));
     }
 
     @Test
@@ -203,10 +236,12 @@ public class ChaineLibrairieTest {
 
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
         List<Commande> listeCommandes = chaineLibrairie.getCommandes();
-        assertEquals(2, listeCommandes.size());
+        assertEquals(3, listeCommandes.size());
         assertTrue(listeCommandes.contains(this.commande1));
         assertTrue(listeCommandes.contains(this.commande2));
+        assertTrue(listeCommandes.contains(this.commande3));
     }
+    
 
     @Test
     public void testsGetNombreVentesLivre() {
@@ -215,14 +250,15 @@ public class ChaineLibrairieTest {
         assertEquals(1, chaineLibrairie.getNombreVentesLivre(this.livre1));
         assertEquals(2, chaineLibrairie.getNombreVentesLivre(this.livre2));
         assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livre3));
-        assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livre4));
+        assertEquals(1, chaineLibrairie.getNombreVentesLivre(this.livre4));
+        assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livreInconnu));
     }
 
     @Test
     public void testsGetLivresTriesParVentes() {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
-        List<Livre> listeTries = new ArrayList<>(Arrays.asList(this.livre2, this.livre1, this.livre3));
+        List<Livre> listeTries = new ArrayList<>(Arrays.asList(this.livre2, this.livre1, this.livre4, this.livre5, this.livre3));
         assertEquals(listeTries, chaineLibrairie.getLivresTriesParVentes(chaineLibrairie.getLivres()));
     }
 }

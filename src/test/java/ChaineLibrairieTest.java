@@ -49,7 +49,7 @@ public class ChaineLibrairieTest {
         new ArrayList<>(Arrays.asList("Littérature anglaise"))
     );
 
-    private Auteur peterson = new Auteur("OL6835078A", "Peterson's (Firm : 2006- )", null, null);
+    private Auteur peterson = new Auteur("OL6835078A", "Peterson's", null, null);
     private Livre livre4 = new Livre(
         "9780768939866",
         "Master the new SAT 2016",

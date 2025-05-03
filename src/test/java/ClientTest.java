@@ -18,8 +18,8 @@ public class ClientTest {
     private static Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
     private static Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
 
-    public static Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
-    public static Livre livre1 = new Livre(
+    private static Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
+    private static Livre livre1 = new Livre(
         "9782205054750",
         "Les cavernes",
         48,

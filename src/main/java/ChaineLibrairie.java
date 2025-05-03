@@ -85,8 +85,13 @@ public class ChaineLibrairie {
      * @return Le client trouvé, ou null si aucun n'a été trouvé.s
      */
     public Client trouverClient(String nom, String prenom) {
+        nom = nom.toLowerCase();
+        prenom = prenom.toLowerCase();
+
         for (Client client: this.clients) {
-            if (client.getNom().equals(nom) && client.getPrenom().equals(prenom)) {
+            String nomClient = client.getNom().toLowerCase();
+            String prenomClient = client.getPrenom().toLowerCase();
+            if (nomClient.equals(nom) && prenomClient.equals(prenom)) {
                 return client;
             }
         }
@@ -129,6 +134,9 @@ public class ChaineLibrairie {
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
     public int getNombreVentesLivre(Livre livre) {
+        // TODO: Voir pour ajouter exception
+        if (!this.livres.contains(livre)) return 0;
+
         int nbVentes = 0;
         List<Commande> commandes = this.getCommandes();
         for (Commande commande: commandes) {

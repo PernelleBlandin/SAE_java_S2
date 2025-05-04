@@ -176,7 +176,7 @@ public class ChaineLibrairie {
         List<Commande> commandesClient = client.getCommandes();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
             return this.getLivresTriesParVentes(this.livres);
-        } 
+        }
 
         // -- Recommendations par rapport aux autres clients
 
@@ -200,29 +200,26 @@ public class ChaineLibrairie {
             }
         }
 
-        // -- Suivant les thèmes des livres précédents achetés + leur nombre de ventes
-        if (livresRecommandes.size() == 0) {
-            Set<Livre> livresAchetes = client.getLivresAchetes();
-            HashMap<String, Integer> classificationsOccurenceClient = client.getClassificationsOccurence();
+        Set<Livre> livresAchetes = client.getLivresAchetes();
+        HashMap<String, Integer> classificationsOccurenceClient = client.getClassificationsOccurence();
 
-            List<Livre> listeLivre = this.getLivres();
-            for (Livre livre: listeLivre) {
-                // On ne mets pas en avant les livres que le client a déjà acheté
-                if (!livresAchetes.contains(livre)) {
-                    int occurenceClassificationLivreMax = 0;
-                    List<String> listeClassifications = livre.getClassifications();
-                    for (String classification: listeClassifications) {
-                        Integer occurenceClassification = classificationsOccurenceClient.get(classification);
-                        if (occurenceClassification != null) {
-                            if (occurenceClassification > occurenceClassificationLivreMax) {
-                                occurenceClassificationLivreMax = occurenceClassification;
-                            }
+        List<Livre> listeLivre = this.getLivres();
+        for (Livre livre: listeLivre) {
+            // On ne mets pas en avant les livres que le client a déjà acheté
+            if (!livresAchetes.contains(livre)) {
+                int occurenceClassificationLivreMax = 0;
+                List<String> listeClassifications = livre.getClassifications();
+                for (String classification: listeClassifications) {
+                    Integer occurenceClassification = classificationsOccurenceClient.get(classification);
+                    if (occurenceClassification != null) {
+                        if (occurenceClassification > occurenceClassificationLivreMax) {
+                            occurenceClassificationLivreMax = occurenceClassification;
                         }
                     }
-    
-                    if (occurenceClassificationLivreMax != 0) {
-                        livresRecommandes.put(livre, occurenceClassificationLivreMax);
-                    }
+                }
+
+                if (occurenceClassificationLivreMax != 0) {
+                    livresRecommandes.put(livre, occurenceClassificationLivreMax);
                 }
             }
         }
@@ -241,10 +238,10 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir le pourcentage de livres communs entre deux clients.
+     * Obtenir le pourcentage de livres communs que le premier client à en commun avec le deuxième client.
      * @param client1 Le client 1.
      * @param client2 Le client 2.
-     * @return Le pourcentage (sous forme d'entier) de livres en communs entre les deux clients.
+     * @return Le pourcentage de livres communs que le premier client à en commun avec le deuxième client.
      */
     public int getPourcentageLivresCommuns(Client client1, Client client2) {
         Set<Livre> livresClient2 = client2.getLivresAchetes();

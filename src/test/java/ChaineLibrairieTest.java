@@ -13,63 +13,64 @@ import org.junit.Test;
 public class ChaineLibrairieTest {
     private ChaineLibrairie chaineLibrairieVide = new ChaineLibrairie();
 
-    private Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
+    private Auteur philippeChereau = new Auteur("OL7572575A", "Philippe Chéreau", null, null);
+    private Auteur christopheAgius = new Auteur("OL7572575B", "Christophe Agius", null, null);
     private Livre livre1 = new Livre(
         "9782205054750",
-        "Les cavernes",
-        48,
-        2003,
-        8.81,
-        new ArrayList<>(Arrays.asList(this.leo)),
-        new ArrayList<>(Arrays.asList("Dargaud")),
-        new ArrayList<>(Arrays.asList("Arts décorartifs"))
+        "Simplement 2: 25 ans de commentaires",
+        329,
+        2025,
+        24.99,
+        new ArrayList<>(Arrays.asList(this.philippeChereau, this.christopheAgius)),
+        new ArrayList<>(Arrays.asList("Simplement 2")),
+        new ArrayList<>(Arrays.asList("Sports"))
     );
 
-    private Auteur sethGrahameSmith = new Auteur("OL7572575A", "Seth Grahame-Smith", null, null);
+    private Auteur xavierNiel = new Auteur("OL7572575A", "Xavier Niel", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
-        "Abraham Lincoln",
+        "Une sacrée envie de foutre le bordel",
         null,
-        2010,
-        16.4,
-        new ArrayList<>(Arrays.asList(this.sethGrahameSmith)),
-        new ArrayList<>(Arrays.asList("Hachette Book Group Usa")),
-        new ArrayList<>(Arrays.asList("Littérature américaine"))
+        2024,
+        9.99,
+        new ArrayList<>(Arrays.asList(this.xavierNiel)),
+        new ArrayList<>(Arrays.asList("Flammarion")),
+        new ArrayList<>(Arrays.asList("Télécom"))
     );
 
-    private Auteur mickInkpen = new Auteur("OL18710A", "Mick Inkpen", null, null);
+    private Auteur claudeServi = new Auteur("OL18710A", "Claude Servi", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
-        "Kipper",
-        32,
-        2008,
-        11.9,
-        new ArrayList<>(Arrays.asList(this.mickInkpen)),
-        new ArrayList<>(Arrays.asList("Hodder Children'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        "Réseaux & Télécom",
+        405,
+        2013,
+        46.99,
+        new ArrayList<>(Arrays.asList(this.claudeServi)),
+        new ArrayList<>(Arrays.asList("Dunod")),
+        new ArrayList<>(Arrays.asList("Télécom"))
     );
 
-    private Auteur peterson = new Auteur("OL6835078A", "Peterson's", null, null);
+    private Auteur guillaumeMusso = new Auteur("OL6835078A", "Guillaume Musso", null, null);
     private Livre livre4 = new Livre(
         "9780768939866",
-        "Master the new SAT 2016",
-        972,
-        2016,
-        66.99,
-        new ArrayList<>(Arrays.asList(this.peterson)),
-        new ArrayList<>(Arrays.asList("Peterson'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        "Angélique",
+        213,
+        2023,
+        11.99,
+        new ArrayList<>(Arrays.asList(this.guillaumeMusso)),
+        new ArrayList<>(Arrays.asList("Lgf")),
+        new ArrayList<>(Arrays.asList("Roman"))
     );
 
     private Livre livre5 = new Livre(
-        "9780768939866",
-        "Master the new SAT 2025",
-        972,
-        2025,
-        66.99,
-        new ArrayList<>(Arrays.asList(this.peterson)),
-        new ArrayList<>(Arrays.asList("Peterson'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        "9780768939812",
+        "Skidamarink",
+        313,
+        2024,
+        13.99,
+        new ArrayList<>(Arrays.asList(this.guillaumeMusso)),
+        new ArrayList<>(Arrays.asList("Lgf")),
+        new ArrayList<>(Arrays.asList("Roman"))
     );
 
     private Livre livreInconnu = new Livre(
@@ -90,28 +91,45 @@ public class ChaineLibrairieTest {
     private Magasin magasinLyon = new Magasin("4", "LibLyon", "Lyon", this.listePosessions);
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
 
-    private DetailCommande detailCommande1 = new DetailCommande(this.livre1, 1, 2, 7.98);
-    private Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande1)));
+    // Client 1
+    private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>());
+    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(), this.panierClient1);
+
+    // Client 2
     
-    private DetailCommande detailCommande2 = new DetailCommande(this.livre2, 1, 1, 16.4);
-    private List<DetailCommande> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(this.detailCommande2)); 
-    private Panier panierClient1 = new Panier(this.magasinOrleans, this.detailCommandesPanierClient1);
-    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande1)), this.panierClient1);
+    private DetailCommande detailCommande1 = new DetailCommande(this.livre4, 1, 2, 11.99);
+    private Commande commande1 = new Commande(1, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande1)));
 
     private Panier panierClient2 = new Panier(this.magasinMarseille, new ArrayList<>());
-    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", this.magasinMarseille, new ArrayList<>(), this.panierClient2);
+    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", this.magasinMarseille, new ArrayList<>(Arrays.asList(this.commande1)), this.panierClient2);
 
-    private DetailCommande detailCommande3 = new DetailCommande(this.livre3, 2, 4, 11.9);
-    private Commande commande2 = new Commande(2, Date.valueOf("2021-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande2, this.detailCommande2)));
+    // Client 3
+
+    private DetailCommande detailCommande2 = new DetailCommande(this.livre4, 1, 3, 11.99);
+    private Commande commande2 = new Commande(2, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande2)));
+
+    private DetailCommande detailCommande3 = new DetailCommande(this.livre3, 1, 2, 46.99);
+    private Commande commande3 = new Commande(3, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande3)));
     
-    private Panier panierClient3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande3)));
-    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande2)), this.panierClient3);
+    private DetailCommande detailCommande4 = new DetailCommande(this.livre2, 1, 1, 9.99);
+    private Panier panierClient3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande4)));
+    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande2, this.commande3)), this.panierClient3);
 
-    private DetailCommande detailCommande4 = new DetailCommande(this.livre4, 2, 4, 11.9);
-    private Commande commande3 = new Commande(3, Date.valueOf("2021-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande4)));
+    // Client 4
 
-    private Panier panierClient4 = new Panier(this.magasinParis, new ArrayList<>());
-    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(Arrays.asList(this.commande3)), this.panierClient4);
+    private DetailCommande detailCommande5 = new DetailCommande(this.livre2, 1, 1, 11.9);
+    private Panier panierClient4 = new Panier(this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande5)));
+    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(), this.panierClient4);
+
+    // Client 5
+
+    private DetailCommande detailCommande6 = new DetailCommande(this.livre1, 1, 1, 24.99);
+    private Commande commande4 = new Commande(4, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande6)));
+
+    private Panier panierClient5 = new Panier(this.magasinParis, new ArrayList<>());
+    private Client client5 = new Client(4, "Guichon", "Julien", "2 rue de la Tour Eiffel", "75000", "Paris", this.magasinParis, new ArrayList<>(Arrays.asList(this.commande4)), this.panierClient5);
+
+    // Client Inconnu
 
     private Panier panierClientInconnu = new Panier(this.magasinParis, new ArrayList<>());
     private Client clientInconnu = new Client(666, "Inconnu", "Inconnu", "Inconnu", "66666", "Inconnu", this.magasinParis, new ArrayList<>(), this.panierClientInconnu);
@@ -134,6 +152,7 @@ public class ChaineLibrairieTest {
         chaineLibrairie.ajouterClient(this.client2);
         chaineLibrairie.ajouterClient(this.client3);
         chaineLibrairie.ajouterClient(this.client4);
+        chaineLibrairie.ajouterClient(this.client5);
 
         return chaineLibrairie;
     }
@@ -151,7 +170,7 @@ public class ChaineLibrairieTest {
         assertEquals(new ArrayList<>(), this.chaineLibrairieVide.getClients());
 
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
-        assertEquals(new ArrayList<>(Arrays.asList(this.client1, this.client2, this.client3, this.client4)), chaineLibrairie.getClients());
+        assertEquals(new ArrayList<>(Arrays.asList(this.client1, this.client2, this.client3, this.client4, this.client5)), chaineLibrairie.getClients());
     }
 
     @Test
@@ -180,11 +199,11 @@ public class ChaineLibrairieTest {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
         List<Client> clients = chaineLibrairie.getClients();
-        assertEquals(4, clients.size());
+        assertEquals(5, clients.size());
         assertFalse(clients.contains(this.clientInconnu));
         
         chaineLibrairie.ajouterClient(this.clientInconnu);
-        assertEquals(5, clients.size());
+        assertEquals(6, clients.size());
         assertTrue(clients.contains(this.clientInconnu));
     }
 
@@ -222,10 +241,10 @@ public class ChaineLibrairieTest {
 
         assertEquals(livres, chaineLibrairie.rechercherLivres(livres, "e"));
         assertEquals(livres, chaineLibrairie.rechercherLivres(livres, ""));
-        assertEquals(new ArrayList<>(Arrays.asList(this.livre3)), chaineLibrairie.rechercherLivres(livres, "Kipper"));
-        assertEquals(new ArrayList<>(Arrays.asList(this.livre3)), chaineLibrairie.rechercherLivres(livres, "kipper"));
-        assertEquals(new ArrayList<>(Arrays.asList(this.livre3)), chaineLibrairie.rechercherLivres(livres, "kipper mick inkpen"));
-        assertEquals(new ArrayList<>(), chaineLibrairie.rechercherLivres(livres, "kipper micks inkpen"));
+        assertEquals(new ArrayList<>(Arrays.asList(this.livre3)), chaineLibrairie.rechercherLivres(livres, "réseau"));
+        assertEquals(new ArrayList<>(Arrays.asList(this.livre2, this.livre3)), chaineLibrairie.rechercherLivres(livres, "télécom"));
+        assertEquals(new ArrayList<>(Arrays.asList(this.livre3)), chaineLibrairie.rechercherLivres(livres, "télécom servi"));
+        assertEquals(new ArrayList<>(), chaineLibrairie.rechercherLivres(livres, "télécom musso"));
         assertEquals(new ArrayList<>(), chaineLibrairie.rechercherLivres(livres, "zefzef"));
     }
 
@@ -236,21 +255,22 @@ public class ChaineLibrairieTest {
 
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
         List<Commande> listeCommandes = chaineLibrairie.getCommandes();
-        assertEquals(3, listeCommandes.size());
+        assertEquals(4, listeCommandes.size());
         assertTrue(listeCommandes.contains(this.commande1));
         assertTrue(listeCommandes.contains(this.commande2));
         assertTrue(listeCommandes.contains(this.commande3));
+        assertTrue(listeCommandes.contains(this.commande4));
     }
-    
 
     @Test
     public void testsGetNombreVentesLivre() {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
         assertEquals(1, chaineLibrairie.getNombreVentesLivre(this.livre1));
-        assertEquals(2, chaineLibrairie.getNombreVentesLivre(this.livre2));
-        assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livre3));
-        assertEquals(1, chaineLibrairie.getNombreVentesLivre(this.livre4));
+        assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livre2));
+        assertEquals(1, chaineLibrairie.getNombreVentesLivre(this.livre3));
+        assertEquals(2, chaineLibrairie.getNombreVentesLivre(this.livre4));
+        assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livre5));
         assertEquals(0, chaineLibrairie.getNombreVentesLivre(this.livreInconnu));
     }
 
@@ -258,7 +278,27 @@ public class ChaineLibrairieTest {
     public void testsGetLivresTriesParVentes() {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
-        List<Livre> listeTries = new ArrayList<>(Arrays.asList(this.livre2, this.livre1, this.livre4, this.livre5, this.livre3));
-        assertEquals(listeTries, chaineLibrairie.getLivresTriesParVentes(chaineLibrairie.getLivres()));
+        List<Livre> listeTriees = new ArrayList<>(Arrays.asList(this.livre4, this.livre1, this.livre3, this.livre2, this.livre5));
+        assertEquals(listeTriees, chaineLibrairie.getLivresTriesParVentes(chaineLibrairie.getLivres()));
+    }
+
+    @Test
+    public void testsOnVousRecommande() {
+        ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
+
+        List<Livre> recommendationsClient1 = new ArrayList<>(Arrays.asList(this.livre4, this.livre1, this.livre3, this.livre2, this.livre5));
+        assertEquals(recommendationsClient1, chaineLibrairie.onVousRecommande(this.client1));
+
+        List<Livre> recommendationsClient2 = new ArrayList<>(Arrays.asList(this.livre3, this.livre5, this.livre1, this.livre2));
+        assertEquals(recommendationsClient2, chaineLibrairie.onVousRecommande(this.client2));
+        
+        List<Livre> recommendationsClient3 = new ArrayList<>(Arrays.asList(this.livre1, this.livre5));
+        assertEquals(recommendationsClient3, chaineLibrairie.onVousRecommande(this.client3));
+
+        List<Livre> recommendationsClient4 = new ArrayList<>(Arrays.asList(this.livre3, this.livre4, this.livre1, this.livre5));
+        assertEquals(recommendationsClient4, chaineLibrairie.onVousRecommande(this.client4));
+
+        List<Livre> recommendationsClient5 = new ArrayList<>(Arrays.asList(this.livre4, this.livre3, this.livre2, this.livre5));
+        assertEquals(recommendationsClient5, chaineLibrairie.onVousRecommande(this.client5));
     }
 }

@@ -1,5 +1,5 @@
 /** Un vendeur */
-public class Vendeur extends Personnel {
+public class Vendeur extends Personne {
     private Magasin magasin;
     /**
      * Créer un vendeur.
@@ -12,11 +12,19 @@ public class Vendeur extends Personnel {
      * @param magasin Le magasin rattaché au vendeur
      */
     public Vendeur(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin) {
-        super(id, nom, prenom, adresse, codePostal, ville, "Vendeur");
+        super(id, nom, prenom, adresse, codePostal, ville);
         this.magasin = magasin;
     }
 
     public Magasin getMagasin() {
         return this.magasin;
+    }
+
+        /**
+     * Définir le magasin pour un vendeur.
+     * @param magasin Le nouveau magasin du client.
+     */
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
     }
 }

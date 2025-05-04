@@ -10,7 +10,7 @@ public class ChaineLibrairie {
     private List<Livre> livres;
     private List<Client> clients;
     private List<Vendeur> vendeurs;
-    private List<Personnel> personnels;
+    //private List<Personnel> personnels;
     private List<Magasin> magasins;
 
     /**
@@ -20,7 +20,7 @@ public class ChaineLibrairie {
         this.livres = new ArrayList<>();
         this.clients = new ArrayList<>();
         this.vendeurs = new ArrayList<>();
-        this.personnels = new ArrayList<>();
+        //this.personnels = new ArrayList<>();
         this.magasins = new ArrayList<>();
     }
 
@@ -52,9 +52,9 @@ public class ChaineLibrairie {
      * Obtenir la liste des personnels de la chaîne de librairie.
      * @return La liste des personnels de la chaîne de librairie.
      */
-    public List<Personnel> getPersonnels() {
+    /*public List<Personnel> getPersonnels() {
         return this.personnels;
-    }
+    }*/
 
     /**
      * Obtenir la liste des magasins de la chaîne de librairie.

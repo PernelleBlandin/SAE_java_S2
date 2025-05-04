@@ -124,6 +124,8 @@ public class Executable {
         );
         chaineLibrairie.ajouterLivre(livre7);
 
+        //Livre 
+
         // Magasins
         List<Posseder> listePosessions = new ArrayList<>();
         Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
@@ -177,5 +179,5 @@ public class Executable {
     }
 
     //Vendeur
-    Vendeur vendeur = new Vendeur(1, "Grande", "Marie", null, null, null, null);
+    Vendeur vendeur = new Vendeur(1, "Grande", "Marie", "82 rue de Tours", "37130", "Cinq-Mars-La-Pile", magasinParis);
 }

@@ -142,7 +142,7 @@ public class App {
                     break;
                 }
                 case "a": {
-                    this.connexionAdministrateur();
+                    this.menuAdministrateur();
                     break;
                 }
                 case "q": {
@@ -446,19 +446,14 @@ public class App {
         }
 
 
-    //Connexion Administrateur
-    public void connexionAdministrateur(){
-        Administrateur admin = this.chaineLibrairie.trouverAdministrateur("Moyen", "Thanos");
-        this.menuAdministrateur(admin);
-    }
 
     // Menu Administrateur
 
-    public void menuAdministrateur(Administrateur administrateur) {
+    public void menuAdministrateur() {
         boolean finCommande = false;
         while (!finCommande) {
 
-            this.afficherTitre(String.format("Menu Administrateur - %s", administrateur.toString()));
+            this.afficherTitre("Menu Administrateur");
             this.afficherTexte("C : Création compte vendeur");
             this.afficherTexte("M : Ajout magasin");
             this.afficherTexte("S : Modification stock global");

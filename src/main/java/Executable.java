@@ -178,11 +178,13 @@ public class Executable {
         Vendeur vendeur1 = new Vendeur(1, "Grande", "Marie", "82 rue de Tours", "37130", "Cinq-Mars-La-Pile", magasinOrleans);
         chaineLibrairie.ajouterVendeur(vendeur1);
 
+        //Administrateur
+        //Administrateur admin = new Administrateur(0, "Moyen", "Thanos", "24 rue du Bifröst", "77 777", "Valhalla");
+
         App app = new App(chaineLibrairie);
         app.run();
 
-        //Administrateur
-        Administrateur admin = new Administrateur(0, "Moyen", "Thanos", "24 rue du Bifröst", "77 777", "Valhalla");
+
     }
 
     

@@ -98,6 +98,7 @@ public class ChaineLibrairie {
         this.vendeurs.add(vendeur);
     }
 
+
     /**
      * Ajouter un magasin à la chaîne de librairie.
      * @param magasin Le magasin à ajouter.

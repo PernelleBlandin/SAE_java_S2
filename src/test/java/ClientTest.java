@@ -5,10 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -209,30 +206,14 @@ public class ClientTest {
 
     @Test
     public void testsGetLivresAchetes() {
-        Set<Livre> livresClient1 = new HashSet<>(Arrays.asList(this.livre1, this.livre2));
+        List<Livre> livresClient1 = new ArrayList<>(Arrays.asList(this.livre1));
         assertEquals(livresClient1, this.client1.getLivresAchetes());
 
-        Set<Livre> livresClient2 = new HashSet<>();
+        List<Livre> livresClient2 = new ArrayList<>();
         assertEquals(livresClient2, this.client2.getLivresAchetes());
 
-        Set<Livre> livresClient3 = new HashSet<>(Arrays.asList(this.livre2, this.livre3, this.livre4));
+        List<Livre> livresClient3 = new ArrayList<>(Arrays.asList(this.livre2, this.livre3, this.livre4));
         assertEquals(livresClient3, this.client3.getLivresAchetes());
-    }
-
-    @Test
-    public void testsGetClassificationsOccurence() {
-        HashMap<String, Integer> classificationsClient1 = new HashMap<>();
-        classificationsClient1.put("Arts décorartifs", 1);
-        classificationsClient1.put("Littérature américaine", 1);
-        assertEquals(classificationsClient1, this.client1.getClassificationsOccurence());
-
-        HashMap<String, Integer> classificationsClient2 = new HashMap<>();
-        assertEquals(classificationsClient2, this.client2.getClassificationsOccurence());
-
-        HashMap<String, Integer> classificationsClient3 = new HashMap<>();
-        classificationsClient3.put("Littérature américaine", 1);
-        classificationsClient3.put("Littérature anglaise", 2);
-        assertEquals(classificationsClient3, this.client3.getClassificationsOccurence());
     }
 
     @Test

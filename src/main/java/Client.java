@@ -146,29 +146,36 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir la liste des livres achetés et mis dans le panier par un client.
-     * @return La liste des livres achetés et mis dans le panier par ce client.
+     * Obtenir la liste des livres achetés par un client.
+     * @return La liste des livres achetés par ce client.
      */
     public List<Livre> getLivresAchetes() {
         List<Livre> livresAchetes = new ArrayList<>();
-        List<DetailCommande> detailCommandesClient = this.getDetailCommandes();
-        for (DetailCommande detailCommande: detailCommandesClient) {
-            livresAchetes.add(detailCommande.getLivre());
+
+        for (Commande commande: this.getCommandes()) {
+            List<DetailCommande> detailCommandesClient = commande.getDetailCommandes();
+            for (DetailCommande detailCommande: detailCommandesClient) {
+                Livre livreDetailCommande = detailCommande.getLivre();
+                if (!livresAchetes.contains(livreDetailCommande)) {
+                    livresAchetes.add(detailCommande.getLivre());
+                }
+            }
         }
         return livresAchetes;
     }
 
     /**
-     * Obtenir la liste des livres non achetés par le client.
-     * @param livres Les livres de la librairie.
-     * @return La liste des livres non achetés par le client.
+     * Obtenir la liste des livres non achetés et non mis dans le panier par le client.
+     * @param livres Les livres selectionnés.
+     * @return La liste des livres non achetés et non mis dans le panier par le client.
      */
-    public List<Livre> getLivresNonAchetesParClient(List<Livre> livres) {
+    public List<Livre> getLivresNonAchetes(List<Livre> livres) {
         List<Livre> livresNonAchetes = new ArrayList<>();
-        
+
         List<Livre> livresAchetes = this.getLivresAchetes();
+        List<Livre> livresDansPanier = this.getPanier().getLivres();
         for (Livre livre: livres) {
-            if (!livresAchetes.contains(livre)) {
+            if (!livresAchetes.contains(livre) && !livresDansPanier.contains(livre)) {
                 livresNonAchetes.add(livre);
             }
         }

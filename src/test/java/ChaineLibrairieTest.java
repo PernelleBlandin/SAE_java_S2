@@ -289,13 +289,13 @@ public class ChaineLibrairieTest {
         List<Livre> recommendationsClient1 = new ArrayList<>(Arrays.asList(this.livre4, this.livre1, this.livre3, this.livre2, this.livre5));
         assertEquals(recommendationsClient1, chaineLibrairie.onVousRecommande(this.client1));
 
-        List<Livre> recommendationsClient2 = new ArrayList<>(Arrays.asList(this.livre3, this.livre5, this.livre1, this.livre2));
+        List<Livre> recommendationsClient2 = new ArrayList<>(Arrays.asList(this.livre3, this.livre2, this.livre5, this.livre1));
         assertEquals(recommendationsClient2, chaineLibrairie.onVousRecommande(this.client2));
         
-        List<Livre> recommendationsClient3 = new ArrayList<>(Arrays.asList(this.livre1, this.livre5));
+        List<Livre> recommendationsClient3 = new ArrayList<>(Arrays.asList(this.livre5, this.livre1));
         assertEquals(recommendationsClient3, chaineLibrairie.onVousRecommande(this.client3));
 
-        List<Livre> recommendationsClient4 = new ArrayList<>(Arrays.asList(this.livre3, this.livre4, this.livre1, this.livre5));
+        List<Livre> recommendationsClient4 = new ArrayList<>(Arrays.asList(this.livre4, this.livre3, this.livre1, this.livre5));
         assertEquals(recommendationsClient4, chaineLibrairie.onVousRecommande(this.client4));
 
         List<Livre> recommendationsClient5 = new ArrayList<>(Arrays.asList(this.livre4, this.livre3, this.livre2, this.livre5));

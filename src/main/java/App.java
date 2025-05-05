@@ -141,6 +141,10 @@ public class App {
                     this.connexionVendeur();
                     break;
                 }
+                case "a": {
+                    this.connexionAdministrateur();
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -407,7 +411,7 @@ public class App {
         this.menuVendeur(vendeur);
     }
 
-
+    //Menu Vendeur
     public void menuVendeur(Vendeur vendeur) {
         boolean finCommande = false;
         while (!finCommande) {
@@ -441,6 +445,12 @@ public class App {
 
         }
 
+
+    //Connexion Administrateur
+    public void connexionAdministrateur(){
+        Administrateur admin = this.chaineLibrairie.trouverAdministrateur("Moyen", "Thanos");
+        this.menuAdministrateur(admin);
+    }
 
     // Menu Administrateur
 

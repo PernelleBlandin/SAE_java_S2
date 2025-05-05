@@ -137,12 +137,6 @@ public class ChaineLibrairie {
         return null;
     }
 
-    public Administrateur trouverAdministrateur(String nom, String prenom) {
-            if (this.admin.getNom().equals(nom) && this.admin.getPrenom().equals(prenom)) {
-                return admin;
-            }
-        return null;
-    }
 
     /**
      * Rechercher un livre selon une recherche données.

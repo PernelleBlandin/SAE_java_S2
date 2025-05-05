@@ -35,13 +35,19 @@ public class Vendeur extends Personnel {
         
     }
 
-    public void transfererLivre(Livre livre, Magasin magasin){
+    public void transfererLivre(Livre livre, Magasin magasinVendeur, Magasin magasinDestination, int qte){
         //fct verifDispo ->Emrecan
-        // a verifier prendre magasin a et enlever qte dans magasin b (faire attention qu'il n'y ait pas de solde null et donc qu'il y aait assez en stock) 
+        //Mettre à jour la quantité disponible d'un livre
+        //Vérifier la disponibilité d'un livre dans une librairie. 
+        // a verifier prendre magasin a et enlever qte dans magasin b (faire attention qu'il n'y ait pas de solde null et donc qu'il y ait assez en stock) 
+        List<Posseder> possessionsMagasin =  magasinVendeur.getPossessions();
+        if (possessionsMagasin.contains(livre))
+            {livreQte= possessionsMagasin.getQuantite();
+            if (qte>){
+            
+        }}
+
 
     }
 
-    public void gererStock(){
-        
-    }
 }

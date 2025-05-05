@@ -415,11 +415,11 @@ public class App {
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
             this.afficherTexte("A : Ajouter livre");
-            this.afficherTexte("S: Accès stock magasins");
+            this.afficherTexte("S : Accès stock magasins");
             this.afficherTexte("M : Modifications stock magasin");
-            this.afficherTexte("C : Passeer commande client");
+            this.afficherTexte("C : Passer commande client");
             this.afficherTexte("T : Transférer Livre stock");
-            this.afficherTexte("Q: Retour");
+            this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
 
             String commande = this.obtenirEntreeUtilisateur();

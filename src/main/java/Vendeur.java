@@ -27,4 +27,14 @@ public class Vendeur extends Personne {
     public void setMagasin(Magasin magasin) {
         this.magasin = magasin;
     }
+
+    public void ajouteLivreChaineLib(){}
+
+    public void majStock(){}
+
+    public void accesStock(){}
+
+    public void passerCommande(){}
+
+    public void transfertLivre(){}
 }

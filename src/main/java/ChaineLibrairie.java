@@ -12,6 +12,7 @@ public class ChaineLibrairie {
     private List<Vendeur> vendeurs;
     //private List<Personnel> personnels;
     private List<Magasin> magasins;
+    private Administrateur admin;
 
     /**
      * Intiailiser la chaîne de librairie.
@@ -22,6 +23,7 @@ public class ChaineLibrairie {
         this.vendeurs = new ArrayList<>();
         //this.personnels = new ArrayList<>();
         this.magasins = new ArrayList<>();
+        this.admin = admin;
     }
 
     /**
@@ -62,6 +64,14 @@ public class ChaineLibrairie {
      */
     public List<Magasin> getMagasins() {
         return this.magasins;
+    }
+
+    /**
+     * Obtenir les informations de l'administrateur.
+     * @return Les informations de l'administrateur.
+     */
+    public Administrateur getAdministrateur() {
+        return this.admin;
     }
 
     /**
@@ -123,6 +133,13 @@ public class ChaineLibrairie {
                 return vendeur;
             }
         }
+        return null;
+    }
+
+    public Administrateur trouverAdministrateur(String nom, String prenom) {
+            if (this.admin.getNom().equals(nom) && this.admin.getPrenom().equals(prenom)) {
+                return admin;
+            }
         return null;
     }
 

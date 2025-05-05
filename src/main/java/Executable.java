@@ -180,6 +180,9 @@ public class Executable {
 
         App app = new App(chaineLibrairie);
         app.run();
+
+        //Administrateur
+        Administrateur admin = new Administrateur(0, "Moyen", "Thanos", "24 rue du Bifröst", "77 777", "Valhalla");
     }
 
     

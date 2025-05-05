@@ -441,6 +441,51 @@ public class App {
 
         }
 
+
+    // Menu Administrateur
+
+    public void menuAdministrateur(Administrateur administrateur) {
+        boolean finCommande = false;
+        while (!finCommande) {
+
+            this.afficherTitre(String.format("Menu Administrateur - %s", administrateur.toString()));
+            this.afficherTexte("C : Création compte vendeur");
+            this.afficherTexte("M : Ajout magasin");
+            this.afficherTexte("S : Modification stock global");
+            this.afficherTexte("V : Statistique de vente");
+            this.afficherTexte("Q : Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirEntreeUtilisateur();
+            switch (commande) {
+                /*case "C": {
+                *créer un compte vendeur et le rattacher à un magasin
+                }*/
+
+                /*case "M" : {
+                *ajouter une nouvelle boutique appartenant à la chaîne de librairie
+                } 
+                */
+
+                /*case "S": {
+                 * 
+                } */
+               /*case "V": {
+                * accéder aux statistique de vente
+               } */
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+            }
+
+        }
+
     // Panier Client
 
     /**

@@ -2,7 +2,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -150,8 +149,8 @@ public class Client extends Personne {
      * Obtenir la liste des livres achetés et mis dans le panier par un client.
      * @return La liste des livres achetés et mis dans le panier par ce client.
      */
-    public Set<Livre> getLivresAchetes() {
-        Set<Livre> livresAchetes = new HashSet<>();
+    public List<Livre> getLivresAchetes() {
+        List<Livre> livresAchetes = new ArrayList<>();
         List<DetailCommande> detailCommandesClient = this.getDetailCommandes();
         for (DetailCommande detailCommande: detailCommandesClient) {
             livresAchetes.add(detailCommande.getLivre());
@@ -160,29 +159,33 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
-     * @return Un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
+     * Obtenir la liste des livres non achetés par le client.
+     * @param livres Les livres de la librairie.
+     * @return La liste des livres non achetés par le client.
      */
-    public HashMap<String, Integer> getClassificationsOccurence() {
-        List<Commande> commandes = this.getCommandes();
-        if (commandes.size() == 0) return new HashMap<>();
-
-        HashMap<String, Integer> classificationsOccurance = new HashMap<>();
-        List<DetailCommande> detailCommandes = this.getDetailCommandes();
-        for (DetailCommande detailCommande: detailCommandes) {
-            Livre livreCommande = detailCommande.getLivre();
-
-            List<String> classifications = livreCommande.getClassifications();
-            for (String classification: classifications) {
-                if (classificationsOccurance.get(classification) == null) {
-                    classificationsOccurance.put(classification, 1);
-                } else {
-                    Integer occuranceActuelle = classificationsOccurance.get(classification);
-                    classificationsOccurance.put(classification, occuranceActuelle + 1);
-                }
+    public List<Livre> getLivresNonAchetesParClient(List<Livre> livres) {
+        List<Livre> livresNonAchetes = new ArrayList<>();
+        
+        List<Livre> livresAchetes = this.getLivresAchetes();
+        for (Livre livre: livres) {
+            if (!livresAchetes.contains(livre)) {
+                livresNonAchetes.add(livre);
             }
         }
-        return classificationsOccurance;
+        return livresNonAchetes;
+    }
+
+    /**
+     * Obtenir l'ensemble des classifications des achats du client.
+     * @return L'ensemble des classifications des achats du client.
+     */
+    public Set<String> getClassifications() {
+        Set<String> classificationsClient = new HashSet<>();
+        List<Livre> livresAchetes = this.getLivresAchetes();
+        for (Livre livre: livresAchetes) {
+            classificationsClient.addAll(livre.getClassifications());
+        }
+        return classificationsClient;
     }
 
     /**

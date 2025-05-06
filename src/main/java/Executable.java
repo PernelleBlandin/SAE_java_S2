@@ -124,6 +124,8 @@ public class Executable {
         );
         chaineLibrairie.ajouterLivre(livre7);
 
+        //Livre 
+
         // Magasins
         List<Posseder> listePosessions = new ArrayList<>();
         Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
@@ -178,7 +180,13 @@ public class Executable {
         Client client6 = new Client(6, "Petit", "Louis", "98 route du Musée", "67000", "Strasbourg", magasinParis, new ArrayList<>(Arrays.asList(commande6)), panier6);
         chaineLibrairie.ajouterClient(client6);
 
+        //Vendeur
+        Vendeur vendeur1 = new Vendeur(1, "Grande", "Marie", "82 rue de Tours", "37130", "Cinq-Mars-La-Pile", magasinOrleans);
+        chaineLibrairie.ajouterVendeur(vendeur1);
+
         App app = new App(chaineLibrairie);
         app.run();
     }
+
+    
 }

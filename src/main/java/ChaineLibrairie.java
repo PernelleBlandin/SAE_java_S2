@@ -8,7 +8,8 @@ import java.util.HashMap;
 public class ChaineLibrairie {
     private List<Livre> livres;
     private List<Client> clients;
-    private List<Personnel> personnels;
+    private List<Vendeur> vendeurs;
+    //private List<Personnel> personnels;
     private List<Magasin> magasins;
 
     /**
@@ -17,7 +18,8 @@ public class ChaineLibrairie {
     public ChaineLibrairie() {
         this.livres = new ArrayList<>();
         this.clients = new ArrayList<>();
-        this.personnels = new ArrayList<>();
+        this.vendeurs = new ArrayList<>();
+        //this.personnels = new ArrayList<>();
         this.magasins = new ArrayList<>();
     }
 
@@ -36,14 +38,22 @@ public class ChaineLibrairie {
     public List<Client> getClients() {
         return this.clients;
     }
+    
+    /**
+     * Obtenir la liste des vendeurs de la chaîne de librairie.
+     * @return La liste des vendeurs de la chaîne de librairie.
+     */
+    public List<Vendeur> getVendeurs() {
+        return this.vendeurs;
+    }
 
     /**
      * Obtenir la liste des personnels de la chaîne de librairie.
      * @return La liste des personnels de la chaîne de librairie.
      */
-    public List<Personnel> getPersonnels() {
+    /*public List<Personnel> getPersonnels() {
         return this.personnels;
-    }
+    }*/
 
     /**
      * Obtenir la liste des magasins de la chaîne de librairie.
@@ -70,6 +80,14 @@ public class ChaineLibrairie {
     }
 
     /**
+     * Ajouter un vendeur à la chaîne de librairie.
+     * @param vendeur Le vendeur à ajouter.
+     */
+    public void ajouterVendeur(Vendeur vendeur){
+        this.vendeurs.add(vendeur);
+    }
+
+    /**
      * Ajouter un magasin à la chaîne de librairie.
      * @param magasin Le magasin à ajouter.
      */
@@ -92,6 +110,21 @@ public class ChaineLibrairie {
             String prenomClient = client.getPrenom().toLowerCase();
             if (nomClient.equals(nom) && prenomClient.equals(prenom)) {
                 return client;
+            }
+        }
+        return null;
+    }
+
+    /*
+    * Touver un vendeur à partir de son nom et de son prenom     
+    * @param nom Le nom du vendeur.
+    * @param prenom Le prénom du vendeur.
+    * @return le vendeur trouvé, ou null si aucun n'a été trouvé.s
+    */
+    public Vendeur trouverVendeur(String nom, String prenom) {
+        for (Vendeur vendeur: this.vendeurs) {
+            if (vendeur.getNom().equals(nom) && vendeur.getPrenom().equals(prenom)) {
+                return vendeur;
             }
         }
         return null;

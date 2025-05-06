@@ -274,11 +274,7 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        // Voir aussi si on choisi le magasin à ce moment-là
         Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
-
-        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
-        // Faire un avertissement si panier avec des élements et changement de magasin
 
         this.client(client);
     }
@@ -456,7 +452,7 @@ public class App {
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
             if (detailCommandes.size() > 0) {
-                List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
+                List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
                 for (String ligne: detailCommandeTextuel) {
                     this.afficherTexte(ligne);
                 }
@@ -681,7 +677,7 @@ public class App {
         while (!finCommande) {
             this.afficherTitre(commande.toString());
 
-            List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
+            List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
             for (String ligne: detailCommandeTextuel) {
                 this.afficherTexte(ligne);
             }

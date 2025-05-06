@@ -282,7 +282,7 @@ public class ChaineLibrairie {
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */
-    public List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
+    public static List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
         if (detailCommandes.size() == 0) return new ArrayList<>();
 
         double totalCommande = 0.00;

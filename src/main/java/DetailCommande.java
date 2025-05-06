@@ -36,6 +36,14 @@ public class DetailCommande {
     }
 
     /**
+     * Définir le numéro de la ligne du détail de la commande. 
+     * @param numLigne Le nouveau numéro de la ligne.
+     */
+    public void setNumLigne(int numLigne) {
+        this.numLigne = numLigne;
+    }
+
+    /**
      * Obtenir la quantité du livre du livre commandé. 
      * @return La quantité du livre.
      */

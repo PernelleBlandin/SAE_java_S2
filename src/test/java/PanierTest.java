@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
@@ -85,15 +86,110 @@ public class PanierTest {
     }
 
     @Test
+    public void testRetirerQuantiteLivre() {
+        // -- Panier 1
+        DetailCommande detailCommande1 = new DetailCommande(this.livre1, 1, 1, 9.99);
+        Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
+
+        List<DetailCommande> listeDetailCommandes1 = panier1.getDetailCommandes();
+        assertEquals(1, listeDetailCommandes1.size());
+        assertEquals(1, detailCommande1.getQuantite());
+        
+        // Livre non présent dans panier
+        // TODO: Exception
+        panier1.retirerQuantiteLivre(this.livre2, 3);
+        assertEquals(1, listeDetailCommandes1.size());
+        assertEquals(1, detailCommande1.getQuantite());
+
+        panier1.retirerQuantiteLivre(this.livre1, 1);
+        assertEquals(0, listeDetailCommandes1.size());
+
+        // -- Panier 2
+        DetailCommande detailCommande2 = new DetailCommande(this.livre1, 1, 1, 9.99);
+        Panier panier2 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande2)));
+
+        List<DetailCommande> listeDetailCommandes2 = panier2.getDetailCommandes();
+        assertEquals(1, listeDetailCommandes2.size());
+        assertEquals(1, detailCommande2.getQuantite());
+
+        // Quantité trop importante 
+        // TODO: Exception ?
+        panier1.retirerQuantiteLivre(this.livre1, 3);
+        assertEquals(0, listeDetailCommandes1.size());
+
+        // -- Panier 3
+        DetailCommande detailCommande3 = new DetailCommande(this.livre1, 1, 1, 9.99);
+        DetailCommande detailCommande4 = new DetailCommande(this.livre2, 2, 1, 9.99);
+        DetailCommande detailCommande5 = new DetailCommande(this.livre3, 3, 1, 9.99);
+        Panier panier3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande3, detailCommande4, detailCommande5)));
+        
+        List<DetailCommande> listeDetailCommandes3 = panier3.getDetailCommandes();
+        assertEquals(3, listeDetailCommandes3.size());
+
+        assertEquals(1, detailCommande3.getNumLigne());
+        assertEquals(2, detailCommande4.getNumLigne());
+        assertEquals(3, detailCommande5.getNumLigne());
+
+        panier3.retirerQuantiteLivre(this.livre2, 1);
+
+        assertEquals(2, listeDetailCommandes3.size());
+
+        assertEquals(1, detailCommande3.getNumLigne());
+        assertEquals(2, detailCommande5.getNumLigne());
+        assertFalse(listeDetailCommandes3.contains(detailCommande4));
+
+        // -- Panier 4
+        detailCommande3 = new DetailCommande(this.livre1, 1, 1, 9.99);
+        detailCommande4 = new DetailCommande(this.livre2, 2, 1, 9.99);
+        detailCommande5 = new DetailCommande(this.livre3, 3, 1, 9.99);
+        Panier panier4 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande3, detailCommande4, detailCommande5)));
+        
+        List<DetailCommande> listeDetailCommandes4 = panier4.getDetailCommandes();
+        assertEquals(3, listeDetailCommandes4.size());
+
+        assertEquals(1, detailCommande3.getNumLigne());
+        assertEquals(2, detailCommande4.getNumLigne());
+        assertEquals(3, detailCommande5.getNumLigne());
+
+        panier4.retirerQuantiteLivre(this.livre3, 1);
+
+        assertEquals(2, listeDetailCommandes4.size());
+
+        assertEquals(1, detailCommande3.getNumLigne());
+        assertEquals(2, detailCommande4.getNumLigne());
+        assertFalse(listeDetailCommandes4.contains(detailCommande5));
+    }
+
+    @Test
+    public void testAjouterLivre() {
+        Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande1)));
+        DetailCommande detailCommande1 = panier1.getDetailCommandeLivre(this.livre1);
+        assertEquals(1, panier1.getDetailCommandes().size());
+        assertEquals(1, detailCommande1.getQuantite());
+        assertEquals(this.livre1, detailCommande1.getLivre());
+
+        panier1.ajouterLivre(this.livre1);
+        assertEquals(1, panier1.getDetailCommandes().size());
+        assertEquals(2, detailCommande1.getQuantite());
+        assertEquals(this.livre1, detailCommande1.getLivre());
+
+        panier1.ajouterLivre(this.livre2);
+        assertEquals(2, panier1.getDetailCommandes().size());
+        DetailCommande detailCommande2 = panier1.getDetailCommandeLivre(this.livre2);
+        assertEquals(1, detailCommande2.getQuantite());
+        assertEquals(this.livre2, detailCommande2.getLivre());
+    }
+
+    @Test
     public void testsViderPanier() {
         List<DetailCommande> detailCommandesVide = new ArrayList<>();
 
-        Panier panier1Copie = new Panier(this.panierClient1);
+        Panier panier1Copie = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande1)));
         assertEquals(new ArrayList<>(Arrays.asList(this.detailCommande1)), panier1Copie.getDetailCommandes());
         panier1Copie.viderPanier();
         assertEquals(detailCommandesVide, panier1Copie.getDetailCommandes());
 
-        Panier panier3Copie = new Panier(this.panierClient3);
+        Panier panier3Copie = new Panier(this.magasinParis);
         assertEquals(detailCommandesVide, panier3Copie.getDetailCommandes());
         panier3Copie.viderPanier();
         assertEquals(detailCommandesVide, panier3Copie.getDetailCommandes());

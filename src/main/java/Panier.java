@@ -26,15 +26,6 @@ public class Panier {
     }
 
     /**
-     * Créer une copie du panier.
-     * @param panier Un panier.
-     */
-    public Panier(Panier panier) {
-        this.magasin = panier.getMagasin();
-        this.detailCommandes = panier.getDetailCommandes();
-    }
-
-    /**
      * Récupérer le magasin lié au panier.
      * @return Le magasin lié au panier.
      */
@@ -103,11 +94,28 @@ public class Panier {
         if (detailCommandeLivre != null) {
             int quantiteLivrePanier = detailCommandeLivre.getQuantite();
             if (quantite >= quantiteLivrePanier) {
-                // TODO: Recalculer les ids des numéros de lignes
+                int index = this.detailCommandes.indexOf(detailCommandeLivre);
+
                 this.detailCommandes.remove(detailCommandeLivre);
+                if (index != this.detailCommandes.size()) {
+                    this.recalculateNumLignes(index);
+                }
             } else {
                 detailCommandeLivre.setQuantite(quantiteLivrePanier - quantite);
             }
+        }
+        // TODO: Exception
+    }
+
+    /**
+     * Recalculer les numéros de lignes du détail commandes.
+     * @param startIndex L'index de début.
+     */
+    private void recalculateNumLignes(int startIndex) {
+        List<DetailCommande> detailCommandes = this.getDetailCommandes();
+        for (int i = startIndex; i < detailCommandes.size(); i++) {
+            DetailCommande detailCommande = detailCommandes.get(i);
+            detailCommande.setNumLigne(i + 1);
         }
     }
 

@@ -93,6 +93,7 @@ public class Panier {
         if (detailCommandeLivre != null) {
             int quantiteLivrePanier = detailCommandeLivre.getQuantite();
             if (quantite >= quantiteLivrePanier) {
+                // TODO: Recalculer les ids des numéros de lignes
                 this.detailCommandes.remove(detailCommandeLivre);
             } else {
                 detailCommandeLivre.setQuantite(quantiteLivrePanier - quantite);

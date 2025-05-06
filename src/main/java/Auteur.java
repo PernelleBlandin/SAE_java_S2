@@ -3,8 +3,6 @@ public class Auteur extends Identifiable {
     private Integer anneenais;
     private Integer anneedeces;
 
-    // TODO: Voir si on laisse les ids
-
     /**
      * Créer un auteur.
      * @param id Son identifiant.

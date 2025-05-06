@@ -17,7 +17,7 @@ public class Vendeur extends Personne {
         return this.magasin;
     }
 
-        /**
+    /**
      * Définir le magasin pour un vendeur.
      * @param magasin Le nouveau magasin du client.
      */

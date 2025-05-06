@@ -11,6 +11,7 @@ public class ResultatSelection<T> {
      */
     public ResultatSelection() {
         this.nbPage = 0;
+        this.element = null;
     }
 
     /**

@@ -128,6 +128,7 @@ public class Livre {
 
     /**
      * Indique si un livre est inclu dans une recherche donnée.
+     * Aide : http://w3schools.com/java/ref_string_split.asp
      * @param recherche Une recherche utilisateur.
      * @return true si le livre est inclu dans la recherche donnée, sinon false.
      */
@@ -135,9 +136,15 @@ public class Livre {
         String titreString = this.getTitre().toLowerCase();
         String auteursString = this.joinNomAuteurs().toLowerCase();
         String editeursString = this.joinNomEditeurs().toLowerCase();
-        String classificationsString = this.joinNomEditeurs().toLowerCase();
+        String classificationsString = this.joinClassifications().toLowerCase();
 
-        return titreString.contains(recherche) || auteursString.contains(recherche) || editeursString.contains(recherche) || classificationsString.contains(recherche);
+        String[] mots = recherche.toLowerCase().split(" ");
+        for (String mot: mots) {
+            if (!(titreString.contains(mot) || auteursString.contains(mot) || editeursString.contains(mot) || classificationsString.contains(mot))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -147,7 +154,7 @@ public class Livre {
      */
     @Override
     public String toString() {
-        return String.format("%s | par %s | %.2f€", this.getTitre(), this.joinNomAuteurs(), this.getPrix());
+        return String.format("%s | par %s", this.getTitre(), this.joinNomAuteurs());
     }
 
     /**

@@ -3,7 +3,6 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 
 /** La chaîne de librairie */
 public class ChaineLibrairie {
@@ -103,8 +102,13 @@ public class ChaineLibrairie {
      * @return Le client trouvé, ou null si aucun n'a été trouvé.s
      */
     public Client trouverClient(String nom, String prenom) {
+        nom = nom.toLowerCase();
+        prenom = prenom.toLowerCase();
+
         for (Client client: this.clients) {
-            if (client.getNom().equals(nom) && client.getPrenom().equals(prenom)) {
+            String nomClient = client.getNom().toLowerCase();
+            String prenomClient = client.getPrenom().toLowerCase();
+            if (nomClient.equals(nom) && prenomClient.equals(prenom)) {
                 return client;
             }
         }
@@ -162,6 +166,9 @@ public class ChaineLibrairie {
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
     public int getNombreVentesLivre(Livre livre) {
+        // TODO: Voir pour ajouter exception
+        if (!this.livres.contains(livre)) return 0;
+
         int nbVentes = 0;
         List<Commande> commandes = this.getCommandes();
         for (Commande commande: commandes) {
@@ -189,8 +196,8 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
-     * On vérifie d'abord suivant les autres clients. Puis à defaut, les livres ayant les mêmes genres que ceux achetés par ce client, avec un tri selon le nombre de ventes nationals;
-     * Enfin, s'il y a toujours pas de résultat, on renvoie le classement des livres les plus vendus.
+     * On vérifie d'abord suivant les autres clients, puis selon les classifications similaires du client par rapport à ces dernieres commandes.
+     * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex aequo.
      * @param client Le client.
      * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
      */
@@ -201,106 +208,72 @@ public class ChaineLibrairie {
         List<Commande> commandesClient = client.getCommandes();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
             return this.getLivresTriesParVentes(this.livres);
-        } 
+        }
 
         // -- Recommendations par rapport aux autres clients
 
-        // Aide : https://www.w3schools.com/java/java_hashmap.asp
-        HashMap<Livre, Integer> livresRecommandes = new HashMap<>();
+        // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
+        List<Livre> livresNonAchetesParClient = this.getLivresTriesParVentes(client.getLivresNonAchetes(this.livres));
+        HashMap<Livre, Integer> recommendationsLivres = new HashMap<>();
         for (Client clientQuelconque: this.clients) {
             // On ne regarde pas le client lui-même.
             if (client.equals(clientQuelconque)) continue;
    
-            int pourcentageLivresCommuns = this.getPourcentageLivresCommuns(client, clientQuelconque);
-            // Si le pourcentage = 100, cela veut dire qu'ils ont déjà achetés les mêmes livres, dont pas la peine de vérifier davantage
-            if (pourcentageLivresCommuns > 0 && pourcentageLivresCommuns < 100) {
-                Set<Livre> livresNonPossedes = this.getLivresClient2NonAchetesParClient1(client, clientQuelconque);
-                for (Livre livre: livresNonPossedes) {
-                    Integer curLivreRecommendations = livresRecommandes.get(livre);
-                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
-
-                    curLivreRecommendations += pourcentageLivresCommuns;
-                    livresRecommandes.put(livre, curLivreRecommendations);
-                }
-            }
-        }
-
-        // -- Suivant les thèmes des livres précédents achetés + leur nombre de ventes
-        if (livresRecommandes.size() == 0) {
-            Set<Livre> livresAchetes = client.getLivresAchetes();
-            HashMap<String, Integer> classificationsOccurenceClient = client.getClassificationsOccurence();
-
-            List<Livre> listeLivre = this.getLivres();
-            for (Livre livre: listeLivre) {
-                // On ne mets pas en avant les livres que le client a déjà acheté
-                if (!livresAchetes.contains(livre)) {
-                    int occurenceClassificationLivreMax = 0;
-                    List<String> listeClassifications = livre.getClassifications();
-                    for (String classification: listeClassifications) {
-                        Integer occurenceClassification = classificationsOccurenceClient.get(classification);
-                        if (occurenceClassification != null) {
-                            if (occurenceClassification > occurenceClassificationLivreMax) {
-                                occurenceClassificationLivreMax = occurenceClassification;
-                            }
-                        }
-                    }
-    
-                    if (occurenceClassificationLivreMax != 0) {
-                        livresRecommandes.put(livre, occurenceClassificationLivreMax);
-                    }
-                }
-            }
-        }
-
-        // Si livres en commun avec d'autres clients ou thèmes du livre
-        if (livresRecommandes.size() >= 1) {
-            List<Livre> listeLivresCopie = new ArrayList<>(this.getLivres());
-            ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(livresRecommandes);
-            Collections.sort(listeLivresCopie, comparatorRecommendation);
-
-            return listeLivresCopie;
-        }
-
-        // -- Valeur de secours
-        return this.getLivresTriesParVentes(this.livres);
-    }
-
-    /**
-     * Obtenir le pourcentage de livres communs entre deux clients.
-     * @param client1 Le client 1.
-     * @param client2 Le client 2.
-     * @return Le pourcentage (sous forme d'entier) de livres en communs entre les deux clients.
-     */
-    public int getPourcentageLivresCommuns(Client client1, Client client2) {
-        Set<Livre> livresClient2 = client2.getLivresAchetes();
-        if (livresClient2.size() == 0) return 0;
+            if (this.ontLivresEnCommun(client, clientQuelconque)) {
+                List<Livre> livresAchetesParAutreClient = clientQuelconque.getLivresAchetes();
+                for (DetailCommande detailCommande: clientQuelconque.getDetailCommandes()) {
+                    Livre livre = detailCommande.getLivre();
+                    if (livresNonAchetesParClient.contains(livre)) {
+                        Integer curLivreRecommendations = recommendationsLivres.get(livre);
+                        if (curLivreRecommendations == null) curLivreRecommendations = 0;
         
-        int nbLivreEnCommun = 0;
-        Set<Livre> livresClient1 = client1.getLivresAchetes();
-        for (Livre livre: livresClient2) {
-            if (livresClient1.contains(livre)) nbLivreEnCommun++;
+                        if (livresAchetesParAutreClient.contains(livre)) {
+                            curLivreRecommendations += 3;
+                        } else {
+                            curLivreRecommendations += 2;
+                        }
+                        recommendationsLivres.put(livre, curLivreRecommendations);
+                    }
+                }
+            }
         }
 
-        return (nbLivreEnCommun / livresClient2.size()) * 100;
+        // Recommendations suivant classifications similaires
+
+        Set<String> classificationsClient = client.getClassifications();
+        for (Livre livre: livresNonAchetesParClient) {
+            for (String classification: livre.getClassifications()) {
+                if (classificationsClient.contains(classification)) {
+                    Integer curLivreRecommendations = recommendationsLivres.get(livre);
+                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
+    
+                    curLivreRecommendations += 1;
+                    recommendationsLivres.put(livre, curLivreRecommendations);
+                    break;
+                }
+            }
+        }
+
+        ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(recommendationsLivres);
+        Collections.sort(livresNonAchetesParClient, comparatorRecommendation);
+        return livresNonAchetesParClient;
     }
 
     /**
-     * Obtenir l'ensemble des livres d'un client B non acheté par un client A.
-     * @param client1 Le premier client.
-     * @param client2 Le deuxième client.
-     * @return Les livres du client B non acheté par le client A.
+     * Indique si deux clients ont des livres en commun, dans leur commande et/ou panier.
+     * @param client1 Un client 1.
+     * @param client2 Un client 2.
+     * @return Vrai s'ils ont des livres en communs, sinon false.
      */
-    public Set<Livre> getLivresClient2NonAchetesParClient1(Client client1, Client client2) {
-        Set<Livre> livresClient1 = client1.getLivresAchetes();
-        Set<Livre> livresClient2 = client2.getLivresAchetes();
-
-        Set<Livre> livresNonPossedesClient1 = new HashSet<>();
-        for (Livre livre: livresClient2) {
-            if (!livresClient1.contains(livre)) {
-                livresNonPossedesClient1.add(livre);
+    public boolean ontLivresEnCommun(Client client1, Client client2) {
+        for (DetailCommande detailCommande1: client1.getDetailCommandes()) {
+            for (DetailCommande detailCommande2: client2.getDetailCommandes()) {
+                if (detailCommande1.getLivre().equals(detailCommande2.getLivre())) {
+                    return true;
+                }
             }
         }
-        return livresNonPossedesClient1;
+        return false;
     }
 
     /**
@@ -309,7 +282,7 @@ public class ChaineLibrairie {
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */
-    public List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
+    public static List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
         if (detailCommandes.size() == 0) return new ArrayList<>();
 
         double totalCommande = 0.00;

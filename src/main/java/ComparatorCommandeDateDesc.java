@@ -5,6 +5,6 @@ public class ComparatorCommandeDateDesc implements Comparator<Commande> {
 
     @Override
     public int compare(Commande commande1, Commande commande2) {
-        return commande1.getDate().compareTo(commande2.getDate());
+        return commande2.getDate().compareTo(commande1.getDate());
     }
 }

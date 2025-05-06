@@ -26,6 +26,15 @@ public class Panier {
     }
 
     /**
+     * Créer une copie du panier.
+     * @param panier Un panier.
+     */
+    public Panier(Panier panier) {
+        this.magasin = panier.getMagasin();
+        this.detailCommandes = panier.getDetailCommandes();
+    }
+
+    /**
      * Récupérer le magasin lié au panier.
      * @return Le magasin lié au panier.
      */
@@ -64,6 +73,7 @@ public class Panier {
                 return detailCommande;
             }
         }
+        // TODO: Exception
         return null;
     }
 

@@ -181,7 +181,7 @@ public class Executable {
         chaineLibrairie.ajouterClient(client6);
 
         //Vendeur
-        Vendeur vendeur1 = new Vendeur(1, "Grande", "Marie", "82 rue de Tours", "37130", "Cinq-Mars-La-Pile", magasinOrleans);
+        Vendeur vendeur1 = new Vendeur(1, "Grande", "Marie", magasinOrleans);
         chaineLibrairie.ajouterVendeur(vendeur1);
 
         App app = new App(chaineLibrairie);

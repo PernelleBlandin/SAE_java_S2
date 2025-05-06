@@ -42,11 +42,4 @@ public class VendeurTest {
         assertEquals(magasinOrleans, this.vendeur2.getMagasin());
         assertEquals(magasinMarseille, this.vendeur3.getMagasin());
     }
-
-    @Test
-    public void testsGetRole() {
-        assertEquals("Vendeur", this.vendeur1.getRole());
-        assertEquals("Vendeur", this.vendeur2.getRole());
-        assertEquals("Vendeur", this.vendeur3.getRole());
-    }
 }

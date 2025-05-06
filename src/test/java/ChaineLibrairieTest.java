@@ -301,4 +301,20 @@ public class ChaineLibrairieTest {
         List<Livre> recommendationsClient5 = new ArrayList<>(Arrays.asList(this.livre4, this.livre3, this.livre2, this.livre5));
         assertEquals(recommendationsClient5, chaineLibrairie.onVousRecommande(this.client5));
     }
+
+    @Test
+    public void testsGenererCorpsCommandeTextuel() {
+        List<DetailCommande> listeCommandesVides = new ArrayList<>();
+        assertEquals(new ArrayList<>(), ChaineLibrairie.genererCorpsCommandeTextuel(listeCommandesVides, 100));
+
+        List<DetailCommande> detailCommandesC1 = commande1.getDetailCommandes();
+        List<String> listeAttendus = new ArrayList<>(Arrays.asList(
+            "       ISBN                               Titre                              Qte    Prix   Total",
+            " 1 9780768939866 Angélique                                                     2  11,99€  23,98€",
+            "                                                                                         -------",
+            "                                                                                          23,98€"
+
+        ));
+        assertEquals(listeAttendus, ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandesC1, 100));
+    }
 }

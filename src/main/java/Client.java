@@ -2,7 +2,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,18 +38,35 @@ public class Client extends Personne {
     }
 
     /**
-     * Créer un client sans panier rempli.
-     * @param id L'identifiant du client.
-     * @param nom Le nom du prénom du client.
-     * @param prenom Le prénom du client.
-     * @param adresse L'adresse du client.
-     * @param codePostal Le code postal du client.
-     * @param ville La ville du client.
-     * @param magasin Le magasin du client.
-     * @param commandes La liste des commandes du client.
+     * Créer une copie d'un client.
+     * @param client Un client.
      */
-    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes) {
-        this(id, nom, prenom, adresse, codePostal, ville, magasin, commandes, new Panier(magasin));
+    public Client(Client client) {
+        this(client.getId(), client.getNom(), client.getPrenom(), client.getAdresse(), client.getCodePostal(), client.getVille(), client.getMagasin(), client.getCommandes(), client.getPanier());
+    }
+
+    /**
+     * Obtenir l'adresse du client.
+     * @return Son adresse.
+     */
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    /**
+     * Obtenir le code postal du client.
+     * @return Son code postal.
+     */
+    public String getCodePostal() {
+        return this.codePostal;
+    }
+
+    /**
+     * Obtenir la ville du client.
+     * @return Sa ville.
+     */
+    public String getVille() {
+        return this.ville;
     }
 
     /**
@@ -120,15 +136,21 @@ public class Client extends Personne {
     /**
      * Commander un livre pour un client.
      * @param modeLivraison Le mode de livraison : M en magasin / C pour la livraison à domicile.
-     * @param detailCommandes Les livres de la commande
+     * @param enLigne O si en ligne, N si la commande a été passée en magasin.
+     * @return true si la commande a été passée, sinon false.
      */
-    public void commander(char modeLivraison, List<DetailCommande> detailCommandes) {
-        // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-        Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), 'O', modeLivraison, panier.getMagasin(), detailCommandes);
-        this.commandes.add(commande);
-        
+    public boolean commander(char modeLivraison, char enLigne) {
         Panier panier = this.getPanier();
-        panier.viderPanier();
+        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+        if (detailCommandes.size() > 0) {
+            // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
+            Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, panier.getMagasin(), detailCommandes);
+            this.commandes.add(commande);
+            
+            panier.viderPanier();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -148,42 +170,53 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir la liste des livres achetés et mis dans le panier par un client.
-     * @return La liste des livres achetés et mis dans le panier par ce client.
+     * Obtenir la liste des livres achetés par un client.
+     * @return La liste des livres achetés par ce client.
      */
-    public Set<Livre> getLivresAchetes() {
-        Set<Livre> livresAchetes = new HashSet<>();
-        List<DetailCommande> detailCommandesClient = this.getDetailCommandes();
-        for (DetailCommande detailCommande: detailCommandesClient) {
-            livresAchetes.add(detailCommande.getLivre());
+    public List<Livre> getLivresAchetes() {
+        List<Livre> livresAchetes = new ArrayList<>();
+
+        for (Commande commande: this.getCommandes()) {
+            List<DetailCommande> detailCommandesClient = commande.getDetailCommandes();
+            for (DetailCommande detailCommande: detailCommandesClient) {
+                Livre livreDetailCommande = detailCommande.getLivre();
+                if (!livresAchetes.contains(livreDetailCommande)) {
+                    livresAchetes.add(detailCommande.getLivre());
+                }
+            }
         }
         return livresAchetes;
     }
 
     /**
-     * Obtenir un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
-     * @return Un dictionnaire avec comme clé une classification et comme valeur le nombre d'occurence de cette classification parmi les commandes et panier du client.
+     * Obtenir la liste des livres non achetés et non mis dans le panier par le client.
+     * @param livres Les livres selectionnés.
+     * @return La liste des livres non achetés et non mis dans le panier par le client.
      */
-    public HashMap<String, Integer> getClassificationsOccurence() {
-        List<Commande> commandes = this.getCommandes();
-        if (commandes.size() == 0) return new HashMap<>();
+    public List<Livre> getLivresNonAchetes(List<Livre> livres) {
+        List<Livre> livresNonAchetes = new ArrayList<>();
 
-        HashMap<String, Integer> classificationsOccurance = new HashMap<>();
-        List<DetailCommande> detailCommandes = this.getDetailCommandes();
-        for (DetailCommande detailCommande: detailCommandes) {
-            Livre livreCommande = detailCommande.getLivre();
-
-            List<String> classifications = livreCommande.getClassifications();
-            for (String classification: classifications) {
-                if (classificationsOccurance.get(classification) == null) {
-                    classificationsOccurance.put(classification, 1);
-                } else {
-                    Integer occuranceActuelle = classificationsOccurance.get(classification);
-                    classificationsOccurance.put(classification, occuranceActuelle + 1);
-                }
+        List<Livre> livresAchetes = this.getLivresAchetes();
+        List<Livre> livresDansPanier = this.getPanier().getLivres();
+        for (Livre livre: livres) {
+            if (!livresAchetes.contains(livre) && !livresDansPanier.contains(livre)) {
+                livresNonAchetes.add(livre);
             }
         }
-        return classificationsOccurance;
+        return livresNonAchetes;
+    }
+
+    /**
+     * Obtenir l'ensemble des classifications des achats du client.
+     * @return L'ensemble des classifications des achats du client.
+     */
+    public Set<String> getClassifications() {
+        Set<String> classificationsClient = new HashSet<>();
+        List<Livre> livresAchetes = this.getLivresAchetes();
+        for (Livre livre: livresAchetes) {
+            classificationsClient.addAll(livre.getClassifications());
+        }
+        return classificationsClient;
     }
 
     /**

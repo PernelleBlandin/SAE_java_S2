@@ -137,6 +137,10 @@ public class App {
                     this.connexionClient();
                     break;
                 }
+                case "v": {
+                    this.connexionVendeur();
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -270,11 +274,7 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        // Voir aussi si on choisi le magasin à ce moment-là
         Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
-
-        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
-        // Faire un avertissement si panier avec des élements et changement de magasin
 
         this.client(client);
     }
@@ -397,6 +397,46 @@ public class App {
         }
     }
 
+    //Connexion Vendeur
+    public void connexionVendeur(){
+        Vendeur vendeur = this.chaineLibrairie.trouverVendeur("Grande", "Marie");
+        this.menuVendeur(vendeur);
+    }
+
+
+    public void menuVendeur(Vendeur vendeur) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            Magasin magasin = vendeur.getMagasin();
+
+            this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
+            this.afficherTexte("A : Ajouter livre");
+            this.afficherTexte("S : Accès stock magasins");
+            this.afficherTexte("M : Modifications stock magasin");
+            this.afficherTexte("C : Passer commande client");
+            this.afficherTexte("T : Transférer Livre stock");
+            this.afficherTexte("Q : Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirEntreeUtilisateur();
+            switch (commande) {
+                /*case "A": {
+                *ajouter un livre avec ses caract dans la liste des possessions du magasin
+
+                }*/
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+            }
+
+        }
+
     // Panier Client
 
     /**
@@ -412,7 +452,7 @@ public class App {
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
             if (detailCommandes.size() > 0) {
-                List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
+                List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
                 for (String ligne: detailCommandeTextuel) {
                     this.afficherTexte(ligne);
                 }
@@ -466,9 +506,9 @@ public class App {
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
-            client.commander(modeLivraison, detailCommandes);
-            System.out.println("Merci pour votre commande !");
-            return true;
+            boolean commandeReussie = client.commander(modeLivraison, 'O');
+            if (commandeReussie) System.out.println("Merci pour votre commande !");
+            return commandeReussie;
         }
 
         return false;
@@ -637,7 +677,7 @@ public class App {
         while (!finCommande) {
             this.afficherTitre(commande.toString());
 
-            List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
+            List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
             for (String ligne: detailCommandeTextuel) {
                 this.afficherTexte(ligne);
             }

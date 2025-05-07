@@ -47,6 +47,22 @@ public class Commande {
     }
 
     /**
+     * Savoir si une commande a été passée en ligne.
+     * @return true si elle a été passée en ligne, sinon false.
+     */
+    public boolean estEnLigne() {
+        return this.enLigne == 'O';
+    }
+
+    /**
+     * Savoir si une commande est en livraison.
+     * @return true si elle est en livraison, sinon false.
+     */
+    public boolean estEnLivraison() {
+        return this.livraison == 'C';
+    }
+
+    /**
      * Obtenir le magasin lié à la commande.
      * @return Le magasin lié à la commande.
      */

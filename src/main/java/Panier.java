@@ -64,6 +64,7 @@ public class Panier {
                 return detailCommande;
             }
         }
+        // TODO: Exception
         return null;
     }
 
@@ -93,10 +94,28 @@ public class Panier {
         if (detailCommandeLivre != null) {
             int quantiteLivrePanier = detailCommandeLivre.getQuantite();
             if (quantite >= quantiteLivrePanier) {
+                int index = this.detailCommandes.indexOf(detailCommandeLivre);
+
                 this.detailCommandes.remove(detailCommandeLivre);
+                if (index != this.detailCommandes.size()) {
+                    this.recalculateNumLignes(index);
+                }
             } else {
                 detailCommandeLivre.setQuantite(quantiteLivrePanier - quantite);
             }
+        }
+        // TODO: Exception
+    }
+
+    /**
+     * Recalculer les numéros de lignes du détail commandes.
+     * @param startIndex L'index de début.
+     */
+    private void recalculateNumLignes(int startIndex) {
+        List<DetailCommande> detailCommandes = this.getDetailCommandes();
+        for (int i = startIndex; i < detailCommandes.size(); i++) {
+            DetailCommande detailCommande = detailCommandes.get(i);
+            detailCommande.setNumLigne(i + 1);
         }
     }
 

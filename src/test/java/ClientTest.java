@@ -63,12 +63,12 @@ public class ClientTest {
     );
 
     // Client 1
-    private DetailCommande detailCommande1 = new DetailCommande(livre1, 1, 2, 7.98);
+    private DetailLivre detailCommande1 = new DetailLivre(livre1, 1, 2, 7.98);
     private Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
     private List<Commande> commandesClient1 = new ArrayList<>(Arrays.asList(commande1));
-    private DetailCommande detailCommande2 = new DetailCommande(livre2, 1, 1, 16.4);
+    private DetailLivre detailCommande2 = new DetailLivre(livre2, 1, 1, 16.4);
 
-    private List<DetailCommande> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
+    private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
     private Panier panierClient1 = new Panier(magasinOrleans, detailCommandesPanierClient1);
     private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1);
 
@@ -78,9 +78,9 @@ public class ClientTest {
     private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2);
 
     // Client 3
-    private DetailCommande detailCommande3 = new DetailCommande(livre3, 2, 4, 11.9);
+    private DetailLivre detailCommande3 = new DetailLivre(livre3, 2, 4, 11.9);
     private Commande commande2 = new Commande(2, Date.valueOf("2021-09-01"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande2, detailCommande3)));
-    private DetailCommande detailCommande4 = new DetailCommande(livre4, 2, 4, 8.99);
+    private DetailLivre detailCommande4 = new DetailLivre(livre4, 2, 4, 8.99);
     private Commande commande3 = new Commande(3, Date.valueOf("2024-09-01"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande4)));
     private List<Commande> commandesClient3 = new ArrayList<>(Arrays.asList(commande2, commande3));
     private Panier panierClient3 = new Panier(magasinOrleans, new ArrayList<>());

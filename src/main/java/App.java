@@ -448,12 +448,12 @@ public class App {
         while (!finCommande) {
             Panier panier = client.getPanier();
             Magasin magasin = client.getMagasin();
-            List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+            List<DetailLivre> detailLivresPanier = panier.getDetailLivres();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
-            if (detailCommandes.size() > 0) {
-                List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
-                for (String ligne: detailCommandeTextuel) {
+            if (detailLivresPanier.size() > 0) {
+                List<String> detailLivresTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(detailLivresPanier, this.longueurAffichage);
+                for (String ligne: detailLivresTextuel) {
                     this.afficherTexte(ligne);
                 }
             } else {
@@ -461,7 +461,7 @@ public class App {
             }
 
             this.afficherSeperateurMilieu();
-            if (detailCommandes.size() > 0) {
+            if (detailLivresPanier.size() > 0) {
                 this.afficherTexte("P: Passer la commande");
                 this.afficherTexte("S: Supprimer un livre");
             }
@@ -497,8 +497,8 @@ public class App {
      * @return true si la commande a été réalisée, sinon false.
      */
     public boolean commander(Client client, Panier panier) {
-        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
-        if (detailCommandes.size() == 0) {
+        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
             return false;
         }
@@ -554,8 +554,8 @@ public class App {
      * @return true si un livre a été retiré de son panier, sinon false.
      */
     public boolean supprimerLivrePanier(Client client, Panier panier) {
-        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
-        if (detailCommandes.size() == 0) {
+        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
             return false;
         }
@@ -566,9 +566,9 @@ public class App {
             resultatSelectionLivre = this.selectionnerElement(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
             if (resultatSelectionLivre != null) {
                 Livre livre = resultatSelectionLivre.getElement();
-                DetailCommande detailCommande = panier.getDetailCommandeLivre(livre);
+                DetailLivre detailLivre = panier.getDetailLivre(livre);
 
-                Integer quantite = this.demanderQuantiterSupprimer(detailCommande);
+                Integer quantite = this.demanderQuantiterSupprimer(detailLivre);
                 if (quantite != null) {
                     System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
                     panier.retirerQuantiteLivre(livre, quantite);
@@ -580,19 +580,19 @@ public class App {
     }
 
     /**
-     * Demander la quantité à supprimer du détail d'unecommande.
-     * @param detailCommande Le détail d'une commande.
+     * Demander la quantité à supprimer d'un livre dans un panier.
+     * @param detailLivre Le détail d'une commande.
      * @return La quantité à supprimer, ou null si opération annulée.
      */
-    public Integer demanderQuantiterSupprimer(DetailCommande detailCommande) {
+    public Integer demanderQuantiterSupprimer(DetailLivre detailLivre) {
         Integer quantite = null;
-        int quantitePanier = detailCommande.getQuantite();
+        int quantitePanier = detailLivre.getQuantite();
         if (quantitePanier == 1) quantite = 1;
 
-        Livre livre = detailCommande.getLivre();
+        Livre livre = detailLivre.getLivre();
         while (quantite == null) {
             this.afficherTitre(String.format("Quelle est la quantité du livre %s que vous voulez retirer ?", livre.getTitre()));
-            this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailCommande.getQuantite()));
+            this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailLivre.getQuantite()));
             this.afficherSeperateurMilieu();
             this.afficherTexte("Nombre: Quantité à retirer");
             this.afficherTexte("Q: Annuler");
@@ -636,7 +636,7 @@ public class App {
         Magasin magasin = resultatSelectionMagasin.getElement();
         boolean effectuerChangement = true;
 
-        if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {
+        if (panier.getDetailLivres().size() > 0 && !panier.getMagasin().equals(magasin)) {
             effectuerChangement = this.demanderConfirmation(
                 String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
                 "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."

@@ -1,0 +1,29 @@
+# Pour lancer : `docker compose up -d` dans le dossier. Le mot de passe est "root_mdp".
+# Pour arrêter : `docker compose down`
+
+# Accéder à la BD en ligne de commandes : `docker run -it --network sae_java --name mysql_cmd --rm mysql:latest mysql -h mariadb_saejava -u root -p`
+# Quitter : CTRL+D
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_saejava
+    environment:
+      MYSQL_ROOT_PASSWORD: root_mdp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: mdp
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./databases/creationTables.sql:/docker-entrypoint-initdb.d/creationTables.sql
+      - ./databases/insertionsValeurs.sql:/docker-entrypoint-initdb.d/insertionsValeurs.sql
+    networks:
+      - mariadb_network
+
+volumes:
+  mariadb_data:
+
+networks:
+  mariadb_network:
+    name: sae_java

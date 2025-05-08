@@ -1,0 +1,31 @@
+CLIENT: idcli[int], nomcli[VARCHAR(50)], prenomcli[VARCHAR(30)], adressecli[VARCHAR(100)], codepostal[VARCHAR(5)], villecli[VARCHAR(100)]
+EFFECTUER, 0N CLIENT, 11 COMMANDE
+COMMANDE: numcom[int], datecom[date], enligne[char(1)], livraison[char(1)]
+DF, 1N COMMANDE, _11 DETAILCOMMANDE
+DETAILCOMMANDE: numlig[int], qte[int], prixvente[decimal(6,2)]
+:
+:
+
+DF, 11 PANIER, 01 CLIENT
+FREQUENTER, 11 CLIENT, 0N MAGASIN
+CONCERNER, 11 COMMANDE, 0N MAGASIN
+TRAVAILLER, 11 VENDEUR, 0N MAGASIN
+VENDEUR: idvendeur[int], nomvendeur[VARCHAR(50)], prenomvendeur[VARCHAR(30)]
+DF, 11 DETAILCOMMANDE, 1N LIVRE
+:
+
+PANIER: idpanier[int]
+DF, 11 PANIER, 0N MAGASIN
+MAGASIN: idmag[VARCHAR(42)], nommag[VARCHAR(42)], villemag[VARCHAR(42)]
+POSSEDER, 0N MAGASIN, 0N LIVRE: qte
+LIVRE: isbn[VARCHAR(13)], titre[VARCHAR(200)], nbpages[int], datepubli[int], prix[decimal(6,2)]
+EDITER, 0N LIVRE, 0N EDITEUR
+EDITEUR: idedit[int], nomedit[VARCHAR(100)]
+
+DF, 1N PANIER, _11 DETAILPANIER
+DETAILPANIER: numlig[int], qte[int], prixvente[decimal(6,2)]
+DF, 11 DETAILPANIER, 1N LIVRE
+AUTEUR: idauteur[VARCHAR(11)], nomauteur[VARCHAR(100)], anneenais[int], anneedeces[int]
+ECRIRE, 0N AUTEUR, 0N LIVRE
+THEMES, 0N LIVRE, 0N CLASSIFICATION
+CLASSIFICATION: iddewey[varchar(3)], nomclass[varchar(50)]

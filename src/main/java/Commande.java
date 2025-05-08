@@ -10,7 +10,7 @@ public class Commande {
     private char enLigne;
     private char livraison;
     private Magasin magasin;
-    private List<DetailCommande> detailCommandes;
+    private List<DetailLivre> detailCommandes;
 
     /**
      * Créer une commande.
@@ -21,7 +21,7 @@ public class Commande {
      * @param magasin Le magasin de la commande.
      * @param detailCommandes Les détails de la commande (livres, quantités).
      */
-    public Commande(int id, Date date, char enLigne, char livraison, Magasin magasin, List<DetailCommande> detailCommandes) {
+    public Commande(int id, Date date, char enLigne, char livraison, Magasin magasin, List<DetailLivre> detailCommandes) {
         this.id = id;
         this.date = date;
         this.enLigne = enLigne;
@@ -74,7 +74,7 @@ public class Commande {
      * Obtenir les détails d'une commande.
      * @return Les détails d'une commande (livre, quantité, ...).
      */
-    public List<DetailCommande> getDetailCommandes() {
+    public List<DetailLivre> getDetailCommandes() {
         return this.detailCommandes;
     }
 
@@ -84,8 +84,8 @@ public class Commande {
      */
     public double getTotalCommande() {
         double totalCommande = 0.0;
-        List<DetailCommande> detailCommandes = this.getDetailCommandes();
-        for (DetailCommande detailCommande: detailCommandes) {
+        List<DetailLivre> detailCommandes = this.getDetailCommandes();
+        for (DetailLivre detailCommande: detailCommandes) {
             totalCommande += detailCommande.getPrixVente() * detailCommande.getQuantite();
         }
 
@@ -104,7 +104,7 @@ public class Commande {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String dateDisplay = dateFormat.format(date);
 
-        List<DetailCommande> detailCommandes = this.getDetailCommandes();
+        List<DetailLivre> detailCommandes = this.getDetailCommandes();
         return String.format("Commande #%s du %s - %.2f€ - %s article(s) - %s", this.id, dateDisplay, this.getTotalCommande(), detailCommandes.size(), this.getMagasin().toString());
     }
 }

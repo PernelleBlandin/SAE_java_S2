@@ -172,8 +172,8 @@ public class ChaineLibrairie {
         int nbVentes = 0;
         List<Commande> commandes = this.getCommandes();
         for (Commande commande: commandes) {
-            List<DetailCommande> detailCommandes = commande.getDetailCommandes();
-            for (DetailCommande detailCommande: detailCommandes) {
+            List<DetailLivre> detailCommandes = commande.getDetailCommandes();
+            for (DetailLivre detailCommande: detailCommandes) {
                 Livre livreCommande = detailCommande.getLivre();
                 if (livreCommande.equals(livre)) nbVentes++;
             }
@@ -203,7 +203,7 @@ public class ChaineLibrairie {
      */
     public List<Livre> onVousRecommande(Client client) {
         Panier panierClient = client.getPanier();
-        List<DetailCommande> detailPanierClient = panierClient.getDetailCommandes();
+        List<DetailLivre> detailPanierClient = panierClient.getDetailLivres();
         
         List<Commande> commandesClient = client.getCommandes();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
@@ -221,7 +221,7 @@ public class ChaineLibrairie {
    
             if (this.ontLivresEnCommun(client, clientQuelconque)) {
                 List<Livre> livresAchetesParAutreClient = clientQuelconque.getLivresAchetes();
-                for (DetailCommande detailCommande: clientQuelconque.getDetailCommandes()) {
+                for (DetailLivre detailCommande: clientQuelconque.getDetailCommandes()) {
                     Livre livre = detailCommande.getLivre();
                     if (livresNonAchetesParClient.contains(livre)) {
                         Integer curLivreRecommendations = recommendationsLivres.get(livre);
@@ -266,8 +266,8 @@ public class ChaineLibrairie {
      * @return Vrai s'ils ont des livres en communs, sinon false.
      */
     public boolean ontLivresEnCommun(Client client1, Client client2) {
-        for (DetailCommande detailCommande1: client1.getDetailCommandes()) {
-            for (DetailCommande detailCommande2: client2.getDetailCommandes()) {
+        for (DetailLivre detailCommande1: client1.getDetailCommandes()) {
+            for (DetailLivre detailCommande2: client2.getDetailCommandes()) {
                 if (detailCommande1.getLivre().equals(detailCommande2.getLivre())) {
                     return true;
                 }
@@ -278,18 +278,18 @@ public class ChaineLibrairie {
 
     /**
      * Génère le corps d'une commande pour l'afficher sous forme de facture notamment. 
-     * @param detailCommandes Les détails des commandes (livres, quantité, ...).
+     * @param detailLivres Les détails des livres, avec leur quantité et prix d'achat.
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */
-    public static List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
-        if (detailCommandes.size() == 0) return new ArrayList<>();
+    public static List<String> genererCorpsCommandeTextuel(List<DetailLivre> detailLivres, int longueurAffichage) {
+        if (detailLivres.size() == 0) return new ArrayList<>();
 
         double totalCommande = 0.00;
         List<String> res = new ArrayList<>();
         res.add("       ISBN                               Titre                              Qte    Prix   Total");
-        for (int i = 0; i < detailCommandes.size(); i++) {
-            DetailCommande detailCommande = detailCommandes.get(i);
+        for (int i = 0; i < detailLivres.size(); i++) {
+            DetailLivre detailCommande = detailLivres.get(i);
             Livre livre = detailCommande.getLivre();
 
             String numLigne = String.format("%2s", detailCommande.getNumLigne());

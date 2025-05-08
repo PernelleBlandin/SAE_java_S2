@@ -1,6 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,19 +74,19 @@ public class PanierTest {
     }
 
     @Test
-    public void testsGetDetailLivre() {
+    public void testsGetDetailLivre() throws LivreIntrouvableException {
         assertEquals(this.detailLivre1, this.panierClient1.getDetailLivre(this.livre1));
         assertEquals(this.detailLivre2, this.panierClient2.getDetailLivre(this.livre2));
         assertEquals(this.detailLivre3, this.panierClient2.getDetailLivre(this.livre3));
 
-        assertNull(this.panierClient1.getDetailLivre(this.livre2));
-        assertNull(this.panierClient1.getDetailLivre(this.livre3));
-        assertNull(this.panierClient2.getDetailLivre(this.livre1));
-        assertNull(this.panierClient3.getDetailLivre(this.livre1));
+        assertThrows(LivreIntrouvableException.class, () -> { this.panierClient1.getDetailLivre(this.livre2); });
+        assertThrows(LivreIntrouvableException.class, () -> { this.panierClient1.getDetailLivre(this.livre3); });
+        assertThrows(LivreIntrouvableException.class, () -> { this.panierClient2.getDetailLivre(this.livre1); });
+        assertThrows(LivreIntrouvableException.class, () -> { this.panierClient3.getDetailLivre(this.livre1); });
     }
 
     @Test
-    public void testRetirerQuantiteLivre() {
+    public void testRetirerQuantiteLivre() throws LivreIntrouvableException {
         // -- Panier 1
         DetailLivre detailLivre1 = new DetailLivre(this.livre1, 1, 1, 9.99);
         Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre1)));
@@ -94,10 +94,9 @@ public class PanierTest {
         List<DetailLivre> listeDetailLivres1 = panier1.getDetailLivres();
         assertEquals(1, listeDetailLivres1.size());
         assertEquals(1, detailLivre1.getQuantite());
-        
+
         // Livre non présent dans panier
-        // TODO: Exception
-        panier1.retirerQuantiteLivre(this.livre2, 3);
+        assertThrows(LivreIntrouvableException.class, () -> { panier1.retirerQuantiteLivre(this.livre2, 3); });
         assertEquals(1, listeDetailLivres1.size());
         assertEquals(1, detailLivre1.getQuantite());
 
@@ -112,9 +111,8 @@ public class PanierTest {
         assertEquals(1, listeDetailLivres2.size());
         assertEquals(1, detailLivre2.getQuantite());
 
-        // Quantité trop importante 
-        // TODO: Exception ?
-        panier1.retirerQuantiteLivre(this.livre1, 3);
+        // Quantité trop importante
+        panier2.retirerQuantiteLivre(this.livre1, 3);
         assertEquals(0, listeDetailLivres1.size());
 
         // -- Panier 3
@@ -159,9 +157,9 @@ public class PanierTest {
         assertEquals(2, detailLivre4.getNumLigne());
         assertFalse(listeDetailLivres4.contains(detailLivre5));
     }
-
+    
     @Test
-    public void testAjouterLivre() {
+    public void testAjouterLivre() throws LivreIntrouvableException {
         Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
         DetailLivre detailLivre1 = panier1.getDetailLivre(this.livre1);
         assertEquals(1, panier1.getDetailLivres().size());

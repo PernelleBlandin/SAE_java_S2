@@ -166,9 +166,6 @@ public class ChaineLibrairie {
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
     public int getNombreVentesLivre(Livre livre) {
-        // TODO: Voir pour ajouter exception
-        if (!this.livres.contains(livre)) return 0;
-
         int nbVentes = 0;
         List<Commande> commandes = this.getCommandes();
         for (Commande commande: commandes) {

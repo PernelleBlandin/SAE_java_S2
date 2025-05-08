@@ -371,7 +371,6 @@ public class App {
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
             this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
-            // TODO: On pourrait ajouter un descriptif du livre
 
             this.afficherSeperateurMilieu();
             this.afficherTexte("A: Ajouter au panier");
@@ -566,13 +565,17 @@ public class App {
             resultatSelectionLivre = this.selectionnerElement(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
             if (resultatSelectionLivre != null) {
                 Livre livre = resultatSelectionLivre.getElement();
-                DetailLivre detailLivre = panier.getDetailLivre(livre);
 
-                Integer quantite = this.demanderQuantiterSupprimer(detailLivre);
-                if (quantite != null) {
-                    System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
-                    panier.retirerQuantiteLivre(livre, quantite);
-                    return true;
+                try {
+                    DetailLivre detailLivre = panier.getDetailLivre(livre);
+                    Integer quantite = this.demanderQuantiterSupprimer(detailLivre);
+                    if (quantite != null) {
+                        System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
+                        panier.retirerQuantiteLivre(livre, quantite);
+                        return true;
+                    }
+                } catch (LivreIntrouvableException e) {
+                    System.out.println("Livre introuvable, il a été supprimé du panier...");
                 }
             }
         }

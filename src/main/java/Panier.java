@@ -58,14 +58,13 @@ public class Panier {
      * @param livre Un livre.
      * @return Les détails d'une commande d'un livre donnée, ou null s'il y en a pas.
      */
-    public DetailLivre getDetailLivre(Livre livre) {
+    public DetailLivre getDetailLivre(Livre livre) throws LivreIntrouvableException {
         for (DetailLivre detailLivre: this.detailLivres) {
             if (detailLivre.getLivre().equals(livre)) {
                 return detailLivre;
             }
         }
-        // TODO: Exception
-        return null;
+        throw new LivreIntrouvableException();
     }
 
     /**
@@ -74,12 +73,13 @@ public class Panier {
      * @return La quantité du livre dans le panier.
      */
     public int ajouterLivre(Livre livre) {
-        DetailLivre detailLivre = this.getDetailLivre(livre);
-        if (detailLivre == null) {
+       DetailLivre detailLivre;
+        try {
+            detailLivre = this.getDetailLivre(livre);
+            detailLivre.ajouterQuantite();
+        } catch (LivreIntrouvableException e) {
             detailLivre = new DetailLivre(livre, this.detailLivres.size() + 1, 1, livre.getPrix());
             this.detailLivres.add(detailLivre);
-        } else {
-            detailLivre.ajouterQuantite();
         }
         return detailLivre.getQuantite();
     }
@@ -89,22 +89,19 @@ public class Panier {
      * @param livre Le livre.
      * @param quantite La quantité à retirer.
      */
-    public void retirerQuantiteLivre(Livre livre, int quantite) {
+    public void retirerQuantiteLivre(Livre livre, int quantite) throws LivreIntrouvableException {
         DetailLivre detailLivre = this.getDetailLivre(livre);
-        if (detailLivre != null) {
-            int quantiteLivrePanier = detailLivre.getQuantite();
-            if (quantite >= quantiteLivrePanier) {
-                int index = this.detailLivres.indexOf(detailLivre);
+        int quantiteLivrePanier = detailLivre.getQuantite();
+        if (quantite >= quantiteLivrePanier) {
+            int index = this.detailLivres.indexOf(detailLivre);
 
-                this.detailLivres.remove(detailLivre);
-                if (index != this.detailLivres.size()) {
-                    this.recalculateNumLignes(index);
-                }
-            } else {
-                detailLivre.setQuantite(quantiteLivrePanier - quantite);
+            this.detailLivres.remove(detailLivre);
+            if (index != this.detailLivres.size()) {
+                this.recalculateNumLignes(index);
             }
+        } else {
+            detailLivre.setQuantite(quantiteLivrePanier - quantite);
         }
-        // TODO: Exception
     }
 
     /**

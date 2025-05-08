@@ -70,30 +70,6 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir l'adresse du client.
-     * @return Son adresse.
-     */
-    public String getAdresse() {
-        return this.adresse;
-    }
-
-    /**
-     * Obtenir le code postal du client.
-     * @return Son code postal.
-     */
-    public String getCodePostal() {
-        return this.codePostal;
-    }
-
-    /**
-     * Obtenir la ville du client.
-     * @return Sa ville.
-     */
-    public String getVille() {
-        return this.ville;
-    }
-
-    /**
      * Obtenir le magasin choisi par le client.
      * @return Le magasin du client pour sa prochaine commande.
      */

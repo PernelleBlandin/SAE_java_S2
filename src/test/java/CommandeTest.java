@@ -51,14 +51,14 @@ public class CommandeTest {
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", this.listePosessions);
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
     
-    private DetailCommande detailCommande1 = new DetailCommande(this.livre3, 1, 2, 11.99);
+    private DetailLivre detailCommande1 = new DetailLivre(this.livre3, 1, 2, 11.99);
     private Commande commande1 = new Commande(1, Date.valueOf("2025-09-01"), 'O', 'M', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande1)));
 
-    private DetailCommande detailCommande2 = new DetailCommande(this.livre3, 1, 3, 11.99);
+    private DetailLivre detailCommande2 = new DetailLivre(this.livre3, 1, 3, 11.99);
     private Commande commande2 = new Commande(2, Date.valueOf("2025-12-12"), 'O', 'C', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande2)));
 
-    private DetailCommande detailCommande3 = new DetailCommande(this.livre2, 1, 2, 46.99);
-    private DetailCommande detailCommande4 = new DetailCommande(this.livre1, 2, 1, 24.99);
+    private DetailLivre detailCommande3 = new DetailLivre(this.livre2, 1, 2, 46.99);
+    private DetailLivre detailCommande4 = new DetailLivre(this.livre1, 2, 1, 24.99);
     private Commande commande3 = new Commande(3, Date.valueOf("2025-09-05"), 'N', 'M', this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande3, this.detailCommande4)));
 
     @Test

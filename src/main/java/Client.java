@@ -117,7 +117,7 @@ public class Client extends Personne {
      */
     public boolean commander(char modeLivraison, char enLigne) {
         Panier panier = this.getPanier();
-        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+        List<DetailLivre> detailCommandes = panier.getDetailLivres();
         if (detailCommandes.size() > 0) {
             // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
             Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, panier.getMagasin(), detailCommandes);
@@ -133,14 +133,14 @@ public class Client extends Personne {
      * Obtenir les détails de l'ensemble des commandes et panier du client.
      * @return La liste avec les détails de l'ensemble des commandes et panier du client.
      */
-    public List<DetailCommande> getDetailCommandes() {
-        List<DetailCommande> detailCommandes = new ArrayList<>();
+    public List<DetailLivre> getDetailCommandes() {
+        List<DetailLivre> detailCommandes = new ArrayList<>();
         for (Commande commande: this.getCommandes()) {
             detailCommandes.addAll(commande.getDetailCommandes());
         }
 
         Panier panier = this.getPanier();
-        detailCommandes.addAll(panier.getDetailCommandes());
+        detailCommandes.addAll(panier.getDetailLivres());
 
         return detailCommandes;
     }
@@ -153,8 +153,8 @@ public class Client extends Personne {
         List<Livre> livresAchetes = new ArrayList<>();
 
         for (Commande commande: this.getCommandes()) {
-            List<DetailCommande> detailCommandesClient = commande.getDetailCommandes();
-            for (DetailCommande detailCommande: detailCommandesClient) {
+            List<DetailLivre> detailCommandesClient = commande.getDetailCommandes();
+            for (DetailLivre detailCommande: detailCommandesClient) {
                 Livre livreDetailCommande = detailCommande.getLivre();
                 if (!livresAchetes.contains(livreDetailCommande)) {
                     livresAchetes.add(detailCommande.getLivre());

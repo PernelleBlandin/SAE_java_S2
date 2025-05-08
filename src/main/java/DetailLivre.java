@@ -1,18 +1,18 @@
-/** Les détails d'une commande */
-public class DetailCommande {
+/** Les détails d'un livre, dans le cadre d'une commande ou d'un panier client */
+public class DetailLivre {
     private Livre livre;
     private int numLigne;
     private int quantite;
     private double prixVente;
     
     /**
-     * Créer le détail de la commande d'un livre.
+     * Créer le détail d'un livre dans le cadre d'une commande ou d'un panier client.
      * @param livre Le livre
      * @param numLigne Le numéro de ligne (pour la facture/affichage).
      * @param quantite La quantité du livre.
      * @param prixVente Le prix de vente du livre.
      */
-    public DetailCommande(Livre livre, int numLigne, int quantite, double prixVente) {
+    public DetailLivre(Livre livre, int numLigne, int quantite, double prixVente) {
         this.livre = livre;
         this.numLigne = numLigne;
         this.quantite = quantite;
@@ -20,7 +20,7 @@ public class DetailCommande {
     }
 
     /**
-     * Obtenir le livre du détail de la commande. 
+     * Obtenir le livre concerné. 
      * @return Le livre.
      */
     public Livre getLivre() {
@@ -28,7 +28,7 @@ public class DetailCommande {
     }
 
     /**
-     * Obtenir le numéro de la ligne du détail de la commande. 
+     * Obtenir le numéro de la ligne concernée. 
      * @return Le numéro de la ligne.
      */
     public int getNumLigne() {
@@ -36,7 +36,7 @@ public class DetailCommande {
     }
 
     /**
-     * Définir le numéro de la ligne du détail de la commande. 
+     * Définir le numéro de la ligne concernée. 
      * @param numLigne Le nouveau numéro de la ligne.
      */
     public void setNumLigne(int numLigne) {
@@ -44,7 +44,7 @@ public class DetailCommande {
     }
 
     /**
-     * Obtenir la quantité du livre du livre commandé. 
+     * Obtenir la quantité du livre concernée. 
      * @return La quantité du livre.
      */
     public int getQuantite() {
@@ -52,7 +52,7 @@ public class DetailCommande {
     }
 
     /**
-     * Obtenir le prix de vente du livre commandé.
+     * Obtenir le prix de vente concerné.
      * @return Le prix de vente du livre.
      */
     public double getPrixVente() {
@@ -60,7 +60,7 @@ public class DetailCommande {
     }
 
     /**
-     * Ajouter une quantité du livre dans la commande.
+     * Ajouter une quantité du livre dans le détail.
      */
     public void ajouterQuantite() {
         this.quantite++;

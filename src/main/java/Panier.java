@@ -4,7 +4,7 @@ import java.util.List;
 /** Un panier client */
 public class Panier {
     private Magasin magasin;
-    private List<DetailCommande> detailCommandes;
+    private List<DetailLivre> detailLivres;
     
     /**
      * Créer un panier client vide.
@@ -12,17 +12,17 @@ public class Panier {
      */
     public Panier(Magasin magasin) {
         this.magasin = magasin;
-        this.detailCommandes = new ArrayList<>();
+        this.detailLivres = new ArrayList<>();
     }
 
     /**
      * Créer un panier client.
      * @param magasin Le magasin du panier.
-     * @param detailCommandes L'ensemble des éléments du panier.
+     * @param detailLivres L'ensemble des éléments du panier.
      */
-    public Panier(Magasin magasin, List<DetailCommande> detailCommandes) {
+    public Panier(Magasin magasin, List<DetailLivre> detailLivres) {
         this.magasin = magasin;
-        this.detailCommandes = detailCommandes;
+        this.detailLivres = detailLivres;
     }
 
     /**
@@ -37,8 +37,8 @@ public class Panier {
      * Récupérer la liste des livres du panier.
      * @return Les livres présents dans le panier.
      */
-    public List<DetailCommande> getDetailCommandes() {
-        return this.detailCommandes;
+    public List<DetailLivre> getDetailLivres() {
+        return this.detailLivres;
     }
 
     /**
@@ -47,8 +47,8 @@ public class Panier {
      */
     public List<Livre> getLivres() {
         List<Livre> livres = new ArrayList<>();
-        for (DetailCommande detailCommande: this.detailCommandes) {
-            livres.add(detailCommande.getLivre());
+        for (DetailLivre detailLivre: this.detailLivres) {
+            livres.add(detailLivre.getLivre());
         }
         return livres;
     }
@@ -58,10 +58,10 @@ public class Panier {
      * @param livre Un livre.
      * @return Les détails d'une commande d'un livre donnée, ou null s'il y en a pas.
      */
-    public DetailCommande getDetailCommandeLivre(Livre livre) {
-        for (DetailCommande detailCommande: this.detailCommandes) {
-            if (detailCommande.getLivre().equals(livre)) {
-                return detailCommande;
+    public DetailLivre getDetailLivre(Livre livre) {
+        for (DetailLivre detailLivre: this.detailLivres) {
+            if (detailLivre.getLivre().equals(livre)) {
+                return detailLivre;
             }
         }
         // TODO: Exception
@@ -74,14 +74,14 @@ public class Panier {
      * @return La quantité du livre dans le panier.
      */
     public int ajouterLivre(Livre livre) {
-        DetailCommande detailCommande = this.getDetailCommandeLivre(livre);
-        if (detailCommande == null) {
-            detailCommande = new DetailCommande(livre, this.detailCommandes.size() + 1, 1, livre.getPrix());
-            this.detailCommandes.add(detailCommande);
+        DetailLivre detailLivre = this.getDetailLivre(livre);
+        if (detailLivre == null) {
+            detailLivre = new DetailLivre(livre, this.detailLivres.size() + 1, 1, livre.getPrix());
+            this.detailLivres.add(detailLivre);
         } else {
-            detailCommande.ajouterQuantite();
+            detailLivre.ajouterQuantite();
         }
-        return detailCommande.getQuantite();
+        return detailLivre.getQuantite();
     }
 
     /**
@@ -90,18 +90,18 @@ public class Panier {
      * @param quantite La quantité à retirer.
      */
     public void retirerQuantiteLivre(Livre livre, int quantite) {
-        DetailCommande detailCommandeLivre = this.getDetailCommandeLivre(livre);
-        if (detailCommandeLivre != null) {
-            int quantiteLivrePanier = detailCommandeLivre.getQuantite();
+        DetailLivre detailLivre = this.getDetailLivre(livre);
+        if (detailLivre != null) {
+            int quantiteLivrePanier = detailLivre.getQuantite();
             if (quantite >= quantiteLivrePanier) {
-                int index = this.detailCommandes.indexOf(detailCommandeLivre);
+                int index = this.detailLivres.indexOf(detailLivre);
 
-                this.detailCommandes.remove(detailCommandeLivre);
-                if (index != this.detailCommandes.size()) {
+                this.detailLivres.remove(detailLivre);
+                if (index != this.detailLivres.size()) {
                     this.recalculateNumLignes(index);
                 }
             } else {
-                detailCommandeLivre.setQuantite(quantiteLivrePanier - quantite);
+                detailLivre.setQuantite(quantiteLivrePanier - quantite);
             }
         }
         // TODO: Exception
@@ -112,10 +112,10 @@ public class Panier {
      * @param startIndex L'index de début.
      */
     private void recalculateNumLignes(int startIndex) {
-        List<DetailCommande> detailCommandes = this.getDetailCommandes();
-        for (int i = startIndex; i < detailCommandes.size(); i++) {
-            DetailCommande detailCommande = detailCommandes.get(i);
-            detailCommande.setNumLigne(i + 1);
+        List<DetailLivre> detailLivres = this.getDetailLivres();
+        for (int i = startIndex; i < detailLivres.size(); i++) {
+            DetailLivre detailLivre = detailLivres.get(i);
+            detailLivre.setNumLigne(i + 1);
         }
     }
 
@@ -123,6 +123,6 @@ public class Panier {
      * Vider le panier client.
      */
     public void viderPanier() {
-        this.detailCommandes.clear();
+        this.detailLivres.clear();
     }
 }

@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -8,12 +9,38 @@ public class App {
     private int longueurAffichage;
     /** La chaîne de librairie */
     private ChaineLibrairie chaineLibrairie;
+    private ConnexionMariaDB connexionMariaDB;
+
+    private ClientBD clientBD;
 
     /**
      * Créer l'application en ligne de commandes.
      * @param chaineLibrairie La chaîne de librairie.
      */
     public App(ChaineLibrairie chaineLibrairie) {
+        // Base de données
+        try {
+            this.connexionMariaDB = new ConnexionMariaDB();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver MariaDB non trouvé.");
+            System.exit(1);
+        }
+
+        try {
+            // TODO: A modifier via des variables par exemple ou .env
+
+            String nomServeur = "localhost";
+            String nomBase = "Librairie";
+            String nomLogin = "root";
+            String motDePasse = "root_mdp";
+
+            this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
+        } catch (SQLException e) {
+            System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
+            System.exit(1);
+        }
+        
+        // Général
         this.longueurAffichage = 100;
         this.chaineLibrairie = chaineLibrairie;
     }

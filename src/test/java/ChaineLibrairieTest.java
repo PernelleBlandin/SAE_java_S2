@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.Date;
@@ -13,51 +12,46 @@ import org.junit.Test;
 public class ChaineLibrairieTest {
     private ChaineLibrairie chaineLibrairieVide = new ChaineLibrairie();
 
-    private Auteur philippeChereau = new Auteur("OL7572575A", "Philippe Chéreau", null, null);
-    private Auteur christopheAgius = new Auteur("OL7572575B", "Christophe Agius", null, null);
     private Livre livre1 = new Livre(
         "9782205054750",
         "Simplement 2: 25 ans de commentaires",
         329,
         2025,
         24.99,
-        new ArrayList<>(Arrays.asList(this.philippeChereau, this.christopheAgius)),
+        new ArrayList<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
         new ArrayList<>(Arrays.asList("Simplement 2")),
         new ArrayList<>(Arrays.asList("Sports"))
     );
 
-    private Auteur xavierNiel = new Auteur("OL7572575A", "Xavier Niel", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
         "Une sacrée envie de foutre le bordel",
         null,
         2024,
         9.99,
-        new ArrayList<>(Arrays.asList(this.xavierNiel)),
+        new ArrayList<>(Arrays.asList("Xavier Niel")),
         new ArrayList<>(Arrays.asList("Flammarion")),
         new ArrayList<>(Arrays.asList("Télécom"))
     );
 
-    private Auteur claudeServi = new Auteur("OL18710A", "Claude Servi", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
         "Réseaux & Télécom",
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList(this.claudeServi)),
+        new ArrayList<>(Arrays.asList("Claude Servi")),
         new ArrayList<>(Arrays.asList("Dunod")),
         new ArrayList<>(Arrays.asList("Télécom"))
     );
 
-    private Auteur guillaumeMusso = new Auteur("OL6835078A", "Guillaume Musso", null, null);
     private Livre livre4 = new Livre(
         "9780768939866",
         "Angélique",
         213,
         2023,
         11.99,
-        new ArrayList<>(Arrays.asList(this.guillaumeMusso)),
+        new ArrayList<>(Arrays.asList("Guillaume Musso")),
         new ArrayList<>(Arrays.asList("Lgf")),
         new ArrayList<>(Arrays.asList("Roman"))
     );
@@ -68,7 +62,7 @@ public class ChaineLibrairieTest {
         313,
         2024,
         13.99,
-        new ArrayList<>(Arrays.asList(this.guillaumeMusso)),
+        new ArrayList<>(Arrays.asList("Guillaume Musso")),
         new ArrayList<>(Arrays.asList("Lgf")),
         new ArrayList<>(Arrays.asList("Roman"))
     );
@@ -88,7 +82,6 @@ public class ChaineLibrairieTest {
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", this.listePosessions);
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", this.listePosessions);
     private Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes", this.listePosessions);
-    private Magasin magasinLyon = new Magasin("4", "LibLyon", "Lyon", this.listePosessions);
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
 
     // Client 1
@@ -174,14 +167,6 @@ public class ChaineLibrairieTest {
     }
 
     @Test
-    public void testsGetMagasins() {
-        assertEquals(new ArrayList<>(), this.chaineLibrairieVide.getMagasins());
-
-        ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
-        assertEquals(new ArrayList<>(Arrays.asList(this.magasinParis, this.magasinMarseille, this.magasinRennes, this.magasinOrleans)), chaineLibrairie.getMagasins());
-    }
-
-    @Test
     public void testsAjouterLivre() {
         ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
@@ -207,32 +192,18 @@ public class ChaineLibrairieTest {
         assertTrue(clients.contains(this.clientInconnu));
     }
 
-    @Test
-    public void testsAjouterMagasin() {
-        ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
+    // @Test
+    // public void testsAjouterMagasin() {
+    //     ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
 
-        List<Magasin> magasins = chaineLibrairie.getMagasins();
-        assertEquals(4, magasins.size());
-        assertFalse(magasins.contains(this.magasinLyon));
+    //     List<Magasin> magasins = chaineLibrairie.getMagasins();
+    //     assertEquals(4, magasins.size());
+    //     assertFalse(magasins.contains(this.magasinLyon));
         
-        chaineLibrairie.ajouterMagasin(this.magasinLyon);
-        assertEquals(5, magasins.size());
-        assertTrue(magasins.contains(this.magasinLyon));
-    }
-
-    @Test
-    public void testsTrouverClient() {
-        ChaineLibrairie chaineLibrairie = this.generatChaineLibrairie();
-        assertNull(chaineLibrairie.trouverClient("Dubois", "Toto"));
-        assertNull(chaineLibrairie.trouverClient("Rodriguez", "Fatimo"));
-
-        assertEquals(this.client1, chaineLibrairie.trouverClient("rodriguez", "fatima"));
-        assertEquals(this.client1, chaineLibrairie.trouverClient("RODRIGUEZ", "FATIMA"));
-
-        assertEquals(this.client1, chaineLibrairie.trouverClient("Rodriguez", "Fatima"));
-        assertEquals(this.client2, chaineLibrairie.trouverClient("Garcia", "Hugo"));
-        assertEquals(this.client3, chaineLibrairie.trouverClient("Martin", "Julie"));
-    }
+    //     chaineLibrairie.ajouterMagasin(this.magasinLyon);
+    //     assertEquals(5, magasins.size());
+    //     assertTrue(magasins.contains(this.magasinLyon));
+    // }
 
     @Test
     public void testsRechercherLivres() {

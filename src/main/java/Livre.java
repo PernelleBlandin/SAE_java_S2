@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.stream.Collectors;
 
 /** Un livre */
 public class Livre {
@@ -8,7 +7,7 @@ public class Livre {
     private Integer nbpages;
     private int datepubli;
     private double prix;
-    private List<Auteur> auteurs;
+    private List<String> auteurs;
     private List<String> editeurs;
     private List<String> classifications;
 
@@ -23,7 +22,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<String> editeurs, List<String> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<String> auteurs, List<String> editeurs, List<String> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -78,7 +77,7 @@ public class Livre {
      * Obtenir la liste des auteurs d'un livre.
      * @return La liste des auteurs du livre.
      */
-    public List<Auteur> getAuteurs() {
+    public List<String> getAuteurs() {
         return this.auteurs;
     }
 
@@ -100,12 +99,11 @@ public class Livre {
 
     /**
      * Obtenir les auteurs d'un livre sous forme d'une chaîne de caractères.
-     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
      * @return Une chaîne de caractères avec les auteurs du livre, délimité par une virgule.
      */
     public String joinNomAuteurs() {
         if (this.auteurs.size() == 0) return "Inconnu";
-        return this.auteurs.stream().map(Auteur::getNom).collect(Collectors.joining(", "));
+        return String.join(", ", this.auteurs);
     }
 
     /**

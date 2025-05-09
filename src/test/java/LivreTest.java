@@ -10,39 +10,35 @@ import java.util.List;
 import org.junit.Test;
 
 public class LivreTest {
-    private Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
     private Livre livre1 = new Livre(
         "9782205054750",
         "Les cavernes",
         48,
         2003,
         8.81,
-        new ArrayList<>(Arrays.asList(leo)),
+        new ArrayList<>(Arrays.asList("Léo")),
         new ArrayList<>(Arrays.asList("Dargaud")),
         new ArrayList<>(Arrays.asList("Arts décorartifs", "Jeunesse"))
     );
 
-    private Auteur sethGrahameSmith = new Auteur("OL7572575A", "Seth Grahame-Smith", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
         "Abraham Lincoln",
         null,
         2010,
         16.4,
-        new ArrayList<>(Arrays.asList(sethGrahameSmith)),
+        new ArrayList<>(Arrays.asList("Seth Grahame-Smith")),
         new ArrayList<>(Arrays.asList("Hachette Book Group Usa", "Gallimard")),
         new ArrayList<>(Arrays.asList("Littérature américaine"))
     );
 
-    private Auteur mickInkpen = new Auteur("OL18710A", "Mick Inkpen", null, null);
-    private Auteur paulDubois = new Auteur("OL19010A", "Paul Dubois", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
         "Kipper",
         32,
         2008,
         11.9,
-        new ArrayList<>(Arrays.asList(mickInkpen, paulDubois)),
+        new ArrayList<>(Arrays.asList("Mick Inkpen", "Paul Dubois")),
         new ArrayList<>(Arrays.asList("Hodder Children'S")),
         new ArrayList<>(Arrays.asList("Littérature anglaise"))
     );
@@ -95,13 +91,13 @@ public class LivreTest {
 
     @Test
     public void testsGetAuteurs() {
-        List<Auteur> auteurs1 = new ArrayList<>(Arrays.asList(this.leo));
+        List<String> auteurs1 = new ArrayList<>(Arrays.asList("Léo"));
         assertEquals(auteurs1, this.livre1.getAuteurs());
 
-        List<Auteur> auteurs2 = new ArrayList<>(Arrays.asList(this.sethGrahameSmith));
+        List<String> auteurs2 = new ArrayList<>(Arrays.asList("Seth Grahame-Smith"));
         assertEquals(auteurs2, this.livre2.getAuteurs());
 
-        List<Auteur> auteurs3 = new ArrayList<>(Arrays.asList(this.mickInkpen, this.paulDubois));
+        List<String> auteurs3 = new ArrayList<>(Arrays.asList("Mick Inkpen", "Paul Dubois"));
         assertEquals(auteurs3, this.livre3.getAuteurs());
     }
 
@@ -187,7 +183,7 @@ public class LivreTest {
             48,
             2003,
             8.81,
-            new ArrayList<>(Arrays.asList(this.leo)),
+            new ArrayList<>(Arrays.asList("Léo")),
             new ArrayList<>(Arrays.asList("Dargaud")),
             new ArrayList<>(Arrays.asList("Arts décorartifs", "Jeunesse"))
         );
@@ -195,7 +191,6 @@ public class LivreTest {
 
         assertFalse(this.livre1.equals(this.livre4));
         assertFalse(this.livre2.equals(livre1Equals));
-        assertFalse(this.livre2.equals(this.leo));
         assertFalse(this.livre1.equals(null));
     }
 }

@@ -15,38 +15,35 @@ public class ClientTest {
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
 
-    private Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
     private Livre livre1 = new Livre(
         "9782205054750",
         "Les cavernes",
         48,
         2003,
         8.81,
-        new ArrayList<>(Arrays.asList(leo)),
+        new ArrayList<>(Arrays.asList("Léo")),
         new ArrayList<>(Arrays.asList("Dargaud")),
         new ArrayList<>(Arrays.asList("Arts décorartifs"))
     );
 
-    private Auteur sethGrahameSmith = new Auteur("OL7572575A", "Seth Grahame-Smith", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
         "Abraham Lincoln",
         null,
         2010,
         16.4,
-        new ArrayList<>(Arrays.asList(sethGrahameSmith)),
+        new ArrayList<>(Arrays.asList("Seth Grahame-Smith")),
         new ArrayList<>(Arrays.asList("Hachette Book Group Usa")),
         new ArrayList<>(Arrays.asList("Littérature américaine"))
     );
 
-    private Auteur mickInkpen = new Auteur("OL18710A", "Mick Inkpen", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
         "Kipper",
         32,
         2008,
         11.9,
-        new ArrayList<>(Arrays.asList(mickInkpen)),
+        new ArrayList<>(Arrays.asList("Mick Inkpen")),
         new ArrayList<>(Arrays.asList("Hodder Children'S")),
         new ArrayList<>(Arrays.asList("Littérature anglaise"))
     );
@@ -57,7 +54,7 @@ public class ClientTest {
         54,
         2009,
         8.99,
-        new ArrayList<>(Arrays.asList(mickInkpen)),
+        new ArrayList<>(Arrays.asList("Mick Inkpen")),
         new ArrayList<>(Arrays.asList("Hodder Children'S")),
         new ArrayList<>(Arrays.asList("Littérature anglaise"))
     );

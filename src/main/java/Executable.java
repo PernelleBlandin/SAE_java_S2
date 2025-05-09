@@ -19,14 +19,13 @@ public class Executable {
 
         // Livre 1
 
-        Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
         Livre livre1 = new Livre(
             "9782205054750",
             "Les cavernes",
             48,
             2003,
             8.81,
-            new ArrayList<>(Arrays.asList(leo)),
+            new ArrayList<>(Arrays.asList("Léo")),
             new ArrayList<>(Arrays.asList("Dargaud")),
             new ArrayList<>(Arrays.asList("Arts décorartifs"))
         );
@@ -34,14 +33,13 @@ public class Executable {
 
         // Livre 2
 
-        Auteur sethGrahameSmith = new Auteur("OL7572575A", "Seth Grahame-Smith", null, null);
         Livre livre2 = new Livre(
             "9780446570992",
             "Abraham Lincoln",
             null,
             2010,
             16.4,
-            new ArrayList<>(Arrays.asList(sethGrahameSmith)),
+            new ArrayList<>(Arrays.asList("Seth Grahame-Smith")),
             new ArrayList<>(Arrays.asList("Hachette Book Group Usa")),
             new ArrayList<>(Arrays.asList("Littérature américaine"))
         );
@@ -49,14 +47,13 @@ public class Executable {
 
         // Livre 3
 
-        Auteur mickInkpen = new Auteur("OL18710A", "Mick Inkpen", null, null);
         Livre livre3 = new Livre(
             "9780340932056",
             "Kipper",
             32,
             2008,
             11.9,
-            new ArrayList<>(Arrays.asList(mickInkpen)),
+            new ArrayList<>(Arrays.asList("Mick Inkpen")),
             new ArrayList<>(Arrays.asList("Hodder Children'S")),
             new ArrayList<>(Arrays.asList("Littérature anglaise"))
         );
@@ -64,14 +61,13 @@ public class Executable {
 
         // Livre 4
 
-        Auteur peterson = new Auteur("OL6835078A", "Peterson's (Firm : 2006- )", null, null);
         Livre livre4 = new Livre(
             "9780768939866",
             "Master the new SAT 2016",
             972,
             2016,
             66.99,
-            new ArrayList<>(Arrays.asList(peterson)),
+            new ArrayList<>(Arrays.asList("Peterson's (Firm : 2006- )")),
             new ArrayList<>(Arrays.asList("Peterson'S")),
             new ArrayList<>(Arrays.asList("éducation"))
         );
@@ -79,14 +75,13 @@ public class Executable {
 
         // Livre 5
 
-        Auteur davidMcKee = new Auteur("OL32699A", "David McKee", 1935, 2022);
         Livre livre5 = new Livre(
             "9780862641696",
             "The sad story of Veronica who played the violin",
             26,
             1987,
             12.01,
-            new ArrayList<>(Arrays.asList(davidMcKee)),
+            new ArrayList<>(Arrays.asList("David McKee")),
             new ArrayList<>(Arrays.asList("Andersen")),
             new ArrayList<>(Arrays.asList("Littérature anglaise"))
         );
@@ -94,14 +89,13 @@ public class Executable {
 
         // Livre 6
 
-        Auteur anthonyKiedis = new Auteur("OL1401762A", "Anthony Kiedis", 1962, null);
         Livre livre6 = new Livre(
             "9781401301019",
             "Scar tissue",
             465,
             2004,
             45.97,
-            new ArrayList<>(Arrays.asList(anthonyKiedis)),
+            new ArrayList<>(Arrays.asList("Anthony Kiedis")),
             new ArrayList<>(Arrays.asList("Hyperion")),
             new ArrayList<>(Arrays.asList("Musique"))
         );
@@ -109,16 +103,13 @@ public class Executable {
 
         // Livre 7
 
-        Auteur rolandBarthelemy = new Auteur("OL3148580A", "Roland Barthelemy", null, null);
-        Auteur arnaudSperatCzar = new Auteur("OL3148570A", "Arnaud Sperat-Czar", null, null);
-        Auteur rolandBarthelemy2 = new Auteur("OL6586170A", "Roland Barthélemy", null, null);
         Livre livre7 = new Livre(
             "9781844301515",
             "Guide to cheeses of the world",
             224,
             2005,
             29.95,
-            new ArrayList<>(Arrays.asList(rolandBarthelemy, arnaudSperatCzar, rolandBarthelemy2)),
+            new ArrayList<>(Arrays.asList("Roland Barthelemy", "Arnaud Sperat-Czar", "Roland Barthélemy")),
             new ArrayList<>(Arrays.asList("Hachette Illustrated")),
             new ArrayList<>(Arrays.asList("Maison et vie domestique"))
         );
@@ -187,6 +178,4 @@ public class Executable {
         App app = new App(chaineLibrairie);
         app.run();
     }
-
-    
 }

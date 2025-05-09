@@ -9,7 +9,6 @@ public class ChaineLibrairie {
     private List<Livre> livres;
     private List<Client> clients;
     private List<Vendeur> vendeurs;
-    //private List<Personnel> personnels;
     private List<Magasin> magasins;
 
     /**
@@ -19,7 +18,6 @@ public class ChaineLibrairie {
         this.livres = new ArrayList<>();
         this.clients = new ArrayList<>();
         this.vendeurs = new ArrayList<>();
-        //this.personnels = new ArrayList<>();
         this.magasins = new ArrayList<>();
     }
 
@@ -45,22 +43,6 @@ public class ChaineLibrairie {
      */
     public List<Vendeur> getVendeurs() {
         return this.vendeurs;
-    }
-
-    /**
-     * Obtenir la liste des personnels de la chaîne de librairie.
-     * @return La liste des personnels de la chaîne de librairie.
-     */
-    /*public List<Personnel> getPersonnels() {
-        return this.personnels;
-    }*/
-
-    /**
-     * Obtenir la liste des magasins de la chaîne de librairie.
-     * @return La liste des magasins de la chaîne de librairie.
-     */
-    public List<Magasin> getMagasins() {
-        return this.magasins;
     }
 
     /**
@@ -93,26 +75,6 @@ public class ChaineLibrairie {
      */
     public void ajouterMagasin(Magasin magasin) {
         this.magasins.add(magasin);
-    }
-
-    /**
-     * Trouver un client à partir de son nom et prénom.
-     * @param nom Le nom du client.
-     * @param prenom Le prénom du client.
-     * @return Le client trouvé, ou null si aucun n'a été trouvé.s
-     */
-    public Client trouverClient(String nom, String prenom) {
-        nom = nom.toLowerCase();
-        prenom = prenom.toLowerCase();
-
-        for (Client client: this.clients) {
-            String nomClient = client.getNom().toLowerCase();
-            String prenomClient = client.getPrenom().toLowerCase();
-            if (nomClient.equals(nom) && prenomClient.equals(prenom)) {
-                return client;
-            }
-        }
-        return null;
     }
 
     /*

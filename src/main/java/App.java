@@ -5,13 +5,17 @@ import java.util.List;
  * L'application sous le format ligne de commandes.
  */
 public class App {
-    /** La longueur d'affichage des menus */
     private int longueurAffichage;
-    /** La chaîne de librairie */
+    // TODO: A gérer
+    // private int resultatParPage;
+
+    // Base de données
     private ChaineLibrairie chaineLibrairie;
     private ConnexionMariaDB connexionMariaDB;
 
+    private LivreBD livreBD;
     private ClientBD clientBD;
+    private MagasinBD magasinBD;
 
     /**
      * Créer l'application en ligne de commandes.
@@ -39,9 +43,14 @@ public class App {
             System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
             System.exit(1);
         }
+
+        this.livreBD = new LivreBD(this.connexionMariaDB);
+        this.clientBD = new ClientBD(this.connexionMariaDB);
+        this.magasinBD = new MagasinBD(this.connexionMariaDB);
         
         // Général
         this.longueurAffichage = 100;
+        // this.resultatParPage = 5;
         this.chaineLibrairie = chaineLibrairie;
     }
 
@@ -301,7 +310,14 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
+
+        Client client;
+        try {
+            client = this.clientBD.obtenirClientParId(1);
+        } catch (SQLException e) {
+            System.err.println("Client non trouvé...");
+            return;
+        }
 
         this.client(client);
     }
@@ -328,7 +344,15 @@ public class App {
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "l": {
-                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
+                    List<Livre> listeLivres;
+                    try {
+                        listeLivres = this.livreBD.obtenirListeLivre();
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        break;
+                    }
+
+                    this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres");
                     break;
                 }
                 case "r": {
@@ -347,7 +371,15 @@ public class App {
                 case "s": {
                     String recherche = this.demanderRecherche();
                     if (recherche != null) {
-                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
+                        List<Livre> listeLivres;
+                        try {
+                            listeLivres = this.livreBD.obtenirListeLivre();
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                            break;
+                        }
+
+                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(listeLivres, recherche);
                         this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
                     }
                     break;
@@ -658,7 +690,14 @@ public class App {
      * @param client Le client.
      */
     public void changerMagasin(Client client) {
-        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        List<Magasin> magasins;
+        try {
+            magasins = this.magasinBD.obtenirListeMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur s'est produite lors de la récupération des magasins : " + e.getMessage());
+            return;
+        }
+
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
         if (resultatSelectionMagasin == null) return;
 

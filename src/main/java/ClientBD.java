@@ -11,31 +11,43 @@ public class ClientBD {
     }
 
     public Client obtenirClientParId(int id) throws SQLException {
-        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+        PreparedStatement clientStatement = this.connexionMariaDB.prepareStatement("""
             SELECT nomcli, prenomcli, adressecli, codepostal, villecli, idmag, nommag, villemag
             FROM CLIENT NATURAL JOIN MAGASIN
             WHERE idcli = ?;
         """);
-        statement.setInt(1, id);
+        clientStatement.setInt(1, id);
 
-        ResultSet result = statement.executeQuery();
+        // Client & Magasin
 
-		boolean hasElement = result.next();
+        ResultSet clientResult = clientStatement.executeQuery();
+
+		boolean hasElement = clientResult.next();
         if (!hasElement) throw new SQLException("Client non trouvé");
 
-        String nom = result.getString("nomcli");
-        String prenom = result.getString("prenomcli");
-        String adresse = result.getString("adressecli");
-        String codepostal = result.getString("codepostal");
-        String villecli = result.getString("villecli");
+        String nom = clientResult.getString("nomcli");
+        String prenom = clientResult.getString("prenomcli");
+        String adresse = clientResult.getString("adressecli");
+        String codepostal = clientResult.getString("codepostal");
+        String villecli = clientResult.getString("villecli");
 
-        String idmag = result.getString("idmag");
-        String nommag = result.getString("nommag");
-        String villemag = result.getString("villemag");
+        String idmag = clientResult.getString("idmag");
+        String nommag = clientResult.getString("nommag");
+        String villemag = clientResult.getString("villemag");
 
-        result.close();
+        clientResult.close();
 
         Magasin magasinClient = new Magasin(idmag, nommag, villemag);
+
+        // Commandes
+
+        // WIP
+        PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
+            SELECT nomcli, prenomcli, adressecli, codepostal, villecli, idmag, nommag, villemag
+            FROM CLIENT NATURAL JOIN MAGASIN
+            WHERE idcli = ?;
+        """);
+        clientStatement.setInt(1, id);
 
         List<DetailLivre> listeDetailLivres = new ArrayList<>();
         List<Commande> listeCommandes = new ArrayList<>();

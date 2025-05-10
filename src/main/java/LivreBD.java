@@ -63,7 +63,6 @@ public class LivreBD {
 
             String nomEditeur = result.getString("nomedit");
             if (!listeEditeurs.contains(nomEditeur)) listeEditeurs.add(nomEditeur);
-            
         }
         result.close();
 

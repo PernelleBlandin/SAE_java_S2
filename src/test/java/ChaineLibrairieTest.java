@@ -78,11 +78,10 @@ public class ChaineLibrairieTest {
         new ArrayList<>(Arrays.asList())
     );
 
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", this.listePosessions);
-    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", this.listePosessions);
-    private Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes", this.listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+    private Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     // Client 1
     private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>());
@@ -281,9 +280,9 @@ public class ChaineLibrairieTest {
         List<DetailLivre> detailCommandesC1 = commande1.getDetailCommandes();
         List<String> listeAttendus = new ArrayList<>(Arrays.asList(
             "       ISBN                               Titre                              Qte    Prix   Total",
-            " 1 9780768939866 Angélique                                                     2  11,99€  23,98€",
+            " 1 9780768939866 Angélique                                                     2  11.99€  23.98€",
             "                                                                                         -------",
-            "                                                                                          23,98€"
+            "                                                                                          23.98€"
 
         ));
         assertEquals(listeAttendus, ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandesC1, 100));

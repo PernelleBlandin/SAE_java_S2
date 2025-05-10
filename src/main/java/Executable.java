@@ -118,11 +118,10 @@ public class Executable {
         //Livre 
 
         // Magasins
-        List<Posseder> listePosessions = new ArrayList<>();
-        Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
-        Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
-        Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes", listePosessions);
-        Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
+        Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+        Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+        Magasin magasinRennes = new Magasin("3", "Ty Li-Breizh-rie", "Rennes");
+        Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
         
         chaineLibrairie.ajouterMagasin(magasinParis);
         chaineLibrairie.ajouterMagasin(magasinMarseille);
@@ -171,7 +170,7 @@ public class Executable {
         Client client6 = new Client(6, "Petit", "Louis", "98 route du Musée", "67000", "Strasbourg", magasinParis, new ArrayList<>(Arrays.asList(commande6)), panier6);
         chaineLibrairie.ajouterClient(client6);
 
-        //Vendeur
+        // Vendeur
         Vendeur vendeur1 = new Vendeur(1, "Grande", "Marie", magasinOrleans);
         chaineLibrairie.ajouterVendeur(vendeur1);
 

@@ -1,15 +1,11 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 public class VendeurTest {
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
-    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
     
     private Vendeur vendeur1 = new Vendeur(1, "Dubois", "Robert", magasinParis);
     private Vendeur vendeur2 = new Vendeur(2, "Dupont", "Léa", magasinOrleans);

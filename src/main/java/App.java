@@ -5,52 +5,15 @@ import java.util.List;
  * L'application sous le format ligne de commandes.
  */
 public class App {
-    private int longueurAffichage;
-    // TODO: A gérer
-    // private int resultatParPage;
-
-    // Base de données
     private ChaineLibrairie chaineLibrairie;
-    private ConnexionMariaDB connexionMariaDB;
-
-    private LivreBD livreBD;
-    private ClientBD clientBD;
-    private MagasinBD magasinBD;
+    private int longueurAffichage;
 
     /**
      * Créer l'application en ligne de commandes.
      * @param chaineLibrairie La chaîne de librairie.
      */
     public App(ChaineLibrairie chaineLibrairie) {
-        // Base de données
-        try {
-            this.connexionMariaDB = new ConnexionMariaDB();
-        } catch (ClassNotFoundException e) {
-            System.err.println("Driver MariaDB non trouvé.");
-            System.exit(1);
-        }
-
-        try {
-            // TODO: A modifier via des variables par exemple ou .env
-
-            String nomServeur = "localhost";
-            String nomBase = "Librairie";
-            String nomLogin = "root";
-            String motDePasse = "root_mdp";
-
-            this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
-        } catch (SQLException e) {
-            System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
-            System.exit(1);
-        }
-
-        this.livreBD = new LivreBD(this.connexionMariaDB);
-        this.clientBD = new ClientBD(this.connexionMariaDB);
-        this.magasinBD = new MagasinBD(this.connexionMariaDB);
-        
-        // Général
         this.longueurAffichage = 100;
-        // this.resultatParPage = 5;
         this.chaineLibrairie = chaineLibrairie;
     }
 
@@ -313,7 +276,7 @@ public class App {
 
         Client client;
         try {
-            client = this.clientBD.obtenirClientParId(1);
+            client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
         } catch (SQLException e) {
             System.err.println("Client non trouvé...");
             return;
@@ -346,7 +309,7 @@ public class App {
                 case "l": {
                     List<Livre> listeLivres;
                     try {
-                        listeLivres = this.livreBD.obtenirListeLivre();
+                        listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
                     } catch (SQLException e) {
                         System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
                         break;
@@ -371,9 +334,10 @@ public class App {
                 case "s": {
                     String recherche = this.demanderRecherche();
                     if (recherche != null) {
+                        // TODO: Voir si on fait la requête de recherche en SQL
                         List<Livre> listeLivres;
                         try {
-                            listeLivres = this.livreBD.obtenirListeLivre();
+                            listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
                         } catch (SQLException e) {
                             System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
                             break;
@@ -692,7 +656,7 @@ public class App {
     public void changerMagasin(Client client) {
         List<Magasin> magasins;
         try {
-            magasins = this.magasinBD.obtenirListeMagasin();
+            magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
             System.err.println("Une erreur s'est produite lors de la récupération des magasins : " + e.getMessage());
             return;

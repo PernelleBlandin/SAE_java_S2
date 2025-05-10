@@ -10,10 +10,9 @@ import java.util.List;
 import org.junit.Test;
 
 public class ClientTest {
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
-    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     private Livre livre1 = new Livre(
         "9782205054750",

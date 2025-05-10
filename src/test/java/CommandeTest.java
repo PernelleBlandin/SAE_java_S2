@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -43,9 +42,8 @@ public class CommandeTest {
         new ArrayList<>(Arrays.asList("Roman"))
     );
 
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", this.listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
+    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
     
     private DetailLivre detailCommande1 = new DetailLivre(this.livre3, 1, 2, 11.99);
     private Commande commande1 = new Commande(1, Date.valueOf("2025-09-01"), 'O', 'M', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande1)));
@@ -108,8 +106,8 @@ public class CommandeTest {
 
     @Test
     public void testsToString() {
-        assertEquals("Commande #1 du 01/09/2025 - 23,98€ - 1 article(s) - Cap au Sud (Marseille)", this.commande1.toString());
-        assertEquals("Commande #2 du 12/12/2025 - 35,97€ - 1 article(s) - Cap au Sud (Marseille)", this.commande2.toString());
-        assertEquals("Commande #3 du 05/09/2025 - 118,97€ - 2 article(s) - Loire et livres (Orléans)", this.commande3.toString());
+        assertEquals("Commande #1 du 01/09/2025 - 23.98€ - 1 article(s) - Cap au Sud (Marseille)", this.commande1.toString());
+        assertEquals("Commande #2 du 12/12/2025 - 35.97€ - 1 article(s) - Cap au Sud (Marseille)", this.commande2.toString());
+        assertEquals("Commande #3 du 05/09/2025 - 118.97€ - 2 article(s) - Loire et livres (Orléans)", this.commande3.toString());
     }
 }

@@ -21,7 +21,7 @@ public class ClientBD {
         ResultSet result = statement.executeQuery();
 
 		boolean hasElement = result.next();
-        if (!hasElement) throw new SQLException("Joueur non trouvé");
+        if (!hasElement) throw new SQLException("Client non trouvé");
 
         String nom = result.getString("nomcli");
         String prenom = result.getString("prenomcli");
@@ -35,9 +35,7 @@ public class ClientBD {
 
         result.close();
 
-        // TODO: voir ce qu'on fait
-        List<Posseder> listePosseders = new ArrayList<>();
-        Magasin magasinClient = new Magasin(idmag, nommag, villemag, listePosseders);
+        Magasin magasinClient = new Magasin(idmag, nommag, villemag);
 
         List<DetailLivre> listeDetailLivres = new ArrayList<>();
         List<Commande> listeCommandes = new ArrayList<>();

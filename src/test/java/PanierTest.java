@@ -42,9 +42,8 @@ public class PanierTest {
         new ArrayList<>(Arrays.asList("Télécom"))
     );
 
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", this.listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     private DetailLivre detailLivre1 = new DetailLivre(this.livre1, 1, 1, 9.99);
     private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));

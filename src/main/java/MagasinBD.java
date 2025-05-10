@@ -24,8 +24,7 @@ public class MagasinBD {
             String nomMagasin = result.getString("nommag");
             String villeMagasin = result.getString("villemag");
 
-            // TODO: Possession
-            Magasin magasin = new Magasin(idMagasin, nomMagasin, villeMagasin, new ArrayList<>());
+            Magasin magasin = new Magasin(idMagasin, nomMagasin, villeMagasin);
             listeMagasins.add(magasin);
         }
         result.close();

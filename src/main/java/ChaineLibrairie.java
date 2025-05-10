@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Set;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,6 +12,12 @@ public class ChaineLibrairie {
     private List<Vendeur> vendeurs;
     private List<Magasin> magasins;
 
+    private ConnexionMariaDB connexionMariaDB;
+
+    private LivreBD livreBD;
+    private ClientBD clientBD;
+    private MagasinBD magasinBD;
+
     /**
      * Intiailiser la chaîne de librairie.
      */
@@ -19,6 +26,44 @@ public class ChaineLibrairie {
         this.clients = new ArrayList<>();
         this.vendeurs = new ArrayList<>();
         this.magasins = new ArrayList<>();
+
+        // Base de données
+        try {
+            this.connexionMariaDB = new ConnexionMariaDB();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver MariaDB non trouvé.");
+            System.exit(1);
+        }
+
+        try {
+            // TODO: A modifier via des variables par exemple ou .env
+
+            String nomServeur = "localhost";
+            String nomBase = "Librairie";
+            String nomLogin = "root";
+            String motDePasse = "root_mdp";
+
+            this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
+        } catch (SQLException e) {
+            System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
+            System.exit(1);
+        }
+
+        this.livreBD = new LivreBD(this.connexionMariaDB);
+        this.clientBD = new ClientBD(this.connexionMariaDB);
+        this.magasinBD = new MagasinBD(this.connexionMariaDB);
+    }
+
+    public LivreBD getLivreBD() {
+        return this.livreBD;
+    }
+
+    public ClientBD getClientBD() {
+        return this.clientBD;
+    }
+
+    public MagasinBD getMagasinBD() {
+        return this.magasinBD;
     }
 
     /**

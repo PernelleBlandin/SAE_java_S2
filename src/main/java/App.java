@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -89,7 +91,7 @@ public class App {
      * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
      * @return La réponse de l'utilisateur.
      */
-    public String obtenirEntreeUtilisateur() {
+    public String obtenirCommandeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
             return commandeBrute.strip().toLowerCase();
@@ -102,6 +104,21 @@ public class App {
             return null;
         }
     }
+
+public String obtenirEntreeUtilisateur() {
+        try {
+            String commandeBrute = System.console().readLine();
+            return commandeBrute.strip();
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
 
     /**
      * Afficher dans le terminal une introduction en ASCII de l'application.
@@ -131,7 +148,7 @@ public class App {
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c": {
                     this.connexionClient();
@@ -194,7 +211,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
                     if (nbPage > 0) nbPage--;
@@ -252,7 +269,7 @@ public class App {
         this.afficherTexte("N: Non");
         this.afficherTitreFin();
 
-        String confirm = this.obtenirEntreeUtilisateur();
+        String confirm = this.obtenirCommandeUtilisateur();
         return confirm.equals("o");
     }
 
@@ -265,7 +282,7 @@ public class App {
         this.afficherTexte("Q: Retour");
         this.afficherTitreFin();
 
-        String recherche = this.obtenirEntreeUtilisateur();
+        String recherche = this.obtenirCommandeUtilisateur();
         if (recherche.equals("q")) return null;
 
         return recherche;
@@ -306,7 +323,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "l": {
                     this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
@@ -386,7 +403,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "a": {
                     int quantiteLivre = client.getPanier().ajouterLivre(livre);
@@ -426,7 +443,7 @@ public class App {
             this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 /*case "A": {
                 *ajouter un livre avec ses caract dans la liste des possessions du magasin
@@ -461,21 +478,22 @@ public class App {
             this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
-                /*case "C": {
-                *créer un compte vendeur et le rattacher à un magasin
-                }*/
+                case "c": {
+                    this.creationCompteVendeur();
+                    break;
+                }
 
-                /*case "M" : {
+                /*case "m" : {
                 *ajouter une nouvelle boutique appartenant à la chaîne de librairie
                 } 
                 */
 
-                /*case "S": {
+                /*case "s": {
                  * 
                 } */
-               /*case "V": {
+               /*case "v": {
                 * accéder aux statistique de vente
                } */
                 case "q": {
@@ -522,7 +540,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "p": {
                     finCommande = this.commander(client, panier);
@@ -582,7 +600,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c":
                     return 'C';
@@ -652,7 +670,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String entree = this.obtenirEntreeUtilisateur();
+            String entree = this.obtenirCommandeUtilisateur();
             if (entree.equals("q")) return null;
 
             try {
@@ -740,7 +758,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "q": {
                     finCommande = true;
@@ -753,4 +771,39 @@ public class App {
             }
         }
     }
+
+
+    //Fonctionnalités administrateur Hashmap
+
+    public void creationCompteVendeur(){
+        List<String> donnees = new ArrayList<>();
+        donnees.add("Nom");
+        donnees.add("Prenom");
+        donnees.add("Magasin");
+        HashMap<String, String> dicoDonnees = new HashMap<>();
+
+
+        System.out.println("Pour interrompre, tapez \"exit\"");
+        for(String donnee : donnees ){
+            System.out.println();
+            System.out.println(donnee);
+            String entree = this.obtenirEntreeUtilisateur();
+            while(!(entree instanceof String)){
+                System.out.println("Entrer une chaine de caracteres");
+            }
+            dicoDonnees.put(donnee, entree);
+        }
+        System.out.println(dicoDonnees);
+
+    }
+
+
+
+
+
+
+
+
+
+
 }

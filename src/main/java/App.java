@@ -162,7 +162,7 @@ public class App {
      * @return L'élément choisi
      */
     public <T> ResultatSelection<T> selectionnerElement(List<T> elements, int nbPage, String titre) {
-        int maxElementsParPage = 5;
+        int maxElementsParPage = 10;
         int totalPages = elements.size() / (maxElementsParPage + 1);
 
         boolean finCommande = false;

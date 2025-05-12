@@ -273,16 +273,13 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-
-        Client client;
         try {
-            client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            this.client(client);
         } catch (SQLException e) {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
-
-        this.client(client);
     }
 
     /**

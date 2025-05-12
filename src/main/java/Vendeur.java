@@ -39,9 +39,37 @@ public class Vendeur extends Personnel {
         //fct verifDispo ->Emrecan
         //Mettre à jour la quantité disponible d'un livre
         //Vérifier la disponibilité d'un livre dans une librairie. 
-        // a verifier prendre magasin a et enlever qte dans magasin b (faire attention qu'il n'y ait pas de solde null et donc qu'il y ait assez en stock) 
+        // a verifier prendre magasin a et enlever qte dans magasin b (faire attention qu'il
+        // n'y ait pas de solde null et donc qu'il y ait assez en stock) 
+
+        List<Posseder> possessionMag= magasinVendeur.getPossessions();
+        List<Posseder> possessionMagDest = magasinDestination.getPossessions();
+        for(Posseder livr : possessionMag){
+            if(livr.equals(livre)){
+                int qteMag= livr.getQuantite();
+            }
+
+            
+
+        }
+        //TEST 1ERE VERSION
+        //if possessionMag
+        /*if (!possessionMagDest.contains(livre)){
+            possessionMagDest.add(livre);
+        }
+        else{ }//ajouter qte a la qte actuel*/
+
+
+        
+
+
+
+
+
         List<Posseder> possessionsMagasin =  magasinVendeur.getPossessions();
+
         if (possessionsMagasin.contains(livre))
+        {    }
             {livreQte= possessionsMagasin.getQuantite();
             if (qte>){
             

@@ -2,6 +2,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LivreBD {
@@ -19,58 +20,29 @@ public class LivreBD {
             ORDER BY isbn, idauteur, nomclass, nomedit;
         """);
 
-        String isbn = null;
-        String titre = null;
-        Integer nbpages = null;
-        Integer date = null;
-        Double prix = null;
-
-        // TODO: Voir si on mets un set
-        List<String> listeAuteurs = new ArrayList<>();
-        List<String> listeClassifications = new ArrayList<>();
-        List<String> listeEditeurs = new ArrayList<>();
-
         List<Livre> listeLivres = new ArrayList<>();
         while (result.next()) {
-            String isbnResult = result.getString("isbn");
-            if (!isbnResult.equals(isbn)) {
-                if (isbn != null) {
-                    Livre livre = new Livre(isbn, titre, nbpages, date, prix, listeAuteurs, listeClassifications, listeEditeurs);
-                    listeLivres.add(livre);
-                }
+            String isbn = result.getString("isbn");
+            String titre = result.getString("titre");
 
-                isbn = isbnResult;
-                titre = result.getString("titre");
+            Integer nbpages = result.getInt("nbpages");
+            if (result.wasNull()) nbpages = null;
 
-                nbpages = result.getInt("nbpages");
-                if (result.wasNull()) nbpages = null;
-
-                date = result.getInt("datepubli");
-                prix = result.getDouble("prix");
-
-                listeAuteurs = new ArrayList<>();
-                listeClassifications = new ArrayList<>();
-                listeEditeurs = new ArrayList<>();
-            }
-
-            // TODO: Optimiser cette partie, vu qu'on tri correctement ou utiliser un set
+            Integer date = result.getInt("datepubli");
+            Double prix = result.getDouble("prix");
 
             String nomAuteur = result.getString("nomauteur");
-            if (!listeAuteurs.contains(nomAuteur)) listeAuteurs.add(nomAuteur);
-
-            String nomClass = result.getString("nomclass");
-            if (!listeClassifications.contains(nomClass)) listeClassifications.add(nomClass);
-
+            String nomClassifications = result.getString("nomclass");
             String nomEditeur = result.getString("nomedit");
-            if (!listeEditeurs.contains(nomEditeur)) listeEditeurs.add(nomEditeur);
+
+            List<String> listeAuteurs = new ArrayList<>(Arrays.asList(nomAuteur));
+            List<String> listeClassifications = new ArrayList<>(Arrays.asList(nomClassifications));
+            List<String> listeEditeurs = new ArrayList<>(Arrays.asList(nomEditeur));
+
+            listeLivres.add(new Livre(isbn, titre, nbpages, date, prix, listeAuteurs, listeClassifications, listeEditeurs));
         }
         result.close();
 
-        // On ajoute le dernier livre
-        if (isbn != null) {
-            Livre livre = new Livre(isbn, titre, nbpages, date, prix, listeAuteurs, listeClassifications, listeEditeurs);
-            listeLivres.add(livre);
-        }
         return listeLivres;
     }
 }

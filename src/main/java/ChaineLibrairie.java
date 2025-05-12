@@ -38,10 +38,10 @@ public class ChaineLibrairie {
         try {
             // TODO: A modifier via des variables par exemple ou .env
 
-            String nomServeur = "localhost";
-            String nomBase = "Librairie";
-            String nomLogin = "root";
-            String motDePasse = "root_mdp";
+            String nomServeur = "servinfo-maria";
+            String nomBase = "DBgautier";
+            String nomLogin = "gautier";
+            String motDePasse = "gautier";
 
             this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
         } catch (SQLException e) {

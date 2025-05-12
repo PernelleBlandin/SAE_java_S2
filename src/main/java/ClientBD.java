@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,16 +42,36 @@ public class ClientBD {
 
         // Commandes
 
-        // WIP
         PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
-            SELECT nomcli, prenomcli, adressecli, codepostal, villecli, idmag, nommag, villemag
-            FROM CLIENT NATURAL JOIN MAGASIN
-            WHERE idcli = ?;
+            SELECT numcom, datecom, enligne, livraison, numlig, qte, prixvente, isbn, titre, nbpages, datepubli, prix, nomedit, nomclass, nomauteur 
+            FROM COMMANDE NATURAL JOIN DETAILCOMMANDE NATURAL JOIN LIVRE NATURAL JOIN EDITER NATURAL JOIN EDITEUR NATURAL JOIN THEMES NATURAL JOIN CLASSIFICATION NATURAL JOIN ECRIRE NATURAL JOIN AUTEUR
+            WHERE idcli = ?
+            ORDER BY numcom, numlig;
         """);
         clientStatement.setInt(1, id);
 
-        List<DetailLivre> listeDetailLivres = new ArrayList<>();
+        ResultSet resultCommandes = commandesStatement.executeQuery();
+
+        String numCom = null;
+        Date datecom  = null;
+        Character enligne = null;
+        Character livraison = null;
+        Magasin magasin = null;
+
         List<Commande> listeCommandes = new ArrayList<>();
+        List<DetailLivre> listeDetailLivres = new ArrayList<>();
+        while (resultCommandes.next()) {
+            String curNumCom = clientResult.getString("numcom");
+            if (curNumCom != numCom) {
+                listeCommandes.add(new Commande(numCom, datecom, enligne, livraison))
+
+                numCom = clientResult.getString("numcom");
+                datecom  = clientResult.getDate("datecom");
+                enligne = clientResult.getString("enligne").charAt(0);
+                livraison = clientResult.getString("livraison").charAt(0);
+            }
+        }
+        
         Panier panier = new Panier(magasinClient, listeDetailLivres);
 
         return new Client(id, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier);

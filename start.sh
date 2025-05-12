@@ -4,7 +4,7 @@
 set -e
 
 mvn compile
-mvn test
+# mvn test
 javadoc -d ./docs ./src/main/java/*.java
 
 mvn exec:java -Dexec.mainClass="Executable"

@@ -278,7 +278,7 @@ public class App {
         try {
             client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
         } catch (SQLException e) {
-            System.err.println("Client non trouvé...");
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
 
@@ -319,8 +319,12 @@ public class App {
                     break;
                 }
                 case "r": {
-                    List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
-                    this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    try {
+                        List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
+                        this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
+                    }
                     break;
                 }
                 case "p": {
@@ -338,13 +342,11 @@ public class App {
                         List<Livre> listeLivres;
                         try {
                             listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+                            List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(listeLivres, recherche);
+                            this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
                         } catch (SQLException e) {
                             System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
-                            break;
                         }
-
-                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(listeLivres, recherche);
-                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
                     }
                     break;
                 }
@@ -421,8 +423,15 @@ public class App {
 
     //Connexion Vendeur
     public void connexionVendeur(){
-        Vendeur vendeur = this.chaineLibrairie.trouverVendeur("Grande", "Marie");
-        this.menuVendeur(vendeur);
+        // TODO: Voir comment on fait ça
+
+        try {
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.menuVendeur(vendeur);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du vendeur : " + e.getMessage());
+            return;
+        }
     }
 
 

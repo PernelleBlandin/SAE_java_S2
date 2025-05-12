@@ -106,8 +106,8 @@ public class CommandeTest {
 
     @Test
     public void testsToString() {
-        assertEquals("Commande #1 du 01/09/2025 - 23.98€ - 1 article(s) - Cap au Sud (Marseille)", this.commande1.toString());
-        assertEquals("Commande #2 du 12/12/2025 - 35.97€ - 1 article(s) - Cap au Sud (Marseille)", this.commande2.toString());
-        assertEquals("Commande #3 du 05/09/2025 - 118.97€ - 2 article(s) - Loire et livres (Orléans)", this.commande3.toString());
+        assertEquals("Commande #1 du 01/09/2025 - 23,98€ - 1 article(s) - Cap au Sud (Marseille)", this.commande1.toString());
+        assertEquals("Commande #2 du 12/12/2025 - 35,97€ - 1 article(s) - Cap au Sud (Marseille)", this.commande2.toString());
+        assertEquals("Commande #3 du 05/09/2025 - 118,97€ - 2 article(s) - Loire et livres (Orléans)", this.commande3.toString());
     }
 }

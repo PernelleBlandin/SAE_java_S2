@@ -388,11 +388,16 @@ public class App {
     public void afficherLivre(Client client, Livre livre) {
         boolean finCommande = false;
         while (!finCommande) {
+            String nbPages = "Inconnu";
+            Integer nbpagesInteger = livre.getNbPages();
+            if (nbpagesInteger != null) nbPages = String.valueOf(nbpagesInteger);
+
             this.afficherTitre(livre.getTitre());
             this.afficherTexte(String.format("Auteur : %s", livre.joinNomAuteurs()));
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
             this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
+            this.afficherTexte(String.format("Nombre de pages : %s", nbPages));
 
             this.afficherSeperateurMilieu();
             this.afficherTexte("A: Ajouter au panier");

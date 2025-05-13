@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -12,9 +12,9 @@ public class DetailLivreTest {
         null,
         2024,
         9.99,
-        new ArrayList<>(Arrays.asList("Xavier Niel")),
-        new ArrayList<>(Arrays.asList("Flammarion")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Xavier Niel")),
+        new HashSet<>(Arrays.asList("Flammarion")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre2 = new Livre(
@@ -23,9 +23,9 @@ public class DetailLivreTest {
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList("Claude Servi")),
-        new ArrayList<>(Arrays.asList("Dunod")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Claude Servi")),
+        new HashSet<>(Arrays.asList("Dunod")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre3 = new Livre(
@@ -34,9 +34,9 @@ public class DetailLivreTest {
         213,
         2023,
         11.99,
-        new ArrayList<>(Arrays.asList("Guillaume Musso")),
-        new ArrayList<>(Arrays.asList("Lgf")),
-        new ArrayList<>(Arrays.asList("Roman"))
+        new HashSet<>(Arrays.asList("Guillaume Musso")),
+        new HashSet<>(Arrays.asList("Lgf")),
+        new HashSet<>(Arrays.asList("Roman"))
     );
 
     private DetailLivre detailLivre1 = new DetailLivre(this.livre3, 1, 2, 11.99);

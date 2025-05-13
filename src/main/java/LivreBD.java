@@ -3,7 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LivreBD {
     private ConnexionMariaDB connexionMariaDB;
@@ -55,29 +57,32 @@ public class LivreBD {
         ResultSet result = statement.executeQuery();
         if (!result.next()) throw new SQLException("Livre non trouvé");
 
-        String titre = result.getString("titre");
+        Set<String> setAuteurs = new HashSet<>();
+        Set<String> setEditeurs = new HashSet<>();
+        Set<String> setClassifications = new HashSet<>();
 
+        String titre = result.getString("titre");
         Integer nbpages = result.getInt("nbpages");
         if (result.wasNull()) nbpages = null;
 
         Integer date = result.getInt("datepubli");
-        Double prix = result.getDouble("prix");
+        Double prix = result.getDouble("prix");    
 
-        // TODO: Plusieurs auteurs, classifications, éditeurs        
-        List<String> listeAuteurs = new ArrayList<>();
-        String nomAuteur = result.getString("nomauteur");
-        if (!result.wasNull()) listeAuteurs.add(nomAuteur);
+        result.previous();
 
-        List<String> listeEditeurs = new ArrayList<>();
-        String nomEditeur = result.getString("nomedit");
-        if (!result.wasNull()) listeEditeurs.add(nomEditeur);
+        while (result.next()) {
+            String nomAuteur = result.getString("nomauteur");
+            if (!result.wasNull()) setAuteurs.add(nomAuteur);
 
-        List<String> listeClassifications = new ArrayList<>();
-        String nomClassifications = result.getString("nomclass");
-        if (!result.wasNull()) listeClassifications.add(nomClassifications);
+            String nomEditeur = result.getString("nomedit");
+            if (!result.wasNull()) setEditeurs.add(nomEditeur);
+
+            String nomClassifications = result.getString("nomclass");
+            if (!result.wasNull()) setClassifications.add(nomClassifications);
+        }
 
         result.close();
 
-        return new Livre(isbn, titre, nbpages, date, prix, listeAuteurs, listeEditeurs, listeClassifications);
+        return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
 }

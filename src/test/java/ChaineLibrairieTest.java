@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Test;
@@ -18,9 +19,9 @@ public class ChaineLibrairieTest {
         329,
         2025,
         24.99,
-        new ArrayList<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
-        new ArrayList<>(Arrays.asList("Simplement 2")),
-        new ArrayList<>(Arrays.asList("Sports"))
+        new HashSet<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
+        new HashSet<>(Arrays.asList("Simplement 2")),
+        new HashSet<>(Arrays.asList("Sports"))
     );
 
     private Livre livre2 = new Livre(
@@ -29,9 +30,9 @@ public class ChaineLibrairieTest {
         null,
         2024,
         9.99,
-        new ArrayList<>(Arrays.asList("Xavier Niel")),
-        new ArrayList<>(Arrays.asList("Flammarion")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Xavier Niel")),
+        new HashSet<>(Arrays.asList("Flammarion")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre3 = new Livre(
@@ -40,9 +41,9 @@ public class ChaineLibrairieTest {
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList("Claude Servi")),
-        new ArrayList<>(Arrays.asList("Dunod")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Claude Servi")),
+        new HashSet<>(Arrays.asList("Dunod")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre4 = new Livre(
@@ -51,9 +52,9 @@ public class ChaineLibrairieTest {
         213,
         2023,
         11.99,
-        new ArrayList<>(Arrays.asList("Guillaume Musso")),
-        new ArrayList<>(Arrays.asList("Lgf")),
-        new ArrayList<>(Arrays.asList("Roman"))
+        new HashSet<>(Arrays.asList("Guillaume Musso")),
+        new HashSet<>(Arrays.asList("Lgf")),
+        new HashSet<>(Arrays.asList("Roman"))
     );
 
     private Livre livre5 = new Livre(
@@ -62,9 +63,9 @@ public class ChaineLibrairieTest {
         313,
         2024,
         13.99,
-        new ArrayList<>(Arrays.asList("Guillaume Musso")),
-        new ArrayList<>(Arrays.asList("Lgf")),
-        new ArrayList<>(Arrays.asList("Roman"))
+        new HashSet<>(Arrays.asList("Guillaume Musso")),
+        new HashSet<>(Arrays.asList("Lgf")),
+        new HashSet<>(Arrays.asList("Roman"))
     );
 
     private Livre livreInconnu = new Livre(
@@ -73,9 +74,9 @@ public class ChaineLibrairieTest {
         0,
         2025,
         99.99,
-        new ArrayList<>(Arrays.asList()),
-        new ArrayList<>(Arrays.asList()),
-        new ArrayList<>(Arrays.asList())
+        new HashSet<>(Arrays.asList()),
+        new HashSet<>(Arrays.asList()),
+        new HashSet<>(Arrays.asList())
     );
 
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");

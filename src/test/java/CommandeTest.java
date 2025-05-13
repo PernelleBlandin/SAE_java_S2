@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -15,9 +16,9 @@ public class CommandeTest {
         329,
         2025,
         24.99,
-        new ArrayList<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
-        new ArrayList<>(Arrays.asList("Simplement 2")),
-        new ArrayList<>(Arrays.asList("Sports"))
+        new HashSet<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
+        new HashSet<>(Arrays.asList("Simplement 2")),
+        new HashSet<>(Arrays.asList("Sports"))
     );
 
     private Livre livre2 = new Livre(
@@ -26,9 +27,9 @@ public class CommandeTest {
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList("Claude Servi")),
-        new ArrayList<>(Arrays.asList("Dunod")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Claude Servi")),
+        new HashSet<>(Arrays.asList("Dunod")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre3 = new Livre(
@@ -37,9 +38,9 @@ public class CommandeTest {
         213,
         2023,
         11.99,
-        new ArrayList<>(Arrays.asList("Guillaume Musso")),
-        new ArrayList<>(Arrays.asList("Lgf")),
-        new ArrayList<>(Arrays.asList("Roman"))
+        new HashSet<>(Arrays.asList("Guillaume Musso")),
+        new HashSet<>(Arrays.asList("Lgf")),
+        new HashSet<>(Arrays.asList("Roman"))
     );
 
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");

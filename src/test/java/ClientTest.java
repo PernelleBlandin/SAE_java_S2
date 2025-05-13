@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Test;
@@ -20,9 +21,9 @@ public class ClientTest {
         48,
         2003,
         8.81,
-        new ArrayList<>(Arrays.asList("Léo")),
-        new ArrayList<>(Arrays.asList("Dargaud")),
-        new ArrayList<>(Arrays.asList("Arts décorartifs"))
+        new HashSet<>(Arrays.asList("Léo")),
+        new HashSet<>(Arrays.asList("Dargaud")),
+        new HashSet<>(Arrays.asList("Arts décorartifs"))
     );
 
     private Livre livre2 = new Livre(
@@ -31,9 +32,9 @@ public class ClientTest {
         null,
         2010,
         16.4,
-        new ArrayList<>(Arrays.asList("Seth Grahame-Smith")),
-        new ArrayList<>(Arrays.asList("Hachette Book Group Usa")),
-        new ArrayList<>(Arrays.asList("Littérature américaine"))
+        new HashSet<>(Arrays.asList("Seth Grahame-Smith")),
+        new HashSet<>(Arrays.asList("Hachette Book Group Usa")),
+        new HashSet<>(Arrays.asList("Littérature américaine"))
     );
 
     private Livre livre3 = new Livre(
@@ -42,9 +43,9 @@ public class ClientTest {
         32,
         2008,
         11.9,
-        new ArrayList<>(Arrays.asList("Mick Inkpen")),
-        new ArrayList<>(Arrays.asList("Hodder Children'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        new HashSet<>(Arrays.asList("Mick Inkpen")),
+        new HashSet<>(Arrays.asList("Hodder Children'S")),
+        new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     private Livre livre4 = new Livre(
@@ -53,9 +54,9 @@ public class ClientTest {
         54,
         2009,
         8.99,
-        new ArrayList<>(Arrays.asList("Mick Inkpen")),
-        new ArrayList<>(Arrays.asList("Hodder Children'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        new HashSet<>(Arrays.asList("Mick Inkpen")),
+        new HashSet<>(Arrays.asList("Hodder Children'S")),
+        new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     // Client 1

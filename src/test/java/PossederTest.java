@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -12,9 +12,9 @@ public class PossederTest {
         329,
         2025,
         24.99,
-        new ArrayList<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
-        new ArrayList<>(Arrays.asList("Simplement 2")),
-        new ArrayList<>(Arrays.asList("Sports"))
+        new HashSet<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
+        new HashSet<>(Arrays.asList("Simplement 2")),
+        new HashSet<>(Arrays.asList("Sports"))
     );
 
     private Livre livre2 = new Livre(
@@ -23,9 +23,9 @@ public class PossederTest {
         null,
         2024,
         9.99,
-        new ArrayList<>(Arrays.asList("Xavier Niel")),
-        new ArrayList<>(Arrays.asList("Flammarion")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Xavier Niel")),
+        new HashSet<>(Arrays.asList("Flammarion")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Livre livre3 = new Livre(
@@ -34,9 +34,9 @@ public class PossederTest {
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList("Claude Servi")),
-        new ArrayList<>(Arrays.asList("Dunod")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Claude Servi")),
+        new HashSet<>(Arrays.asList("Dunod")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
     private Posseder posseder1 = new Posseder(this.livre1, 50);

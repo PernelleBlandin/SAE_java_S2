@@ -17,7 +17,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./databases/creationTables.sql:/docker-entrypoint-initdb.d/creationTables.sql
-      - ./databases/insertionsValeurs.sql:/docker-entrypoint-initdb.d/insertionsValeurs.sql
+      - ./databases/insertionsValeursTests.sql:/docker-entrypoint-initdb.d/insertionsValeursTests.sql
     networks:
       - mariadb_network
 

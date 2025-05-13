@@ -171,4 +171,13 @@ public class Livre {
         Livre livre2 = (Livre) o;
         return this.getISBN().equals(livre2.getISBN());
     }
+
+    /**
+     * Redéfinition du hashcode d'un livre.
+     * @return Le hashcode du livre. 
+     */
+    @Override
+    public int hashCode() {
+        return this.isbn.hashCode();
+    }
 }

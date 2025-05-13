@@ -116,7 +116,7 @@ public class ClientBD {
             SELECT idmag, nommag, villemag, numcom, datecom, enligne, livraison, numlig, qte, prixvente, isbn
             FROM MAGASIN NATURAL JOIN COMMANDE NATURAL JOIN DETAILCOMMANDE
             WHERE idcli = ?
-            ORDER BY numcom, numlig;
+            ORDER BY numcom DESC, numlig;
         """);
         commandesStatement.setInt(1, idClient);
 

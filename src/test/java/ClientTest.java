@@ -214,18 +214,6 @@ public class ClientTest {
     }
 
     @Test
-    public void testsGetCommandesTriesParDateDesc() {
-        List<Commande> commandesTrieesClient1 = new ArrayList<>(Arrays.asList(this.commande1));
-        assertEquals(commandesTrieesClient1, this.client1.getCommandesTriesParDateDesc());
-
-        List<Commande> commandesTrieesClient2 = new ArrayList<>();
-        assertEquals(commandesTrieesClient2, this.client2.getCommandesTriesParDateDesc());
-
-        List<Commande> commandesTrieesClient3 = new ArrayList<>(Arrays.asList(this.commande3, this.commande2));
-        assertEquals(commandesTrieesClient3, this.client3.getCommandesTriesParDateDesc());
-    }
-
-    @Test
     public void testsToString() {
         assertEquals("Fatima Rodriguez", this.client1.toString());
         assertEquals("Hugo Garcia", this.client2.toString());

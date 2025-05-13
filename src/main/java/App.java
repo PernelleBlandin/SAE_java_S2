@@ -696,7 +696,7 @@ public class App {
      * @param client Un client.
      */
     public void consulterCommandesClient(Client client) {
-        List<Commande> commandes = client.getCommandesTriesParDateDesc();
+        List<Commande> commandes = client.getCommandes();
         ResultatSelection<Commande> resultatSelectionCommande = new ResultatSelection<>();
         while (resultatSelectionCommande != null) {
             resultatSelectionCommande = this.selectionnerElement(commandes, resultatSelectionCommande.getNbPage(), "Sélectionner une commande à afficher");

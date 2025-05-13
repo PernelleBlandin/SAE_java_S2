@@ -46,10 +46,9 @@ public class LivreBD {
 
     public Livre obtenirLivre(String isbn) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
-            SELECT titre, nbpages, datepubli, prix, idauteur, nomauteur, anneenais, anneedeces, nomclass, nomedit
+            SELECT titre, nbpages, datepubli, prix, nomauteur, nomclass, nomedit
             FROM LIVRE NATURAL LEFT JOIN ECRIRE NATURAL LEFT JOIN AUTEUR NATURAL LEFT JOIN THEMES NATURAL LEFT JOIN CLASSIFICATION NATURAL LEFT JOIN EDITER NATURAL LEFT JOIN EDITEUR
             WHERE isbn = ?
-            ORDER BY idauteur, nomclass, nomedit
         """);
         statement.setString(1, isbn);
 

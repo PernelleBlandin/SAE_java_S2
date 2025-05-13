@@ -2695,16 +2695,16 @@ insert into AUTEUR(idauteur, nomauteur,anneenais,anneedeces) values
 -- Les livres
 insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782205054750', 'Les cavernes', 48, 2003, 8.81),
-
+	('9782012101425', 'Astérix légionnaire', 48, 2008, 7.85),
 	('9782205054996', 'Aberrations', 48, 2005, 29.2),
 	('9782205062403', 'Le visage de la vengeance', 48, 2009, 5.0),
-
+	('9782070577101', 'Le tour du monde en quatre-vingts jours', 348, 2007, 21.7),
 	('9782205084672', 'L''homme qui tua Chris Kyle', 162, 2020, 15.19),
 	('9782226175113', 'Vous n''aurez pas le dernier mot!', 232, 2006, 11.9),
 	('9782205055252', 'Escale dans le passe', 47, 2005, 11.76),
 	('9782205064223', 'Au poil', 48, 2010, 12.2),
 	('9782205062335', 'Les dragons de Pékin', 48, 2009, 6.14),
-
+	('9782205058024', 'Tramp', 52, 2007, 10.81),
 	('9782082013901', '10 minutes pour soi', 233, 2005, 11.9),
 	('9782205050691', 'La chute de Babylone', 56, 2003, 23.2),
 	('9782205064148', 'La chute d''un trader', 56, 2007, 16.9),
@@ -2712,14 +2712,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782215114970', 'Un petit frère, ça sert à quoi?', 20, 2012, 11.9),
 	('9782226315243', 'Mon amour', 38, 2015, 5.15),
 	('9782330036119', 'Caricaturistes', 415, 2014, 28.6),
-
+	('9782723437202', 'Le crâne 2', 47, 2003, 10.1),
 	('9782205054453', 'La nuit de l''Inca', 48, 2004, 17.0),
 	('9782205066623', 'Le dindon de la farce', 48, 2012, 27.5),
 	('9782020827201', 'Gourmands de père en fils', 153, 2006, 36.0),
 	('9782080676719', 'Coco Chanel', 437, 2000, 5.08),
 	('9782723435383', 'Hariti', 47, 2001, 30.0),
 	('9782205067996', 'Le petit livre de la cinquième république', NULL, 2011, 6.08),
-
+	('9782205034066', 'Le Ranch maudit...', 46, 1986, 4.0),
 	('9782205077193', 'New York book', 120, 2018, 17.33),
 	('9782205056822', 'Adieu Calder', 48, 2007, 13.1),
 	('9782505002529', 'Le premier pas', 64, 2008, 32.0),
@@ -2732,26 +2732,26 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782747030663', 'Au championnat d''arts martiaux', 55, 2010, 6.53),
 	('9782871297321', 'Final cut', 48, 2005, 6.91),
 	('9782020231008', 'Calembourdes', NULL, 1999, 9.0),
-
+	('9782226095770', 'Le jeu du dictionnaire', 221, 1998, 9.0),
 	('9782226186751', 'Petites - exceptions françaises', 176, 2008, 30.0),
 	('9782205047561', 'Snoopy champion du monde!', 48, 1998, 9.0),
 	('9782226094148', 'Plage privée', NULL, 1997, 9.07),
 	('9782226002662', 'Mister Mœbius et Docteur Gir', 94, 1976, 10.0),
 	('9782723449854', 'Englewood', 47, 2006, 5.58),
-
+	('9782747020541', 'Le cycle du Nautile', 52, 2006, 37.9),
 	('9782081229501', 'Orgueil et préjugés', 367, 2009-10, 37.7),
 	('9782215150169', 'Les énigmes des Borgia', 207, 2015, 26.0),
 	('9782227473676', 'Sur la traduction', 68, 2004, 7.6),
 	('9782070545865', 'Le roi Doudou', NULL, 2001, 13.6),
 	('9782723440707', 'L''atlas des motos de rêve', 235, 2003, 6.63),
-
+	('9782742746200', 'Frédéric Chopin', 156, 2004, 18.7),
 	('9782742796144', 'La main qui ment', 155, 2011, 5.26),
 	('9782205054910', 'Black op', 48, 2005, 13.1),
 	('9782021125948', 'Carnets de thèse', 179, 2015, 6.9),
 	('9782205049794', 'Le sarcophage', 61, 2000, 8.0),
 	('9782205058789', 'Black op', 48, 2007, 35.9),
 	('9782723489478', 'La bonne étoile', 88, 2012, 6.08),
-
+	('9782871295914', 'La torpille', 48, 2004, 24.0),
 	('9782818501764', 'Grands et petits secrets du monde de l''art', 368, 2011, 34.8),
 	('9782818501146', 'Cinéphilo', 405, 2011, 20.4),
 	('9782818500132', 'Dans le coeur des hommes', 302, 2010, 5.17),
@@ -2759,13 +2759,13 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081248649', 'A l''ombre des hommes-lions', 352, 2012, 28.0),
 	('9782020380621', 'Desproges, portrait', 214, 2000, 9.0),
 	('9781401301019', 'Scar tissue', 465, 2004, 45.97),
-
+	('9782010123382', 'Parodie', 297, 1987, 12.81),
 	('9782868690593', 'L''empire d''un homme', 187, 1985, 20.0),
 	('9782226004628', 'La folle vie', 153, 1977, 6.1),
 	('9782742751884', 'Ames et corps', 249, NULL, 6.53),
 	('9782226238726', 'La mémoire de la maison', 287, 2012, 23.8),
 	('9782012012219', 'Moucha mutantus', 93, 2006, 9.0),
-
+	('9782868691828', 'Les carnets de Jennifer G.', 131, 1987, 18.8),
 	('9782070780129', 'Les années radio', 159, 1989, 15.9),
 	('9782020106108', 'Le ronfleur apprivoisé', 185, 1989, 5.17),
 	('9782226136855', 'Billard blues', 169, 2003, 4.8),
@@ -2776,20 +2776,20 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080672339', 'Jean Cocteau', 313, 1997, 11.9),
 	('9782020324427', 'L'' habitation des femmes', 238, 1998, 11.9),
 	('9782226095244', 'Champagne!', 75, 1997, 27.0),
-
+	('9782742708499', 'Mademoiselle Merquem', 322, 1996, 27.5),
 	('9782080683915', 'Au pays des vivants', 379, 2004, 25.4),
 	('9782226151155', 'Aurore et George', 179, 2004, 26.6),
 	('9782020571951', 'L''attrapeur d''ombres', 427, 2004, 11.9),
 	('9782080685452', 'Je tue', 567, 2004, 19.2),
 	('9782742417674', 'Citadelles & forteresses', NULL, 2006, 5.0),
 	('9782016251362', 'Tapas et bouchées', 62, 2005, 9.0),
-
+	('9782080305565', 'Eric Kayser''s sweet and savory tarts', 156, 2007, 42.99),
 	('9782226036513', 'L''homme au revolver', 501, 1989, 9.0),
 	('9782226108333', 'Ce siècle avait mille ans', 294, 1999, 9.0),
 	('9782226062239', 'L'' amour dans la ville', 257, 1993, 9.0),
 	('9782227070073', 'Pagaille au chenil', 122, 2000, 36.3),
 	('9782081626485', 'Le grand livre-jeu des J.O.', 27, 2004, 9.0),
-
+	('9782081609440', 'Les plus belles légendes de sorcières', 25, 1998, 6.2),
 	('9782082005746', 'Le livre du parfum', 224, 1995, 8.29),
 	('9782070110612', 'Le monde roman, 1060-1220', 444, 1982, 9.64),
 	('9782020057264', 'Une autre parole', 154, 1981, 20.0),
@@ -2798,7 +2798,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020089487', 'Passion d''une attente', 186, 1985, 9.0),
 	('9782505007999', 'Borderline', 56, 2010, 29.0),
 	('9782226087034', 'Les aventures épatantes de Jacques Chirac', NULL, 1996, 4.3),
-
+	('9782081607484', 'Le pique-nique des oursons', 33, 1989, 59.9),
 	('9782011456755', 'Histoire de la pensée économique et politique de la France d''ancien régime', 288, 2007, 100.0),
 	('9782020069588', 'Le loup meurt en silence', 108, 1984, 9.0),
 	('9782226075963', 'Marée rouge', 375, 1994, 9.0),
@@ -2810,7 +2810,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782227486805', 'Quelle émotion', 87, 2013, 11.25),
 	('9782081344020', 'Tartes & gourmandises', 206, 2014, 59.9),
 	('9782070633340', 'J''ai un problème avec ma mère', 28, 2010, 9.0),
-
+	('9782010078064', 'Méthodes de l''astrophysique', 303, 1981, 25.01),
 	('9782226087959', 'Le vrai langage des jeunes expliqué aux parents qui n''entravent plus rien', 269, 1996, 5.2),
 	('9782205003741', 'Iznogoud l''infame', 46, 1969, 30.0),
 	('9782012011328', 'Mission impossible pour Fantômette', 249, 2006, 25.0),
@@ -2823,9 +2823,9 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9780340932056', 'Kipper', 32, 2008, 11.9),
 	('9782020257961', 'La faiblesse de Dieu', 217, 1995, 27.0),
 	('9782070742738', 'Furies', 316, 1995, 36.5),
-
+	('9782742700974', 'Paolo et Vittorio Taviani', 219, 1993, 24.8),
 	('9782020183550', 'Dans la langue de personne', 215, 1993, 19.69),
-
+	('9782742701179', 'Disparitions', 160, 1994, 17.78),
 	('9782742700059', 'Judas Iscariote', 269, 1993, 38.6),
 	('9782868697219', 'Sida & libertés', 334, 1991, 11.9),
 	('9782082012423', 'Paris gourmand', 167, 2004, 45.0),
@@ -2840,9 +2840,9 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226092304', 'Mémoires d''immigrés', 209, 1997, 11.9),
 	('9782082003933', 'Beaune', 89, 2001, 9.98),
 	('9782226092762', 'Viens voir les comediens', 215, 1997, 8.53),
-
+	('9782020479981', 'La naissance du "phénomène Sartre"', 363, 2001, 11.9),
 	('9782742734429', 'Les mots du rosaire', 43, 2001, 18.2),
-
+	('9781844301515', 'Guide to cheeses of the world', 224, 2005, 29.95),
 	('9782742734092', 'Désirs et réalités', 273, 2001, 11.9),
 	('9782020114622', 'Les cinq paradoxes de la modernité', 189, 1990, 17.0),
 	('9782020125062', 'Witold Gombrowicz, ou, L''athéisme généralisé', 283, 2000, 31.0),
@@ -2857,11 +2857,11 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782747024990', 'Histoires pour fêter ma profession de foi', 92, 2009, 9.0),
 	('9782226110596', 'Job et l''excès du mal', 186, 1999, 13.64),
 	('9782016211106', 'J''arrête de fumer', 63, 2008, 6.58),
-
+	('9782227484924', 'Saveurs du récit biblique', 367, 2012, 19.41),
 	('9782747024976', 'Raconte-moi la Bible', 172, 2009, 18.0),
 	('9782227005167', 'Bébés/mères en révolte', 207, 1987, 4.38),
-
-
+	('9782227301399', 'Prier aujourd''hui', 125, 1988, 20.0),
+	('9782227301405', 'Dieu', 121, 1988, 29.9),
 	('9782020113977', 'Le syndrome des Grieux', 214, 1990, 8.42),
 	('9782020045506', 'Les grands économistes', NULL, 1971, 9.0),
 	('9782226087898', 'Jésus et Bouddha', 261, 1996, 9.0),
@@ -2876,7 +2876,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782010082016', 'Ariane et la navette spatiale', 150, 1981, 15.0),
 	('9782227004023', 'Walesa', 195, 1981, 36.7),
 	('9782020053952', 'Les mécaniciens grecs', 229, 1980, 19.08),
-
+	('9782010209444', 'La prévision des séismes', 134, 1993, 15.1),
 	('9782226002884', 'Des mondes souterrains au roi du monde', 255, 1976, 20.07),
 	('9782020125130', 'Les Artisans de l''hérédité', 334, 1990, 9.0),
 	('9782227301313', 'Le corps humain', 279, 1978, 30.0),
@@ -2896,32 +2896,32 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782010032257', 'La vie quotidienne des alchimistes au Moyen Age', 254, 1977, 9.59),
 	('9782020067584', 'La fin des immigrés', 213, 1984, 9.0),
 	('9782012375550', 'élever bébé', 766, 2008, 5.49),
-
+	('9782020046626', 'Les nouvelles sectes', 187, 1977, 9.0),
 	('9782226012845', 'Eloge de l''ivresse', 231, 1981, 9.0),
 	('9782020189224', 'L''un et l''autre', 361, 1986, 9.0),
 	('9782080645067', 'Idées fausses sur la défonce', 210, 1982, 9.0),
 	('9782227004108', 'Ces drôles de médecins', 223, 1985, 10.0),
-
-
-
+	('9782227317192', 'L'' aventure du christianisme social', 156, 1999, 9.0),
+	('9782227301580', 'Les ministères', 102, 1993, 19.0),
+	('9782227340954', 'Pour accueillir le soir', 180, 1994, 9.0),
 	('9782012353916', 'Histoire du peuple juif au XXè siècle', 429, 1998, 12.5),
 	('9782226051462', 'Rachi de Troyes', 152, 1991, 4.93),
 	('9782227478336', 'J''aimerais vous dire', 345, 2009, 9.0),
-
+	('9782227425552', 'Code de droit canonique', 363, 1984, 45.0),
 	('9782020878142', 'Du consentement', 135, 2007, 11.49),
 	('9782020059282', 'Histoire du capitalisme, 1500-1980', 331, 1981, 30.0),
 	('9782227436398', 'Secondes noces', 186, 1996, 4.66),
 	('9782020056496', 'La planète des bidonvilles', 381, 1980, 9.0),
-
-
-
-
+	('9782227436268', 'Un chrétien devant les grandes religions', 233, 1995, 15.8),
+	('9782020164573', 'La pédagogie n''est plus ce qu''elle sera', 302, 1992, 6.08),
+	('9782080671738', 'Jacques Monod', 365, 1996, 5.38),
+	('9782227471344', 'La mort et l''immortalité', 1685, 2004, 52.0),
 	('9782742725489', 'Le soufisme au quotidien', 359, 2000, 18.76),
 	('9782226096043', 'Main basse sur Paris', 154, 1998, 9.0),
 	('9782020049726', 'L'' agriculture française', 250, 1978, 9.0),
 	('9782080689870', 'Histoire de la chirurgie esthétique', 294, 2006, 9.0),
 	('9782226067470', 'Rivales de Dieu', 266, 1993, 9.0),
-
+	('9782227471580', 'Dictionnaire des monothéismes', 559, 2003, 17.99),
 	('9782010041235', '101 conseils pour vaincre la solitude', 159, 1977, 9.0),
 	('9782010105203', 'Mémoire de singe et paroles d''homme', 303, 1983, 16.0),
 	('9782080687401', 'La folle histoire du mariage gay', 210, 2004, 11.9),
@@ -2936,10 +2936,10 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226193018', 'Il nous a tant aimés', 235, 2009, 9.0),
 	('9782226312518', 'La mort peut attendre', 183, 2014, 15.0),
 	('9782080683342', 'La part du diable', 251, 2002, 4.1),
-
+	('9782227360365', 'Tous invités--', 157, 1982, 17.2),
 	('9782226034403', 'Prophètes d''aujourd''hui', 337, 1988, 9.0),
-
-
+	('9782020573719', 'L''état de l''opinion', 345, 2006, 6.53),
+	('9782227202184', 'Le pari éducatif', 187, 1991, 6.97),
 	('9782020059626', 'Malades et médecins', 255, 1981, 30.9),
 	('9782020131612', 'La biologie buissonnière', 163, 1991, 7.69),
 	('9782226084958', 'Du bon usage de la vie', 185, 1996, 9.0),
@@ -2969,12 +2969,12 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020063418', 'La troisième planète', 251, 1983, 60.0),
 	('9782227476141', 'Caricaturer dieu?', 222, 2006, 6.4),
 	('9782723471589', 'Les champs du monde', 141, 2009, 6.53),
-
+	('9782227366022', 'L'' évangile de Matthieu', 304, 1991, 6.47),
 	('9782227489165', 'Un chemin sans chemin', 178, 2016, 5.65),
-
-
+	('9782020145930', 'Le messager des étoiles', 171, 1998, 9.4),
+	('9782020213806', 'Libre-échange', 147, 1994, 5.94),
 	('9782227471634', 'Judas', 348, 2006, 6.53),
-
+	('9782215044260', 'L''évangile pour les enfants', 107, 2002, 9.0),
 	('9782080685995', 'Savoir manger', 598, 2004, 13.5),
 	('9782226238566', 'Chemins de traverse', 221, 2011, 33.0),
 	('9782226107824', 'Le stoïcisme au XVIe et au XVIIe siècle', 364, 1999, 20.15),
@@ -2997,7 +2997,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782227325135', 'Jean de la Croix et l''union à Dieu', 267, 1996, 4.0),
 	('9782080801074', 'La pensée et le féminin', 467, 2004, 9.0),
 	('9782227436305', 'Visages de la vie de l''Eglise.', 390, 1995, 35.0),
-
+	('9782227610989', 'Images pour prier à Noël', 47, 1990, 9.0),
 	('9782020101646', 'Lettre à un ami juif', 92, 1988, 31.5),
 	('9782020090339', 'La voix de l''expérience', 215, 1986, 7.0),
 	('9782227478206', 'Benoît XVI, le pape incompris', 215, 2008, 25.1),
@@ -3008,17 +3008,17 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782718905853', 'Patrice de La Tour du Pin', 293, 1992, 9.0),
 	('9782012351042', 'L'' Alsace entre France et Allemagne (1850-1950)', 347, 1993, 4.0),
 	('9782020044851', 'L'' apprenti sorcier', 156, 1976, 6.48),
-
+	('9782226023278', 'Voyages et aventures de l''esprit', 234, 1985, 4.32),
 	('9782082111355', 'Femme et mythe', 341, 1982, 16.08),
-
+	('9782227475304', 'Du jihad à la fitna', 60, 2005, 6.97),
 	('9782226063137', 'La Parole au coeur du corps', 260, 1993, 5.38),
 	('9782080351524', 'La légende du sang', 287, 1992, 31.9),
 	('9782020056601', 'Debout sur le soleil', 215, 1980, 20.0),
-
+	('9782227482043', 'La Croix', 786, 2010, 45.0),
 	('9782010101113', 'Dictionnaire des auteurs et des the  mes de la philosophie', 287, 1984, 10.0),
 	('9782020326582', 'Créer le réel', 547, 1998, 28.26),
 	('9782020228008', 'L'' impunité de l''art', 342, 1995, 24.0),
-
+	('9782010056710', 'L'' Eglise et les ouvriers en France', 599, 1984, 13.0),
 	('9782010028212', 'Nous autres Juifs', 372, 1978, 7.67),
 	('9782226208095', 'Histoire des plantes qui ont changé le monde', 191, 2011, 22.0),
 	('9782012792852', 'La guerre des langues et les politiques linguistiques', 294, 2005, 24.0),
@@ -3079,7 +3079,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782742751440', 'Maisons en bois', 364, 2004, 5.79),
 	('9782012434349', 'Hôtels extraordinaires', 254, 2000, 20.0),
 	('9782080120786', 'Frank Stella', 191, 1988, 25.93),
-
+	('9782012012653', 'Princesse Charlotte ouvre le bal', 85, 2006, 9.0),
 	('9782070570669', 'Les clés de l''info', 272, 2005, 9.0),
 	('9782010208232', 'Paris inattendu', 239, 1997, 14.0),
 	('9782081201835', 'Le peuple de l''eau', 116, 2007, 9.0),
@@ -3100,7 +3100,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080609526', 'L'' Or de la Bérézina', 295, 1977, 4.7),
 	('9782226075888', 'Golden Joe', 178, 1995, 21.9),
 	('9782215088936', 'L''aéroport', 20, 2008, 9.0),
-
+	('9782080304742', 'Wine tours in the South of France', 175, 2005, 43.51),
 	('9782215092858', 'La princesse O''Petipoi', 15, 2007, 9.0),
 	('9782012448865', 'Québec et provinces maritimes', 559, 2010, 9.0),
 	('9782012401457', 'Venise', 239, 2004, 9.0),
@@ -3108,7 +3108,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012368842', 'Gratins & cocottes', 95, 2004, 9.0),
 	('9782070312719', 'Histoires de Julien', 64, 1991, 30.0),
 	('9782226141453', 'La rue en toute sécurité', 64, 2003, 10.0),
-
+	('9782742752782', 'Les contes d''Hoffmann de Jacques Offenbach', 134, 2004, 9.94),
 	('9782012355880', 'Dans les cuisines des ministères', 220, 2003, 5.26),
 	('9782082402583', 'Savoir tout faire', 302, 2006, 13.0),
 	('9782215078760', 'J''apprends à dessiner chevaux et poneys', 24, 2006, 9.0),
@@ -3122,7 +3122,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012424067', 'New York', NULL, 1996, 13.5),
 	('9782227729643', 'La malédiction de la licorne', 137, 1997, 9.0),
 	('9782742729746', 'Inventaire d''un spectacle', 61, 2000, 32.5),
-
+	('9782742758715', 'Ron Mueck', 116, 2006, 20.0),
 	('9782081233423', 'L''enfant sorcier', 95, 2010, 22.4),
 	('9782080668783', 'La télévision du public', 286, 1993, 18.9),
 	('9782227727083', 'Disparitions à répétition', 42, 1996, 34.7),
@@ -3134,15 +3134,15 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012362055', 'L''école de la dégustation', 271, 1998, 19.0),
 	('9782723412759', 'Les Restaurants dans le monde et à travers les âges', 437, 1990, 12.5),
 	('9782013926362', 'Les bruits', 12, 2002, 6.59),
-
+	('9782215052593', 'La pyramide s''amuse', 318, 2003, 20.0),
 	('9782020838603', 'Tom Cox et la fin des sorciers', NULL, 2007, 9.0),
 	('9782081642355', 'Match nul', 154, 1997, 9.0),
-
+	('9782742718092', 'La Damnation de Faust d''Hector Berlioz', 110, 1998, 5.29),
 	('9782742771806', 'Dossier la Guêpe', 119, 2008, 9.0),
 	('9782747031974', 'Action!', 162, 2010, 35.1),
 	('9782226154781', 'Toute petite étoile', 24, 2004, 20.0),
 	('9782869430730', 'Petits drames comiques', 92, 1987, 9.27),
-
+	('9782080300782', 'Jewels in the Louvre', 80, 2008, 43.94),
 	('9782215093879', 'Fabuleux bijoux en Fimo', 79, 2008, 9.0),
 	('9782012099289', 'Dagobert et le marchand d''hiver', 90, 1999, 15.0),
 	('9782012403185', 'Afrique de L''Ouest', 519, 2006, 20.91),
@@ -3173,7 +3173,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782215128038', 'Je m''habille!', 10, 2015, 4.74),
 	('9782070756797', 'In girum imus nocte et consumimur igni', 154, 1999, 11.0),
 	('9782344008232', 'Sapin crétin', 92, 2015, 9.0),
-
+	('9782070567508', 'Le Noël de William', 124, 1992, 10.0),
 	('9782081231078', 'Les bouteilles à la mer', 32, 2010, 5.55),
 	('9782012376953', 'Les vins de Bourgogne', 191, 2012, 7.8),
 	('9782070623990', 'La conquête de la Lune', 72, 2009, 6.53),
@@ -3183,7 +3183,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020374897', 'Paris pas cher', 611, 1999, 9.0),
 	('9782012098428', 'Destruction imminente', 145, 1998, 38.1),
 	('9782010058240', 'Egypte', 684, 1982, 9.0),
-
+	('9782742719907', 'Idoménée', 90, 1999, 32.4),
 	('9782747023528', 'Le maître des nuages', 252, 2007, 4.81),
 	('9782081621282', 'Touchons du bois!', 404, 1990, 9.0),
 	('9782011205155', 'La chasse au trésor', 28, 2015, 4.11),
@@ -3203,7 +3203,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012920309', 'Au temps du Moyen Age', 61, 2006, 21.3),
 	('9782081621046', 'Ernest ou le passé composé', 85, 1990, 15.0),
 	('9782215083160', 'Les saisons', 17, 2005, 9.0),
-
+	('9782081348844', 'Splendeurs des Han', 255, 2014, 16.86),
 	('9782227070011', 'Dotty fait des bêtises', 125, 2000, 9.0),
 	('9782227723702', 'De trop longues vacances', 91, 1999, 9.0),
 	('9782012008779', 'Les Six compagnons et les espions du ciel', 154, 2004, 39.8),
@@ -3220,7 +3220,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782013214452', 'La case de l''oncle Tom', 383, 1996, 9.0),
 	('9782080107596', 'Les signes du temps et l''art moderne', 219, 1985, 14.75),
 	('9782082018760', 'L'' art de vivre au temps de Joséphine', 191, 1998, 34.9),
-
+	('9782080124357', 'Delacroix, le voyage au Maroc', 239, 1994, 5.94),
 	('9782012030947', 'L''invasion', 89, 2013, 16.0),
 	('9782070571963', 'Rocambole et la sorcière du marais', 185, 2005, 4.04),
 	('9782082005265', 'ROUTES DU VIN', NULL, 1988, 6.53),
@@ -3252,7 +3252,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782070627431', 'Armeline Fourchedrue', 35, 2009, 39.0),
 	('9782742414871', 'Portugal', 600, 2005, 22.1),
 	('9782020891882', 'Se régaler avec 3 ingrédients', 109, 2006, 15.2),
-
+	('9782742727537', 'Le promeneur de Paris', 319, 2000, 4.39),
 	('9782723409933', 'Les châteaux des 61 grands crus classés du Médoc', 157, 1988, 4.7),
 	('9782215076025', 'Nouvelles techniques de scrapbooking', 79, 2004, 9.0),
 	('9782081619500', 'Personne ne m''a demandé mon avis', 283, 1988, 9.0),
@@ -3267,7 +3267,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081227972', 'Rachel', 394, 2010, 11.9),
 	('9782081243538', 'Les maudits', 245, 2011, 13.0),
 	('9782012360853', 'Dictionnaire Moët-Hachette du vin international', NULL, 1996, 16.0),
-
+	('9782742758494', 'Nouveaux territoires du dialogue', 226, 2005, 8.4),
 	('9782070578597', 'Histoire et vie de la Terre', 48, 2007, 9.0),
 	('9782010173936', 'Une petite histoire de guerre', 158, 1992, 9.0),
 	('9782215046097', 'Le dico des filles, 2007', 543, 2006, 14.0),
@@ -3275,20 +3275,20 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782330009502', 'Lettres d''amour à une princesse chinoise', 90, 2012, 25.0),
 	('9782742703920', 'C.3.3.', 151, 1995, 59.9),
 	('9782070513123', 'Le corps humain', 137, 1997, 20.0),
-
+	('9782080201294', 'Paris bon appetit', NULL, 2012, 9.72),
 	('9780862641696', 'The sad story of Veronica who played the violin', 26, 1987, 12.01),
-
+	('9782012013230', 'Miss la Gaffe', 404, 2007, 4.39),
 	('9782012387683', 'Pavlovas', 74, 2014, 16.0),
 	('9782742717866', 'Comptines des inséparables', 61, 1998, 4.7),
 	('9782013225847', 'Les héros de "L''Iliade"', 191, 2009, 9.0),
 	('9782012401631', 'Andalousie', 439, 2004, 13.0),
-
+	('9782080305350', 'Axel Vervoordt', 253, 2007, 51.7),
 	('9782226087706', 'Thomas et le voyageur', 235, 1997, 6.5),
 	('9782747025553', 'La dent de l''ours', 57, 2008, 9.0),
 	('9782227725140', 'Petit ours brun est malade', NULL, 1993, 9.0),
 	('9782505005100', 'Gwe mon', 47, 2009, 17.5),
-
-
+	('9782070622757', 'Le ferry des brumes', 95, 2009, 35.1),
+	('9782070736294', 'François Truffaut', 659, 1996, 6.46),
 	('9782082000895', 'Les recettes de Mathilde Brunel', 247, 1983, 6.08),
 	('9782226078711', 'Provence-Alpes-Côte d''Azur', 493, 1995, 21.23),
 	('9782080120946', 'Histoire de la table', 375, 1994, 50.0),
@@ -3303,15 +3303,15 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226037220', 'Le rock de A à Z', 550, 1990, 6.53),
 	('9782226187680', 'La cuisine de Fumiko', 144, 2009, 20.32),
 	('9782070633708', 'Romain le lapin magicien', 24, 2010, 39.8),
-
-
+	('9782742752881', 'Leoš Janáček', 138, 2005, 4.1),
+	('9782742707119', 'Musiques d''Egypte', 174, 1996, 5.0),
 	('9782215106647', 'Les pirates', 28, 2011, 9.0),
 	('9782226101822', 'Quand il neige--', 32, 1999, 16.0),
 	('9782742725465', 'Musiques de Turquie', 160, 2000, 6.53),
 	('9782081602274', 'Le tapis volant', 23, 1995, 14.0),
 	('9782215068105', 'Dans les oeufs', NULL, 2002, 9.0),
 	('9782227729032', 'Dangereuses photos', 162, 1992, 9.0),
-
+	('9782742411023', 'La Côte vermeille', 62, 2003, 7.0),
 	('9782013923927', 'Le nouvel ami de Franklin', 32, 2000, 35.1),
 	('9782215087403', 'Les camions', 27, 2007, 14.0),
 	('9782747019552', 'Les farceurs', 24, 2005, 9.0),
@@ -3320,7 +3320,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020061032', 'Dictionnaire des cinéastes', 302, 1982, 9.0),
 	('9782012431942', 'Côte d''Azur', 448, 2000, 13.0),
 	('9782081612969', 'La légende de saint Nicolas', 23, 2002, 36.6),
-
+	('9782080109941', 'Boucher et les femmes.', 126, 1986, 6.85),
 	('9782215094548', 'Un monde fou en perles de rocaille', 64, 2008, 36.86),
 	('9782082018425', 'Histoires de tables', 180, 1989, 12.98),
 	('9782020065757', 'Nouveau dictionnaire de la musique', 670, 1983, 9.0),
@@ -3341,7 +3341,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226027870', 'Histoire de l''histoire de l''art', 652, 1986, 10.0),
 	('9782742713578', 'Dodascalies', 543, 1997, 9.68),
 	('9782012013605', 'Marsu contre Marsu', 86, 2008, 9.0),
-
+	('9782605000289', 'Portrait de l''artiste en saltimbanque', 147, 1970, 14.73),
 	('9782020048101', 'Les inspirés du bord des routes', 125, 1978, 30.0),
 	('9782012011496', 'Le club des cinq en vacances', 261, 2006, 10.0),
 	('9782742402649', 'Calvados', 316, 1995, 16.81),
@@ -3352,7 +3352,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081618596', 'Prochain rendez-vous dans le pot de fleurs', 247, 1986, 9.0),
 	('9782742400089', 'Loire-Atlantique', 432, 1992, 4.59),
 	('9782080672407', 'Un homme de joie', 391, 1996, 13.4),
-
+	('9782080109965', 'Papiers peints panoramiques', 333, 1990, 155.0),
 	('9782747019682', 'Le roi du jazz', 86, 2005, 9.0),
 	('9782747026123', 'Le destin de Linus Hoppe', 519, 2008, 14.0),
 	('9782747014021', 'Au zoo, les zozos!', 94, 2004, 9.0),
@@ -3360,8 +3360,8 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226177650', 'Suzie danse', NULL, 2007, 30.0),
 	('9782080669896', 'Les frères Lumière', 390, 1995, 35.0),
 	('9782070116287', 'Barye', 511, 2000, 28.0),
-
-
+	('9782082018227', 'Palaces et grands hôtels d''Orient', 264, 1987, 15.1),
+	('9782226060297', 'Le livre qui avait un trou', 21, 1992, 4.76),
 	('9782081603158', 'Défilé devant la reine', 32, 1996, 4.7),
 	('9782070390816', 'Conte no. 2', 28, 1983, 20.1),
 	('9782012428454', 'Un été aux antilles', 141, 1999, 31.9),
@@ -3370,7 +3370,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012010024', 'Un parfum diabolique', 89, 2005, 9.0),
 	('9782012366930', 'Cuisine au wok', 256, 2002, 10.0),
 	('9782010120336', 'Le guide des pierres précieuses', 191, 1987, 28.5),
-
+	('9782070714216', 'Le Grand guide du Canada', 360, 1988, 9.0),
 	('9782011801333', 'Les Giants et la forteresse de Kaos', 92, 2016, 4.21),
 	('9782070595334', 'Histoires d''espions', 59, 1996, 36.0),
 	('9782742401758', 'Loir-et-Cher', 352, 1993, 4.91),
@@ -3385,7 +3385,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081292970', 'Sam Szafran', 199, 2013, 20.8),
 	('9782226002242', 'A table avec édouard de Pomiane', 221, 1975, 5.0),
 	('9782082000550', 'La cuisine de la Villa Lorraine et de l''Ecailler du Palais royal', 305, 1984, 25.6),
-
+	('9782070719044', 'Le Grand guide de Hong Kong', 322, 1990, 4.53),
 	('9782082015349', 'Alchimistes aux fourneaux', 215, 2007, 10.0),
 	('9782020020411', 'Langage, musique, poésie.', 246, 1972, 13.89),
 	('9782226127174', 'Jean Gabin, gueule d''amour', 111, 2001, 16.0),
@@ -3465,7 +3465,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226010001', 'Richard Strauss', 194, 1980, 8.08),
 	('9782330023775', 'Bellini', 200, 2013, 13.1),
 	('9782081627666', 'Le dico des petits du Père Castor', 283, 2005, 9.0),
-
+	('9782330113704', 'Bruegel et l''hiver', 248, 2018, 45.01),
 	('9782081218536', 'Les Français aux fourneaux', 239, 2009, 6.53),
 	('9782226001535', 'Histoires de ma vie', 315, 1975, 9.0),
 	('9782013223270', 'Arsène Lupin', 187, 2006, 9.0),
@@ -3485,7 +3485,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723421997', 'Le marin gourmand', 125, 1996, 30.0),
 	('9782747037549', 'Non merci!', 238, 2008, 4.11),
 	('9782070610815', 'Dinde de Noël et tandoori', 115, 2006, 5.9),
-
+	('9782080280961', 'Rosa Bonheur (1822-1899)', 287, 2022, 149.92),
 	('9782227757240', 'Un chien trop bavard', 167, 2000, 9.0),
 	('9782081622579', 'Le sang des étoiles', 282, 1993, 9.0),
 	('9782070578092', 'Une faim de crocodile', NULL, 2007, 4.25),
@@ -3505,13 +3505,13 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012011779', 'Fantômette et la maison hantée', 153, 2006, 10.0),
 	('9782215124986', 'La licorne mystérieuse', 47, 2014, 4.68),
 	('9782081619401', 'Le grand réparateur', 125, 1988, 21.1),
-
+	('9782020587242', 'Le champ mimétique', 336, 2005, 29.0),
 	('9782226239945', 'Le poids des mensonges', 322, 2012, 5.01),
 	('9782081270206', 'Rose activité mortelle', 200, 2012, 17.0),
-
-
+	('9782330006235', 'Luthiers', 187, 2012, 26.98),
+	('9782226074775', 'Le théâtre de la guérison', 252, 1995, 10.97),
 	('9782010163234', 'La cour des papes au XIIIe siècle', 314, 1995, 12.82),
-
+	('9782227366015', 'L'' Evangile de Marc', 239, 1991, 4.59),
 	('9782747004404', 'L''opéra des fous', 253, 2002, 5.14),
 	('9782070637676', 'Ecoute les bruits des moteurs', 16, 2011, 16.99),
 	('9782742743735', 'Incendies', 92, 2003, 27.2),
@@ -3523,14 +3523,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081722248', 'Je vais me sauver!', 34, 1985, 14.0),
 	('9782080136190', 'The book of coffee', 232, 1997, 36.99),
 	('9782747015844', 'Surprises sur les pistes', 31, 2005, 34.4),
-
-
+	('9782081286054', 'Paris haute couture', 287, 2012, 30.59),
+	('9782080304452', 'Rodin', 247, 2004, 75.99),
 	('9782081622920', 'Prisonniers des Vikings', 281, 1993, 9.0),
 	('9782013928755', 'Franklin joue au hockey sur glace', 32, 2004, 4.01),
 	('9782012266728', 'M. Noël', 38, 2009, 9.0),
 	('9782226140685', 'Les paradis de Prunelle', 42, 2003, 25.9),
 	('9782227723009', 'Jessica', 87, 1991, 9.0),
-
+	('9782742431540', 'Réunion', 343, 2012, 6.08),
 	('9782070503537', 'Multimédia', 159, 1996, 4.98),
 	('9782215008163', 'Jouets en contre-plaqué', 42, 1986, 9.0),
 	('9782081647909', 'L''araignée magique', 92, 2000, 4.86),
@@ -3544,7 +3544,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782705002893', 'Théâtre complet', 880, 1980, 7.99),
 	('9782070126002', 'Comment la vérité et la réalité furent inventées', 384, 2009, 9.63),
 	('9782226068859', 'Politique et religion', 171, 1994, 15.0),
-
+	('9782020123952', 'Guide de l''histoire locale', 347, 1990, 11.9),
 	('9782080111302', 'L''ABCdaire de Michel-Ange', 119, 2003, 11.9),
 	('9782020820738', 'Chroniques des temps consensuels', 208, 2005, 20.3),
 	('9782020201605', 'La cause des prophètes', 299, 1995, 22.6),
@@ -3553,14 +3553,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226076274', 'Philosophie de la nature', 346, 1996, 23.2),
 	('9782081270114', 'Les magnifiques', 265, 2012, 32.5),
 	('9782082112253', 'La machine-océan', 298, 1997, 21.7),
-
+	('9782330012380', 'Giuseppe Penone', 407, 2013, 69.95),
 	('9782020653831', 'Le duel', 229, 2004, 11.9),
 	('9782081339248', 'Pourquoi partir', 408, 2014, 4.42),
 	('9782081295711', 'Ils ont écrit le Tour de France', 347, 2013, 5.0),
 	('9782070695171', 'Li Mei', 169, 2011, 15.3),
-
+	('9782081235373', 'Le philosophe et ses pauvres', 315, 2007, 9.51),
 	('9782020211093', 'Stravinsky', 254, 1995, 11.9),
-
+	('9782742763337', 'La cathédrale de Reims', 124, 2007, 8.81),
 	('9782330005481', 'Adoptez un écrivain', 44, 2012, 12.2),
 	('9782020320030', 'La paix de religion', 327, 1997, 5.98),
 	('9782020798914', 'Mange ta soupe et tais-toi!', 204, 2005, 11.9),
@@ -3587,17 +3587,17 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081604896', 'Plus de gym pour Danny', 144, 2001, 9.0),
 	('9782010104275', 'Le dictionnaire pratique du jardin', 312, 1985, 15.0),
 	('9782020365703', 'Sur Le politique de Platon', 196, 1999, 15.0),
-
+	('9782020871471', 'Dictionnaire des monothéismes', 701, 2013, 11.19),
 	('9782020621557', 'Chroniques d''un autre monde, suivi du, Manifeste pour l''économie humaine', 296, 2003, 32.5),
 	('9782020312097', 'Sectes et démocratie', 391, 1999, 27.4),
-
+	('9782723430791', 'Glénat, 30 ans d''édition', 192, 2000, 9.52),
 	('9782012368903', 'Ligne et équilibre', 144, 2004, 15.0),
 	('9782020002776', 'St Jean de la Croix et la nuit mystique', 189, 1977, 7.0),
 	('9782012368101', 'Pâtes', 256, 2003, 20.0),
 	('9782070532995', 'Les premières feuilles de la marguerite', 88, 1994, 17.9),
 	('9782742727513', 'L''apocalypse joyeuse', 227, 2000, 21.9),
-
-
+	('9782330075736', 'Gabriel Fauré', 187, 2017, 12.21),
+	('9782080304780', 'The book of tea', 199, 2005, 36.0),
 	('9782020577977', 'L'' envers de la dialectique', 375, 2004, 28.4),
 	('9782742780105', 'Hamlet-Electre', 96, 2009, 37.4),
 	('9791023501414', 'La déclaration', NULL, 2014, 10.01),
@@ -3616,17 +3616,17 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080683557', 'Sur les traces du géant', 319, 2003, 32.5),
 	('9782330019600', 'Nuage', 186, 2013, 39.0),
 	('9782081217867', 'Introduction au monde grec', 292, 2008, 5.91),
-
+	('9782012451063', 'Paris', 619, 2012, 13.95),
 	('9782020002462', 'Mahler', 187, 1966, 7.0),
 	('9782020977401', 'Les quatre bandits du Hénan', 124, 2008, 6.9),
 	('9782742428892', 'Croatie', 479, 2011, 10.5),
 	('9782070658404', 'Le regard des princes à minuit', 138, 2014, 12.6),
 	('9782020137010', 'Le groupe des six', 222, 1994, 11.9),
 	('9782080661456', 'Les héritiers', 231, 1989, 27.0),
-
+	('9782226155733', 'Quelle mixité pour l''école ?', 141, 2004, 11.9),
 	('9782747030427', 'Panne de coeur', 56, 2009, 15.0),
 	('9782010207570', 'Voyage au centre de la terre', 280, 1993, 4.73),
-
+	('9782742749546', 'Contre/images', 155, 2004, 10.71),
 	('9782021104462', 'Pourquoi la carapace de la tortue-- ?', NULL, 2013, 4.5),
 	('9782226108371', 'Histoire de l''écologie politique', 361, 1999, 19.8),
 	('9782020337946', 'Le christianisme et ses juifs', 497, 2004, 4.37),
@@ -3640,7 +3640,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020059916', 'Femmes à 50 ans', 250, 1981, 15.0),
 	('9782082111201', 'La philosophie première de Descartes', 381, 1979, 48.9),
 	('9782226092038', 'Diderot ou la philosophie de la séduction', 327, 1997, 6.53),
-
+	('9782020066952', 'La crise de l''état-providence.', NULL, 1984, 9.0),
 	('9782226016294', 'Histoire et renouveau des plantes médicinales', 353, 1982, 6.38),
 	('9782012357242', 'Ces 200 familles qui possèdent la France', 373, 2004, 11.9),
 	('9782080664013', 'Une morale sans moralisme', 260, 1992, 5.22),
@@ -3655,7 +3655,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782868699497', 'L'' exploration du Sahara', 381, 1993, 14.7),
 	('9782020069298', 'L'' image inconsciente du corps', 375, 1984, 11.9),
 	('9782080116253', 'Othoniel', NULL, 2006, 33.58),
-
+	('9782020796569', 'Jésus sans Jésus', 274, 2008, 11.9),
 	('9782020660464', 'Pour un catastrophisme éclairé', 214, 2004, 36.6),
 	('9782747039178', 'Le roi Arthur', 234, 2013, 16.2),
 	('9782080711984', 'Traités', 258, 2002, 5.21),
@@ -3670,14 +3670,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782021011845', 'L''instrument de musique', 367, 2013, 24.12),
 	('9782020046947', 'Le tambour du déluge', 125, 1977, 7.46),
 	('9782020133081', 'L'' homme Freud', 278, 1991, 5.7),
-
-
-
+	('9782226144232', 'Cloner le christ', 199, 2005, 9.0),
+	('9782020044158', 'écrits du temps de la guerre', 478, 1965, 7.0),
+	('9782020224543', 'Histoire du corps', NULL, 2005, 23.15),
 	('9782226085962', 'Sacré Mitterrand!', NULL, 1996, 9.0),
-
+	('9782205043464', 'Blueberry', NULL, 1998, 32.5),
 	('9782705003012', 'Manoirs & gentilshommes de l''ancienne France', 174, 1980, 9.49),
 	('9782226208323', 'L''arche d''alliance', 470, 2010, 5.08),
-
+	('9782020048484', 'Anti-manuel de français', 297, 1980, 11.9),
 	('9782010127434', 'Colère de Péguy', 124, 1987, 9.0),
 	('9782226074669', 'Un rêve tibétain', 381, 1994, 4.89),
 	('9782070721689', 'La voyeuse interdite', 142, 1991, 9.0),
@@ -3696,7 +3696,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020095983', 'L'' Arbre aux trésors', 383, 1987, 9.0),
 	('9782215075745', 'Je fais tout seul des avions en papier', 16, 2004, 54.99),
 	('9782081619487', 'Le Nouveau', 163, 1988, 9.0),
-
+	('9782010173981', 'Géant 1993', 267, 1992, 9.0),
 	('9782742760671', 'Petites histoires de derrière les fourneaux', 51, 2006, 6.17),
 	('9782012438507', 'Un grand week-end à Londres', 141, 2004, 12.0),
 	('9782227727038', 'Drôle de cadeau', 46, 1996, 34.5),
@@ -3705,7 +3705,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782742431694', 'égypte', 659, 2012, 10.0),
 	('9782012359482', 'La musique du XXe siècle', 719, 2005, 27.5),
 	('9782081670020', 'A la piscine', NULL, 2000, 6.5),
-
+	('9782742774692', 'Mascarade', 70, 2010, 5.2),
 	('9782070553273', 'Les 1000 mots de l''info', 360, 2003, 9.0),
 	('9782010197666', 'L''actualité jeunesse 93', 235, 1992, 9.0),
 	('9782012404823', 'Autriche', 318, 2006, 4.46),
@@ -3719,11 +3719,11 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012453005', 'Berlin', 239, 2012, 9.9),
 	('9782070615292', 'Le chouchou de Mireille l''abeille', NULL, 2008, 15.0),
 	('9782012400993', 'Cuba', 479, 2004, 5.99),
-
+	('9782012403338', 'Italie du nord', 519, 2005, 19.9),
 	('9782082025010', 'Guide des vins de Bourgogne', 277, 1987, 10.0),
 	('9782215049029', 'Les nouvelles histoires du soir', 371, 2010, 5.47),
 	('9782742417193', 'Bretagne Sud', 488, 2006, 13.0),
-
+	('9782226153074', 'Le goût et la cuisine', 63, 2004, 31.9),
 	('9782723421379', 'Hautes cimes de Mont-Blanc', 142, 1996, 5.91),
 	('9782330009106', 'Et Eugène inventa la poubelle', 51, 2012, 5.97),
 	('9782016210895', 'Macarons', 62, 2007, 9.0),
@@ -3734,7 +3734,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081630840', 'Taranis et Parfénia', 413, 2008, 4.36),
 	('9782227725249', 'Petit Ours Brun et son mouchoir chéri', NULL, 1995, 9.0),
 	('9782330030117', 'Vers l''étrangeté ou L''opéra selon Philippe Boesmans', 348, 2014, 13.0),
-
+	('9782742405084', 'La France de la Renaissance', 352, 1999, 9.33),
 	('9782215076629', 'Noël', 37, 2004, 15.0),
 	('9782226154835', 'Le livre de mots de Dora', NULL, 2004, 20.0),
 	('9782012920606', 'Le grimoire de Merlin', 172, 2007, 10.47),
@@ -3785,7 +3785,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782215080527', 'Noël', 17, 2004, 9.0),
 	('9782081224384', 'La légende du violon', 301, 2009, 17.1),
 	('9782010098086', 'Au Cameroun', 237, 1988, 29.0),
-
+	('9782080106957', 'Mémoires d''un palace', 153, 2002, 31.08),
 	('9782012276147', 'Danse', 224, 2014, 23.43),
 	('9782010033704', 'Les fritures en 10 leçons', 221, 1977, 18.5),
 	('9782020480079', 'La princesse arrive à quatre heures', NULL, 2001, 4.26),
@@ -3793,13 +3793,13 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226318558', 'Un vampire sans sang-froid', 118, 2015, 38.1),
 	('9782080120724', 'David d''Angers', 223, 1988, 5.4),
 	('9782012448421', 'Irlande', 679, 2009, 10.0),
-
+	('9782010054945', 'Yougoslavie', 587, 1979, 5.73),
 	('9782012423701', 'Tunisie', 530, 1997, 9.0),
 	('9782016251775', 'Cuisine alsacienne', 62, 2006, 4.04),
 	('9782010091223', 'Mexique', 413, 1983, 28.0),
 	('9782723489119', 'Gâteaux et biscuits', 157, 2012, 4.6),
 	('9782012445222', 'Monténégro', 272, 2010, 4.86),
-
+	('9782742774111', 'Manon', 110, 2008, 39.9),
 	('9782020220606', 'Pik et Bou', 36, 1995, 9.1),
 	('9782226024756', 'Jugendstil et art nouveau', 293, 1985, 12.1),
 	('9782227725041', 'Petit ours brun et les chaussures', NULL, 1993, 9.0),
@@ -3819,7 +3819,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081622937', 'Un véritable courage', 334, 1993, 9.0),
 	('9782012304321', 'Soupes', 288, 2012, 15.0),
 	('9782227735040', 'L''Inde', 48, 1997, 22.0),
-
+	('9782010205002', 'Boucle d''or', 28, 1993, 5.99),
 	('9782014638295', 'Alice au pays des merveilles', NULL, 2010, 39.8),
 	('9782226157591', 'Julie cuisine en quelques minutes', 90, 2005, 9.0),
 	('9782081640047', 'Duel dans l''enfert [sic] vert', 173, 1994, 9.0),
@@ -3841,7 +3841,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081622555', 'Message extraterrestre', 207, 1993, 9.0),
 	('9782081622951', 'L''élixir de tante Ermolina', 273, 1993, 9.0),
 	('9782010128110', 'Le Nu', 398, 1987, 13.0),
-
+	('9782080917553', 'Retour à la montagne', 389, 1982, 15.0),
 	('9782226056504', 'Le brouillard bleu', 252, 1991, 11.5),
 	('9782227727656', 'Le secret de Farida', 43, 2000, 9.0),
 	('9782012439559', 'Inde du Sud', 419, 2003, 14.0),
@@ -3856,10 +3856,10 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723416238', 'Henri Queffélec', 281, 1994, 5.94),
 	('9782742706914', 'Les mélodies de Duparc', 173, 1996, 15.08),
 	('9782742729630', 'Arabella', 239, 2001, 17.0),
-
+	('9782080120137', 'Dictionnaire de l''estampe en France, 1830-1950', 384, 1985, 9.99),
 	('9782747005197', 'Le grand album du film', 32, 2002, 4.69),
-
-
+	('9782070312252', 'Louis Braille, l''enfant de la nuit', 103, 1993, 13.0),
+	('9782841100583', 'L''art de la fantasia', 111, 1997, 6.88),
 	('9782070640508', 'été mutant', 623, 2011, 9.0),
 	('9782226251978', 'Rapport intime', 135, 2013, 32.5),
 	('9782330016234', 'Entre théâtre et performance', 85, 2013, 22.41),
@@ -3875,7 +3875,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723490597', 'Trésors', 190, 2012, 7.01),
 	('9782010213625', 'Bouquets de senteurs', 55, 1993, 9.0),
 	('9782227738737', 'Un concours à New York', 141, 1999, 9.0),
-
+	('9782747014410', 'J''ai vécu les camps de concentration', 95, 2004, 5.05),
 	('9782841100071', 'Morte forêt', 63, 1994, 158.98),
 	('9782910868420', 'Jean Marais', 253, 2000, 6.63),
 	('9782020573610', 'Timothée dans l''arbre', 78, 2003, 6.53),
@@ -3891,7 +3891,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020114479', 'L''histoire de la vieille bique et de ses sept biquets', 27, 1990, 14.55),
 	('9782012311220', 'Un week-end à la pêche', 240, 2013, 8.73),
 	('9782747034692', 'Le secret du Lorrain', 72, 2011, 15.0),
-
+	('9782742708345', 'Un jardin pour soi', 84, 1996, 7.98),
 	('9782012012196', 'Angélique, mauvaise joueuse', 61, 2006, 35.7),
 	('9782010161568', 'Têtard Pot-de-Colle', NULL, 1990, 9.0),
 	('9782081621244', 'La ballade des Lackawanna', 276, 1990, 5.22),
@@ -3900,7 +3900,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081622999', 'Sur la piste du léopard', 298, 1993, 9.0),
 	('9782330000301', 'Madame', 98, 2011, 9.94),
 	('9782070359110', 'De découvertes en inventions', 77, 1991, 32.5),
-
+	('9782226119490', 'Des engins pour aller partout', 83, 2001, 9.0),
 	('9782070581580', 'Bye-bye Betty', 126, 1993, 20.0),
 	('9782226118486', 'La cache maudite', 137, 2001, 9.0),
 	('9782227738546', 'Le signe du vampire', 141, 1999, 13.0),
@@ -3912,12 +3912,12 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782010209840', 'Héros quand même', 286, 1995, 9.0),
 	('9782747048200', 'Petit Ours Brun au cirque', 16, 2013, 5.64),
 	('9782742745791', 'Auguste Véran', 86, 2004, 32.5),
-
+	('9782330000226', 'Les mains d''Edwige au moment de la naissance', 71, 2011, 13.2),
 	('9782012449381', 'Paris', 619, 2011, 9.0),
 	('9782012442474', 'Crète', 299, 2009, 13.0),
 	('9782020972864', 'Le visage retrouvé', 77, 2008, 9.0),
 	('9782215053859', 'Le grand livre des activités nature', 194, 2006, 9.0),
-
+	('9782070632381', 'Peau noire, peau blanche', 30, 2010, 25.0),
 	('9782012009653', 'Un papa pour les Dalton', 82, 2005, 9.0),
 	('9782742771967', 'Sofia douleur', 60, 2008, 6.01),
 	('9782012092266', 'Une astuce de Oui-Oui', 93, 1996, 9.0),
@@ -3926,12 +3926,12 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012020061', 'Les larmes du crocodile', 401, 2010, 9.0),
 	('9782747026420', 'Pour tout l''or du monde', 186, 2009, 9.9),
 	('9782012012202', 'Sois beau et bats-toi!', 89, 2006, 9.0),
-
+	('9782080125156', 'Liban', 318, 1998, 39.0),
 	('9782082019576', 'Je me souviens de Paris', 137, 1998, 6.2),
 	('9782012275430', 'Quiz test Skylanders', 192, 2013, 10.97),
 	('9782012024465', 'Princesse Mina et le koala', 85, 2011, 9.0),
 	('9782080124944', 'Matisse et Picasso', 271, 1999, 60.94),
-
+	('9782012421882', 'états-Unis', 350, 1995, 9.0),
 	('9782080109736', 'Saint-Germain-des-Prés', 192, 1993, 18.0),
 	('9782215095071', 'Une déco qui me ressemble', 207, 2008, 24.0),
 	('9782747013208', 'La fille du pirate', 90, 2004, 46.9),
@@ -3941,21 +3941,21 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782215075646', 'Pâques', 37, 2004, 9.0),
 	('9782070616763', 'L''encyclopédie des rebelles, insoumis et autres révolutionnaires', 119, 2009, 12.4),
 	('9782330034115', 'Yves Saint Laurent''s studio', 141, 2014, 10.0),
-
-
+	('9782070619993', 'Kiss', 341, 2009, 11.9),
+	('9782742725236', 'L'' archipel des musiques bretonnes', 186, 2000, 21.3),
 	('9782012364011', 'Réussir vos bouquets', 144, 1999, 9.0),
 	('9782082115681', 'Les trente piteuses', 298, 1997, 17.1),
 	('9782020047067', 'Léon Blum', 595, 1977, 20.0),
 	('9782226017840', 'Rideau gris et habit vert', 276, 1983, 33.6),
-
+	('9782020950176', 'Les voix d''Avignon, 1947-2007', 346, 2007, 23.9),
 	('9782330171179', 'Pas un jour sans une nuit', 197, 2022, 7.78),
 	('9782020217927', 'La guerre du froid', 386, 1994, 26.5),
 	('9782021406412', 'Défense de la modernité', 362, 2018, 16.0),
 	('9782742714766', 'Mystère et mémoire des sons', 274, 1997, 11.58),
-
+	('9782012012660', 'Princesse Katie fait un voeu', 83, 2006, 22.8),
 	('9782080110343', 'Apel-Les Fenosa', 685, 2002, 100.0),
 	('9782021071474', 'Les nouvelles classes moyennes', 118, 2012, 4.79),
-
+	('9782081210110', 'Le cinéma, naissance d''un art', 532, 2008, 8.01),
 	('9782020129022', 'Dire et mal dire', 317, 1992, 13.91),
 	('9782742746019', 'Pérégrinations d''une paria', 671, 2004, 7.37),
 	('9782020367738', 'La spirale de l''escargot', 313, 2000, 19.4),
@@ -3966,12 +3966,12 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782742724833', 'Les ports de Marseille', 95, 1999, 8.0),
 	('9782020069625', 'Fenêtre jaune cadmium, ou, Les dessous de la peinture', 319, 1984, 32.5),
 	('9782082104982', 'Le goût des autres', 453, 2007, 6.13),
-
+	('9782020208598', 'Lecture de l''Evangile selon Jean', NULL, 1988, 17.74),
 	('9782226241900', 'Kabir', 293, 2012, 4.91),
 	('9782742740857', 'Théâtre complet', NULL, 2002, 23.5),
 	('9782742731763', 'Du monde et de l''étranger', 113, 2001, 12.6),
 	('9782070273072', 'Œuvres de cinéma inédites', 442, 1981, 16.92),
-
+	('9782742762927', 'Antoine Vitez', 131, 2006, 22.1),
 	('9782226091604', 'Paroles du Tibet', 53, 1999, 38.0),
 	('9782020947343', 'Paroles de rabbins', 251, 2010, 15.0),
 	('9782021509021', 'La raison et la colère', 131, 2022, 25.4),
@@ -3987,9 +3987,9 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723412582', 'Les grandes maisons de Bourgogne', 191, 1990, 22.71),
 	('9782742745906', 'Mon théâtre', 233, 2004, 22.4),
 	('9782226087751', 'La face cachée de Greenpeace', 337, 1997, 20.15),
-
+	('9782227301573', 'Economie et foi', 128, 1993, 29.9),
 	('9782226029805', 'Harpoon', 556, 1987, 9.0),
-
+	('9782226094209', 'Dictionnaire de la psychanalyse.', 918, 1997, 20.0),
 	('9782012353473', 'L'' espace', 312, 1998, 5.99),
 	('9782227477117', 'Les Apôtres et les premiers disciples du Christ', 191, 2007, 9.74),
 	('9782227473362', 'La philosophie au risque de la promesse', 208, 2004, 7.48),
@@ -3999,7 +3999,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782227022003', 'Tendances nouvelles de la philosophie', 263, 1978, 4.95),
 	('9782080664150', 'De Gaulle-Mitterrand', 232, 1991, 9.0),
 	('9782012379107', 'êtes-vous sûre d''avoir trouvé le bon?', 127, 2009, 6.08),
-
+	('9782227481947', 'Qui a fondé la christianisme', 119, 2010, 10.07),
 	('9782227350144', 'Les manuscrits de la mer Morte', 334, 1997, 9.0),
 	('9782227485983', 'Quand la foi est sociale', 358, 2013, 4.91),
 	('9782226012197', 'Le droit de parler', 302, 1981, 9.0),
@@ -4021,9 +4021,9 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782330002510', 'Serge Prokofiev', 249, 2012, 14.81),
 	('9782020965903', 'Traité critique de l''homme économique', 384, 2009, 23.3),
 	('9782020259866', 'C''est moi la vérité', 344, 1996, 19.03),
-
+	('9782020005852', 'Mythologies', 247, 1957, 5.46),
 	('9782020961608', 'L''Europe expliquée aux jeunes', 141, 2007, 9.5),
-
+	('9782021406801', 'La condition anarchique', 272, 2018, 12.81),
 	('9782080687104', 'Comment dominer le stress et les soucis', 200, 2004, 32.3),
 	('9782226172686', 'Le naufrage de la psychiatrie', 308, 2006, 11.9),
 	('9782020047289', 'Fabrice', 264, 1977, 11.9),
@@ -4031,7 +4031,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782215087366', 'Au temps des égyptiens', 19, 2007, 21.7),
 	('9782021091946', 'Evaluez-moi!', 219, 2013, 5.2),
 	('9782020130905', 'Nos solitudes', 281, 1991, 11.9),
-
+	('9782330167691', 'Marcel Jacno, graphiste et typographe', 218, 2022, 39.0),
 	('9782226104687', 'Histoire du blasphème en Occident', 307, 1998, 8.91),
 	('9782226008565', 'Le Chemin de Dieu', 314, 1979, 26.0),
 	('9782012360143', 'Naître raconté aux enfants', NULL, 1994, 4.79),
@@ -4045,17 +4045,17 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782227485921', 'Qu''est-ce que la nouvelle évangélisation?', 187, 2012, 9.5),
 	('9782012350014', 'Comprendre les religions', 335, 2004, 29.9),
 	('9782227472402', 'La Transfiguration', 162, 2003, 12.03),
-
+	('9782020056465', 'Recherches d''anthropologie politique', 247, 1980, 20.0),
 	('9782020103589', 'Lettres de Westerbork', 124, 1988, 5.0),
 	('9782020047043', 'Naissance de la famille moderne', NULL, 1977, 13.4),
-
+	('9782020025829', 'Mythologies', 247, 1957, 7.43),
 	('9782020043915', 'La rurbanisation ; ou, La ville éparpillée', 189, 1976, 9.0),
 	('9782020091749', 'Essais sur le politique', 331, 1986, 14.0),
 	('9782227301184', 'La Cène du Seigneur', 174, 1975, 6.53),
 	('9782226019486', 'L'' école en accusation', 242, 1984, 22.0),
 	('9782020247016', 'Introduction à l''étude de la parenté', 276, 1996, 26.6),
 	('9782868699589', 'L'' affectivité de la pensée ; suivi de Le concept kantien de l''analogie', 139, 1993, 12.0),
-
+	('9782227912007', 'Rome pèlerinage', 252, 1997, 9.0),
 	('9782227004030', 'Libres écoles?', 111, 1981, 28.5),
 	('9782226142733', 'Heureux qui communique', 94, 2003, 5.02),
 	('9782020258210', 'Maudits mots', 143, 1996, 30.0),
@@ -4073,7 +4073,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012360426', 'L''éveil sensoriel de mon enfant', 240, 1995, 12.0),
 	('9782747019965', 'Les plus belles prières des saints', 122, 2006, 5.08),
 	('9782020062497', 'Le principe d''anarchie', 379, 1982, 59.0),
-
+	('9782227478091', 'Chrétiens d''orient', 234, 2009, 8.95),
 	('9782227335066', 'Essayer d''aimer', 156, 1976, 10.0),
 	('9782742749447', 'L'' expérience et la conscience', 285, 2004, 19.3),
 	('9782020135139', 'Compagnons de voyage', 135, 1992, 25.8),
@@ -4122,7 +4122,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723453578', 'Guide de la flore du Parc du Vercors', 255, 2006, 6.27),
 	('9782226129512', 'Drôle de canard', 27, 2002, 30.0),
 	('9782747000246', 'Nelly est innocente', 124, 2001, 13.0),
-
+	('9782070150182', 'François Pompon', 247, 1994, 34.19),
 	('9782010196119', 'Pâtisserie facile', 57, 1992, 5.06),
 	('9782012017108', 'Sam en danger!', 81, 2008, 9.0),
 	('9782070696628', 'La mensongite galopante', 57, 2011, 9.7),
@@ -4138,7 +4138,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782227757455', 'Sous l''oeil de l''écorcheur', 132, 2000, 9.0),
 	('9782080668929', 'Christian Dior', 387, 1994, 32.5),
 	('9782226140678', 'Le mystère de l''œil d''émeraude', 118, 2004, 12.0),
-
+	('9782868690975', 'Théâtre complet', 225, 1986, 6.38),
 	('9782747019088', 'Un tueur à ma porte', 78, 2005, 9.0),
 	('9782070591916', 'Noël', 34, 1995, 14.0),
 	('9782227738010', 'Photos de malheur', 140, 1997, 9.0),
@@ -4153,7 +4153,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080669070', 'Correspondance', 474, 1986, 39.08),
 	('9782012017351', 'Daphné au royaume enchanté', 88, 2009, 10.0),
 	('9782012792593', 'Résonances du readymade', 287, 2006, 9.98),
-
+	('9782742700561', 'Amis américains', 828, 1993, 12.51),
 	('9782082000451', 'La vraie cuisine légère', 397, 1981, 4.88),
 	('9782080122520', 'L'' art de l''Inde et de l''Asie du Sud-Est', 479, 1994, 5.58),
 	('9782020124997', 'Découverte à Saqqarah', 194, 1990, 16.07),
@@ -4189,14 +4189,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782910868758', 'Les ombres et les heures ou les origines des cadrans solaires', 116, 2007, 4.0),
 	('9782020894081', 'Jouets d''autrefois', 163, 2006, 5.67),
 	('9782012017368', 'Le sortilège des neiges', 88, 2009, 22.8),
-
+	('9782020662512', 'Entre mythe et politique', 635, 1996, 11.9),
 	('9782020146555', 'Dîwân', 157, 1992, 32.78),
 	('9782020049672', 'La saison des fêtes dans une vallée du Haut-Atlas', 109, 1978, 9.0),
 	('9782020024600', 'Pour une psychiatrie communautaire', 265, 1971, 30.4),
 	('9782227362420', 'Le suicide', 127, 1995, 15.0),
 	('9782226038852', 'Le Sacrement de l''instant', 121, 1990, 10.02),
 	('9782081286542', 'Le totem du peuple sans ombre', 246, 2013, 25.2),
-
+	('9782081310711', 'Jean-Luc Verna', 239, 2014, 45.0),
 	('9782081223448', '1658, l''éclipse du roi-soleil', 343, 2010, 11.9),
 	('9782081240742', 'La malédiction des pierres noires', 303, 2010, 21.4),
 	('9782081217218', 'Il n''y a pas d''âge pour séduire', 335, 2010, 26.6),
@@ -4205,7 +4205,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081271654', 'Lettre à Zohra D.', 102, 2012, 11.9),
 	('9782226238450', 'Virginia et Vita', 232, 2012, 20.0),
 	('9782226238511', 'Le diable de Radcliffe Hall', 295, 2012, 10.62),
-
+	('9782330013004', 'Lune de glace', 389, 2012, 15.2),
 	('9782021097153', 'La grande embrouille', NULL, 2013, 20.0),
 	('9782081308879', 'La garçonnière', 357, 2013, 4.42),
 	('9782081246010', 'Sous le toit du monde', 305, 2013, 5.04),
@@ -4236,14 +4236,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080687609', 'L''insoumise du roi-soleil', 535, 2006, 11.9),
 	('9782080690173', 'Comme le fleuve qui coule', 237, 2006, 14.6),
 	('9782226159618', 'Souviens-toi que tu dois mourir', 358, 2005, 25.7),
-
+	('9782020204385', 'L'' enfant de l''absente', 128, 1994, 32.5),
 	('9782330036911', 'Une île', 81, 2014, 11.0),
 	('9782226208309', 'Loin du monde', 275, 2010, 32.5),
 	('9782226190987', 'I love dollars', 355, 2009, 32.5),
 	('9782075084734', 'Swan', 179, 2018, 7.1),
 	('9782226147905', 'La ve rite  sur les belles-me  res', 44, 2003, 11.5),
 	('9782021183795', 'Sigmund Freud en son temps et dans le nôtre', 577, 2014, 7.7),
-
+	('9782020829342', 'L'' étranger ou l''union dans la différence', 208, 2005, 5.6),
 	('9782020230872', 'Lou Andreas-Salomé', 393, 2000, 4.97),
 	('9782020315623', 'Le propre du langage', 236, 1997, 14.86),
 	('9782020183581', 'Connaissez-vous Lacan?', 243, 1992, 4.09),
@@ -4260,7 +4260,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782205059038', 'Le complexe du chimpanzé', 56, 2007, 28.4),
 	('9782012905351', 'Les enquêtes de Nicolas Le Floch', NULL, 2019, 5.4),
 	('9782081366657', 'Pensées', 443, 2015, 18.2),
-
+	('9782205087307', 'Une histoire du Velvet Underground', 80, 2021, 12.7),
 	('9782205059458', 'La chute d''un trader', 56, 2007, 4.42),
 	('9782205055726', 'Rubrique-a  -brac', NULL, 2003, 39.5),
 	('9782205055764', 'Rubrique-a  -brac', NULL, 2003, 7.96),
@@ -4269,14 +4269,14 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782330132163', 'Le journal de Clara', 395, 2020, 11.99),
 	('9782226052476', 'Yoga-sutras', 217, 1991, 39.1),
 	('9782330037987', 'Sirènes', 46, 2014, 8.35),
-
-
+	('9782081227576', 'La bande dessinée', 422, 2009, 25.74),
+	('9782742765737', 'Kafka', 187, 1996, 15.34),
 	('9782505002352', 'Complainte des landes perdues', NULL, 2007, 45.0),
 	('9782723468688', 'Catacombes', NULL, 2010, 8.41),
 	('9782723413077', 'Le rêve pluie', 47, 1991, 5.88),
 	('9782010089138', 'Raid sur la corne d''or', 48, 1989, 6.65),
 	('9782226158017', 'Anaïs', 46, 2005, 30.0),
-
+	('9782226060013', 'Les années pattes d''eph''', 68, 1992, 30.0),
 	('9782012905313', 'La bête humaine', 96, 2018, 8.0),
 	('9782723486583', 'Oeil de ciel', 48, 2012, 6.39),
 	('9782742764501', 'Assoiffés', 42, 2007, 4.81),
@@ -4286,7 +4286,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782205054217', 'La nuit de l''Inca', 48, 2003, 5.42),
 	('9782747032308', 'Un livre', NULL, 2010, 27.5),
 	('9782742790999', 'Cercles, fictions', 97, 2010, 16.0),
-
+	('9782012100060', 'Astérix et Cléopâtre', NULL, 2000, 20.0),
 	('9782010122996', 'Basil détective privé', 47, 1986, 4.5),
 	('9782205064179', 'Terres lointaines', NULL, 2009, 9.21),
 	('9782205045598', 'Los Angeles', 52, 1997, 5.58),
@@ -4299,15 +4299,15 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782723461344', 'La confession d''Agathe', 47, 2009, 26.8),
 	('9782723444910', 'Franky Snow, tome 6', 48, 2004, 11.9),
 	('9782010003356', 'Rêves et hurlements', NULL, 2014, 4.0),
-
+	('9782205073393', 'Les mondes de Gotlib', 198, 2014, 24.88),
 	('9782205086676', 'Hématite', NULL, 2021, 33.3),
-
+	('9782205009187', 'Tranches de vie.', 58, 1975, 17.5),
 	('9782723494632', 'Hollande et ses 2 femmes', 110, 2013, 4.99),
 	('9782012271791', 'Mme Catastrophe, reine du bricolage', 32, 2012, 20.0),
 	('9782012792975', 'Les origines de la culture', 280, 2006, 4.4),
 	('9782080710970', 'Fragments', 374, 2002, 4.4),
 	('9782081248205', 'La princesse de Montpensier', 236, 2010, 19.1),
-
+	('9782081336377', 'L''égypte', 399, 2014, 5.3),
 	('9782226006189', 'Le Lac', 201, 1978, 11.9),
 	('9782226005625', 'Les astuces de Madame Truc', 246, 1977, 9.0),
 	('9782226066435', 'Rire d''Afrique', 487, 1993, 5.08),
@@ -4330,7 +4330,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782070599806', 'Le sang jamais n''oublie', 259, 2016, 6.08),
 	('9782020159647', 'La foi du souvenir', 500, 2001, 19.99),
 	('9782226455970', 'Le corps des femmes', 175, 2020, 12.87),
-
+	('9782742754847', 'Maurice Ravel', 157, 2005, 10.99),
 	('9782020940931', 'Ce que les hommes disent aux dieux', 407, 2007, 16.73),
 	('9782020825337', 'Pour une anthropologie de l''espace', 410, 2006, 23.3),
 	('9782020661973', 'La peau des mots', 162, 2004, 15.2),
@@ -4341,21 +4341,21 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012401792', 'équateur', 335, 2005, 4.98),
 	('9782010162213', 'Le Clan des Sept va au cirque', 124, 1990, 9.0),
 	('9782081622005', 'Ouf, pas de vacances cette année', 135, 1992, 9.0),
-
+	('9782081628687', 'Les bons amis', 31, 1989, 10.0),
 	('9782747024389', 'Un amour d''enfance', 240, 2007, 4.36),
 	('9782012428911', 'Thailande, Hong Kong, Macao', NULL, 1998, 9.0),
-
+	('9782742758463', 'Fidelio de Ludwig van Beethoven', 145, 2006, 4.59),
 	('9782080642462', 'La ceinture', 196, 1980, 28.0),
-
+	('9782010126093', 'Yougoslavie', 625, 1988, 5.34),
 	('9782010111709', 'Paris incroyable', 171, 1986, 9.0),
 	('9782080112859', 'Croix et calvaires', 159, 2004, 45.98),
 	('9782080106841', 'La cuisine des beaux jours', 151, 2002, 6.17),
-
+	('9782020107273', 'Le roman de Renaud', 185, 1988, 10.0),
 	('9782070610587', 'Retour à la case égouttoir de l''amour', 231, 2007, 4.95),
 	('9782742790944', 'Regards sur le paysage sonore', 272, 2010, 25.4),
-
+	('9782742712588', 'La scène moderne', 858, 1997, 94.34),
 	('9782020102919', 'Le cinéma américain.', 253, 1988, 9.0),
-
+	('9782010169472', 'Sud-Ouest', 269, 1991, 9.0),
 	('9782020930338', 'Le royaume des ombres', 315, 2007, 20.7),
 	('9782227729704', 'Il faut sauver le club!', 119, 1998, 9.0),
 	('9782081640221', 'Au nom du roi', 251, 1993, 9.0),
@@ -4387,7 +4387,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020126649', 'C''est oblige  de dire merci?', 126, 1992, 9.0),
 	('9782010002380', 'Guide nature jaunesse.', 235, 1974, 5.78),
 	('9782215098690', 'L''alphabet de l''école', 39, 2010, 20.0),
-
+	('9782742429264', 'Tahiti, Polynésie française', 375, 2011, 4.66),
 	('9782226004017', 'Théodorakis', 191, 1977, 8.08),
 	('9782226118479', 'Ignoble trafic', 177, 2001, 12.0),
 	('9782226240866', 'Barbie et la magie de la mode', 63, 2012, 35.1),
@@ -4427,7 +4427,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012206687', 'Mon année Monster High', 80, 2014, 7.99),
 	('9782081619821', 'Les trois fileuses', 218, 1989, 9.0),
 	('9782505001430', 'Les gemmes', 48, 2007, 11.99),
-
+	('9782226093677', 'Le retour du gros blond', NULL, 1997, 10.9),
 	('9782505002635', 'Le tsunami', 88, 2008, 12.3),
 	('9782723454025', 'Ni Dieu ni maître', 55, 2006, 28.4),
 	('9782505003625', 'La lance de Longinus', 46, 2008, 39.0),
@@ -4447,33 +4447,33 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782080673589', 'Mémoires pour demain', 516, 1997, 5.78),
 	('9782020300636', 'Le siècle des intellectuels', 695, 1997, 4.8),
 	('9782080117304', 'Vuillard', 237, 1990, 20.0),
-
+	('9782020141383', 'Histoire de l''antisémitisme, 1945-1993', 416, 1994, 17.09),
 	('9782226055842', 'Le livre noir du syndicat de la magistrature', 175, 1991, 13.57),
 	('9782226060839', 'L'' empire des cartes', 537, 1992, 129.0),
 	('9782226092809', 'Ces soldats de l''impossible', 378, 1997, 11.0),
-
+	('9782081244566', '1991-2011', 351, 2010, 10.0),
 	('9782080681423', 'Sissi', 639, 2003, 4.91),
 	('9782082111225', 'La libération médiévale', 321, 1979, 19.95),
 	('9782020065870', 'Pour sauver l''université', 122, 1983, 20.0),
 	('9782226018830', 'La Navarre au Moyen Age', 199, 1984, 35.0),
 	('9782012353077', 'Rome et ses dieux', 272, 1998, 7.79),
-
+	('9782021362596', 'Cette France de gauche qui vote Front national', 137, 2017, 16.0),
 	('9782080607782', 'La paille et le grain', 300, 1975, 9.0),
 	('9782226155870', 'Austerlitz', 458, 2005, 4.98),
 	('9782021460292', 'La Commune de 1871 expliquée en images', 151, 2021, 29.0),
 	('9782080687029', 'Les super-héros et la science', 278, 2004, 8.34),
-
+	('9782020087438', 'La piscine', 426, 1985, 4.91),
 	('9782082102704', 'Contes et récits de l''Egypte ancienne', 238, 1995, 5.41),
-
-
-
+	('9782021328363', 'Insoumissions', 230, 2017, 7.6),
+	('9782841100491', 'A propos de ridicule', 77, 1996, 37.0),
+	('9782020328487', 'L'' Affaire Dreyfus', 314, 1998, 6.51),
 	('9782226013033', 'La civilisation égéenne', NULL, 1981, 6.27),
 	('9782080649430', 'Gorki', 260, 1986, 11.9),
 	('9782080678034', 'Bush Land (2000-2004)', 452, 2004, 5.85),
 	('9782021098860', 'Le prince', 137, 2013, 22.4),
-
+	('9782020183048', 'La France des années noires', 544, 1993, 19.6),
 	('9782011695475', 'Bled anglais', 191, 2006, 9.0),
-
+	('9782020635424', 'Napoléon et la mer, un rêve d''empire', 235, 2004, 30.98),
 	('9782330014353', 'Peuple Veut', 431, 2013, 24.8),
 	('9782020044516', 'Regards froids sur la Chine', 317, 1976, 9.0),
 	('9782012788008', 'Mentalités et institutions politiques romaines', 400, 1996, 8.0),
@@ -4488,7 +4488,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020066068', 'Un pari pour l''Europe', 152, 1983, 9.0),
 	('9782226016362', 'Guerre ou paix à Jérusalem?', 184, 1982, 10.0),
 	('9782081219861', 'Contes de vampires', 157, 2010, 9.0),
-
+	('9782021496475', 'Juifs et musulmans de la France coloniale à nos jours', 230, 2022, 28.5),
 	('9782226005267', 'La guerre des autres', 190, 1977, 4.5),
 	('9782226005878', 'La liberté a des idées', 219, 1977, 4.5),
 	('9782020528856', 'Les désarrois d''un officier en Algérie', 260, 2002, 7.58),
@@ -4504,11 +4504,11 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020069687', 'Charles de Gaulle', 876, 1984, 14.0),
 	('9782226078506', 'Rendez l''argent!', 321, 1995, 11.0),
 	('9782080647795', 'L'' alternance tranquille', 283, 1985, 9.0),
-
+	('9782020259712', 'Libertés et droits fondamentaux', 398, 1996, 9.0),
 	('9782226001603', 'L'' homme et ses jardins', 261, 1975, 30.0),
 	('9782080679291', 'La victoire de la famille dans la France défaite', 394, 2002, 21.4),
 	('9782010018473', 'Paris au XVe siècle, 1380-1500', 486, 1974, 62.0),
-
+	('9782020131704', 'La saga Servan-Schreiber', NULL, 1993, 4.67),
 	('9782020367486', 'Front contre Front', 125, 1999, 7.6),
 	('9782020067263', 'Le Dossier de l''énergie.', 412, 1984, 28.0),
 	('9782010050879', 'Histoires et légendes de tous les temps', 112, 1978, 6.53),
@@ -4516,26 +4516,26 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226019363', 'La femme dans la Grèce antique', 189, 1983, 7.58),
 	('9782020054881', 'Donner la vie', 313, 1980, 29.9),
 	('9782010050220', 'Mémoires du sergent Bourgogne', 414, 1978, 7.2),
-
+	('9782226039538', 'L'' Ame de l''Iran', 266, 1990, 5.47),
 	('9782226015488', 'Paris résistant', 373, 1982, 28.4),
-
+	('9782742796335', 'Vestiges de voyages', 119, 2011, 39.8),
 	('9782020061476', 'La conquête de l''Amérique', 278, 1982, 5.99),
 	('9782020062770', 'L'' état militaire en Amérique latine', 475, 1982, 28.02),
 	('9782010124174', 'La physique du calcul', 287, 1989, 4.7),
 	('9782080135445', 'The history of the future', 159, 1993, 29.95),
-
+	('9782011671738', 'Fables', 351, 1996, 9.0),
 	('9782080640628', 'Négatives', 379, 1978, 4.7),
 	('9782010122705', 'Mémento cours moyen', 144, 1987, 9.0),
 	('9782010165023', 'Dictionnaire pratique du français', 1266, 1990, 20.0),
 	('9782226158574', 'Quinze millions d''enfants à défendre', 289, 2005, 9.0),
 	('9782020063678', 'Les Grecs ont-ils cru à leurs mythes?', 161, 1983, 15.88),
-
+	('9782010192548', 'Histoire de l''Europe', 383, 1992, 5.14),
 	('9782080644589', 'Le royaume d''Otto', 405, 1982, 9.0),
-
-
+	('9782020526609', 'Mémoires du siècle', 230, 2003, 20.3),
+	('9782226158659', 'Histoire de l''Union européenne', 402, 2005, 21.8),
 	('9782020205054', 'Les fous de la République', 510, 1992, 36.2),
 	('9782020015370', 'Cent ans de solitude', 390, 1988, 14.16),
-
+	('9782020239301', 'Le vieux qui lisait des romans d''amour', 120, 1995, 20.0),
 	('9782330006563', 'La princesse des glaces', 508, 2012, 14.7),
 	('9782020944656', 'Les chaussures italiennes', 340, 2009, 4.99),
 	('9782742723997', 'Une histoire de la lecture', 427, 2000, 26.1),
@@ -4550,9 +4550,9 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782021510805', 'Baudelaire jazz', 177, 2022, 10.41),
 	('9782081269965', 'Dernières nouvelles du martin-pêcheur', 318, 2014, 9.0),
 	('9782742773930', 'La réserve', 379, 2008, 9.0),
-
+	('9782868693549', 'Le bourgmestre de Furnes', 199, 1989, 9.0),
 	('9782226182357', 'Blaze', 328, 2008-04, 12.4),
-
+	('9782742727728', 'La chambre silencieuse', 328, 2000, 9.2),
 	('9782330038908', 'Un membre permanent de la famille', 238, 2015, 8.36),
 	('9782742720682', 'Antigone', 355, 1999, 16.0),
 	('9782742781171', 'Anthologie poétique', 313, 2009, 7.29),
@@ -4566,8 +4566,8 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782070129195', 'Romans policiers', 1026, 2011, 14.99),
 	('9782020058346', 'Un Allemand à Paris', 214, 1981, 7.61),
 	('9782012351875', 'Denis Diderot', 238, 1996, 18.08),
-
-
+	('9782742790272', 'élégie pour un Américain', 401, 2010, 4.99),
+	('9782330013073', 'La couleur des sentiments', 608, 2012, 20.0),
 	('9782020479967', 'Le miroir aux espions', 338, 2006, 4.24),
 	('9782080126979', 'L'' abcdaire de Prévert', 119, 2000, 23.4),
 	('9782020361583', 'Littérature et engagement', 316, 2000, 6.1),
@@ -4579,10 +4579,10 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782021002430', 'Contes des sages de Bretagne', 186, 2010, 9.0),
 	('9782080663894', 'Maupassant', 284, 1989, 9.0),
 	('9782020065122', 'Bizet', 186, 1983, 15.5),
-
+	('9782742738694', 'Le siècle de Théodore Monod', 168, 2002, 27.5),
 	('9782010039270', 'Le cheval couché', 235, 1977, 8.0),
 	('9782226188410', 'Paradis conjugal', 355, 2008, 11.9),
-
+	('9782742756483', 'Brooklyn follies', 363, 2005, 9.0),
 	('9782080640109', 'Œuvres', 519, 1977, 19.65),
 	('9782020054973', 'Le scandale du corps parlant', 218, 1980, 9.99),
 	('9782226208415', 'L''ombre de ton sourire', 417, 2010, 19.0),
@@ -4602,10 +4602,10 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226221346', 'Quand reviendras-tu?', 439, 2011, 5.08),
 	('9782080661937', 'Flaubert', 410, 1988, 19.3),
 	('9782020189651', 'Voltaire, le conquérant', 387, 1994, 32.5),
-
+	('9782742704767', 'Poésie espagnole, 1945-1990', 450, 1995, 12.9),
 	('9782330048341', 'Le chaste monde', 267, 2015, 5.07),
 	('9782020558075', 'Le livre des illuminations', 874, 2005, 59.9),
-
+	('9782021030532', 'Le condottière', 202, 2012, 11.9),
 	('9782226190673', 'L''heure trouble', 425, 2009, 9.0),
 	('9782010126451', 'De l''Ancien Régime au nouveau monde', 488, 1987, 6.08),
 	('9782020062817', 'La prière de l''absent', 234, 1981, 9.0),
@@ -4613,13 +4613,13 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782081333857', 'Tombée du ciel', 365, 2014, 19.9),
 	('9782742744459', 'Trois rêves au Mont Mérou', 263, 2003, 20.0),
 	('9782080643827', 'Musiques de scènes', 212, 1981, 9.0),
-
-
-
+	('9782330000141', 'Livret de famille', 250, 2011, 12.4),
+	('9782742710485', 'L'' éditeur et son double', 273, 1988, 15.5),
+	('9782742780600', 'La trilogie de Pathelin', 225, 2009, 9.2),
 	('9782080671356', 'Par-delà les mots', 152, 1995, 7.56),
 	('9782226084781', 'Les maîtres de forges', 363, 1996, 4.0),
 	('9782081217782', 'Thérèse Raquin', 302, 2008, 9.0),
-
+	('9782868693136', 'Méharées', 233, 1989, 34.0),
 	('9782020965910', 'Abd El-Kader', 348, 2008, 11.59),
 	('9782020864565', 'L'' imaginaire metaphysique', 163, 2006, 6.87),
 	('9782020104333', 'éloge de la variante', 122, 1989, 75.0),
@@ -4642,8 +4642,8 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226116314', 'De l''eau', 322, 2001, 7.5),
 	('9782080709585', 'De Villon à Ronsard', 410, 1997, 6.32),
 	('9782226141989', 'La passion des livres', 647, 2003, 24.3),
-
-
+	('9782742730513', 'Seizièmes Assises de la traduction littéraire (Arles 1999)', 210, 2000, 21.5),
+	('9782742722990', 'Les Arabes et l''amour', 183, 1999, 12.21),
 	('9782742740642', 'Sur les quatre claviers de mon petit orgue', 165, 2002, 16.0),
 	('9782081307254', 'Gadjo-Migrandt', 372, 2014, 25.0),
 	('9782742723720', 'La petite fille dans le cercle de la lune', 198, 1999, 16.9),
@@ -4689,7 +4689,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782742792498', 'Proche', 214, 2010, 33.6),
 	('9782742702558', 'Les papiers de Walter Jonas, ou, Le solstice d''été', 545, 1995, 23.2),
 	('9782020536363', 'La croix et la bannière', 356, 1986, 6.1),
-
+	('9782330000066', 'La princesse du Burundi', 409, 2011, 33.0),
 	('9782742720415', 'Dans la forêt la mort s''amuse', 267, 1999, 4.9),
 	('9782742772285', 'Flashpoint', 414, 2008, 11.9),
 	('9782080609397', 'Le Philatosexuel', 208, 1977, 50.0),
@@ -4698,7 +4698,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782012352711', 'Histoire de la menace nucléaire', 411, 1997, 4.14),
 	('9782080674814', 'Batailles pour Marseille', 418, 1997, 16.72),
 	('9782226019196', 'L'' esprit et la science', 474, 1983, 20.0),
-
+	('9782012358584', 'Pourquoi je suis devenu un rebelle', 173, 2005, 6.0),
 	('9782020373807', 'L'' Amérique contre De Gaulle', 279, 2000, 15.37),
 	('9782011667458', 'Cyrano de Bergerac', 351, 1997, 29.5),
 	('9782020156769', 'Nous entrerons dans la carrière', 450, 1994, 11.9),
@@ -4721,12 +4721,12 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782226107213', 'L'' exil des républicains espagnols en France', 475, 1999, 12.59),
 	('9782226036971', 'Sans tambours ni trompettes', 376, 1989, 9.0),
 	('9782080671974', 'Les secrets d''une victoire', 245, 1995, 9.0),
-
+	('9782082104463', 'L'' Occident et sa bonne parole', 218, 2005, 20.3),
 	('9782020055888', 'La carte', 287, 1980, 13.8),
-
+	('9782020197915', 'Histoire culturelle de la France', NULL, 1997, 19.04),
 	('9782226318183', 'L.R.', 387, 2015, 22.0),
 	('9782020124164', 'Malicorne', 209, 1990, 11.9),
-
+	('9782010051913', 'Les châteaux forts', 59, 1978, 9.0),
 	('9782082117036', 'Dialogues', 198, 1980, 30.0),
 	('9782010173233', 'Problèmes stratégiques contemporains', 157, 1992, 17.6),
 	('9782010123436', 'La vie quotidienne des jazzmen américains jusqu''aux années 50', 332, 1989, 7.58),
@@ -4735,7 +4735,7 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 	('9782020621564', 'Un monde commun', 311, 2003, 15.07),
 	('9782011671509', 'Hernani', 287, 1996, 10.0),
 	('9782010053122', 'La vie quotidienne à Florence au temps de Dante', 318, 1980, 5.0),
-
+	('9782742785568', 'Le dossier Vercingétorix', 466, 2009, 8.77),
 	('9782010122699', 'Mémento cours élémentaire', 127, 1987, 9.0),
 	('9782226016874', 'Le conquérant du monde', 365, 1983, 5.29),
 	('9782011163622', 'Pour comprendre les mathématiques CE2, cycle 3', 251, 2002, 10.0),
@@ -4752,11 +4752,11 @@ insert into LIVRE(isbn, titre,nbpages,datepubli,prix) values
 -- Les thèmes des livres
 insert into THEMES(isbn,iddewey) values
 	('9782070633708', '840'),
-
+	('9782080300782', '700'),
 	('9782818500132', '150'),
 	('9782226002662', '740'),
 	('9782020054881', '610'),
-
+	('9782330000226', '840'),
 	('9782020131537', '650'),
 	('9782012350908', '570'),
 	('9782020047746', '330'),
@@ -4765,18 +4765,18 @@ insert into THEMES(isbn,iddewey) values
 	('9782070129195', '840'),
 	('9782012451476', '910'),
 	('9782226107824', '140'),
-
+	('9782070719044', '910'),
 	('9782070110940', '700'),
 	('9782227486324', '700'),
-
+	('9782227366022', '220'),
 	('9782020621557', '330'),
-
+	('9782070632381', '740'),
 	('9782012019812', '810'),
 	('9782080122520', '700'),
 	('9782742753123', '840'),
 	('9782227070073', '820'),
 	('9782226075963', '810'),
-
+	('9782020066952', '330'),
 	('9782011801333', '820'),
 	('9782012368705', '640'),
 	('9782226172686', '610'),
@@ -4795,7 +4795,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782215093107', '740'),
 	('9782020944656', '830'),
 	('9782226012197', '940'),
-
+	('9782012012660', '810'),
 	('9782012379756', '640'),
 	('9782081621442', '820'),
 	('9782742723461', '940'),
@@ -4833,16 +4833,16 @@ insert into THEMES(isbn,iddewey) values
 	('9782226257673', '790'),
 	('9782226034403', '200'),
 	('9782081621282', '810'),
-
+	('9782226155733', '370'),
 	('9782020972864', '840'),
 	('9782226002242', '640'),
 	('9782871297376', '740'),
 	('9782012449381', '910'),
-
+	('9782742790272', '810'),
 	('9782227486805', '120'),
 	('9782747028806', '810'),
 	('9782010207570', '840'),
-
+	('9782080109941', '740'),
 	('9782010101113', '100'),
 	('9782330034870', '840'),
 	('9782742700981', '780'),
@@ -4852,26 +4852,26 @@ insert into THEMES(isbn,iddewey) values
 	('9782070145348', '840'),
 	('9782742751884', '840'),
 	('9782012315129', '640'),
-
+	('9782010192548', '940'),
 	('9782226258403', '780'),
-
+	('9782742405084', '940'),
 	('9782020059916', '300'),
 	('9782227745018', '320'),
 	('9782081337305', '150'),
 	('9782012376687', '640'),
-
+	('9782742722990', '890'),
 	('9782081244207', '840'),
 	('9782010122705', '370'),
 	('9782742720415', '840'),
-
+	('9782205087307', '780'),
 	('9782226008084', '640'),
 	('9782012401792', '910'),
 	('9782021122220', '810'),
 	('9782226170316', '300'),
 	('9782226036971', '940'),
-
+	('9782215052593', '840'),
 	('9782012239913', '390'),
-
+	('9782081628687', '740'),
 	('9782020415767', '070'),
 	('9782226118486', '840'),
 	('9782742773930', '810'),
@@ -4893,7 +4893,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020220118', '330'),
 	('9782205054910', '740'),
 	('9782080676849', '790'),
-
+	('9782226060013', '740'),
 	('9782081286542', '840'),
 	('9782070521760', '880'),
 	('9782010120336', '730'),
@@ -4902,7 +4902,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782012370753', '640'),
 	('9782205055504', '740'),
 	('9782012011779', '840'),
-
+	('9782227340954', '240'),
 	('9782020114622', '700'),
 	('9782012376953', '640'),
 	('9782226009746', '780'),
@@ -4918,8 +4918,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782226141453', '360'),
 	('9782742746439', '640'),
 	('9782020047289', '510'),
-
-
+	('9782020044158', '190'),
+	('9782012421882', '910'),
 	('9782012429734', '910'),
 	('9782227340909', '260'),
 	('9782020049412', '300'),
@@ -4927,9 +4927,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782010053122', '940'),
 	('9782747022200', '840'),
 	('9782226258250', '840'),
-
+	('9782742730513', '800'),
 	('9782012447479', '910'),
-
+	('9781844301515', '640'),
 	('9782010002878', '500'),
 	('9782070564651', '740'),
 	('9782012354401', '930'),
@@ -4944,7 +4944,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782330019600', '700'),
 	('9782010139772', '840'),
 	('9782012020061', '820'),
-
+	('9782070736294', '790'),
 	('9782020048118', '840'),
 	('9782205062335', '740'),
 	('9782081619500', '830'),
@@ -4965,9 +4965,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782070610815', '840'),
 	('9782081605183', '840'),
 	('9782020669412', '270'),
-
+	('9782081227576', '800'),
 	('9782012098381', '790'),
-
+	('9782010056710', '260'),
 	('9782012414778', '900'),
 	('9782070756797', '790'),
 	('9782020930338', '820'),
@@ -4975,20 +4975,20 @@ insert into THEMES(isbn,iddewey) values
 	('9782013214629', '840'),
 	('9782742732128', '590'),
 	('9782012452817', '910'),
-
+	('9782021362596', '300'),
 	('9782080644411', '780'),
 	('9782215080756', '610'),
 	('9782012438507', '900'),
 	('9782226071507', '740'),
 	('9782012359482', '780'),
-
+	('9782020056465', '300'),
 	('9782081240742', '840'),
 	('9782215095071', '740'),
-
+	('9782747020541', '800'),
 	('9782080685452', '850'),
-
+	('9782742738694', '920'),
 	('9782080644398', '380'),
-
+	('9782868691828', '640'),
 	('9782011667519', '900'),
 	('9782226218780', '840'),
 	('9782080110343', '730'),
@@ -5015,17 +5015,17 @@ insert into THEMES(isbn,iddewey) values
 	('9782215068105', '810'),
 	('9782020189224', '300'),
 	('9782081603158', '810'),
-
+	('9782742708345', '630'),
 	('9782020653831', '390'),
 	('9782020120784', '320'),
 	('9782080120540', '750'),
 	('9782080354457', '210'),
 	('9782226027016', '840'),
 	('9782910868758', '520'),
-
+	('9782021496475', '940'),
 	('9782070579785', '820'),
 	('9782081220775', '810'),
-
+	('9782020635424', '940'),
 	('9782747034692', '840'),
 	('9782020096645', '110'),
 	('9782012424067', '910'),
@@ -5046,9 +5046,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782016251720', '640'),
 	('9782226158017', '740'),
 	('9782081621626', '840'),
-
+	('9782227301405', '230'),
 	('9782080690081', '840'),
-
+	('9782742754847', '780'),
 	('9782747005197', '790'),
 	('9782010045196', '940'),
 	('9782070119967', '840'),
@@ -5062,13 +5062,13 @@ insert into THEMES(isbn,iddewey) values
 	('9782082012423', '640'),
 	('9782215120490', '790'),
 	('9782227757035', '810'),
-
+	('9782742752782', '840'),
 	('9782080664013', '170'),
 	('9782215087335', '840'),
 	('9782226117052', '940'),
 	('9782227310247', '200'),
 	('9782226000859', '840'),
-
+	('9782742774692', '840'),
 	('9782226188410', '840'),
 	('9782226084781', '330'),
 	('9782215114970', '840'),
@@ -5080,9 +5080,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782227738546', '840'),
 	('9782011163622', '370'),
 	('9782081295711', '790'),
-
+	('9782020123952', '900'),
 	('9782081641433', '840'),
-
+	('9782742411023', '910'),
 	('9782742792498', '890'),
 	('9782070734856', '840'),
 	('9782012010079', '840'),
@@ -5090,9 +5090,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782226008565', '290'),
 	('9782012404960', '910'),
 	('9782226066114', '130'),
-
+	('9782742758494', '800'),
 	('9782226187680', '640'),
-
+	('9782070619993', '820'),
 	('9782012355408', '610'),
 	('9782227362420', '360'),
 	('9782226006189', '890'),
@@ -5111,7 +5111,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020965910', '960'),
 	('9782010041235', '150'),
 	('9782020790659', '100'),
-
+	('9782226095770', '440'),
 	('9782020125130', '570'),
 	('9782742414703', '910'),
 	('9782082018753', '610'),
@@ -5122,7 +5122,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782010093906', '940'),
 	('9782012246065', '740'),
 	('9782020385961', '300'),
-
+	('9782021328363', '320'),
 	('9782021011296', '610'),
 	('9782070442430', '780'),
 	('9782226070180', '940'),
@@ -5148,7 +5148,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226251978', '840'),
 	('9782012099289', '840'),
 	('9782215104667', '790'),
-
+	('9782020025829', '840'),
 	('9782226060198', '150'),
 	('9782215049029', '840'),
 	('9782226131355', '790'),
@@ -5158,11 +5158,11 @@ insert into THEMES(isbn,iddewey) values
 	('9782013990370', '840'),
 	('9782020061032', '790'),
 	('9782012434349', '640'),
-
+	('9782330013004', '830'),
 	('9782020959124', '300'),
 	('9782226010001', '780'),
 	('9782226016690', '330'),
-
+	('9782226119490', '840'),
 	('9782070267361', '840'),
 	('9782080669896', '770'),
 	('9782227300149', '200'),
@@ -5172,14 +5172,14 @@ insert into THEMES(isbn,iddewey) values
 	('9782215054108', '840'),
 	('9782012435469', '640'),
 	('9782081233423', '840'),
-
+	('9782020046626', '200'),
 	('9782080135179', '640'),
 	('9782012010437', '840'),
 	('9782215155195', '520'),
-
+	('9782742738694', '570'),
 	('9782020043922', '110'),
 	('9782226002273', '890'),
-
+	('9782227471580', '290'),
 	('9782012404823', '910'),
 	('9782020211130', '190'),
 	('9782227723016', '840'),
@@ -5195,7 +5195,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782227004023', '320'),
 	('9782082115537', '530'),
 	('9782330035839', '840'),
-
+	('9782227912007', '260'),
 	('9782330002510', '780'),
 	('9782012375260', '790'),
 	('9782226008909', '350'),
@@ -5222,7 +5222,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020063418', '300'),
 	('9782742715626', '780'),
 	('9782010073397', '150'),
-
+	('9782010126093', '910'),
 	('9782742773473', '840'),
 	('9782080136190', '640'),
 	('9782021230833', '840'),
@@ -5242,7 +5242,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226190673', '830'),
 	('9782020059282', '330'),
 	('9782080672339', '840'),
-
+	('9782020048484', '440'),
 	('9782226087751', '360'),
 	('9782012362055', '640'),
 	('9782747017893', '810'),
@@ -5255,12 +5255,12 @@ insert into THEMES(isbn,iddewey) values
 	('9782010007118', '840'),
 	('9782082014885', '640'),
 	('9782082000451', '640'),
-
-
+	('9782021406801', '320'),
+	('9782226144232', '270'),
 	('9782747026123', '810'),
 	('9782020230872', '830'),
 	('9782020103589', '940'),
-
+	('9782226060297', '740'),
 	('9782070696628', '740'),
 	('9782020365703', '320'),
 	('9782070111725', '700'),
@@ -5268,10 +5268,10 @@ insert into THEMES(isbn,iddewey) values
 	('9782742760237', '840'),
 	('9782080102300', '750'),
 	('9782012352162', '790'),
-
+	('9782330012380', '700'),
 	('9782742780105', '840'),
 	('9782082111201', '110'),
-
+	('9782081336377', '960'),
 	('9782227325135', '270'),
 	('9782012457409', '910'),
 	('9782227355163', '350'),
@@ -5285,27 +5285,27 @@ insert into THEMES(isbn,iddewey) values
 	('9782227757240', '810'),
 	('9782226087898', '260'),
 	('9782010033681', '740'),
-
+	('9782070312252', '410'),
 	('9782226017840', '840'),
 	('9782742727513', '840'),
 	('9782081229501', '820'),
-
+	('9782226153074', '610'),
 	('9782226100566', '840'),
 	('9782070315451', '370'),
 	('9782226315137', '190'),
 	('9782012015401', '810'),
 	('9782012094215', '840'),
-
+	('9782742765737', '740'),
 	('9782080688422', '820'),
 	('9782012428027', '910'),
 	('9782226190093', '920'),
 	('9782742401611', '910'),
 	('9782742708956', '780'),
-
+	('9782742718092', '780'),
 	('9782226158574', '360'),
-
+	('9782082104463', '320'),
 	('9782226221346', '810'),
-
+	('9782227471344', '300'),
 	('9782742771509', '890'),
 	('9782226033017', '180'),
 	('9782227436497', '970'),
@@ -5322,8 +5322,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782020060882', '300'),
 	('9782227477117', '220'),
 	('9782215082583', '380'),
-
-
+	('9782742763337', '720'),
+	('9782226074775', '610'),
 	('9782020065870', '370'),
 	('9782012276147', '790'),
 	('9782070519972', '840'),
@@ -5343,7 +5343,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782012014961', '820'),
 	('9782020323093', '790'),
 	('9782010123283', '910'),
-
+	('9782226094209', '610'),
 	('9782747049078', '840'),
 	('9782723440707', '790'),
 	('9782020228008', '340'),
@@ -5356,7 +5356,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020061049', '790'),
 	('9782723413077', '740'),
 	('9782082000819', '640'),
-
+	('9782742785568', '930'),
 	('9782080120786', '700'),
 	('9782227202092', '000'),
 	('9782012353077', '290'),
@@ -5392,18 +5392,18 @@ insert into THEMES(isbn,iddewey) values
 	('9782742700059', '840'),
 	('9782010050879', '840'),
 	('9782012443181', '910'),
-
+	('9782723437202', '740'),
 	('9782205045598', '740'),
-
+	('9782841100491', '810'),
 	('9782012451308', '910'),
 	('9782081268791', '840'),
-
-
+	('9782020145930', '520'),
+	('9782205009187', '740'),
 	('9782081217218', '840'),
 	('9782020634267', '840'),
 	('9782020557900', '840'),
 	('9782020130875', '390'),
-
+	('9782081244566', '800'),
 	('9782012905351', '740'),
 	('9782020114721', '880'),
 	('9782818501146', '190'),
@@ -5417,29 +5417,29 @@ insert into THEMES(isbn,iddewey) values
 	('9782012789470', '150'),
 	('9782742723997', '020'),
 	('9782021052374', '840'),
-
+	('9782227425552', '260'),
 	('9782020114707', '000'),
 	('9782020218481', '290'),
-
+	('9782080304780', '640'),
 	('9782205072693', '070'),
 	('9782742753192', '840'),
 	('9782020315623', '440'),
 	('9782226187536', '150'),
 	('9782070616763', '920'),
 	('9782020825177', '940'),
-
+	('9782020479981', '190'),
 	('9782080645067', '360'),
-
+	('9782020587242', '700'),
 	('9782070633340', '820'),
-
+	('9782841100583', '700'),
 	('9782226143846', '440'),
 	('9782227487130', '170'),
-
+	('9782070312252', '920'),
 	('9782205049794', '840'),
 	('9782330036553', '840'),
 	('9782020361583', '840'),
 	('9782226015921', '840'),
-
+	('9782226023278', '290'),
 	('9782020045032', '150'),
 	('9782226025982', '290'),
 	('9782080201713', '700'),
@@ -5462,7 +5462,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020479967', '820'),
 	('9782012315181', '640'),
 	('9782080678935', '840'),
-
+	('9782081310711', '700'),
 	('9782012303799', '610'),
 	('9782742756575', '840'),
 	('9782226116314', '830'),
@@ -5477,7 +5477,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782742742752', '840'),
 	('9782226167187', '840'),
 	('9782215115922', '910'),
-
+	('9782330167691', '740'),
 	('9782742723225', '710'),
 	('9782723430319', '000'),
 	('9782011455123', '190'),
@@ -5487,17 +5487,17 @@ insert into THEMES(isbn,iddewey) values
 	('9782742417674', '900'),
 	('9782747048200', '840'),
 	('9782227487338', '250'),
-
+	('9782227301399', '240'),
 	('9782020114479', '390'),
 	('9791023501414', '840'),
 	('9782330057510', '070'),
 	('9782742428892', '910'),
 	('9782226011213', '930'),
 	('9782012275430', '790'),
-
+	('9782021496475', '300'),
 	('9782742797707', '780'),
 	('9782080122711', '620'),
-
+	('9782020164573', '370'),
 	('9782226100849', '840'),
 	('9782705002893', '840'),
 	('9782226131379', '840'),
@@ -5509,36 +5509,36 @@ insert into THEMES(isbn,iddewey) values
 	('9782010098048', '910'),
 	('9782075084734', '740'),
 	('9782020202473', '520'),
-
+	('9782080201294', '640'),
 	('9782020191296', '270'),
-
+	('9782227481947', '270'),
 	('9782080112910', '700'),
 	('9782020257978', '840'),
-
+	('9782020662512', '200'),
 	('9782012016088', '810'),
 	('9782080660367', '780'),
-
+	('9782070577101', '810'),
 	('9782012432109', '910'),
 	('9782081366657', '190'),
 	('9782081661462', '800'),
-
+	('9782723430791', '070'),
 	('9782070643486', '170'),
 	('9782723468688', '840'),
 	('9782020126519', '840'),
 	('9782226208545', '840'),
 	('9782020102919', '790'),
-
+	('9782020587242', '100'),
 	('9782215075646', '740'),
 	('9782747037549', '840'),
 	('9782226005625', '640'),
-
+	('9782020204385', '840'),
 	('9782020107693', '360'),
 	('9782080648075', '290'),
 	('9782020090339', '150'),
 	('9782226018830', '940'),
 	('9782012402270', '910'),
 	('9782080643797', '840'),
-
+	('9782080125156', '930'),
 	('9782070615568', '370'),
 	('9782723453578', '580'),
 	('9782020120890', '940'),
@@ -5561,8 +5561,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782747030007', '840'),
 	('9782226087294', '930'),
 	('9782013220125', '820'),
-
-
+	('9782227482043', '800'),
+	('9782742708499', '840'),
 	('9782082104982', '300'),
 	('9782226104687', '170'),
 	('9782020577977', '190'),
@@ -5591,7 +5591,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782012456952', '910'),
 	('9782012403185', '910'),
 	('9782080670083', '840'),
-
+	('9782742746200', '780'),
 	('9782010072604', '330'),
 	('9782226191076', '290'),
 	('9782082019088', '740'),
@@ -5612,7 +5612,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782742795987', '840'),
 	('9782226241900', '290'),
 	('9782012372498', '840'),
-
+	('9782020005852', '840'),
 	('9782010015250', '900'),
 	('9782226005649', '840'),
 	('9782012012202', '840'),
@@ -5625,7 +5625,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782010050220', '940'),
 	('9782012448865', '910'),
 	('9782080655035', '280'),
-
+	('9782020239301', '860'),
 	('9782227727038', '840'),
 	('9782226239945', '810'),
 	('9782070541867', '810'),
@@ -5647,14 +5647,14 @@ insert into THEMES(isbn,iddewey) values
 	('9782012351875', '030'),
 	('9782082004503', '790'),
 	('9782226012869', '290'),
-
+	('9782080280961', '750'),
 	('9782226159755', '840'),
-
+	('9782080305565', '640'),
 	('9782020090063', '320'),
 	('9782070610587', '820'),
 	('9782020950237', '790'),
 	('9782226024930', '350'),
-
+	('9782021328363', '940'),
 	('9782020048262', '620'),
 	('9782020069588', '840'),
 	('9782742762491', '840'),
@@ -5678,7 +5678,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782080687401', '300'),
 	('9782080683915', '820'),
 	('9782226238726', '390'),
-
+	('9782330000141', '840'),
 	('9782020342476', '320'),
 	('9782012422865', '910'),
 	('9782020126649', '810'),
@@ -5698,7 +5698,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782080671974', '320'),
 	('9782012435339', '900'),
 	('9782080117304', '760'),
-
+	('9782742725236', '780'),
 	('9782013225847', '810'),
 	('9782226018670', '290'),
 	('9782215084488', '620'),
@@ -5714,7 +5714,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226006233', '780'),
 	('9782080102102', '300'),
 	('9782020020411', '780'),
-
+	('9782020573719', '300'),
 	('9782020015370', '860'),
 	('9782226060624', '840'),
 	('9782016209356', '640'),
@@ -5723,17 +5723,17 @@ insert into THEMES(isbn,iddewey) values
 	('9782013223270', '840'),
 	('9782742431694', '910'),
 	('9782226150769', '810'),
-
-
+	('9782330167691', '680'),
+	('9782010051913', '900'),
 	('9782010098321', '330'),
 	('9782020571951', '840'),
-
+	('9782020183048', '940'),
 	('9782226244352', '840'),
 	('9782226019196', '500'),
 	('9782215080152', '740'),
 	('9782742729630', '830'),
 	('9782080813534', '150'),
-
+	('9782080304742', '640'),
 	('9782226180827', '790'),
 	('9782205068504', '740'),
 	('9782070513123', '610'),
@@ -5746,7 +5746,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782011674142', '180'),
 	('9782012439283', '910'),
 	('9782020977401', '840'),
-
+	('9782742758715', '730'),
 	('9782505003625', '740'),
 	('9782226142719', '940'),
 	('9782226066435', '820'),
@@ -5758,7 +5758,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226094148', '740'),
 	('9782226089236', '840'),
 	('9782226092038', '190'),
-
+	('9782081210110', '790'),
 	('9782012304321', '640'),
 	('9782020864565', '840'),
 	('9782020065122', '780'),
@@ -5766,7 +5766,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782130417170', '320'),
 	('9782012445116', '910'),
 	('9782010164576', '390'),
-
+	('9782020213806', '700'),
 	('9782205058802', '740'),
 	('9782010041129', '910'),
 	('9782021510805', '840'),
@@ -5777,7 +5777,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782011671509', '840'),
 	('9782080102126', '750'),
 	('9782010028212', '900'),
-
+	('9782012358584', '320'),
 	('9782215078760', '740'),
 	('9782012918474', '590'),
 	('9782215117384', '840'),
@@ -5787,33 +5787,33 @@ insert into THEMES(isbn,iddewey) values
 	('9782742749485', '840'),
 	('9782012231207', '840'),
 	('9782742401758', '910'),
-
+	('9782082018227', '950'),
 	('9782081640757', '840'),
 	('9782012373068', '640'),
 	('9782215050261', '590'),
 	('9782742703845', '780'),
-
+	('9782742727728', '830'),
 	('9782747039192', '840'),
 	('9782070661282', '840'),
 	('9782012427426', '910'),
 	('9782742740642', '840'),
 	('9782505002529', '740'),
-
+	('9782742796335', '300'),
 	('9782205047561', '740'),
 	('9782080608666', '700'),
 	('9782747019552', '840'),
 	('9782012373334', '150'),
-
+	('9782020259712', '340'),
 	('9782226120601', '780'),
 	('9782227718142', '910'),
 	('9782070332717', '790'),
-
+	('9782081609440', '390'),
 	('9782080669407', '790'),
 	('9782226159779', '840'),
 	('9782020056601', '840'),
 	('9782020069625', '750'),
 	('9782227005617', '610'),
-
+	('9782205087307', '740'),
 	('9782227472402', '230'),
 	('9782226004628', '840'),
 	('9782020998949', '800'),
@@ -5821,16 +5821,16 @@ insert into THEMES(isbn,iddewey) values
 	('9782080669070', '780'),
 	('9782020050647', '330'),
 	('9782010208232', '910'),
-
+	('9782330075736', '780'),
 	('9782020113977', '840'),
 	('9782020056496', '300'),
 	('9782010104275', '630'),
-
+	('9782070714216', '910'),
 	('9782742737499', '800'),
 	('9782330034115', '740'),
 	('9782020878142', '190'),
 	('9782215117421', '840'),
-
+	('9782227475304', '290'),
 	('9782215076780', '740'),
 	('9782215046554', '150'),
 	('9782215076025', '740'),
@@ -5859,12 +5859,12 @@ insert into THEMES(isbn,iddewey) values
 	('9782215106531', '790'),
 	('9782020246446', '360'),
 	('9782020046794', '390'),
-
+	('9782020224543', '300'),
 	('9782020367738', '510'),
 	('9782020046701', '800'),
 	('9782080647795', '330'),
 	('9782082005746', '390'),
-
+	('9782742752881', '780'),
 	('9782012428911', '910'),
 	('9782742771806', '840'),
 	('9782080690173', '860'),
@@ -5880,20 +5880,20 @@ insert into THEMES(isbn,iddewey) values
 	('9782012423701', '910'),
 	('9782868699589', '190'),
 	('9782215022572', '740'),
-
-
+	('9782021030532', '840'),
+	('9782082104463', '900'),
 	('9780446570992', '810'),
 	('9782012008489', '840'),
 	('9782080125002', '700'),
-
+	('9782226093677', '940'),
 	('9782215016823', '590'),
 	('9782010122972', '930'),
 	('9782070312719', '820'),
-
+	('9782080917553', '840'),
 	('9782723472098', '640'),
 	('9782818500798', '900'),
 	('9782080660022', '820'),
-
+	('9782012451063', '910'),
 	('9782080689870', '610'),
 	('9782012458314', '910'),
 	('9782070780129', '380'),
@@ -5907,17 +5907,17 @@ insert into THEMES(isbn,iddewey) values
 	('9782227729643', '840'),
 	('9782080682123', '790'),
 	('9782747026420', '840'),
-
+	('9782742704767', '860'),
 	('9782081642355', '810'),
 	('9782020251594', '840'),
 	('9782226189929', '920'),
 	('9782081217782', '840'),
 	('9782205054750', '740'),
 	('9782505001430', '740'),
-
+	('9782330006235', '780'),
 	('9782226155870', '940'),
 	('9782010032257', '540'),
-
+	('9782070632381', '800'),
 	('9782742751440', '720'),
 	('9782742794959', '830'),
 	('9782020256711', '780'),
@@ -5931,7 +5931,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226151155', '800'),
 	('9782723463409', '890'),
 	('9782021067989', '810'),
-
+	('9782020328487', '940'),
 	('9782215094548', '740'),
 	('9782020062497', '190'),
 	('9782012301993', '790'),
@@ -5942,7 +5942,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226078711', '640'),
 	('9782081248649', '960'),
 	('9782080644589', '940'),
-
+	('9782227436268', '260'),
 	('9782226154286', '220'),
 	('9782330000387', '640'),
 	('9782010128110', '700'),
@@ -5956,13 +5956,13 @@ insert into THEMES(isbn,iddewey) values
 	('9782012008779', '810'),
 	('9782012017351', '810'),
 	('9782226208156', '780'),
-
+	('9782011671738', '840'),
 	('9782010122699', '370'),
 	('9782010058240', '910'),
 	('9782253032380', '390'),
 	('9782080124401', '750'),
 	('9782081649217', '840'),
-
+	('9782605000289', '800'),
 	('9782723416238', '840'),
 	('9782080640840', '840'),
 	('9782021097153', '860'),
@@ -5972,7 +5972,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782330037987', '840'),
 	('9782226028693', '790'),
 	('9782226177179', '810'),
-
+	('9782020829342', '260'),
 	('9782016251362', '640'),
 	('9782020137041', '300'),
 	('9782070749386', '170'),
@@ -5987,9 +5987,9 @@ insert into THEMES(isbn,iddewey) values
 	('9782012406223', '910'),
 	('9782081622999', '830'),
 	('9782081271654', '960'),
-
+	('9782080671738', '570'),
 	('9782012017368', '810'),
-
+	('9782080106957', '640'),
 	('9782226020666', '940'),
 	('9782080730275', '400'),
 	('9782012252035', '820'),
@@ -6003,36 +6003,36 @@ insert into THEMES(isbn,iddewey) values
 	('9782330001803', '840'),
 	('9782742400089', '910'),
 	('9782011691965', '840'),
-
+	('9782010051913', '720'),
 	('9782226054364', '170'),
 	('9782020258210', '400'),
 	('9782012352711', '350'),
 	('9782742772285', '820'),
 	('9782742797394', '840'),
 	('9782747031974', '840'),
-
+	('9782742719907', '840'),
 	('9782081618657', '820'),
 	('9782505007999', '740'),
 	('9782742704866', '940'),
 	('9782227722156', '860'),
 	('9782020091787', '300'),
 	('9782012350007', '150'),
-
+	('9782010123382', '910'),
 	('9782012370845', '640'),
 	('9782226010148', '780'),
 	('9782227473676', '410'),
 	('9782012444720', '910'),
-
+	('9782227360365', '260'),
 	('9782330030117', '780'),
 	('9782226004017', '780'),
 	('9782868692054', '780'),
-
+	('9782081286054', '390'),
 	('9782226319326', '840'),
 	('9782747008983', '840'),
-
+	('9782742700974', '790'),
 	('9782080109736', '940'),
 	('9782215106647', '910'),
-
+	('9782226039538', '950'),
 	('9782010163371', '820'),
 	('9782020059626', '360'),
 	('9782070125395', '840'),
@@ -6048,7 +6048,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782227475670', '190'),
 	('9780768939866', '370'),
 	('9782012024465', '820'),
-
+	('9782742774111', '780'),
 	('9782010151941', '840'),
 	('9782070781065', '800'),
 	('9782082001571', '130'),
@@ -6061,7 +6061,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782706607479', '710'),
 	('9782080664020', '850'),
 	('9782020789530', '890'),
-
+	('9782205058024', '810'),
 	('9782012792975', '300'),
 	('9782723490597', '930'),
 	('9782910868420', '790'),
@@ -6075,7 +6075,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782742738168', '840'),
 	('9782010033704', '640'),
 	('9782871297321', '740'),
-
+	('9782070567508', '820'),
 	('9782020337946', '270'),
 	('9782020114592', '000'),
 	('9782226246882', '840'),
@@ -6090,7 +6090,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226001603', '710'),
 	('9782330002565', '840'),
 	('9782012444027', '910'),
-
+	('9782227484924', '220'),
 	('9782020058667', '940'),
 	('9782020628815', '300'),
 	('9782080644282', '150'),
@@ -6098,7 +6098,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782215087366', '930'),
 	('9782012016491', '810'),
 	('9782012433373', '900'),
-
+	('9782868693136', '910'),
 	('9782226154415', '270'),
 	('9782082024587', '740'),
 	('9782227471634', '220'),
@@ -6118,7 +6118,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782012788008', '300'),
 	('9782080666758', '510'),
 	('9782020970044', '300'),
-
+	('9782227366015', '220'),
 	('9782012360853', '640'),
 	('9782226002884', '130'),
 	('9782020044516', '320'),
@@ -6127,11 +6127,11 @@ insert into THEMES(isbn,iddewey) values
 	('9782020129619', '940'),
 	('9782020612043', '840'),
 	('9782226101181', '840'),
-
+	('9782070577101', '800'),
 	('9782011612588', '910'),
 	('9782082003933', '640'),
 	('9782226127174', '790'),
-
+	('9782215044260', '220'),
 	('9782330030322', '840'),
 	('9782742738748', '750'),
 	('9782012453005', '910'),
@@ -6163,24 +6163,24 @@ insert into THEMES(isbn,iddewey) values
 	('9782013990271', '790'),
 	('9782010155468', '810'),
 	('9782012260139', '840'),
-
+	('9782081235373', '190'),
 	('9782081722248', '440'),
 	('9782226059833', '810'),
 	('9782226063502', '640'),
 	('9782869430730', '840'),
 	('9782081295735', '840'),
-
+	('9782742712588', '790'),
 	('9782021104462', '390'),
 	('9782010049286', '580'),
 	('9782226052476', '180'),
-
+	('9782227202184', '370'),
 	('9782205057027', '740'),
 	('9782020025836', '780'),
 	('9782010072390', '910'),
 	('9782012363922', '630'),
 	('9782227472341', '290'),
 	('9782020220606', '840'),
-
+	('9782012403338', '900'),
 	('9782020996143', '570'),
 	('9782226074669', '840'),
 	('9782010162213', '820'),
@@ -6195,7 +6195,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020374897', '900'),
 	('9782742701681', '780'),
 	('9782020090773', '840'),
-
+	('9782742746200', '920'),
 	('9782723489119', '640'),
 	('9782226087089', '840'),
 	('9782747013208', '840'),
@@ -6212,7 +6212,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782226038852', '840'),
 	('9782081640221', '820'),
 	('9782080607515', '840'),
-
+	('9782227301580', '260'),
 	('9782226075840', '280'),
 	('9782081640078', '820'),
 	('9782020213110', '300'),
@@ -6222,8 +6222,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782020234900', '780'),
 	('9782020558075', '890'),
 	('9782080687104', '150'),
-
-
+	('9782080120137', '760'),
+	('9782010078064', '520'),
 	('9782227485921', '260'),
 	('9782742703920', '840'),
 	('9782081230378', '810'),
@@ -6235,8 +6235,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782021111293', '520'),
 	('9782226005250', '640'),
 	('9782020106108', '610'),
-
-
+	('9782742429264', '910'),
+	('9782742701179', '810'),
 	('9782226015808', '720'),
 	('9782012262324', '820'),
 	('9782081238268', '840'),
@@ -6252,7 +6252,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782205077193', '740'),
 	('9782081622739', '820'),
 	('9782012428539', '910'),
-
+	('9782081348844', '700'),
 	('9782070116287', '730'),
 	('9782020057264', '800'),
 	('9782080109798', '700'),
@@ -6264,51 +6264,51 @@ insert into THEMES(isbn,iddewey) values
 	('9782020104333', '800'),
 	('9782010044182', '790'),
 	('9782012373785', '840'),
-
+	('9782080304452', '730'),
 	('9782227723009', '840'),
-
+	('9782010173981', '030'),
 	('9782081621244', '810'),
 	('9782020396561', '300'),
 	('9782742714766', '780'),
 	('9782070648214', '150'),
-
-
+	('9782020208598', '220'),
+	('9782227317192', '260'),
 	('9782020247016', '300'),
 	('9782080679291', '360'),
 	('9782070570669', '070'),
-
+	('9782081607484', '810'),
 	('9782082000550', '640'),
-
+	('9782742780600', '840'),
 	('9782020349734', '340'),
 	('9782012271791', '820'),
 	('9782080116253', '750'),
 	('9782010197000', '440'),
 	('9782215080527', '390'),
-
+	('9782021406801', '100'),
 	('9782010163234', '260'),
 	('9782226084958', '240'),
 	('9782012405738', '910'),
 	('9782080608918', '840'),
-
+	('9782080305350', '740'),
 	('9782012431942', '910'),
 	('9782226149664', '840'),
 	('9782081621220', '840'),
 	('9782226159991', '840'),
-
+	('9782747014410', '920'),
 	('9782227436435', '240'),
 	('9782227727656', '840'),
 	('9782505006619', '740'),
 	('9782020789929', '830'),
 	('9782020947343', '290'),
-
-
+	('9782205043464', '740'),
+	('9782742700561', '790'),
 	('9782080801074', '150'),
 	('9782705001391', '840'),
 	('9782010017858', '640'),
 	('9782081619814', '390'),
 	('9782010106934', '960'),
 	('9782010038402', '910'),
-
+	('9782010169472', '910'),
 	('9782227301184', '260'),
 	('9782020055888', '910'),
 	('9782080676719', '740'),
@@ -6327,7 +6327,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020129022', '940'),
 	('9782011456755', '940'),
 	('9782215048138', '790'),
-
+	('9782020131704', '920'),
 	('9782080125842', '940'),
 	('9782742771967', '840'),
 	('9782226187789', '610'),
@@ -6339,12 +6339,12 @@ insert into THEMES(isbn,iddewey) values
 	('9782205005974', '740'),
 	('9782012311220', '790'),
 	('9782747024976', '220'),
-
+	('9782227478091', '270'),
 	('9782070615292', '840'),
 	('9782012360143', '610'),
-
+	('9782205034066', '740'),
 	('9782011714398', '420'),
-
+	('9782742710485', '070'),
 	('9782080107596', '700'),
 	('9782226312518', '840'),
 	('9782226312778', '610'),
@@ -6359,7 +6359,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782012372054', '150'),
 	('9782012375550', '640'),
 	('9782012356184', '510'),
-
+	('9782020107273', '780'),
 	('9782070359110', '600'),
 	('9782070595334', '320'),
 	('9782081217867', '180'),
@@ -6368,7 +6368,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782742777891', '960'),
 	('9782012352223', '190'),
 	('9782080609526', '840'),
-
+	('9782747020541', '810'),
 	('9782215098690', '440'),
 	('9782070559893', '740'),
 	('9782215128038', '790'),
@@ -6385,7 +6385,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782020103701', '940'),
 	('9782012364011', '740'),
 	('9782016210895', '640'),
-
+	('9782871295914', '740'),
 	('9782081246010', '840'),
 	('9782012400993', '910'),
 	('9782080136411', '640'),
@@ -6397,8 +6397,8 @@ insert into THEMES(isbn,iddewey) values
 	('9782080666307', '300'),
 	('9782020217927', '530'),
 	('9782010197666', '030'),
-
-
+	('9782868693549', '840'),
+	('9782070150182', '730'),
 	('9782012401167', '910'),
 	('9782012256941', '840'),
 	('9782081240599', '840'),
@@ -6427,30 +6427,30 @@ insert into THEMES(isbn,iddewey) values
 	('9782227476141', '290'),
 	('9782020046534', '700'),
 	('9782081344020', '640'),
-
+	('9782330075736', '920'),
 	('9782016209448', '640'),
 	('9782012387683', '640'),
 	('9782747019682', '810'),
 	('9782020667760', '840'),
 	('9782010165023', '440'),
 	('9782020517003', '790'),
-
+	('9782012101425', '800'),
 	('9782080120946', '640'),
 	('9782742402649', '910'),
 	('9782080609397', '840'),
 	('9782215115649', '840'),
 	('9782226087034', '940'),
 	('9782226016362', '320'),
-
+	('9782020871471', '200'),
 	('9782226092762', '790'),
-
+	('9782020197915', '940'),
 	('9782020621564', '320'),
 	('9782013920049', '510'),
 	('9782070340231', '800'),
 	('9782226069184', '940'),
 	('9782010012389', '790'),
 	('9782020220323', '840'),
-
+	('9782070622757', '810'),
 	('9782081223028', '900'),
 	('9782742422364', '910'),
 	('9782226024657', '780'),
@@ -6495,7 +6495,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782082111058', '300'),
 	('9782330009106', '920'),
 	('9782226155108', '840'),
-
+	('9782742762927', '790'),
 	('9782330036119', '740'),
 	('9782020634236', '320'),
 	('9782020065757', '780'),
@@ -6509,7 +6509,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782081391789', '390'),
 	('9782012383869', '640'),
 	('9782081272286', '840'),
-
+	('9782012012653', '810'),
 	('9782012206687', '640'),
 	('9782020235099', '070'),
 	('9782010039270', '940'),
@@ -6517,25 +6517,25 @@ insert into THEMES(isbn,iddewey) values
 	('9782020299022', '780'),
 	('9782020961608', '940'),
 	('9782070345007', '440'),
-
+	('9782742749546', '700'),
 	('9782226106186', '350'),
 	('9782205003741', '840'),
 	('9782226130075', '300'),
 	('9782070612710', '840'),
 	('9782747019965', '240'),
 	('9782747037440', '840'),
-
+	('9782330113704', '750'),
 	('9782205053500', '740'),
 	('9782021406412', '300'),
-
+	('9782012013230', '810'),
 	('9782080120724', '730'),
 	('9782020326582', '100'),
-
+	('9782227610989', '260'),
 	('9782081638082', '550'),
 	('9782070504633', '030'),
-
+	('9782020087438', '320'),
 	('9782021158854', '360'),
-
+	('9782020526609', '900'),
 	('9782020049672', '960'),
 	('9782227498570', '410'),
 	('9782010077661', '910'),
@@ -6549,20 +6549,20 @@ insert into THEMES(isbn,iddewey) values
 	('9782012448292', '910'),
 	('9782205064223', '740'),
 	('9782227729469', '810'),
-
-
-
+	('9782010209444', '550'),
+	('9782226158659', '320'),
+	('9782080109965', '740'),
 	('9782012015425', '810'),
 	('9782226096043', '360'),
 	('9782070499687', '820'),
 	('9782081258471', '840'),
 	('9782012375895', '640'),
 	('9782742414116', '910'),
-
+	('9782205073393', '740'),
 	('9782012368378', '640'),
 	('9782020047920', '360'),
 	('9782226220554', '290'),
-
+	('9782747014410', '940'),
 	('9782205055726', '740'),
 	('9782020069687', '940'),
 	('9782070586783', '590'),
@@ -6576,7 +6576,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782747025553', '840'),
 	('9782080103482', '720'),
 	('9782330001797', '790'),
-
+	('9782010054945', '910'),
 	('9782010078330', '940'),
 	('9782020045094', '300'),
 	('9782012792852', '300'),
@@ -6609,7 +6609,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782742725465', '780'),
 	('9782080641625', '840'),
 	('9782010093128', '380'),
-
+	('9782742727537', '910'),
 	('9782010154454', '590'),
 	('9782205062403', '740'),
 	('9782080106841', '640'),
@@ -6617,15 +6617,15 @@ insert into THEMES(isbn,iddewey) values
 	('9782215046097', '640'),
 	('9782080640109', '840'),
 	('9782020380621', '840'),
-
+	('9782227301573', '260'),
 	('9782012445222', '910'),
 	('9782080135605', '750'),
-
+	('9782020796569', '270'),
 	('9782868690593', '860'),
 	('9782082118071', '300'),
 	('9782742702558', '840'),
 	('9782081616356', '820'),
-
+	('9782742758463', '830'),
 	('9782215124986', '840'),
 	('9782205064179', '740'),
 	('9782020096706', '940'),
@@ -6639,21 +6639,21 @@ insert into THEMES(isbn,iddewey) values
 	('9782226256881', '900'),
 	('9782070553273', '030'),
 	('9782012041998', '840'),
-
+	('9782080124357', '750'),
 	('9782226157683', '840'),
 	('9782080690616', '790'),
-
+	('9782330000066', '830'),
 	('9782080671356', '840'),
 	('9782080674814', '940'),
 	('9782226229786', '810'),
 	('9782723444910', '740'),
 	('9782013213608', '820'),
 	('9782020069908', '780'),
-
+	('9782330013073', '810'),
 	('9782010213625', '660'),
 	('9782226241962', '280'),
 	('9782226238450', '840'),
-
+	('9782012100060', '740'),
 	('9782082013901', '610'),
 	('9782020128971', '840'),
 	('9782226000170', '810'),
@@ -6677,7 +6677,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782070784172', '840'),
 	('9782020048101', '700'),
 	('9782742710188', '780'),
-
+	('9782020950176', '790'),
 	('9782070273072', '790'),
 	('9782742760398', '860'),
 	('9782012013605', '840'),
@@ -6686,13 +6686,13 @@ insert into THEMES(isbn,iddewey) values
 	('9782020863995', '860'),
 	('9782013211604', '840'),
 	('9782020057974', '890'),
-
+	('9782020141383', '300'),
 	('9782868695932', '910'),
 	('9782215076629', '740'),
-
+	('9782742431540', '910'),
 	('9782013926362', '740'),
 	('9782226034380', '780'),
-
+	('9782205058024', '800'),
 	('9782081604438', '840'),
 	('9782080203427', '740'),
 	('9782020002462', '780'),
@@ -6708,7 +6708,7 @@ insert into THEMES(isbn,iddewey) values
 	('9782010048692', '840'),
 	('9782020005838', '840'),
 	('9782723471671', '740'),
-
+	('9782021362596', '320'),
 	('9782723440950', '740'),
 	('9782330001841', '840'),
 	('9782227470897', '290'),
@@ -6722,16 +6722,16 @@ insert into THEMES(isbn,iddewey) values
 	('9782012445888', '910'),
 	('9782020062770', '320'),
 	('9782215055778', '940'),
-
+	('9782010205002', '390'),
 	('9782020996440', '840'),
 	('9782205054453', '740'),
-
+	('9782742756483', '810'),
 	('9782080685995', '610'),
 	('9782723435383', '740'),
 	('9782010144356', '840'),
 	('9782020183581', '150'),
 	('9782723412759', '640'),
-
+	('9782868690975', '840'),
 	('9782742706914', '780'),
 	('9782020058346', '940'),
 	('9782718905853', '840'),
@@ -6739,7 +6739,7 @@ insert into THEMES(isbn,iddewey) values
 	('9791023502596', '840'),
 	('9782021057614', '840'),
 	('9782081219861', '800'),
-
+	('9782742707119', '780'),
 	('9782010098086', '910'),
 	('9782012357242', '330'),
 	('9782020134156', '300'),
@@ -6752,39 +6752,39 @@ insert into THEMES(isbn,iddewey) values
 -- Les éditeurs des livres
 insert into EDITER(isbn,idedit) values
 	('9782011801333', 43),
-
+	('9782080280961', 144),
 	('9782080672407', 6),
 	('9782020089487', 10),
 	('9782070345007', 33),
 	('9782227471634', 18),
 	('9782226063489', 135),
 	('9782723412759', 100),
-
+	('9782747020541', 13),
 	('9782215076780', 7),
 	('9782081209497', 6),
 	('9782020131537', 10),
 	('9782205055252', 1),
 	('9782082013901', 6),
-
+	('9782020573719', 10),
 	('9782070658404', 19),
-
+	('9782605000289', 131),
 	('9782226015884', 5),
 	('9782226140685', 89),
 	('9782226175113', 5),
 	('9782081649217', 38),
 	('9782010173936', 43),
-
+	('9782081607484', 41),
 	('9782226075888', 5),
 	('9782070541867', 19),
 	('9782226187536', 5),
 	('9782080711984', 6),
-
+	('9782227301399', 54),
 	('9782215022572', 110),
-
+	('9782020796569', 140),
 	('9782226186751', 5),
 	('9782080682123', 6),
 	('9782080683342', 6),
-
+	('9782010123382', 28),
 	('9782012602021', 130),
 	('9782013926478', 83),
 	('9782012373334', 36),
@@ -6795,25 +6795,25 @@ insert into EDITER(isbn,idedit) values
 	('9782012016934', 2),
 	('9782747037440', 13),
 	('9782070637676', 4),
-
+	('9782070622757', 122),
 	('9782012372054', 36),
 	('9782016209356', 36),
-
+	('9782227610989', 75),
 	('9782081604438', 38),
 	('9782226208156', 5),
 	('9782226033277', 5),
 	('9782020339032', 10),
 	('9782818501764', 23),
 	('9782215011927', 7),
-
+	('9782742718092', 101),
 	('9782742737499', 103),
-
+	('9782020066952', 164),
 	('9782012011694', 2),
 	('9782010033681', 2),
 	('9782081231078', 38),
 	('9782723440707', 20),
 	('9782021001822', 10),
-
+	('9782742701179', 48),
 	('9782016211106', 36),
 	('9782013920926', 83),
 	('9782205084672', 1),
@@ -6821,17 +6821,17 @@ insert into EDITER(isbn,idedit) values
 	('9782070521760', 19),
 	('9782070513123', 19),
 	('9782020996440', 124),
-
+	('9782742758715', 99),
 	('9782226187789', 5),
-
+	('9782020213806', 10),
 	('9782020053259', 10),
 	('9782226208323', 5),
-
+	('9782227425552', 51),
 	('9782012792852', 2),
-
+	('9782012101425', 3),
 	('9782010082016', 55),
 	('9782080672339', 6),
-
+	('9782205034066', 1),
 	('9782226110596', 5),
 	('9782082115537', 6),
 	('9782070126002', 33),
@@ -6842,10 +6842,10 @@ insert into EDITER(isbn,idedit) values
 	('9782020049726', 10),
 	('9782070130689', 33),
 	('9782742401758', 133),
-
+	('9782742701179', 8),
 	('9782226002662', 5),
 	('9782205064223', 1),
-
+	('9782742763337', 156),
 	('9782080644282', 6),
 	('9782215054108', 7),
 	('9782227757035', 18),
@@ -6868,14 +6868,14 @@ insert into EDITER(isbn,idedit) values
 	('9782020059282', 10),
 	('9782012366930', 36),
 	('9782080661456', 6),
-
+	('9782742411023', 33),
 	('9782020577977', 10),
 	('9782070312719', 33),
-
+	('9782080304742', 6),
 	('9782012794924', 58),
 	('9782020131612', 10),
 	('9782227723702', 88),
-
+	('9782020044158', 39),
 	('9782020125062', 10),
 	('9782020211130', 10),
 	('9782070633708', 85),
@@ -6884,27 +6884,27 @@ insert into EDITER(isbn,idedit) values
 	('9782080669896', 6),
 	('9782082111355', 6),
 	('9782020046947', 10),
-
+	('9782227475304', 78),
 	('9780862641696', 118),
 	('9782226158758', 5),
 	('9782082005265', 6),
-
+	('9782020048484', 10),
 	('9782016251362', 36),
 	('9782227005167', 52),
 	('9782226092304', 49),
 	('9782742790470', 8),
 	('9782010026195', 2),
-
+	('9782081348844', 6),
 	('9782012429734', 2),
 	('9782081618596', 6),
 	('9782020056601', 10),
 	('9782020256711', 10),
 	('9782070695171', 19),
-
+	('9782010209444', 2),
 	('9782215093107', 7),
-
-
-
+	('9782227360365', 52),
+	('9782227317192', 18),
+	('9781844301515', 50),
 	('9782082000895', 6),
 	('9782010106934', 2),
 	('9782227738522', 88),
@@ -6913,7 +6913,7 @@ insert into EDITER(isbn,idedit) values
 	('9782070578597', 4),
 	('9782723472098', 9),
 	('9782012012219', 2),
-
+	('9782080124357', 6),
 	('9782020891882', 10),
 	('9782742743735', 84),
 	('9782747024990', 13),
@@ -6930,7 +6930,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020002462', 10),
 	('9782081223592', 6),
 	('9782846342131', 69),
-
+	('9782020587242', 10),
 	('9782081391789', 112),
 	('9782020326582', 10),
 	('9782010120336', 2),
@@ -6946,7 +6946,7 @@ insert into EDITER(isbn,idedit) values
 	('9782080116253', 6),
 	('9782012404960', 2),
 	('9782012401631', 95),
-
+	('9782742708499', 8),
 	('9782020863995', 10),
 	('9782226028693', 5),
 	('9782020207294', 10),
@@ -6957,24 +6957,24 @@ insert into EDITER(isbn,idedit) values
 	('9782747024976', 13),
 	('9782226015808', 5),
 	('9782080645067', 6),
-
+	('9782226074775', 5),
 	('9782227478336', 18),
 	('9782020204408', 10),
 	('9782020045186', 10),
-
+	('9782010078064', 42),
 	('9782012016361', 2),
 	('9782082018760', 6),
 	('9782070742738', 33),
 	('9782020125130', 57),
-
-
-
+	('9782010056710', 80),
+	('9782330075736', 8),
+	('9782227484924', 18),
 	('9782010054877', 2),
 	('9782226245267', 5),
 	('9782226027870', 5),
-
+	('9782215044260', 73),
 	('9782013928755', 83),
-
+	('9782330006235', 8),
 	('9782012439818', 2),
 	('9782227486324', 18),
 	('9782227355163', 52),
@@ -7001,12 +7001,12 @@ insert into EDITER(isbn,idedit) values
 	('9782081621046', 6),
 	('9782020323093', 10),
 	('9782227757080', 18),
-
+	('9782227484924', 53),
 	('9782020052047', 39),
 	('9782010208232', 91),
-
-
-
+	('9782070714216', 33),
+	('9782742707119', 8),
+	('9782226155733', 5),
 	('9782020005838', 10),
 	('9782723449854', 11),
 	('9782081617490', 87),
@@ -7031,52 +7031,52 @@ insert into EDITER(isbn,idedit) values
 	('9782227070073', 13),
 	('9782020057264', 10),
 	('9782012008342', 43),
-
+	('9782020164573', 65),
 	('9782020213110', 10),
 	('9782070615568', 85),
 	('9782081621442', 87),
 	('9782012355880', 58),
-
+	('9782226023278', 77),
 	('9782012009554', 82),
 	('9782020257961', 10),
 	('9782070600991', 33),
 	('9782226101181', 107),
 	('9782742417674', 35),
-
+	('9782080304742', 94),
 	('9782868691460', 139),
 	('9782742771806', 103),
 	('9782226159779', 5),
 	('9782081616356', 6),
-
+	('9782080300782', 6),
 	('9782215008163', 90),
 	('9782080125729', 6),
 	('9782020374897', 10),
 	('9782205067996', 1),
-
+	('9782227301405', 54),
 	('9782020202473', 10),
 	('9782020565684', 10),
 	('9782082000963', 6),
 	('9782020137010', 10),
 	('9782070503537', 33),
 	('9782070721689', 33),
-
+	('9782070577101', 4),
 	('9782081201835', 6),
 	('9782742796656', 8),
 	('9782742730247', 92),
-
+	('9782742727537', 116),
 	('9782226096043', 5),
 	('9782226034403', 5),
 	('9782010097898', 2),
 	('9782226068859', 5),
 	('9782012015401', 82),
 	('9782215046097', 7),
-
+	('9782227301580', 54),
 	('9782226078711', 5),
 	('9782020362023', 147),
 	('9782226059833', 5),
 	('9782742794959', 8),
-
-
+	('9782742708499', 34),
+	('9782868691828', 31),
 	('9782012041998', 43),
 	('9782215117421', 7),
 	('9782020090063', 10),
@@ -7084,7 +7084,7 @@ insert into EDITER(isbn,idedit) values
 	('9782330019600', 161),
 	('9782070633340', 19),
 	('9782081240599', 6),
-
+	('9782020044158', 10),
 	('9782227310247', 52),
 	('9782013225847', 120),
 	('9782226060730', 5),
@@ -7096,14 +7096,14 @@ insert into EDITER(isbn,idedit) values
 	('9782742744749', 8),
 	('9782330005481', 8),
 	('9782718905853', 76),
-
+	('9782227301580', 51),
 	('9782010049286', 2),
-
+	('9782080201294', 99),
 	('9782747017893', 88),
 	('9782010105203', 2),
 	('9782226159991', 5),
 	('9782021072280', 10),
-
+	('9782012451063', 2),
 	('9782227004108', 51),
 	('9782742796762', 84),
 	('9782226256881', 5),
@@ -7111,7 +7111,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226092038', 5),
 	('9782081640078', 6),
 	('9782226008909', 5),
-
+	('9782742727537', 8),
 	('9782871297321', 12),
 	('9782081640368', 6),
 	('9782020045032', 10),
@@ -7122,7 +7122,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226108333', 5),
 	('9782747014021', 13),
 	('9782012444720', 2),
-
+	('9782080305350', 6),
 	('9782020352512', 10),
 	('9782070579785', 33),
 	('9782227723009', 18),
@@ -7138,8 +7138,8 @@ insert into EDITER(isbn,idedit) values
 	('9782226208095', 5),
 	('9782080685452', 6),
 	('9782080666574', 6),
-
-
+	('9782227366022', 62),
+	('9782020871471', 10),
 	('9782010041235', 2),
 	('9782205066623', 1),
 	('9782020090339', 10),
@@ -7150,27 +7150,27 @@ insert into EDITER(isbn,idedit) values
 	('9782205050691', 1),
 	('9782012360853', 2),
 	('9782020133081', 10),
-
+	('9782723430791', 160),
 	('9782080120946', 6),
 	('9782330001803', 8),
-
+	('9782080304452', 152),
 	('9782215155195', 7),
 	('9782012019812', 43),
 	('9782226060198', 5),
 	('9782226089267', 5),
 	('9782011205155', 43),
-
+	('9782080671738', 6),
 	('9782227482395', 18),
 	('9782081722248', 6),
 	('9782205062335', 1),
 	('9782020137041', 10),
-
+	('9782020479981', 10),
 	('9782070110612', 33),
 	('9782020065757', 10),
 	('9782012383869', 36),
 	('9782226075963', 5),
 	('9782723409933', 100),
-
+	('9782227340954', 51),
 	('9782742751884', 30),
 	('9782020798914', 140),
 	('9782226056900', 5),
@@ -7183,11 +7183,11 @@ insert into EDITER(isbn,idedit) values
 	('9782226002273', 5),
 	('9782226154781', 5),
 	('9782215022640', 7),
-
+	('9782742746200', 8),
 	('9782020349734', 10),
 	('9782215087403', 7),
 	('9782020201605', 10),
-
+	('9782742431540', 35),
 	('9782227436435', 59),
 	('9782226078285', 5),
 	('9782747039178', 13),
@@ -7205,14 +7205,14 @@ insert into EDITER(isbn,idedit) values
 	('9782227727113', 18),
 	('9782227340909', 51),
 	('9782747017770', 13),
-
+	('9782227202184', 70),
 	('9782012431942', 95),
 	('9782742713578', 8),
 	('9782226319326', 5),
-
+	('9782080124357', 111),
 	('9782215080800', 7),
 	('9782742747467', 8),
-
+	('9782070719044', 33),
 	('9782020246446', 10),
 	('9782226004628', 5),
 	('9782020365703', 10),
@@ -7225,14 +7225,14 @@ insert into EDITER(isbn,idedit) values
 	('9782012403185', 2),
 	('9782020324427', 10),
 	('9782010127434', 2),
-
+	('9782742718092', 102),
 	('9782226142719', 5),
 	('9782742717866', 8),
 	('9782226172730', 5),
 	('9782226067470', 5),
 	('9782081233423', 87),
-
-
+	('9782227610989', 51),
+	('9782227436268', 62),
 	('9781401301019', 27),
 	('9782226181909', 5),
 	('9782747030663', 13),
@@ -7249,7 +7249,7 @@ insert into EDITER(isbn,idedit) values
 	('9782011459152', 68),
 	('9782012015388', 2),
 	('9782742780365', 8),
-
+	('9782020066952', 39),
 	('9782010184109', 43),
 	('9782081624030', 6),
 	('9782215092858', 7),
@@ -7260,7 +7260,7 @@ insert into EDITER(isbn,idedit) values
 	('9782205054910', 1),
 	('9782081622616', 6),
 	('9782012368101', 2),
-
+	('9782081607484', 6),
 	('9782020049382', 10),
 	('9782226057235', 5),
 	('9782226100849', 5),
@@ -7268,22 +7268,22 @@ insert into EDITER(isbn,idedit) values
 	('9782226005106', 5),
 	('9782226127174', 5),
 	('9782080135179', 6),
-
+	('9782330012380', 8),
 	('9782020820738', 10),
 	('9782742796762', 8),
 	('9782012918474', 43),
 	('9782012361461', 2),
-
+	('9782080305565', 37),
 	('9782080111302', 6),
 	('9782012449527', 2),
 	('9782226141453', 89),
 	('9782227070011', 18),
 	('9782012406223', 2),
-
+	('9782227202184', 51),
 	('9782012351042', 2),
 	('9782020053112', 39),
 	('9782011667519', 44),
-
+	('9782742719907', 101),
 	('9782747049085', 13),
 	('9782226022059', 5),
 	('9782215088936', 90),
@@ -7300,10 +7300,10 @@ insert into EDITER(isbn,idedit) values
 	('9782226238726', 5),
 	('9782080139016', 6),
 	('9782016251720', 36),
-
+	('9782080305350', 121),
 	('9782215083160', 7),
 	('9782020621557', 10),
-
+	('9782871295914', 22),
 	('9782227004023', 51),
 	('9782227335059', 52),
 	('9782070627431', 19),
@@ -7318,7 +7318,7 @@ insert into EDITER(isbn,idedit) values
 	('9782013926362', 83),
 	('9782226257673', 89),
 	('9782742725489', 66),
-
+	('9782742749546', 163),
 	('9782723435024', 9),
 	('9782070515578', 19),
 	('9782020048118', 10),
@@ -7331,11 +7331,11 @@ insert into EDITER(isbn,idedit) values
 	('9782747014380', 13),
 	('9782020320030', 10),
 	('9782070532995', 33),
-
-
+	('9782227317192', 61),
+	('9782070567508', 33),
 	('9782226193018', 5),
 	('9782012360525', 2),
-
+	('9782227301399', 52),
 	('9782020337946', 10),
 	('9782747023528', 13),
 	('9782330080204', 8),
@@ -7344,18 +7344,18 @@ insert into EDITER(isbn,idedit) values
 	('9782070756797', 33),
 	('9782081618435', 6),
 	('9782020057974', 10),
-
+	('9782081235373', 6),
 	('9782226177650', 136),
 	('9782010207570', 43),
-
-
+	('9782080304780', 94),
+	('9782012101425', 2),
 	('9782010139772', 2),
 	('9782020056496', 10),
 	('9782080102126', 6),
-
+	('9782330113704', 8),
 	('9782081638082', 6),
 	('9782020235099', 10),
-
+	('9782226144232', 167),
 	('9782742402649', 133),
 	('9782012445888', 2),
 	('9782081337305', 6),
@@ -7364,7 +7364,7 @@ insert into EDITER(isbn,idedit) values
 	('9782012376687', 36),
 	('9782082111201', 6),
 	('9782082000550', 6),
-
+	('9782080109941', 128),
 	('9782226062239', 5),
 	('9782082014885', 6),
 	('9782081622579', 6),
@@ -7373,12 +7373,12 @@ insert into EDITER(isbn,idedit) values
 	('9782013211604', 43),
 	('9782012373785', 2),
 	('9782505005100', 12),
-
+	('9782010056710', 81),
 	('9782070615049', 85),
 	('9782012315129', 141),
-
+	('9782226155733', 162),
 	('9782080660022', 6),
-
+	('9782226095770', 17),
 	('9782012435520', 95),
 	('9782080136411', 6),
 	('9782020049412', 10),
@@ -7387,7 +7387,7 @@ insert into EDITER(isbn,idedit) values
 	('9782080683915', 6),
 	('9782082018425', 6),
 	('9782020046701', 39),
-
+	('9782010056710', 79),
 	('9782012440098', 2),
 	('9782226008657', 5),
 	('9782330036553', 103),
@@ -7400,13 +7400,13 @@ insert into EDITER(isbn,idedit) values
 	('9782081218536', 6),
 	('9782226105769', 5),
 	('9782020132916', 10),
-
+	('9782227425552', 64),
 	('9782020113977', 10),
 	('9782747014595', 13),
 	('9782080668783', 6),
 	('9782723471589', 9),
 	('9782226190093', 5),
-
+	('9782081286054', 150),
 	('9782215114789', 7),
 	('9782020385961', 10),
 	('9782012011779', 2),
@@ -7438,14 +7438,14 @@ insert into EDITER(isbn,idedit) values
 	('9782723441162', 11),
 	('9782020106108', 10),
 	('9782226107824', 5),
-
-
+	('9782742700974', 47),
+	('9782742758494', 117),
 	('9782227729643', 18),
 	('9782012246065', 2),
 	('9782742725465', 8),
 	('9782227325135', 18),
 	('9782226040749', 107),
-
+	('9782226060297', 5),
 	('9782012458314', 2),
 	('9782742414871', 33),
 	('9782010151941', 43),
@@ -7455,15 +7455,15 @@ insert into EDITER(isbn,idedit) values
 	('9782020653831', 10),
 	('9782227472341', 18),
 	('9782723476980', 9),
-
+	('9782080109965', 134),
 	('9782226063489', 5),
 	('9782020677615', 10),
-
+	('9782723437202', 9),
 	('9782215093879', 7),
 	('9782747011419', 13),
 	('9782020114622', 10),
 	('9782081633384', 38),
-
+	('9782020046626', 39),
 	('9782081647909', 38),
 	('9782505002529', 12),
 	('9782020236850', 10),
@@ -7476,11 +7476,11 @@ insert into EDITER(isbn,idedit) values
 	('9782020258999', 39),
 	('9782742751440', 8),
 	('9782020047722', 10),
-
+	('9782215044260', 7),
 	('9782010154454', 2),
 	('9782226063137', 5),
 	('9782226193971', 5),
-
+	('9782080304452', 6),
 	('9782070595334', 33),
 	('9782010020018', 2),
 	('9782226154286', 5),
@@ -7489,15 +7489,15 @@ insert into EDITER(isbn,idedit) values
 	('9782012435704', 2),
 	('9782742414703', 35),
 	('9782205003741', 1),
-
+	('9782742763337', 157),
 	('9782020529952', 124),
 	('9782226229786', 5),
 	('9782081628700', 87),
-
+	('9782742752782', 8),
 	('9782227436398', 59),
 	('9782070631322', 19),
 	('9782081223028', 6),
-
+	('9782020224543', 10),
 	('9782081646599', 38),
 	('9782020057240', 10),
 	('9782021011296', 140),
@@ -7505,7 +7505,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020638609', 10),
 	('9782227486805', 18),
 	('9782080112910', 6),
-
+	('9782742411023', 127),
 	('9782205077193', 1),
 	('9782012434349', 2),
 	('9782020046534', 10),
@@ -7518,8 +7518,8 @@ insert into EDITER(isbn,idedit) values
 	('9782226036513', 5),
 	('9782330009502', 92),
 	('9782021186086', 10),
-
-
+	('9782742752881', 125),
+	('9782227471580', 18),
 	('9782020231008', 10),
 	('9782747019682', 13),
 	('9782012448865', 2),
@@ -7531,7 +7531,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020069298', 10),
 	('9782705001995', 155),
 	('9782723435383', 11),
-
+	('9782205058024', 1),
 	('9782080113641', 6),
 	('9782080136190', 6),
 	('9782020189224', 60),
@@ -7540,23 +7540,23 @@ insert into EDITER(isbn,idedit) values
 	('9782020088992', 10),
 	('9782070145348', 33),
 	('9782082004893', 6),
-
+	('9782742707119', 126),
 	('9782080685995', 6),
-
+	('9782227340954', 62),
 	('9782227471252', 18),
 	('9791023506297', 124),
 	('9782080813534', 6),
-
+	('9782010123382', 2),
 	('9782226472496', 5),
 	('9782020059916', 10),
 	('9782012451476', 95),
 	('9782723452625', 9),
 	('9782215150169', 7),
 	('9782081619500', 6),
-
+	('9782742431540', 153),
 	('9782081604896', 6),
 	('9782227303065', 52),
-
+	('9782012013230', 43),
 	('9782010174780', 2),
 	('9782010101113', 2),
 	('9782226131379', 5),
@@ -7565,7 +7565,7 @@ insert into EDITER(isbn,idedit) values
 	('9782010143205', 2),
 	('9782020306287', 10),
 	('9782012011328', 43),
-
+	('9782227475304', 18),
 	('9782013214452', 43),
 	('9782020046794', 39),
 	('9782742734429', 8),
@@ -7575,11 +7575,11 @@ insert into EDITER(isbn,idedit) values
 	('9782070610815', 19),
 	('9782742729746', 8),
 	('9782226136855', 5),
-
+	('9782070622757', 19),
 	('9782330021467', 8),
 	('9782868690593', 29),
 	('9782227473676', 18),
-
+	('9782227301405', 51),
 	('9782742743735', 149),
 	('9780340932056', 46),
 	('9782226025982', 5),
@@ -7594,16 +7594,16 @@ insert into EDITER(isbn,idedit) values
 	('9782081244207', 6),
 	('9782330023775', 8),
 	('9782016251447', 36),
-
+	('9782742763337', 8),
 	('9782020061032', 10),
-
+	('9782742746200', 21),
 	('9782205056822', 1),
 	('9782226087034', 5),
 	('9782010144356', 45),
 	('9782012098428', 43),
 	('9782081621220', 6),
 	('9782818500132', 24),
-
+	('9782080304452', 151),
 	('9782742403042', 115),
 	('9782742734092', 8),
 	('9782747019552', 13),
@@ -7613,12 +7613,12 @@ insert into EDITER(isbn,idedit) values
 	('9782227745018', 18),
 	('9782080689931', 6),
 	('9782226130075', 5),
-
+	('9782205043464', 1),
 	('9782226258403', 5),
 	('9782020053952', 10),
 	('9782226084958', 5),
 	('9782227340282', 51),
-
+	('9782226095770', 5),
 	('9782012352223', 2),
 	('9782012387683', 36),
 	('9782013223270', 43),
@@ -7627,16 +7627,16 @@ insert into EDITER(isbn,idedit) values
 	('9782020878142', 10),
 	('9782205058789', 1),
 	('9782747025553', 13),
-
-
-
+	('9782080109965', 6),
+	('9782010078064', 2),
+	('9782020213806', 72),
 	('9782081627666', 38),
-
+	('9782330006235', 148),
 	('9782226054364', 5),
 	('9782012010024', 82),
 	('9782226033017', 5),
-
-
+	('9782012012653', 2),
+	('9782081609440', 38),
 	('9782012206892', 43),
 	('9782010041129', 2),
 	('9782226087959', 5),
@@ -7646,27 +7646,27 @@ insert into EDITER(isbn,idedit) values
 	('9782020130875', 10),
 	('9782226100566', 5),
 	('9782070310159', 33),
-
+	('9782080305565', 6),
 	('9782012375550', 36),
 	('9782013990370', 43),
 	('9782070734856', 33),
 	('9782081619401', 6),
-
-
+	('9782020164573', 10),
+	('9782742752881', 8),
 	('9782080113030', 6),
 	('9782020628815', 10),
-
+	('9782020046626', 10),
 	('9782011714398', 44),
 	('9782344008232', 9),
-
+	('9782868691828', 8),
 	('9782010028212', 2),
 	('9782226241962', 5),
-
+	('9782080201294', 6),
 	('9782742401611', 115),
 	('9782215124986', 7),
 	('9782742749485', 8),
-
-
+	('9782742719907', 96),
+	('9782723430791', 100),
 	('9782021078213', 10),
 	('9782012011496', 43),
 	('9782742710188', 8),
@@ -7674,19 +7674,19 @@ insert into EDITER(isbn,idedit) values
 	('9782070595570', 19),
 	('9782082005074', 6),
 	('9782070390816', 33),
-
-
+	('9782742752782', 96),
+	('9782012013230', 119),
 	('9782081640504', 6),
 	('9782021111293', 10),
 	('9782012030947', 43),
-
+	('9782605000289', 6),
 	('9782020168755', 10),
 	('9782747004404', 13),
 	('9782742428892', 35),
 	('9782021020878', 10),
 	('9782012355408', 2),
 	('9782020068208', 10),
-
+	('9782082018227', 6),
 	('9782082100441', 6),
 	('9782205047561', 1),
 	('9782215055778', 7),
@@ -7701,15 +7701,15 @@ insert into EDITER(isbn,idedit) values
 	('9782012433137', 2),
 	('9782227721791', 18),
 	('9782742703920', 8),
-
+	('9782080280961', 6),
 	('9782012432109', 95),
-
+	('9782226144232', 5),
 	('9782205005974', 1),
 	('9782012011496', 132),
 	('9782742768394', 8),
 	('9782020063418', 10),
 	('9782070695768', 19),
-
+	('9782227436268', 59),
 	('9782723489478', 9),
 	('9782081626485', 38),
 	('9782020089449', 10),
@@ -7717,23 +7717,23 @@ insert into EDITER(isbn,idedit) values
 	('9782012448360', 2),
 	('9782227470897', 18),
 	('9782226010285', 5),
-
-
+	('9782080300782', 105),
+	('9782742758494', 92),
 	('9782226078711', 123),
 	('9782020492454', 10),
 	('9782226066114', 5),
 	('9782070571963', 4),
-
+	('9782227366015', 62),
 	('9782012047549', 43),
-
+	('9782742749546', 8),
 	('9782205064148', 1),
 	('9782226087294', 5),
-
+	('9782227482043', 18),
 	('9782012368514', 2),
 	('9782012008779', 2),
 	('9782215120490', 7),
 	('9782226008251', 5),
-
+	('9782020123952', 10),
 	('9782081601550', 38),
 	('9782081270206', 6),
 	('9782081622920', 6),
@@ -7741,7 +7741,7 @@ insert into EDITER(isbn,idedit) values
 	('9782227476141', 18),
 	('9782012526808', 43),
 	('9782226167187', 5),
-
+	('9782215052593', 7),
 	('9782226002242', 5),
 	('9782020211093', 10),
 	('9782020838603', 10),
@@ -7750,23 +7750,23 @@ insert into EDITER(isbn,idedit) values
 	('9782012301993', 36),
 	('9782012013605', 2),
 	('9782868692054', 8),
-
+	('9782742758715', 98),
 	('9782020020411', 39),
 	('9782020095983', 10),
 	('9782080683557', 6),
 	('9782705002893', 155),
-
+	('9782226023278', 5),
 	('9782082112253', 6),
 	('9782747031974', 13),
-
+	('9782226060297', 137),
 	('9782080125002', 138),
 	('9782226239945', 5),
 	('9782205054996', 1),
 	('9782020069908', 10),
-
+	('9782080300782', 106),
 	('9782012368705', 2),
-
-
+	('9782080304780', 6),
+	('9782070736294', 33),
 	('9782012099289', 43),
 	('9782013221511', 43),
 	('9782226151155', 5),
@@ -7780,13 +7780,13 @@ insert into EDITER(isbn,idedit) values
 	('9782020970044', 10),
 	('9782226108234', 5),
 	('9782082402583', 97),
-
+	('9782227366015', 51),
 	('9782080813909', 6),
 	('9782227487338', 18),
 	('9782012433373', 2),
-
+	('9782080109941', 129),
 	('9782227474093', 18),
-
+	('9782742700974', 8),
 	('9782070639069', 19),
 	('9782226312518', 5),
 	('9782020061049', 10),
@@ -7803,7 +7803,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226051462', 5),
 	('9782226095244', 5),
 	('9782010058240', 2),
-
+	('9782010209444', 56),
 	('9782020977401', 124),
 	('9782021011845', 10),
 	('9782868691460', 8),
@@ -7811,12 +7811,12 @@ insert into EDITER(isbn,idedit) values
 	('9782227472501', 18),
 	('9782742797356', 8),
 	('9782070111725', 33),
-
+	('9782227471344', 18),
 	('9782226071507', 109),
 	('9782742708956', 8),
-
-
-
+	('9782020145930', 10),
+	('9782868691828', 32),
+	('9782227366022', 51),
 	('9782227757240', 13),
 	('9782070545865', 19),
 	('9782330002565', 8),
@@ -7827,14 +7827,14 @@ insert into EDITER(isbn,idedit) values
 	('9782215078760', 90),
 	('9782080666307', 6),
 	('9782012379756', 36),
-
+	('9782020796569', 165),
 	('9782020218481', 10),
 	('9782226008084', 5),
-
+	('9782226093677', 5),
 	('9782020996143', 10),
 	('9782723413077', 9),
 	('9782747048538', 13),
-
+	('9782081310711', 6),
 	('9782081217782', 6),
 	('9782020044516', 10),
 	('9782742792986', 8),
@@ -7848,15 +7848,15 @@ insert into EDITER(isbn,idedit) values
 	('9782080607515', 6),
 	('9782215117384', 7),
 	('9782080106841', 6),
-
+	('9782021328363', 10),
 	('9782205062816', 1),
 	('9782081286542', 6),
 	('9782020977739', 10),
 	('9782226221346', 5),
 	('9782723454025', 9),
 	('9782723468688', 9),
-
-
+	('9782021362596', 10),
+	('9782742727728', 8),
 	('9782226070180', 5),
 	('9782742771943', 103),
 	('9782226048653', 5),
@@ -7867,13 +7867,13 @@ insert into EDITER(isbn,idedit) values
 	('9782012400221', 2),
 	('9782080644589', 6),
 	('9782226116314', 5),
-
+	('9782020087438', 10),
 	('9782020789929', 10),
 	('9782226078506', 5),
 	('9782226011213', 5),
-
+	('9782742710485', 32),
 	('9782010122996', 2),
-
+	('9782330013073', 84),
 	('9782080608918', 6),
 	('9780446570992', 184),
 	('9782742402670', 133),
@@ -7885,22 +7885,22 @@ insert into EDITER(isbn,idedit) values
 	('9782080135605', 6),
 	('9782742754359', 8),
 	('9782020251594', 10),
-
-
+	('9782226093677', 174),
+	('9782742796335', 8),
 	('9782020120890', 10),
-
+	('9782021496475', 10),
 	('9782011691965', 44),
-
-
+	('9782020197915', 10),
+	('9782020107273', 178),
 	('9782226208415', 5),
-
+	('9782742796335', 192),
 	('9782010126451', 2),
-
-
+	('9782330000141', 84),
+	('9782226060013', 160),
 	('9782081622005', 6),
 	('9782080687609', 6),
 	('9782021055061', 10),
-
+	('9782742790272', 8),
 	('9782020669412', 10),
 	('9782010010057', 2),
 	('9782020561709', 10),
@@ -7909,12 +7909,12 @@ insert into EDITER(isbn,idedit) values
 	('9782330006563', 8),
 	('9782226147905', 5),
 	('9782010123436', 2),
-
+	('9782020259712', 10),
 	('9782227725126', 18),
 	('9782226312778', 5),
 	('9782226020635', 5),
 	('9782215084556', 7),
-
+	('9782081244566', 185),
 	('9782070115532', 33),
 	('9782020628716', 10),
 	('9782020558075', 10),
@@ -7923,16 +7923,16 @@ insert into EDITER(isbn,idedit) values
 	('9782226243058', 5),
 	('9782226009906', 5),
 	('9782226019165', 5),
-
+	('9782012358584', 202),
 	('9782742773473', 8),
-
+	('9782742730513', 8),
 	('9782205072693', 1),
 	('9782020054881', 10),
 	('9782012455818', 2),
 	('9782081619821', 6),
 	('9782226189929', 5),
 	('9782020134156', 10),
-
+	('9782742704767', 198),
 	('9782020045360', 189),
 	('9782742756575', 103),
 	('9782070119967', 33),
@@ -7946,21 +7946,21 @@ insert into EDITER(isbn,idedit) values
 	('9782226015488', 5),
 	('9782020367486', 10),
 	('9782742772285', 8),
-
-
+	('9782020239301', 194),
+	('9782742780600', 8),
 	('9782080649430', 6),
-
+	('9782330000066', 8),
 	('9782021052374', 10),
 	('9782021057614', 10),
 	('9782226069474', 5),
 	('9782070657735', 19),
 	('9782226087089', 5),
-
+	('9782205009187', 1),
 	('9782226005267', 5),
 	('9782020069687', 10),
 	('9782070784172', 33),
 	('9782020048743', 39),
-
+	('9782020328487', 10),
 	('9782226477309', 5),
 	('9782020310079', 10),
 	('9782742790999', 8),
@@ -7972,7 +7972,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020058667', 10),
 	('9782010039270', 2),
 	('9782070315451', 33),
-
+	('9782020829342', 164),
 	('9782080669407', 6),
 	('9782226024930', 5),
 	('9782020220323', 10),
@@ -7980,9 +7980,9 @@ insert into EDITER(isbn,idedit) values
 	('9782020062770', 10),
 	('9782010012389', 2),
 	('9782020593458', 200),
-
+	('9782012358584', 58),
 	('9782080664020', 6),
-
+	('9782082104463', 6),
 	('9782226159755', 5),
 	('9782010173233', 2),
 	('9782020094405', 10),
@@ -7993,7 +7993,7 @@ insert into EDITER(isbn,idedit) values
 	('9782012792975', 58),
 	('9782080609397', 6),
 	('9782742738168', 8),
-
+	('9782226060013', 5),
 	('9782215048138', 7),
 	('9782742764501', 84),
 	('9782226060839', 5),
@@ -8004,7 +8004,7 @@ insert into EDITER(isbn,idedit) values
 	('9782215050698', 113),
 	('9782012372498', 2),
 	('9782226005021', 5),
-
+	('9782330000066', 84),
 	('9782226000859', 5),
 	('9782205055764', 171),
 	('9782080112859', 6),
@@ -8021,7 +8021,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020058346', 10),
 	('9782742760398', 8),
 	('9782330037987', 8),
-
+	('9782011671738', 2),
 	('9782226155870', 5),
 	('9782012354401', 63),
 	('9782742765898', 8),
@@ -8035,7 +8035,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226158017', 5),
 	('9782081217218', 6),
 	('9782080687982', 6),
-
+	('9782742730513', 20),
 	('9782205055740', 171),
 	('9782020944656', 140),
 	('9782226025845', 174),
@@ -8044,23 +8044,23 @@ insert into EDITER(isbn,idedit) values
 	('9782012451308', 2),
 	('9782012239913', 43),
 	('9782742792580', 8),
-
+	('9782742758463', 8),
 	('9782205057027', 1),
 	('9782012010093', 2),
 	('9782011550743', 2),
 	('9782020048262', 10),
 	('9782020126649', 182),
 	('9782205058802', 1),
-
+	('9782020239301', 10),
 	('9782742773930', 8),
 	('9782226190673', 5),
 	('9782871297376', 12),
-
-
+	('9782020183048', 10),
+	('9782868693549', 195),
 	('9782020067263', 10),
 	('9782505003625', 22),
 	('9782226238511', 5),
-
+	('9782020204385', 10),
 	('9782010002878', 2),
 	('9782081246010', 6),
 	('9782226055842', 5),
@@ -8068,17 +8068,17 @@ insert into EDITER(isbn,idedit) values
 	('9782021039559', 124),
 	('9782226181756', 5),
 	('9782012401792', 2),
-
+	('9782742785568', 203),
 	('9782080640109', 6),
 	('9782012206687', 43),
 	('9782080642462', 6),
 	('9782742723720', 8),
 	('9782080135445', 6),
 	('9782020227896', 10),
-
+	('9782742429264', 35),
 	('9782070728695', 33),
 	('9782226118479', 5),
-
+	('9782330013004', 84),
 	('9782010048692', 2),
 	('9782226190987', 5),
 	('9782081269965', 6),
@@ -8091,10 +8091,10 @@ insert into EDITER(isbn,idedit) values
 	('9782012352711', 2),
 	('9782020128971', 10),
 	('9782742772902', 8),
-
-
+	('9782742756483', 8),
+	('9782742758463', 96),
 	('9782080641625', 6),
-
+	('9782742727728', 84),
 	('9782226208309', 5),
 	('9782747039192', 13),
 	('9782742760237', 8),
@@ -8103,12 +8103,12 @@ insert into EDITER(isbn,idedit) values
 	('9782226116802', 5),
 	('9782070397204', 19),
 	('9782226141989', 5),
-
+	('9782226158659', 5),
 	('9782226218704', 5),
 	('9782021083729', 140),
 	('9782742766024', 84),
 	('9782747032308', 13),
-
+	('9782742785568', 84),
 	('9782013920049', 183),
 	('9782226005625', 5),
 	('9782070337538', 33),
@@ -8122,14 +8122,14 @@ insert into EDITER(isbn,idedit) values
 	('9782081220522', 6),
 	('9782226252081', 5),
 	('9782226173362', 5),
-
+	('9782010126093', 2),
 	('9782012252035', 43),
 	('9782080126979', 6),
 	('9782020789530', 10),
 	('9782020102919', 10),
-
+	('9782020526609', 10),
 	('9782012405158', 95),
-
+	('9782011671738', 149),
 	('9782020066068', 10),
 	('9782226020666', 5),
 	('9782011163622', 44),
@@ -8145,45 +8145,45 @@ insert into EDITER(isbn,idedit) values
 	('9782020093804', 10),
 	('9782226106599', 5),
 	('9782010093906', 2),
-
+	('9782841100491', 186),
 	('9782226052605', 5),
 	('9782012271791', 43),
 	('9782012905313', 2),
 	('9782226069184', 5),
 	('9782081307254', 6),
 	('9782020998949', 10),
-
+	('9782226039538', 5),
 	('9782723439701', 11),
 	('9782226054579', 109),
 	('9782010197000', 43),
 	('9782012351875', 2),
 	('9782020260930', 10),
-
+	('9782742765737', 8),
 	('9782868695932', 8),
 	('9782020528856', 10),
 	('9782020189651', 10),
 	('9782012356405', 58),
 	('9782020864565', 10),
 	('9782080103451', 6),
-
+	('9782330013004', 8),
 	('9782020965910', 10),
 	('9782020046428', 10),
 	('9782226150769', 5),
 	('9782747012935', 13),
 	('9782081268791', 6),
 	('9782082102704', 6),
-
+	('9782742780600', 84),
 	('9782226143846', 5),
 	('9782070335329', 33),
-
+	('9782020829342', 10),
 	('9782010053122', 79),
 	('9782020220118', 10),
-
+	('9782205009187', 177),
 	('9782080125842', 6),
 	('9782080643827', 6),
 	('9782020300636', 10),
 	('9782020060882', 10),
-
+	('9782330000141', 8),
 	('9782226182357', 5),
 	('9782020120760', 10),
 	('9782330001841', 8),
@@ -8228,14 +8228,14 @@ insert into EDITER(isbn,idedit) values
 	('9782081619814', 6),
 	('9782227729469', 88),
 	('9782020323338', 39),
-
+	('9782742429264', 153),
 	('9782742784974', 103),
 	('9782330032234', 8),
 	('9782080678935', 6),
 	('9782012905351', 2),
 	('9782080105677', 6),
 	('9782081333857', 6),
-
+	('9782742704767', 8),
 	('9782330048341', 8),
 	('9782020065870', 10),
 	('9782215050698', 7),
@@ -8244,7 +8244,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226038852', 168),
 	('9782020825337', 10),
 	('9782742790944', 8),
-
+	('9782742722990', 199),
 	('9782081248205', 6),
 	('9782081212398', 6),
 	('9782742706334', 8),
@@ -8254,16 +8254,16 @@ insert into EDITER(isbn,idedit) values
 	('9782020977036', 10),
 	('9782020069441', 10),
 	('9782226084781', 5),
-
+	('9782330013073', 8),
 	('9782723461344', 9),
 	('9782010122699', 2),
 	('9782080688422', 6),
 	('9782226021267', 5),
 	('9782080671356', 6),
 	('9782070610549', 19),
-
+	('9782020635424', 188),
 	('9782021510805', 10),
-
+	('9782081244566', 6),
 	('9782020103701', 10),
 	('9782723444910', 9),
 	('9782020068291', 10),
@@ -8273,7 +8273,7 @@ insert into EDITER(isbn,idedit) values
 	('9782020638890', 140),
 	('9782226238450', 5),
 	('9782080686022', 6),
-
+	('9782010192548', 2),
 	('9782226075895', 5),
 	('9782020342476', 10),
 	('9782020557900', 10),
@@ -8283,7 +8283,7 @@ insert into EDITER(isbn,idedit) values
 	('9782742723997', 8),
 	('9782020061476', 10),
 	('9782226244352', 5),
-
+	('9782020635424', 10),
 	('9782020183581', 10),
 	('9782020054973', 10),
 	('9782330027483', 8),
@@ -8293,30 +8293,30 @@ insert into EDITER(isbn,idedit) values
 	('9782226019363', 5),
 	('9782020415767', 10),
 	('9782505002352', 1),
-
+	('9782742712588', 180),
 	('9782080678034', 6),
 	('9782012444027', 2),
-
+	('9782012100060', 2),
 	('9782010018473', 191),
 	('9782020126519', 10),
 	('9782080640628', 6),
 	('9782080661937', 6),
 	('9782742740642', 84),
 	('9782871295402', 22),
-
+	('9782742738694', 197),
 	('9782082111225', 6),
-
+	('9782020141383', 10),
 	('9782742746439', 8),
-
+	('9782742754847', 8),
 	('9782010119194', 2),
 	('9782011667458', 82),
 	('9782226246882', 5),
 	('9782205053500', 1),
-
+	('9782020107273', 179),
 	('9782021502756', 10),
 	('9782075084734', 33),
 	('9782010124174', 2),
-
+	('9782742738694', 8),
 	('9782226158574', 5),
 	('9782013213608', 43),
 	('9782012402423', 95),
@@ -8325,7 +8325,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226018830', 5),
 	('9782226005649', 5),
 	('9782505002635', 1),
-
+	('9782742790272', 84),
 	('9782226177179', 5),
 	('9782010045196', 2),
 	('9782010050220', 2),
@@ -8342,41 +8342,41 @@ insert into EDITER(isbn,idedit) values
 	('9782080710970', 6),
 	('9782081225497', 6),
 	('9782226036971', 5),
-
+	('9782081227576', 150),
 	('9782070354757', 33),
 	('9782081223509', 181),
-
+	('9782868693136', 32),
 	('9782012376236', 58),
 	('9782020930338', 10),
 	('9782226052476', 5),
 	('9782012788008', 24),
-
+	('9782081310711', 169),
 	('9782742744459', 8),
 	('9782012403222', 2),
 	('9782226455970', 5),
 	('9782020573306', 10),
-
+	('9782081628687', 6),
 	('9782742781171', 8),
-
+	('9782081336377', 6),
 	('9782226025845', 5),
 	('9782020634267', 10),
-
-
+	('9782205087307', 170),
+	('9782021496475', 190),
 	('9782020120784', 10),
 	('9782226089236', 5),
 	('9782226107213', 5),
-
-
+	('9782742712588', 8),
+	('9782868693136', 8),
 	('9782226019196', 5),
 	('9782020114721', 10),
 	('9782226069252', 5),
 	('9782021122220', 140),
-
+	('9782868693549', 8),
 	('9782021230833', 10),
 	('9782723463409', 9),
 	('9782080663894', 6),
 	('9782070583133', 33),
-
+	('9782742710485', 8),
 	('9782226006189', 5),
 	('9782723471671', 9),
 	('9782020124164', 10),
@@ -8385,7 +8385,7 @@ insert into EDITER(isbn,idedit) values
 	('9782081219861', 6),
 	('9782082117036', 6),
 	('9782020201070', 10),
-
+	('9782020131704', 10),
 	('9782080670533', 6),
 	('9782226004017', 5),
 	('9782012448292', 95),
@@ -8393,31 +8393,31 @@ insert into EDITER(isbn,idedit) values
 	('9782020047166', 10),
 	('9782020310055', 10),
 	('9782226218780', 5),
-
+	('9782205073393', 176),
 	('9782330057510', 8),
 	('9782742787128', 103),
 	('9782747012508', 13),
 	('9782226142535', 5),
 	('9782505001430', 22),
 	('9782011695475', 187),
-
+	('9782010051913', 2),
 	('9782020621564', 10),
 	('9782742720415', 8),
-
+	('9782226158659', 193),
 	('9782020361583', 10),
 	('9782226149664', 5),
 	('9782226079244', 5),
 	('9782081272286', 6),
-
+	('9782081227576', 173),
 	('9782010093159', 79),
 	('9782020631570', 10),
 	('9782070576463', 19),
-
-
-
+	('9782742754847', 125),
+	('9782742756483', 84),
+	('9782010169472', 2),
 	('9782226240866', 5),
 	('9782081640221', 6),
-
+	('9782020005852', 224),
 	('9782742737093', 8),
 	('9782010164576', 43),
 	('9782080901538', 236),
@@ -8428,7 +8428,7 @@ insert into EDITER(isbn,idedit) values
 	('9782215097938', 7),
 	('9782020025836', 10),
 	('9782012400993', 95),
-
+	('9782070150182', 233),
 	('9782227202092', 51),
 	('9782012921634', 43),
 	('9782013220125', 231),
@@ -8438,44 +8438,44 @@ insert into EDITER(isbn,idedit) values
 	('9782910868420', 215),
 	('9782080354457', 6),
 	('9782020215329', 10),
-
+	('9782070632381', 219),
 	('9782012414778', 2),
-
-
+	('9782020662512', 238),
+	('9782080106957', 6),
 	('9782020959124', 10),
-
+	('9782742725236', 8),
 	('9782070553273', 19),
 	('9782227485983', 18),
 	('9782081622739', 6),
 	('9782081237704', 6),
 	('9782070749386', 33),
-
+	('9782227478091', 18),
 	('9782070312160', 33),
 	('9782226002815', 5),
-
+	('9782081210110', 6),
 	('9782020135139', 10),
 	('9782330034115', 8),
 	('9782012375260', 36),
 	('9782723432252', 9),
-
+	('9782227301573', 54),
 	('9782330000387', 103),
 	('9782227335066', 52),
-
+	('9782010205002', 83),
 	('9782227022003', 52),
 	('9782742701681', 8),
-
+	('9782020025829', 224),
 	('9782020247016', 10),
 	('9782070312306', 33),
 	('9782070623877', 19),
 	('9782012405905', 2),
 	('9782742706914', 8),
-
+	('9782010054945', 2),
 	('9782080648075', 6),
 	('9782020540964', 10),
 	('9782011452252', 2),
-
+	('9782742774692', 8),
 	('9782010077661', 2),
-
+	('9782020950176', 10),
 	('9782742417193', 35),
 	('9782012360426', 2),
 	('9782020045094', 10),
@@ -8492,10 +8492,10 @@ insert into EDITER(isbn,idedit) values
 	('9782910868758', 215),
 	('9782012453005', 2),
 	('9782010155468', 43),
-
-
+	('9782070150182', 232),
+	('9782226094209', 223),
 	('9782080668929', 6),
-
+	('9782020025829', 10),
 	('9782012012875', 2),
 	('9782020109031', 10),
 	('9782012442474', 2),
@@ -8529,7 +8529,7 @@ insert into EDITER(isbn,idedit) values
 	('9782330000301', 8),
 	('9782010091223', 2),
 	('9782226208545', 5),
-
+	('9782226094209', 5),
 	('9782742746019', 8),
 	('9782215053859', 7),
 	('9782226154835', 5),
@@ -8541,12 +8541,12 @@ insert into EDITER(isbn,idedit) values
 	('9782010213625', 43),
 	('9782226101136', 136),
 	('9782012404823', 95),
-
+	('9782227481947', 18),
 	('9782868698902', 8),
 	('9782012099715', 43),
 	('9782010098321', 2),
 	('9782070696628', 204),
-
+	('9782226119490', 89),
 	('9782227301184', 52),
 	('9782226170316', 89),
 	('9782082024587', 6),
@@ -8568,12 +8568,12 @@ insert into EDITER(isbn,idedit) values
 	('9782215076629', 7),
 	('9782226024756', 212),
 	('9782081258471', 6),
-
+	('9782080917553', 214),
 	('9782226140678', 89),
 	('9782011674142', 2),
 	('9782020103589', 10),
 	('9782070519972', 19),
-
+	('9782021406801', 10),
 	('9782706607479', 6),
 	('9782020367738', 10),
 	('9782082000390', 6),
@@ -8583,28 +8583,28 @@ insert into EDITER(isbn,idedit) values
 	('9782226012197', 5),
 	('9782012012202', 2),
 	('9782747022200', 13),
-
-
+	('9782020950176', 220),
+	('9782020056465', 10),
 	('9782227718142', 18),
 	('9782010203978', 43),
 	('9782012920606', 43),
 	('9782081604391', 38),
 	('9782081621626', 6),
 	('9782215095071', 7),
-
+	('9782226119490', 5),
 	('9782747008983', 18),
 	('9782011675835', 2),
 	('9782020638746', 10),
 	('9782020281287', 10),
 	('9782012303799', 36),
-
+	('9782742762927', 117),
 	('9782330009106', 103),
 	('9782742771967', 8),
-
+	('9782012421882', 2),
 	('9782742760671', 103),
 	('9782020894081', 10),
-
-
+	('9782020662512', 10),
+	('9782330167691', 226),
 	('9782742714766', 8),
 	('9782226056504', 5),
 	('9782012315181', 141),
@@ -8617,12 +8617,12 @@ insert into EDITER(isbn,idedit) values
 	('9782081619739', 6),
 	('9782021091946', 10),
 	('9782226157683', 89),
-
+	('9782070312252', 33),
 	('9782012350014', 36),
 	('9782012423701', 2),
 	('9782227738898', 18),
 	('9782747013208', 13),
-
+	('9782227912007', 18),
 	('9782723453578', 9),
 	('9782012017108', 2),
 	('9782020147460', 10),
@@ -8649,7 +8649,7 @@ insert into EDITER(isbn,idedit) values
 	('9782215046554', 7),
 	('9782012009653', 2),
 	('9782012304321', 141),
-
+	('9782080120137', 128),
 	('9782012096714', 43),
 	('9782723489119', 211),
 	('9782227721968', 18),
@@ -8659,10 +8659,10 @@ insert into EDITER(isbn,idedit) values
 	('9782226157591', 5),
 	('9782080674166', 6),
 	('9782012375895', 2),
-
+	('9782070619993', 19),
 	('9782070650439', 19),
 	('9782226157638', 5),
-
+	('9782742700561', 47),
 	('9782012452817', 2),
 	('9782010072390', 2),
 	('9782081618718', 6),
@@ -8672,16 +8672,16 @@ insert into EDITER(isbn,idedit) values
 	('9782226172686', 5),
 	('9782012401167', 2),
 	('9782080122711', 6),
-
+	('9782012012660', 2),
 	('9782742712144', 8),
-
+	('9782330000226', 8),
 	('9782742795987', 103),
 	('9782012276147', 43),
 	('9782012373068', 2),
 	('9782081622999', 6),
 	('9782020047067', 10),
-
-
+	('9782012403338', 2),
+	('9782868690975', 235),
 	('9782226008848', 5),
 	('9782010128110', 2),
 	('9782330030117', 8),
@@ -8710,9 +8710,9 @@ insert into EDITER(isbn,idedit) values
 	('9782226017840', 5),
 	('9782226118486', 5),
 	('9782070640508', 19),
-
+	('9782742762927', 8),
 	('9782227004030', 52),
-
+	('9782020208598', 10),
 	('9782012098411', 43),
 	('9782012012196', 2),
 	('9782226029805', 5),
@@ -8755,8 +8755,8 @@ insert into EDITER(isbn,idedit) values
 	('9782082104982', 6),
 	('9782082115681', 6),
 	('9782226318558', 89),
-
-
+	('9782742405084', 206),
+	('9782227481947', 53),
 	('9782082025010', 6),
 	('9782215020974', 86),
 	('9782020354929', 10),
@@ -8766,21 +8766,21 @@ insert into EDITER(isbn,idedit) values
 	('9782016210895', 36),
 	('9782227482975', 18),
 	('9782020613729', 10),
-
+	('9782226153074', 89),
 	('9782020069625', 10),
-
+	('9782868690975', 8),
 	('9782747020251', 13),
 	('9782012916517', 43),
 	('9782080102102', 6),
 	('9782020055277', 10),
-
+	('9782080125156', 6),
 	('9782020091602', 10),
-
+	('9782227301573', 51),
 	('9782226106186', 5),
 	('9782070574827', 19),
 	('9782012016088', 2),
 	('9782226009593', 5),
-
+	('9782742774111', 8),
 	('9782070616763', 19),
 	('9782082000819', 6),
 	('9782723416238', 100),
@@ -8791,8 +8791,8 @@ insert into EDITER(isbn,idedit) values
 	('9782742723225', 8),
 	('9782012442061', 2),
 	('9782021071474', 10),
-
-
+	('9782841100583', 186),
+	('9782742774111', 96),
 	('9782070506699', 19),
 	('9782021406412', 10),
 	('9782012253285', 43),
@@ -8812,7 +8812,7 @@ insert into EDITER(isbn,idedit) values
 	('9782723412582', 100),
 	('9782215048398', 7),
 	('9782227488472', 18),
-
+	('9782742708345', 8),
 	('9782012364011', 2),
 	('9782215120247', 7),
 	('9782012456044', 2),
@@ -8824,13 +8824,13 @@ insert into EDITER(isbn,idedit) values
 	('9782070311149', 33),
 	('9782080120540', 6),
 	('9782012405738', 2),
-
+	('9782020005852', 10),
 	('9782330034870', 8),
 	('9782012402270', 95),
 	('9782747030007', 88),
-
+	('9782742700561', 8),
 	('9782226019486', 5),
-
+	('9782227912007', 228),
 	('9782021158854', 10),
 	('9782226241900', 5),
 	('9782215052418', 7),
@@ -8839,14 +8839,14 @@ insert into EDITER(isbn,idedit) values
 	('9782226131355', 5),
 	('9782070345038', 33),
 	('9782080669070', 6),
-
+	('9782080120137', 129),
 	('9782227725041', 18),
 	('9782227477117', 18),
 	('9782080800046', 6),
 	('9782012379107', 36),
 	('9782742726431', 8),
-
-
+	('9782227912007', 227),
+	('9782010173981', 43),
 	('9782012008489', 82),
 	('9782010093128', 2),
 	('9782010007118', 2),
@@ -8857,11 +8857,11 @@ insert into EDITER(isbn,idedit) values
 	('9782070273072', 33),
 	('9782070359110', 33),
 	('9782070110940', 33),
-
+	('9782742725236', 126),
 	('9782020124997', 10),
 	('9782226180827', 5),
 	('9782070581580', 33),
-
+	('9782742708345', 195),
 	('9782070564651', 33),
 	('9782226026651', 5),
 	('9782227005617', 229),
@@ -8869,7 +8869,7 @@ insert into EDITER(isbn,idedit) values
 	('9782215016823', 7),
 	('9782080664150', 6),
 	('9782010148576', 2),
-
+	('9782330167691', 225),
 	('9782012428539', 230),
 	('9782081224384', 6),
 	('9782080687104', 6),
@@ -8878,7 +8878,7 @@ insert into EDITER(isbn,idedit) values
 	('9782215048831', 7),
 	('9782012448421', 82),
 	('9782215011965', 7),
-
+	('9782012403338', 95),
 	('9782020258210', 10),
 	('9782226008565', 5),
 	('9782081230378', 6),
@@ -8904,16 +8904,16 @@ insert into EDITER(isbn,idedit) values
 	('9782012260139', 43),
 	('9782080110343', 6),
 	('9782020396561', 10),
-
+	('9782747014410', 13),
 	('9782742431694', 35),
 	('9782081630840', 6),
 	('9782742738748', 8),
 	('9782747029902', 13),
 	('9782016209448', 36),
 	('9782012359482', 2),
-
+	('9782080917553', 6),
 	('9782080690081', 6),
-
+	('9782742405084', 207),
 	('9782742715626', 234),
 	('9782012427426', 2),
 	('9782747015912', 13),
@@ -8923,21 +8923,21 @@ insert into EDITER(isbn,idedit) values
 	('9782227721340', 18),
 	('9782227757219', 88),
 	('9782227735040', 213),
-
+	('9782080125156', 111),
 	('9782747019088', 13),
 	('9782080120724', 6),
 	('9782012368378', 36),
 	('9782010209840', 43),
-
-
+	('9782868690975', 32),
+	('9782330000226', 84),
 	('9782080109798', 6),
 	('9782012015425', 43),
-
+	('9782742405084', 205),
 	('9782747038737', 13),
 	('9782080122520', 6),
 	('9782227473362', 18),
 	('9782011455123', 2),
-
+	('9782080106957', 210),
 	('9782081641044', 6),
 	('9782082001571', 6),
 	('9782011705112', 2),
@@ -8945,7 +8945,7 @@ insert into EDITER(isbn,idedit) values
 	('9782226087751', 5),
 	('9782013211529', 43),
 	('9782227482630', 18),
-
+	('9782021030532', 10),
 	('9782080201713', 6),
 	('9782226254443', 5),
 	('9782227300149',239);
@@ -8953,17 +8953,17 @@ insert into EDITER(isbn,idedit) values
 -- les auteurs des livres
 insert into ECRIRE(isbn,idauteur) values
 	('9782205054750', 'OL7572575A'),
-
-
+	('9782012101425', 'OL863535A'),
+	('9782012101425', 'OL934457A'),
 	('9782205054996', 'OL7212692A'),
 	('9782205062403', 'OL7209008A'),
-
+	('9782070577101', 'OL113611A'),
 	('9782205084672', 'OL7035172A'),
 	('9782226175113', 'OL6342000A'),
 	('9782205055252', 'OL7207049A'),
 	('9782205064223', 'OL2686970A'),
 	('9782205062335', 'OL9134957A'),
-
+	('9782205058024', 'OL3141454A'),
 	('9782082013901', 'OL9124746A'),
 	('9782205050691', 'OL7581250A'),
 	('9782205064148', 'OL7209008A'),
@@ -8971,21 +8971,21 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215114970', 'OL8689025A'),
 	('9782226315243', 'OL7017931A'),
 	('9782330036119', 'OL11521160A'),
-
-
+	('9782723437202', 'OL3048689A'),
+	('9782723437202', 'OL3141434A'),
 	('9782205054453', 'OL7209036A'),
 	('9782205066623', 'OL2686970A'),
 	('9782020827201', 'OL926680A'),
 	('9782080676719', 'OL272902A'),
 	('9782723435383', 'OL3276260A'),
 	('9782205067996', 'OL7173443A'),
-
-
-
-
-
-
-
+	('9782205034066', 'OL862023A'),
+	('9782205034066', 'OL3194166A'),
+	('9782205034066', 'OL692059A'),
+	('9782205034066', 'OL3162450A'),
+	('9782205034066', 'OL7203499A'),
+	('9782205034066', 'OL7203500A'),
+	('9782205034066', 'OL3194165A'),
 	('9782205077193', 'OL1275796A'),
 	('9782205056822', 'OL7200619A'),
 	('9782505002529', 'OL1437178A'),
@@ -8998,26 +8998,26 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782747030663', 'OL3952313A'),
 	('9782871297321', 'OL3972509A'),
 	('9782020231008', 'OL9126528A'),
-
+	('9782226095770', 'OL273236A'),
 	('9782226186751', 'OL8798871A'),
 	('9782205047561', 'OL2751472A'),
 	('9782226094148', 'OL286783A'),
 	('9782226002662', 'OL1793511A'),
 	('9782723449854', 'OL7200767A'),
-
+	('9782747020541', 'OL9307571A'),
 	('9782081229501', 'OL21594A'),
 	('9782215150169', 'OL9199667A'),
 	('9782227473676', 'OL2669536A'),
 	('9782070545865', 'OL193107A'),
-
+	('9782742746200', 'OL368776A'),
 	('9782742796144', 'OL331234A'),
 	('9782205054910', 'OL7211720A'),
 	('9782021125948', 'OL7539242A'),
 	('9782205049794', 'OL281557A'),
 	('9782205058789', 'OL7211720A'),
 	('9782723489478', 'OL11406892A'),
-
-
+	('9782871295914', 'OL3048689A'),
+	('9782871295914', 'OL3952350A'),
 	('9782818501764', 'OL6604063A'),
 	('9782818501146', 'OL8370511A'),
 	('9782818500132', 'OL6716745A'),
@@ -9025,13 +9025,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081248649', 'OL11672726A'),
 	('9782020380621', 'OL262506A'),
 	('9781401301019', 'OL1401762A'),
-
+	('9782010123382', 'OL634320A'),
 	('9782868690593', 'OL80426A'),
 	('9782226004628', 'OL805362A'),
 	('9782742751884', 'OL21274A'),
 	('9782226238726', 'OL755074A'),
 	('9782012012219', 'OL8308397A'),
-
+	('9782868691828', 'OL963484A'),
 	('9782070780129', 'OL907611A'),
 	('9782020106108', 'OL667497A'),
 	('9782226136855', 'OL1386849A'),
@@ -9042,24 +9042,24 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080672339', 'OL272902A'),
 	('9782020324427', 'OL267412A'),
 	('9782226095244', 'OL196191A'),
-
+	('9782742708499', 'OL90211A'),
 	('9782080683915', 'OL30401A'),
 	('9782226151155', 'OL340646A'),
 	('9782020571951', 'OL8309027A'),
 	('9782080685452', 'OL3186701A'),
 	('9782742417674', 'OL186051A'),
 	('9782016251362', 'OL3891140A'),
-
+	('9782080305565', 'OL2731520A'),
 	('9782226036513', 'OL606678A'),
 	('9782226108333', 'OL36891A'),
 	('9782226062239', 'OL56365A'),
 	('9782227070073', 'OL39319A'),
 	('9782081626485', 'OL3895187A'),
-
-
-
-
-
+	('9782081609440', 'OL8016803A'),
+	('9782081609440', 'OL9135135A'),
+	('9782081609440', 'OL9135136A'),
+	('9782081609440', 'OL9135137A'),
+	('9782081609440', 'OL9135138A'),
 	('9782082005746', 'OL188893A'),
 	('9782070110612', 'OL3163882A'),
 	('9782020057264', 'OL130905A'),
@@ -9068,7 +9068,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020089487', 'OL184325A'),
 	('9782505007999', 'OL9090639A'),
 	('9782226087034', 'OL74462A'),
-
+	('9782081607484', 'OL726118A'),
 	('9782011456755', 'OL365449A'),
 	('9782020069588', 'OL129709A'),
 	('9782226075963', 'OL10718009A'),
@@ -9080,7 +9080,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782227486805', 'OL274587A'),
 	('9782081344020', 'OL9105589A'),
 	('9782070633340', 'OL182918A'),
-
+	('9782010078064', 'OL1300656A'),
 	('9782226087959', 'OL417004A'),
 	('9782205003741', 'OL863535A'),
 	('9782012011328', 'OL8206493A'),
@@ -9093,9 +9093,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9780340932056', 'OL18710A'),
 	('9782020257961', 'OL202927A'),
 	('9782070742738', 'OL303779A'),
-
+	('9782742700974', 'OL614591A'),
 	('9782020183550', 'OL475733A'),
-
+	('9782742701179', 'OL190100A'),
 	('9782742700059', 'OL473179A'),
 	('9782082012423', 'OL4267945A'),
 	('9782070499687', 'OL9460971A'),
@@ -9109,12 +9109,12 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226092304', 'OL193094A'),
 	('9782082003933', 'OL2865272A'),
 	('9782226092762', 'OL185339A'),
-
-
+	('9782020479981', 'OL434999A'),
+	('9782020479981', 'OL1075108A'),
 	('9782742734429', 'OL349442A'),
-
-
-
+	('9781844301515', 'OL6586170A'),
+	('9781844301515', 'OL3148580A'),
+	('9781844301515', 'OL3148570A'),
 	('9782742734092', 'OL21274A'),
 	('9782020114622', 'OL277363A'),
 	('9782020125062', 'OL2488200A'),
@@ -9129,11 +9129,11 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782747024990', 'OL7532901A'),
 	('9782226110596', 'OL5081272A'),
 	('9782016211106', 'OL3891561A'),
-
+	('9782227484924', 'OL42426A'),
 	('9782747024976', 'OL1433142A'),
 	('9782227005167', 'OL280899A'),
-
-
+	('9782227301399', 'OL6990477A'),
+	('9782227301405', 'OL662717A'),
 	('9782020113977', 'OL56135A'),
 	('9782020045506', 'OL221095A'),
 	('9782226087898', 'OL273106A'),
@@ -9147,7 +9147,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782010082016', 'OL964244A'),
 	('9782227004023', 'OL266371A'),
 	('9782020053952', 'OL127425A'),
-
+	('9782010209444', 'OL770589A'),
 	('9782226002884', 'OL353853A'),
 	('9782020125130', 'OL277358A'),
 	('9782227301313', 'OL811264A'),
@@ -9167,35 +9167,35 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782010032257', 'OL353853A'),
 	('9782020067584', 'OL501676A'),
 	('9782012375550', 'OL6420963A'),
-
+	('9782020046626', 'OL329714A'),
 	('9782226012845', 'OL1300113A'),
 	('9782020189224', 'OL588711A'),
 	('9782080645067', 'OL333993A'),
 	('9782227004108', 'OL336247A'),
-
-
-
+	('9782227317192', 'OL47999A'),
+	('9782227301580', 'OL468811A'),
+	('9782227340954', 'OL6990477A'),
 	('9782012353916', 'OL46487A'),
 	('9782226051462', 'OL262845A'),
 	('9782227478336', 'OL9133167A'),
-
+	('9782227425552', 'OL7447A'),
 	('9782020878142', 'OL441818A'),
 	('9782020059282', 'OL146315A'),
 	('9782227436398', 'OL293669A'),
 	('9782020056496', 'OL1272538A'),
-
-
-
-
-
-
+	('9782227436268', 'OL507053A'),
+	('9782020164573', 'OL255180A'),
+	('9782080671738', 'OL400995A'),
+	('9782080671738', 'OL6972682A'),
+	('9782227471344', 'OL3127310A'),
+	('9782227471344', 'OL281637A'),
 	('9782742725489', 'OL6460404A'),
 	('9782226096043', 'OL275795A'),
 	('9782020049726', 'OL348222A'),
 	('9782080689870', 'OL9196978A'),
 	('9782226067470', 'OL623606A'),
-
-
+	('9782227471580', 'OL3127281A'),
+	('9782227471580', 'OL6149633A'),
 	('9782010041235', 'OL1027116A'),
 	('9782080687401', 'OL793965A'),
 	('9782020168755', 'OL460124A'),
@@ -9207,12 +9207,12 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226193018', 'OL464343A'),
 	('9782226312518', 'OL10712432A'),
 	('9782080683342', 'OL52874A'),
-
-
+	('9782227360365', 'OL1268396A'),
+	('9782227360365', 'OL2053455A'),
 	('9782226034403', 'OL9372444A'),
-
-
-
+	('9782020573719', 'OL476449A'),
+	('9782020573719', 'OL8654137A'),
+	('9782227202184', 'OL853648A'),
 	('9782020059626', 'OL188861A'),
 	('9782020131612', 'OL303782A'),
 	('9782226084958', 'OL333512A'),
@@ -9241,13 +9241,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020063418', 'OL73656A'),
 	('9782227476141', 'OL3283367A'),
 	('9782723471589', 'OL3908785A'),
-
+	('9782227366022', 'OL753880A'),
 	('9782227489165', 'OL9136418A'),
-
-
-
+	('9782020145930', 'OL1287184A'),
+	('9782020145930', 'OL641316A'),
+	('9782020213806', 'OL3136325A'),
 	('9782227471634', 'OL44592A'),
-
+	('9782215044260', 'OL10129287A'),
 	('9782080685995', 'OL9139103A'),
 	('9782226238566', 'OL11646630A'),
 	('9782226107824', 'OL482582A'),
@@ -9269,7 +9269,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782227325135', 'OL57917A'),
 	('9782080801074', 'OL1371098A'),
 	('9782227436305', 'OL683700A'),
-
+	('9782227610989', 'OL832231A'),
 	('9782020101646', 'OL193503A'),
 	('9782020090339', 'OL44765A'),
 	('9782227478206', 'OL7130121A'),
@@ -9280,18 +9280,18 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782718905853', 'OL675526A'),
 	('9782012351042', 'OL494355A'),
 	('9782020044851', 'OL1639565A'),
-
+	('9782226023278', 'OL376370A'),
 	('9782082111355', 'OL333469A'),
-
+	('9782227475304', 'OL460124A'),
 	('9782226063137', 'OL10433079A'),
 	('9782080351524', 'OL184112A'),
 	('9782020056601', 'OL1676475A'),
-
-
+	('9782227482043', 'OL11981709A'),
+	('9782227482043', 'OL640474A'),
 	('9782010101113', 'OL55635A'),
 	('9782020326582', 'OL3112820A'),
 	('9782020228008', 'OL505707A'),
-
+	('9782010056710', 'OL42807A'),
 	('9782010028212', 'OL466448A'),
 	('9782226208095', 'OL3141725A'),
 	('9782012792852', 'OL5813489A'),
@@ -9353,8 +9353,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782742751440', 'OL4252978A'),
 	('9782012434349', 'OL2749701A'),
 	('9782080120786', 'OL504865A'),
-
-
+	('9782012012653', 'OL30130A'),
+	('9782012012653', 'OL3040196A'),
 	('9782070570669', 'OL6426835A'),
 	('9782010208232', 'OL66635A'),
 	('9782081201835', 'OL7403733A'),
@@ -9374,14 +9374,14 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080609526', 'OL1673557A'),
 	('9782226075888', 'OL70753A'),
 	('9782215088936', 'OL7170345A'),
-
+	('9782080304742', 'OL1448670A'),
 	('9782215092858', 'OL6786683A'),
 	('9782012448865', 'OL8015961A'),
 	('9782012401457', 'OL7391416A'),
 	('9782226009746', 'OL745908A'),
 	('9782070312719', 'OL19606A'),
 	('9782226141453', 'OL3915825A'),
-
+	('9782742752782', 'OL5217425A'),
 	('9782012355880', 'OL5841153A'),
 	('9782082402583', 'OL3891522A'),
 	('9782215078760', 'OL9199056A'),
@@ -9395,8 +9395,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012424067', 'OL7391416A'),
 	('9782227729643', 'OL9104245A'),
 	('9782742729746', 'OL61569A'),
-
-
+	('9782742758715', 'OL3198169A'),
+	('9782742758715', 'OL23280A'),
 	('9782081233423', 'OL6994320A'),
 	('9782080668783', 'OL477007A'),
 	('9782227727083', 'OL9198666A'),
@@ -9407,17 +9407,17 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782747022675', 'OL39319A'),
 	('9782012362055', 'OL1130622A'),
 	('9782013926362', 'OL3043332A'),
-
-
-
+	('9782215052593', 'OL3912863A'),
+	('9782215052593', 'OL9134232A'),
+	('9782215052593', 'OL9134233A'),
 	('9782020838603', 'OL3892265A'),
 	('9782081642355', 'OL27173A'),
-
+	('9782742718092', 'OL113547A'),
 	('9782742771806', 'OL3148571A'),
 	('9782747031974', 'OL9194775A'),
 	('9782226154781', 'OL9887727A'),
 	('9782869430730', 'OL3939215A'),
-
+	('9782080300782', 'OL3141048A'),
 	('9782215093879', 'OL7556591A'),
 	('9782012099289', 'OL9310682A'),
 	('9782012403185', 'OL636712A'),
@@ -9445,9 +9445,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215128038', 'OL7520585A'),
 	('9782070756797', 'OL503964A'),
 	('9782344008232', 'OL7598131A'),
-
-
-
+	('9782070567508', 'OL4353595A'),
+	('9782070567508', 'OL1189026A'),
+	('9782070567508', 'OL294428A'),
 	('9782081231078', 'OL5820878A'),
 	('9782012376953', 'OL8455580A'),
 	('9782070623990', 'OL218841A'),
@@ -9456,7 +9456,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020374897', 'OL3436817A'),
 	('9782012098428', 'OL3890902A'),
 	('9782010058240', 'OL1580847A'),
-
+	('9782742719907', 'OL47923A'),
 	('9782747023528', 'OL70026A'),
 	('9782081621282', 'OL8450097A'),
 	('9782011205155', 'OL9088830A'),
@@ -9475,8 +9475,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012920309', 'OL36891A'),
 	('9782081621046', 'OL3895150A'),
 	('9782215083160', 'OL3121288A'),
-
-
+	('9782081348844', 'OL11778457A'),
+	('9782081348844', 'OL8767465A'),
 	('9782227070011', 'OL39319A'),
 	('9782227723702', 'OL9129352A'),
 	('9782012008779', 'OL1842752A'),
@@ -9491,7 +9491,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782013214452', 'OL22157A'),
 	('9782080107596', 'OL119598A'),
 	('9782082018760', 'OL275815A'),
-
+	('9782080124357', 'OL65145A'),
 	('9782012030947', 'OL9089947A'),
 	('9782070571963', 'OL86382A'),
 	('9782082005265', 'OL600270A'),
@@ -9521,7 +9521,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782070627431', 'OL236943A'),
 	('9782742414871', 'OL8455616A'),
 	('9782020891882', 'OL8006153A'),
-
+	('9782742727537', 'OL3956799A'),
 	('9782723409933', 'OL413256A'),
 	('9782215076025', 'OL3214954A'),
 	('9782081619500', 'OL371339A'),
@@ -9536,7 +9536,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081227972', 'OL856628A'),
 	('9782081243538', 'OL961305A'),
 	('9782012360853', 'OL257755A'),
-
+	('9782742758494', 'OL10819841A'),
 	('9782070578597', 'OL9968346A'),
 	('9782010173936', 'OL23180A'),
 	('9782215046097', 'OL8239423A'),
@@ -9544,22 +9544,22 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782330009502', 'OL78435A'),
 	('9782742703920', 'OL184853A'),
 	('9782070513123', 'OL3136017A'),
-
+	('9782080201294', 'OL4267945A'),
 	('9780862641696', 'OL32699A'),
-
+	('9782012013230', 'OL92953A'),
 	('9782012387683', 'OL9880621A'),
 	('9782742717866', 'OL3892971A'),
 	('9782013225847', 'OL6928543A'),
 	('9782012401631', 'OL7391416A'),
-
+	('9782080305350', 'OL6610589A'),
 	('9782226087706', 'OL86639A'),
 	('9782747025553', 'OL3896282A'),
 	('9782227725140', 'OL9137744A'),
 	('9782505005100', 'OL7203757A'),
-
-
-
-
+	('9782070622757', 'OL9198388A'),
+	('9782070736294', 'OL34779A'),
+	('9782070736294', 'OL1533052A'),
+	('9782070736294', 'OL2675174A'),
 	('9782082000895', 'OL183509A'),
 	('9782080120946', 'OL479467A'),
 	('9782020529952', 'OL25931A'),
@@ -9573,15 +9573,15 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226037220', 'OL9134863A'),
 	('9782226187680', 'OL10834563A'),
 	('9782070633708', 'OL7527096A'),
-
-
+	('9782742752881', 'OL5984756A'),
+	('9782742707119', 'OL336253A'),
 	('9782215106647', 'OL8015208A'),
 	('9782226101822', 'OL33659A'),
 	('9782742725465', 'OL6460467A'),
 	('9782081602274', 'OL173169A'),
 	('9782215068105', 'OL8237708A'),
 	('9782227729032', 'OL35524A'),
-
+	('9782742411023', 'OL10819899A'),
 	('9782013923927', 'OL26595A'),
 	('9782013923927', 'OL2703470A'),
 	('9782013923927', 'OL4829695A'),
@@ -9591,7 +9591,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020061032', 'OL2690941A'),
 	('9782012431942', 'OL2879461A'),
 	('9782081612969', 'OL9291572A'),
-
+	('9782080109941', 'OL4591723A'),
 	('9782215094548', 'OL7207862A'),
 	('9782082018425', 'OL908937A'),
 	('9782020065757', 'OL141020A'),
@@ -9611,7 +9611,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226027870', 'OL140292A'),
 	('9782742713578', 'OL253171A'),
 	('9782012013605', 'OL9096235A'),
-
+	('9782605000289', 'OL538877A'),
 	('9782020048101', 'OL962907A'),
 	('9782012011496', 'OL233814A'),
 	('9782742402649', 'OL7199381A'),
@@ -9622,18 +9622,18 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081618596', 'OL220275A'),
 	('9782742400089', 'OL3957457A'),
 	('9782080672407', 'OL333561A'),
-
+	('9782080109965', 'OL1549878A'),
 	('9782747019682', 'OL68163A'),
 	('9782747026123', 'OL8110275A'),
 	('9782747014021', 'OL6970674A'),
 	('9782226177650', 'OL10509610A'),
 	('9782080669896', 'OL464271A'),
 	('9782070116287', 'OL626408A'),
-
-
-
-
-
+	('9782082018227', 'OL1494648A'),
+	('9782082018227', 'OL961975A'),
+	('9782082018227', 'OL3534692A'),
+	('9782082018227', 'OL183632A'),
+	('9782226060297', 'OL3910878A'),
 	('9782081603158', 'OL10652152A'),
 	('9782070390816', 'OL7826230A'),
 	('9782012428454', 'OL9878755A'),
@@ -9641,9 +9641,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215088929', 'OL7170345A'),
 	('9782012010024', 'OL3114129A'),
 	('9782010120336', 'OL1028398A'),
-
-
-
+	('9782070714216', 'OL5599980A'),
+	('9782070714216', 'OL3932160A'),
+	('9782070714216', 'OL9372035A'),
 	('9782011801333', 'OL9194334A'),
 	('9782070595334', 'OL1008586A'),
 	('9782747037440', 'OL9137744A'),
@@ -9656,8 +9656,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081292970', 'OL634446A'),
 	('9782226002242', 'OL1041339A'),
 	('9782082000550', 'OL1140981A'),
-
-
+	('9782070719044', 'OL10347903A'),
+	('9782070719044', 'OL3893686A'),
 	('9782082015349', 'OL1027255A'),
 	('9782020020411', 'OL887878A'),
 	('9782226127174', 'OL1470779A'),
@@ -9734,8 +9734,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226010001', 'OL805074A'),
 	('9782330023775', 'OL5435603A'),
 	('9782081627666', 'OL9291572A'),
-
-
+	('9782330113704', 'OL7908320A'),
+	('9782330113704', 'OL8112615A'),
 	('9782081218536', 'OL276096A'),
 	('9782226001535', 'OL423150A'),
 	('9782013223270', 'OL2660342A'),
@@ -9755,7 +9755,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723421997', 'OL9134717A'),
 	('9782747037549', 'OL8196496A'),
 	('9782070610815', 'OL9194165A'),
-
+	('9782080280961', 'OL1012709A'),
 	('9782227757240', 'OL7390227A'),
 	('9782081622579', 'OL856628A'),
 	('9782070578092', 'OL10815638A'),
@@ -9775,15 +9775,15 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012011779', 'OL282231A'),
 	('9782215124986', 'OL9107359A'),
 	('9782081619401', 'OL9288974A'),
-
+	('9782020587242', 'OL675711A'),
 	('9782226239945', 'OL7413747A'),
 	('9782081270206', 'OL7141748A'),
-
-
-
-
+	('9782330006235', 'OL8892093A'),
+	('9782330006235', 'OL8892094A'),
+	('9782226074775', 'OL302996A'),
+	('9782226074775', 'OL601092A'),
 	('9782010163234', 'OL413466A'),
-
+	('9782227366015', 'OL753877A'),
 	('9782747004404', 'OL9914550A'),
 	('9782070637676', 'OL7834684A'),
 	('9782742743735', 'OL1489375A'),
@@ -9795,11 +9795,11 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081722248', 'OL22122A'),
 	('9782080136190', 'OL392582A'),
 	('9782747015844', 'OL9109631A'),
-
-
-
-
-
+	('9782081286054', 'OL6790816A'),
+	('9782081286054', 'OL7460975A'),
+	('9782080304452', 'OL6491183A'),
+	('9782080304452', 'OL3114507A'),
+	('9782080304452', 'OL3114508A'),
 	('9782081622920', 'OL9879182A'),
 	('9782013928755', 'OL637323A'),
 	('9782013928755', 'OL26595A'),
@@ -9811,7 +9811,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012266728', 'OL7946552A'),
 	('9782226140685', 'OL255725A'),
 	('9782227723009', 'OL9196291A'),
-
+	('9782742431540', 'OL6531336A'),
 	('9782070503537', 'OL3114132A'),
 	('9782215008163', 'OL9088939A'),
 	('9782081647909', 'OL75922A'),
@@ -9825,8 +9825,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782705002893', 'OL60352A'),
 	('9782070126002', 'OL7557798A'),
 	('9782226068859', 'OL625908A'),
-
-
+	('9782020123952', 'OL421339A'),
+	('9782020123952', 'OL626229A'),
 	('9782020820738', 'OL3292788A'),
 	('9782020201605', 'OL333476A'),
 	('9782330065850', 'OL5895626A'),
@@ -9834,22 +9834,22 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226076274', 'OL336268A'),
 	('9782081270114', 'OL8668610A'),
 	('9782082112253', 'OL193225A'),
-
-
-
-
-
-
-
+	('9782330012380', 'OL197416A'),
+	('9782330012380', 'OL541510A'),
+	('9782330012380', 'OL1198184A'),
+	('9782330012380', 'OL3661383A'),
+	('9782330012380', 'OL3661384A'),
+	('9782330012380', 'OL75900A'),
+	('9782330012380', 'OL498893A'),
 	('9782020653831', 'OL277008A'),
 	('9782081339248', 'OL622912A'),
 	('9782081295711', 'OL3893886A'),
 	('9782070695171', 'OL8855447A'),
-
-
-
+	('9782081235373', 'OL236824A'),
+	('9782081235373', 'OL3292788A'),
+	('9782081235373', 'OL9879604A'),
 	('9782020211093', 'OL508544A'),
-
+	('9782742763337', 'OL337693A'),
 	('9782330005481', 'OL301467A'),
 	('9782020320030', 'OL185419A'),
 	('9782020798914', 'OL438925A'),
@@ -9874,22 +9874,22 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081604896', 'OL1659389A'),
 	('9782010104275', 'OL1156949A'),
 	('9782020365703', 'OL41534A'),
-
-
+	('9782020871471', 'OL490705A'),
+	('9782020871471', 'OL78077A'),
 	('9782020621557', 'OL3323971A'),
 	('9782020312097', 'OL5744075A'),
-
+	('9782723430791', 'OL559437A'),
 	('9782012368903', 'OL2626013A'),
 	('9782020002776', 'OL1683373A'),
 	('9782012368101', 'OL925940A'),
 	('9782070532995', 'OL742699A'),
 	('9782742727513', 'OL9135320A'),
-
-
-
-
-
-
+	('9782330075736', 'OL6942238A'),
+	('9782080304780', 'OL1494648A'),
+	('9782080304780', 'OL392582A'),
+	('9782080304780', 'OL783456A'),
+	('9782080304780', 'OL3114519A'),
+	('9782080304780', 'OL3114520A'),
 	('9782020577977', 'OL5374582A'),
 	('9782742780105', 'OL8544566A'),
 	('9791023501414', 'OL7543669A'),
@@ -9908,18 +9908,18 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080683557', 'OL1530799A'),
 	('9782330019600', 'OL3971774A'),
 	('9782081217867', 'OL63466A'),
-
-
+	('9782012451063', 'OL346410A'),
+	('9782012451063', 'OL9136327A'),
 	('9782020002462', 'OL250953A'),
 	('9782020977401', 'OL8110286A'),
 	('9782742428892', 'OL5663960A'),
 	('9782070658404', 'OL67126A'),
 	('9782020137010', 'OL76023A'),
 	('9782080661456', 'OL65567A'),
-
+	('9782226155733', 'OL9883909A'),
 	('9782747030427', 'OL217829A'),
 	('9782010207570', 'OL113611A'),
-
+	('9782742749546', 'OL3972898A'),
 	('9782021104462', 'OL7520592A'),
 	('9782226108371', 'OL86080A'),
 	('9782020337946', 'OL1580837A'),
@@ -9933,7 +9933,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020059916', 'OL1071498A'),
 	('9782082111201', 'OL1631137A'),
 	('9782226092038', 'OL70753A'),
-
+	('9782020066952', 'OL4821748A'),
 	('9782226016294', 'OL624360A'),
 	('9782012357242', 'OL5631779A'),
 	('9782080664013', 'OL500604A'),
@@ -9948,7 +9948,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782868699497', 'OL745189A'),
 	('9782020069298', 'OL3112504A'),
 	('9782080116253', 'OL5843069A'),
-
+	('9782020796569', 'OL8221291A'),
 	('9782020660464', 'OL1511329A'),
 	('9782747039178', 'OL10341992A'),
 	('9782080711984', 'OL4322177A'),
@@ -9963,19 +9963,19 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782021011845', 'OL3892318A'),
 	('9782020046947', 'OL1677632A'),
 	('9782020133081', 'OL390699A'),
-
-
-
-
-
+	('9782226144232', 'OL7370632A'),
+	('9782020044158', 'OL26868A'),
+	('9782020224543', 'OL222275A'),
+	('9782020224543', 'OL976710A'),
+	('9782020224543', 'OL260385A'),
 	('9782226085962', 'OL262744A'),
-
-
+	('9782205043464', 'OL55401A'),
+	('9782205043464', 'OL683766A'),
 	('9782705003012', 'OL1102844A'),
 	('9782226208323', 'OL468224A'),
-
-
-
+	('9782020048484', 'OL45168A'),
+	('9782020048484', 'OL959492A'),
+	('9782020048484', 'OL5849938A'),
 	('9782010127434', 'OL192777A'),
 	('9782226074669', 'OL56064A'),
 	('9782070721689', 'OL267641A'),
@@ -9994,8 +9994,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020095983', 'OL186028A'),
 	('9782215075745', 'OL9094981A'),
 	('9782081619487', 'OL9366840A'),
-
-
+	('9782010173981', 'OL505844A'),
+	('9782010173981', 'OL10432388A'),
 	('9782742760671', 'OL10818180A'),
 	('9782012438507', 'OL5543792A'),
 	('9782227727038', 'OL339967A'),
@@ -10004,8 +10004,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782742431694', 'OL10356342A'),
 	('9782012359482', 'OL3891297A'),
 	('9782081670020', 'OL9350366A'),
-
-
+	('9782742774692', 'OL14246824A'),
+	('9782742774692', 'OL7462092A'),
 	('9782070553273', 'OL6426835A'),
 	('9782012404823', 'OL9125714A'),
 	('9782012260139', 'OL9125136A'),
@@ -10018,12 +10018,12 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012453005', 'OL7391416A'),
 	('9782070615292', 'OL61141A'),
 	('9782012400993', 'OL7391416A'),
-
+	('9782012403338', 'OL636712A'),
 	('9782082025010', 'OL555284A'),
 	('9782215049029', 'OL3113071A'),
 	('9782742417193', 'OL9139549A'),
-
-
+	('9782226153074', 'OL3915694A'),
+	('9782226153074', 'OL7533275A'),
 	('9782723421379', 'OL90227A'),
 	('9782330009106', 'OL9309384A'),
 	('9782016210895', 'OL9089060A'),
@@ -10033,7 +10033,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081630840', 'OL8196440A'),
 	('9782227725249', 'OL9137744A'),
 	('9782330030117', 'OL8838440A'),
-
+	('9782742405084', 'OL226317A'),
 	('9782215076629', 'OL10818190A'),
 	('9782226154835', 'OL1398053A'),
 	('9782012920606', 'OL6591368A'),
@@ -10080,22 +10080,22 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215080527', 'OL3121288A'),
 	('9782081224384', 'OL351991A'),
 	('9782010098086', 'OL665804A'),
-
+	('9782080106957', 'OL260512A'),
 	('9782010033704', 'OL1674833A'),
 	('9782020480079', 'OL325252A'),
 	('9782742723225', 'OL86840A'),
 	('9782226318558', 'OL2703408A'),
 	('9782080120724', 'OL400296A'),
 	('9782012448421', 'OL8015961A'),
-
-
-
+	('9782010054945', 'OL1774093A'),
+	('9782010054945', 'OL5891767A'),
+	('9782010054945', 'OL1322209A'),
 	('9782012423701', 'OL3268455A'),
 	('9782016251775', 'OL8464962A'),
 	('9782010091223', 'OL1313654A'),
 	('9782723489119', 'OL3967362A'),
 	('9782012445222', 'OL9136567A'),
-
+	('9782742774111', 'OL998530A'),
 	('9782020220606', 'OL9310336A'),
 	('9782226024756', 'OL904308A'),
 	('9782227725041', 'OL9089258A'),
@@ -10114,9 +10114,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081622937', 'OL223843A'),
 	('9782012304321', 'OL393239A'),
 	('9782227735040', 'OL18809A'),
-
-
-
+	('9782010205002', 'OL9356450A'),
+	('9782010205002', 'OL9356451A'),
+	('9782010205002', 'OL25930A'),
 	('9782014638295', 'OL9088595A'),
 	('9782226157591', 'OL9365995A'),
 	('9782081640047', 'OL3895375A'),
@@ -10137,7 +10137,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081622555', 'OL6243169A'),
 	('9782081622951', 'OL8271830A'),
 	('9782010128110', 'OL126919A'),
-
+	('9782080917553', 'OL742816A'),
 	('9782226056504', 'OL490967A'),
 	('9782227727656', 'OL9134962A'),
 	('9782012439559', 'OL7391416A'),
@@ -10150,13 +10150,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723416238', 'OL491870A'),
 	('9782742706914', 'OL75525A'),
 	('9782742729630', 'OL181615A'),
-
+	('9782080120137', 'OL739147A'),
 	('9782747005197', 'OL22315A'),
-
-
-
-
-
+	('9782070312252', 'OL381465A'),
+	('9782841100583', 'OL1828314A'),
+	('9782841100583', 'OL13854886A'),
+	('9782841100583', 'OL5098632A'),
+	('9782841100583', 'OL634777A'),
 	('9782070640508', 'OL7410854A'),
 	('9782226251978', 'OL83493A'),
 	('9782330016234', 'OL475755A'),
@@ -10172,7 +10172,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723490597', 'OL10712242A'),
 	('9782010213625', 'OL10495555A'),
 	('9782227738737', 'OL68515A'),
-
+	('9782747014410', 'OL6158179A'),
 	('9782841100071', 'OL490593A'),
 	('9782910868420', 'OL494425A'),
 	('9782020573610', 'OL257451A'),
@@ -10188,7 +10188,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020114479', 'OL431292A'),
 	('9782012311220', 'OL9141281A'),
 	('9782747034692', 'OL1450845A'),
-
+	('9782742708345', 'OL361040A'),
 	('9782012012196', 'OL8015893A'),
 	('9782010161568', 'OL9360919A'),
 	('9782081621244', 'OL390228A'),
@@ -10197,7 +10197,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081622999', 'OL10343982A'),
 	('9782330000301', 'OL8586804A'),
 	('9782070359110', 'OL7460854A'),
-
+	('9782226119490', 'OL6589248A'),
 	('9782070581580', 'OL9130034A'),
 	('9782226118486', 'OL8406728A'),
 	('9782227738546', 'OL9104245A'),
@@ -10209,12 +10209,12 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782010209840', 'OL242572A'),
 	('9782747048200', 'OL832231A'),
 	('9782742745791', 'OL5632031A'),
-
+	('9782330000226', 'OL1489375A'),
 	('9782012449381', 'OL636712A'),
 	('9782012442474', 'OL7391416A'),
 	('9782020972864', 'OL9198503A'),
 	('9782215053859', 'OL9134626A'),
-
+	('9782070632381', 'OL503336A'),
 	('9782012009653', 'OL9090486A'),
 	('9782742771967', 'OL3957047A'),
 	('9782012092266', 'OL233814A'),
@@ -10223,13 +10223,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012020061', 'OL29053A'),
 	('9782747026420', 'OL8006171A'),
 	('9782012012202', 'OL3114129A'),
-
+	('9782080125156', 'OL269107A'),
 	('9782082019576', 'OL42914A'),
 	('9782012024465', 'OL30130A'),
 	('9782080124944', 'OL237890A'),
-
-
-
+	('9782012421882', 'OL7418679A'),
+	('9782012421882', 'OL7391416A'),
+	('9782012421882', 'OL7418680A'),
 	('9782080109736', 'OL201562A'),
 	('9782215095071', 'OL10220818A'),
 	('9782747013208', 'OL8239098A'),
@@ -10238,24 +10238,24 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215075646', 'OL3912690A'),
 	('9782070616763', 'OL81387A'),
 	('9782330034115', 'OL3965431A'),
-
-
-
+	('9782070619993', 'OL19365A'),
+	('9782070619993', 'OL26657A'),
+	('9782742725236', 'OL2480085A'),
 	('9782012364011', 'OL230265A'),
 	('9782082115681', 'OL253752A'),
 	('9782020047067', 'OL140896A'),
 	('9782226017840', 'OL4893409A'),
-
+	('9782020950176', 'OL257400A'),
 	('9782330171179', 'OL8455564A'),
 	('9782020217927', 'OL474837A'),
 	('9782021406412', 'OL53789A'),
 	('9782742714766', 'OL259661A'),
-
-
+	('9782012012660', 'OL30130A'),
+	('9782012012660', 'OL3040196A'),
 	('9782080110343', 'OL5851725A'),
 	('9782021071474', 'OL6723779A'),
-
-
+	('9782081210110', 'OL680354A'),
+	('9782081210110', 'OL8670217A'),
 	('9782020129022', 'OL353381A'),
 	('9782742746019', 'OL505071A'),
 	('9782020367738', 'OL2480190A'),
@@ -10266,13 +10266,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782742724833', 'OL6944426A'),
 	('9782020069625', 'OL195684A'),
 	('9782082104982', 'OL5491326A'),
-
-
+	('9782020208598', 'OL3112616A'),
+	('9782020208598', 'OL3112617A'),
 	('9782226241900', 'OL7428242A'),
 	('9782742740857', 'OL276698A'),
 	('9782742731763', 'OL3113653A'),
 	('9782070273072', 'OL480001A'),
-
+	('9782742762927', 'OL192677A'),
 	('9782226091604', 'OL1101091A'),
 	('9782020947343', 'OL1530103A'),
 	('9782021509021', 'OL192771A'),
@@ -10288,9 +10288,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723412582', 'OL413256A'),
 	('9782742745906', 'OL6424335A'),
 	('9782226087751', 'OL433697A'),
-
+	('9782227301573', 'OL476712A'),
 	('9782226029805', 'OL4878748A'),
-
+	('9782226094209', 'OL7559385A'),
 	('9782012353473', 'OL49530A'),
 	('9782227477117', 'OL2678311A'),
 	('9782227473362', 'OL3113259A'),
@@ -10300,7 +10300,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782227022003', 'OL134182A'),
 	('9782080664150', 'OL1311875A'),
 	('9782012379107', 'OL9127633A'),
-
+	('9782227481947', 'OL42426A'),
 	('9782227350144', 'OL252810A'),
 	('9782227485983', 'OL189611A'),
 	('9782226012197', 'OL136735A'),
@@ -10322,9 +10322,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782330002510', 'OL5493055A'),
 	('9782020965903', 'OL228009A'),
 	('9782020259866', 'OL339741A'),
-
+	('9782020005852', 'OL2645171A'),
 	('9782020961608', 'OL2696971A'),
-
+	('9782021406801', 'OL70021A'),
 	('9782080687104', 'OL107569A'),
 	('9782226172686', 'OL6501944A'),
 	('9782020047289', 'OL603304A'),
@@ -10332,7 +10332,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215087366', 'OL7170345A'),
 	('9782021091946', 'OL8892472A'),
 	('9782020130905', 'OL434433A'),
-
+	('9782330167691', 'OL1298665A'),
 	('9782226104687', 'OL302020A'),
 	('9782226008565', 'OL1775137A'),
 	('9782012360143', 'OL137454A'),
@@ -10346,18 +10346,18 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782227485921', 'OL3910705A'),
 	('9782012350014', 'OL982435A'),
 	('9782227472402', 'OL326033A'),
-
-
+	('9782020056465', 'OL390687A'),
+	('9782020056465', 'OL6514279A'),
 	('9782020103589', 'OL527373A'),
 	('9782020047043', 'OL330978A'),
-
+	('9782020025829', 'OL2645171A'),
 	('9782020043915', 'OL1553410A'),
 	('9782020091749', 'OL32231A'),
 	('9782227301184', 'OL249608A'),
 	('9782226019486', 'OL1137223A'),
 	('9782020247016', 'OL284316A'),
 	('9782868699589', 'OL471637A'),
-
+	('9782227912007', 'OL482353A'),
 	('9782227004030', 'OL1299371A'),
 	('9782226142733', 'OL7562474A'),
 	('9782020258210', 'OL360801A'),
@@ -10375,9 +10375,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012360426', 'OL10434910A'),
 	('9782747019965', 'OL9936223A'),
 	('9782020062497', 'OL1127106A'),
-
-
-
+	('9782227478091', 'OL185893A'),
+	('9782227478091', 'OL12088536A'),
+	('9782227478091', 'OL4288712A'),
 	('9782227335066', 'OL616589A'),
 	('9782020135139', 'OL298711A'),
 	('9782020215329', 'OL60269A'),
@@ -10423,7 +10423,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723453578', 'OL10219678A'),
 	('9782226129512', 'OL9195634A'),
 	('9782747000246', 'OL39319A'),
-
+	('9782070150182', 'OL640273A'),
 	('9782010196119', 'OL8335969A'),
 	('9782012017108', 'OL3114129A'),
 	('9782070696628', 'OL10834267A'),
@@ -10438,7 +10438,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782070612710', 'OL55888A'),
 	('9782227757455', 'OL35524A'),
 	('9782080668929', 'OL192863A'),
-
+	('9782868690975', 'OL276698A'),
 	('9782747019088', 'OL871829A'),
 	('9782070591916', 'OL260017A'),
 	('9782227738010', 'OL35524A'),
@@ -10453,7 +10453,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080669070', 'OL47923A'),
 	('9782012017351', 'OL8026445A'),
 	('9782012792593', 'OL352353A'),
-
+	('9782742700561', 'OL3112937A'),
 	('9782082000451', 'OL1301073A'),
 	('9782080122520', 'OL144403A'),
 	('9782020124997', 'OL788225A'),
@@ -10488,14 +10488,14 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782910868758', 'OL13420027A'),
 	('9782020894081', 'OL962849A'),
 	('9782012017368', 'OL8026445A'),
-
+	('9782020662512', 'OL411947A'),
 	('9782020146555', 'OL10433008A'),
 	('9782020049672', 'OL265635A'),
 	('9782020024600', 'OL473934A'),
 	('9782227362420', 'OL369428A'),
 	('9782226038852', 'OL9117729A'),
 	('9782081286542', 'OL86382A'),
-
+	('9782081310711', 'OL8855712A'),
 	('9782081223448', 'OL369823A'),
 	('9782081240742', 'OL86382A'),
 	('9782081217218', 'OL3894913A'),
@@ -10504,7 +10504,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081271654', 'OL779494A'),
 	('9782226238450', 'OL77639A'),
 	('9782226238511', 'OL11649086A'),
-
+	('9782330013004', 'OL1496427A'),
 	('9782021097153', 'OL341406A'),
 	('9782081308879', 'OL7162578A'),
 	('9782081246010', 'OL3894859A'),
@@ -10535,16 +10535,16 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080687609', 'OL369823A'),
 	('9782080690173', 'OL66700A'),
 	('9782226159618', 'OL301570A'),
-
-
-
+	('9782020204385', 'OL279674A'),
+	('9782020204385', 'OL494351A'),
+	('9782020204385', 'OL301452A'),
 	('9782330036911', 'OL6582676A'),
 	('9782226208309', 'OL65148A'),
 	('9782226190987', 'OL5371575A'),
 	('9782075084734', 'OL7614250A'),
 	('9782226147905', 'OL7204305A'),
 	('9782021183795', 'OL7577034A'),
-
+	('9782020829342', 'OL39368A'),
 	('9782020230872', 'OL1151019A'),
 	('9782020315623', 'OL194690A'),
 	('9782020183581', 'OL5799716A'),
@@ -10560,7 +10560,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782205059038', 'OL3100791A'),
 	('9782012905351', 'OL3128213A'),
 	('9782081366657', 'OL127510A'),
-
+	('9782205087307', 'OL11615333A'),
 	('9782205059458', 'OL7209008A'),
 	('9782205055726', 'OL754765A'),
 	('9782205055764', 'OL754765A'),
@@ -10569,15 +10569,15 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782330132163', 'OL11671235A'),
 	('9782226052476', 'OL7213758A'),
 	('9782330037987', 'OL14004615A'),
-
-
-
+	('9782081227576', 'OL756769A'),
+	('9782742765737', 'OL2821171A'),
+	('9782742765737', 'OL338737A'),
 	('9782505002352', 'OL3048689A'),
 	('9782723468688', 'OL10432605A'),
 	('9782723413077', 'OL9194799A'),
 	('9782010089138', 'OL10824235A'),
 	('9782226158017', 'OL10435439A'),
-
+	('9782226060013', 'OL1835085A'),
 	('9782012905313', 'OL7609602A'),
 	('9782723486583', 'OL3065510A'),
 	('9782742764501', 'OL1489375A'),
@@ -10587,8 +10587,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782205054217', 'OL7209036A'),
 	('9782747032308', 'OL3892096A'),
 	('9782742790999', 'OL9173950A'),
-
-
+	('9782012100060', 'OL863535A'),
+	('9782012100060', 'OL934457A'),
 	('9782010122996', 'OL1581966A'),
 	('9782205064179', 'OL7201152A'),
 	('9782205045598', 'OL7211888A'),
@@ -10601,17 +10601,17 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782723461344', 'OL9134957A'),
 	('9782723444910', 'OL3939455A'),
 	('9782010003356', 'OL7468622A'),
-
-
+	('9782205073393', 'OL8790067A'),
+	('9782205073393', 'OL11479353A'),
 	('9782205086676', 'OL7301842A'),
-
+	('9782205009187', 'OL6343342A'),
 	('9782723494632', 'OL6232700A'),
 	('9782012271791', 'OL7946552A'),
 	('9782012792975', 'OL537218A'),
 	('9782080710970', 'OL295826A'),
 	('9782081248205', 'OL3112937A'),
-
-
+	('9782081336377', 'OL11498081A'),
+	('9782081336377', 'OL3336921A'),
 	('9782226006189', 'OL248278A'),
 	('9782226005625', 'OL1250746A'),
 	('9782226066435', 'OL27709A'),
@@ -10634,7 +10634,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782070599806', 'OL8591973A'),
 	('9782020159647', 'OL668329A'),
 	('9782226455970', 'OL298823A'),
-
+	('9782742754847', 'OL6495986A'),
 	('9782020825337', 'OL2766124A'),
 	('9782020661973', 'OL1308715A'),
 	('9782226312778', 'OL9339964A'),
@@ -10644,23 +10644,23 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012401792', 'OL7391416A'),
 	('9782010162213', 'OL233814A'),
 	('9782081622005', 'OL3895325A'),
-
-
+	('9782081628687', 'OL3114803A'),
+	('9782081628687', 'OL510881A'),
 	('9782747024389', 'OL601061A'),
-
+	('9782742758463', 'OL5743928A'),
 	('9782080642462', 'OL1663663A'),
-
-
+	('9782010126093', 'OL1580847A'),
+	('9782010126093', 'OL5017992A'),
 	('9782010111709', 'OL66635A'),
 	('9782080112859', 'OL3933680A'),
 	('9782080106841', 'OL3114413A'),
-
+	('9782020107273', 'OL623303A'),
 	('9782070610587', 'OL29282A'),
 	('9782742790944', 'OL5703347A'),
-
+	('9782742712588', 'OL184824A'),
 	('9782020102919', 'OL327908A'),
-
-
+	('9782010169472', 'OL7391416A'),
+	('9782010169472', 'OL7418680A'),
 	('9782020930338', 'OL530390A'),
 	('9782227729704', 'OL68515A'),
 	('9782081640221', 'OL3170942A'),
@@ -10693,7 +10693,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020126649', 'OL31220A'),
 	('9782010002380', 'OL1662480A'),
 	('9782215098690', 'OL10496639A'),
-
+	('9782742429264', 'OL10356342A'),
 	('9782226004017', 'OL3968243A'),
 	('9782226118479', 'OL9289372A'),
 	('9782226240866', 'OL6411934A'),
@@ -10732,7 +10732,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782215084556', 'OL3239774A'),
 	('9782081619821', 'OL7188205A'),
 	('9782505001430', 'OL7202439A'),
-
+	('9782226093677', 'OL7111891A'),
 	('9782505002635', 'OL7576381A'),
 	('9782723454025', 'OL7200619A'),
 	('9782505003625', 'OL7581184A'),
@@ -10752,42 +10752,42 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782080673589', 'OL196469A'),
 	('9782020300636', 'OL90195A'),
 	('9782080117304', 'OL128382A'),
-
-
+	('9782020141383', 'OL139218A'),
+	('9782020141383', 'OL264495A'),
 	('9782226055842', 'OL202411A'),
 	('9782226060839', 'OL605035A'),
 	('9782226092809', 'OL188459A'),
-
+	('9782081244566', 'OL5264690A'),
 	('9782080681423', 'OL44399A'),
 	('9782082111225', 'OL352696A'),
 	('9782020065870', 'OL131201A'),
 	('9782226018830', 'OL327991A'),
 	('9782012353077', 'OL47756A'),
-
+	('9782021362596', 'OL251349A'),
 	('9782080607782', 'OL260070A'),
 	('9782226155870', 'OL36891A'),
 	('9782021460292', 'OL8586738A'),
 	('9782080687029', 'OL8271601A'),
-
-
+	('9782020087438', 'OL261262A'),
+	('9782020087438', 'OL479248A'),
 	('9782082102704', 'OL267434A'),
-
-
-
-
-
-
+	('9782021328363', 'OL56312A'),
+	('9782841100491', 'OL201568A'),
+	('9782841100491', 'OL2479759A'),
+	('9782841100491', 'OL1532225A'),
+	('9782020328487', 'OL90195A'),
+	('9782020328487', 'OL3319848A'),
 	('9782226013033', 'OL1310999A'),
 	('9782080649430', 'OL46050A'),
 	('9782080678034', 'OL49434A'),
 	('9782021098860', 'OL7758002A'),
-
-
-
-
-
+	('9782020183048', 'OL2764601A'),
+	('9782020183048', 'OL3112642A'),
+	('9782020183048', 'OL3112621A'),
+	('9782020183048', 'OL3112622A'),
+	('9782020183048', 'OL791565A'),
 	('9782011695475', 'OL9885367A'),
-
+	('9782020635424', 'OL278228A'),
 	('9782330014353', 'OL13513034A'),
 	('9782020044516', 'OL302071A'),
 	('9782012788008', 'OL281096A'),
@@ -10802,9 +10802,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020066068', 'OL515112A'),
 	('9782226016362', 'OL505950A'),
 	('9782081219861', 'OL617722A'),
-
-
-
+	('9782021496475', 'OL11564734A'),
+	('9782021496475', 'OL11564735A'),
+	('9782021496475', 'OL43612A'),
 	('9782226005267', 'OL267478A'),
 	('9782226005878', 'OL1334440A'),
 	('9782020528856', 'OL1503645A'),
@@ -10820,14 +10820,14 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020069687', 'OL140896A'),
 	('9782226078506', 'OL251585A'),
 	('9782080647795', 'OL962092A'),
-
-
-
+	('9782020259712', 'OL3909473A'),
+	('9782020259712', 'OL42246A'),
+	('9782020259712', 'OL1500179A'),
 	('9782226001603', 'OL473837A'),
 	('9782080679291', 'OL5466141A'),
 	('9782010018473', 'OL184668A'),
-
-
+	('9782020131704', 'OL64565A'),
+	('9782020131704', 'OL3112703A'),
 	('9782020367486', 'OL73626A'),
 	('9782020067263', 'OL1992995A'),
 	('9782010050879', 'OL1789458A'),
@@ -10835,29 +10835,29 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226019363', 'OL2799508A'),
 	('9782020054881', 'OL740623A'),
 	('9782010050220', 'OL316821A'),
-
-
+	('9782226039538', 'OL116102A'),
+	('9782226039538', 'OL4322208A'),
 	('9782226015488', 'OL961636A'),
-
+	('9782742796335', 'OL12064285A'),
 	('9782020061476', 'OL27260A'),
 	('9782020062770', 'OL736746A'),
 	('9782010124174', 'OL511349A'),
 	('9782080135445', 'OL633076A'),
-
+	('9782011671738', 'OL31079A'),
 	('9782080640628', 'OL1731087A'),
 	('9782010122705', 'OL3112349A'),
 	('9782010165023', 'OL7040959A'),
 	('9782226158574', 'OL3971330A'),
 	('9782020063678', 'OL2699507A'),
-
-
+	('9782010192548', 'OL3890464A'),
+	('9782010192548', 'OL1098658A'),
 	('9782080644589', 'OL143623A'),
-
-
-
+	('9782020526609', 'OL755074A'),
+	('9782020526609', 'OL8573400A'),
+	('9782226158659', 'OL273490A'),
 	('9782020205054', 'OL270614A'),
 	('9782020015370', 'OL4586796A'),
-
+	('9782020239301', 'OL286312A'),
 	('9782330006563', 'OL3202837A'),
 	('9782020944656', 'OL45364A'),
 	('9782742723997', 'OL30928A'),
@@ -10872,9 +10872,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782021510805', 'OL7898286A'),
 	('9782081269965', 'OL199884A'),
 	('9782742773930', 'OL2622995A'),
-
+	('9782868693549', 'OL2660391A'),
 	('9782226182357', 'OL19981A'),
-
+	('9782742727728', 'OL255870A'),
 	('9782330038908', 'OL2622995A'),
 	('9782742720682', 'OL4993122A'),
 	('9782742781171', 'OL11464414A'),
@@ -10888,8 +10888,8 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782070129195', 'OL5131931A'),
 	('9782020058346', 'OL1560656A'),
 	('9782012351875', 'OL368777A'),
-
-
+	('9782742790272', 'OL394410A'),
+	('9782330013073', 'OL9199860A'),
 	('9782020479967', 'OL2101074A'),
 	('9782080126979', 'OL3894053A'),
 	('9782020361583', 'OL1507367A'),
@@ -10901,10 +10901,10 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782021002430', 'OL4923559A'),
 	('9782080663894', 'OL46050A'),
 	('9782020065122', 'OL76023A'),
-
+	('9782742738694', 'OL5657096A'),
 	('9782010039270', 'OL65162A'),
 	('9782226188410', 'OL197879A'),
-
+	('9782742756483', 'OL190100A'),
 	('9782080640109', 'OL624345A'),
 	('9782020054973', 'OL770520A'),
 	('9782226208415', 'OL22586A'),
@@ -10924,11 +10924,11 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226221346', 'OL22586A'),
 	('9782080661937', 'OL46050A'),
 	('9782020189651', 'OL201677A'),
-
+	('9782742704767', 'OL3127526A'),
 	('9782330048341', 'OL3141196A'),
 	('9782020558075', 'OL3112942A'),
-
-
+	('9782021030532', 'OL196360A'),
+	('9782021030532', 'OL712624A'),
 	('9782226190673', 'OL5043393A'),
 	('9782010126451', 'OL2504469A'),
 	('9782020062817', 'OL26758A'),
@@ -10936,13 +10936,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782081333857', 'OL1392576A'),
 	('9782742744459', 'OL6807254A'),
 	('9782080643827', 'OL42805A'),
-
-
-
+	('9782330000141', 'OL6227162A'),
+	('9782742710485', 'OL274756A'),
+	('9782742780600', 'OL3135557A'),
 	('9782080671356', 'OL75470A'),
 	('9782226084781', 'OL198510A'),
 	('9782081217782', 'OL32772A'),
-
+	('9782868693136', 'OL89809A'),
 	('9782020965910', 'OL6513325A'),
 	('9782020864565', 'OL136296A'),
 	('9782020104333', 'OL238598A'),
@@ -10965,9 +10965,9 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226116314', 'OL3171066A'),
 	('9782080709585', 'OL791654A'),
 	('9782226141989', 'OL3127271A'),
-
-
-
+	('9782742730513', 'OL6136342A'),
+	('9782742722990', 'OL10715910A'),
+	('9782742722990', 'OL10715911A'),
 	('9782742740642', 'OL274756A'),
 	('9782081307254', 'OL265412A'),
 	('9782742723720', 'OL367352A'),
@@ -11013,7 +11013,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782742792498', 'OL11592914A'),
 	('9782742702558', 'OL61883A'),
 	('9782020536363', 'OL21807A'),
-
+	('9782330000066', 'OL1435421A'),
 	('9782742720415', 'OL58984A'),
 	('9782742772285', 'OL2718692A'),
 	('9782080609397', 'OL1786539A'),
@@ -11022,7 +11022,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782012352711', 'OL430005A'),
 	('9782080674814', 'OL202988A'),
 	('9782226019196', 'OL1259096A'),
-
+	('9782012358584', 'OL5679976A'),
 	('9782020373807', 'OL1616191A'),
 	('9782011667458', 'OL39281A'),
 	('9782020156769', 'OL337682A'),
@@ -11045,13 +11045,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782226107213', 'OL68190A'),
 	('9782226036971', 'OL925992A'),
 	('9782080671974', 'OL505396A'),
-
+	('9782082104463', 'OL431668A'),
 	('9782020055888', 'OL1234497A'),
-
-
+	('9782020197915', 'OL282431A'),
+	('9782020197915', 'OL3258806A'),
 	('9782226318183', 'OL3891257A'),
 	('9782020124164', 'OL298711A'),
-
+	('9782010051913', 'OL479712A'),
 	('9782082117036', 'OL6201029A'),
 	('9782010173233', 'OL189180A'),
 	('9782010123436', 'OL197820A'),
@@ -11060,7 +11060,7 @@ insert into ECRIRE(isbn,idauteur) values
 	('9782020621564', 'OL3916339A'),
 	('9782011671509', 'OL107571A'),
 	('9782010053122', 'OL790143A'),
-
+	('9782742785568', 'OL59464A'),
 	('9782010122699', 'OL3112349A'),
 	('9782226016874', 'OL4281774A'),
 	('9782070315451', 'OL3893907A'),
@@ -11078,7 +11078,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782081295711', 2),
 	(5, '9782330001797', 3),
 	(4, '9782010144356', 7),
-
+	(1, '9782020066952', 10),
 	(4, '9782020959124', 10),
 	(7, '9782011550743', 1),
 	(6, '9782205054750', 5),
@@ -11088,11 +11088,11 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782226106599', 4),
 	(5, '9782012010079', 7),
 	(2, '9782021039559', 2),
-
+	(4, '9782742708499', 4),
 	(7, '9782747014021', 2),
 	(4, '9782070637676', 4),
 	(6, '9782910868758', 5),
-
+	(1, '9782227610989', 10),
 	(3, '9782081269965', 4),
 	(4, '9782020055888', 5),
 	(1, '9782012379756', 2),
@@ -11122,15 +11122,15 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782226087294', 6),
 	(7, '9782082115681', 10),
 	(4, '9782227345133', 9),
-
+	(4, '9782205034066', 9),
 	(6, '9782747037440', 5),
 	(2, '9782012918474', 1),
 	(5, '9782226252081', 6),
 	(2, '9782021071474', 10),
 	(5, '9782081624030', 10),
 	(2, '9782010010811', 2),
-
-
+	(2, '9782020066952', 4),
+	(4, '9782227912007', 2),
 	(6, '9782081223509', 2),
 	(1, '9782080120540', 2),
 	(7, '9782080813909', 6),
@@ -11138,10 +11138,10 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782226087294', 6),
 	(6, '9782330030322', 9),
 	(6, '9782021230833', 6),
-
+	(7, '9782227360365', 2),
 	(3, '9782226101136', 2),
-
-
+	(2, '9782080305350', 1),
+	(2, '9782010078064', 7),
 	(5, '9782012271791', 8),
 	(2, '9782742795987', 7),
 	(7, '9782020106108', 9),
@@ -11154,17 +11154,17 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782330036553', 8),
 	(5, '9782010173936', 6),
 	(7, '9782020093453', 1),
-
+	(1, '9782020204385', 10),
 	(7, '9782080710970', 4),
 	(7, '9782020058346', 3),
-
+	(6, '9782082018227', 8),
 	(3, '9782226208309', 9),
 	(3, '9782226087089', 6),
 	(2, '9782080710970', 1),
 	(1, '9782080102102', 8),
 	(4, '9782226034380', 3),
 	(1, '9782012423084', 6),
-
+	(7, '9782330013004', 8),
 	(4, '9782012030947', 1),
 	(2, '9782080674166', 2),
 	(1, '9782742713110', 1),
@@ -11178,7 +11178,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782747020251', 2),
 	(6, '9782020131537', 1),
 	(6, '9782020066068', 3),
-
+	(1, '9782742704767', 5),
 	(2, '9782082003933', 5),
 	(6, '9782012435704', 3),
 	(6, '9782012919563', 2),
@@ -11193,15 +11193,15 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782215020462', 4),
 	(3, '9782226054579', 1),
 	(1, '9782020063678', 1),
-
+	(5, '9782080304780', 6),
 	(4, '9782226258250', 9),
 	(7, '9782215083160', 10),
-
-
+	(2, '9782081609440', 9),
+	(5, '9782081286054', 2),
 	(6, '9782742725489', 2),
 	(1, '9782020385961', 4),
 	(7, '9782081622579', 6),
-
+	(1, '9782020044158', 4),
 	(6, '9782020251594', 4),
 	(5, '9782012449381', 1),
 	(1, '9782742710188', 8),
@@ -11224,7 +11224,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782020536363', 6),
 	(7, '9782012010024', 1),
 	(7, '9782082024587', 4),
-
+	(7, '9782080109941', 7),
 	(1, '9782215050155', 2),
 	(5, '9782747020251', 3),
 	(4, '9782742723225', 5),
@@ -11232,13 +11232,13 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782020124997', 8),
 	(6, '9782227727656', 7),
 	(2, '9782226048653', 9),
-
-
+	(1, '9782070619993', 4),
+	(2, '9782742429264', 5),
 	(4, '9782081622616', 6),
 	(2, '9782020096645', 1),
 	(2, '9782070515578', 3),
 	(4, '9782742771509', 7),
-
+	(1, '9782226119490', 6),
 	(6, '9782012013605', 9),
 	(3, '9782070595334', 9),
 	(7, '9782020047289', 9),
@@ -11252,12 +11252,12 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782080664020', 3),
 	(3, '9782081209497', 3),
 	(7, '9782010010811', 7),
-
+	(4, '9782010054945', 1),
 	(7, '9782081217867', 7),
 	(3, '9782012442474', 3),
 	(7, '9782215087403', 5),
 	(4, '9782742766024', 1),
-
+	(7, '9782020662512', 7),
 	(7, '9782226036971', 3),
 	(4, '9782226026651', 3),
 	(2, '9782081249295', 8),
@@ -11273,7 +11273,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782012526808', 7),
 	(3, '9782215087403', 6),
 	(5, '9782081219861', 2),
-
+	(4, '9782742719907', 10),
 	(7, '9782010033681', 9),
 	(2, '9782020183581', 3),
 	(7, '9782080642349', 8),
@@ -11305,9 +11305,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782081225497', 3),
 	(7, '9782070633708', 1),
 	(7, '9782226002662', 6),
-
+	(4, '9782010192548', 8),
 	(5, '9782226063502', 9),
-
+	(2, '9782742707119', 5),
 	(3, '9782020093804', 3),
 	(5, '9782012360426', 2),
 	(7, '9782070650439', 2),
@@ -11317,28 +11317,28 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782011455123', 9),
 	(7, '9782330034870', 4),
 	(7, '9782020789929', 7),
-
+	(6, '9782227317192', 9),
 	(2, '9782020323338', 4),
 	(2, '9782215009238', 2),
 	(3, '9782742723720', 6),
-
+	(7, '9782081244566', 8),
 	(4, '9782081219861', 9),
 	(4, '9782227301184', 10),
 	(4, '9782215067498', 5),
-
+	(6, '9782205058024', 1),
 	(4, '9782330001797', 7),
 	(2, '9782226010001', 3),
 	(3, '9782705002893', 2),
 	(1, '9782070545865', 9),
 	(1, '9782013920926', 3),
 	(2, '9782020233491', 7),
-
+	(2, '9782226094209', 7),
 	(6, '9782020025836', 6),
 	(7, '9782226008848', 7),
 	(7, '9782081268791', 3),
 	(1, '9782742723225', 6),
 	(7, '9782020053259', 9),
-
+	(5, '9782070736294', 1),
 	(7, '9782215063261', 9),
 	(2, '9782205058802', 3),
 	(1, '9782226092304', 2),
@@ -11354,14 +11354,14 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782010017858', 10),
 	(1, '9782226078711', 1),
 	(4, '9782215046554', 7),
-
+	(6, '9782081235373', 6),
 	(6, '9782012012899', 5),
 	(2, '9782010111709', 9),
 	(2, '9782226008657', 6),
 	(4, '9782020046947', 10),
 	(3, '9782226116802', 2),
 	(7, '9782012789470', 10),
-
+	(7, '9782742727728', 9),
 	(5, '9782742730247', 5),
 	(6, '9782226251978', 1),
 	(1, '9782226244048', 5),
@@ -11380,13 +11380,13 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782081223592', 8),
 	(2, '9782020299022', 2),
 	(4, '9782080642349', 10),
-
+	(4, '9782227360365', 4),
 	(7, '9782010123436', 5),
-
+	(4, '9782742754847', 10),
 	(1, '9782205049794', 2),
 	(1, '9782081628885', 8),
 	(6, '9782080660022', 10),
-
+	(7, '9782020131704', 1),
 	(4, '9782070311149', 10),
 	(3, '9782080687982', 7),
 	(6, '9782020667760', 2),
@@ -11399,9 +11399,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782215087335', 9),
 	(7, '9782013304832', 9),
 	(1, '9782330034115', 3),
-
+	(6, '9782080671738', 6),
 	(2, '9782080669070', 4),
-
+	(5, '9782227436268', 10),
 	(7, '9782020380621', 4),
 	(5, '9782070780129', 3),
 	(4, '9782226060198', 6),
@@ -11423,7 +11423,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782010033681', 1),
 	(1, '9782081252363', 7),
 	(6, '9782227350144', 3),
-
+	(4, '9782742758494', 10),
 	(2, '9782226170316', 3),
 	(2, '9782020234900', 6),
 	(4, '9782227729643', 7),
@@ -11450,16 +11450,16 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782012435704', 2),
 	(7, '9782012360426', 1),
 	(4, '9782020947343', 3),
-
+	(3, '9782070736294', 8),
 	(7, '9782081308879', 7),
-
+	(7, '9782227301580', 8),
 	(5, '9782020653831', 7),
 	(3, '9782020069298', 4),
 	(1, '9782082112253', 9),
 	(4, '9782742756742', 10),
 	(7, '9782020415767', 3),
 	(3, '9782010044182', 3),
-
+	(4, '9782330012380', 2),
 	(6, '9782227340282', 8),
 	(4, '9782742431694', 7),
 	(4, '9782226002884', 6),
@@ -11468,7 +11468,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782012448421', 9),
 	(4, '9782020529952', 6),
 	(3, '9782226036513', 2),
-
+	(5, '9782020141383', 1),
 	(2, '9782081272286', 7),
 	(7, '9782010017858', 9),
 	(4, '9782012099715', 6),
@@ -11502,12 +11502,12 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782226094148', 7),
 	(7, '9782080102300', 2),
 	(6, '9782020970044', 7),
-
-
+	(7, '9782205034066', 10),
+	(5, '9782020066952', 3),
 	(7, '9782012016934', 6),
 	(2, '9782012448292', 10),
 	(1, '9782080685995', 7),
-
+	(7, '9782742758494', 9),
 	(2, '9782012458314', 5),
 	(2, '9782742740857', 1),
 	(1, '9782020058667', 5),
@@ -11517,10 +11517,10 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782080608475', 8),
 	(2, '9782081622999', 9),
 	(1, '9782081240742', 7),
-
+	(7, '9782226155733', 10),
 	(6, '9782505001430', 8),
 	(2, '9782742713110', 4),
-
+	(4, '9782226144232', 10),
 	(4, '9782012360426', 4),
 	(1, '9782081622616', 3),
 	(3, '9782070728695', 2),
@@ -11546,17 +11546,17 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782010151262', 8),
 	(6, '9782020183581', 8),
 	(4, '9782742732128', 2),
-
+	(2, '9782081210110', 10),
 	(3, '9782081220522', 3),
 	(1, '9782010123283', 4),
 	(4, '9782226092304', 3),
 	(3, '9782081229501', 3),
-
+	(2, '9782021496475', 5),
 	(4, '9782227738898', 1),
 	(4, '9782226016362', 8),
 	(5, '9782082000819', 2),
 	(3, '9782226048653', 4),
-
+	(3, '9782742774692', 8),
 	(2, '9782075084734', 2),
 	(7, '9782226092762', 2),
 	(6, '9782215019862', 7),
@@ -11568,25 +11568,25 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782010123283', 1),
 	(6, '9782081268791', 8),
 	(1, '9782012353473', 8),
-
+	(1, '9782021496475', 7),
 	(6, '9782080687982', 3),
-
+	(2, '9782080300782', 6),
 	(6, '9782021111293', 10),
 	(5, '9782080670533', 2),
 	(4, '9782020677615', 10),
 	(1, '9782226012845', 3),
 	(7, '9782081225497', 7),
-
+	(6, '9782205009187', 8),
 	(6, '9782742746019', 3),
 	(5, '9782016251720', 9),
 	(7, '9782742787128', 4),
 	(6, '9782215046097', 8),
 	(6, '9782070504633', 3),
 	(4, '9782012012219', 2),
-
+	(3, '9782742780600', 7),
 	(7, '9782226005878', 8),
 	(1, '9782226076878', 9),
-
+	(4, '9782012012653', 10),
 	(3, '9782080102300', 1),
 	(2, '9782012439351', 6),
 	(7, '9782080687401', 9),
@@ -11595,16 +11595,16 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782013214629', 5),
 	(3, '9782226056900', 6),
 	(4, '9782080670533', 2),
-
+	(4, '9782742774111', 9),
 	(5, '9782082402583', 10),
 	(1, '9782020069908', 8),
 	(3, '9782012366930', 6),
-
+	(1, '9782742700561', 2),
 	(2, '9782742756964', 2),
 	(3, '9782012016514', 2),
-
+	(5, '9782742712588', 9),
 	(3, '9782215095071', 7),
-
+	(1, '9782330012380', 1),
 	(1, '9782215048398', 2),
 	(7, '9782082015349', 10),
 	(4, '9782226108234', 6),
@@ -11614,9 +11614,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782226258250', 5),
 	(3, '9782080644589', 5),
 	(2, '9782226092038', 4),
-
+	(3, '9782215044260', 10),
 	(6, '9782012362055', 5),
-
+	(7, '9782020046626', 10),
 	(3, '9782205055740', 7),
 	(6, '9782226069252', 4),
 	(4, '9782070145348', 2),
@@ -11631,7 +11631,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782226175113', 3),
 	(4, '9782226238511', 10),
 	(7, '9782747030427', 1),
-
+	(1, '9782081286054', 5),
 	(1, '9782227355163', 5),
 	(4, '9782010163371', 3),
 	(2, '9782227473676', 9),
@@ -11640,7 +11640,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782747012935', 1),
 	(1, '9782226069252', 8),
 	(2, '9782215094548', 10),
-
+	(7, '9782080125156', 7),
 	(6, '9782020144339', 8),
 	(1, '9780446570992', 7),
 	(4, '9782020236850', 1),
@@ -11664,7 +11664,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782011456755', 5),
 	(7, '9782747025553', 6),
 	(7, '9782012448421', 2),
-
+	(2, '9782020141383', 9),
 	(3, '9782226218704', 3),
 	(5, '9782080102102', 8),
 	(5, '9782020557900', 2),
@@ -11675,7 +11675,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782742703920', 10),
 	(4, '9782010127434', 2),
 	(2, '9782070749386', 7),
-
+	(5, '9782012403338', 3),
 	(1, '9782226074669', 3),
 	(3, '9782012423701', 3),
 	(4, '9782021496208', 4),
@@ -11685,14 +11685,14 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782010010811', 9),
 	(5, '9782070354757', 9),
 	(6, '9782010054877', 3),
-
+	(4, '9782081244566', 10),
 	(7, '9782012350014', 5),
 	(2, '9782226071507', 9),
 	(3, '9782227721340', 8),
 	(2, '9782081622616', 5),
 	(4, '9782742753192', 9),
 	(1, '9782020095983', 2),
-
+	(4, '9782081286054', 1),
 	(2, '9782020024600', 2),
 	(3, '9782020045094', 8),
 	(7, '9782742771806', 10),
@@ -11712,7 +11712,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782070661282', 4),
 	(7, '9782747019965', 8),
 	(7, '9782020816991', 2),
-
+	(4, '9782020208598', 4),
 	(3, '9782742771509', 4),
 	(1, '9782227486256', 9),
 	(5, '9782082111225', 4),
@@ -11739,9 +11739,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782080674814', 6),
 	(4, '9782742794959', 10),
 	(6, '9782012368378', 9),
-
+	(7, '9782020005852', 4),
 	(7, '9782226107213', 10),
-
+	(3, '9782742704767', 10),
 	(6, '9782226091604', 7),
 	(2, '9782012246065', 9),
 	(2, '9782020352512', 1),
@@ -11752,7 +11752,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782226092304', 2),
 	(7, '9782742738748', 7),
 	(3, '9782070310159', 6),
-
+	(5, '9782227360365', 4),
 	(7, '9782012019812', 9),
 	(2, '9782010077661', 4),
 	(1, '9782081618435', 1),
@@ -11760,8 +11760,8 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782081240742', 2),
 	(6, '9782020062817', 9),
 	(1, '9782205077193', 10),
-
-
+	(1, '9782227301580', 1),
+	(1, '9782020087438', 1),
 	(7, '9782227725249', 2),
 	(4, '9782010207570', 9),
 	(4, '9782226208095', 9),
@@ -11773,7 +11773,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782020049382', 8),
 	(4, '9782020048118', 9),
 	(5, '9782082024587', 4),
-
+	(7, '9782330012380', 2),
 	(3, '9782747034692', 2),
 	(6, '9782012266728', 2),
 	(6, '9782082000819', 6),
@@ -11781,11 +11781,11 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782070312306', 9),
 	(3, '9782226241900', 10),
 	(6, '9782020256711', 3),
-
+	(5, '9782010173981', 4),
 	(6, '9782081366657', 4),
 	(4, '9782227301061', 4),
 	(7, '9782080125842', 3),
-
+	(5, '9782227301399', 9),
 	(2, '9782226092304', 1),
 	(5, '9782020065870', 9),
 	(7, '9782226154415', 8),
@@ -11800,17 +11800,17 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782226099853', 2),
 	(7, '9782080681423', 7),
 	(1, '9782070310159', 2),
-
+	(1, '9782081310711', 10),
 	(2, '9782010151262', 2),
 	(7, '9782205003741', 8),
 	(4, '9782330032234', 6),
 	(7, '9782020124164', 6),
-
+	(1, '9782742707119', 4),
 	(4, '9782747049078', 10),
 	(7, '9782330080204', 10),
 	(7, '9782070615568', 6),
-
-
+	(5, '9782080304742', 10),
+	(2, '9782227340954', 10),
 	(6, '9782742749485', 4),
 	(1, '9782742747467', 4),
 	(3, '9782080666307', 7),
@@ -11819,7 +11819,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782070504633', 6),
 	(4, '9782081308879', 2),
 	(5, '9782742713578', 3),
-
+	(6, '9782012100060', 10),
 	(4, '9782012372498', 9),
 	(7, '9782747037440', 5),
 	(1, '9782011691965', 4),
@@ -11843,7 +11843,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782012404960', 1),
 	(5, '9782742738168', 2),
 	(2, '9782080660367', 5),
-
+	(7, '9782605000289', 4),
 	(6, '9782080609526', 10),
 	(3, '9782082000819', 2),
 	(4, '9782226157591', 4),
@@ -11866,7 +11866,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782080710970', 2),
 	(4, '9782020789929', 10),
 	(6, '9782742746439', 5),
-
+	(4, '9782742431540', 5),
 	(2, '9782016211106', 9),
 	(6, '9782227738737', 10),
 	(7, '9782012016514', 7),
@@ -11879,12 +11879,12 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782742795987', 7),
 	(2, '9782012013605', 7),
 	(1, '9782226157591', 2),
-
+	(7, '9782227340954', 4),
 	(7, '9782012444720', 6),
 	(7, '9782016251720', 9),
 	(7, '9782080647795', 6),
 	(3, '9782081622951', 3),
-
+	(6, '9782070577101', 10),
 	(6, '9782020067584', 4),
 	(4, '9782226155108', 8),
 	(6, '9782227315785', 3),
@@ -11892,7 +11892,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782226074669', 9),
 	(2, '9782020573306', 5),
 	(7, '9782742700981', 8),
-
+	(7, '9782021496475', 3),
 	(3, '9782081622999', 6),
 	(3, '9782330000387', 3),
 	(7, '9782081618435', 9),
@@ -11908,13 +11908,13 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782010039270', 4),
 	(3, '9782070695171', 8),
 	(1, '9782020053112', 1),
-
+	(5, '9782742429264', 2),
 	(2, '9782020053112', 2),
 	(7, '9782205055504', 4),
 	(4, '9782215050155', 8),
 	(3, '9782081626485', 5),
 	(7, '9782226158574', 8),
-
+	(5, '9782080120137', 5),
 	(2, '9782227745018', 10),
 	(7, '9782020235099', 10),
 	(6, '9782742400089', 8),
@@ -11925,9 +11925,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782021097153', 8),
 	(5, '9782742747467', 3),
 	(7, '9782227488472', 9),
-
+	(1, '9782330000066', 2),
 	(4, '9782081617490', 9),
-
+	(4, '9782723430791', 8),
 	(2, '9782227727656', 6),
 	(4, '9782742746019', 10),
 	(7, '9782227727656', 7),
@@ -11949,11 +11949,11 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782227436398', 10),
 	(6, '9780446570992', 8),
 	(2, '9782070695171', 7),
-
+	(7, '9782020259712', 8),
 	(2, '9782226005878', 1),
 	(4, '9782080644411', 10),
 	(6, '9782012246065', 5),
-
+	(1, '9782081210110', 7),
 	(2, '9782205064223', 10),
 	(1, '9782070340231', 7),
 	(5, '9782080126115', 4),
@@ -11986,7 +11986,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782742719693', 4),
 	(3, '9782226063137', 2),
 	(7, '9782012359482', 10),
-
+	(2, '9782226155733', 2),
 	(4, '9782226036513', 6),
 	(7, '9782082013901', 8),
 	(1, '9782010010057', 8),
@@ -11996,7 +11996,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782020628815', 2),
 	(2, '9782742797394', 2),
 	(6, '9782215053859', 1),
-
+	(3, '9782020005852', 2),
 	(7, '9782012526808', 1),
 	(1, '9782723494632', 6),
 	(1, '9782070145348', 4),
@@ -12008,7 +12008,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782020573306', 8),
 	(4, '9782020251594', 1),
 	(1, '9782021001822', 7),
-
+	(1, '9782205073393', 5),
 	(2, '9782226251978', 7),
 	(7, '9782020054621', 2),
 	(4, '9782226147905', 9),
@@ -12019,18 +12019,18 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782742790999', 6),
 	(3, '9782012384460', 10),
 	(4, '9782011456755', 2),
-
+	(2, '9782330167691', 9),
 	(4, '9782021091946', 10),
 	(3, '9782020120784', 5),
 	(1, '9782226002884', 2),
 	(7, '9782020323338', 2),
-
+	(4, '9782330013073', 7),
 	(3, '9782215083160', 4),
 	(2, '9782205055504', 6),
 	(3, '9782013214629', 5),
 	(4, '9782080685995', 2),
 	(5, '9782226057235', 10),
-
+	(1, '9782205043464', 9),
 	(7, '9782070584246', 9),
 	(1, '9782226190673', 3),
 	(5, '9782013920049', 3),
@@ -12047,7 +12047,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782020090339', 10),
 	(4, '9782012304321', 6),
 	(7, '9782080800046', 10),
-
+	(7, '9782871295914', 1),
 	(1, '9782020667760', 1),
 	(5, '9782011550743', 6),
 	(4, '9782012402270', 10),
@@ -12058,7 +12058,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782080113030', 9),
 	(6, '9782012792852', 9),
 	(1, '9782205054910', 10),
-
+	(1, '9782227481947', 3),
 	(1, '9782012428539', 10),
 	(4, '9782081622920', 1),
 	(6, '9782226085962', 1),
@@ -12066,33 +12066,33 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782742706914', 9),
 	(2, '9782723450423', 9),
 	(7, '9782010139772', 1),
-
+	(7, '9782082018227', 6),
 	(4, '9782910868758', 10),
 	(2, '9782215087403', 3),
 	(7, '9782081229501', 10),
 	(2, '9782253032380', 5),
-
+	(6, '9782070619993', 2),
 	(3, '9782742703920', 8),
-
+	(6, '9782723437202', 9),
 	(7, '9782081622739', 3),
 	(2, '9782742753192', 3),
-
+	(1, '9782742708499', 2),
 	(6, '9782226005625', 6),
 	(7, '9782205049794', 2),
 	(4, '9782012451308', 8),
 	(4, '9782082005074', 5),
 	(1, '9782020045094', 8),
-
+	(1, '9782227366015', 5),
 	(1, '9782012016088', 8),
-
-
+	(7, '9782227317192', 8),
+	(4, '9782080305565', 9),
 	(1, '9782080710970', 4),
 	(3, '9782020373807', 5),
-
+	(7, '9782080671738', 4),
 	(6, '9782226181756', 4),
 	(2, '9782215114970', 5),
 	(6, '9782205077193', 6),
-
+	(7, '9782020204385', 2),
 	(2, '9782215095071', 7),
 	(2, '9782020052047', 8),
 	(7, '9782227345133', 6),
@@ -12103,24 +12103,24 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782723450423', 2),
 	(1, '9782020970044', 6),
 	(1, '9782080672407', 6),
-
-
+	(6, '9782020044158', 3),
+	(7, '9782742704767', 7),
 	(1, '9782226076274', 4),
 	(2, '9782705001995', 4),
 	(6, '9782070584246', 5),
 	(2, '9782016251775', 4),
 	(7, '9782742744749', 4),
 	(7, '9782021011296', 4),
-
+	(1, '9782742758494', 8),
 	(7, '9782226069252', 10),
-
+	(3, '9782330012380', 5),
 	(4, '9782226078711', 5),
 	(2, '9782020260930', 4),
 	(7, '9782742401758', 9),
 	(4, '9782742772285', 2),
 	(2, '9782081624757', 8),
-
-
+	(2, '9782080109941', 1),
+	(6, '9782330000066', 3),
 	(4, '9782020480079', 7),
 	(6, '9782012404960', 6),
 	(5, '9782010093159', 10),
@@ -12137,7 +12137,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782226087089', 5),
 	(4, '9782020053259', 2),
 	(6, '9782226142535', 10),
-
+	(4, '9782020046626', 1),
 	(3, '9782747029902', 9),
 	(1, '9782011675835', 10),
 	(7, '9782020024600', 4),
@@ -12147,7 +12147,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782070586783', 4),
 	(2, '9782012440098', 7),
 	(2, '9782010098048', 10),
-
+	(4, '9782330167691', 7),
 	(4, '9782012362055', 10),
 	(7, '9782020125062', 8),
 	(4, '9782081640221', 4),
@@ -12157,21 +12157,21 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782226472496', 8),
 	(7, '9782012428454', 8),
 	(4, '9782011550743', 7),
-
-
+	(6, '9782010173981', 8),
+	(4, '9782080304742', 7),
 	(3, '9782226105424', 8),
 	(1, '9782070643486', 2),
 	(1, '9782227340282', 7),
 	(7, '9782012016699', 5),
 	(6, '9782080136411', 10),
 	(5, '9782226060839', 3),
-
+	(1, '9782742774692', 5),
 	(6, '9782012402270', 2),
-
+	(3, '9782012101425', 1),
 	(5, '9782227723016', 8),
-
+	(7, '9782020479981', 4),
 	(1, '9782227436305', 9),
-
+	(4, '9782742704767', 9),
 	(4, '9782020128971', 4),
 	(7, '9782012424067', 7),
 	(6, '9782020048743', 1),
@@ -12189,12 +12189,12 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782227473676', 9),
 	(5, '9782013926478', 10),
 	(5, '9782081269965', 8),
-
+	(6, '9782081244566', 1),
 	(7, '9782020947343', 4),
 	(4, '9782070633708', 7),
 	(5, '9782012009653', 6),
 	(1, '9782020048743', 5),
-
+	(4, '9782227475304', 5),
 	(3, '9782080681423', 4),
 	(3, '9782021111293', 5),
 	(2, '9782070631322', 10),
@@ -12208,21 +12208,21 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782227725249', 7),
 	(1, '9782215046554', 10),
 	(6, '9782080122711', 7),
-
-
-
+	(7, '9782227481947', 2),
+	(5, '9782330012380', 5),
+	(1, '9782742763337', 7),
 	(2, '9782020201605', 5),
 	(7, '9782081618657', 9),
 	(4, '9782012010437', 8),
 	(7, '9782021122220', 3),
 	(7, '9782020066068', 3),
 	(2, '9782215093107', 2),
-
+	(7, '9782080305350', 3),
 	(4, '9782070586783', 2),
 	(6, '9782081622555', 8),
 	(4, '9782080666307', 4),
 	(3, '9782742723225', 10),
-
+	(7, '9782081609440', 2),
 	(3, '9782020047722', 7),
 	(6, '9782082013901', 6),
 	(3, '9782742777891', 7),
@@ -12230,7 +12230,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782010054877', 4),
 	(4, '9782012401631', 5),
 	(1, '9782742797356', 4),
-
+	(7, '9782227425552', 8),
 	(6, '9782226019363', 7),
 	(6, '9782012099715', 5),
 	(3, '9782227488472', 1),
@@ -12240,7 +12240,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782226060198', 1),
 	(1, '9782080201713', 2),
 	(3, '9782020091787', 10),
-
+	(7, '9782747020541', 3),
 	(4, '9782747029902', 3),
 	(4, '9782747048200', 2),
 	(5, '9782330030322', 2),
@@ -12255,7 +12255,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782081226708', 7),
 	(4, '9782020144339', 3),
 	(6, '9782742771509', 2),
-
+	(1, '9782081244566', 7),
 	(4, '9782020233491', 9),
 	(5, '9782081618718', 10),
 	(5, '9782070126002', 9),
@@ -12269,7 +12269,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782012368781', 10),
 	(2, '9782012921634', 4),
 	(4, '9782505001430', 7),
-
+	(4, '9782020005852', 4),
 	(4, '9782021001822', 10),
 	(1, '9782226158574', 3),
 	(2, '9782080135605', 2),
@@ -12278,14 +12278,14 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782010163371', 4),
 	(2, '9782020789929', 9),
 	(2, '9782070541515', 1),
-
+	(2, '9782227610989', 4),
 	(2, '9782012252035', 6),
 	(3, '9782226012845', 9),
 	(3, '9782742787128', 8),
 	(5, '9782226021267', 2),
 	(3, '9782020114479', 9),
 	(6, '9782742772285', 7),
-
+	(7, '9782215044260', 1),
 	(7, '9782226193018', 10),
 	(7, '9782080674814', 9),
 	(2, '9782226312518', 3),
@@ -12309,14 +12309,14 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782070332717', 3),
 	(4, '9782080661456', 1),
 	(1, '9782080609397', 3),
-
+	(1, '9782020213806', 1),
 	(7, '9782742738168', 5),
 	(3, '9782081625099', 5),
 	(1, '9782747014021', 2),
 	(2, '9782012916517', 7),
-
+	(7, '9782227436268', 2),
 	(2, '9782020256711', 7),
-
+	(5, '9782742707119', 3),
 	(5, '9782742734429', 10),
 	(2, '9782020125062', 1),
 	(5, '9782012456044', 4),
@@ -12342,7 +12342,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782226034403', 7),
 	(6, '9782227721340', 3),
 	(4, '9782215091080', 2),
-
+	(2, '9782330013073', 4),
 	(6, '9782012445888', 10),
 	(4, '9782020996143', 1),
 	(2, '9782081238268', 2),
@@ -12351,10 +12351,10 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782012017108', 3),
 	(4, '9782020045186', 7),
 	(2, '9782082111225', 3),
-
+	(6, '9782742780600', 6),
 	(6, '9782021186086', 7),
 	(1, '9782012434349', 8),
-
+	(1, '9782227471344', 5),
 	(5, '9782070499687', 10),
 	(7, '9782081223509', 8),
 	(7, '9782012401167', 10),
@@ -12363,9 +12363,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782012402270', 6),
 	(5, '9782020089449', 3),
 	(1, '9782012435520', 1),
-
+	(7, '9782020213806', 6),
 	(2, '9782081217218', 2),
-
+	(6, '9782020662512', 10),
 	(2, '9782226238511', 8),
 	(4, '9782016210338', 9),
 	(5, '9782705001995', 5),
@@ -12373,7 +12373,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782020258210', 6),
 	(5, '9782012458314', 4),
 	(6, '9782021083729', 7),
-
+	(6, '9782742738694', 5),
 	(4, '9782742747467', 5),
 	(7, '9782080672407', 3),
 	(5, '9782012448421', 5),
@@ -12392,7 +12392,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782013926478', 1),
 	(7, '9782226001535', 6),
 	(7, '9782226005106', 7),
-
+	(5, '9782205043464', 6),
 	(6, '9782742700059', 10),
 	(3, '9782020088992', 9),
 	(2, '9782215022640', 6),
@@ -12414,7 +12414,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782215087335', 5),
 	(5, '9782723471589', 3),
 	(2, '9782226175113', 2),
-
+	(7, '9782226039538', 7),
 	(7, '9782081604896', 9),
 	(5, '9782012602021', 6),
 	(7, '9782020944656', 4),
@@ -12424,15 +12424,15 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782742732128', 8),
 	(1, '9782011667519', 6),
 	(5, '9782020052047', 5),
-
+	(2, '9782012403338', 4),
 	(3, '9782020094443', 6),
 	(2, '9782226020666', 3),
 	(3, '9782080642349', 5),
-
+	(2, '9782227471344', 9),
 	(7, '9782330065850', 4),
 	(7, '9782021230833', 3),
 	(5, '9782742797370', 1),
-
+	(3, '9782080300782', 5),
 	(2, '9782226158758', 5),
 	(5, '9782080664020', 7),
 	(7, '9782021052374', 9),
@@ -12448,34 +12448,34 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782226117052', 10),
 	(6, '9782742797370', 4),
 	(2, '9782226318558', 2),
-
+	(7, '9782080106957', 4),
 	(2, '9782226074669', 3),
 	(6, '9782070587469', 8),
 	(7, '9782227355163', 1),
 	(1, '9782012440098', 2),
 	(1, '9782227477490', 2),
 	(7, '9782227486256', 10),
-
+	(7, '9782010209444', 5),
 	(2, '9782080689931', 5),
 	(2, '9782742797370', 6),
 	(4, '9782226013033', 9),
 	(4, '9782080669070', 10),
 	(7, '9782020101646', 6),
-
+	(1, '9782010192548', 4),
 	(4, '9782020220118', 6),
 	(1, '9782070616763', 6),
 	(3, '9782012435704', 9),
-
+	(1, '9782020662512', 8),
 	(5, '9782010093128', 4),
-
+	(6, '9782227475304', 8),
 	(7, '9782070499687', 7),
 	(1, '9782012350014', 8),
 	(1, '9782080689931', 8),
 	(1, '9782081212398', 5),
 	(2, '9782226477309', 4),
 	(3, '9782012414778', 2),
-
-
+	(3, '9782742707119', 6),
+	(7, '9782330013073', 9),
 	(7, '9782012315129', 10),
 	(3, '9782012355880', 8),
 	(2, '9782021092578', 4),
@@ -12483,9 +12483,9 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(5, '9782013221511', 1),
 	(4, '9782012016934', 4),
 	(2, '9782080687838', 9),
-
+	(2, '9782205009187', 10),
 	(3, '9782226118486', 9),
-
+	(1, '9782070312252', 5),
 	(2, '9782226016362', 8),
 	(5, '9782013920926', 10),
 	(7, '9782013923927', 9),
@@ -12497,16 +12497,16 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782012098428', 8),
 	(6, '9782081618435', 8),
 	(4, '9782080686022', 3),
-
+	(1, '9782227360365', 6),
 	(3, '9782081602274', 7),
 	(7, '9782226256881', 5),
 	(2, '9782012794924', 1),
-
+	(4, '9782205043464', 1),
 	(7, '9782012353916', 3),
 	(2, '9782020066068', 10),
 	(1, '9782012012899', 6),
 	(4, '9782080112910', 9),
-
+	(2, '9782012101425', 7),
 	(7, '9782723449854', 4),
 	(2, '9782020131537', 4),
 	(5, '9782742760107', 10),
@@ -12554,14 +12554,14 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782227487338', 2),
 	(3, '9782226021267', 2),
 	(7, '9782020096645', 10),
-
+	(3, '9782227436268', 6),
 	(4, '9782081621626', 5),
 	(7, '9782080201713', 1),
 	(7, '9782081624757', 2),
 	(2, '9782010122972', 4),
 	(6, '9782227022003', 10),
 	(4, '9782012916517', 4),
-
+	(7, '9782205043464', 2),
 	(2, '9782013923927', 4),
 	(4, '9782012602021', 5),
 	(3, '9782226084958', 3),
@@ -12610,7 +12610,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782226208545', 4),
 	(7, '9782070734856', 1),
 	(7, '9782747031974', 7),
-
+	(2, '9782226039538', 7),
 	(2, '9782010010057', 1),
 	(1, '9782021057614', 8),
 	(5, '9782020069908', 7),
@@ -12618,30 +12618,30 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782226008848', 3),
 	(3, '9782010155468', 10),
 	(1, '9782226016690', 9),
-
+	(2, '9782226144232', 3),
 	(6, '9782226005878', 9),
-
+	(4, '9782020796569', 10),
 	(7, '9782020144339', 2),
 	(6, '9782020053259', 3),
 	(7, '9782215046554', 2),
-
+	(2, '9782020213806', 5),
 	(3, '9782012526808', 8),
 	(2, '9782742760107', 2),
-
+	(4, '9782227481947', 1),
 	(4, '9782012447479', 8),
 	(2, '9782012402157', 9),
 	(1, '9782226095244', 4),
 	(3, '9782020059916', 9),
-
+	(2, '9782227481947', 10),
 	(7, '9782742797370', 7),
 	(5, '9782330057510', 9),
 	(2, '9782010082016', 7),
 	(4, '9782020093804', 5),
 	(4, '9782020183581', 7),
-
+	(2, '9782742738694', 8),
 	(3, '9782080661456', 2),
 	(4, '9782070571963', 8),
-
+	(2, '9782205043464', 2),
 	(1, '9782010122972', 3),
 	(5, '9782020048101', 10),
 	(1, '9782742401758', 8),
@@ -12656,11 +12656,11 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782227729643', 8),
 	(1, '9782020137041', 5),
 	(3, '9782012030947', 5),
-
+	(6, '9782020259712', 1),
 	(1, '9782020323338', 5),
 	(2, '9782742700059', 4),
 	(7, '9782012030947', 2),
-
+	(1, '9782010173981', 9),
 	(1, '9782020310055', 9),
 	(7, '9782081640221', 5),
 	(1, '9782080608475', 1),
@@ -12668,7 +12668,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782205062403', 4),
 	(2, '9782081618879', 4),
 	(3, '9782012456044', 5),
-
+	(4, '9782747020541', 10),
 	(7, '9782020060882', 10),
 	(4, '9782205064223', 4),
 	(2, '9782070541867', 4),
@@ -12679,7 +12679,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782080102300', 2),
 	(2, '9782226002662', 5),
 	(4, '9782020049726', 8),
-
+	(6, '9782081607484', 5),
 	(4, '9782226158758', 1),
 	(7, '9782070442430', 10),
 	(2, '9782742401758', 9),
@@ -12718,7 +12718,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782020996143', 3),
 	(2, '9782818501146', 4),
 	(1, '9782227436497', 10),
-
+	(3, '9782205058024', 8),
 	(7, '9782020396561', 10),
 	(2, '9782227478206', 1),
 	(1, '9782016251775', 10),
@@ -12726,16 +12726,16 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782080607782', 6),
 	(2, '9782081243538', 2),
 	(6, '9782012018778', 4),
-
+	(2, '9782205034066', 8),
 	(7, '9782082025010', 10),
 	(6, '9782330001841', 3),
-
-
-
+	(7, '9782742754847', 9),
+	(6, '9782330167691', 1),
+	(4, '9782226094209', 10),
 	(6, '9782080685995', 4),
 	(6, '9782080112910', 9),
 	(4, '9782227486805', 2),
-
+	(1, '9782020259712', 10),
 	(7, '9782081638082', 9),
 	(6, '9782226182357', 2),
 	(4, '9782010174780', 4),
@@ -12745,12 +12745,12 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782227345133', 6),
 	(6, '9782227487130', 3),
 	(5, '9782081217782', 9),
-
+	(4, '9782020141383', 2),
 	(5, '9782227436398', 8),
 	(1, '9782080815149', 6),
 	(4, '9782080813909', 10),
 	(1, '9782226060730', 7),
-
+	(7, '9782080300782', 3),
 	(7, '9782227340282', 2),
 	(6, '9782226188410', 10),
 	(6, '9782742794959', 10),
@@ -12764,7 +12764,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782020048743', 7),
 	(3, '9782012921634', 1),
 	(5, '9782226158758', 8),
-
+	(6, '9782742763337', 7),
 	(1, '9782012019812', 4),
 	(7, '9782010208232', 9),
 	(7, '9782226017840', 1),
@@ -12789,7 +12789,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782070665099', 10),
 	(1, '9782080690616', 2),
 	(7, '9782742784974', 1),
-
+	(2, '9782070622757', 6),
 	(7, '9782012439351', 4),
 	(7, '9782226477309', 9),
 	(7, '9782020065757', 9),
@@ -12824,8 +12824,8 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(6, '9782505002635', 1),
 	(4, '9782226019363', 5),
 	(6, '9782081229501', 8),
-
-
+	(6, '9782227301399', 6),
+	(4, '9782080120137', 2),
 	(6, '9782011776181', 9),
 	(7, '9782010196119', 5),
 	(5, '9782021071474', 8),
@@ -12835,7 +12835,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782020066068', 1),
 	(6, '9782742766024', 1),
 	(4, '9782226087089', 7),
-
+	(1, '9782742738694', 5),
 	(2, '9782070570669', 8),
 	(6, '9782227729032', 5),
 	(4, '9782011667458', 9),
@@ -12853,11 +12853,11 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782020113977', 3),
 	(2, '9782330034870', 4),
 	(2, '9782020128971', 5),
-
+	(2, '9782742431540', 6),
 	(4, '9782012449381', 1),
 	(1, '9782020202473', 1),
 	(6, '9782226048653', 6),
-
+	(2, '9782080125156', 10),
 	(6, '9782227721968', 9),
 	(5, '9782010127434', 8),
 	(6, '9782227325135', 4),
@@ -12866,7 +12866,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782868690593', 6),
 	(1, '9782226005878', 4),
 	(7, '9782020069687', 1),
-
+	(4, '9782010209444', 3),
 	(7, '9782227487130', 6),
 	(2, '9782070126002', 3),
 	(7, '9782070728695', 7),
@@ -12877,7 +12877,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782070695768', 9),
 	(7, '9782215008163', 2),
 	(4, '9782020114721', 2),
-
+	(7, '9782012012653', 8),
 	(1, '9782226002242', 3),
 	(3, '9782011667519', 7),
 	(2, '9782330006563', 4),
@@ -12885,13 +12885,13 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782081269965', 1),
 	(1, '9782215075387', 3),
 	(3, '9782080687838', 1),
-
+	(7, '9782080305565', 10),
 	(2, '9782020211093', 6),
 	(5, '9782020063418', 7),
 	(2, '9782227301061', 8),
 	(2, '9782080122711', 3),
 	(6, '9782082117036', 9),
-
+	(6, '9782742708499', 1),
 	(1, '9782020093453', 5),
 	(7, '9782226022059', 7),
 	(6, '9782081602274', 8),
@@ -12904,13 +12904,13 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782012239913', 7),
 	(2, '9782013926478', 1),
 	(1, '9782215046097', 7),
-
+	(3, '9782226119490', 6),
 	(3, '9782010039270', 10),
 	(3, '9782742771806', 6),
 	(4, '9782080644589', 1),
 	(1, '9782070780129', 8),
 	(7, '9782226034403', 3),
-
+	(4, '9782081235373', 5),
 	(7, '9782205054910', 7),
 	(6, '9782010174780', 8),
 	(1, '9782010174780', 7),
@@ -12927,7 +12927,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782020054621', 10),
 	(3, '9782020159647', 3),
 	(5, '9782011667519', 9),
-
+	(5, '9782010078064', 5),
 	(6, '9782080686022', 3),
 	(3, '9782742794959', 4),
 	(1, '9782205067996', 3),
@@ -12936,7 +12936,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(2, '9782226036971', 2),
 	(7, '9782020247016', 1),
 	(1, '9782742400089', 5),
-
+	(5, '9782227475304', 7),
 	(5, '9782227301184', 7),
 	(6, '9782080106841', 8),
 	(2, '9782070545865', 6),
@@ -12964,7 +12964,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(4, '9782020065757', 6),
 	(4, '9782082024587', 6),
 	(6, '9782226099853', 5),
-
+	(2, '9782226119490', 6),
 	(5, '9782020183581', 4),
 	(6, '9782081217867', 8),
 	(1, '9782020125062', 1),
@@ -13001,7 +13001,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(3, '9782080120786', 7),
 	(5, '9782021052374', 1),
 	(1, '9782020211093', 4),
-
+	(2, '9782081244566', 8),
 	(2, '9782226241900', 10),
 	(4, '9782020571951', 6),
 	(2, '9782020310055', 4),
@@ -13017,7 +13017,7 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(7, '9782070631322', 3),
 	(1, '9782012315129', 9),
 	(2, '9782070610815', 2),
-
+	(6, '9782742707119', 7),
 	(6, '9782020247016', 8),
 	(6, '9782226241900', 3),
 	(6, '9782020234900', 6),
@@ -13026,20 +13026,20 @@ insert into POSSEDER(idmag, isbn, qte) values
 	(1, '9782227487130', 8),
 	(2, '9782070661282', 10),
 	(4, '9782021011296', 2),
-
+	(6, '9782227425552', 6),
 	(7, '9782226002884', 4),
 	(7, '9782012457409', 3),
 	(3, '9782081248649', 2),
 	(5, '9782081621282', 6),
 	(1, '9782081270114', 4),
-
+	(6, '9782205073393', 10),
 	(4, '9782080109736', 9),
-
+	(6, '9782010056710', 8),
 	(2, '9782227757080', 4),
 	(7, '9782215011927', 9),
 	(2, '9782020251594', 2),
 	(3, '9782227436305', 10),
-
+	(1, '9782080106957', 7),
 	(3, '9782012372498', 5),
 	(6, '9782205049794', 10),
 	(4, '9782081640368', 8),
@@ -18109,7 +18109,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(24,1,9782012435704,1, 27.0),
 	(25,1,9782747037549,1,4.11),
 	(26,1,9782070615049,1, 11.0),
-
+	(27,1,9782205073393,1,24.88),
 	(27,2,9782742796656,1, 27.0),
 	(27,3,9782742797356,3,15.3),
 	(28,1,9782227718142,1, 20.1),
@@ -18128,7 +18128,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(38,1,9782020049672,1, 9.0),
 	(38,2,9782081640368,2, 9.0),
 	(39,1,9782020050142,1, 38.5),
-
+	(40,1,9782226119490,1, 9.0),
 	(41,1,9782020206396,1,5.08),
 	(42,1,9782723402170,2, 15.0),
 	(43,1,9782215048398,2, 28.3),
@@ -18162,7 +18162,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(64,1,9782021020878,2,36.45),
 	(65,1,9782012020061,3, 9.0),
 	(66,1,9782070427772,1,9.89),
-
+	(66,2,9782330167691,1,39.0),
 	(67,1,9782070631322,5,6.66),
 	(68,1,9782227476141,1,6.4),
 	(69,1,9782227436305,1, 35.0),
@@ -18170,7 +18170,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(71,1,9782226319326,1,19.5),
 	(71,2,9782723476980,1,14.5),
 	(72,1,9782080608475,5, 9.0),
-
+	(73,1,9782742411023,1,7.0),
 	(74,1,9782070631322,4, 9.0),
 	(75,1,9782010174780,1, 14.3),
 	(76,1,9782020144339,1, 23.2),
@@ -18181,7 +18181,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(80,1,9782020667760,1,10.1),
 	(81,1,9782226076878,1, 26.6),
 	(82,1,9782020047166,1,5.0),
-
+	(82,2,9782081286054,1,30.59),
 	(83,1,9782723489478,2,6.08),
 	(84,1,9782747031974,1, 35.1),
 	(84,2,9782227486324,2,191.99),
@@ -18226,14 +18226,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(113,1,9782742701681,1,15.2),
 	(114,1,9782227475670,1, 10.0),
 	(114,2,9782080687838,1,19.8),
-
+	(115,1,9782012101425,1,7.85),
 	(116,1,9782012366930,1, 10.0),
-
+	(117,1,9782742708499,1, 27.5),
 	(117,2,9782020634267,3, 11.9),
 	(118,1,9782010197000,1,6.53),
 	(119,1,9782868697219,1, 11.9),
 	(119,2,9782020661973,1,15.2),
-
+	(120,1,9782021362596,1,16.0),
 	(121,1,9782012368842,1, 9.0),
 	(122,1,9782080655035,1, 12.0),
 	(123,1,9782081640757,2, 39.7),
@@ -18244,7 +18244,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(128,1,9782215117384,3,6.2),
 	(129,1,9782226069474,3, 34.7),
 	(130,1,9782010078330,1,14.38),
-
+	(131,1,9782020796569,1, 11.9),
 	(132,1,9782081622005,1, 9.0),
 	(133,1,9782020050074,1, 27.5),
 	(134,1,9782020090339,1,7.0),
@@ -18252,11 +18252,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(136,1,9782082018180,1, 9.0),
 	(137,1,9782081219861,1, 9.0),
 	(138,1,9782016210338,1, 38.1),
-
+	(139,1,9782082104463,1,20.3),
 	(140,1,9782723468688,1,8.41),
 	(140,2,9782747024389,1,4.36),
 	(141,1,9782013214452,1, 9.0),
-
+	(141,2,9782742701179,1,17.78),
 	(141,3,9782205072693,1,13.76),
 	(142,1,9782070503537,1,4.98),
 	(143,1,9782010026195,1, 12.8),
@@ -18279,7 +18279,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(158,3,9782226173362,2,4.62),
 	(159,1,9782742751440,1,5.79),
 	(160,1,9782080609397,1,50.0),
-
+	(161,1,9782012101425,4, 9.0),
 	(162,1,9782330019600,1,39.0),
 	(162,2,9782020024600,3, 30.4),
 	(162,3,9782010174780,1, 14.3),
@@ -18291,11 +18291,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(166,1,9782205055726,1, 39.5),
 	(167,1,9782081633384,3,5.68),
 	(168,1,9782226069474,1, 34.7),
-
+	(168,2,9782020145930,1,9.4),
 	(169,1,9782012271791,1, 20.0),
 	(170,1,9782012400221,2, 9.0),
 	(171,1,9782012370845,1, 16.0),
-
+	(171,2,9782227301573,3, 29.9),
 	(172,1,9782080669070,2,39.08),
 	(173,1,9782010139772,1, 9.0),
 	(173,2,9782020057264,1, 20.0),
@@ -18313,8 +18313,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(182,1,9782012098428,1, 38.1),
 	(183,1,9782021020878,1,36.45),
 	(184,1,9782070515578,1,5.08),
-
-
+	(184,2,9782227610989,3, 9.0),
+	(185,1,9782330113704,1,45.01),
 	(186,1,9782020102919,1, 9.0),
 	(186,2,9782081243699,1, 32.5),
 	(187,1,9782868699862,1, 9.0),
@@ -18331,16 +18331,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(193,2,9782227478206,4, 25.1),
 	(194,1,9782012435339,1, 9.0),
 	(195,1,9782020146555,2,32.78),
-
+	(196,1,9782742701179,1,17.78),
 	(197,1,9782227310247,1, 9.0),
 	(198,1,9782080649430,1, 11.9),
 	(199,1,9782012434349,3, 20.0),
 	(200,1,9782020231008,1, 9.0),
-
+	(201,1,9782226060013,1, 30.0),
 	(201,2,9782226087294,1,9.5),
 	(202,1,9782012602021,1,22.83),
 	(202,2,9782020320030,1,5.98),
-
+	(203,1,9782010173981,1, 9.0),
 	(203,2,9782226193018,1, 9.0),
 	(204,1,9782012253285,1, 9.0),
 	(205,1,9782723490597,2,7.01),
@@ -18366,12 +18366,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(219,2,9782010213625,1, 9.0),
 	(220,1,9782010048692,1, 27.7),
 	(220,2,9782021091946,1,5.2),
-
+	(221,1,9782330006235,1,26.98),
 	(222,1,9782070728695,1,15.2),
 	(223,1,9782226089236,2,15.0),
 	(223,2,9782080644411,1,9.77),
-
-
+	(224,1,9782226060297,1,4.76),
+	(224,2,9782330000226,1,13.2),
 	(225,1,9782227727656,1, 9.0),
 	(226,1,9782021001822,1, 32.5),
 	(226,2,9782205064179,2,9.21),
@@ -18381,7 +18381,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(229,2,9782227486324,1,191.99),
 	(230,1,9782226005878,1,4.5),
 	(231,1,9782020130905,1, 11.9),
-
+	(231,2,9782742727728,1,9.2),
 	(232,1,9782080351524,1, 31.9),
 	(233,1,9782742431694,1, 10.0),
 	(234,1,9782012024465,1, 9.0),
@@ -18404,13 +18404,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(250,1,9782020878142,1,11.49),
 	(251,1,9782021122220,1,13.1),
 	(253,1,9782205055740,1,6.49),
-
+	(254,1,9782742708499,1, 27.5),
 	(255,1,9782226027016,1,4.36),
 	(256,1,9782205055504,1, 32.0),
-
+	(256,2,9782070577101,2, 21.7),
 	(257,1,9782227718142,1, 20.1),
 	(258,1,9782080689870,1, 9.0),
-
+	(259,1,9782227471580,1,17.99),
 	(260,1,9782020337946,1,4.37),
 	(261,1,9782226057235,1,11.91),
 	(262,1,9782226318664,1,4.95),
@@ -18427,12 +18427,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(271,2,9782226087898,1, 9.0),
 	(271,3,9782080660367,1,9.57),
 	(272,1,9782011205155,1,4.11),
-
+	(273,1,9782080120137,1,9.99),
 	(274,1,9782226095244,1, 27.0),
-
-
+	(275,1,9782330167691,1,39.0),
+	(276,1,9782020213806,1,5.94),
 	(277,1,9782070749386,1,11.14),
-
+	(278,1,9782226060297,1,4.76),
 	(279,1,9782747005081,1, 11.5),
 	(280,1,9782020057974,1,19.03),
 	(281,1,9782012402157,1, 24.0),
@@ -18444,7 +18444,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(285,1,9782010098321,3, 9.0),
 	(286,1,9782070696628,1,9.7),
 	(286,2,9782010072604,1,44.99),
-
+	(287,1,9782010192548,1,5.14),
 	(288,1,9782070332717,1,4.0),
 	(289,1,9782226092762,1,8.53),
 	(290,1,9782020349734,1, 9.0),
@@ -18453,7 +18453,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(293,1,9782080672407,2, 13.4),
 	(294,1,9782226008251,1,10.67),
 	(294,2,9782070519972,1, 9.0),
-
+	(295,1,9782021328363,1,7.6),
 	(296,1,9782020091602,2,4.0),
 	(297,1,9782012009554,2, 9.0),
 	(297,2,9782010184109,1,4.7),
@@ -18523,16 +18523,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(346,3,9782020373807,1,15.37),
 	(347,1,9782020156769,3, 11.9),
 	(347,2,9782020217927,1,26.5),
-
+	(347,3,9782742762927,1, 22.1),
 	(348,1,9782080609526,1,4.7),
 	(349,1,9782344008232,1, 9.0),
 	(349,2,9782020048118,1,5.47),
 	(350,1,9782020634267,1, 11.9),
-
+	(351,1,9782020796569,1, 11.9),
 	(352,1,9782081621442,1, 9.0),
 	(353,1,9782021091946,1,5.2),
 	(353,2,9782020189651,2, 32.5),
-
+	(353,3,9782021496475,1,28.5),
 	(353,4,9782010077449,1, 31.9),
 	(353,5,9782226007933,1,5.0),
 	(354,1,9782080125729,1, 9.0),
@@ -18552,7 +18552,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(365,1,9782020337946,2,4.37),
 	(367,1,9782227718142,1, 20.1),
 	(367,2,9782020300636,1,4.8),
-
+	(367,3,9782010192548,1,5.14),
 	(368,1,9782020002462,2,7.0),
 	(369,1,9782226105424,1,11.58),
 	(370,1,9782020965910,3,11.59),
@@ -18563,7 +18563,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(375,1,9782226181909,1,16.88),
 	(376,1,9782215083160,1, 9.0),
 	(377,1,9782080730275,1,4.94),
-
+	(377,2,9782747014410,1,5.05),
 	(377,3,9782723472098,2,5.0),
 	(378,1,9782742797370,3, 22.4),
 	(378,2,9782080109736,1, 18.0),
@@ -18575,11 +18575,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(382,2,9782010173936,2, 9.0),
 	(382,3,9782226054579,1, 29.9),
 	(383,1,9782020124164,1, 11.9),
-
+	(384,1,9782012101425,1, 9.0),
 	(385,1,9782010054877,2,11.9),
 	(385,2,9782226120601,1, 17.7),
 	(385,3,9782020066068,1, 9.0),
-
+	(386,1,9782010056710,1, 13.0),
 	(386,2,9782020201070,1, 27.0),
 	(387,1,9782747005081,1, 11.5),
 	(388,1,9782080901538,1,6.0),
@@ -18604,7 +18604,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(406,1,9782081217218,1, 26.6),
 	(406,2,9782016208090,1, 9.0),
 	(407,1,9782082000550,3,25.6),
-
+	(408,1,9782227340954,1, 9.0),
 	(409,1,9782012368903,1,15.0),
 	(409,2,9782226100566,1, 9.0),
 	(410,1,9782070390816,1, 20.1),
@@ -18614,13 +18614,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(414,1,9780340932056,2, 11.9),
 	(415,1,9782227475670,1, 10.0),
 	(416,1,9782016251447,1,5.6),
-
+	(417,1,9782021030532,3, 11.9),
 	(418,1,9782227738737,2, 9.0),
 	(419,1,9782020323093,1, 32.5),
 	(420,1,9782012360143,1,4.79),
 	(421,1,9782226076878,2, 26.6),
 	(422,1,9782020129022,1,13.91),
-
+	(423,1,9782742710485,1,15.5),
 	(424,1,9782080682123,1, 16.0),
 	(425,1,9782070583133,1, 9.0),
 	(427,1,9782020062770,2,28.02),
@@ -18636,7 +18636,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(437,1,9782020802161,1,4.99),
 	(438,1,9782010106934,2, 24.8),
 	(439,1,9782226076274,1,23.2),
-
+	(439,2,9782742763337,4,8.81),
 	(440,1,9782080136190,1,36.99),
 	(441,1,9782227485983,1,4.91),
 	(442,1,9782012351042,1,4.0),
@@ -18664,7 +18664,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(459,2,9782742713110,1, 37.0),
 	(459,3,9782227471634,1,6.53),
 	(460,1,9782226005779,1,18.6),
-
+	(461,1,9782742765737,1,15.34),
 	(462,1,9782226167187,1, 11.9),
 	(462,2,9782081220522,1, 32.5),
 	(462,3,9782215068105,2, 9.0),
@@ -18672,7 +18672,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(464,1,9782080120724,2,5.4),
 	(465,1,9782010106934,1, 24.8),
 	(465,2,9782012423701,1, 9.0),
-
+	(465,3,9782080300782,1,43.94),
 	(466,1,9782226006189,1, 11.9),
 	(466,2,9782227735040,2, 22.0),
 	(466,3,9782020159647,2,19.99),
@@ -18681,17 +18681,17 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(467,1,9782081617490,1, 9.0),
 	(468,1,9782226079244,1, 9.0),
 	(468,2,9782020104333,2,75.0),
-
+	(469,1,9781844301515,1,29.95),
 	(470,1,9782010015250,1, 26.9),
 	(471,1,9782226030375,1, 9.0),
 	(471,2,9782012010093,1, 35.1),
-
-
+	(472,1,9782010078064,2,25.01),
+	(473,1,9782010056710,1, 13.0),
 	(474,1,9782718905853,2,9.0),
 	(474,2,9782226190987,1, 32.5),
 	(474,3,9782010162213,1, 9.0),
 	(474,4,9782742759927,1,6.53),
-
+	(475,1,9782010126093,1,5.34),
 	(476,1,9782215075387,1,9.0),
 	(477,1,9782215084488,2, 9.0),
 	(478,1,9782227721326,1, 9.0),
@@ -18708,7 +18708,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(484,5,9782082118071,1, 9.0),
 	(485,1,9782012351042,2,4.0),
 	(486,1,9782082111225,1,19.95),
-
+	(487,1,9782868690975,1,6.38),
 	(487,2,9782747039192,1,4.34),
 	(487,3,9782226154286,1,24.9),
 	(487,4,9782080669407,1,8.04),
@@ -18718,7 +18718,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(490,1,9782020054881,1, 29.9),
 	(491,1,9782070665754,3,11.9),
 	(492,1,9782020320030,3,5.98),
-
+	(492,2,9782081244566,1, 10.0),
 	(494,1,9782020002462,1,7.0),
 	(494,2,9782215092858,1, 9.0),
 	(494,3,9782020049412,1,49.95),
@@ -18737,8 +18737,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(503,1,9782742772902,2, 32.5),
 	(503,2,9782020320030,1,5.98),
 	(504,1,9782742401758,1,4.91),
-
-
+	(505,1,9782020796569,1, 11.9),
+	(506,1,9782020044158,5,7.0),
 	(507,1,9782226238566,1, 33.0),
 	(508,1,9782020233491,5,77.92),
 	(509,1,9782020091787,2, 20.0),
@@ -18767,19 +18767,19 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(531,1,9782227350144,2, 9.0),
 	(532,1,9782020349734,1, 9.0),
 	(532,2,9782723441162,2,11.0),
-
+	(533,1,9782080300782,2,43.94),
 	(534,1,9782205066623,1, 27.5),
 	(535,1,9782020628716,1, 13.4),
-
-
+	(536,1,9782227484924,1,19.41),
+	(537,1,9782020164573,1,6.08),
 	(538,1,9782070721689,1, 9.0),
-
+	(539,1,9782020005852,1,5.46),
 	(539,2,9782081630840,1,4.36),
-
+	(540,1,9782330000141,1, 12.4),
 	(541,1,9782226089236,1,15.0),
 	(542,1,9782081619500,1, 9.0),
 	(543,1,9782742706334,1, 25.0),
-
+	(544,1,9782742752881,1,4.1),
 	(544,2,9782012427426,1, 9.0),
 	(545,1,9782742746439,1,6.0),
 	(546,1,9782012009554,1, 9.0),
@@ -18792,7 +18792,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(551,3,9782010072604,1,44.99),
 	(552,1,9782081295735,2,34.99),
 	(552,2,9782012401631,1, 13.0),
-
+	(553,1,9782226144232,1, 9.0),
 	(554,1,9782081618596,1, 9.0),
 	(554,2,9782742792986,3, 39.1),
 	(555,1,9782215088936,1, 9.0),
@@ -18805,12 +18805,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(560,1,9782012262324,1, 9.0),
 	(561,1,9782082003933,1,9.98),
 	(562,1,9782020201070,1, 27.0),
-
+	(563,1,9782020573719,2,6.53),
 	(564,1,9782020069588,2, 9.0),
 	(564,2,9782226074669,1,4.89),
 	(565,1,9782020227896,1, 32.5),
 	(565,2,9782226019363,1,7.58),
-
+	(566,1,9782020141383,1,17.09),
 	(567,1,9782080201713,2,149.99),
 	(568,1,9782742781171,1,7.29),
 	(569,1,9782226155870,1,4.98),
@@ -18826,10 +18826,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(577,1,9782226141989,1,24.3),
 	(578,1,9782226018830,1, 35.0),
 	(579,1,9782227721098,1,4.69),
-
+	(580,1,9782742707119,1,5.0),
 	(581,1,9782020159647,1,19.99),
 	(582,1,9782020396561,1, 35.0),
-
+	(583,1,9782742730513,2,21.5),
 	(583,2,9782012008489,1, 9.9),
 	(584,1,9782226036513,3, 9.0),
 	(584,2,9782012276147,1,23.43),
@@ -18837,24 +18837,24 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(584,4,9782742738168,1,57.99),
 	(584,5,9782012384460,1,120.0),
 	(585,1,9782012353473,1,5.99),
-
+	(585,2,9782742758463,1,4.59),
 	(585,3,9782020146555,1,32.78),
 	(586,1,9782020961608,1,9.5),
 	(587,1,9782226131379,1, 11.9),
 	(587,2,9782330065850,1,18.0),
-
+	(587,3,9782020662512,5, 11.9),
 	(588,1,9782080113030,1,15.1),
 	(589,1,9782226076878,1, 26.6),
 	(590,1,9782020667760,1,10.1),
 	(591,1,9782020061629,1,9.28),
-
+	(591,2,9782205087307,1,12.7),
 	(592,1,9782226060198,1,19.99),
 	(593,1,9782013304832,5,6.53),
 	(594,1,9782012352711,1,4.14),
 	(595,1,9782226005250,1,30.01),
 	(596,1,9782330002510,1,14.81),
 	(597,1,9782742713110,1, 37.0),
-
+	(598,1,9782227478091,1,8.95),
 	(599,1,9782226058997,1,5.12),
 	(600,1,9782226006646,1,25.0),
 	(601,1,9782226188410,1, 11.9),
@@ -18868,9 +18868,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(605,1,9782081269965,1, 9.0),
 	(606,1,9782226318558,1, 38.1),
 	(607,1,9782010201295,1, 24.0),
-
+	(608,1,9782742708499,1, 27.5),
 	(609,1,9782081333857,1,19.9),
-
+	(609,2,9782020635424,1,30.98),
 	(609,3,9782012246065,1,8.18),
 	(610,1,9782742422364,2, 27.0),
 	(611,1,9782227473676,1,7.6),
@@ -18881,7 +18881,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(614,1,9782012402157,1, 24.0),
 	(615,1,9782330027483,4,4.46),
 	(616,1,9782020565684,1,6.7),
-
+	(617,1,9782330167691,1,39.0),
 	(618,1,9782742756575,1, 11.9),
 	(619,1,9782012262324,1, 9.0),
 	(620,1,9782215011965,1, 36.4),
@@ -18891,7 +18891,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(625,1,9782020838603,1, 9.0),
 	(626,1,9782020069588,1, 9.0),
 	(627,1,9782226087089,1,4.85),
-
+	(628,1,9782226060013,1, 30.0),
 	(629,1,9782080660367,1,9.57),
 	(630,1,9782012368378,1,5.99),
 	(631,1,9782080671974,1, 9.0),
@@ -18905,7 +18905,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(635,1,9782021039559,2, 32.5),
 	(636,1,9782742706334,1, 25.0),
 	(636,2,9782226091604,1, 38.0),
-
+	(637,1,9782020066952,2, 9.0),
 	(638,1,9782747038737,1,4.93),
 	(639,1,9782070541867,1, 35.7),
 	(640,1,9782011691965,1, 20.4),
@@ -18915,7 +18915,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(644,1,9782012352223,1,8.07),
 	(645,1,9782020050142,1, 38.5),
 	(645,2,9782215054108,1, 9.0),
-
+	(646,1,9782010209444,1,15.1),
 	(647,1,9782080688422,3, 21.3),
 	(648,1,9782070600991,3, 9.0),
 	(649,1,9782226107824,1,20.15),
@@ -18942,19 +18942,19 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(666,1,9782082004893,2,4.46),
 	(667,1,9782020047067,2,20.0),
 	(668,1,9782070115532,1,30.0),
-
+	(669,1,9782330000141,1, 12.4),
 	(670,1,9782081272286,4,4.08),
 	(670,2,9782082000819,1,19.07),
-
+	(670,3,9782020829342,1,5.6),
 	(671,1,9782742414703,3,54.99),
 	(672,1,9782012918474,1, 20.0),
 	(673,1,9782742700059,1, 38.6),
-
+	(674,1,9782020048484,1, 11.9),
 	(674,2,9782012449527,3,12.45),
-
+	(675,1,9782226074775,1,10.97),
 	(676,1,9782226170316,1, 18.0),
 	(677,1,9782082019088,1,12.88),
-
+	(678,1,9782070714216,1, 9.0),
 	(679,1,9782012400269,1, 22.7),
 	(680,1,9782020218481,1,16.48),
 	(681,1,9782010056604,1, 9.0),
@@ -18978,7 +18978,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(694,1,9782016209356,1, 9.0),
 	(695,1,9782010093432,1, 17.0),
 	(695,2,9782742706914,1,15.08),
-
+	(695,3,9782011671738,1, 9.0),
 	(696,1,9782020217927,1,26.5),
 	(697,1,9782020002967,1, 15.0),
 	(698,1,9782012400269,3, 22.7),
@@ -18988,7 +18988,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(701,2,9782070345038,1, 15.0),
 	(702,1,9782012602021,2,22.83),
 	(703,1,9782742714766,1,11.58),
-
+	(704,1,9782227360365,1, 17.2),
 	(704,2,9782080666307,2, 30.0),
 	(704,3,9782020061629,1,9.28),
 	(705,1,9782080105677,5,5.1),
@@ -19003,7 +19003,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(711,1,9782226034380,1,6.23),
 	(712,1,9782020479967,1,4.24),
 	(712,2,9782080661456,1, 27.0),
-
+	(713,1,9782227478091,3,8.95),
 	(713,2,9782070332717,1,4.0),
 	(714,1,9782742417193,3, 13.0),
 	(715,1,9782226142719,2,6.74),
@@ -19011,7 +19011,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(717,1,9782226002884,1,20.07),
 	(718,1,9782082117036,1, 30.0),
 	(719,1,9782226208545,1, 30.0),
-
+	(719,2,9782742738694,1, 27.5),
 	(719,3,9782081630840,2,4.36),
 	(719,4,9782080124401,1,23.52),
 	(719,5,9782723421997,1, 30.0),
@@ -19032,7 +19032,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(735,1,9782723454025,2, 28.4),
 	(736,1,9782020129619,1, 9.0),
 	(737,1,9782080689931,1, 11.9),
-
+	(737,2,9782742780600,1,9.2),
 	(737,3,9782226005878,1,4.5),
 	(738,1,9782226106599,1,5.17),
 	(739,1,9782012253285,1, 9.0),
@@ -19044,14 +19044,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(745,1,9782081230378,1, 28.0),
 	(746,1,9782081268791,1,5.17),
 	(746,2,9782021111293,1,20.0),
-
+	(747,1,9782227301405,2, 29.9),
 	(748,1,9782226254443,2, 11.9),
 	(749,1,9782020863995,3, 23.0),
 	(750,1,9782010151941,1,6.53),
 	(751,1,9782010127434,1, 9.0),
 	(752,1,9782742714865,1,9.3),
 	(753,1,9782016211106,1,6.58),
-
+	(754,1,9782226155733,1, 11.9),
 	(755,1,9782081220775,1, 9.0),
 	(755,2,9782226030351,1,20.9),
 	(756,1,9782080690173,3, 14.6),
@@ -19061,7 +19061,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(758,3,9782013220125,1, 38.9),
 	(758,4,9782012014961,2, 9.0),
 	(759,1,9782226066435,1,5.08),
-
+	(759,2,9782080124357,1,5.94),
 	(759,3,9782080666307,1, 30.0),
 	(760,1,9782020128971,1, 23.0),
 	(761,1,9782016251447,1,5.6),
@@ -19091,7 +19091,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(777,1,9782020613729,1,5.0),
 	(778,1,9782226238726,1,23.8),
 	(779,1,9782205054217,1,5.42),
-
+	(780,1,9782227366022,1,6.47),
 	(781,1,9782020052047,1, 9.0),
 	(781,2,9782723452625,1, 9.0),
 	(781,3,9782081308879,1,4.42),
@@ -19135,7 +19135,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(810,2,9782742764501,1,4.81),
 	(810,3,9782021158854,1, 11.9),
 	(811,1,9782010171390,2, 9.0),
-
+	(812,1,9782080917553,1, 15.0),
 	(813,1,9782020048743,2,5.48),
 	(814,1,9782070584246,2,4.62),
 	(815,1,9782226245267,1, 9.0),
@@ -19146,10 +19146,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(820,1,9782081624757,1,4.39),
 	(821,1,9782012016361,1, 36.6),
 	(822,1,9782742700059,1, 38.6),
-
+	(823,1,9782012100060,1, 20.0),
 	(824,1,9782010208232,1, 14.0),
 	(826,1,9782226159618,3, 25.7),
-
+	(826,2,9782080106957,1,31.08),
 	(826,3,9782227725140,1, 9.0),
 	(827,1,9782012016491,1, 10.0),
 	(828,1,9782205066623,1, 27.5),
@@ -19160,13 +19160,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(833,1,9782070637676,1,16.99),
 	(834,1,9782070696628,2,9.7),
 	(835,1,9782505006619,1, 17.1),
-
+	(835,2,9782010169472,1, 9.0),
 	(835,3,9782070310159,1, 9.0),
 	(835,4,9782742749447,1,19.3),
 	(836,1,9782081223448,1, 11.9),
-
+	(837,1,9782226153074,1, 31.9),
 	(838,1,9782330036911,1,11.0),
-
+	(839,1,9782020213806,1,5.94),
 	(840,1,9782020024600,5, 30.4),
 	(841,1,9782010098086,1, 29.0),
 	(842,1,9782226076274,1,23.2),
@@ -19182,8 +19182,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(852,1,9782742703159,1,121.96),
 	(852,2,9782080607515,2,30.04),
 	(852,3,9782010038402,1, 24.0),
-
-
+	(853,1,9782021362596,3,16.0),
+	(854,1,9782227202184,1,6.97),
 	(855,1,9782081622555,1, 9.0),
 	(856,1,9782226127174,1, 16.0),
 	(857,1,9782020300636,3,4.8),
@@ -19222,7 +19222,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(878,1,9782020096645,1,4.28),
 	(879,1,9782020961608,1,9.5),
 	(880,1,9782082001571,1,15.0),
-
+	(881,1,9782723430791,1,9.52),
 	(881,2,9782081619500,1, 9.0),
 	(882,1,9782080663894,1, 9.0),
 	(883,1,9782013926478,1, 9.0),
@@ -19252,13 +19252,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(901,1,9782012439818,1, 10.0),
 	(902,1,9782080689870,1, 9.0),
 	(903,1,9782082111225,1,19.95),
-
+	(904,1,9782070736294,1,6.46),
 	(904,2,9782012012899,1,14.2),
 	(904,3,9782070145348,1, 11.9),
 	(906,1,9782226012845,1, 9.0),
-
+	(907,1,9782742785568,1,8.77),
 	(908,1,9782081619821,2, 9.0),
-
+	(909,1,9782226074775,2,10.97),
 	(909,2,9782081640047,1, 9.0),
 	(910,1,9782226002884,1,20.07),
 	(911,1,9782010074851,1,13.66),
@@ -19277,8 +19277,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(924,1,9782012384460,1,120.0),
 	(925,1,9782226245267,1, 9.0),
 	(926,1,9782330021467,1,20.0),
-
-
+	(927,1,9782871295914,1, 24.0),
+	(928,1,9782330012380,1,69.95),
 	(929,1,9782081628700,1, 9.0),
 	(930,1,9782868690593,2, 20.0),
 	(931,1,9782020201070,1, 27.0),
@@ -19295,11 +19295,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(939,1,9782020312097,1, 27.4),
 	(940,1,9782747012508,1, 36.6),
 	(940,2,9782020480079,1,4.26),
-
-
+	(940,3,9782010078064,2,25.01),
+	(941,1,9782081336377,1,5.3),
 	(942,1,9782020090063,1,4.11),
 	(943,1,9782227721968,1, 10.0),
-
+	(944,1,9782012101425,1, 9.0),
 	(945,1,9782226101181,1, 38.1),
 	(946,1,9782215117421,2,6.23),
 	(947,1,9782226071507,1,5.48),
@@ -19314,13 +19314,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(953,1,9782080711984,1,5.21),
 	(954,1,9782081209497,1, 31.2),
 	(955,1,9782010104275,1,15.0),
-
+	(956,1,9782330000226,1,13.2),
 	(956,2,9782020053259,1,6.0),
 	(956,3,9782010144356,1, 10.0),
-
+	(956,4,9782226095770,1, 9.0),
 	(956,5,9782010143205,3, 36.0),
 	(957,1,9782020058667,1, 30.0),
-
+	(957,2,9782747020541,1, 37.9),
 	(958,1,9782205068504,2,7.57),
 	(959,1,9782330022976,1,21.72),
 	(960,1,9782020054881,1, 29.9),
@@ -19333,7 +19333,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(965,1,9782226015488,3, 28.4),
 	(966,1,9782081270206,1,17.0),
 	(967,1,9782215088929,1, 9.0),
-
+	(967,2,9782742411023,2,7.0),
 	(967,3,9782012256941,1, 15.0),
 	(968,1,9782747019552,1, 9.0),
 	(968,2,9782070749386,1,11.14),
@@ -19344,31 +19344,31 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(970,1,9782226238450,1, 20.0),
 	(971,1,9782226008909,1, 30.0),
 	(972,1,9782011691965,1, 20.4),
-
+	(973,1,9782742708345,1,7.98),
 	(974,1,9782215048831,1,4.62),
 	(975,1,9782010173936,3, 9.0),
 	(976,1,9782082104982,1,6.13),
 	(977,1,9782226002884,1,20.07),
 	(977,2,9782742771943,2, 9.0),
-
+	(978,1,9782081607484,1, 59.9),
 	(978,2,9782070728695,2,15.2),
 	(979,1,9782227310247,1, 9.0),
 	(980,1,9782868691460,1,7.8),
 	(981,1,9782747034128,1,4.14),
 	(982,1,9782010104275,2,15.0),
-
+	(983,1,9782723437202,1,10.1),
 	(983,2,9782226120601,1, 17.7),
 	(983,3,9782010010811,1,6.8),
 	(984,1,9782080109736,1, 18.0),
-
-
+	(985,1,9782070312252,1, 13.0),
+	(986,1,9782082018227,1,15.1),
 	(986,2,9782082001571,1,15.0),
 	(987,1,9782742754359,1, 22.4),
 	(988,1,9782226159779,1, 16.0),
-
+	(989,1,9782742774692,2,5.2),
 	(990,1,9782227477490,3,8.9),
 	(991,1,9782330002565,1, 11.9),
-
+	(991,2,9782080305350,2,51.7),
 	(991,3,9782020024600,1, 30.4),
 	(991,4,9782081244207,1, 32.5),
 	(992,1,9782747005197,3,4.69),
@@ -19379,7 +19379,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(996,1,9782226037220,1,6.53),
 	(997,1,9782020202473,1,5.58),
 	(998,1,9782227004023,3, 36.7),
-
+	(998,2,9782020025829,1,7.43),
 	(999,1,9782723471589,1,6.53),
 	(1000,1,9782020492454,1,6.08),
 	(1001,1,9782226238511,1,10.62),
@@ -19405,10 +19405,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1014,1,9782081295735,1,34.99),
 	(1015,1,9782080690081,1, 22.4),
 	(1016,1,9782747022200,3,4.72),
-
+	(1017,1,9782330013004,1, 15.2),
 	(1018,1,9782020061032,1, 9.0),
 	(1019,1,9782742765898,1,17.45),
-
+	(1020,1,9782227340954,1, 9.0),
 	(1021,1,9781401301019,2,45.97),
 	(1022,1,9782012206687,1,7.99),
 	(1023,1,9782082001571,1,15.0),
@@ -19427,7 +19427,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1032,1,9782868699862,1, 9.0),
 	(1032,2,9782747012508,1, 36.6),
 	(1033,1,9782215068105,1, 9.0),
-
+	(1034,1,9782742727537,1,4.39),
 	(1035,1,9782012098428,2, 38.1),
 	(1036,1,9782205055764,1,7.96),
 	(1037,1,9782020125062,1,31.0),
@@ -19459,23 +19459,23 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1056,1,9782010017858,3,25.8),
 	(1057,1,9782020251594,1,22.3),
 	(1058,1,9782747013208,1,46.9),
-
+	(1059,1,9782227360365,1, 17.2),
 	(1060,1,9782020159647,1,19.99),
 	(1061,1,9782012792852,4,24.0),
 	(1061,2,9782344008232,3, 9.0),
 	(1062,1,9782020126649,1, 9.0),
-
+	(1063,1,9782227301573,1, 29.9),
 	(1064,1,9782021011845,1,24.12),
 	(1065,1,9782012448865,1, 9.0),
 	(1065,2,9782080122520,3,5.58),
 	(1066,1,9782723489478,1,6.08),
-
+	(1067,1,9782226060013,2, 30.0),
 	(1067,2,9782020059916,1, 15.0),
 	(1068,1,9782020065757,1, 9.0),
 	(1069,1,9782742703159,2,121.96),
 	(1070,1,9782081201835,1, 9.0),
 	(1071,1,9782012427426,1, 9.0),
-
+	(1072,1,9782010205002,1,5.99),
 	(1073,1,9782227723702,1, 9.0),
 	(1074,1,9782012013605,1, 9.0),
 	(1075,1,9782226243058,1, 11.9),
@@ -19487,13 +19487,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1080,1,9782227470897,1,5.98),
 	(1081,1,9782723466554,1,4.41),
 	(1082,1,9782021083729,1,21.0),
-
+	(1083,1,9782020871471,1,11.19),
 	(1084,1,9780768939866,1,66.99),
 	(1085,1,9782070273072,1,16.92),
 	(1086,1,9782081616356,1, 9.0),
 	(1086,2,9782080669407,1,8.04),
 	(1087,1,9782226117052,2,17.57),
-
+	(1088,1,9782742774692,1,5.2),
 	(1089,1,9782010120336,2,28.5),
 	(1090,1,9782205050691,1, 23.2),
 	(1091,1,9782226208415,1, 19.0),
@@ -19501,14 +19501,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1093,1,9782742403042,1, 15.0),
 	(1094,1,9782012428287,1, 25.0),
 	(1095,1,9782215050155,1, 25.0),
-
+	(1096,1,9782742727537,1,4.39),
 	(1097,1,9782010104275,1,15.0),
 	(1098,1,9782742792986,1, 39.1),
 	(1099,1,9782226218780,1, 19.9),
-
+	(1099,2,9782081336377,1,5.3),
 	(1099,3,9782070615568,1, 9.0),
 	(1100,1,9782020789530,1, 27.5),
-
+	(1101,1,9782020328487,3,6.51),
 	(1102,1,9782226009906,1,18.08),
 	(1103,1,9782020048118,1,5.47),
 	(1104,1,9782020825177,1, 32.5),
@@ -19516,20 +19516,20 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1106,1,9782010028212,1,7.67),
 	(1107,1,9782082000819,1,19.07),
 	(1108,1,9782020044851,1,6.48),
-
+	(1109,1,9782226144232,1, 9.0),
 	(1110,1,9782010033681,1,129.65),
 	(1111,1,9782081622999,1, 9.0),
 	(1112,1,9782020060882,1,17.0),
-
+	(1112,2,9782227425552,1,45.0),
 	(1112,3,9782747019682,1, 9.0),
 	(1113,1,9782020125130,1, 9.0),
 	(1114,1,9782020120890,2, 23.9),
 	(1115,1,9782081621282,1, 9.0),
-
+	(1116,1,9782080120137,2,9.99),
 	(1117,1,9782205003741,1,5.99),
 	(1118,1,9782227022003,1,4.95),
 	(1119,1,9782080124401,1,23.52),
-
+	(1120,1,9782020950176,1, 23.9),
 	(1121,1,9782081621220,1, 39.8),
 	(1122,1,9782070110940,1,10.0),
 	(1123,1,9782012099715,2, 35.7),
@@ -19544,11 +19544,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1131,2,9782226312778,2,19.5),
 	(1131,3,9782227482975,5,55.0),
 	(1132,1,9782742764501,1,4.81),
-
+	(1132,2,9782330167691,1,39.0),
 	(1133,1,9782226094148,1,9.07),
 	(1134,1,9782021055061,1, 16.7),
 	(1135,1,9782020102919,1, 9.0),
-
+	(1136,1,9782226095770,1, 9.0),
 	(1136,2,9782010163234,1,12.82),
 	(1136,3,9782020621557,1, 32.5),
 	(1137,1,9782226190673,1, 9.0),
@@ -19562,9 +19562,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1142,4,9782742781171,1,7.29),
 	(1143,1,9782010155468,1, 37.0),
 	(1144,1,9782215020974,1, 9.0),
-
+	(1145,1,9782227425552,1,45.0),
 	(1146,1,9782226190093,1, 32.5),
-
+	(1147,1,9782080109965,1,155.0),
 	(1148,1,9782723439701,1, 14.9),
 	(1149,1,9782747012935,2, 35.7),
 	(1150,1,9782080644589,1, 9.0),
@@ -19573,7 +19573,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1152,2,9782330065850,1,18.0),
 	(1152,3,9782080666758,1,7.45),
 	(1152,4,9782081640368,1, 9.0),
-
+	(1152,5,9782020259712,1, 9.0),
 	(1153,1,9782227478206,1, 25.1),
 	(1153,2,9782012358089,1, 9.0),
 	(1154,1,9782021011845,1,24.12),
@@ -19604,8 +19604,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1174,2,9782205064179,1,9.21),
 	(1175,1,9782010010811,2,6.8),
 	(1176,1,9782081619548,2, 9.0),
-
-
+	(1177,1,9782080109941,1,6.85),
+	(1178,1,9782080304780,1,36.0),
 	(1179,1,9782226005106,1, 15.0),
 	(1180,1,9782226131379,1, 11.9),
 	(1180,2,9782012368101,1,20.0),
@@ -19617,7 +19617,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1185,1,9782869430730,2,9.27),
 	(1185,2,9782227350144,1, 9.0),
 	(1186,1,9782020653831,1, 11.9),
-
+	(1187,1,9782330012380,1,69.95),
 	(1188,1,9782082013765,1,5.94),
 	(1189,1,9782227738546,1, 13.0),
 	(1190,1,9782012041998,1, 11.0),
@@ -19647,14 +19647,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1205,2,9782010093906,1,8.12),
 	(1206,1,9782226074669,1,4.89),
 	(1207,1,9782226130075,1,27.67),
-
+	(1208,1,9782330113704,1,45.01),
 	(1209,1,9782082005746,2,8.29),
 	(1210,1,9782070315451,1, 16.0),
 	(1211,1,9782010122699,1, 9.0),
 	(1211,2,9782205064179,1,9.21),
 	(1212,1,9782010144356,2, 10.0),
 	(1213,1,9782081238268,1,8.8),
-
+	(1214,1,9782330075736,1,12.21),
 	(1215,1,9782020213110,1, 20.0),
 	(1216,1,9782226100566,1, 9.0),
 	(1216,2,9782080687609,1, 11.9),
@@ -19662,7 +19662,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1217,2,9782747017893,3, 9.0),
 	(1218,1,9782081238268,2,8.8),
 	(1219,1,9782226312778,1,19.5),
-
+	(1220,1,9782742708499,1, 27.5),
 	(1221,1,9782020220323,1,4.31),
 	(1222,1,9782010089138,5,6.65),
 	(1222,2,9782010174780,5, 14.3),
@@ -19671,7 +19671,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1225,1,9782742414703,1,54.99),
 	(1225,2,9782205056822,1, 13.1),
 	(1225,3,9782012016491,2, 10.0),
-
+	(1226,1,9782011671738,1, 9.0),
 	(1227,1,9782012016088,2, 9.0),
 	(1228,1,9782080126115,1,22.67),
 	(1229,1,9782020977401,1,6.9),
@@ -19682,7 +19682,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1234,1,9782070595570,1, 34.0),
 	(1235,1,9782742792986,1, 39.1),
 	(1236,1,9782226027870,1,10.0),
-
+	(1237,1,9782227484924,1,19.41),
 	(1238,1,9782081217867,1,5.91),
 	(1239,1,9782080640840,1,8.5),
 	(1240,1,9782742762491,1,12.29),
@@ -19691,14 +19691,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1242,1,9782070125395,1, 11.9),
 	(1242,2,9782070564651,1, 11.5),
 	(1243,1,9782021092578,1,21.0),
-
+	(1244,1,9782081227576,1,25.74),
 	(1244,2,9782020638890,1, 13.0),
 	(1244,3,9782020046534,1,24.99),
 	(1245,1,9782070581580,1, 20.0),
 	(1246,1,9782080102300,1, 39.0),
 	(1247,1,9782012355880,1,5.26),
 	(1248,1,9782227721098,1,4.69),
-
+	(1249,1,9782215052593,1, 20.0),
 	(1250,1,9782012457409,1, 38.1),
 	(1251,1,9782205077193,2,17.33),
 	(1252,1,9782227303065,1, 9.0),
@@ -19711,22 +19711,22 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1259,1,9782020043922,2,5.99),
 	(1259,2,9782205055764,1,7.96),
 	(1260,1,9782070695768,2, 11.9),
-
+	(1261,1,9782020066952,1, 9.0),
 	(1262,1,9782227723702,3, 9.0),
 	(1263,1,9782010020018,1, 16.2),
 	(1264,1,9782080135179,1,22.5),
-
+	(1264,2,9782742431540,1,6.08),
 	(1264,3,9782020114707,1,6.14),
 	(1264,4,9782081209497,1, 31.2),
 	(1265,1,9782205072693,1,13.76),
 	(1265,2,9782080901538,1,6.0),
 	(1266,1,9782723439701,1, 14.9),
 	(1267,1,9782020972864,1, 9.0),
-
-
+	(1268,1,9782010056710,1, 13.0),
+	(1269,1,9782841100491,2, 37.0),
 	(1270,1,9782081622616,1, 9.0),
 	(1271,1,9782081339248,1,4.42),
-
+	(1272,1,9782080305565,1,42.99),
 	(1272,2,9782747011419,1, 9.0),
 	(1272,3,9782226087706,1,6.5),
 	(1272,4,9782723441162,1,11.0),
@@ -19734,9 +19734,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1274,1,9782742714865,1,9.3),
 	(1275,1,9782012350007,1, 9.0),
 	(1276,1,9782070111725,1,62.81),
-
+	(1277,1,9782020479981,1, 11.9),
 	(1278,1,9782080672339,1, 11.9),
-
+	(1279,1,9782012101425,1, 9.0),
 	(1280,1,9782012016934,1,13.21),
 	(1281,1,9782742768394,1,6.67),
 	(1282,1,9782215084488,1, 9.0),
@@ -19752,13 +19752,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1289,1,9782082003933,2,9.98),
 	(1291,1,9782226180827,1, 9.0),
 	(1291,2,9782020211130,2,4.48),
-
+	(1292,1,9782020183048,3, 19.6),
 	(1293,1,9782011674142,1,6.2),
 	(1293,2,9782020046534,1,24.99),
 	(1294,1,9782226141453,3, 10.0),
 	(1295,1,9782010004612,1, 37.3),
 	(1296,1,9782081619500,1, 9.0),
-
+	(1297,1,9782742718092,1,5.29),
 	(1298,1,9782080644589,1, 9.0),
 	(1299,1,9782012368903,1,15.0),
 	(1300,1,9782080608475,1, 9.0),
@@ -19774,7 +19774,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1308,1,9782020024600,1, 30.4),
 	(1309,1,9782010050879,1,6.53),
 	(1310,1,9782723494632,1,4.99),
-
+	(1311,1,9782215052593,1, 20.0),
 	(1312,1,9782020046701,1,19.99),
 	(1312,2,9782846342131,1,5.17),
 	(1312,3,9782020365703,1,15.0),
@@ -19784,20 +19784,20 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1314,1,9782020634236,1,11.8),
 	(1314,2,9782227478336,1, 9.0),
 	(1315,1,9782020090339,1,7.0),
-
-
+	(1316,1,9782742738694,1, 27.5),
+	(1317,1,9782226158659,1,21.8),
 	(1317,2,9782013214629,3,5.2),
 	(1318,1,9782747022675,1, 34.4),
 	(1319,1,9782082118071,1, 9.0),
 	(1320,1,9782020257978,2,8.69),
-
+	(1320,2,9782742752881,1,4.1),
 	(1321,1,9782226005779,1,18.6),
 	(1322,1,9782081640504,1, 39.8),
 	(1322,2,9780768939866,1,66.99),
 	(1323,1,9782226193018,1, 9.0),
 	(1324,1,9782012016699,1, 20.3),
 	(1324,2,9782013990271,2, 20.0),
-
+	(1325,1,9782742749546,1,10.71),
 	(1326,1,9782742792580,2,17.0),
 	(1327,1,9782226142535,1,14.68),
 	(1327,2,9782742744749,3,9.45),
@@ -19811,24 +19811,24 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1332,3,9782020047920,1, 13.0),
 	(1333,1,9782205005974,1, 15.0),
 	(1334,1,9782012092266,1, 9.0),
-
+	(1335,1,9782868690975,1,6.38),
 	(1336,1,9782081201835,1, 9.0),
-
+	(1337,1,9782226158659,1,21.8),
 	(1338,1,9782226180858,1, 27.5),
 	(1339,1,9782020066228,2, 13.0),
 	(1340,1,9782016211106,1,6.58),
-
+	(1340,2,9782080304780,1,36.0),
 	(1340,3,9782070742738,1, 36.5),
 	(1341,1,9782020120890,2, 23.9),
-
+	(1342,1,9782215052593,1, 20.0),
 	(1343,1,9782081344020,1, 59.9),
 	(1344,1,9782012387683,1, 16.0),
 	(1345,1,9782012919563,1,12.0),
 	(1346,1,9782330009106,1,5.97),
 	(1347,1,9782020323338,2,14.3),
 	(1348,1,9782012262324,1, 9.0),
-
-
+	(1349,1,9782227301573,1, 29.9),
+	(1350,1,9782742762927,1, 22.1),
 	(1351,1,9782215095071,1, 24.0),
 	(1351,2,9782227721340,1, 9.0),
 	(1351,3,9782081337305,2,21.0),
@@ -19836,7 +19836,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1353,1,9782226101822,1, 16.0),
 	(1354,1,9782215093879,1, 9.0),
 	(1355,1,9782747012935,1, 35.7),
-
+	(1356,1,9782020141383,1,17.09),
 	(1357,1,9782080120946,1,50.0),
 	(1357,2,9782082004893,1,4.46),
 	(1357,3,9782742760237,3, 37.9),
@@ -19850,7 +19850,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1364,2,9782226057235,1,11.91),
 	(1364,3,9782010074851,1,13.66),
 	(1365,1,9782011714398,1,6.44),
-
+	(1366,1,9782011671738,1, 9.0),
 	(1366,2,9782020045506,1, 9.0),
 	(1367,1,9782010148576,1, 9.0),
 	(1368,1,9782215114970,1, 11.9),
@@ -19860,25 +19860,25 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1370,3,9782010174780,1, 14.3),
 	(1371,1,9782742772902,1, 32.5),
 	(1372,1,9782020790659,1, 15.6),
-
+	(1372,2,9782082104463,1,20.3),
 	(1373,1,9782070599806,3,6.08),
 	(1374,1,9782081238268,1,8.8),
 	(1375,1,9782747012935,3, 35.7),
 	(1376,1,9782070145348,1, 11.9),
 	(1377,1,9782081604391,1, 9.0),
-
-
+	(1378,1,9782742763337,1,8.81),
+	(1379,1,9782020208598,1,17.74),
 	(1380,1,9782012019812,3, 9.0),
 	(1381,1,9782227485983,1,4.91),
 	(1382,1,9782227472341,1,150.0),
 	(1383,1,9782747032308,1, 27.5),
-
+	(1383,2,9782227436268,4, 15.8),
 	(1384,1,9782010093128,1, 9.0),
 	(1384,2,9782020365703,1,15.0),
 	(1385,1,9782012452817,1, 18.5),
 	(1386,1,9782723449854,1,5.58),
 	(1386,2,9782846342131,1,5.17),
-
+	(1386,3,9782723437202,1,10.1),
 	(1386,4,9782021509021,2, 25.4),
 	(1387,1,9782020201605,1,22.6),
 	(1388,1,9782020049672,1, 9.0),
@@ -19908,16 +19908,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1409,1,9782227485983,1,4.91),
 	(1410,1,9782013214629,1,5.2),
 	(1411,1,9782742797370,1, 22.4),
-
+	(1412,1,9782742429264,1,4.66),
 	(1413,1,9782020790659,1, 15.6),
 	(1414,1,9782082402583,1, 13.0),
 	(1415,1,9782080644398,1, 9.0),
 	(1416,1,9782868691460,1,7.8),
 	(1417,1,9782868692054,1,11.99),
-
-
+	(1418,1,9782226060013,1, 30.0),
+	(1419,1,9782012100060,2, 20.0),
 	(1420,1,9782227725041,1, 9.0),
-
+	(1420,2,9782020056465,2,20.0),
 	(1421,1,9782010033704,2,18.5),
 	(1422,1,9782205054217,1,5.42),
 	(1423,1,9782010106934,1, 24.8),
@@ -19928,10 +19928,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1428,1,9782020621564,3,15.07),
 	(1428,2,9782226063502,2,7.08),
 	(1428,3,9782215120490,1,4.3),
-
+	(1428,4,9782226153074,3, 31.9),
 	(1429,1,9782226010148,1, 36.7),
 	(1430,1,9782226070180,1,5.29),
-
+	(1431,1,9782012100060,1, 20.0),
 	(1432,1,9782080678935,1, 11.9),
 	(1433,1,9782081286993,1, 9.0),
 	(1434,1,9782080664013,1,5.22),
@@ -19941,7 +19941,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1437,2,9782070599806,1,6.08),
 	(1438,1,9782205005974,1, 15.0),
 	(1439,1,9782226151155,1, 26.6),
-
+	(1440,1,9782080280961,1,149.92),
 	(1441,1,9782226021267,1, 9.0),
 	(1441,2,9782080117304,1,20.0),
 	(1442,1,9782020977401,2,6.9),
@@ -19957,16 +19957,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1447,1,9782227498570,2,8.25),
 	(1448,1,9782723409933,2,4.7),
 	(1449,1,9782070553273,1, 9.0),
-
+	(1449,2,9782010169472,2, 9.0),
 	(1450,1,9782020063418,1,60.0),
 	(1451,1,9782226030351,2,20.9),
 	(1452,1,9782742428892,1,10.5),
 	(1452,2,9782215008163,1, 9.0),
 	(1452,3,9782082004893,1,4.46),
-
+	(1453,1,9782227366015,2,4.59),
 	(1454,1,9782012206892,3,8.44),
 	(1454,2,9782082000963,1,6.68),
-
+	(1455,1,9782020183048,2, 19.6),
 	(1456,1,9782215083160,1, 9.0),
 	(1456,2,9782020125062,1,31.0),
 	(1457,1,9782747019552,1, 9.0),
@@ -19998,7 +19998,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1478,1,9782227725126,1, 9.0),
 	(1479,1,9782020054973,2,9.99),
 	(1480,1,9782020043922,1,5.99),
-
+	(1481,1,9781844301515,1,29.95),
 	(1482,1,9782020045094,1,5.58),
 	(1483,1,9782205077193,2,17.33),
 	(1484,1,9782330032234,1,18.55),
@@ -20007,7 +20007,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1487,1,9782226020666,1, 19.9),
 	(1488,1,9782080608475,1, 9.0),
 	(1489,1,9782010164576,1,4.9),
-
+	(1490,1,9782010054945,1,5.73),
 	(1490,2,9782081638082,1, 9.0),
 	(1491,1,9782226004628,1,6.1),
 	(1492,1,9782226315137,1,14.99),
@@ -20041,7 +20041,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1515,2,9782742760107,1, 20.0),
 	(1515,3,9782747048200,1,5.64),
 	(1516,1,9782020339032,1,16.01),
-
+	(1517,1,9782020005852,1,5.46),
 	(1518,1,9782012014961,1, 9.0),
 	(1518,2,9782723463409,1,5.15),
 	(1518,3,9782080687609,1, 11.9),
@@ -20052,7 +20052,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1524,1,9782020125130,2, 9.0),
 	(1525,1,9782020820738,1,20.3),
 	(1526,1,9782020144339,1, 23.2),
-
+	(1526,2,9782742758715,1,20.0),
 	(1527,1,9782012015401,1, 10.0),
 	(1528,1,9782227729032,1, 9.0),
 	(1529,1,9782021509021,1, 25.4),
@@ -20060,26 +20060,26 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1531,1,9782020965903,1,23.3),
 	(1532,1,9782012357242,1, 11.9),
 	(1533,1,9782226005632,1,100.0),
-
+	(1534,1,9782070632381,1, 25.0),
 	(1534,2,9782020103701,1,6.88),
 	(1534,3,9782020262125,4, 9.0),
 	(1535,1,9782747037549,1,4.11),
 	(1536,1,9782226060198,1,19.99),
-
-
+	(1537,1,9782020829342,3,5.6),
+	(1538,1,9782226074775,1,10.97),
 	(1539,1,9782070506699,1,5.76),
 	(1540,1,9782226186751,1, 30.0),
 	(1540,2,9782747037440,1, 9.0),
-
+	(1540,3,9782227317192,1, 9.0),
 	(1540,4,9782020069441,2,4.51),
 	(1541,1,9782020320030,1,5.98),
 	(1542,1,9782080690173,1, 14.6),
-
+	(1543,1,9782011671738,1, 9.0),
 	(1544,1,9782080689870,1, 9.0),
 	(1545,1,9782070657735,1, 26.5),
 	(1546,1,9782718905853,1,9.0),
 	(1546,2,9782226177650,3, 30.0),
-
+	(1546,3,9782012101425,1, 9.0),
 	(1547,1,9782081201835,2, 9.0),
 	(1548,1,9782227721340,1, 9.0),
 	(1549,1,9782070661282,1, 35.7),
@@ -20093,16 +20093,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1556,1,9782215104667,1, 9.0),
 	(1556,2,9782020137010,1, 11.9),
 	(1556,3,9782020998949,1, 32.5),
-
-
+	(1557,1,9782080671738,1,5.38),
+	(1558,1,9782020131704,1,4.67),
 	(1559,1,9782010213625,1, 9.0),
-
+	(1560,1,9782227301405,1, 29.9),
 	(1561,1,9782012253285,2, 9.0),
 	(1562,1,9782021460292,1,29.0),
 	(1563,1,9782012260139,1, 12.0),
-
+	(1564,1,9782742708499,1, 27.5),
 	(1565,1,9782020044851,3,6.48),
-
+	(1566,1,9782742710485,1,15.5),
 	(1566,2,9782081621282,2, 9.0),
 	(1567,1,9782742729630,1, 17.0),
 	(1568,1,9782226159779,1, 16.0),
@@ -20113,12 +20113,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1573,1,9782012011496,1, 10.0),
 	(1573,2,9782010154454,1, 11.5),
 	(1575,1,9782081604438,1,6.53),
-
+	(1576,1,9782330013073,1, 20.0),
 	(1577,1,9782205067996,1,6.08),
 	(1578,1,9782020479967,2,4.24),
 	(1579,1,9782020299022,1,6.37),
 	(1580,1,9782082117036,2, 30.0),
-
+	(1581,1,9782020048484,1, 11.9),
 	(1582,1,9782205064223,1, 12.2),
 	(1583,1,9782080815149,1, 30.0),
 	(1583,2,9782010003356,1,4.0),
@@ -20140,7 +20140,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1594,3,9782742706914,1,15.08),
 	(1595,1,9782747005081,1, 11.5),
 	(1596,1,9782226092809,1, 11.0),
-
+	(1597,1,9782070577101,1, 21.7),
 	(1598,1,9782020259866,1,19.03),
 	(1598,2,9782227070011,1, 9.0),
 	(1598,3,9782723409933,1,4.7),
@@ -20150,13 +20150,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1602,1,9782215091080,1,4.74),
 	(1603,1,9782081271654,3, 11.9),
 	(1604,1,9782330016234,1,22.41),
-
+	(1605,1,9782012101425,1, 9.0),
 	(1606,1,9782226154415,1,5.25),
 	(1607,1,9782742720415,1,4.9),
 	(1608,1,9782226084958,1, 9.0),
 	(1609,1,9782742401758,1,4.91),
-
-
+	(1609,2,9782020259712,1, 9.0),
+	(1610,1,9782868693549,1, 9.0),
 	(1611,1,9782020134156,1,5.0),
 	(1612,1,9782020215329,2, 12.7),
 	(1613,1,9782020054638,1,18.08),
@@ -20175,7 +20175,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1624,1,9782010111709,2, 9.0),
 	(1625,1,9782742742752,3,8.39),
 	(1626,1,9782226243058,3, 11.9),
-
+	(1627,1,9782010078064,1,25.01),
 	(1628,1,9782010044182,1, 34.0),
 	(1629,1,9782021078213,1, 27.3),
 	(1630,1,9782226190987,1, 32.5),
@@ -20184,16 +20184,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1633,1,9782020970044,1, 11.9),
 	(1634,1,9782012447479,1,5.99),
 	(1635,1,9782080671974,1, 9.0),
-
+	(1636,1,9782205009187,1,17.5),
 	(1637,1,9782080666574,1, 32.5),
 	(1638,1,9782080686022,2,15.3),
 	(1639,1,9782010054877,1,11.9),
 	(1640,1,9782227482975,1,55.0),
 	(1641,1,9782215022572,1, 30.0),
 	(1642,1,9782080203427,1,14.95),
-
+	(1643,1,9782020141383,4,17.09),
 	(1644,1,9782020091602,3,4.0),
-
+	(1645,1,9782012358584,2,6.0),
 	(1645,2,9782215016823,3, 9.5),
 	(1646,1,9782021020878,1,36.45),
 	(1647,1,9782020825177,1, 32.5),
@@ -20201,7 +20201,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1647,3,9782012011496,1, 10.0),
 	(1647,4,9782227474093,3,21.04),
 	(1647,5,9782020068208,1,15.75),
-
+	(1648,1,9782868690975,1,6.38),
 	(1649,1,9782215095071,1, 24.0),
 	(1650,1,9782020218481,1,16.48),
 	(1651,1,9782742792498,1, 33.6),
@@ -20210,7 +20210,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1652,1,9782226018830,1, 35.0),
 	(1653,1,9782020234900,2,7.28),
 	(1653,2,9782012351875,1,18.08),
-
+	(1653,3,9782742405084,3,9.33),
 	(1654,1,9782081286993,1, 9.0),
 	(1655,1,9782227729704,1, 9.0),
 	(1656,1,9782226170316,2, 18.0),
@@ -20218,22 +20218,22 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1657,1,9782012352223,1,8.07),
 	(1658,1,9782226252081,1,4.87),
 	(1658,2,9782020621557,1, 32.5),
-
+	(1658,3,9782227481947,1,10.07),
 	(1658,4,9782742746019,2,7.37),
 	(1658,5,9782012315181,1, 25.1),
-
+	(1659,1,9782012012653,1, 9.0),
 	(1660,1,9782020132916,1,5.9),
 	(1661,1,9782012384460,1,120.0),
 	(1662,1,9782012366930,2, 10.0),
 	(1663,1,9782227004108,2, 10.0),
 	(1663,2,9782010029103,1,25.0),
-
+	(1664,1,9782330167691,3,39.0),
 	(1664,2,9782226002242,1,5.0),
 	(1664,3,9782080113641,2,9.0),
 	(1664,4,9782020950237,1,6.88),
 	(1664,5,9782020061476,3,5.99),
 	(1665,1,9782070545865,1, 13.6),
-
+	(1666,1,9782070736294,1,6.46),
 	(1667,1,9782330023775,1, 13.1),
 	(1668,1,9782226076878,1, 26.6),
 	(1669,1,9782226024756,1,12.1),
@@ -20275,10 +20275,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1700,1,9782081621046,1, 15.0),
 	(1701,1,9782080671974,1, 9.0),
 	(1701,2,9782012009554,1, 22.9),
-
+	(1702,1,9782080917553,1, 15.0),
 	(1702,2,9782070521760,1,5.94),
 	(1703,1,9782020062770,1,28.02),
-
+	(1704,1,9782080124357,1,5.94),
 	(1705,1,9782081612969,1, 36.6),
 	(1706,1,9782020043915,1,9.0),
 	(1707,1,9782020202473,1,5.58),
@@ -20288,7 +20288,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1709,1,9782070553273,1, 9.0),
 	(1709,2,9782227005167,1,4.38),
 	(1710,1,9782012008342,1, 38.1),
-
+	(1711,1,9782330000066,2, 33.0),
 	(1712,1,9782012363922,1, 9.0),
 	(1713,1,9782070633340,1, 9.0),
 	(1714,1,9782818500798,1, 11.9),
@@ -20312,12 +20312,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1729,1,9782080120540,1,5.94),
 	(1729,2,9782747030663,1,6.53),
 	(1730,1,9782010093159,1,4.27),
-
+	(1731,1,9782020328487,1,6.51),
 	(1732,1,9782227738010,1, 9.0),
 	(1733,1,9782742720682,1, 16.0),
 	(1734,1,9782215095071,1, 24.0),
 	(1735,1,9782070631322,1,4.32),
-
+	(1736,1,9782081244566,1, 10.0),
 	(1736,2,9782081640221,2, 9.0),
 	(1737,1,9782012361461,1, 14.0),
 	(1738,1,9782070579785,1, 9.0),
@@ -20329,14 +20329,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1743,1,9782205056822,4, 13.1),
 	(1744,1,9782082100441,1,13.89),
 	(1745,1,9782012353473,1,5.99),
-
+	(1746,1,9782010205002,2,5.99),
 	(1747,1,9782081628700,2, 9.0),
 	(1747,2,9782070310159,1, 9.0),
-
-
-
+	(1748,1,9782021362596,1,16.0),
+	(1749,1,9782020046626,1, 9.0),
+	(1749,2,9782021328363,1,7.6),
 	(1749,3,9782020015370,1,14.16),
-
+	(1750,1,9782020066952,1, 9.0),
 	(1750,2,9782020820738,1,20.3),
 	(1752,1,9782330024130,1,25.42),
 	(1753,1,9782226238566,1, 33.0),
@@ -20378,17 +20378,17 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1781,1,9782330023775,2, 13.1),
 	(1782,1,9782080813534,1,6.0),
 	(1783,1,9782070637676,1,16.99),
-
+	(1784,1,9782226153074,1, 31.9),
 	(1785,1,9782070615049,2, 11.0),
 	(1786,1,9782021057614,3, 21.8),
-
+	(1787,1,9782330167691,2,39.0),
 	(1787,2,9782742720682,1, 16.0),
 	(1787,3,9782747026420,1, 9.9),
 	(1788,1,9782070583133,1, 9.0),
-
+	(1789,1,9782227475304,1,6.97),
 	(1790,1,9782082111201,1,48.9),
 	(1790,2,9782012439351,2, 9.0),
-
+	(1791,1,9781844301515,1,29.95),
 	(1792,1,9782226172730,1, 11.9),
 	(1793,1,9782021039559,1, 32.5),
 	(1794,1,9782227738522,1, 9.0),
@@ -20396,8 +20396,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1795,2,9782226159755,1,5.01),
 	(1795,3,9782012403185,1,20.91),
 	(1796,1,9782081619487,1, 9.0),
-
-
+	(1797,1,9782215052593,1, 20.0),
+	(1798,1,9782227425552,1,45.0),
 	(1799,1,9782742401758,1,4.91),
 	(1800,1,9782226052476,1, 39.1),
 	(1800,2,9782080678034,1,5.85),
@@ -20413,7 +20413,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1807,2,9782215091080,1,4.74),
 	(1808,1,9782016208090,3, 9.0),
 	(1809,1,9782070506699,1,5.76),
-
+	(1810,1,9782742765737,1,15.34),
 	(1810,2,9782227482395,1, 12.1),
 	(1811,1,9782742727513,1,21.9),
 	(1812,1,9782013990271,1, 20.0),
@@ -20436,13 +20436,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1827,1,9782020367738,1, 19.4),
 	(1828,1,9782012361461,1, 14.0),
 	(1829,1,9782227471252,1,6.52),
-
-
+	(1830,1,9782742700974,1, 24.8),
+	(1830,2,9782227317192,2, 9.0),
 	(1831,1,9782012303799,1, 18.0),
 	(1831,2,9782080666758,1,7.45),
 	(1832,1,9782869430730,1,9.27),
 	(1833,1,9782226208545,1, 30.0),
-
+	(1834,1,9782080304742,1,43.51),
 	(1835,1,9782020191296,1, 11.9),
 	(1836,1,9782723430319,2, 39.9),
 	(1837,1,9782020061629,3,9.28),
@@ -20453,7 +20453,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1840,1,9782226002273,1,8.0),
 	(1841,1,9782081391789,3, 59.9),
 	(1842,1,9782215080756,1, 9.0),
-
+	(1843,1,9782010054945,1,5.73),
 	(1843,2,9782226193018,1, 9.0),
 	(1844,1,9782215120490,1,4.3),
 	(1844,2,9782080111302,1, 11.9),
@@ -20474,8 +20474,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1853,1,9782227474093,1,21.04),
 	(1854,1,9782226013033,1,6.27),
 	(1855,1,9782020053259,1,6.0),
-
-
+	(1856,1,9782330013004,1, 15.2),
+	(1856,2,9782742752782,1,9.94),
 	(1856,3,9782226107213,1,12.59),
 	(1857,1,9782020202473,1,5.58),
 	(1857,2,9782226087898,1, 9.0),
@@ -20487,7 +20487,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1862,1,9782215091080,1,4.74),
 	(1863,1,9782010171888,5,45.55),
 	(1864,1,9782706607479,1,11.18),
-
+	(1865,1,9782082018227,1,15.1),
 	(1866,1,9782020067263,1, 28.0),
 	(1867,1,9782227729032,1, 9.0),
 	(1868,1,9782868690593,1, 20.0),
@@ -20500,12 +20500,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1874,1,9782747031974,3, 35.1),
 	(1874,2,9782742729746,1, 32.5),
 	(1874,3,9782013211529,1, 39.0),
-
+	(1875,1,9782010126093,1,5.34),
 	(1876,1,9782226091604,1, 38.0),
 	(1877,1,9782020062817,1, 9.0),
 	(1878,1,9782012008342,1, 38.1),
 	(1879,1,9782020066068,2, 9.0),
-
+	(1880,1,9782205058024,1,10.81),
 	(1881,1,9782012231207,1,4.69),
 	(1881,2,9782080690616,1, 11.9),
 	(1881,3,9782081628700,1, 9.0),
@@ -20521,7 +20521,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1890,1,9782080687029,3,8.34),
 	(1891,1,9782205050691,1, 23.2),
 	(1892,1,9782742401758,2,4.91),
-
+	(1893,1,9782010205002,1,5.99),
 	(1894,1,9782742746019,2,7.37),
 	(1895,1,9782226084958,1, 9.0),
 	(1896,1,9782226180858,1, 27.5),
@@ -20536,7 +20536,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1902,2,9782010041235,1, 9.0),
 	(1903,1,9782012445116,1, 14.7),
 	(1904,1,9782081271654,2, 11.9),
-
+	(1905,1,9782070150182,1, 34.19),
 	(1905,2,9780446570992,2, 16.4),
 	(1905,3,9782330006563,1, 14.7),
 	(1905,4,9782205054217,2,5.42),
@@ -20567,10 +20567,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1919,4,9782081240599,1,6.52),
 	(1919,5,9782070595334,1, 36.0),
 	(1920,1,9782080664020,1, 30.0),
-
+	(1920,2,9782742727537,1,4.39),
 	(1921,1,9782020827201,1, 36.0),
 	(1922,1,9782020057240,3,10.6),
-
+	(1923,1,9782012101425,1,7.85),
 	(1924,1,9782020258210,1, 30.0),
 	(1925,1,9782747026420,1, 9.9),
 	(1926,1,9782747015912,1, 9.0),
@@ -20587,21 +20587,21 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1934,1,9782012256941,1, 15.0),
 	(1934,2,9782742766024,1, 32.5),
 	(1935,1,9782080671974,3, 9.0),
-
+	(1936,1,9782227471344,1,52.0),
 	(1937,1,9782205054750,1,8.81),
 	(1938,1,9782227436305,1, 35.0),
 	(1939,1,9782226159755,1,5.01),
 	(1940,1,9782227436435,1,16.46),
-
+	(1941,1,9782080671738,1,5.38),
 	(1942,1,9782021001822,2, 32.5),
 	(1943,1,9782010093906,1,8.12),
 	(1944,1,9782012011779,1, 10.0),
 	(1945,1,9782081630840,2,4.36),
 	(1946,1,9782020088992,1, 11.9),
-
+	(1947,1,9782227301405,1, 29.9),
 	(1948,1,9782227472402,3,12.03),
 	(1949,1,9782080669407,1,8.04),
-
+	(1950,1,9782227340954,1, 9.0),
 	(1951,1,9782226106599,3,5.17),
 	(1952,1,9782130417170,1, 24.9),
 	(1952,2,9782742754359,1, 22.4),
@@ -20613,13 +20613,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1956,1,9782226159618,1, 25.7),
 	(1957,1,9782226092762,2,8.53),
 	(1958,1,9782020049726,1, 9.0),
-
+	(1959,1,9782070632381,1, 25.0),
 	(1960,1,9782080102102,1,7.6),
 	(1961,1,9782020069908,3,5.24),
 	(1962,1,9782747022361,1, 9.0),
 	(1963,1,9782742794959,1, 12.4),
 	(1963,2,9782227355262,1,6.53),
-
+	(1963,3,9782080125156,1,39.0),
 	(1964,1,9782012403185,1,20.91),
 	(1965,1,9782742797394,3,9.85),
 	(1966,1,9782215087366,1, 21.7),
@@ -20627,7 +20627,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1968,1,9782742756575,1, 11.9),
 	(1969,1,9782082005074,1, 23.0),
 	(1969,2,9782081219861,1, 9.0),
-
+	(1970,1,9782226060297,1,4.76),
 	(1971,1,9782742715626,1,5.0),
 	(1971,2,9782020044516,1, 9.0),
 	(1971,3,9782215095071,5, 24.0),
@@ -20641,7 +20641,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1978,1,9782227301061,1, 31.5),
 	(1979,1,9782020998949,2, 32.5),
 	(1979,2,9782070695171,1, 15.3),
-
+	(1979,3,9782020048484,1, 11.9),
 	(1980,1,9782012099715,1, 35.7),
 	(1981,1,9782082019576,1,6.2),
 	(1982,1,9782020191296,1, 11.9),
@@ -20654,19 +20654,19 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(1987,1,9782070145348,1, 11.9),
 	(1988,1,9782020362023,1,5.88),
 	(1989,1,9782215075745,1,54.99),
-
+	(1990,1,9782742796335,3, 39.8),
 	(1991,1,9782010174780,1, 14.3),
 	(1992,1,9782010124174,1,4.7),
 	(1993,1,9782226142535,1,14.68),
 	(1994,1,9782226177650,1, 30.0),
 	(1995,1,9782082100441,1,13.89),
-
+	(1996,1,9782020046626,1, 9.0),
 	(1997,1,9782012253285,2, 9.0),
 	(1998,1,9782742781171,2,7.29),
 	(1999,1,9782020002967,4, 15.0),
 	(2000,1,9782869430730,1,9.27),
 	(2001,1,9782226167187,1, 11.9),
-
+	(2002,1,9782021328363,3,7.6),
 	(2002,2,9782205056822,1, 13.1),
 	(2003,1,9782070578597,1, 9.0),
 	(2004,1,9782742713578,1,9.68),
@@ -20690,14 +20690,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2015,1,9782081604391,1, 9.0),
 	(2016,1,9782723421997,1, 30.0),
 	(2017,1,9782226056580,1, 10.0),
-
+	(2018,1,9782226119490,3, 9.0),
 	(2019,1,9782226087294,1,9.5),
 	(2019,2,9782747000246,2, 13.0),
 	(2020,1,9782215080152,3, 9.0),
 	(2021,1,9782080105677,1,5.1),
 	(2022,1,9782215088936,1, 9.0),
 	(2022,2,9782226005250,1,30.01),
-
+	(2022,3,9782020044158,1,7.0),
 	(2023,1,9782012370753,1, 31.9),
 	(2024,1,9782010049286,1,5.7),
 	(2024,2,9782010207570,1,4.73),
@@ -20712,7 +20712,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2032,1,9782081249295,1,15.3),
 	(2033,1,9782070340231,2, 29.1),
 	(2033,2,9782021039559,1, 32.5),
-
+	(2033,3,9782723430791,1,9.52),
 	(2034,1,9782080648075,1,44.0),
 	(2034,2,9782082012423,1,45.0),
 	(2034,3,9782010093159,1,4.27),
@@ -20720,15 +20720,15 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2034,5,9782070129195,1,14.99),
 	(2035,1,9782020947343,2,15.0),
 	(2036,1,9782070756797,1,11.0),
-
+	(2037,1,9782070714216,2, 9.0),
 	(2037,2,9782081223509,1, 9.0),
 	(2038,1,9782070125395,1, 11.9),
 	(2039,1,9782215048398,1, 28.3),
 	(2040,1,9782226190987,1, 32.5),
 	(2040,2,9782020220118,1, 10.0),
 	(2041,1,9782226147905,1,11.5),
-
-
+	(2041,2,9782020025829,1,7.43),
+	(2042,1,9782012101425,1, 9.0),
 	(2043,1,9782011714398,2,6.44),
 	(2044,1,9782081295711,1,5.0),
 	(2045,1,9782013214629,1,5.2),
@@ -20743,7 +20743,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2053,1,9782010091223,2, 28.0),
 	(2053,2,9782226008657,1,5.22),
 	(2054,1,9782742720682,1, 16.0),
-
+	(2055,1,9782080106957,1,31.08),
 	(2056,1,9782742731763,1,12.6),
 	(2057,1,9782012008779,3, 39.8),
 	(2058,1,9782226254443,2, 11.9),
@@ -20758,7 +20758,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2064,1,9782226240866,1, 35.1),
 	(2064,2,9782020977401,1,6.9),
 	(2065,1,9782020798914,4, 11.9),
-
+	(2066,1,9782010126093,1,5.34),
 	(2066,2,9782012016514,1, 9.0),
 	(2066,3,9782226116802,2,4.75),
 	(2067,1,9782226018830,1, 35.0),
@@ -20771,7 +20771,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2073,1,9782081619739,2, 9.0),
 	(2073,2,9782011459152,1, 59.9),
 	(2074,1,9782021020878,1,36.45),
-
+	(2074,2,9782227301580,2, 19.0),
 	(2075,1,9782868699589,1,12.0),
 	(2076,1,9782080689870,1, 9.0),
 	(2077,1,9782742781171,1,7.29),
@@ -20798,7 +20798,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2093,1,9782227757035,1, 9.0),
 	(2094,1,9782226229786,1,5.23),
 	(2095,1,9782020002967,1, 15.0),
-
+	(2096,1,9782082104463,1,20.3),
 	(2097,1,9782742796656,1, 27.0),
 	(2098,1,9782081227972,1, 11.9),
 	(2099,1,9782010058240,1, 9.0),
@@ -20820,13 +20820,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2111,2,9782080670533,1, 9.0),
 	(2111,3,9782021035728,1, 12.0),
 	(2112,1,9782742720415,1,4.9),
-
+	(2113,1,9782226074775,1,10.97),
 	(2114,1,9782021510805,1,10.41),
 	(2114,2,9782718905853,1,9.0),
 	(2114,3,9782012360853,1,16.0),
-
-
-
+	(2115,1,9782742722990,2,12.21),
+	(2116,1,9782080125156,1,39.0),
+	(2116,2,9782742774111,1, 39.9),
 	(2116,3,9782011714398,1,6.44),
 	(2117,1,9782226058997,1,5.12),
 	(2118,1,9782070545865,1, 13.6),
@@ -20834,7 +20834,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2120,1,9782205062816,1,7.64),
 	(2121,1,9782205054750,1,8.81),
 	(2122,1,9782010050220,3,7.2),
-
+	(2122,2,9782226158659,2,21.8),
 	(2122,3,9782010171390,1, 9.0),
 	(2123,1,9791023502596,1,5.46),
 	(2124,1,9782070110612,1,9.64),
@@ -20845,10 +20845,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2127,1,9782226127174,1, 16.0),
 	(2128,1,9782215048138,4,4.76),
 	(2129,1,9782818501146,1, 20.4),
-
+	(2130,1,9782081244566,1, 10.0),
 	(2131,1,9782020950237,1,6.88),
 	(2132,1,9782082005265,1,6.53),
-
+	(2133,1,9782080120137,1,9.99),
 	(2134,1,9782226208415,2, 19.0),
 	(2134,2,9782723413077,2,5.88),
 	(2135,1,9782082003933,1,9.98),
@@ -20868,9 +20868,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2143,3,9782226108333,1, 9.0),
 	(2144,1,9782742708956,2,8.9),
 	(2145,1,9782747025553,1, 9.0),
-
+	(2146,1,9782226039538,1,5.47),
 	(2147,1,9782742734429,1, 18.2),
-
+	(2148,1,9782723430791,1,9.52),
 	(2149,1,9782070665099,2,6.2),
 	(2150,1,9782215114789,4, 11.9),
 	(2151,1,9782012099289,1, 15.0),
@@ -20878,7 +20878,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2153,1,9782330022976,1,21.72),
 	(2154,1,9782747015912,1, 9.0),
 	(2155,1,9782082018180,5, 9.0),
-
+	(2156,1,9782227471580,1,17.99),
 	(2156,2,9782215050155,1, 25.0),
 	(2157,1,9782227310247,2, 9.0),
 	(2157,2,9782020069588,3, 9.0),
@@ -20887,21 +20887,21 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2160,1,9782226079244,1, 9.0),
 	(2160,2,9782010165023,1, 20.0),
 	(2160,3,9782226140678,3, 12.0),
-
+	(2161,1,9782020328487,1,6.51),
 	(2161,2,9782082005265,1,6.53),
 	(2161,3,9782226024930,1, 9.2),
 	(2162,1,9782747026420,1, 9.9),
 	(2163,1,9782082104982,1,6.13),
 	(2165,1,9782818500798,1, 11.9),
 	(2166,1,9782070695171,1, 15.3),
-
+	(2167,1,9782742710485,1,15.5),
 	(2168,1,9782021097153,1, 20.0),
 	(2169,1,9782747008983,1,6.17),
 	(2170,1,9782012011694,1, 9.0),
 	(2171,1,9782082115537,3,25.0),
 	(2172,1,9782747026123,1, 14.0),
 	(2172,2,9782226002242,1,5.0),
-
+	(2172,3,9782020046626,1, 9.0),
 	(2173,1,9782020315623,1,14.86),
 	(2174,1,9782081240742,1, 21.4),
 	(2175,1,9782080113030,1,15.1),
@@ -20912,7 +20912,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2177,1,9782012360426,2, 12.0),
 	(2178,1,9782020944656,1,4.99),
 	(2178,2,9782020047166,1,5.0),
-
+	(2179,1,9782868693549,1, 9.0),
 	(2180,1,9782010093159,1,4.27),
 	(2181,1,9782070631322,1,6.66),
 	(2182,1,9782010127434,1, 9.0),
@@ -20929,7 +20929,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2190,1,9782082111201,1,48.9),
 	(2191,1,9782226170316,1, 18.0),
 	(2192,1,9782080125842,1, 9.0),
-
+	(2193,1,9782012451063,1,13.95),
 	(2194,1,9782227482395,1, 12.1),
 	(2195,1,9782330000301,1,9.94),
 	(2196,1,9782020068208,1,15.75),
@@ -20940,7 +20940,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2199,1,9782226106186,1,24.75),
 	(2200,1,9782723449854,1,5.58),
 	(2201,1,9782226246882,1, 11.9),
-
+	(2202,1,9782742727537,2,4.39),
 	(2203,1,9782012448421,1, 10.0),
 	(2204,1,9782081621282,2, 9.0),
 	(2205,1,9782226014528,1, 9.0),
@@ -20954,16 +20954,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2212,1,9782020281287,1, 9.0),
 	(2213,1,9782226147905,1,11.5),
 	(2214,1,9782330027483,1,4.46),
-
+	(2215,1,9782226060013,3, 30.0),
 	(2216,1,9782010106934,1, 24.8),
 	(2217,1,9782010033681,1,129.65),
 	(2217,2,9782020361583,1,6.1),
 	(2217,3,9782742797370,1, 22.4),
 	(2218,1,9782226130075,1,27.67),
-
+	(2219,1,9782226074775,1,10.97),
 	(2219,2,9782226006233,1,8.0),
 	(2220,1,9782020189651,1, 32.5),
-
+	(2220,2,9782020141383,2,17.09),
 	(2221,1,9782226001153,1, 13.7),
 	(2222,1,9782742710188,3,5.07),
 	(2222,2,9782020144339,2, 23.2),
@@ -20987,11 +20987,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2238,2,9782010007118,1,4.9),
 	(2238,3,9782012402157,1, 24.0),
 	(2239,1,9782227725249,1, 9.0),
-
+	(2240,1,9782010192548,1,5.14),
 	(2241,1,9782070519972,1, 9.0),
 	(2241,2,9782227471252,1,6.52),
 	(2242,1,9782020220323,1,4.31),
-
+	(2243,1,9782742708499,1, 27.5),
 	(2244,1,9782010101113,2, 10.0),
 	(2245,1,9782226018830,1, 35.0),
 	(2246,1,9782742771967,1,6.01),
@@ -20999,14 +20999,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2248,1,9782012351042,1,4.0),
 	(2249,1,9782010015250,1, 26.9),
 	(2250,1,9782012449381,1, 9.0),
-
+	(2251,1,9782742780600,1,9.2),
 	(2252,1,9782081618718,1, 15.0),
 	(2253,1,9782010144356,1, 10.0),
-
+	(2254,1,9782227481947,1,10.07),
 	(2255,1,9782012401167,1, 9.0),
 	(2255,2,9782747034128,2,4.14),
 	(2256,1,9782012311220,2,8.73),
-
+	(2257,1,9782020871471,2,11.19),
 	(2257,2,9782227487130,1, 35.0),
 	(2257,3,9782081627666,1, 9.0),
 	(2258,1,9782082117036,1, 30.0),
@@ -21024,17 +21024,17 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2267,1,9782012353077,1,7.79),
 	(2267,2,9782080710970,1,4.4),
 	(2267,3,9782742742752,1,8.39),
-
+	(2268,1,9782330113704,1,45.01),
 	(2268,2,9782226015488,1, 28.4),
 	(2268,3,9782226187680,1,20.32),
 	(2268,4,9782012246065,1,8.18),
 	(2269,1,9782010105203,1, 16.0),
-
+	(2270,1,9782742712588,1,94.34),
 	(2271,1,9782010128110,1, 13.0),
-
-
+	(2272,1,9782227471344,1,52.0),
+	(2272,2,9782742758715,1,20.0),
 	(2272,3,9782226208545,1, 30.0),
-
+	(2273,1,9782226093677,3,10.9),
 	(2273,2,9782012016088,1, 9.0),
 	(2274,1,9782226175113,1, 11.9),
 	(2275,1,9782012099715,1, 35.7),
@@ -21043,7 +21043,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2278,1,9782081621046,1, 15.0),
 	(2278,2,9782227738010,1, 9.0),
 	(2279,1,9782020479967,1,4.24),
-
+	(2280,1,9782010123382,1,12.81),
 	(2281,1,9782020213110,1, 20.0),
 	(2282,1,9782080660367,2,9.57),
 	(2283,1,9782215080756,1, 9.0),
@@ -21068,11 +21068,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2295,1,9782010026195,3, 12.8),
 	(2296,1,9782742743735,1,27.2),
 	(2297,1,9782012015401,1, 10.0),
-
+	(2298,1,9782227425552,2,45.0),
 	(2299,1,9782742402670,1,10.46),
 	(2300,1,9782330014353,1,24.8),
 	(2301,1,9782742713578,2,9.68),
-
+	(2302,1,9782020145930,1,9.4),
 	(2303,1,9782226006189,1, 11.9),
 	(2304,1,9782226052605,3, 16.0),
 	(2305,1,9782020055277,3, 9.0),
@@ -21098,7 +21098,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2319,1,9782012239005,1, 39.7),
 	(2320,1,9782226007711,1,17.18),
 	(2321,1,9782226030351,1,20.9),
-
+	(2322,1,9782205034066,1,4.0),
 	(2323,1,9782012018778,1, 9.0),
 	(2324,1,9782080649430,1, 11.9),
 	(2325,1,9782020972864,1, 9.0),
@@ -21107,8 +21107,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2328,1,9782227070011,1, 9.0),
 	(2328,2,9782012011328,1, 25.0),
 	(2328,3,9782020320030,1,5.98),
-
-
+	(2328,4,9782330075736,1,12.21),
+	(2328,5,9782081210110,2,8.01),
 	(2329,1,9782081223592,1, 20.8),
 	(2329,2,9782205066623,1, 27.5),
 	(2329,3,9782227738737,1, 9.0),
@@ -21142,18 +21142,18 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2351,1,9782070610549,1, 11.9),
 	(2352,1,9782081624030,1, 9.0),
 	(2353,1,9782742785728,1, 22.1),
-
+	(2354,1,9782205034066,1,4.0),
 	(2354,2,9782080139016,1,10.0),
 	(2355,1,9782020621564,1,15.07),
 	(2355,2,9782016209448,1, 35.9),
-
+	(2355,3,9782742429264,1,4.66),
 	(2356,1,9782012442061,1, 13.0),
-
+	(2357,1,9782081244566,1, 10.0),
 	(2358,1,9782723476980,1,14.5),
-
+	(2359,1,9782070714216,1, 9.0),
 	(2360,1,9782020339032,1,16.01),
 	(2361,1,9782742773473,1, 30.0),
-
+	(2362,1,9782205009187,1,17.5),
 	(2363,1,9782742742752,1,8.39),
 	(2364,1,9782012444027,1,6.53),
 	(2365,1,9782742714766,1,11.58),
@@ -21165,7 +21165,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2368,2,9782226257673,1,6.53),
 	(2369,1,9782020144339,1, 23.2),
 	(2370,1,9782020310079,1,4.9),
-
+	(2371,1,9782020662512,1, 11.9),
 	(2372,1,9782226116802,2,4.75),
 	(2372,2,9782013220125,1, 38.9),
 	(2372,3,9782070780129,1, 15.9),
@@ -21174,30 +21174,30 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2375,1,9782010151941,1,6.53),
 	(2376,1,9782020380621,1, 9.0),
 	(2376,2,9782012373785,1, 32.5),
-
+	(2377,1,9782742712588,1,94.34),
 	(2378,1,9782021104462,2,4.5),
 	(2379,1,9782742747467,1,160.0),
 	(2380,1,9782226172730,1, 11.9),
 	(2381,1,9782226060839,1,129.0),
 	(2381,2,9782080608666,1,6.86),
-
+	(2381,3,9782226060013,1, 30.0),
 	(2382,1,9782020062817,1, 9.0),
 	(2383,1,9782080668929,1, 32.5),
 	(2383,2,9782070578597,1, 9.0),
 	(2384,1,9782226315243,1,5.15),
-
+	(2385,1,9782020048484,1, 11.9),
 	(2385,2,9782070615292,2, 15.0),
 	(2385,3,9782020043915,1,9.0),
-
+	(2386,1,9782227317192,1, 9.0),
 	(2387,1,9782742772285,1, 11.9),
 	(2388,1,9782227340909,1,8.97),
 	(2388,2,9782227473676,1,7.6),
-
+	(2389,1,9782012100060,1, 20.0),
 	(2390,1,9782226142719,2,6.74),
 	(2391,1,9782226025845,3,6.01),
 	(2392,1,9782742787128,1, 9.0),
 	(2393,1,9782012602021,1,22.83),
-
+	(2394,1,9782021406801,1,12.81),
 	(2395,1,9782215048831,1,4.62),
 	(2395,2,9782226006646,1,25.0),
 	(2395,3,9782016210895,1, 9.0),
@@ -21222,25 +21222,25 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2412,1,9782082016278,1, 9.0),
 	(2413,1,9782012431942,1, 13.0),
 	(2413,2,9782742729746,2, 32.5),
-
+	(2413,3,9782081310711,1,45.0),
 	(2414,1,9782011667458,1, 29.5),
 	(2415,1,9782080125842,3, 9.0),
 	(2416,1,9782226106599,3,5.17),
 	(2416,2,9782742414116,1, 17.0),
 	(2416,3,9782020060882,1,17.0),
-
+	(2417,1,9782742700974,1, 24.8),
 	(2418,1,9782010033704,1,18.5),
 	(2419,1,9782081661462,1,6.53),
-
+	(2420,1,9782227471580,1,17.99),
 	(2421,1,9782010101113,1, 10.0),
 	(2422,1,9782081642355,1, 9.0),
 	(2423,1,9782742723225,1,4.5),
 	(2424,1,9782012376236,2, 9.0),
-
+	(2425,1,9782742411023,1,7.0),
 	(2426,1,9782081619401,3, 21.1),
 	(2427,1,9782020050647,1, 39.7),
 	(2428,1,9782080711984,1,5.21),
-
+	(2429,1,9782742704767,1,12.9),
 	(2430,1,9782020147460,1, 13.6),
 	(2431,1,9782012919563,2,12.0),
 	(2432,1,9782215106647,1, 9.0),
@@ -21255,22 +21255,22 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2438,1,9782742704866,1,18.97),
 	(2438,2,9782080124944,1,60.94),
 	(2439,1,9782081661462,1,6.53),
-
+	(2440,1,9782742749546,1,10.71),
 	(2441,1,9782012379756,1, 9.0),
 	(2442,1,9782226002815,1,5.43),
 	(2443,1,9782080676849,1,4.43),
-
-
+	(2444,1,9782742780600,1,9.2),
+	(2445,1,9782227360365,1, 17.2),
 	(2445,2,9782012449527,1,12.45),
 	(2446,1,9782010208232,2, 14.0),
-
+	(2447,1,9782020479981,2, 11.9),
 	(2448,1,9782012012875,3, 9.0),
 	(2448,2,9782081640221,1, 9.0),
 	(2448,3,9782330001797,1,6.43),
 	(2449,1,9782081217867,3,5.91),
 	(2450,1,9782081619814,1, 34.7),
 	(2450,2,9782226071507,1,5.48),
-
+	(2451,1,9782226095770,2, 9.0),
 	(2453,1,9782070130689,2, 32.5),
 	(2454,1,9782012368842,3, 9.0),
 	(2455,1,9782226005267,1,4.5),
@@ -21288,20 +21288,20 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2466,1,9782081640047,1, 9.0),
 	(2467,1,9782012099715,1, 35.7),
 	(2467,2,9782080124944,1,60.94),
-
+	(2467,3,9782227484924,1,19.41),
 	(2468,1,9782020065870,1, 20.0),
 	(2469,1,9782226117052,1,17.57),
 	(2470,1,9782226055842,1,13.57),
 	(2471,1,9782330009502,1, 25.0),
 	(2472,1,9782081640757,2, 39.7),
 	(2473,1,9782742773930,1, 9.0),
-
+	(2474,1,9782742756483,1, 9.0),
 	(2475,1,9782020054621,2,14.0),
 	(2476,1,9782080136190,1,36.99),
 	(2476,2,9782330001803,2, 30.0),
 	(2477,1,9782205077193,1,17.33),
-
-
+	(2477,2,9782010123382,1,12.81),
+	(2478,1,9782020087438,2,4.91),
 	(2479,1,9782020066228,1, 13.0),
 	(2480,1,9782227721968,1, 10.0),
 	(2481,1,9782227498570,1,8.25),
@@ -21312,14 +21312,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2484,1,9782010207570,1,4.73),
 	(2485,1,9782226257673,1,6.53),
 	(2486,1,9782020101646,2, 31.5),
-
+	(2487,1,9782742710485,1,15.5),
 	(2488,1,9782082004503,1,59.0),
 	(2489,1,9782010124174,1,4.7),
 	(2490,1,9782012017351,1, 10.0),
 	(2490,2,9782020107693,1,7.57),
 	(2491,1,9782344008232,1, 9.0),
 	(2492,1,9782020060882,2,17.0),
-
+	(2493,1,9782010126093,1,5.34),
 	(2494,1,9782505005100,1,17.5),
 	(2495,1,9782020062770,2,28.02),
 	(2496,1,9782080110343,1,100.0),
@@ -21330,10 +21330,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2500,1,9782226167187,2, 11.9),
 	(2501,1,9782080688422,1, 21.3),
 	(2502,1,9782081617490,1, 9.0),
-
+	(2503,1,9782020183048,1, 19.6),
 	(2503,2,9782081647909,1,4.86),
 	(2504,1,9782013304832,1,6.53),
-
+	(2504,2,9782227366022,1,6.47),
 	(2504,3,9782080608475,1, 9.0),
 	(2505,1,9782012356184,1, 31.0),
 	(2506,1,9782012404960,1, 20.0),
@@ -21386,7 +21386,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2544,1,9782226020666,2, 19.9),
 	(2545,1,9782226181909,3,16.88),
 	(2546,1,9782020638746,1, 37.0),
-
+	(2547,1,9782020025829,1,7.43),
 	(2548,1,9782020189651,1, 32.5),
 	(2549,1,9782226017840,1, 33.6),
 	(2550,1,9782226005878,1,4.5),
@@ -21396,7 +21396,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2551,3,9782330001797,1,6.43),
 	(2552,1,9782012094215,1, 9.0),
 	(2553,1,9782012405158,1, 13.7),
-
+	(2554,1,9782227475304,1,6.97),
 	(2555,1,9782070616763,1, 12.4),
 	(2556,1,9782226015884,2,9.85),
 	(2557,1,9782070311149,2, 14.0),
@@ -21407,7 +21407,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2562,1,9782081337305,1,21.0),
 	(2562,2,9782020315623,1,14.86),
 	(2562,3,9782226155108,1,10.0),
-
+	(2563,1,9782742411023,1,7.0),
 	(2563,2,9782010015250,1, 26.9),
 	(2563,3,9782070648214,1, 26.5),
 	(2564,1,9782012357242,1, 11.9),
@@ -21421,7 +21421,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2571,2,9791023506297,1,9.9),
 	(2572,1,9782226069474,1, 34.7),
 	(2573,1,9782010054877,1,11.9),
-
+	(2573,2,9782081244566,1, 10.0),
 	(2574,1,9782226136855,1,4.8),
 	(2575,1,9782226008565,1,26.0),
 	(2576,1,9782020045032,1, 12.0),
@@ -21447,29 +21447,29 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2593,1,9782205047561,4, 9.0),
 	(2594,1,9782080608475,1, 9.0),
 	(2595,1,9782010151941,2,6.53),
-
+	(2596,1,9782020056465,1,20.0),
 	(2597,1,9782215092858,1, 9.0),
 	(2598,1,9782012360525,1, 35.9),
 	(2599,1,9782070623990,1,6.53),
 	(2599,2,9782742723720,1,16.9),
 	(2599,3,9782080664020,1, 30.0),
 	(2600,1,9782742740857,1,23.5),
-
+	(2601,1,9782841100491,1, 37.0),
 	(2602,1,9782742730247,1, 11.9),
 	(2603,1,9782010004612,1, 37.3),
 	(2604,1,9782080676849,1,4.43),
 	(2605,1,9782080688422,1, 21.3),
 	(2606,1,9782020134156,1,5.0),
 	(2607,1,9782215008163,3, 9.0),
-
+	(2608,1,9782742719907,1, 32.4),
 	(2608,2,9782010196119,1,5.06),
 	(2609,1,9782226315243,1,5.15),
 	(2610,1,9782215016823,1, 9.5),
 	(2611,1,9782020634236,1,11.8),
-
+	(2612,1,9782021496475,1,28.5),
 	(2613,1,9782747024976,1, 18.0),
 	(2614,1,9782871298793,1, 13.0),
-
+	(2615,1,9782081336377,1,5.3),
 	(2616,1,9782742724833,1,8.0),
 	(2617,1,9782081339248,1,4.42),
 	(2618,1,9782226079244,1, 9.0),
@@ -21482,7 +21482,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2623,1,9782081217218,1, 26.6),
 	(2624,1,9782012012875,1, 9.0),
 	(2625,1,9782226051462,3,4.93),
-
+	(2626,1,9782742429264,1,4.66),
 	(2626,2,9782723454025,3, 28.4),
 	(2627,1,9782080109798,1,77.5),
 	(2628,1,9782742792498,1, 33.6),
@@ -21497,7 +21497,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2635,1,9782227729704,1, 9.0),
 	(2636,1,9782012375895,1,4.48),
 	(2637,1,9782215106531,1, 9.0),
-
+	(2638,1,9782227610989,1, 9.0),
 	(2639,1,9782227486805,1,11.25),
 	(2640,1,9782070332717,1,4.0),
 	(2641,1,9782080813909,2,5.28),
@@ -21506,15 +21506,15 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2644,1,9782082115537,2,25.0),
 	(2645,1,9782012249073,2, 29.0),
 	(2645,2,9782020015370,1,14.16),
-
+	(2645,3,9782227301399,1, 20.0),
 	(2646,1,9782010124174,1,4.7),
 	(2647,1,9782226038852,2,10.02),
 	(2647,2,9782723440950,1,19.0),
 	(2648,1,9782012008489,3, 9.9),
-
+	(2649,1,9782227366015,1,4.59),
 	(2650,1,9782227723016,1, 9.0),
 	(2650,2,9782215080800,1,4.84),
-
+	(2651,1,9782742725236,1,21.3),
 	(2652,1,9782742749447,4,19.3),
 	(2653,1,9782070784172,2,14.1),
 	(2654,1,9782012458314,1, 39.5),
@@ -21528,7 +21528,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2660,1,9782227473676,2,7.6),
 	(2661,1,9782226006233,1,8.0),
 	(2662,1,9782742797370,1, 22.4),
-
+	(2663,1,9782010054945,1,5.73),
 	(2664,1,9782020638609,3,15.45),
 	(2665,1,9782226025982,1,29.0),
 	(2665,2,9782205072693,1,13.76),
@@ -21543,7 +21543,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2673,1,9782020227476,1, 30.4),
 	(2674,1,9782020063678,1,15.88),
 	(2675,1,9782020056496,1, 9.0),
-
+	(2676,1,9782227317192,2, 9.0),
 	(2677,1,9782226089267,1,15.0),
 	(2678,1,9782080815149,1, 30.0),
 	(2678,2,9782723413077,1,5.88),
@@ -21560,7 +21560,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2688,1,9782747019965,1,5.08),
 	(2688,2,9782742714865,1,9.3),
 	(2689,1,9782020959124,1, 19.8),
-
+	(2690,1,9782330075736,1,12.21),
 	(2691,1,9782205055726,1, 39.5),
 	(2692,1,9782080674814,1,16.72),
 	(2693,1,9782080676849,1,4.43),
@@ -21576,14 +21576,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2702,1,9782081640757,2, 39.7),
 	(2703,1,9782330057510,1,23.06),
 	(2704,1,9782080686138,1, 20.2),
-
+	(2705,1,9782742405084,1,9.33),
 	(2707,1,9782020059282,1, 30.0),
 	(2708,1,9782010171888,1,45.55),
 	(2709,1,9782011205155,2,4.11),
 	(2709,2,9782227721098,1,4.69),
 	(2709,3,9782205084672,1,15.19),
 	(2710,1,9782011455123,2,10.65),
-
+	(2711,1,9782020871471,1,11.19),
 	(2711,2,9782012387683,1, 16.0),
 	(2712,1,9791023506297,1,9.9),
 	(2712,2,9782226172730,1, 11.9),
@@ -21620,7 +21620,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2740,3,9782070631322,1, 14.5),
 	(2741,1,9782070584246,1,4.62),
 	(2742,1,9782226027016,1,4.36),
-
+	(2743,1,9782012403338,1, 19.9),
 	(2744,1,9782070570669,1, 9.0),
 	(2745,1,9782020093453,1, 9.0),
 	(2746,1,9782742792580,1,17.0),
@@ -21644,8 +21644,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2759,1,9782227718142,1, 20.1),
 	(2760,1,9782226159991,1,9.23),
 	(2761,1,9782080678034,2,5.85),
-
-
+	(2762,1,9782227366022,1,6.47),
+	(2763,1,9782227436268,3, 15.8),
 	(2764,1,9782012099289,2, 15.0),
 	(2765,1,9782020044516,1, 9.0),
 	(2765,2,9782226177179,1, 14.9),
@@ -21663,37 +21663,37 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2772,1,9782010123436,1,7.58),
 	(2772,2,9782012010093,1, 35.1),
 	(2772,3,9782747034692,1, 15.0),
-
-
+	(2773,1,9782330006235,1,26.98),
+	(2774,1,9782081609440,2,6.2),
 	(2774,2,9782080685452,1, 19.2),
 	(2774,3,9782020669412,1,18.08),
 	(2774,4,9782205053500,1,9.03),
-
+	(2775,1,9782081210110,1,8.01),
 	(2776,1,9782012352223,1,8.07),
 	(2776,2,9782012379756,1, 9.0),
 	(2777,1,9782020068208,1,15.75),
 	(2778,1,9782010173233,1, 17.6),
 	(2779,1,9782082115537,1,25.0),
 	(2779,2,9782020950237,1,6.88),
-
+	(2779,3,9782227482043,1,45.0),
 	(2780,1,9782226142733,1,5.02),
 	(2781,1,9782330034115,1,10.0),
 	(2782,1,9782082402583,3, 13.0),
 	(2783,1,9782020047166,1,5.0),
 	(2785,1,9782868699497,2, 14.7),
-
+	(2786,1,9782010056710,2, 13.0),
 	(2787,1,9782012428911,2, 9.0),
 	(2788,1,9782020107693,1,7.57),
 	(2789,1,9782020047920,1, 13.0),
 	(2789,2,9782020183581,1,4.09),
 	(2789,3,9782226007933,2,5.0),
 	(2791,1,9782841100071,1,158.98),
-
+	(2792,1,9782330167691,3,39.0),
 	(2793,1,9782081225497,1, 12.8),
 	(2793,2,9782226005779,1,18.6),
 	(2794,1,9782227345133,2,4.7),
 	(2795,1,9782742414871,1, 22.1),
-
+	(2796,1,9782020526609,2,20.3),
 	(2797,1,9782070586783,2, 20.0),
 	(2797,2,9782020326582,2,28.26),
 	(2797,3,9782020055277,2, 9.0),
@@ -21702,7 +21702,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2799,1,9782012370753,1, 31.9),
 	(2800,1,9782020049672,1, 9.0),
 	(2801,1,9782011452252,1,5.61),
-
+	(2802,1,9782020141383,1,17.09),
 	(2803,1,9782070615568,2, 9.0),
 	(2804,1,9782081608276,1,5.58),
 	(2805,1,9782081223028,1,57.79),
@@ -21731,14 +21731,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2824,1,9782070599806,1,6.08),
 	(2825,1,9782742428892,1,10.5),
 	(2826,1,9782080682123,1, 16.0),
-
+	(2827,1,9782020046626,2, 9.0),
 	(2828,1,9782080644411,2,9.77),
 	(2829,1,9782011801333,1,4.21),
 	(2829,2,9782012435704,1, 27.0),
 	(2830,1,9782010151941,1, 9.0),
 	(2831,1,9782226208415,2, 19.0),
-
-
+	(2832,1,9782742738694,5, 27.5),
+	(2833,1,9782020573719,1,6.53),
 	(2834,1,9782227722156,1, 9.0),
 	(2835,1,9782020147460,1, 13.6),
 	(2836,1,9782020063678,1,15.88),
@@ -21758,7 +21758,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2847,3,9782226154286,2,24.9),
 	(2848,1,9782020207294,1,27.0),
 	(2849,1,9782012373785,1, 32.5),
-
+	(2850,1,9782081336377,2,5.3),
 	(2851,1,9782226318183,2,22.0),
 	(2852,1,9782016251362,1, 9.0),
 	(2853,1,9782081647909,1,4.86),
@@ -21770,13 +21770,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2859,1,9782010038686,1,21.26),
 	(2860,1,9782070545865,1, 13.6),
 	(2860,2,9782012792975,1,4.4),
-
-
-
+	(2860,3,9782021030532,4, 11.9),
+	(2861,1,9782742762927,1, 22.1),
+	(2862,1,9782742756483,1, 9.0),
 	(2863,1,9782205062403,1,5.0),
 	(2864,1,9782742738748,2,145.0),
 	(2865,1,9782012099715,1, 35.7),
-
+	(2865,2,9782868690975,1,6.38),
 	(2866,1,9782742714865,3,9.3),
 	(2867,1,9782742719693,2,6.9),
 	(2868,1,9782226005779,1,18.6),
@@ -21784,16 +21784,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2870,1,9782226008657,1,5.22),
 	(2871,1,9782747030007,2, 10.8),
 	(2872,1,9782020891882,2,15.2),
-
+	(2873,1,9782080305350,3,51.7),
 	(2874,1,9782742700981,1,51.11),
 	(2875,1,9782080664150,1, 9.0),
 	(2876,1,9782020977739,2, 25.0),
-
+	(2877,1,9782742749546,1,10.71),
 	(2877,2,9782010093128,1, 9.0),
 	(2877,3,9782226001153,1, 13.7),
 	(2878,1,9782226019165,3,35.8),
 	(2879,1,9782723430319,1, 39.9),
-
+	(2880,1,9782742785568,1,8.77),
 	(2881,1,9782012379763,1, 9.0),
 	(2882,1,9782226030351,3,20.9),
 	(2883,1,9782010091223,3, 28.0),
@@ -21828,7 +21828,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2903,1,9782070657735,4, 26.5),
 	(2903,2,9782020558075,4, 59.9),
 	(2903,3,9782215106531,1, 9.0),
-
+	(2903,4,9782227471344,1,52.0),
 	(2904,1,9782226077134,1,4.75),
 	(2905,1,9782012239005,2, 39.7),
 	(2906,1,9782070591916,1, 14.0),
@@ -21862,7 +21862,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2928,1,9782227472341,1,150.0),
 	(2929,1,9782215093107,1, 15.0),
 	(2930,1,9782020048743,1,5.48),
-
+	(2931,1,9782012012660,2, 22.8),
 	(2932,1,9782226477309,1, 22.9),
 	(2933,1,9782020573610,1,6.53),
 	(2934,1,9782226246882,1, 11.9),
@@ -21871,8 +21871,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2937,1,9782227738010,1, 9.0),
 	(2938,1,9782226007711,1,17.18),
 	(2939,1,9782227473676,1,7.6),
-
-
+	(2940,1,9782020871471,1,11.19),
+	(2941,1,9782012101425,3,7.85),
 	(2942,1,9782226155870,2,4.98),
 	(2943,1,9782082025010,1, 10.0),
 	(2944,1,9782080107596,1,14.75),
@@ -21892,9 +21892,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2955,1,9782020054881,1, 29.9),
 	(2956,1,9782013923927,1, 35.1),
 	(2957,1,9782020065757,1, 9.0),
-
+	(2958,1,9782742738694,1, 27.5),
 	(2959,1,9782020339056,1,11.4),
-
+	(2960,1,9782081244566,1, 10.0),
 	(2961,1,9782020220606,1,9.1),
 	(2961,2,9782742422364,2, 27.0),
 	(2961,3,9782742700608,4,10.08),
@@ -21923,7 +21923,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2977,2,9782215050261,1, 23.6),
 	(2977,3,9782020049726,2, 9.0),
 	(2978,1,9782012098381,2,98.0),
-
+	(2979,1,9782742796335,1, 39.8),
 	(2980,1,9782215120247,1, 13.3),
 	(2981,1,9782012402270,1, 10.0),
 	(2982,1,9782226033017,3,4.6),
@@ -21931,8 +21931,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(2984,1,9782080676849,1,4.43),
 	(2985,1,9782012010079,3, 36.6),
 	(2986,1,9782226091604,1, 38.0),
-
-
+	(2986,2,9782742722990,1,12.21),
+	(2987,1,9782227301399,1, 20.0),
 	(2987,2,9782215008163,1, 9.0),
 	(2988,1,9782723489119,1,4.6),
 	(2989,1,9782747022361,1, 9.0),
@@ -21955,7 +21955,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3003,1,9782016209356,2, 9.0),
 	(3003,2,9782012010024,3, 9.0),
 	(3004,1,9782012016361,1, 36.6),
-
+	(3004,2,9782010078064,5,25.01),
 	(3005,1,9782020677615,1, 11.9),
 	(3005,2,9782012387683,3, 16.0),
 	(3006,1,9782226142719,2,6.74),
@@ -21984,35 +21984,35 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3023,1,9782020540964,1,5.94),
 	(3024,1,9782505002352,1,45.0),
 	(3025,1,9782010111709,1, 9.0),
-
+	(3026,1,9782227481947,1,10.07),
 	(3027,1,9782020052047,2, 9.0),
 	(3028,1,9782226025982,1,29.0),
 	(3028,2,9782020204408,1,21.0),
-
+	(3029,1,9782010051913,2, 9.0),
 	(3030,1,9782226048653,1, 9.0),
 	(3031,1,9782012357242,3, 11.9),
-
+	(3032,1,9782227366022,1,6.47),
 	(3033,1,9782215076322,1, 9.0),
 	(3033,2,9782020228008,1, 24.0),
 	(3033,3,9782010105203,2, 16.0),
 	(3034,1,9782021104462,1,4.5),
-
+	(3035,1,9782080125156,1,39.0),
 	(3036,1,9782012445888,1, 9.0),
-
+	(3036,2,9782020662512,1, 11.9),
 	(3037,1,9782020204408,2,21.0),
 	(3038,1,9782020216647,1, 24.31),
 	(3039,1,9782226074669,2,4.89),
 	(3040,1,9782226006189,1, 11.9),
 	(3041,1,9782012011779,1, 10.0),
 	(3042,1,9782215046554,1, 14.0),
-
-
+	(3043,1,9782080201294,1,9.72),
+	(3044,1,9782020164573,1,6.08),
 	(3045,1,9782226027870,2,10.0),
 	(3046,1,9782080648075,1,44.0),
 	(3047,1,9782723486583,1,6.39),
 	(3048,1,9782226118486,3, 9.0),
 	(3049,1,9782226238726,1,23.8),
-
+	(3050,1,9782227301580,1, 19.0),
 	(3051,1,9782080709585,1,6.32),
 	(3052,1,9782747012935,1, 35.7),
 	(3052,2,9782020213110,1, 20.0),
@@ -22025,7 +22025,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3054,3,9782020977036,3, 11.9),
 	(3055,1,9782020088992,2, 11.9),
 	(3056,1,9782080608666,1,6.86),
-
+	(3057,1,9782012358584,1,6.0),
 	(3057,2,9782226005267,1,4.5),
 	(3058,1,9782070521760,1,5.94),
 	(3059,1,9782742730247,1, 11.9),
@@ -22034,13 +22034,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3062,1,9782723486583,1,6.39),
 	(3063,1,9782742720415,1,4.9),
 	(3063,2,9782081223592,1, 20.8),
-
-
+	(3064,1,9782010126093,1,5.34),
+	(3065,1,9782080304452,2,75.99),
 	(3066,1,9782747024990,4, 9.0),
 	(3067,1,9782012402270,1, 10.0),
 	(3068,1,9782226018830,2, 35.0),
 	(3069,1,9782020103589,2,5.0),
-
+	(3070,1,9782227471344,1,52.0),
 	(3071,1,9782227070073,1, 36.3),
 	(3071,2,9782070442430,1,5.19),
 	(3072,1,9782012098411,1, 21.4),
@@ -22052,7 +22052,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3076,1,9782742797707,1,6.52),
 	(3078,1,9782012009554,1, 22.9),
 	(3079,1,9782227738737,1, 9.0),
-
+	(3080,1,9782010054945,3,5.73),
 	(3081,1,9782012266728,1, 9.0),
 	(3082,1,9782070427772,1,9.89),
 	(3082,2,9782080676849,1,4.43),
@@ -22062,16 +22062,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3084,3,9782081270114,3, 32.5),
 	(3085,1,9782020977401,3,6.9),
 	(3086,1,9782742797356,1,15.3),
-
+	(3087,1,9782868691828,1, 18.8),
 	(3088,1,9782082111201,1,48.9),
 	(3089,1,9782012360853,1,16.0),
 	(3090,1,9782012920309,1, 21.3),
-
+	(3091,1,9782226144232,1, 9.0),
 	(3092,1,9782020310079,3,4.9),
-
+	(3093,1,9782205034066,1,4.0),
 	(3094,1,9782070506699,2,5.76),
 	(3095,1,9782226030351,2,20.9),
-
+	(3096,1,9782227301399,1, 20.0),
 	(3096,2,9782012428539,2,10.0),
 	(3097,1,9782020049382,2, 9.0),
 	(3097,2,9782012918474,1, 20.0),
@@ -22089,17 +22089,17 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3105,1,9782070663774,1, 29.0),
 	(3106,1,9782020102919,2, 9.0),
 	(3107,1,9782011714398,1,6.44),
-
+	(3108,1,9782081227576,1,25.74),
 	(3108,2,9782080688422,1, 21.3),
 	(3109,1,9782020540964,1,5.94),
 	(3110,1,9782226060198,1,19.99),
 	(3111,1,9782742700059,1, 38.6),
 	(3112,1,9782505005100,1,17.5),
-
+	(3113,1,9782742727728,1,9.2),
 	(3114,1,9782227486324,1,191.99),
 	(3115,1,9782082102704,1,5.41),
 	(3116,1,9782010093906,1,8.12),
-
+	(3117,1,9782226153074,1, 31.9),
 	(3117,2,9782020093804,1,29.9),
 	(3117,3,9782205059038,1, 28.4),
 	(3118,1,9782012458314,1, 39.5),
@@ -22110,27 +22110,27 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3122,1,9782082019088,2,12.88),
 	(3123,1,9782016209356,1, 9.0),
 	(3124,1,9782227482395,2, 12.1),
-
+	(3125,1,9782227425552,1,45.0),
 	(3125,2,9782226208415,1, 19.0),
 	(3125,3,9782742700608,1,10.08),
-
+	(3126,1,9782020796569,1, 11.9),
 	(3127,1,9782226187789,1,6.31),
 	(3128,1,9782080112859,1,45.98),
 	(3128,2,9782330080204,2,24.56),
 	(3129,1,9782080201713,1,149.99),
 	(3130,1,9782742742752,2,8.39),
-
+	(3131,1,9782080300782,1,43.94),
 	(3132,1,9782020096645,1,4.28),
 	(3133,1,9782226005779,2,18.6),
 	(3133,2,9782742414871,1, 22.1),
-
+	(3133,3,9782082018227,1,15.1),
 	(3134,1,9782016251775,1,4.04),
 	(3135,1,9782226077134,1,4.75),
 	(3136,1,9782226092304,1, 11.9),
 	(3137,1,9782868695932,1, 19.0),
 	(3138,1,9782011612588,1,4.69),
-
-
+	(3139,1,9782205034066,2,4.0),
+	(3140,1,9782012451063,1,13.95),
 	(3141,1,9782742797356,1,15.3),
 	(3142,1,9782020069298,2, 11.9),
 	(3143,1,9782080120724,2,5.4),
@@ -22139,7 +22139,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3146,1,9782871298793,2, 13.0),
 	(3147,1,9782012792975,3,4.4),
 	(3147,2,9782020638609,1,15.45),
-
+	(3147,3,9782080304452,1,75.99),
 	(3148,1,9782081292970,3,20.8),
 	(3149,1,9782010161568,1, 9.0),
 	(3149,2,9782081209497,1, 31.2),
@@ -22183,7 +22183,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3183,1,9782020573610,1,6.53),
 	(3184,1,9782226040749,2, 20.0),
 	(3185,1,9782706607479,1,11.18),
-
+	(3186,1,9782020056465,1,20.0),
 	(3187,1,9782742787128,1, 9.0),
 	(3188,1,9782742796762,1,4.93),
 	(3189,1,9782215019862,1, 9.0),
@@ -22209,14 +22209,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3202,1,9782020067584,1, 9.0),
 	(3203,1,9782012792852,5,24.0),
 	(3204,1,9782215093879,1, 9.0),
-
+	(3205,1,9782020131704,1,4.67),
 	(3206,1,9782012376236,1, 9.0),
 	(3207,1,9782012360853,1,16.0),
 	(3208,1,9782226254443,2, 11.9),
 	(3209,1,9782020638890,1, 13.0),
 	(3209,2,9782742714766,1,11.58),
 	(3210,1,9782747012935,1, 35.7),
-
+	(3211,1,9782081310711,1,45.0),
 	(3212,1,9782080678935,1, 11.9),
 	(3213,1,9782020055888,2,13.8),
 	(3214,1,9782747049085,1, 10.0),
@@ -22265,7 +22265,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3250,1,9782070515578,1,5.08),
 	(3251,1,9782205068504,1,7.57),
 	(3251,2,9782020046428,1, 24.5),
-
+	(3252,1,9782081235373,1,9.51),
 	(3252,2,9782012352711,1,4.14),
 	(3253,1,9782013920049,1, 35.4),
 	(3254,1,9782747013208,3,46.9),
@@ -22280,7 +22280,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3260,3,9782205062816,1,7.64),
 	(3261,1,9782227350106,1, 9.0),
 	(3262,1,9782020135139,1, 25.8),
-
+	(3263,1,9782020183048,1, 19.6),
 	(3264,1,9782742756742,1,13.61),
 	(3265,1,9782010127434,1, 9.0),
 	(3265,2,9782021067989,1,5.23),
@@ -22289,7 +22289,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3268,1,9782080663894,1, 9.0),
 	(3269,1,9782215120247,3, 13.3),
 	(3269,2,9782081240742,1, 21.4),
-
+	(3270,1,9782020213806,1,5.94),
 	(3271,1,9782082013765,1,5.94),
 	(3272,1,9782723402170,1, 15.0),
 	(3273,1,9782227202092,3, 9.0),
@@ -22334,16 +22334,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3305,3,9782012359482,1, 27.5),
 	(3306,1,9782020191296,1, 11.9),
 	(3307,1,9782723421379,4,5.91),
-
+	(3308,1,9782205058024,1,10.81),
 	(3309,1,9782226016362,1, 10.0),
 	(3309,2,9782742745791,2, 32.5),
 	(3310,1,9782742787128,1, 9.0),
 	(3311,1,9782226240866,1, 35.1),
 	(3311,2,9782227723009,1, 9.0),
 	(3312,1,9782226157591,1, 9.0),
-
+	(3313,1,9782012101425,2,7.85),
 	(3314,1,9782020947343,1,15.0),
-
+	(3315,1,9782742405084,1,9.33),
 	(3316,1,9782070110940,1,10.0),
 	(3317,1,9782012012219,1, 9.0),
 	(3318,1,9782012434349,1, 20.0),
@@ -22378,21 +22378,21 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3343,1,9782020634236,1,11.8),
 	(3344,1,9782010089138,1,6.65),
 	(3344,2,9782718905853,1,9.0),
-
+	(3345,1,9782012012653,1, 9.0),
 	(3346,1,9782226034403,1, 9.0),
 	(3347,1,9782011667458,1, 29.5),
 	(3348,1,9782020878142,1,11.49),
 	(3349,1,9782012303799,1, 18.0),
 	(3350,1,9782070345007,1, 39.9),
-
+	(3351,1,9782742710485,3,15.5),
 	(3352,1,9782012352162,1,14.0),
 	(3353,1,9782012919563,1,12.0),
 	(3354,1,9782020337946,1,4.37),
 	(3354,2,9782705003012,1,9.49),
-
+	(3355,1,9782081310711,1,45.0),
 	(3356,1,9782010148576,1, 9.0),
 	(3357,1,9782020653831,1, 11.9),
-
+	(3358,1,9782742765737,1,15.34),
 	(3359,1,9782081618657,1, 9.0),
 	(3359,2,9782020326582,1,28.26),
 	(3359,3,9782742797707,1,6.52),
@@ -22402,7 +22402,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3361,1,9782742781171,1,7.29),
 	(3361,2,9782020095983,1, 9.0),
 	(3361,3,9782215087366,1, 21.7),
-
+	(3362,1,9782226039538,1,5.47),
 	(3363,1,9782082000550,1,25.6),
 	(3364,1,9782227478336,5, 9.0),
 	(3364,2,9782226091604,1, 38.0),
@@ -22414,7 +22414,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3370,1,9782011705112,1, 9.0),
 	(3371,1,9782016251447,1,5.6),
 	(3372,1,9782080124944,1,60.94),
-
+	(3373,1,9782227340954,1, 9.0),
 	(3374,1,9782226182357,1, 12.4),
 	(3374,2,9782012449381,1, 9.0),
 	(3375,1,9782020959124,1, 19.8),
@@ -22423,7 +22423,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3378,1,9782082013901,1, 11.9),
 	(3379,1,9782330016234,1,22.41),
 	(3380,1,9782081612969,1, 36.6),
-
+	(3381,1,9782020204385,1, 32.5),
 	(3382,1,9782020002967,2, 15.0),
 	(3383,1,9782010010057,1, 25.0),
 	(3384,1,9782020129619,2, 9.0),
@@ -22474,7 +22474,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3421,1,9782747030007,1, 10.8),
 	(3421,2,9782226238450,1, 20.0),
 	(3421,3,9782226218780,1, 19.9),
-
+	(3421,4,9782020123952,1, 11.9),
 	(3422,1,9782070442430,1,5.19),
 	(3423,1,9782080663894,1, 9.0),
 	(3424,1,9782020827201,1, 36.0),
@@ -22485,8 +22485,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3428,1,9782742781171,1,7.29),
 	(3429,1,9782070721689,1, 9.0),
 	(3430,1,9782227727038,3, 34.5),
-
-
+	(3431,1,9782020048484,1, 11.9),
+	(3431,2,9782070312252,1, 13.0),
 	(3431,3,9782012449527,2,12.45),
 	(3432,1,9782910868758,1,4.0),
 	(3433,1,9782081229501,1, 37.7),
@@ -22507,14 +22507,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3446,1,9782010139772,1, 9.0),
 	(3447,1,9782082018753,3, 9.0),
 	(3448,1,9782010010811,1,6.8),
-
+	(3448,2,9782742727537,1,4.39),
 	(3449,1,9782080687401,1, 11.9),
 	(3450,1,9782020126649,1, 9.0),
 	(3450,2,9782871297376,4,5.62),
 	(3451,1,9782226005250,1,30.01),
-
+	(3451,2,9782020204385,1, 32.5),
 	(3452,1,9782330027483,1,4.46),
-
+	(3453,1,9782012013230,1,4.39),
 	(3454,1,9782747037440,1, 9.0),
 	(3455,1,9782080120946,1,50.0),
 	(3457,1,9782080663894,1, 9.0),
@@ -22539,16 +22539,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3466,1,9782012428539,1,10.0),
 	(3467,1,9782070610815,1,5.9),
 	(3468,1,9782742797707,1,6.52),
-
+	(3468,2,9782742752782,1,9.94),
 	(3468,3,9782010213625,2, 9.0),
 	(3468,4,9782505005100,1,17.5),
-
-
+	(3469,1,9782723437202,1,10.1),
+	(3470,1,9782012101425,3, 9.0),
 	(3471,1,9782080660367,1,9.57),
 	(3472,1,9782020825177,1, 32.5),
 	(3472,2,9782020959124,1, 19.8),
 	(3473,1,9782012355408,1, 10.5),
-
+	(3473,2,9782742746200,1, 18.7),
 	(3473,3,9782012920309,1, 21.3),
 	(3474,1,9782020135139,1, 25.8),
 	(3475,1,9782742701681,1,15.2),
@@ -22557,24 +22557,24 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3478,1,9782227487130,1, 35.0),
 	(3479,1,9782070650439,1, 18.5),
 	(3479,2,9782227436435,1,16.46),
-
+	(3480,1,9782226155733,2, 11.9),
 	(3481,1,9782082013901,1, 11.9),
 	(3482,1,9782742766024,1, 32.5),
-
+	(3483,1,9782226094209,1, 20.0),
 	(3484,1,9782012400221,1, 9.0),
 	(3484,2,9782080683342,3,4.1),
 	(3485,1,9782742747467,1,160.0),
 	(3486,1,9782020046947,1,7.46),
 	(3487,1,9782020940931,1,16.73),
 	(3487,2,9782226060839,1,129.0),
-
+	(3488,1,9782020044158,1,7.0),
 	(3488,2,9782012016088,2, 9.0),
 	(3488,3,9782011675835,1, 35.0),
 	(3489,1,9782226052476,1, 39.1),
 	(3490,1,9782080689931,2, 11.9),
 	(3491,1,9782215022572,1, 30.0),
 	(3491,2,9782226244048,1, 9.0),
-
+	(3492,1,9782742774692,1,5.2),
 	(3493,1,9782080120786,1,25.93),
 	(3494,1,9782020634267,1, 11.9),
 	(3495,1,9782070359110,1, 32.5),
@@ -22585,13 +22585,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3498,1,9782070610815,1,5.9),
 	(3499,1,9782226208156,2,14.1),
 	(3500,1,9782010018473,1,62.0),
-
+	(3501,1,9782020046626,1, 9.0),
 	(3502,1,9782012422865,1, 9.0),
 	(3503,1,9782227478336,1, 9.0),
 	(3504,1,9782226019363,1,7.58),
 	(3504,2,9782020517003,2,13.57),
 	(3505,1,9782082115681,1,17.1),
-
+	(3506,1,9782020259712,1, 9.0),
 	(3507,1,9782226060839,1,129.0),
 	(3508,1,9782070756797,1,11.0),
 	(3508,2,9782081621046,1, 15.0),
@@ -22615,39 +22615,39 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3521,1,9782020047166,2,5.0),
 	(3522,1,9782012271791,1, 20.0),
 	(3523,1,9782020361583,1,6.1),
-
+	(3523,2,9782082018227,1,15.1),
 	(3524,1,9782070728695,1,15.2),
 	(3525,1,9782215098690,1, 20.0),
 	(3526,1,9782081625099,1,9.08),
 	(3526,2,9782080113641,3,9.0),
 	(3527,1,9782081621046,1, 15.0),
-
+	(3528,1,9782226119490,1, 9.0),
 	(3529,1,9782020529952,1,4.48),
-
+	(3530,1,9782868693136,1, 34.0),
 	(3531,1,9782226016874,2,5.29),
 	(3532,1,9782020206396,2,5.08),
 	(3533,1,9782020789929,1, 21.7),
 	(3534,1,9782020577977,3,28.4),
 	(3535,1,9782227436497,1,4.38),
 	(3536,1,9782080666758,1,7.45),
-
+	(3537,1,9782742749546,1,10.71),
 	(3537,2,9782226229786,1,5.23),
 	(3538,1,9782080690081,1, 22.4),
 	(3539,1,9782082115537,1,25.0),
-
-
+	(3540,1,9782010054945,1,5.73),
+	(3541,1,9782012012653,1, 9.0),
 	(3542,1,9782226087959,1,5.2),
 	(3543,1,9782012401167,1, 9.0),
-
+	(3544,1,9782742718092,1,5.29),
 	(3545,1,9782013928755,1,4.01),
-
+	(3546,1,9782021030532,1, 11.9),
 	(3547,1,9782742772902,1, 32.5),
 	(3548,1,9782020798914,1, 11.9),
-
+	(3548,2,9782012358584,2,6.0),
 	(3548,3,9782010018473,1,62.0),
 	(3548,4,9782742780365,1,5.9),
 	(3549,1,9782226189929,1,5.17),
-
+	(3550,1,9782020213806,1,5.94),
 	(3550,2,9782010101113,1, 10.0),
 	(3550,3,9782330080204,2,24.56),
 	(3551,1,9782226030351,1,20.9),
@@ -22667,7 +22667,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3562,2,9782226067470,1, 9.0),
 	(3563,1,9782010151941,1, 9.0),
 	(3564,1,9782012439818,1, 10.0),
-
+	(3565,1,9782742700561,1,12.51),
 	(3565,2,9782226136855,1,4.8),
 	(3565,3,9782070504633,1,6.97),
 	(3565,4,9782742428892,2,10.5),
@@ -22677,22 +22677,22 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3568,1,9782081286993,1, 9.0),
 	(3569,1,9782010161568,2, 9.0),
 	(3570,1,9782215150169,1, 26.0),
-
+	(3571,1,9782742710485,2,15.5),
 	(3572,1,9782227721098,3,4.69),
 	(3573,1,9782226010148,1, 36.7),
-
-
-
+	(3573,2,9782021328363,1,7.6),
+	(3573,3,9782226153074,1, 31.9),
+	(3574,1,9782205073393,1,24.88),
 	(3575,1,9782020251594,1,22.3),
 	(3576,1,9782080644411,1,9.77),
-
+	(3577,1,9782227202184,3,6.97),
 	(3578,1,9780862641696,1,12.01),
 	(3579,1,9782012260139,1, 12.0),
 	(3580,1,9782868699589,1,12.0),
 	(3580,2,9782505002352,2,45.0),
-
-
-
+	(3581,1,9782747020541,4, 37.9),
+	(3582,1,9782742431540,1,6.08),
+	(3582,2,9782080280961,1,149.92),
 	(3582,3,9782226005250,1,30.01),
 	(3583,1,9782226048653,1, 9.0),
 	(3583,2,9782070359110,1, 32.5),
@@ -22708,7 +22708,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3592,1,9782081640221,1, 9.0),
 	(3593,1,9782081621626,1, 9.0),
 	(3594,1,9782226009746,1, 19.9),
-
+	(3595,1,9782742411023,1,7.0),
 	(3596,1,9782020653831,1, 11.9),
 	(3597,1,9782020326582,1,28.26),
 	(3598,1,9782226018830,1, 35.0),
@@ -22716,7 +22716,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3600,1,9782010050220,1,7.2),
 	(3600,2,9782226187680,1,20.32),
 	(3600,3,9782226005021,1, 9.0),
-
+	(3600,4,9782010054945,1,5.73),
 	(3600,5,9782747039192,2,4.34),
 	(3601,1,9782747014595,1, 17.2),
 	(3602,1,9782705001391,1,8.49),
@@ -22730,14 +22730,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3609,1,9782215117421,2,6.23),
 	(3609,2,9782020230872,2,4.97),
 	(3609,3,9782011459152,1, 59.9),
-
+	(3609,4,9782226144232,1, 9.0),
 	(3610,1,9782215084556,1, 9.0),
 	(3611,1,9782012422865,2, 9.0),
 	(3612,1,9782012435339,3, 9.0),
 	(3613,1,9782226141453,1, 10.0),
 	(3614,1,9782227471634,3,6.53),
 	(3615,1,9782226010148,1, 36.7),
-
+	(3616,1,9782020044158,1,7.0),
 	(3617,1,9782747019088,1, 9.0),
 	(3618,1,9782742422364,2, 27.0),
 	(3619,1,9782012012202,2, 9.0),
@@ -22747,7 +22747,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3622,1,9782020062497,1,59.0),
 	(3623,1,9782010073397,1,105.0),
 	(3624,1,9782070503537,1,4.98),
-
+	(3625,1,9782742701179,1,17.78),
 	(3626,1,9782012402812,2, 9.0),
 	(3627,1,9782080102102,2,7.6),
 	(3628,1,9782215093879,1, 9.0),
@@ -22765,7 +22765,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3637,1,9782205077193,1,17.33),
 	(3638,1,9782070631322,3,4.32),
 	(3639,1,9782020124997,4,16.07),
-
+	(3640,1,9782020796569,2, 11.9),
 	(3640,2,9782012010079,1, 36.6),
 	(3640,3,9782070115532,1,30.0),
 	(3641,1,9782226012845,1, 9.0),
@@ -22777,11 +22777,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3644,3,9782226075888,1, 21.9),
 	(3644,4,9782910868758,1,4.0),
 	(3644,5,9782020056601,1, 20.0),
-
+	(3645,1,9782070150182,1, 34.19),
 	(3645,2,9782081641044,1,4.58),
 	(3646,1,9782226172686,1, 11.9),
 	(3647,1,9782227498570,2,8.25),
-
+	(3648,1,9782742754847,1,10.99),
 	(3649,1,9782226208095,2,22.0),
 	(3649,2,9782742753123,1,5.06),
 	(3650,1,9782742768394,1,6.67),
@@ -22790,9 +22790,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3652,2,9782227471252,1,6.52),
 	(3653,1,9782227475670,2, 10.0),
 	(3654,1,9782226187680,1,20.32),
-
-
-
+	(3655,1,9782742701179,2,17.78),
+	(3656,1,9782012451063,1,13.95),
+	(3657,1,9782070619993,1, 11.9),
 	(3658,1,9782080609397,1,50.0),
 	(3659,1,9782330001803,1, 30.0),
 	(3660,1,9782010012389,1,4.9),
@@ -22816,7 +22816,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3676,3,9782226208095,1,22.0),
 	(3677,1,9782227436497,1,4.38),
 	(3677,2,9782020320030,1,5.98),
-
+	(3677,3,9782742725236,2,21.3),
 	(3678,1,9782227477117,1,9.74),
 	(3679,1,9782226455970,1,12.87),
 	(3680,1,9782010044182,2, 34.0),
@@ -22827,12 +22827,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3685,1,9782020054621,1,14.0),
 	(3686,1,9782226060730,1,7.28),
 	(3687,1,9782010091223,2, 28.0),
-
+	(3688,1,9782012451063,1,13.95),
 	(3688,2,9782226005106,1, 15.0),
 	(3689,1,9782021104462,1,4.5),
 	(3690,1,9782215055778,1, 17.0),
 	(3691,1,9782081609457,1,4.98),
-
+	(3692,1,9782227301399,1, 20.0),
 	(3692,2,9782070612710,1, 12.0),
 	(3692,3,9782012030947,1, 16.0),
 	(3693,1,9782012376236,2, 9.0),
@@ -22846,7 +22846,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3698,2,9782723490597,1,7.01),
 	(3699,1,9782227325135,1,4.0),
 	(3700,1,9782227725041,1, 9.0),
-
+	(3701,1,9782868690975,2,6.38),
 	(3701,2,9782330036119,1, 28.6),
 	(3701,3,9782012008342,1, 38.1),
 	(3702,1,9782020058346,1,7.61),
@@ -22859,9 +22859,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3708,2,9782012024465,1, 9.0),
 	(3708,3,9782227486256,1, 18.2),
 	(3709,1,9782012387683,1, 16.0),
-
-
-
+	(3709,2,9782205009187,1,17.5),
+	(3709,3,9782020587242,1,29.0),
+	(3710,1,9782227366015,1,4.59),
 	(3710,2,9782012789470,3, 34.8),
 	(3710,3,9782020134156,1,5.0),
 	(3710,4,9782227477124,1, 10.0),
@@ -22875,18 +22875,18 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3718,1,9782205059458,1,4.42),
 	(3719,1,9782226015921,1, 15.7),
 	(3720,1,9782020191296,1, 11.9),
-
+	(3721,1,9782742411023,1,7.0),
 	(3722,1,9782226006646,1,25.0),
 	(3722,2,9782215048138,3,4.76),
-
+	(3723,1,9782081310711,1,45.0),
 	(3724,1,9782082000550,1,25.6),
 	(3725,1,9782742724833,1,8.0),
-
+	(3726,1,9782330075736,1,12.21),
 	(3726,2,9782020189651,1, 32.5),
 	(3727,1,9782080901538,2,6.0),
 	(3728,1,9782021083729,1,21.0),
 	(3729,1,9782020101646,1, 31.5),
-
+	(3730,1,9782742763337,1,8.81),
 	(3731,1,9782215084488,1, 9.0),
 	(3731,2,9782215019862,1, 9.0),
 	(3732,1,9782226060624,1, 14.0),
@@ -22894,24 +22894,24 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3734,1,9782020183581,1,4.09),
 	(3735,1,9782226019165,1,35.8),
 	(3736,1,9782012373785,1, 32.5),
-
+	(3737,1,9782742765737,1,15.34),
 	(3738,1,9782505002529,1, 32.0),
 	(3739,1,9782012449381,1, 9.0),
 	(3740,1,9782226002815,1,5.43),
 	(3741,1,9782080660367,1,9.57),
 	(3741,2,9782020361583,2,6.1),
 	(3742,1,9782010208232,1, 14.0),
-
+	(3743,1,9782020131704,2,4.67),
 	(3744,1,9782020060882,1,17.0),
 	(3745,1,9782742710188,1,5.07),
 	(3746,1,9782020638746,1, 37.0),
 	(3746,2,9782070695768,2, 11.9),
 	(3747,1,9782742742752,1,8.39),
-
-
+	(3749,1,9782020796569,1, 11.9),
+	(3750,1,9782330013073,1, 20.0),
 	(3751,1,9782080136411,2,41.99),
-
-
+	(3752,1,9782020044158,2,7.0),
+	(3753,1,9782723437202,1,10.1),
 	(3754,1,9782020109031,1,24.0),
 	(3755,1,9782081339248,3,4.42),
 	(3756,1,9782226116802,2,4.75),
@@ -22919,7 +22919,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3758,1,9782215117421,1,6.23),
 	(3759,1,9782010127434,1, 9.0),
 	(3759,2,9782010029103,1,25.0),
-
+	(3760,1,9782226039538,1,5.47),
 	(3760,2,9782020046534,1,24.99),
 	(3761,1,9782021186086,1,5.61),
 	(3762,1,9782742724833,1,8.0),
@@ -22936,9 +22936,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3771,1,9782226092762,1,8.53),
 	(3772,1,9782226008565,1,26.0),
 	(3773,1,9782020091787,1, 20.0),
-
+	(3774,1,9782080305565,1,42.99),
 	(3775,1,9782021122220,1,13.1),
-
+	(3776,1,9782081244566,2, 10.0),
 	(3777,1,9782080685452,1, 19.2),
 	(3778,1,9782226208545,1, 30.0),
 	(3779,1,9782080124401,1,23.52),
@@ -22949,12 +22949,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3782,1,9782010032257,1,9.59),
 	(3783,1,9782020107693,1,7.57),
 	(3784,1,9782742713110,2, 37.0),
-
+	(3785,1,9782082104463,3,20.3),
 	(3786,1,9782081411838,1,60.0),
 	(3787,1,9782012301993,1, 39.8),
 	(3788,1,9782070571963,1,4.04),
 	(3789,1,9782205077193,1,17.33),
-
+	(3790,1,9782070714216,1, 9.0),
 	(3790,2,9782020046947,2,7.46),
 	(3790,3,9782081230378,1, 28.0),
 	(3790,4,9782081272286,1,4.08),
@@ -22974,7 +22974,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3800,2,9782070310159,1, 9.0),
 	(3800,3,9782010073397,2,105.0),
 	(3800,4,9782020159647,1,19.99),
-
+	(3801,1,9782205043464,3, 32.5),
 	(3801,2,9782227315785,2,4.33),
 	(3801,3,9782082024587,1, 9.0),
 	(3801,4,9782081640078,1, 9.0),
@@ -22987,8 +22987,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3806,2,9782226008848,1,9.7),
 	(3807,1,9782012794924,1, 22.0),
 	(3807,2,9782020256711,1, 25.0),
-
-
+	(3807,3,9782010192548,2,5.14),
+	(3807,4,9782020204385,2, 32.5),
 	(3808,1,9782012405158,1, 13.7),
 	(3808,2,9782020050074,1, 27.5),
 	(3808,3,9782081209497,1, 31.2),
@@ -23001,12 +23001,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3814,1,9782070695768,2, 11.9),
 	(3814,2,9782226319326,1,19.5),
 	(3815,1,9782012360426,1, 12.0),
-
+	(3816,1,9782010078064,1,25.01),
 	(3816,2,9782020063418,1,60.0),
 	(3817,1,9782070633708,2, 39.8),
 	(3818,1,9782081271654,1, 11.9),
 	(3819,1,9782215095071,1, 24.0),
-
+	(3819,2,9782021030532,1, 11.9),
 	(3820,1,9782012008489,1, 30.0),
 	(3821,1,9782020208611,3, 11.9),
 	(3822,1,9782020970044,1, 11.9),
@@ -23016,7 +23016,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3824,1,9782010119194,1,4.53),
 	(3825,1,9782010173233,1, 17.6),
 	(3826,1,9782080642349,1,7.76),
-
+	(3826,2,9782070736294,1,6.46),
 	(3826,3,9782253032380,1, 20.0),
 	(3827,1,9782082004503,1,59.0),
 	(3828,1,9782020677615,1, 11.9),
@@ -23041,8 +23041,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3842,2,9782070391967,1, 9.0),
 	(3843,1,9782070643486,1, 32.5),
 	(3844,1,9782226002662,2,10.0),
-
-
+	(3845,1,9782227475304,1,6.97),
+	(3846,1,9782020259712,1, 9.0),
 	(3847,1,9782080687029,1,8.34),
 	(3848,1,9782010165023,3, 20.0),
 	(3849,1,9782020996440,1,5.43),
@@ -23071,7 +23071,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3867,1,9782010197000,3,6.53),
 	(3869,1,9782330034115,1,10.0),
 	(3869,2,9782010054877,3,11.9),
-
+	(3870,1,9782227317192,1, 9.0),
 	(3871,1,9782226012869,2, 29.1),
 	(3871,2,9782020055888,2,13.8),
 	(3872,1,9782012017368,1, 22.8),
@@ -23081,7 +23081,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3876,1,9782012921634,1, 15.0),
 	(3876,2,9782012266728,1, 9.0),
 	(3876,3,9782226099853,1, 10.0),
-
+	(3876,4,9782226144232,1, 9.0),
 	(3876,5,9782226193018,3, 9.0),
 	(3877,1,9782226190093,1, 32.5),
 	(3878,1,9782081618718,1, 15.0),
@@ -23094,7 +23094,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3881,1,9782742740857,1,23.5),
 	(3882,1,9782080644589,1, 9.0),
 	(3883,1,9782010082016,1, 15.0),
-
+	(3884,1,9782081286054,1,30.59),
 	(3885,1,9782012526808,1, 22.8),
 	(3886,1,9782080664013,1,5.22),
 	(3886,2,9782020965910,1,11.59),
@@ -23102,7 +23102,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3888,1,9782227301184,1,6.53),
 	(3889,1,9782742720682,2, 16.0),
 	(3890,1,9782012451308,1,6.97),
-
+	(3890,2,9782081235373,1,9.51),
 	(3890,3,9782215087403,1, 14.0),
 	(3891,1,9782705002893,1,7.99),
 	(3892,1,9782226002273,1,8.0),
@@ -23116,8 +23116,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3900,1,9782012010437,1, 9.0),
 	(3901,1,9782012401167,1, 9.0),
 	(3902,1,9782012433137,1, 9.0),
-
-
+	(3903,1,9782723430791,1,9.52),
+	(3904,1,9782330013004,1, 15.2),
 	(3905,1,9782082003933,1,9.98),
 	(3906,1,9782080686022,1,15.3),
 	(3906,2,9782227340282,1,4.06),
@@ -23138,7 +23138,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3916,1,9782081618657,2, 9.0),
 	(3917,1,9782226078285,1,14.73),
 	(3917,2,9782080135605,1, 30.0),
-
+	(3918,1,9782080125156,2,39.0),
 	(3919,1,9782226008848,1,9.7),
 	(3920,1,9782012303799,1, 18.0),
 	(3921,1,9782868697219,1, 11.9),
@@ -23157,9 +23157,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3931,1,9782742797394,1,9.85),
 	(3932,1,9782868697219,1, 11.9),
 	(3933,1,9782012304321,1, 15.0),
-
+	(3933,2,9782226094209,1, 20.0),
 	(3934,1,9782226063137,1,5.38),
-
+	(3935,1,9782205034066,2,4.0),
 	(3936,1,9782010077449,1, 31.9),
 	(3937,1,9782742724833,1,8.0),
 	(3938,1,9782080201713,1,149.99),
@@ -23168,16 +23168,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3940,1,9782226062239,1, 9.0),
 	(3940,2,9782723430319,1, 39.9),
 	(3941,1,9782013920926,2, 9.0),
-
+	(3941,2,9782080671738,1,5.38),
 	(3942,1,9782723494632,2,4.99),
 	(3943,1,9782330132163,1,11.99),
 	(3944,1,9782226054364,1, 9.0),
-
-
+	(3945,1,9782020259712,1, 9.0),
+	(3945,2,9782080304780,1,36.0),
 	(3945,3,9782020114721,1,17.0),
 	(3946,1,9782081622937,1, 9.0),
 	(3947,1,9782012301993,1, 39.8),
-
+	(3948,1,9782012403338,2, 19.9),
 	(3949,1,9782020124164,1, 11.9),
 	(3950,1,9782215080756,1, 9.0),
 	(3950,2,9782020323093,1, 32.5),
@@ -23190,7 +23190,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3956,2,9782747019088,1, 9.0),
 	(3957,1,9782226157638,1, 31.2),
 	(3958,1,9782215087366,1, 21.7),
-
+	(3958,2,9782081609440,1,6.2),
 	(3958,3,9782020367486,1,7.6),
 	(3959,1,9782226029805,1, 9.0),
 	(3960,1,9782742760107,1, 20.0),
@@ -23207,7 +23207,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3965,4,9782082004503,1,59.0),
 	(3965,5,9782012094215,1, 9.0),
 	(3966,1,9782012379756,1, 9.0),
-
+	(3967,1,9782205043464,1, 32.5),
 	(3968,1,9782082000819,2,19.07),
 	(3969,1,9782705003012,1,9.49),
 	(3970,1,9782226312778,2,19.5),
@@ -23229,7 +23229,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3982,3,9782020052047,4, 9.0),
 	(3982,4,9782505001430,1,11.99),
 	(3982,5,9782070734856,1, 30.0),
-
+	(3983,1,9782080300782,1,43.94),
 	(3984,1,9782081622999,1, 9.0),
 	(3985,1,9782215082583,1,4.92),
 	(3986,1,9782226175113,3, 11.9),
@@ -23241,7 +23241,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(3990,2,9782070504633,1,6.97),
 	(3990,3,9782226024930,1, 9.2),
 	(3991,1,9782226188410,1, 11.9),
-
+	(3992,1,9782227475304,1,6.97),
 	(3993,1,9782226188410,3, 11.9),
 	(3994,1,9782012364011,1, 9.0),
 	(3995,1,9782020310055,1,16.12),
@@ -23254,7 +23254,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4001,2,9782080686022,2,15.3),
 	(4002,1,9782020045186,1,9.9),
 	(4003,1,9782016251720,1, 9.0),
-
+	(4004,1,9782020208598,1,17.74),
 	(4005,1,9780768939866,3,66.99),
 	(4006,1,9782081638082,1, 9.0),
 	(4007,1,9782082402583,1, 13.0),
@@ -23272,7 +23272,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4017,1,9782226147905,2,11.5),
 	(4018,1,9782226016362,1, 10.0),
 	(4019,1,9782080113030,1,15.1),
-
+	(4020,1,9782871295914,1, 24.0),
 	(4021,1,9782070586783,3, 20.0),
 	(4021,2,9782010020018,1, 16.2),
 	(4022,1,9782742414703,1,54.99),
@@ -23285,14 +23285,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4029,1,9782012435704,3, 27.0),
 	(4030,1,9782020373807,1,15.37),
 	(4031,1,9782081229501,1, 37.7),
-
+	(4032,1,9782227340954,1, 9.0),
 	(4032,2,9782080669407,1,8.04),
 	(4032,3,9782012445888,1, 9.0),
 	(4033,1,9782226036971,3, 9.0),
 	(4034,1,9782081622920,1, 9.0),
 	(4035,1,9782818501146,1, 20.4),
 	(4036,1,9782080644282,1, 9.0),
-
+	(4037,1,9782227475304,1,6.97),
 	(4038,1,9782081295711,1,5.0),
 	(4039,1,9782226034403,2, 9.0),
 	(4040,1,9782020125130,1, 9.0),
@@ -23333,7 +23333,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4069,1,9782020540964,2,5.94),
 	(4070,1,9782742784974,2,4.39),
 	(4071,1,9782226252081,1,4.87),
-
+	(4072,1,9782330012380,1,69.95),
 	(4073,1,9782080640109,1,19.65),
 	(4074,1,9782020062817,3, 9.0),
 	(4075,1,9782021039559,1, 32.5),
@@ -23371,13 +23371,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4102,1,9782080669070,2,39.08),
 	(4103,1,9782227478206,1, 25.1),
 	(4104,1,9782215087403,2, 14.0),
-
+	(4105,1,9782012101425,3, 9.0),
 	(4106,1,9782081337305,1,21.0),
 	(4107,1,9782012009554,3, 22.9),
 	(4108,1,9782226008848,1,9.7),
 	(4109,1,9782080671974,1, 9.0),
 	(4109,2,9782330057510,1,23.06),
-
+	(4110,1,9782081607484,1, 59.9),
 	(4110,2,9782226108234,1,26.4),
 	(4110,3,9782010208232,1, 14.0),
 	(4111,1,9782742740857,1,23.5),
@@ -23394,10 +23394,10 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4119,1,9782020114479,1,14.55),
 	(4119,2,9782010093128,1, 9.0),
 	(4119,3,9782081295735,1,34.99),
-
+	(4120,1,9782080120137,5,9.99),
 	(4120,2,9782080664013,1,5.22),
-
-
+	(4121,1,9782020259712,1, 9.0),
+	(4122,1,9782742758494,1,8.4),
 	(4123,1,9782020621557,2, 32.5),
 	(4124,1,9782070504633,4,6.97),
 	(4125,1,9782742743735,1,27.2),
@@ -23415,7 +23415,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4135,2,9782330000387,2, 9.0),
 	(4136,1,9782081286993,1, 9.0),
 	(4137,1,9782020053259,1,6.0),
-
+	(4138,1,9782012101425,1, 13.5),
 	(4139,1,9782227721326,1, 9.0),
 	(4140,1,9782012916517,2,6.17),
 	(4140,2,9782080203427,1,14.95),
@@ -23429,21 +23429,21 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4147,1,9782012353916,1,12.5),
 	(4148,1,9782226020666,1, 19.9),
 	(4149,1,9782723453578,1,6.27),
-
+	(4150,1,9782020044158,1,7.0),
 	(4151,1,9782070665099,1,6.2),
 	(4152,1,9782020063418,1,60.0),
 	(4153,1,9782215022640,1, 16.2),
 	(4153,2,9782020002967,1, 15.0),
 	(4154,1,9782742772902,1, 32.5),
 	(4155,1,9782020628815,1,4.86),
-
+	(4156,1,9782742704767,1,12.9),
 	(4156,2,9782226052476,3, 39.1),
 	(4157,1,9782226319326,1,19.5),
 	(4158,1,9782227300149,2, 39.9),
 	(4159,1,9782227345133,2,4.7),
 	(4160,1,9782020109031,1,24.0),
 	(4161,1,9782226159618,2, 25.7),
-
+	(4162,1,9782080304780,1,36.0),
 	(4163,1,9782330001841,1,5.35),
 	(4164,1,9782020529952,1,4.48),
 	(4165,1,9782742756964,1, 30.0),
@@ -23462,7 +23462,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4174,1,9782021078213,1, 27.3),
 	(4175,1,9782330006563,1, 14.7),
 	(4175,2,9782226091604,1, 38.0),
-
+	(4176,1,9782020662512,1, 11.9),
 	(4177,1,9782871297376,1,5.62),
 	(4178,1,9782020215329,1, 12.7),
 	(4179,1,9782020093804,1,29.9),
@@ -23474,7 +23474,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4182,1,9782081270114,2, 32.5),
 	(4183,1,9782330037987,1,8.35),
 	(4184,1,9782723450423,3, 32.5),
-
+	(4184,2,9782020208598,1,17.74),
 	(4184,3,9782226024756,2,12.1),
 	(4185,1,9782226033017,2,4.6),
 	(4185,2,9782080647795,1, 9.0),
@@ -23499,7 +23499,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4196,1,9782020189224,1, 9.0),
 	(4196,2,9782020573306,2, 39.8),
 	(4196,3,9782227721340,2, 9.0),
-
+	(4197,1,9782070577101,1, 21.7),
 	(4198,1,9782020233491,1,77.92),
 	(4199,1,9782021092578,1,21.0),
 	(4200,1,9782020046947,3,7.46),
@@ -23507,13 +23507,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4202,1,9782021071474,2,4.79),
 	(4203,1,9782723468688,1,8.41),
 	(4203,2,9782010163371,4, 9.0),
-
+	(4204,1,9782742754847,3,10.99),
 	(4205,1,9782012792852,2,24.0),
 	(4206,1,9782080800046,5, 11.9),
 	(4207,1,9782020667760,1,10.1),
 	(4208,1,9782081622616,1, 9.0),
 	(4208,2,9782742777891,1, 19.5),
-
+	(4209,1,9782205034066,1,4.0),
 	(4210,1,9782226188410,3, 11.9),
 	(4211,1,9782215093107,1, 15.0),
 	(4212,1,9782082115681,1,17.1),
@@ -23523,18 +23523,18 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4213,2,9782742744749,3,9.45),
 	(4214,1,9782012360525,1, 35.9),
 	(4215,1,9782227340282,1,4.06),
-
+	(4216,1,9782010056710,2, 13.0),
 	(4218,1,9782081366657,3, 18.2),
 	(4219,1,9782215083160,1, 9.0),
 	(4220,1,9782010032257,1,9.59),
-
+	(4221,1,9782742774692,1,5.2),
 	(4222,1,9782021011296,1, 32.5),
 	(4222,2,9782747030427,1,15.0),
 	(4223,1,9782011695475,1, 9.0),
 	(4224,1,9782012098428,1, 38.1),
 	(4224,2,9782021039559,1, 32.5),
 	(4224,3,9782226056900,2,22.4),
-
+	(4225,1,9782012012653,1, 9.0),
 	(4226,1,9782012315129,1, 9.0),
 	(4227,1,9782013923927,2, 35.1),
 	(4228,1,9782330036553,2,4.73),
@@ -23548,18 +23548,18 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4233,1,9782021097153,1, 20.0),
 	(4234,1,9782020816991,1, 12.0),
 	(4235,1,9782012359482,1, 27.5),
-
-
+	(4236,1,9782227425552,1,45.0),
+	(4237,1,9782871295914,1, 24.0),
 	(4237,2,9782080669070,3,39.08),
 	(4238,1,9782082117036,1, 30.0),
 	(4239,1,9782227486256,1, 18.2),
-
-
+	(4240,1,9782742763337,1,8.81),
+	(4241,1,9782742700561,1,12.51),
 	(4241,2,9782080687982,1, 37.4),
 	(4242,1,9782020113977,1,8.42),
 	(4243,1,9782742402649,1,16.81),
 	(4244,1,9782081292970,1,20.8),
-
+	(4245,1,9782020213806,1,5.94),
 	(4246,1,9782020235099,1,15.57),
 	(4247,1,9782012009554,1, 9.0),
 	(4248,1,9782012423701,1, 9.0),
@@ -23569,16 +23569,16 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4252,1,9782012355880,1,5.26),
 	(4253,1,9782226008251,4,10.67),
 	(4254,1,9782080685995,1, 13.5),
-
+	(4255,1,9782227340954,1, 9.0),
 	(4255,2,9782215124986,1,4.68),
 	(4256,1,9782070650439,1, 18.5),
 	(4256,2,9782081295735,1,34.99),
-
+	(4256,3,9782080304742,1,43.51),
 	(4256,4,9782330032234,1,18.55),
-
+	(4256,5,9782020044158,1,7.0),
 	(4257,1,9782082260114,1,195.0),
 	(4258,1,9782226005878,1,4.5),
-
+	(4259,1,9782330167691,1,39.0),
 	(4260,1,9782742753123,1,5.06),
 	(4261,1,9782747049085,1, 10.0),
 	(4262,1,9782070442430,1,5.19),
@@ -23597,14 +23597,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4275,1,9782215087335,1, 9.0),
 	(4276,1,9782227477124,1, 10.0),
 	(4276,2,9782070728695,3,15.2),
-
+	(4276,3,9782020087438,1,4.91),
 	(4276,4,9782081226708,1,6.98),
 	(4277,1,9782010174780,1, 14.3),
 	(4278,1,9782747008983,2,6.17),
 	(4278,2,9782013990370,1, 9.0),
-
+	(4279,1,9782020796569,1, 11.9),
 	(4279,2,9782020095983,1, 9.0),
-
+	(4279,3,9782605000289,1,14.73),
 	(4279,4,9782070570669,1, 9.0),
 	(4280,1,9782080102300,1, 39.0),
 	(4280,2,9782020059916,1, 15.0),
@@ -23628,7 +23628,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4291,1,9782330016234,1,22.41),
 	(4292,1,9782226105769,1, 13.0),
 	(4292,2,9782080687982,1, 37.4),
-
+	(4292,3,9782020662512,1, 11.9),
 	(4293,1,9782227487130,1, 35.0),
 	(4294,1,9782012431942,1, 13.0),
 	(4295,1,9782215046097,1, 14.0),
@@ -23644,7 +23644,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4303,1,9782020065757,1, 9.0),
 	(4303,2,9782226108234,2,26.4),
 	(4304,1,9782010082016,1, 15.0),
-
+	(4305,1,9782020005852,1,5.46),
 	(4306,1,9782226008657,1,5.22),
 	(4307,1,9782020125062,1,31.0),
 	(4308,1,9782227487338,3,4.01),
@@ -23652,8 +23652,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4310,1,9782747020251,1, 35.7),
 	(4310,2,9782070521760,1,5.94),
 	(4311,1,9782012252035,1, 17.2),
-
-
+	(4312,1,9782020259712,1, 9.0),
+	(4313,1,9782070622757,1, 35.1),
 	(4313,2,9782020069908,1,5.24),
 	(4314,1,9782082102704,1,5.41),
 	(4315,1,9782070633708,1, 39.8),
@@ -23676,8 +23676,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4326,1,9782021230833,1,19.0),
 	(4327,1,9782742422364,1, 27.0),
 	(4328,1,9782723494632,1,4.99),
-
-
+	(4329,1,9782010192548,1,5.14),
+	(4330,1,9782080305565,1,42.99),
 	(4330,2,9782226005106,1, 15.0),
 	(4331,1,9782012355880,1,5.26),
 	(4332,1,9782020380621,2, 9.0),
@@ -23688,7 +23688,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4336,1,9782226008565,1,26.0),
 	(4337,1,9782013926362,1,6.59),
 	(4338,1,9782021057614,1, 21.8),
-
+	(4339,1,9782330013004,1, 15.2),
 	(4340,1,9782226182357,1, 12.4),
 	(4341,1,9782013214629,1,5.2),
 	(4342,1,9782020258210,1, 30.0),
@@ -23715,7 +23715,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4357,1,9782012372498,1, 26.6),
 	(4357,2,9782021057614,3, 21.8),
 	(4358,1,9782330009106,3,5.97),
-
+	(4359,1,9782012403338,1, 19.9),
 	(4360,1,9782226092304,1, 11.9),
 	(4361,1,9782080608475,1, 9.0),
 	(4362,1,9782012016934,2,13.21),
@@ -23725,7 +23725,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4366,1,9782226159618,1, 25.7),
 	(4367,1,9782020247016,3, 26.6),
 	(4367,2,9782226147905,1,11.5),
-
+	(4367,3,9782742712588,2,94.34),
 	(4368,1,9782012017108,1, 9.0),
 	(4369,1,9782081622555,1, 9.0),
 	(4370,1,9782012916517,1,6.17),
@@ -23733,7 +23733,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4372,1,9782012368781,1, 19.0),
 	(4373,1,9782080106841,1,6.17),
 	(4374,1,9782747039192,1,4.34),
-
+	(4375,1,9782020046626,2, 9.0),
 	(4375,2,9782075084734,2,7.1),
 	(4376,1,9782330006563,1, 14.7),
 	(4377,1,9782081628885,1, 9.0),
@@ -23742,11 +23742,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4380,1,9782020128971,1, 23.0),
 	(4381,1,9782226075963,2, 9.0),
 	(4382,1,9782020281287,1, 9.0),
-
+	(4383,1,9782227481947,1,10.07),
 	(4384,1,9782012353077,2,7.79),
 	(4385,1,9782215020462,2, 19.6),
 	(4385,2,9782070643486,1, 32.5),
-
+	(4386,1,9782215044260,1, 9.0),
 	(4387,1,9782081618596,1, 9.0),
 	(4387,2,9782070311149,1, 14.0),
 	(4388,1,9782747049078,1,4.4),
@@ -23757,24 +23757,24 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4393,1,9782012368903,1,15.0),
 	(4394,1,9782020048101,1,30.0),
 	(4395,1,9782227436398,1,4.66),
-
+	(4396,1,9782020131704,1,4.67),
 	(4396,2,9782080707932,2,8.46),
 	(4396,3,9782070600991,2, 9.0),
 	(4397,1,9782080125842,1, 9.0),
 	(4398,1,9782080102102,1,7.6),
-
+	(4399,1,9782742707119,1,5.0),
 	(4400,1,9782010111709,1, 9.0),
-
+	(4401,1,9782080106957,1,31.08),
 	(4402,1,9782012266728,1, 9.0),
 	(4403,1,9782012239913,1,5.47),
 	(4404,1,9782011675835,1, 35.0),
-
+	(4405,1,9782330000066,1, 33.0),
 	(4406,1,9782742400089,1,4.59),
 	(4407,1,9782226060730,1,7.28),
 	(4408,1,9782011667519,1, 31.9),
 	(4408,2,9782226009593,1,55.5),
 	(4409,1,9782215011927,2, 34.7),
-
+	(4410,1,9782226155733,1, 11.9),
 	(4411,1,9782012602021,1,22.83),
 	(4412,1,9782080670533,2, 9.0),
 	(4413,1,9782742414116,4, 17.0),
@@ -23786,14 +23786,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4417,1,9782012919563,1,12.0),
 	(4418,1,9782020131537,1,4.97),
 	(4419,1,9782020621557,2, 32.5),
-
+	(4420,1,9782020479981,1, 11.9),
 	(4421,1,9782020529952,3,4.48),
 	(4422,1,9782020326582,1,28.26),
 	(4423,1,9782020096645,1,4.28),
 	(4424,1,9782012442474,1, 13.0),
 	(4425,1,9782012012202,1, 9.0),
 	(4426,1,9782082013765,2,5.94),
-
+	(4427,1,9782080305350,1,51.7),
 	(4428,1,9782742732128,1, 13.0),
 	(4429,1,9782070616763,1, 12.4),
 	(4430,1,9782227325135,2,4.0),
@@ -23814,7 +23814,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4442,1,9782020661973,2,15.2),
 	(4443,1,9782205045598,1,5.58),
 	(4443,2,9782020046701,1,19.99),
-
+	(4444,1,9782723437202,2,10.1),
 	(4445,1,9782081633384,1,5.68),
 	(4446,1,9782723413077,1,5.88),
 	(4447,1,9782505006619,2, 17.1),
@@ -23826,30 +23826,30 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4451,1,9782330171179,1,7.78),
 	(4451,2,9782080644411,1,9.77),
 	(4451,3,9782742760671,1,6.17),
-
+	(4452,1,9782742774111,1, 39.9),
 	(4452,2,9782020094443,1,23.38),
 	(4452,3,9782020281287,1, 9.0),
 	(4453,1,9782020959124,5, 19.8),
-
+	(4454,1,9782227436268,1, 15.8),
 	(4455,1,9782082015349,1,10.0),
-
+	(4456,1,9782021030532,1, 11.9),
 	(4456,2,9782020802161,1,4.99),
 	(4457,1,9782012098428,2, 38.1),
 	(4458,1,9782081333857,3,19.9),
 	(4459,1,9782070145348,1, 11.9),
 	(4460,1,9782020114721,1,17.0),
-
+	(4461,1,9782012101425,1, 9.0),
 	(4462,1,9782021071474,1,4.79),
 	(4464,1,9782330001797,2,6.43),
 	(4464,2,9782020205054,1, 36.2),
-
+	(4465,1,9782742727728,1,9.2),
 	(4466,1,9782081622616,1, 9.0),
 	(4467,1,9782081223448,1, 11.9),
 	(4468,1,9782226062239,1, 9.0),
 	(4469,1,9782082402583,1, 13.0),
 	(4470,1,9782010098086,1, 29.0),
 	(4471,1,9782020109031,1,24.0),
-
+	(4472,1,9782226119490,1, 9.0),
 	(4473,1,9782020134156,1,5.0),
 	(4474,1,9782742753123,1,5.06),
 	(4474,2,9782226060624,1, 14.0),
@@ -23860,7 +23860,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4478,1,9782020068291,1,8.99),
 	(4479,1,9782226002884,3,20.07),
 	(4480,1,9782081618435,1, 9.0),
-
+	(4480,2,9782227912007,1, 9.0),
 	(4480,3,9782081670020,2,6.5),
 	(4481,1,9782081621626,1, 9.0),
 	(4482,1,9782080813909,1,5.28),
@@ -23871,7 +23871,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4486,1,9782081248649,1, 28.0),
 	(4487,1,9782226087089,1,4.85),
 	(4487,2,9782020048101,1,30.0),
-
+	(4488,1,9782742780600,1,9.2),
 	(4489,1,9782020220118,1, 10.0),
 	(4490,1,9782205054996,2, 29.2),
 	(4491,1,9782070576463,1,6.25),
@@ -23879,15 +23879,15 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4493,1,9782080640628,1,4.7),
 	(4493,2,9782011455123,3,10.65),
 	(4494,1,9782226243058,1, 11.9),
-
-
+	(4495,1,9782020141383,2,17.09),
+	(4496,1,9782742708499,1, 27.5),
 	(4497,1,9782226218704,1, 10.5),
 	(4497,2,9782013990271,1, 20.0),
 	(4497,3,9782016251775,1,4.04),
 	(4498,1,9782227350144,1, 9.0),
 	(4499,1,9782226063137,1,5.38),
 	(4500,1,9782013213608,1, 9.0),
-
+	(4500,2,9782080305565,3,42.99),
 	(4501,1,9782070315451,1, 16.0),
 	(4502,1,9782080120540,4,5.94),
 	(4502,2,9782227725041,1, 9.0),
@@ -23898,9 +23898,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4505,2,9782010151941,1,6.53),
 	(4506,1,9782215008163,2, 9.0),
 	(4506,2,9782080109736,1, 18.0),
-
+	(4507,1,9782081244566,1, 10.0),
 	(4508,1,9782226092762,1,8.53),
-
+	(4509,1,9782205073393,1,24.88),
 	(4510,1,9782082004503,1,59.0),
 	(4511,1,9782080674166,1, 11.9),
 	(4512,1,9782215087366,1, 21.7),
@@ -23908,7 +23908,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4513,2,9782742766024,1, 32.5),
 	(4513,3,9782330005481,1,12.2),
 	(4513,4,9782227727083,1, 34.7),
-
+	(4514,1,9782227610989,1, 9.0),
 	(4515,1,9782081212398,1, 11.9),
 	(4516,1,9782226157591,3, 9.0),
 	(4517,1,9782226071507,1,5.48),
@@ -23924,7 +23924,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4523,2,9782012252035,1, 17.2),
 	(4524,1,9782227474093,1,21.04),
 	(4525,1,9782020046794,2, 9.0),
-
+	(4525,2,9782080125156,1,39.0),
 	(4525,3,9782020069687,1, 14.0),
 	(4526,1,9782012009554,1, 9.0),
 	(4527,1,9782742712144,1,7.8),
@@ -23938,9 +23938,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4533,3,9782020067584,1, 9.0),
 	(4534,1,9782020234900,1,7.28),
 	(4534,2,9782020144339,1, 23.2),
-
+	(4535,1,9782227912007,1, 9.0),
 	(4536,1,9782020048743,1,5.48),
-
+	(4537,1,9782215044260,1, 9.0),
 	(4538,1,9782070332717,1,4.0),
 	(4539,1,9782227745018,3, 34.4),
 	(4539,2,9782010010811,1,6.8),
@@ -23956,13 +23956,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4544,1,9782081243538,1,13.0),
 	(4544,2,9782010098048,1, 9.0),
 	(4545,1,9782011456755,1,100.0),
-
+	(4546,1,9782082018227,1,15.1),
 	(4547,1,9782081226708,1,6.98),
 	(4548,1,9782226190987,1, 32.5),
 	(4549,1,9782020056601,1, 20.0),
 	(4550,1,9782226190987,1, 32.5),
-
-
+	(4551,1,9782742727728,1,9.2),
+	(4552,1,9782070714216,1, 9.0),
 	(4553,1,9782020124997,1,16.07),
 	(4554,1,9782012017368,1, 22.8),
 	(4555,1,9782081622579,1, 9.0),
@@ -23971,7 +23971,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4557,2,9782020047289,1, 11.9),
 	(4558,1,9782330034870,1,12.0),
 	(4560,1,9782227473676,1,7.6),
-
+	(4561,1,9782080109941,1,6.85),
 	(4562,1,9782010105203,1, 16.0),
 	(4563,1,9782080644282,1, 9.0),
 	(4563,2,9782070615568,1, 9.0),
@@ -24027,11 +24027,11 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4605,1,9782215076025,1, 9.0),
 	(4606,1,9782226100849,1,18.6),
 	(4607,1,9782747034692,1, 15.0),
-
+	(4608,1,9782205009187,1,17.5),
 	(4609,1,9782226029805,1, 9.0),
 	(4610,1,9782081640368,1, 9.0),
 	(4612,1,9782226238726,2,23.8),
-
+	(4613,1,9782020107273,1, 10.0),
 	(4614,1,9782718905853,1,9.0),
 	(4615,1,9782070781065,1,15.72),
 	(4616,1,9782215080527,4, 9.0),
@@ -24041,27 +24041,27 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4618,1,9782747015844,1, 34.4),
 	(4619,1,9782012414778,2,4.75),
 	(4620,1,9782021111293,1,20.0),
-
-
+	(4621,1,9782747020541,1, 37.9),
+	(4622,1,9782020044158,1,7.0),
 	(4622,2,9782226022059,2,5.75),
 	(4622,3,9782226101136,3, 9.0),
-
+	(4623,1,9782020204385,1, 32.5),
 	(4624,1,9782012350014,2, 29.9),
 	(4625,1,9782205068504,1,7.57),
 	(4626,1,9782226193018,2, 9.0),
 	(4626,2,9782021509021,1, 25.4),
-
+	(4627,1,9782070619993,1, 11.9),
 	(4628,1,9782205055504,2, 32.0),
 	(4629,1,9782020068291,1,8.99),
 	(4629,2,9782010197000,1,6.53),
 	(4630,1,9782010101113,1, 10.0),
 	(4630,2,9782081223509,1, 9.0),
-
+	(4630,3,9782010054945,1,5.73),
 	(4631,1,9782747012508,1, 36.6),
 	(4631,2,9782081625099,2,9.08),
 	(4631,3,9782723471589,1,6.53),
 	(4632,1,9782081622616,1, 9.0),
-
+	(4632,2,9782081210110,1,8.01),
 	(4633,1,9782742746019,1,7.37),
 	(4634,1,9782010077449,1, 31.9),
 	(4635,1,9782080354457,1, 16.0),
@@ -24069,15 +24069,15 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4636,1,9782080801074,1,9.0),
 	(4637,1,9782012359482,1, 27.5),
 	(4637,2,9782020061476,1,5.99),
-
+	(4638,1,9782010056710,1, 13.0),
 	(4639,1,9782070583133,1, 9.0),
 	(4639,2,9782227345133,1,4.7),
 	(4640,1,9782020024600,2, 30.4),
 	(4641,1,9782070340231,3, 29.1),
 	(4641,2,9782871295402,5, 25.0),
 	(4641,3,9782021502756,2, 30.0),
-
-
+	(4641,4,9782742752782,2,9.94),
+	(4641,5,9782742758715,3,20.0),
 	(4642,1,9782868690593,2, 20.0),
 	(4643,1,9782742700059,1, 38.6),
 	(4644,1,9782070111725,2,62.81),
@@ -24101,8 +24101,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4656,1,9782012457409,1, 38.1),
 	(4656,2,9782747012508,1, 36.6),
 	(4657,1,9782020258999,1, 22.4),
-
-
+	(4658,1,9782080125156,1,39.0),
+	(4659,1,9782020066952,2, 9.0),
 	(4660,1,9782081366657,1, 18.2),
 	(4661,1,9782227301313,1, 30.0),
 	(4662,1,9782081601550,1,4.7),
@@ -24112,13 +24112,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4665,1,9782227486805,1,11.25),
 	(4665,2,9782021052374,2, 39.8),
 	(4666,1,9782021039559,1, 32.5),
-
+	(4666,2,9782742719907,1, 32.4),
 	(4666,3,9782070661282,1, 35.7),
 	(4667,1,9782070616763,1, 12.4),
 	(4668,1,9782723449854,1,5.58),
 	(4669,1,9782020063678,1,15.88),
 	(4670,1,9782011205155,1,4.11),
-
+	(4671,1,9782742758715,1,20.0),
 	(4671,2,9782011550743,1,4.69),
 	(4671,3,9782020091749,3,14.0),
 	(4671,4,9782080661456,3, 27.0),
@@ -24153,18 +24153,18 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4692,1,9782226034380,2,6.23),
 	(4693,1,9782215076629,1, 15.0),
 	(4694,1,9782742766024,1, 32.5),
-
+	(4695,1,9782020131704,1,4.67),
 	(4695,2,9782226241900,1,4.91),
 	(4695,3,9782227721968,1, 10.0),
 	(4696,1,9782070595570,1, 34.0),
 	(4697,1,9782020220323,1,4.31),
-
+	(4698,1,9782021496475,1,28.5),
 	(4699,1,9782226022059,4,5.75),
-
+	(4700,1,9782010173981,1, 9.0),
 	(4701,1,9782012449381,1, 9.0),
 	(4702,1,9782215087366,1, 21.7),
 	(4702,2,9782012303799,1, 18.0),
-
+	(4702,3,9782070312252,1, 13.0),
 	(4703,1,9782080660022,2, 9.0),
 	(4703,2,9782012789470,1, 34.8),
 	(4704,1,9782070541867,1, 35.7),
@@ -24205,7 +24205,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4733,1,9782742700981,1,51.11),
 	(4734,1,9782020260930,3,14.2),
 	(4735,1,9782020996440,2,5.43),
-
+	(4736,1,9782020213806,2,5.94),
 	(4736,2,9782227472402,1,12.03),
 	(4737,1,9782020667760,1,10.1),
 	(4738,1,9782020096706,1,4.28),
@@ -24219,7 +24219,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4742,2,9782020385961,2,15.0),
 	(4742,3,9782215124986,1,4.68),
 	(4743,1,9782081238268,2,8.8),
-
+	(4744,1,9782742429264,2,4.66),
 	(4744,2,9782012449527,1,12.45),
 	(4744,3,9782012266728,1, 9.0),
 	(4744,4,9782080813534,1,6.0),
@@ -24229,12 +24229,12 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4747,2,9782705003012,1,9.49),
 	(4747,3,9782020101646,1, 31.5),
 	(4747,4,9782205049794,1,8.0),
-
+	(4748,1,9782227471344,1,52.0),
 	(4748,2,9782080120786,1,25.93),
 	(4748,3,9782082104982,1,6.13),
-
+	(4749,1,9782742700561,1,12.51),
 	(4750,1,9782070780129,1, 15.9),
-
+	(4750,2,9782227366015,1,4.59),
 	(4750,3,9782705001995,1, 29.5),
 	(4750,4,9782226022059,1,5.75),
 	(4751,1,9782742794959,1, 12.4),
@@ -24262,8 +24262,8 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4768,1,9782227005167,1,4.38),
 	(4769,1,9782020211093,1, 11.9),
 	(4770,1,9782226054364,1, 9.0),
-
-
+	(4771,1,9782742700561,1,12.51),
+	(4772,1,9782742431540,2,6.08),
 	(4773,1,9782070749386,1,11.14),
 	(4773,2,9782021052374,3, 39.8),
 	(4774,1,9782012383869,1, 39.9),
@@ -24277,7 +24277,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4781,1,9782226095244,1, 27.0),
 	(4782,1,9782205064223,1, 12.2),
 	(4784,1,9782010077661,1, 9.0),
-
+	(4785,1,9782012101425,1,7.85),
 	(4786,1,9782226057235,2,11.91),
 	(4786,2,9782742756575,2, 11.9),
 	(4787,1,9782012448292,1,6.53),
@@ -24299,7 +24299,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4802,1,9782012792975,1,4.4),
 	(4802,2,9782215114970,1, 11.9),
 	(4803,1,9782747030427,1,15.0),
-
+	(4803,2,9782205073393,1,24.88),
 	(4803,3,9782081633384,1,5.68),
 	(4804,1,9782080660022,1, 9.0),
 	(4804,2,9782081626485,1, 9.0),
@@ -24315,15 +24315,15 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4811,1,9782012384460,1,120.0),
 	(4812,1,9782215067498,1, 9.0),
 	(4813,1,9782868692054,1,11.99),
-
+	(4813,2,9782012100060,2, 20.0),
 	(4813,3,9782226052476,1, 39.1),
 	(4814,1,9782742797370,1, 22.4),
 	(4815,1,9782742795987,1,4.81),
 	(4815,2,9782742731763,1,12.6),
 	(4816,1,9782020634267,1, 11.9),
-
+	(4817,1,9782742429264,1,4.66),
 	(4817,2,9782020046794,1, 9.0),
-
+	(4817,3,9782227301399,1, 20.0),
 	(4818,1,9782871298793,3, 13.0),
 	(4818,2,9782227478206,1, 25.1),
 	(4818,3,9782020120890,1, 23.9),
@@ -24333,7 +24333,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4821,1,9782082115537,1,25.0),
 	(4821,2,9782742742752,1,8.39),
 	(4821,3,9782226106599,1,5.17),
-
+	(4821,4,9782227301580,1, 19.0),
 	(4821,5,9782226076274,1,23.2),
 	(4822,1,9782215052418,1, 9.0),
 	(4822,2,9782082115537,1,25.0),
@@ -24344,13 +24344,13 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4826,1,9782226318558,1, 38.1),
 	(4827,1,9782226142535,1,14.68),
 	(4828,1,9782020048118,1,5.47),
-
+	(4829,1,9782227366015,1,4.59),
 	(4830,1,9782020120784,1,4.79),
 	(4831,1,9782226107213,1,12.59),
 	(4832,1,9782020134156,2,5.0),
-
-
-
+	(4833,1,9782012403338,1, 19.9),
+	(4834,1,9782205058024,1,10.81),
+	(4835,1,9782012101425,1, 13.5),
 	(4836,1,9782226015921,1, 15.7),
 	(4837,1,9782226010148,2, 36.7),
 	(4837,2,9782020024600,1, 30.4),
@@ -24362,7 +24362,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4840,1,9782080102300,1, 39.0),
 	(4841,1,9782012019812,1, 9.0),
 	(4842,1,9782871298793,1, 13.0),
-
+	(4843,1,9782226119490,1, 9.0),
 	(4844,1,9782020561709,3,11.94),
 	(4845,1,9782080126979,1, 23.4),
 	(4847,1,9782012792975,2,4.4),
@@ -24388,7 +24388,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4863,1,9782742738748,1,145.0),
 	(4863,2,9782226085962,1, 9.0),
 	(4864,1,9782012792975,1,4.4),
-
+	(4865,1,9782605000289,1,14.73),
 	(4866,1,9782012016514,2, 9.0),
 	(4867,1,9782226054579,1, 29.9),
 	(4868,1,9782227729643,3, 9.0),
@@ -24407,7 +24407,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4875,1,9782020996143,1, 24.2),
 	(4875,2,9782081619401,1, 21.1),
 	(4876,1,9782012252035,1, 17.2),
-
+	(4877,1,9782227360365,1, 17.2),
 	(4877,2,9782330021467,1,20.0),
 	(4877,3,9782742706914,1,15.08),
 	(4878,1,9782081619487,1, 9.0),
@@ -24422,7 +24422,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4887,1,9782020069441,1,4.51),
 	(4888,1,9782020002967,3, 15.0),
 	(4889,1,9782070129195,1,14.99),
-
+	(4890,1,9782227340954,1, 9.0),
 	(4891,1,9782742740857,3,23.5),
 	(4892,1,9782020058667,1, 30.0),
 	(4893,1,9782081268791,1,5.17),
@@ -24446,19 +24446,19 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4908,1,9782226013033,1,6.27),
 	(4909,1,9782226016690,1, 26.5),
 	(4909,2,9782080640628,1,4.7),
-
+	(4909,3,9782010209444,1,15.1),
 	(4909,4,9782081295711,3,5.0),
 	(4909,5,9782080643827,1, 9.0),
 	(4910,1,9782012423084,1,5.0),
 	(4911,1,9782215088936,1, 9.0),
 	(4912,1,9782226116802,1,4.75),
 	(4912,2,9782010015250,1, 26.9),
-
+	(4913,1,9782081310711,1,45.0),
 	(4913,2,9782227477124,1, 10.0),
 	(4913,3,9780340932056,1, 11.9),
 	(4913,4,9782012427426,4, 9.0),
 	(4914,1,9782226099853,1, 10.0),
-
+	(4915,1,9782742738694,1, 27.5),
 	(4915,2,9782012099715,1, 35.7),
 	(4915,3,9782012260139,1, 12.0),
 	(4916,1,9782215046554,1, 14.0),
@@ -24476,7 +24476,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4924,2,9782010002878,1,29.74),
 	(4924,3,9782742772902,1, 32.5),
 	(4925,1,9782070662586,1, 19.5),
-
+	(4926,1,9782012451063,1,13.95),
 	(4926,2,9782227477490,1,8.9),
 	(4926,3,9782020063678,1,15.88),
 	(4927,1,9782020106108,1,5.17),
@@ -24484,7 +24484,7 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4929,1,9782215155195,1,5.97),
 	(4929,2,9782020061049,3, 9.0),
 	(4930,1,9782226130075,1,27.67),
-
+	(4931,1,9782227366022,1,6.47),
 	(4932,1,9782742703920,1, 59.9),
 	(4933,1,9782012435704,3, 27.0),
 	(4934,1,9782012376687,1, 12.0),
@@ -24494,14 +24494,14 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4938,1,9782012405905,2, 9.0),
 	(4939,1,9782081248205,1, 19.1),
 	(4940,1,9782020628815,1,4.86),
-
+	(4940,2,9782020197915,1,19.04),
 	(4940,3,9782868697219,1, 11.9),
 	(4941,1,9782742762491,1,12.29),
 	(4942,1,9782742771943,1, 9.0),
-
+	(4943,1,9782021496475,1,28.5),
 	(4943,2,9782227477124,1, 10.0),
-
-
+	(4943,3,9782205058024,1,10.81),
+	(4944,1,9782742722990,1,12.21),
 	(4945,1,9782227486805,1,11.25),
 	(4946,1,9782226015808,1, 38.5),
 	(4947,1,9782226154415,1,5.25),
@@ -24509,38 +24509,38 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4947,3,9782226087751,2,20.15),
 	(4947,4,9782330002510,1,14.81),
 	(4947,5,9782215117384,1,6.2),
-
+	(4948,1,9782226155733,1, 11.9),
 	(4949,1,9782012017368,2, 22.8),
 	(4950,1,9782226034380,1,6.23),
 	(4951,1,9782012353473,1,5.99),
 	(4952,1,9782070781065,1,15.72),
-
+	(4953,1,9782020044158,1,7.0),
 	(4954,1,9782070116287,1, 28.0),
 	(4955,1,9782742700059,1, 38.6),
-
+	(4956,1,9782227912007,1, 9.0),
 	(4957,1,9782226005878,1,4.5),
 	(4958,1,9782705002893,1,7.99),
 	(4958,2,9782012905313,1,8.0),
 	(4958,3,9782012012202,2, 9.0),
-
+	(4958,4,9782742756483,3, 9.0),
 	(4958,5,9782742765898,1,17.45),
 	(4959,1,9782226010001,1,8.08),
 	(4960,1,9782226078506,1, 11.0),
-
+	(4961,1,9782081628687,5, 10.0),
 	(4962,1,9782215155195,5,5.97),
 	(4962,2,9782012405158,1, 13.7),
 	(4963,1,9782070354757,1,9.25),
 	(4964,1,9782330037987,2,8.35),
 	(4965,1,9782742765898,1,17.45),
 	(4966,1,9782226004017,1,8.08),
-
+	(4967,1,9782841100491,1, 37.0),
 	(4968,1,9782747026123,1, 14.0),
 	(4968,2,9782227745018,1, 34.4),
-
+	(4969,1,9782070632381,1, 25.0),
 	(4970,1,9782080671356,1,7.56),
 	(4971,1,9782020258210,1, 30.0),
 	(4972,1,9782723421379,1,5.91),
-
+	(4972,2,9782205058024,1,10.81),
 	(4972,3,9782012368842,1, 9.0),
 	(4973,1,9782070610549,2, 11.9),
 	(4973,2,9782080351524,1, 31.9),
@@ -24565,40 +24565,40 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(4990,1,9782081627666,1, 9.0),
 	(4991,1,9782330037987,1,8.35),
 	(4992,1,9782070513123,3, 20.0),
-
+	(4992,2,9782742704767,1,12.9),
 	(4993,1,9782081649217,1, 9.0),
 	(4994,1,9782070391967,1, 9.0),
 	(4995,1,9782742785728,1, 22.1),
-
+	(4996,1,9782330075736,1,12.21),
 	(4997,1,9782020638890,1, 13.0),
 	(4998,1,9782215049029,1,5.47),
 	(4999,1,9782226143846,2, 9.0),
 	(5000,1,9782012364011,2, 9.0),
 	(5001,1,9782020054973,1,9.99),
-
+	(5002,1,9782227478091,3,8.95),
 	(5003,1,9782012009554,1, 9.0),
 	(5004,1,9782226028693,1,14.2),
 	(5005,1,9782742745906,1,22.4),
 	(5005,2,9782070749386,1,11.14),
 	(5005,3,9782012443181,1, 9.0),
-
+	(5006,1,9782020213806,2,5.94),
 	(5006,2,9782070129195,1,14.99),
 	(5006,3,9782871297376,1,5.62),
 	(5006,4,9782010078330,1,14.38),
 	(5007,1,9782723454025,1, 28.4),
-
-
+	(5008,1,9782012101425,1, 9.0),
+	(5009,1,9782742780600,3,9.2),
 	(5010,1,9782226187789,1,6.31),
 	(5011,1,9782012789470,1, 34.8),
 	(5011,2,9782012016514,1, 9.0),
 	(5012,1,9782215087403,1, 14.0),
 	(5013,1,9782742747467,1,160.0),
-
+	(5013,2,9782226093677,1,10.9),
 	(5014,1,9782080690616,1, 11.9),
 	(5015,1,9782010073397,1,105.0),
 	(5016,1,9782020306287,3, 25.0),
 	(5016,2,9782226108333,1, 9.0),
-
+	(5017,1,9782080280961,1,149.92),
 	(5018,1,9782742700059,1, 38.6),
 	(5018,2,9782081621046,2, 15.0),
 	(5018,3,9782226258250,1,4.2),
@@ -24610,9 +24610,9 @@ insert into DETAILCOMMANDE(numcom, numlig, isbn, qte, prixvente) values
 	(5022,1,9782012012899,2,14.2),
 	(5023,1,9782012444027,1,6.53),
 	(5024,1,9782012435339,2, 9.0),
-
+	(5025,1,9782070622757,2, 35.1),
 	(5025,2,9782081621626,2, 9.0),
-
+	(5025,3,9782227471580,1,17.99),
 	(5025,4,9782012372498,1, 26.6),
 	(5025,5,9782082005746,1,8.29);
 
@@ -24650,30 +24650,30 @@ INSERT INTO PANIER(idpanier, idcli, idmag) VALUES
 	(11, 20, 7);
 
 INSERT INTO DETAILPANIER(idpanier, numlig, qte, prixvente, isbn) VALUES 
-
+	(1, 1, 5, 45.83, '9782723437202'),
 	(1, 2, 1, 37.46, '9782205054750'),
 	(2, 1, 2, 23.33, '9782205054750'),
 	(2, 2, 1, 20.75, '9782215114970'),
 	(2, 3, 4, 39.63, '9782205066623'),
-
-
+	(3, 1, 4, 15.54, '9782723437202'),
+	(3, 2, 5, 21.48, '9782723437202'),
 	(3, 3, 4, 39.78, '9782205062335'),
 	(3, 4, 1, 7.14, '9782082013901'),
 	(4, 1, 10, 14.93, '9782226315243'),
-
+	(4, 2, 4, 18.28, '9782723437202'),
 	(4, 3, 2, 40.17, '9782205054996'),
-
+	(4, 4, 6, 15.3, '9782012101425'),
 	(5, 1, 8, 41.52, '9782205084672'),
 	(5, 2, 2, 28.63, '9782205064223'),
-
+	(5, 3, 4, 37.48, '9782070577101'),
 	(5, 4, 6, 45.24, '9782226315243'),
 	(5, 5, 10, 13.92, '9782226315243'),
-
+	(6, 1, 5, 38.91, '9782012101425'),
 	(6, 2, 3, 14.99, '9782020827201'),
 	(6, 3, 9, 13.66, '9782080676719'),
 	(7, 1, 4, 27.61, '9782205054750'),
 	(7, 2, 5, 38.89, '9782226175113'),
-
+	(7, 3, 9, 36.5, '9782205058024'),
 	(7, 4, 9, 45.7, '9782215114789'), 
 	(8, 1, 9, 45.31, '9782205062403'), 
 	(8, 2, 7, 20.73, '9782205054750'), 
@@ -24683,8 +24683,8 @@ INSERT INTO DETAILPANIER(idpanier, numlig, qte, prixvente, isbn) VALUES
 	(9, 2, 10, 34.44, '9782205062335'),
 	(9, 3, 9, 27.97, '9782330036119'),
 	(9, 4, 10, 30.47, '9782205064148'),
-
+	(10, 1, 5, 9.2, '9782723437202'),
 	(10, 2, 3, 27.84, '9782205050691'),
-
+	(10, 3, 6, 29.02, '9782070577101'),
 	(10, 4, 1, 35.31, '9782205050691'),
 	(11, 1, 7, 47.14, '9782020827201');

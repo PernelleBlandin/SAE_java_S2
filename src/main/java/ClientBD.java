@@ -6,14 +6,45 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Liaison entre les clients et la base de données. */
 public class ClientBD {
     private ChaineLibrairie chaineLibrairie;
     private ConnexionMariaDB connexionMariaDB;
+
+    /**
+     * Instancier la classe ClientBD.
+     * @param chaineLibrairie Les données de la chaîne de librairie.
+     * @param connexionMariaDB La connexion avec la base de données.
+     */
     public ClientBD(ChaineLibrairie chaineLibrairie, ConnexionMariaDB connexionMariaDB) {
         this.chaineLibrairie = chaineLibrairie;
         this.connexionMariaDB = connexionMariaDB;
     }
 
+    /**
+     * Obtenir le plus grand identifiant de client.
+     * @return Le plus grand identifiant de client.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public int getMaxClientId() throws SQLException {
+        Statement statement = this.connexionMariaDB.createStatement();
+		ResultSet result = statement.executeQuery("""
+            SELECT IFNULL(MAX(idcli), 0) maxIdCli
+            FROM CLIENT
+        """);
+
+		result.next();
+		int maxIdCli = result.getInt("maxIdCli");
+		result.close();
+
+		return maxIdCli;
+    }
+
+    /**
+     * Obtenir la liste des clients de la chaîne de librairie.
+     * @return La liste des clients de la chaîne de librairie.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
     public List<Client> obtenirListeClient() throws SQLException {
         Statement statement = this.connexionMariaDB.createStatement();
         ResultSet result = statement.executeQuery("SELECT idcli FROM CLIENT");
@@ -29,6 +60,12 @@ public class ClientBD {
         return clients;
     }
 
+    /**
+     * Obtenir les clients ayant des livres communs avec un client indiqué.
+     * @param clientId L'identifiant du client indiqué.
+     * @return Les clients ayant des livres communs avec un client indiqué.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
     public List<Client> obtenirClientsAyantLivresCommuns(int clientId) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             WITH LivresClientA AS (
@@ -72,6 +109,12 @@ public class ClientBD {
         return clients;
     }
 
+    /**
+     * Obtenir une instance Client à partir de son identifiant.
+     * @param idClient L'identifiant du client.
+     * @return L'instance du client.
+     * @throws SQLException En cas de problème ou si le client n'a pas été trouvé.
+     */
     public Client obtenirClientParId(int idClient) throws SQLException {
         PreparedStatement clientStatement = this.connexionMariaDB.prepareStatement("""
             SELECT nomcli, prenomcli, adressecli, codepostal, villecli, idmag, nommag, villemag
@@ -111,6 +154,12 @@ public class ClientBD {
         return new Client(idClient, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier);
     }
 
+    /**
+     * Obtenir la liste des commandes d'un client.
+     * @param idClient L'identifiant du client.
+     * @return La liste de ses commandes.
+     * @throws SQLException Exception SQL en cas de problème avec la BD.
+     */
     public List<Commande> obtenirCommandesClient(int idClient) throws SQLException {
         PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
             SELECT idmag, nommag, villemag, numcom, datecom, enligne, livraison, numlig, qte, prixvente, isbn
@@ -169,6 +218,12 @@ public class ClientBD {
         return listeCommandes;
     }
 
+    /**
+     * Obtenir le panier d'un client.
+     * @param idClient L'identifiant du client.
+     * @return Le panier du client indiqué.
+     * @throws SQLException Exception SQL en cas de problème avec la base de données.
+     */
     public Panier obtenirPanierClient(int idClient) throws SQLException {
         PreparedStatement panierStatement = this.connexionMariaDB.prepareStatement("""
             SELECT idmag, nommag, villemag, numlig, qte, prixvente, isbn

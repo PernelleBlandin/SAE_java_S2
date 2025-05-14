@@ -2,12 +2,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/** Liaison entre les vendeurs et la base de données. */
 public class VendeurBD {
     private ConnexionMariaDB connexionMariaDB;
+
+    /**
+     * Instancier la classe VendeurBD.
+     * @param connexionMariaDB La connexion avec la base de données.
+     */
     public VendeurBD(ConnexionMariaDB connexionMariaDB) {
         this.connexionMariaDB = connexionMariaDB;
     }
     
+    /**
+     * Obtenir un vendeur par son identifiant.
+     * @param idVendeur L'identifiant du vendeur.
+     * @return L'instance du vendeur. 
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public Vendeur obtenirVendeurParId(int idVendeur) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT nomvendeur, prenomvendeur, nommag, villemag 

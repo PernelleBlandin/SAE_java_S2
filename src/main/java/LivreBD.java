@@ -7,14 +7,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/** Liaison entre les livres et la base de données. */
 public class LivreBD {
     private ConnexionMariaDB connexionMariaDB;
+
+    /**
+     * Instancier la classe LivreBD.
+     * @param connexionMariaDB La connexion avec la base de données.
+     */
     public LivreBD(ConnexionMariaDB connexionMariaDB) {
         this.connexionMariaDB = connexionMariaDB;
     }
 
-    // TODO: Voir pour optimiser avec système de page
+    /**
+     * Obtenir la liste des livres de la chaîne de librairie.
+     * @return La liste des livres de la chaîne de librairie.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public List<Livre> obtenirListeLivre() throws SQLException {
+        // TODO: Voir pour optimiser avec système de page?
         Statement statement = this.connexionMariaDB.createStatement();
         ResultSet result = statement.executeQuery("SELECT isbn FROM LIVRE");
 
@@ -29,6 +40,12 @@ public class LivreBD {
         return livres;
     }
 
+    /**
+     * Obtenir le nombre de ventes d'un livre.
+     * @param isbn Son ISBN.
+     * @return Son nombre de ventes.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public int getNombreVentesLivre(String isbn) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT COUNT(numcom) nbVentes
@@ -46,6 +63,12 @@ public class LivreBD {
         return nbVentes;
     }
 
+    /**
+     * Obtenir l'instance d'un livre.
+     * @param isbn Son ISBN.
+     * @return L'instance du livre demandé.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public Livre obtenirLivre(String isbn) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT titre, nbpages, datepubli, prix, nomauteur, nomclass, nomedit

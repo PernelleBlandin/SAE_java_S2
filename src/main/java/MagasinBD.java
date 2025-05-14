@@ -4,13 +4,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/** Liaison entre les magasins et la base de données. */
 public class MagasinBD {
     private ConnexionMariaDB connexionMariaDB;
+
+    /**
+     * Instancier la classe MagasinBD.
+     * @param connexionMariaDB La connexion avec la base de données.
+     */
     public MagasinBD(ConnexionMariaDB connexionMariaDB) {
         this.connexionMariaDB = connexionMariaDB;
     }
 
+    /**
+     * Obtenir la liste des magasins de la base de données.
+     * @return La liste des magasins de la base de données.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public List<Magasin> obtenirListeMagasin() throws SQLException {
         Statement statement = this.connexionMariaDB.createStatement();
         ResultSet result = statement.executeQuery("""

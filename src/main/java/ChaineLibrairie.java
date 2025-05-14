@@ -127,6 +127,7 @@ public class ChaineLibrairie {
      * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex aequo.
      * @param client Le client.
      * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
     public List<Livre> onVousRecommande(Client client) throws SQLException {
         Panier panierClient = client.getPanier();

@@ -57,6 +57,7 @@ public class Panier {
      * Obtenir les détails d'une commande liée à un livre.
      * @param livre Un livre.
      * @return Les détails d'une commande d'un livre donnée, ou null s'il y en a pas.
+     * @throws LivreIntrouvableException Exception si le livre est introuvable.
      */
     public DetailLivre getDetailLivre(Livre livre) throws LivreIntrouvableException {
         for (DetailLivre detailLivre: this.detailLivres) {
@@ -88,6 +89,7 @@ public class Panier {
      * Supprimer une certaine quantité d'un livre du panier client.
      * @param livre Le livre.
      * @param quantite La quantité à retirer.
+     * @throws LivreIntrouvableException Exception si le livre est introuvable.
      */
     public void retirerQuantiteLivre(Livre livre, int quantite) throws LivreIntrouvableException {
         DetailLivre detailLivre = this.getDetailLivre(livre);

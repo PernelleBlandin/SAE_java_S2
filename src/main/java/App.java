@@ -398,17 +398,38 @@ public class App {
             this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
             this.afficherTexte(String.format("Nombre de pages : %s", nbPages));
-
             this.afficherSeperateurMilieu();
-            this.afficherTexte("A: Ajouter au panier");
+            
+            // TODO: Regarder stocks dans panier
+
+            int quantiteLivreStock;
+            Magasin magasin = client.getMagasin();
+            try {
+                quantiteLivreStock = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+            } catch (SQLException e) {
+                finCommande = true;
+                break;
+            }
+
+            if (quantiteLivreStock == 0) {
+                this.afficherTexte(String.format("⚠️ Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                this.afficherSeperateurMilieu();
+            } else {
+                this.afficherTexte("A: Ajouter au panier");
+            }
+
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "a": {
-                    int quantiteLivre = client.getPanier().ajouterLivre(livre);
-                    System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
+                    if (quantiteLivreStock > 0) {
+                        int quantiteLivre = client.getPanier().ajouterLivre(livre);
+                        System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
+                    } else {
+                        System.err.println(String.format("Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                    }
                     break;
                 }
                 case "q": {

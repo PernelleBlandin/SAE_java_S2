@@ -29,11 +29,11 @@ public class App {
      * Limiter la taille d'un texte.
      * Si jamais le texte dépasse la longueur d'affichage, on ajoute des "..." à la fin pour le limiter à la taille maximal.
      * @param texte Un texte
-     * @param longueurAffichage La longueur d'affichage.
+     * @param longueurTexteMax La longueur d'affichage maximal du texte.
      * @return Le texte qui ne dépasse par la longueur d'affichage indiquée.
      */
-    public static String truncate(String texte, int longueurAffichage) {
-        int maxCaracteres = longueurAffichage;
+    public static String truncate(String texte, int longueurTexteMax) {
+        int maxCaracteres = longueurTexteMax;
         if (texte.length() <= maxCaracteres) return texte;
 
         return texte.substring(0, maxCaracteres - 3) + "...";
@@ -508,7 +508,7 @@ public class App {
                     break;
                 }
                 case "s": {
-                    this.supprimerLivrePanier(client, panier);
+                    this.supprimerLivrePanier(panier);
                     break;
                 }
                 case "q": {
@@ -582,11 +582,10 @@ public class App {
 
     /**
      * Supprimer un livre de son panier.
-     * @param client Un client. 
      * @param panier Son panier.
      * @return true si un livre a été retiré de son panier, sinon false.
      */
-    public boolean supprimerLivrePanier(Client client, Panier panier) {
+    public boolean supprimerLivrePanier(Panier panier) {
         List<DetailLivre> detailLivres = panier.getDetailLivres();
         if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");

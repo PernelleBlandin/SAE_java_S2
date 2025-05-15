@@ -37,14 +37,6 @@ public class Client extends Personne {
     }
 
     /**
-     * Créer une copie d'un client.
-     * @param client Un client.
-     */
-    public Client(Client client) {
-        this(client.getId(), client.getNom(), client.getPrenom(), client.getAdresse(), client.getCodePostal(), client.getVille(), client.getMagasin(), client.getCommandes(), client.getPanier());
-    }
-
-    /**
      * Obtenir l'adresse du client.
      * @return Son adresse.
      */

@@ -62,11 +62,11 @@ public class ClientBD {
 
     /**
      * Obtenir les clients ayant des livres communs avec un client indiqué.
-     * @param clientId L'identifiant du client indiqué.
+     * @param idClient L'identifiant du client indiqué.
      * @return Les clients ayant des livres communs avec un client indiqué.
      * @throws SQLException Exception SQL en cas de problème.
      */
-    public List<Client> obtenirClientsAyantLivresCommuns(int clientId) throws SQLException {
+    public List<Client> obtenirClientsAyantLivresCommuns(int idClient) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             WITH LivresClientA AS (
                 SELECT isbn
@@ -94,7 +94,7 @@ public class ClientBD {
             );  
         """);
         for (int i = 1; i < 5; i++) {
-            statement.setInt(i, clientId);
+            statement.setInt(i, idClient);
         }
 
         List<Client> clients = new ArrayList<>();

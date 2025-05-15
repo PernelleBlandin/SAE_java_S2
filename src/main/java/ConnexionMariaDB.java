@@ -47,7 +47,7 @@ public class ConnexionMariaDB {
 	 * Indique si la classe est connectée avec la base de données.
 	 * @return true si elle est connectée avec la base de données, sinon false.
 	 */
-	public boolean isConnecte() {
+	public boolean estConnecte() {
 		return this.connecte;
 	}
 

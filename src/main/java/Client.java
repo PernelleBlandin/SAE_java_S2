@@ -1,7 +1,6 @@
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,14 +34,6 @@ public class Client extends Personne {
         this.magasin = magasin;
         this.commandes = commandes;
         this.panier = panier;
-    }
-
-    /**
-     * Créer une copie d'un client.
-     * @param client Un client.
-     */
-    public Client(Client client) {
-        this(client.getId(), client.getNom(), client.getPrenom(), client.getAdresse(), client.getCodePostal(), client.getVille(), client.getMagasin(), client.getCommandes(), client.getPanier());
     }
 
     /**
@@ -193,19 +184,5 @@ public class Client extends Personne {
             classificationsClient.addAll(livre.getClassifications());
         }
         return classificationsClient;
-    }
-
-    /**
-     * Obtenir la liste des commandes triées de la plus récente à la plus ancienne.
-     * @return La liste des commandes du client triées de la plus récente à la plus ancienne.
-     */
-    public List<Commande> getCommandesTriesParDateDesc() {
-        List<Commande> commandes = this.getCommandes();
-        
-        List<Commande> commandesTries = new ArrayList<>(commandes);
-        ComparatorCommandeDateDesc comparator = new ComparatorCommandeDateDesc();
-        Collections.sort(commandesTries, comparator);
-        
-        return commandesTries;
     }
 }

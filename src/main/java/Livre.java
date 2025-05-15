@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 /** Un livre */
 public class Livre {
@@ -8,9 +7,9 @@ public class Livre {
     private Integer nbpages;
     private int datepubli;
     private double prix;
-    private List<Auteur> auteurs;
-    private List<String> editeurs;
-    private List<String> classifications;
+    private Set<String> auteurs;
+    private Set<String> editeurs;
+    private Set<String> classifications;
 
     /**
      * Créer un livre.
@@ -23,7 +22,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<String> editeurs, List<String> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, Set<String> auteurs, Set<String> editeurs, Set<String> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -78,7 +77,7 @@ public class Livre {
      * Obtenir la liste des auteurs d'un livre.
      * @return La liste des auteurs du livre.
      */
-    public List<Auteur> getAuteurs() {
+    public Set<String> getAuteurs() {
         return this.auteurs;
     }
 
@@ -86,7 +85,7 @@ public class Livre {
      * Obtenir la liste des éditeurs d'un livre.
      * @return La liste des éditeurs du livre.
      */
-    public List<String> getEditeurs() {
+    public Set<String> getEditeurs() {
         return this.editeurs;
     }
 
@@ -94,18 +93,17 @@ public class Livre {
      * Obtenir la liste des classifications d'un livre.
      * @return La liste des classifications du livre.
      */
-    public List<String> getClassifications() {
+    public Set<String> getClassifications() {
         return this.classifications;
     }
 
     /**
      * Obtenir les auteurs d'un livre sous forme d'une chaîne de caractères.
-     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
      * @return Une chaîne de caractères avec les auteurs du livre, délimité par une virgule.
      */
     public String joinNomAuteurs() {
         if (this.auteurs.size() == 0) return "Inconnu";
-        return this.auteurs.stream().map(Auteur::getNom).collect(Collectors.joining(", "));
+        return String.join(", ", this.auteurs);
     }
 
     /**
@@ -172,5 +170,14 @@ public class Livre {
 
         Livre livre2 = (Livre) o;
         return this.getISBN().equals(livre2.getISBN());
+    }
+
+    /**
+     * Redéfinition du hashcode d'un livre.
+     * @return Le hashcode du livre. 
+     */
+    @Override
+    public int hashCode() {
+        return this.isbn.hashCode();
     }
 }

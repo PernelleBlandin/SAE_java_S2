@@ -1,13 +1,12 @@
+import java.sql.SQLException;
 import java.util.List;
 
 /**
  * L'application sous le format ligne de commandes.
  */
 public class App {
-    /** La longueur d'affichage des menus */
-    private int longueurAffichage;
-    /** La chaîne de librairie */
     private ChaineLibrairie chaineLibrairie;
+    private int longueurAffichage;
 
     /**
      * Créer l'application en ligne de commandes.
@@ -30,11 +29,11 @@ public class App {
      * Limiter la taille d'un texte.
      * Si jamais le texte dépasse la longueur d'affichage, on ajoute des "..." à la fin pour le limiter à la taille maximal.
      * @param texte Un texte
-     * @param longueurAffichage La longueur d'affichage.
+     * @param longueurTexteMax La longueur d'affichage maximal du texte.
      * @return Le texte qui ne dépasse par la longueur d'affichage indiquée.
      */
-    public static String truncate(String texte, int longueurAffichage) {
-        int maxCaracteres = longueurAffichage;
+    public static String truncate(String texte, int longueurTexteMax) {
+        int maxCaracteres = longueurTexteMax;
         if (texte.length() <= maxCaracteres) return texte;
 
         return texte.substring(0, maxCaracteres - 3) + "...";
@@ -163,7 +162,7 @@ public class App {
      * @return L'élément choisi
      */
     public <T> ResultatSelection<T> selectionnerElement(List<T> elements, int nbPage, String titre) {
-        int maxElementsParPage = 5;
+        int maxElementsParPage = 10;
         int totalPages = elements.size() / (maxElementsParPage + 1);
 
         boolean finCommande = false;
@@ -274,9 +273,13 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
-
-        this.client(client);
+        try {
+            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            this.client(client);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
+            return;
+        }
     }
 
     /**
@@ -301,12 +304,24 @@ public class App {
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "l": {
-                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
+                    List<Livre> listeLivres;
+                    try {
+                        listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        break;
+                    }
+
+                    this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres");
                     break;
                 }
                 case "r": {
-                    List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
-                    this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    try {
+                        List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
+                        this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
+                    }
                     break;
                 }
                 case "p": {
@@ -320,8 +335,15 @@ public class App {
                 case "s": {
                     String recherche = this.demanderRecherche();
                     if (recherche != null) {
-                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
-                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                        // TODO: Voir si on fait la requête de recherche en SQL
+                        List<Livre> listeLivres;
+                        try {
+                            listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+                            List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(listeLivres, recherche);
+                            this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        }
                     }
                     break;
                 }
@@ -366,11 +388,16 @@ public class App {
     public void afficherLivre(Client client, Livre livre) {
         boolean finCommande = false;
         while (!finCommande) {
+            String nbPages = "Inconnu";
+            Integer nbpagesInteger = livre.getNbPages();
+            if (nbpagesInteger != null) nbPages = String.valueOf(nbpagesInteger);
+
             this.afficherTitre(livre.getTitre());
             this.afficherTexte(String.format("Auteur : %s", livre.joinNomAuteurs()));
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
             this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
+            this.afficherTexte(String.format("Nombre de pages : %s", nbPages));
 
             this.afficherSeperateurMilieu();
             this.afficherTexte("A: Ajouter au panier");
@@ -398,8 +425,15 @@ public class App {
 
     //Connexion Vendeur
     public void connexionVendeur(){
-        Vendeur vendeur = this.chaineLibrairie.trouverVendeur("Grande", "Marie");
-        this.menuVendeur(vendeur);
+        // TODO: Voir comment on fait ça
+
+        try {
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.menuVendeur(vendeur);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du vendeur : " + e.getMessage());
+            return;
+        }
     }
 
 
@@ -474,7 +508,7 @@ public class App {
                     break;
                 }
                 case "s": {
-                    this.supprimerLivrePanier(client, panier);
+                    this.supprimerLivrePanier(panier);
                     break;
                 }
                 case "q": {
@@ -548,11 +582,10 @@ public class App {
 
     /**
      * Supprimer un livre de son panier.
-     * @param client Un client. 
      * @param panier Son panier.
      * @return true si un livre a été retiré de son panier, sinon false.
      */
-    public boolean supprimerLivrePanier(Client client, Panier panier) {
+    public boolean supprimerLivrePanier(Panier panier) {
         List<DetailLivre> detailLivres = panier.getDetailLivres();
         if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
@@ -631,7 +664,14 @@ public class App {
      * @param client Le client.
      */
     public void changerMagasin(Client client) {
-        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        List<Magasin> magasins;
+        try {
+            magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur s'est produite lors de la récupération des magasins : " + e.getMessage());
+            return;
+        }
+
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
         if (resultatSelectionMagasin == null) return;
 
@@ -660,7 +700,7 @@ public class App {
      * @param client Un client.
      */
     public void consulterCommandesClient(Client client) {
-        List<Commande> commandes = client.getCommandesTriesParDateDesc();
+        List<Commande> commandes = client.getCommandes();
         ResultatSelection<Commande> resultatSelectionCommande = new ResultatSelection<>();
         while (resultatSelectionCommande != null) {
             resultatSelectionCommande = this.selectionnerElement(commandes, resultatSelectionCommande.getNbPage(), "Sélectionner une commande à afficher");

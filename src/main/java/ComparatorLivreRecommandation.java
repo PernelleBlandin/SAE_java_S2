@@ -4,10 +4,21 @@ import java.util.HashMap;
 /** Comparer deux livres par rapport à leur nombre de "recommendations" */
 public class ComparatorLivreRecommandation implements Comparator<Livre> {
     private HashMap<Livre, Integer> recommendationsLivres;
+    
+    /**
+     * Initialiser le comparateur.
+     * @param recommendationsLivres Un dictionnaire avec comme clé un livre et comme valeur son nombre de recommendations.
+     */
     public ComparatorLivreRecommandation(HashMap<Livre, Integer> recommendationsLivres) {
         this.recommendationsLivres = recommendationsLivres;
     }
 
+    /**
+     * Comparer deux livres.
+     * @param livre1 Le premier livre.
+     * @param livre2 Le deuxième livre.
+     * @return La comparaison entre les deux livres.
+     */
     @Override
     public int compare(Livre livre1, Livre livre2) {
         Integer recommendationLivre1 = this.recommendationsLivres.get(livre1);

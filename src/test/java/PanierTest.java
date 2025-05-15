@@ -4,51 +4,47 @@ import static org.junit.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Test;
 
 public class PanierTest {
-    private Auteur philippeChereau = new Auteur("OL7572575A", "Philippe Chéreau", null, null);
-    private Auteur christopheAgius = new Auteur("OL7572575B", "Christophe Agius", null, null);
     private Livre livre1 = new Livre(
         "9782205054750",
         "Simplement 2: 25 ans de commentaires",
         329,
         2025,
         24.99,
-        new ArrayList<>(Arrays.asList(this.philippeChereau, this.christopheAgius)),
-        new ArrayList<>(Arrays.asList("Simplement 2")),
-        new ArrayList<>(Arrays.asList("Sports"))
+        new HashSet<>(Arrays.asList("Philippe Chéreau", "Christophe Agius")),
+        new HashSet<>(Arrays.asList("Simplement 2")),
+        new HashSet<>(Arrays.asList("Sports"))
     );
 
-    private Auteur xavierNiel = new Auteur("OL7572575A", "Xavier Niel", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
         "Une sacrée envie de foutre le bordel",
         null,
         2024,
         9.99,
-        new ArrayList<>(Arrays.asList(this.xavierNiel)),
-        new ArrayList<>(Arrays.asList("Flammarion")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Xavier Niel")),
+        new HashSet<>(Arrays.asList("Flammarion")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
-    private Auteur claudeServi = new Auteur("OL18710A", "Claude Servi", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
         "Réseaux & Télécom",
         405,
         2013,
         46.99,
-        new ArrayList<>(Arrays.asList(this.claudeServi)),
-        new ArrayList<>(Arrays.asList("Dunod")),
-        new ArrayList<>(Arrays.asList("Télécom"))
+        new HashSet<>(Arrays.asList("Claude Servi")),
+        new HashSet<>(Arrays.asList("Dunod")),
+        new HashSet<>(Arrays.asList("Télécom"))
     );
 
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", this.listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", this.listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     private DetailLivre detailLivre1 = new DetailLivre(this.livre1, 1, 1, 9.99);
     private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));

@@ -5,50 +5,47 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Test;
 
 public class ClientTest {
-    private List<Posseder> listePosessions = new ArrayList<>();
-    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris", listePosessions);
-    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille", listePosessions);
-    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans", listePosessions);
+    private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
+    private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
+    private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
-    private Auteur leo = new Auteur("OL7572575A", "Léo", 1944, null);
     private Livre livre1 = new Livre(
         "9782205054750",
         "Les cavernes",
         48,
         2003,
         8.81,
-        new ArrayList<>(Arrays.asList(leo)),
-        new ArrayList<>(Arrays.asList("Dargaud")),
-        new ArrayList<>(Arrays.asList("Arts décorartifs"))
+        new HashSet<>(Arrays.asList("Léo")),
+        new HashSet<>(Arrays.asList("Dargaud")),
+        new HashSet<>(Arrays.asList("Arts décorartifs"))
     );
 
-    private Auteur sethGrahameSmith = new Auteur("OL7572575A", "Seth Grahame-Smith", null, null);
     private Livre livre2 = new Livre(
         "9780446570992",
         "Abraham Lincoln",
         null,
         2010,
         16.4,
-        new ArrayList<>(Arrays.asList(sethGrahameSmith)),
-        new ArrayList<>(Arrays.asList("Hachette Book Group Usa")),
-        new ArrayList<>(Arrays.asList("Littérature américaine"))
+        new HashSet<>(Arrays.asList("Seth Grahame-Smith")),
+        new HashSet<>(Arrays.asList("Hachette Book Group Usa")),
+        new HashSet<>(Arrays.asList("Littérature américaine"))
     );
 
-    private Auteur mickInkpen = new Auteur("OL18710A", "Mick Inkpen", null, null);
     private Livre livre3 = new Livre(
         "9780340932056",
         "Kipper",
         32,
         2008,
         11.9,
-        new ArrayList<>(Arrays.asList(mickInkpen)),
-        new ArrayList<>(Arrays.asList("Hodder Children'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        new HashSet<>(Arrays.asList("Mick Inkpen")),
+        new HashSet<>(Arrays.asList("Hodder Children'S")),
+        new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     private Livre livre4 = new Livre(
@@ -57,9 +54,9 @@ public class ClientTest {
         54,
         2009,
         8.99,
-        new ArrayList<>(Arrays.asList(mickInkpen)),
-        new ArrayList<>(Arrays.asList("Hodder Children'S")),
-        new ArrayList<>(Arrays.asList("Littérature anglaise"))
+        new HashSet<>(Arrays.asList("Mick Inkpen")),
+        new HashSet<>(Arrays.asList("Hodder Children'S")),
+        new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     // Client 1
@@ -151,17 +148,17 @@ public class ClientTest {
 
     @Test
     public void testsSetPanier() {
-        Client client1Copie = new Client(this.client1);
+        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1);
         assertEquals(this.panierClient1, client1Copie.getPanier());
         client1Copie.setPanier(this.panierClient2);
         assertEquals(this.panierClient2, client1Copie.getPanier());
 
-        Client client2Copie = new Client(this.client2);
+        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2);
         assertEquals(this.panierClient2, client2Copie.getPanier());
         client2Copie.setPanier(this.panierClient3);
         assertEquals(this.panierClient3, client2Copie.getPanier());
 
-        Client client3Copie = new Client(this.client3);
+        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3);
         assertEquals(this.panierClient3, client3Copie.getPanier());
         client3Copie.setPanier(this.panierClient1);
         assertEquals(this.panierClient1, client3Copie.getPanier());
@@ -169,17 +166,17 @@ public class ClientTest {
 
     @Test
     public void testsSetMagasin() {
-        Client client1Copie = new Client(this.client1);
+        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1);
         assertEquals(this.magasinOrleans, client1Copie.getMagasin());
         client1Copie.setMagasin(this.magasinParis);
         assertEquals(this.magasinParis, client1Copie.getMagasin());
 
-        Client client2Copie = new Client(this.client2);
+        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2);
         assertEquals(this.magasinMarseille, client2Copie.getMagasin());
         client2Copie.setMagasin(this.magasinOrleans);
         assertEquals(this.magasinOrleans, client2Copie.getMagasin());
 
-        Client client3Copie = new Client(this.client3);
+        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3);
         assertEquals(this.magasinOrleans, client3Copie.getMagasin());
         client3Copie.setMagasin(this.magasinMarseille);
         assertEquals(this.magasinMarseille, client3Copie.getMagasin());
@@ -187,18 +184,18 @@ public class ClientTest {
 
     @Test
     public void testsCommander() {
-        Client client1Copie = new Client(this.client1);
+        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1);
         List<Commande> commandesClient1Copie = new ArrayList<>(client1Copie.getCommandes());
         assertEquals(commandesClient1Copie.size(), client1Copie.getCommandes().size());
         assertTrue(client1Copie.commander('M', 'O'));
         assertEquals(commandesClient1Copie.size() + 1, client1Copie.getCommandes().size());
 
-        Client client2Copie = new Client(this.client2);
+        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2);
         List<Commande> commandesClient2Copie = new ArrayList<>(client2Copie.getCommandes());
         assertFalse(client2Copie.commander('M', 'O'));
         assertEquals(commandesClient2Copie, client2Copie.getCommandes());
 
-        Client client3Copie = new Client(this.client3);
+        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3);
         List<Commande> commandesClient3Copie = new ArrayList<>(client3Copie.getCommandes());
         assertFalse(client3Copie.commander('C', 'N'));
         assertEquals(commandesClient3Copie, client3Copie.getCommandes());
@@ -214,18 +211,6 @@ public class ClientTest {
 
         List<Livre> livresClient3 = new ArrayList<>(Arrays.asList(this.livre2, this.livre3, this.livre4));
         assertEquals(livresClient3, this.client3.getLivresAchetes());
-    }
-
-    @Test
-    public void testsGetCommandesTriesParDateDesc() {
-        List<Commande> commandesTrieesClient1 = new ArrayList<>(Arrays.asList(this.commande1));
-        assertEquals(commandesTrieesClient1, this.client1.getCommandesTriesParDateDesc());
-
-        List<Commande> commandesTrieesClient2 = new ArrayList<>();
-        assertEquals(commandesTrieesClient2, this.client2.getCommandesTriesParDateDesc());
-
-        List<Commande> commandesTrieesClient3 = new ArrayList<>(Arrays.asList(this.commande3, this.commande2));
-        assertEquals(commandesTrieesClient3, this.client3.getCommandesTriesParDateDesc());
     }
 
     @Test

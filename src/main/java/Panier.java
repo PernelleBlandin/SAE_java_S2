@@ -69,6 +69,20 @@ public class Panier {
     }
 
     /**
+     * Obtenir la quantité d'un livre dans le panier du client.
+     * @param livre Un livre.
+     * @return La quantité du livre dans le panier.
+     */
+    public int getQuantiteLivre(Livre livre) {
+        try {
+            DetailLivre detailLivre = this.getDetailLivre(livre);
+            return detailLivre.getQuantite();
+        } catch (LivreIntrouvableException e) {
+            return 0;
+        }
+    }
+
+    /**
      * Ajouter un livre à un panier client.
      * @param livre Le livre à ajouter.
      * @return La quantité du livre dans le panier.

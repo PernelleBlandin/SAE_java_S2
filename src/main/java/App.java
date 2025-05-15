@@ -402,33 +402,52 @@ public class App {
             
             // TODO: Regarder stocks dans panier
 
-            int quantiteLivreStock;
+            Panier panierClient = client.getPanier();
             Magasin magasin = client.getMagasin();
+            int quantiteLivrePanier = panierClient.getQuantiteLivre(livre);
+
+            int quantiteLivreStock;
             try {
                 quantiteLivreStock = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
             } catch (SQLException e) {
+                System.err.println("Une erreur est survenu lors de la récupération du stock du livre.");
                 finCommande = true;
                 break;
             }
 
-            if (quantiteLivreStock == 0) {
-                this.afficherTexte(String.format("⚠️ Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
-                this.afficherSeperateurMilieu();
+            boolean livreEnStock = quantiteLivreStock > 0 && quantiteLivreStock > quantiteLivrePanier;
+            if (livreEnStock) {
+                int quantiteEnStock = quantiteLivreStock - quantiteLivrePanier;
+                this.afficherTexte(String.format("A: Ajouter au panier (quantité en stock : %d)", quantiteEnStock));
             } else {
-                this.afficherTexte("A: Ajouter au panier");
+                this.afficherTexte(String.format("⚠ Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                this.afficherSeperateurMilieu();
             }
 
+            if (quantiteLivrePanier > 0) {
+                this.afficherTexte(String.format("R: Retirer une quantité de votre panier (quantité : %d)", quantiteLivrePanier));
+            }
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "a": {
-                    if (quantiteLivreStock > 0) {
+                    if (livreEnStock) {
                         int quantiteLivre = client.getPanier().ajouterLivre(livre);
                         System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
                     } else {
                         System.err.println(String.format("Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                    }
+                    break;
+                }
+                case "r": {
+                    if (quantiteLivrePanier > 0) {
+                        try {
+                            panierClient.retirerQuantiteLivre(livre, 1);
+                        } catch (LivreIntrouvableException e) {
+                            System.err.println("Le livre n'a pas été trouvé dans votre panier...");
+                        }
                     }
                     break;
                 }
@@ -505,11 +524,41 @@ public class App {
             List<DetailLivre> detailLivresPanier = panier.getDetailLivres();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
+            boolean ruptureProduit = false;
             if (detailLivresPanier.size() > 0) {
-                List<String> detailLivresTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(detailLivresPanier, this.longueurAffichage);
-                for (String ligne: detailLivresTextuel) {
-                    this.afficherTexte(ligne);
+                double totalCommande = 0.00;
+                this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
+                for (DetailLivre detailLivre: detailLivresPanier) {
+                    Livre livre = detailLivre.getLivre();
+                    int livreQuantite = detailLivre.getQuantite();
+                    double totalLivre = detailLivre.getPrixVente() * livreQuantite;
+
+                    String numLigne = String.format("%2s", detailLivre.getNumLigne());
+                    String isbn = String.format("%13s", livre.getISBN());
+                    String titre = String.format("%-59s", livre.getTitre());
+                    String qte = String.format("%3s", livreQuantite);
+                    String prix = String.format("%6.2f€", detailLivre.getPrixVente());
+                    String total = String.format("%6.2f€", totalLivre);
+
+                    totalCommande += totalLivre;
+                    this.afficherTexte(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
+
+                    int quantiteEnStock;
+                    try {
+                        quantiteEnStock = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenu lors de la récupération du stock du livre.");
+                        return;
+                    }
+
+                    if (quantiteEnStock > livreQuantite) {
+                        ruptureProduit = true;
+                        this.afficherTexte(String.format("  → ⚠ Quantité dans le panier supérieure au stock du magasin (%d disponible)", quantiteEnStock));
+                    }
                 }
+
+                this.afficherTexte(String.format("%-" + (longueurAffichage - 11) + "s%s", "", "-------"));
+                this.afficherTexte(String.format("%-" + (longueurAffichage - 11) + "s%6.2f€", "", totalCommande));
             } else {
                 this.afficherTexte("Vous n'avez aucun livre dans votre panier !");
             }
@@ -525,7 +574,11 @@ public class App {
             String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
                 case "p": {
-                    finCommande = this.commander(client, panier);
+                    if (!ruptureProduit) {
+                        finCommande = this.commander(client, panier);
+                    } else {
+                        System.err.println("Un ou des articles dans votre panier sont en rupture. Merci de retirer les livres en rupture pour commander.");
+                    }
                     break;
                 }
                 case "s": {

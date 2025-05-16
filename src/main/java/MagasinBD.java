@@ -67,4 +67,26 @@ public class MagasinBD {
         result.close();
         return quantite;
     }
+
+    /**
+     * Définir la quantité d'un livre disponible dans un magasin donné.
+     * Aide : https://sql.sh/cours/insert-into/on-duplicate-key
+     * @param idMagasin L'identifiant du magasin.
+     * @param isbnLivre L'ISBN du livre.
+     * @param nouvelleQuantite La nouvelle quantité du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     */
+    public void setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO POSSEDER(idmag, isbn, qte)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE qte=?
+        """);
+        statement.setString(1, idMagasin);
+        statement.setString(2, isbnLivre);
+        statement.setInt(3, nouvelleQuantite);
+        statement.setInt(4, nouvelleQuantite);
+
+		statement.executeUpdate();
+    }
 }

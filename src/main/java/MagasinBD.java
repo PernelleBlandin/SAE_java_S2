@@ -89,4 +89,24 @@ public class MagasinBD {
 
 		statement.executeUpdate();
     }
+
+    /**
+     * Retirer une certaine quantité d'un livre d'un livre dans un magasin donné.
+     * @param idMagasin L'identifiant du magasin.
+     * @param isbnLivre L'ISBN du livre.
+     * @param quantiteRetiree La quantité a retirée du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     */
+    public void removeStockLivre(String idMagasin, String isbnLivre, int quantiteRetiree) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            UPDATE POSSEDER
+            SET qte = qte - ?
+            WHERE idmag = ? AND isbn = ?;
+        """);
+        statement.setInt(1, quantiteRetiree);
+        statement.setString(2, idMagasin);
+        statement.setString(3, isbnLivre);
+
+		statement.executeUpdate();
+    }
 }

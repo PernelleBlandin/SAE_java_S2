@@ -11,6 +11,8 @@ public class ChaineLibrairie {
 
     private LivreBD livreBD;
     private ClientBD clientBD;
+    private CommandeBD commandeBD;
+    private PanierBD panierBD;
     private MagasinBD magasinBD;
     private VendeurBD vendeurBD;
 
@@ -29,10 +31,10 @@ public class ChaineLibrairie {
         try {
             // TODO: A modifier via des variables par exemple ou .env
 
-            String nomServeur = "servinfo-maria";
-            String nomBase = "DBgautier";
-            String nomLogin = "gautier";
-            String motDePasse = "gautier";
+            String nomServeur = "localhost";
+            String nomBase = "Librairie";
+            String nomLogin = "root";
+            String motDePasse = "root_mdp";
 
             this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
         } catch (SQLException e) {
@@ -42,6 +44,8 @@ public class ChaineLibrairie {
 
         this.livreBD = new LivreBD(this.connexionMariaDB);
         this.clientBD = new ClientBD(this, this.connexionMariaDB);
+        this.commandeBD = new CommandeBD(this, this.connexionMariaDB);
+        this.panierBD = new PanierBD(this, this.connexionMariaDB);
         this.magasinBD = new MagasinBD(this.connexionMariaDB);
         this.vendeurBD = new VendeurBD(this.connexionMariaDB);
     }
@@ -60,6 +64,22 @@ public class ChaineLibrairie {
      */
     public ClientBD getClientBD() {
         return this.clientBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des commandes.
+     * @return La classe de la base de données pour récupérer des commandes.
+     */
+    public CommandeBD getCommandeBD() {
+        return this.commandeBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer les paniers clients.
+     * @return La classe de la base de données pour récupérer les paniers clients.
+     */
+    public PanierBD getPanierBD() {
+        return this.panierBD;
     }
 
     /**

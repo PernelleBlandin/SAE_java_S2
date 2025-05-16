@@ -1,4 +1,5 @@
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ public class Client extends Personne {
     private Magasin magasin;
     private List<Commande> commandes;
     private Panier panier;
+    private ChaineLibrairie chaineLibrairie;
 
     /**
      * Créer un client.
@@ -25,8 +27,9 @@ public class Client extends Personne {
      * @param magasin Le magasin du client.
      * @param commandes La liste des commandes du client.
      * @param panier Le panier du client.
+     * @param chaineLibrairie La chaîne de librairie.
      */
-    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes, Panier panier) {
+    public Client(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin, List<Commande> commandes, Panier panier, ChaineLibrairie chaineLibrairie) {
         super(id, nom, prenom);
         this.adresse = adresse;
         this.codePostal = codePostal;
@@ -34,6 +37,8 @@ public class Client extends Personne {
         this.magasin = magasin;
         this.commandes = commandes;
         this.panier = panier;
+
+        this.chaineLibrairie = chaineLibrairie;
     }
 
     /**
@@ -105,16 +110,34 @@ public class Client extends Personne {
      * @param modeLivraison Le mode de livraison : M en magasin / C pour la livraison à domicile.
      * @param enLigne O si en ligne, N si la commande a été passée en magasin.
      * @return true si la commande a été passée, sinon false.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
-    public boolean commander(char modeLivraison, char enLigne) {
+    public boolean commander(char modeLivraison, char enLigne) throws SQLException {
         Panier panier = this.getPanier();
-        List<DetailLivre> detailCommandes = panier.getDetailLivres();
-        if (detailCommandes.size() > 0) {
-            // TODO: Voir pour l'ID de la commande, normalement cela devrait être la DB qui devrait la donner
-            Commande commande = new Commande(1, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, panier.getMagasin(), detailCommandes);
+        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        if (detailLivres.size() > 0) {
+            Magasin magasin = panier.getMagasin();
+            String magasinId = magasin.getId();
+
+            // Retirer dans les stocks du magasin
+            for (DetailLivre detailLivre: detailLivres) {
+                String isbn = detailLivre.getLivre().getISBN();
+                int quantite = detailLivre.getQuantite();
+                this.chaineLibrairie.getMagasinBD().removeStockLivre(magasinId, isbn, quantite);
+            }
+
+            // Obtenir le prochain identifiant de commande
+            int maxCommandeId = this.chaineLibrairie.getCommandeBD().getMaxCommandeId();
+            int nouveauCommandeId = maxCommandeId + 1;
+
+            // Créer la commande, l'ajouter au client et enregistrement en BD
+            Commande commande = new Commande(nouveauCommandeId, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, magasin, detailLivres);
+            this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
             this.commandes.add(commande);
             
-            panier.viderPanier();
+            // TODO: La commande ne semble pas être mis à jour tout de suite côté client.
+            // + double commande chelou dans d'autres magasins s
+
             return true;
         }
         return false;

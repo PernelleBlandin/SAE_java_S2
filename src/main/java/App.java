@@ -551,7 +551,7 @@ public class App {
                         return;
                     }
 
-                    if (quantiteEnStock > livreQuantite) {
+                    if (livreQuantite > quantiteEnStock) {
                         ruptureProduit = true;
                         this.afficherTexte(String.format("  → ⚠ Quantité dans le panier supérieure au stock du magasin (%d disponible)", quantiteEnStock));
                     }
@@ -613,9 +613,20 @@ public class App {
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
-            boolean commandeReussie = client.commander(modeLivraison, 'O');
-            if (commandeReussie) System.out.println("Merci pour votre commande !");
-            return commandeReussie;
+            try {
+                boolean commandeReussie = client.commander(modeLivraison, 'O');
+                if (commandeReussie) {
+                    // TODO: PAS BON, car c'est idpanier en bd
+                    this.chaineLibrairie.getPanierBD().viderPanier(client.getId());
+                    panier.viderPanier();
+
+                    System.out.println("Merci pour votre commande !");
+                }
+                return commandeReussie;
+            } catch (SQLException e) {
+                System.err.println("Une erreur est survenue lors de l'enregistrement de la commande : " + e.getMessage());
+                return false;
+            }
         }
 
         return false;

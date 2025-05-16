@@ -148,10 +148,10 @@ public class ClientBD {
 
         List<Commande> listeCommandes = this.obtenirCommandesClient(idClient);
         
-        Panier panier = this.obtenirPanierClient(idClient);
+        Panier panier = this.chaineLibrairie.getPanierBD().obtenirPanierClient(idClient);
         if (panier == null) panier = new Panier(magasinClient, new ArrayList<>());
 
-        return new Client(idClient, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier);
+        return new Client(idClient, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier, this.chaineLibrairie);
     }
 
     /**
@@ -216,54 +216,5 @@ public class ClientBD {
         if (numCom != null) listeCommandes.add(new Commande(numCom, datecom, enligne, livraison, magasin, listeDetailLivres));
 
         return listeCommandes;
-    }
-
-    /**
-     * Obtenir le panier d'un client.
-     * @param idClient L'identifiant du client.
-     * @return Le panier du client indiqué.
-     * @throws SQLException Exception SQL en cas de problème avec la base de données.
-     */
-    public Panier obtenirPanierClient(int idClient) throws SQLException {
-        PreparedStatement panierStatement = this.connexionMariaDB.prepareStatement("""
-            SELECT idmag, nommag, villemag, numlig, qte, prixvente, isbn
-            FROM PANIER NATURAL JOIN MAGASIN NATURAL JOIN DETAILPANIER
-            WHERE idcli = ?
-            ORDER BY numlig;
-        """);
-        panierStatement.setInt(1, idClient);
-
-        ResultSet result = panierStatement.executeQuery();
-        
-        boolean hasElements = result.next();
-        if (!hasElements) return null;
-
-        // Magasin Panier
-
-        String idmag = result.getString("idmag");
-        String nommag = result.getString("nommag");
-        String villemag = result.getString("villemag");
-
-        Magasin magasinClient = new Magasin(idmag, nommag, villemag);
-
-        result.previous();
-
-        // Detail Livre
-
-        List<DetailLivre> listeDetailLivres = new ArrayList<>();
-        while (result.next()) {
-            // Livre
-            String isbn = result.getString("isbn");
-            Livre livre = this.chaineLibrairie.getLivreBD().obtenirLivre(isbn);
-
-            int numLigne = result.getInt("numlig");
-            int quantite = result.getInt("qte");
-            double prixVente = result.getDouble("prixvente");
-
-            listeDetailLivres.add(new DetailLivre(livre, numLigne, quantite, prixVente));
-        }
-        result.close();
-        
-        return new Panier(magasinClient, listeDetailLivres);
     }
 }

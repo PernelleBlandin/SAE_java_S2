@@ -86,7 +86,7 @@ public class ChaineLibrairieTest {
 
     // Client 1
     private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>());
-    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(), this.panierClient1);
+    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(), this.panierClient1, this.chaineLibrairieVide);
 
     // Client 2
     
@@ -94,7 +94,7 @@ public class ChaineLibrairieTest {
     private Commande commande1 = new Commande(1, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinMarseille, new ArrayList<>(Arrays.asList(this.detailCommande1)));
 
     private Panier panierClient2 = new Panier(this.magasinMarseille, new ArrayList<>());
-    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", this.magasinMarseille, new ArrayList<>(Arrays.asList(this.commande1)), this.panierClient2);
+    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", this.magasinMarseille, new ArrayList<>(Arrays.asList(this.commande1)), this.panierClient2, this.chaineLibrairieVide);
 
     // Client 3
 
@@ -106,13 +106,13 @@ public class ChaineLibrairieTest {
     
     private DetailLivre detailCommande4 = new DetailLivre(this.livre2, 1, 1, 9.99);
     private Panier panierClient3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailCommande4)));
-    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande2, this.commande3)), this.panierClient3);
+    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", this.magasinOrleans, new ArrayList<>(Arrays.asList(this.commande2, this.commande3)), this.panierClient3, this.chaineLibrairieVide);
 
     // Client 4
 
     private DetailLivre detailCommande5 = new DetailLivre(this.livre2, 1, 1, 11.9);
     private Panier panierClient4 = new Panier(this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande5)));
-    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(), this.panierClient4);
+    private Client client4 = new Client(4, "Dubois", "Lucas", "45 place de la Paix", "34000", "Montpellier", this.magasinParis, new ArrayList<>(), this.panierClient4, this.chaineLibrairieVide);
 
     // Client 5
 
@@ -120,12 +120,12 @@ public class ChaineLibrairieTest {
     private Commande commande4 = new Commande(4, Date.valueOf("2025-09-01"), 'N', 'M', this.magasinParis, new ArrayList<>(Arrays.asList(this.detailCommande6)));
 
     private Panier panierClient5 = new Panier(this.magasinParis, new ArrayList<>());
-    private Client client5 = new Client(4, "Guichon", "Julien", "2 rue de la Tour Eiffel", "75000", "Paris", this.magasinParis, new ArrayList<>(Arrays.asList(this.commande4)), this.panierClient5);
+    private Client client5 = new Client(4, "Guichon", "Julien", "2 rue de la Tour Eiffel", "75000", "Paris", this.magasinParis, new ArrayList<>(Arrays.asList(this.commande4)), this.panierClient5, this.chaineLibrairieVide);
 
     // Client Inconnu
 
     private Panier panierClientInconnu = new Panier(this.magasinParis, new ArrayList<>());
-    private Client clientInconnu = new Client(666, "Inconnu", "Inconnu", "Inconnu", "66666", "Inconnu", this.magasinParis, new ArrayList<>(), this.panierClientInconnu);
+    private Client clientInconnu = new Client(666, "Inconnu", "Inconnu", "Inconnu", "66666", "Inconnu", this.magasinParis, new ArrayList<>(), this.panierClientInconnu, this.chaineLibrairieVide);
 
     // private ChaineLibrairie generatChaineLibrairie() {
     //     ChaineLibrairie chaineLibrairie = new ChaineLibrairie();
@@ -268,9 +268,9 @@ public class ChaineLibrairieTest {
         List<DetailLivre> detailCommandesC1 = commande1.getDetailCommandes();
         List<String> listeAttendus = new ArrayList<>(Arrays.asList(
             "       ISBN                               Titre                              Qte    Prix   Total",
-            " 1 9780768939866 Angélique                                                     2  11,99€  23,98€",
+            " 1 9780768939866 Angélique                                                     2  11.99€  23.98€",
             "                                                                                         -------",
-            "                                                                                          23,98€"
+            "                                                                                          23.98€"
 
         ));
         assertEquals(listeAttendus, ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandesC1, 100));

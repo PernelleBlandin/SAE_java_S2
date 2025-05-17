@@ -114,7 +114,8 @@ public class Client extends Personne {
      */
     public boolean commander(char modeLivraison, char enLigne) throws SQLException {
         Panier panier = this.getPanier();
-        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        List<DetailLivre> detailLivres = new ArrayList<>(panier.getDetailLivres());
+        
         if (detailLivres.size() > 0) {
             Magasin magasin = panier.getMagasin();
             String magasinId = magasin.getId();
@@ -135,9 +136,6 @@ public class Client extends Personne {
             this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
             this.commandes.add(commande);
             
-            // TODO: La commande ne semble pas être mis à jour tout de suite côté client.
-            // + double commande chelou dans d'autres magasins s
-
             return true;
         }
         return false;

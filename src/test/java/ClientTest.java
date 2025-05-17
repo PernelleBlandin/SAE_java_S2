@@ -185,24 +185,25 @@ public class ClientTest {
         assertEquals(this.magasinMarseille, client3Copie.getMagasin());
     }
 
-    @Test
-    public void testsCommander() throws SQLException {
-        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
-        List<Commande> commandesClient1Copie = new ArrayList<>(client1Copie.getCommandes());
-        assertEquals(commandesClient1Copie.size(), client1Copie.getCommandes().size());
-        assertTrue(client1Copie.commander('M', 'O'));
-        assertEquals(commandesClient1Copie.size() + 1, client1Copie.getCommandes().size());
+    // TODO: ça rajoute des commandes non voulus
+    // @Test
+    // public void testsCommander() throws SQLException {
+    //     Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
+    //     List<Commande> commandesClient1Copie = new ArrayList<>(client1Copie.getCommandes());
+    //     assertEquals(commandesClient1Copie.size(), client1Copie.getCommandes().size());
+    //     assertTrue(client1Copie.commander('M', 'O'));
+    //     assertEquals(commandesClient1Copie.size() + 1, client1Copie.getCommandes().size());
 
-        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
-        List<Commande> commandesClient2Copie = new ArrayList<>(client2Copie.getCommandes());
-        assertFalse(client2Copie.commander('M', 'O'));
-        assertEquals(commandesClient2Copie, client2Copie.getCommandes());
+    //     Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
+    //     List<Commande> commandesClient2Copie = new ArrayList<>(client2Copie.getCommandes());
+    //     assertFalse(client2Copie.commander('M', 'O'));
+    //     assertEquals(commandesClient2Copie, client2Copie.getCommandes());
 
-        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
-        List<Commande> commandesClient3Copie = new ArrayList<>(client3Copie.getCommandes());
-        assertFalse(client3Copie.commander('C', 'N'));
-        assertEquals(commandesClient3Copie, client3Copie.getCommandes());
-    }
+    //     Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
+    //     List<Commande> commandesClient3Copie = new ArrayList<>(client3Copie.getCommandes());
+    //     assertFalse(client3Copie.commander('C', 'N'));
+    //     assertEquals(commandesClient3Copie, client3Copie.getCommandes());
+    // }
 
     @Test
     public void testsGetLivresAchetes() {

@@ -134,7 +134,7 @@ public class Client extends Personne {
             // Créer la commande, l'ajouter au client et enregistrement en BD
             Commande commande = new Commande(nouveauCommandeId, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, magasin, detailLivres);
             this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
-            this.commandes.add(commande);
+            this.commandes.addFirst(commande);
             
             return true;
         }

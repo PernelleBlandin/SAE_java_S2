@@ -69,12 +69,12 @@ public class ClientTest {
     private DetailLivre detailCommande2 = new DetailLivre(livre2, 1, 1, 16.4);
 
     private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
-    private Panier panierClient1 = new Panier(magasinOrleans, detailCommandesPanierClient1);
+    private Panier panierClient1 = new Panier(1, magasinOrleans, detailCommandesPanierClient1);
     private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
 
     // Client 2
     private List<Commande> commandesClient2 = new ArrayList<>();
-    private Panier panierClient2 = new Panier(magasinMarseille, new ArrayList<>());
+    private Panier panierClient2 = new Panier(2, magasinMarseille, new ArrayList<>());
     private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
 
     // Client 3
@@ -83,7 +83,7 @@ public class ClientTest {
     private DetailLivre detailCommande4 = new DetailLivre(livre4, 2, 4, 8.99);
     private Commande commande3 = new Commande(3, Date.valueOf("2024-09-01"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande4)));
     private List<Commande> commandesClient3 = new ArrayList<>(Arrays.asList(commande2, commande3));
-    private Panier panierClient3 = new Panier(magasinOrleans, new ArrayList<>());
+    private Panier panierClient3 = new Panier(3, magasinOrleans, new ArrayList<>());
     private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
 
     @Test

@@ -399,8 +399,6 @@ public class App {
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
             this.afficherTexte(String.format("Nombre de pages : %s", nbPages));
             this.afficherSeperateurMilieu();
-            
-            // TODO: Regarder stocks dans panier
 
             Panier panierClient = client.getPanier();
             Magasin magasin = client.getMagasin();
@@ -434,8 +432,14 @@ public class App {
             switch (commande) {
                 case "a": {
                     if (livreEnStock) {
-                        int quantiteLivre = client.getPanier().ajouterLivre(livre);
-                        System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
+                        DetailLivre detailLivre = panierClient.ajouterLivre(livre);
+                        System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), detailLivre.getQuantite()));
+
+                        try {
+                            this.chaineLibrairie.getPanierBD().ajouterLivre(panierClient, detailLivre);
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+                        }
                     } else {
                         System.err.println(String.format("Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
                     }
@@ -445,8 +449,11 @@ public class App {
                     if (quantiteLivrePanier > 0) {
                         try {
                             panierClient.retirerQuantiteLivre(livre, 1);
+                            this.chaineLibrairie.getPanierBD().updatePanier(panierClient);
                         } catch (LivreIntrouvableException e) {
                             System.err.println("Le livre n'a pas été trouvé dans votre panier...");
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
                         }
                     }
                     break;
@@ -583,6 +590,11 @@ public class App {
                 }
                 case "s": {
                     this.supprimerLivrePanier(panier);
+                    try {
+                        this.chaineLibrairie.getPanierBD().updatePanier(panier);
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+                    }
                     break;
                 }
                 case "q": {
@@ -616,8 +628,7 @@ public class App {
             try {
                 boolean commandeReussie = client.commander(modeLivraison, 'O');
                 if (commandeReussie) {
-                    // TODO: PAS BON, car c'est idpanier en bd
-                    this.chaineLibrairie.getPanierBD().viderPanier(client.getId());
+                    this.chaineLibrairie.getPanierBD().viderPanier(panier.getId());
                     panier.viderPanier();
 
                     System.out.println("Merci pour votre commande !");
@@ -762,19 +773,24 @@ public class App {
 
         Panier panier = client.getPanier();
         Magasin magasin = resultatSelectionMagasin.getElement();
-        boolean effectuerChangement = true;
-
+        
+        boolean effectuerChangement = false;
         if (panier.getDetailLivres().size() > 0 && !panier.getMagasin().equals(magasin)) {
             effectuerChangement = this.demanderConfirmation(
                 String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
                 "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
             );
-            if (effectuerChangement) client.setPanier(new Panier(magasin));
+            if (!effectuerChangement) return;
         }
 
         if (effectuerChangement) {
-            client.setMagasin(magasin);
-            System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+            panier.setMagasin(magasin);
+            try {
+                this.chaineLibrairie.getPanierBD().changerMagasin(panier);
+                System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+            } catch (SQLException e) {
+                System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+            }
         } else {
             System.out.println("Magasin non changé.");
         }

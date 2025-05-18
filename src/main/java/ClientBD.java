@@ -147,10 +147,8 @@ public class ClientBD {
         // Commandes & Panier
 
         List<Commande> listeCommandes = this.obtenirCommandesClient(idClient);
+        Panier panier = this.chaineLibrairie.getPanierBD().obtenirPanierClient(idClient, magasinClient);
         
-        Panier panier = this.chaineLibrairie.getPanierBD().obtenirPanierClient(idClient);
-        if (panier == null) panier = new Panier(magasinClient, new ArrayList<>());
-
         return new Client(idClient, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier, this.chaineLibrairie);
     }
 

@@ -27,6 +27,8 @@ public class Vendeur extends Personnel {
 
     }
 
+
+
     public void passerCommande(Client client, List<DetailCommande> detailCommande, char modeLivraison){
         Commande commande= new Commande (1, Date.valueOf(LocalDate.now()), 'N', modeLivraison, this.magasin, detailCommande);
         
@@ -35,22 +37,33 @@ public class Vendeur extends Personnel {
         
     }
 
+     /*public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
+    public void ajouteLivreChaineLib(Livre livre){}
+
+    public void majStock(){}
+
+    public void accesStock(){}*/
+
     public void transfererLivre(Livre livre, Magasin magasinVendeur, Magasin magasinDestination, int qte){
         //fct verifDispo ->Emrecan
         //Mettre à jour la quantité disponible d'un livre
         //Vérifier la disponibilité d'un livre dans une librairie. 
         // a verifier prendre magasin a et enlever qte dans magasin b (faire attention qu'il
-        // n'y ait pas de solde null et donc qu'il y ait assez en stock) 
+        // n'y ait pas de solde null et donc qu'il y ait assez en stock)
+
+        
+
 
         List<Posseder> possessionMag= magasinVendeur.getPossessions();
         List<Posseder> possessionMagDest = magasinDestination.getPossessions();
-        for(Posseder livr : possessionMag){
-            if(livr.equals(livre)){
-                int qteMag= livr.getQuantite();
+        for(Posseder book : possessionMag){
+            if(book.equals(livre)){
+                int qteMag= book.getQuantite();
+                this.magasin
             }
-
-            
-
         }
         //TEST 1ERE VERSION
         //if possessionMag
@@ -58,21 +71,11 @@ public class Vendeur extends Personnel {
             possessionMagDest.add(livre);
         }
         else{ }//ajouter qte a la qte actuel*/
-
-
-        
-
-
-
-
-
         List<Posseder> possessionsMagasin =  magasinVendeur.getPossessions();
-
         if (possessionsMagasin.contains(livre))
         {    }
             {livreQte= possessionsMagasin.getQuantite();
             if (qte>){
-            
         }}
 
 

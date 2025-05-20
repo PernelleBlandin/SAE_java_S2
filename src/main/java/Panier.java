@@ -3,6 +3,7 @@ import java.util.List;
 
 /** Un panier client */
 public class Panier {
+    private int idPanier;
     private Magasin magasin;
     private List<DetailLivre> detailLivres;
     
@@ -10,7 +11,8 @@ public class Panier {
      * Créer un panier client vide.
      * @param magasin Le magasin du panier.
      */
-    public Panier(Magasin magasin) {
+    public Panier(int idPanier, Magasin magasin) {
+        this.idPanier = idPanier;
         this.magasin = magasin;
         this.detailLivres = new ArrayList<>();
     }
@@ -20,9 +22,18 @@ public class Panier {
      * @param magasin Le magasin du panier.
      * @param detailLivres L'ensemble des éléments du panier.
      */
-    public Panier(Magasin magasin, List<DetailLivre> detailLivres) {
+    public Panier(int idPanier, Magasin magasin, List<DetailLivre> detailLivres) {
+        this.idPanier = idPanier;
         this.magasin = magasin;
         this.detailLivres = detailLivres;
+    }
+
+    /**
+     * Obtenir l'identifiant du panier.
+     * @return L'identifiant du panier.
+     */
+    public int getId() {
+        return this.idPanier;
     }
 
     /**
@@ -69,11 +80,34 @@ public class Panier {
     }
 
     /**
-     * Ajouter un livre à un panier client.
-     * @param livre Le livre à ajouter.
+     * Obtenir la quantité d'un livre dans le panier du client.
+     * @param livre Un livre.
      * @return La quantité du livre dans le panier.
      */
-    public int ajouterLivre(Livre livre) {
+    public int getQuantiteLivre(Livre livre) {
+        try {
+            DetailLivre detailLivre = this.getDetailLivre(livre);
+            return detailLivre.getQuantite();
+        } catch (LivreIntrouvableException e) {
+            return 0;
+        }
+    }
+
+    /**
+     * Changer de magasin et réinitialiser le panier client.
+     * @param magasin Le nouveau magasin.
+     */
+    public void setMagasin(Magasin magasin) {
+        this.viderPanier();
+        this.magasin = magasin;
+    }
+
+    /**
+     * Ajouter un livre à un panier client.
+     * @param livre Le livre à ajouter.
+     * @return La detail livre créé/modifié.
+     */
+    public DetailLivre ajouterLivre(Livre livre) {
        DetailLivre detailLivre;
         try {
             detailLivre = this.getDetailLivre(livre);
@@ -82,7 +116,7 @@ public class Panier {
             detailLivre = new DetailLivre(livre, this.detailLivres.size() + 1, 1, livre.getPrix());
             this.detailLivres.add(detailLivre);
         }
-        return detailLivre.getQuantite();
+        return detailLivre;
     }
 
     /**

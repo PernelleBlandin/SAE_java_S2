@@ -1,3 +1,4 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,5 +41,72 @@ public class MagasinBD {
         result.close();
 
         return listeMagasins;
+    }
+
+    /**
+     * Obtenir la quantité d'un livre disponible dans un magasin donné.
+     * @param idMagasin L'identifiant du magasin.
+     * @param isbnLivre L'ISBN du livre.
+     * @return La quantité du livre
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     */
+    public int obtenirStockLivre(String idMagasin, String isbnLivre) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT IFNULL(SUM(qte), 0) quantite
+            FROM POSSEDER
+            WHERE idmag = ? AND isbn = ?;
+        """);
+        statement.setString(1, idMagasin);
+        statement.setString(2, isbnLivre);
+
+        ResultSet result = statement.executeQuery();
+        result.next();
+
+        int quantite = result.getInt("quantite");
+
+        result.close();
+        return quantite;
+    }
+
+    /**
+     * Définir la quantité d'un livre disponible dans un magasin donné.
+     * Aide : https://sql.sh/cours/insert-into/on-duplicate-key
+     * @param idMagasin L'identifiant du magasin.
+     * @param isbnLivre L'ISBN du livre.
+     * @param nouvelleQuantite La nouvelle quantité du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     */
+    public void setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO POSSEDER(idmag, isbn, qte)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE qte=?
+        """);
+        statement.setString(1, idMagasin);
+        statement.setString(2, isbnLivre);
+        statement.setInt(3, nouvelleQuantite);
+        statement.setInt(4, nouvelleQuantite);
+
+		statement.executeUpdate();
+    }
+
+    /**
+     * Retirer une certaine quantité d'un livre d'un livre dans un magasin donné.
+     * @param idMagasin L'identifiant du magasin.
+     * @param isbnLivre L'ISBN du livre.
+     * @param quantiteRetiree La quantité a retirée du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     */
+    public void removeStockLivre(String idMagasin, String isbnLivre, int quantiteRetiree) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            UPDATE POSSEDER
+            SET qte = qte - ?
+            WHERE idmag = ? AND isbn = ?;
+        """);
+        statement.setInt(1, quantiteRetiree);
+        statement.setString(2, idMagasin);
+        statement.setString(3, isbnLivre);
+
+		statement.executeUpdate();
     }
 }

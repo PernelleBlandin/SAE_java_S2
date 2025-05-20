@@ -11,6 +11,8 @@ public class ChaineLibrairie {
 
     private LivreBD livreBD;
     private ClientBD clientBD;
+    private CommandeBD commandeBD;
+    private PanierBD panierBD;
     private MagasinBD magasinBD;
     private VendeurBD vendeurBD;
 
@@ -42,6 +44,8 @@ public class ChaineLibrairie {
 
         this.livreBD = new LivreBD(this.connexionMariaDB);
         this.clientBD = new ClientBD(this, this.connexionMariaDB);
+        this.commandeBD = new CommandeBD(this, this.connexionMariaDB);
+        this.panierBD = new PanierBD(this, this.connexionMariaDB);
         this.magasinBD = new MagasinBD(this.connexionMariaDB);
         this.vendeurBD = new VendeurBD(this.connexionMariaDB);
     }
@@ -60,6 +64,22 @@ public class ChaineLibrairie {
      */
     public ClientBD getClientBD() {
         return this.clientBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des commandes.
+     * @return La classe de la base de données pour récupérer des commandes.
+     */
+    public CommandeBD getCommandeBD() {
+        return this.commandeBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer les paniers clients.
+     * @return La classe de la base de données pour récupérer les paniers clients.
+     */
+    public PanierBD getPanierBD() {
+        return this.panierBD;
     }
 
     /**
@@ -130,20 +150,21 @@ public class ChaineLibrairie {
      * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
     public List<Livre> onVousRecommande(Client client) throws SQLException {
-        Panier panierClient = client.getPanier();
-        List<DetailLivre> detailPanierClient = panierClient.getDetailLivres();
-        
-        List<Livre> listeLivresNational = this.livreBD.obtenirListeLivre();
+        Magasin magasinClient = client.getMagasin();
+        List<Livre> listeLivresMagasin = this.livreBD.obtenirLivreEnStockMagasin(magasinClient);
 
         List<Commande> commandesClient = client.getCommandes();
+        
+        Panier panierClient = client.getPanier();
+        List<DetailLivre> detailPanierClient = panierClient.getDetailLivres();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
-            return this.getLivresTriesParVentes(listeLivresNational);
+            return this.getLivresTriesParVentes(listeLivresMagasin);
         }
 
         // -- Recommendations par rapport aux autres clients
 
         // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
-        List<Livre> livresNonAchetesParClient = this.getLivresTriesParVentes(client.getLivresNonAchetes(listeLivresNational));
+        List<Livre> livresNonAchetesParClient = this.getLivresTriesParVentes(client.getLivresNonAchetes(listeLivresMagasin));
         
         HashMap<Livre, Integer> recommendationsLivres = new HashMap<>();
         List<Client> clientsCommuns = this.clientBD.obtenirClientsAyantLivresCommuns(client.getId());

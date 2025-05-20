@@ -47,13 +47,13 @@ public class PanierTest {
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     private DetailLivre detailLivre1 = new DetailLivre(this.livre1, 1, 1, 9.99);
-    private Panier panierClient1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
+    private Panier panierClient1 = new Panier(1, this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
 
     private DetailLivre detailLivre2 = new DetailLivre(this.livre2, 1, 1, 11.9);
     private DetailLivre detailLivre3 = new DetailLivre(this.livre3, 2, 3, 46.99);
-    private Panier panierClient2 = new Panier(this.magasinParis, new ArrayList<>(Arrays.asList(this.detailLivre2, this.detailLivre3)));
+    private Panier panierClient2 = new Panier(2, this.magasinParis, new ArrayList<>(Arrays.asList(this.detailLivre2, this.detailLivre3)));
 
-    private Panier panierClient3 = new Panier(this.magasinParis);
+    private Panier panierClient3 = new Panier(3, this.magasinParis);
 
     @Test
     public void testsGetMagasin() {
@@ -85,7 +85,7 @@ public class PanierTest {
     public void testRetirerQuantiteLivre() throws LivreIntrouvableException {
         // -- Panier 1
         DetailLivre detailLivre1 = new DetailLivre(this.livre1, 1, 1, 9.99);
-        Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre1)));
+        Panier panier1 = new Panier(1, this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre1)));
 
         List<DetailLivre> listeDetailLivres1 = panier1.getDetailLivres();
         assertEquals(1, listeDetailLivres1.size());
@@ -101,7 +101,7 @@ public class PanierTest {
 
         // -- Panier 2
         DetailLivre detailLivre2 = new DetailLivre(this.livre1, 1, 1, 9.99);
-        Panier panier2 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre2)));
+        Panier panier2 = new Panier(2, this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre2)));
 
         List<DetailLivre> listeDetailLivres2 = panier2.getDetailLivres();
         assertEquals(1, listeDetailLivres2.size());
@@ -115,7 +115,7 @@ public class PanierTest {
         DetailLivre detailLivre3 = new DetailLivre(this.livre1, 1, 1, 9.99);
         DetailLivre detailLivre4 = new DetailLivre(this.livre2, 2, 1, 9.99);
         DetailLivre detailLivre5 = new DetailLivre(this.livre3, 3, 1, 9.99);
-        Panier panier3 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre3, detailLivre4, detailLivre5)));
+        Panier panier3 = new Panier(3, this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre3, detailLivre4, detailLivre5)));
         
         List<DetailLivre> listeDetailLivress3 = panier3.getDetailLivres();
         assertEquals(3, listeDetailLivress3.size());
@@ -136,7 +136,7 @@ public class PanierTest {
         detailLivre3 = new DetailLivre(this.livre1, 1, 1, 9.99);
         detailLivre4 = new DetailLivre(this.livre2, 2, 1, 9.99);
         detailLivre5 = new DetailLivre(this.livre3, 3, 1, 9.99);
-        Panier panier4 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre3, detailLivre4, detailLivre5)));
+        Panier panier4 = new Panier(4, this.magasinOrleans, new ArrayList<>(Arrays.asList(detailLivre3, detailLivre4, detailLivre5)));
         
         List<DetailLivre> listeDetailLivres4 = panier4.getDetailLivres();
         assertEquals(3, listeDetailLivres4.size());
@@ -156,7 +156,7 @@ public class PanierTest {
     
     @Test
     public void testAjouterLivre() throws LivreIntrouvableException {
-        Panier panier1 = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
+        Panier panier1 = new Panier(1, this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
         DetailLivre detailLivre1 = panier1.getDetailLivre(this.livre1);
         assertEquals(1, panier1.getDetailLivres().size());
         assertEquals(1, detailLivre1.getQuantite());
@@ -178,12 +178,12 @@ public class PanierTest {
     public void testsViderPanier() {
         List<DetailLivre> detailLivresVide = new ArrayList<>();
 
-        Panier panier1Copie = new Panier(this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
+        Panier panier1Copie = new Panier(1, this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
         assertEquals(new ArrayList<>(Arrays.asList(this.detailLivre1)), panier1Copie.getDetailLivres());
         panier1Copie.viderPanier();
         assertEquals(detailLivresVide, panier1Copie.getDetailLivres());
 
-        Panier panier3Copie = new Panier(this.magasinParis);
+        Panier panier3Copie = new Panier(3, this.magasinParis);
         assertEquals(detailLivresVide, panier3Copie.getDetailLivres());
         panier3Copie.viderPanier();
         assertEquals(detailLivresVide, panier3Copie.getDetailLivres());

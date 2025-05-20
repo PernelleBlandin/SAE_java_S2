@@ -31,10 +31,10 @@ public class ChaineLibrairie {
         try {
             // TODO: A modifier via des variables par exemple ou .env
 
-            String nomServeur = "localhost";
+            String nomServeur = "saebd.erwan2.fr:5606";
             String nomBase = "Librairie";
-            String nomLogin = "root";
-            String motDePasse = "root_mdp";
+            String nomLogin = "sae";
+            String motDePasse = "hybxo8-tofciV-hubgyn";
 
             this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
         } catch (SQLException e) {

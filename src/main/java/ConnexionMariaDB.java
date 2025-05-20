@@ -27,7 +27,7 @@ public class ConnexionMariaDB {
 	 */
 	public void connecter(String nomServeur, String nomBase, String nomLogin, String motDePasse) throws SQLException {
 		this.mariadb = DriverManager.getConnection(
-			String.format("jdbc:mariadb://%s:3306/%s", nomServeur, nomBase),
+			String.format("jdbc:mariadb://%s/%s", nomServeur, nomBase),
 			nomLogin, motDePasse
 		);
 

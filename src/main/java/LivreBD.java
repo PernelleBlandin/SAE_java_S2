@@ -41,6 +41,33 @@ public class LivreBD {
     }
 
     /**
+     * Obtenir la liste des livres en stock dans un magasin spécifique.
+     * @param magasin Un magasin de la chaîne de librairie.
+     * @return La liste des livres du magasin.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public List<Livre> obtenirLivreEnStockMagasin(Magasin magasin) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT isbn
+            FROM POSSEDER
+            WHERE idmag = ? AND qte > 0;
+        """);
+        statement.setString(1, magasin.getId());
+
+        ResultSet result = statement.executeQuery();
+        
+        List<Livre> livres = new ArrayList<>();
+        while (result.next()) {
+            String isbn = result.getString("isbn");
+            Livre livre = this.obtenirLivre(isbn);
+            livres.add(livre);
+        }
+        result.close();
+
+        return livres;
+    }
+
+    /**
      * Obtenir le nombre de ventes d'un livre.
      * @param isbn Son ISBN.
      * @return Son nombre de ventes.

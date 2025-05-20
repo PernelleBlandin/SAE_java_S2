@@ -268,9 +268,9 @@ public class ChaineLibrairieTest {
         List<DetailLivre> detailCommandesC1 = commande1.getDetailCommandes();
         List<String> listeAttendus = new ArrayList<>(Arrays.asList(
             "       ISBN                               Titre                              Qte    Prix   Total",
-            " 1 9780768939866 Angélique                                                     2  11.99€  23.98€",
+            " 1 9780768939866 Angélique                                                     2  11,99€  23,98€",
             "                                                                                         -------",
-            "                                                                                          23.98€"
+            "                                                                                          23,98€"
 
         ));
         assertEquals(listeAttendus, ChaineLibrairie.genererCorpsCommandeTextuel(detailCommandesC1, 100));

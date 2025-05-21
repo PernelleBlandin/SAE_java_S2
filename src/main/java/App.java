@@ -471,6 +471,10 @@ public class App {
     }
 
     //Connexion Vendeur
+
+    /**
+     * Se connecter en tant que vendeur dans l'application.
+     */
     public void connexionVendeur(){
         // TODO: Voir comment on fait ça
 
@@ -483,7 +487,10 @@ public class App {
         }
     }
 
-
+    /**
+     * Afficher le menu vendeur. 
+     * @param vendeur Un vendeur.
+     */
     public void menuVendeur(Vendeur vendeur) {
         boolean finCommande = false;
         while (!finCommande) {

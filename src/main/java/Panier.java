@@ -9,6 +9,7 @@ public class Panier {
     
     /**
      * Créer un panier client vide.
+     * @param idPanier L'identifiant du panier.
      * @param magasin Le magasin du panier.
      */
     public Panier(int idPanier, Magasin magasin) {
@@ -19,6 +20,7 @@ public class Panier {
 
     /**
      * Créer un panier client.
+     * @param idPanier L'identifiant du panier.
      * @param magasin Le magasin du panier.
      * @param detailLivres L'ensemble des éléments du panier.
      */

@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/* Liaison entre les paniers et la base de données. */
+/** Liaison entre les paniers et la base de données. */
 public class PanierBD {
     private ChaineLibrairie chaineLibrairie;
     private ConnexionMariaDB connexionMariaDB;
@@ -44,6 +44,7 @@ public class PanierBD {
      * @param idClient L'identifiant du client.
      * @param magasin Le magasin du client.
      * @return Le nouveau panier client.
+     * @throws SQLException Exception SQL en cas de problème avec la base de données.
      */
     public Panier creerPanierClient(int idClient, Magasin magasin) throws SQLException {
         int maxIdPanier = this.getMaxIdPanier();

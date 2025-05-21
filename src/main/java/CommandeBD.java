@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/* Liaison entre les commandes et la base de données. */
+/** Liaison entre les commandes et la base de données. */
 public class CommandeBD {
     private ChaineLibrairie chaineLibrairie;
     private ConnexionMariaDB connexionMariaDB;
@@ -21,6 +21,12 @@ public class CommandeBD {
         this.connexionMariaDB = connexionMariaDB;
     }
 
+    /**
+     * Enregister une commande dans la base de données.
+     * @param client Le client de la commande.
+     * @param commande La commande.
+     * @throws SQLException Exception SQL en cas de problème avec la base de données.
+     */
     public void enregistrerCommande(Client client, Commande commande) throws SQLException {
         // Commande
         PreparedStatement commandePreparedStatement = this.connexionMariaDB.prepareStatement("INSERT INTO COMMANDE (numcom, datecom, enligne, livraison, idcli, idmag) VALUES (?, ?, ?, ?, ?, ?)");

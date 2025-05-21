@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/* Liaison entre les clients et la base de données. */
+/** Liaison entre les clients et la base de données. */
 public class ClientBD {
     private ChaineLibrairie chaineLibrairie;
     private ConnexionMariaDB connexionMariaDB;

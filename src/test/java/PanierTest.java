@@ -56,6 +56,13 @@ public class PanierTest {
     private Panier panierClient3 = new Panier(3, this.magasinParis);
 
     @Test
+    public void testsGetId() {
+        assertEquals(1, this.panierClient1.getId());
+        assertEquals(2, this.panierClient2.getId());
+        assertEquals(3, this.panierClient3.getId());
+    }
+
+    @Test
     public void testsGetMagasin() {
         assertEquals(this.magasinOrleans, this.panierClient1.getMagasin());
         assertEquals(this.magasinParis, this.panierClient2.getMagasin());
@@ -79,6 +86,24 @@ public class PanierTest {
         assertThrows(LivreIntrouvableException.class, () -> { this.panierClient1.getDetailLivre(this.livre3); });
         assertThrows(LivreIntrouvableException.class, () -> { this.panierClient2.getDetailLivre(this.livre1); });
         assertThrows(LivreIntrouvableException.class, () -> { this.panierClient3.getDetailLivre(this.livre1); });
+    }
+
+    @Test
+    public void testsGetQuantiteLivre() {
+        assertEquals(1, this.panierClient1.getQuantiteLivre(this.livre1));
+        assertEquals(3, this.panierClient2.getQuantiteLivre(this.livre3));
+        assertEquals(0, this.panierClient1.getQuantiteLivre(this.livre3));
+    }
+
+    @Test
+    public void testsSetMagasin() {
+        Panier panierClient = new Panier(1, this.magasinOrleans, new ArrayList<>(Arrays.asList(this.detailLivre1)));
+        assertEquals(1, panierClient.getDetailLivres().size());
+        assertEquals(this.magasinOrleans, panierClient.getMagasin());
+
+        panierClient.setMagasin(this.magasinParis);
+        assertEquals(0, panierClient.getDetailLivres().size());
+        assertEquals(this.magasinParis, panierClient.getMagasin());
     }
 
     @Test

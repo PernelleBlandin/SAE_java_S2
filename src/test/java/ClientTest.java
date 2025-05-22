@@ -1,13 +1,11 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -66,8 +64,8 @@ public class ClientTest {
     private DetailLivre detailCommande1 = new DetailLivre(livre1, 1, 2, 7.98);
     private Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
     private List<Commande> commandesClient1 = new ArrayList<>(Arrays.asList(commande1));
+    
     private DetailLivre detailCommande2 = new DetailLivre(livre2, 1, 1, 16.4);
-
     private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
     private Panier panierClient1 = new Panier(1, magasinOrleans, detailCommandesPanierClient1);
     private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
@@ -185,25 +183,17 @@ public class ClientTest {
         assertEquals(this.magasinMarseille, client3Copie.getMagasin());
     }
 
-    // TODO: ça rajoute des commandes non voulus
-    // @Test
-    // public void testsCommander() throws SQLException {
-    //     Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
-    //     List<Commande> commandesClient1Copie = new ArrayList<>(client1Copie.getCommandes());
-    //     assertEquals(commandesClient1Copie.size(), client1Copie.getCommandes().size());
-    //     assertTrue(client1Copie.commander('M', 'O'));
-    //     assertEquals(commandesClient1Copie.size() + 1, client1Copie.getCommandes().size());
+    @Test
+    public void testsGetDetailCommandes() {
+        List<DetailLivre> detailLivresClient1 = new ArrayList<>(Arrays.asList(this.detailCommande1, this.detailCommande2));
+        assertEquals(detailLivresClient1, this.client1.getDetailCommandes());
 
-    //     Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
-    //     List<Commande> commandesClient2Copie = new ArrayList<>(client2Copie.getCommandes());
-    //     assertFalse(client2Copie.commander('M', 'O'));
-    //     assertEquals(commandesClient2Copie, client2Copie.getCommandes());
+        List<DetailLivre> detailLivresClient2 = new ArrayList<>();
+        assertEquals(detailLivresClient2, this.client2.getDetailCommandes());
 
-    //     Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
-    //     List<Commande> commandesClient3Copie = new ArrayList<>(client3Copie.getCommandes());
-    //     assertFalse(client3Copie.commander('C', 'N'));
-    //     assertEquals(commandesClient3Copie, client3Copie.getCommandes());
-    // }
+        List<DetailLivre> detailLivresClient3 = new ArrayList<>(Arrays.asList(this.detailCommande2, this.detailCommande3, this.detailCommande4));
+        assertEquals(detailLivresClient3, this.client3.getDetailCommandes());
+    }
 
     @Test
     public void testsGetLivresAchetes() {
@@ -215,6 +205,32 @@ public class ClientTest {
 
         List<Livre> livresClient3 = new ArrayList<>(Arrays.asList(this.livre2, this.livre3, this.livre4));
         assertEquals(livresClient3, this.client3.getLivresAchetes());
+    }
+
+    @Test
+    public void testsGetLivresNonAchetes() {
+        List<Livre> tousLesLivres = new ArrayList<>(Arrays.asList(this.livre1, this.livre2, this.livre3, this.livre4));
+
+        List<Livre> livresNonAchetesClient1 = new ArrayList<>(Arrays.asList(this.livre3, this.livre4));
+        assertEquals(livresNonAchetesClient1, this.client1.getLivresNonAchetes(tousLesLivres));
+
+        List<Livre> livresNonAchetesClient2 = new ArrayList<>(Arrays.asList(this.livre1, this.livre2, this.livre3, this.livre4));
+        assertEquals(livresNonAchetesClient2, this.client2.getLivresNonAchetes(tousLesLivres));
+
+        List<Livre> livresNonAchetesClient3 = new ArrayList<>(Arrays.asList(this.livre1));
+        assertEquals(livresNonAchetesClient3, this.client3.getLivresNonAchetes(tousLesLivres));
+    }
+
+    @Test
+    public void testsGetClassifications() {
+        Set<String> classificationsClient1 = new HashSet<>(Arrays.asList("Arts décorartifs"));
+        assertEquals(classificationsClient1, this.client1.getClassifications());
+    
+        Set<String> classificationsClient2 = new HashSet<>(Arrays.asList());
+        assertEquals(classificationsClient2, this.client2.getClassifications());
+
+        Set<String> classificationsClient3 = new HashSet<>(Arrays.asList("Littérature américaine", "Littérature anglaise"));
+        assertEquals(classificationsClient3, this.client3.getClassifications());
     }
 
     @Test

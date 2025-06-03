@@ -164,7 +164,8 @@ public class ChaineLibrairie {
         // -- Recommendations par rapport aux autres clients
 
         // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
-        List<Livre> livresNonAchetesParClient = this.getLivresTriesParVentes(client.getLivresNonAchetes(listeLivresMagasin));
+        List<Livre> livresNonAchetes = client.getLivresNonAchetes(listeLivresMagasin);
+        List<Livre> livresRecommendes = this.getLivresTriesParVentes(livresNonAchetes);
         
         HashMap<Livre, Integer> recommendationsLivres = new HashMap<>();
         List<Client> clientsCommuns = this.clientBD.obtenirClientsAyantLivresCommuns(client.getId());
@@ -172,7 +173,7 @@ public class ChaineLibrairie {
             List<Livre> livresAchetesParAutreClient = clientQuelconque.getLivresAchetes();
             for (DetailLivre detailCommande: clientQuelconque.getDetailCommandes()) {
                 Livre livre = detailCommande.getLivre();
-                if (livresNonAchetesParClient.contains(livre)) {
+                if (livresRecommendes.contains(livre)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
                     if (curLivreRecommendations == null) curLivreRecommendations = 0;
     
@@ -189,7 +190,7 @@ public class ChaineLibrairie {
         // Recommendations suivant classifications similaires
 
         Set<String> classificationsClient = client.getClassifications();
-        for (Livre livre: livresNonAchetesParClient) {
+        for (Livre livre: livresRecommendes) {
             for (String classification: livre.getClassifications()) {
                 if (classificationsClient.contains(classification)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
@@ -203,8 +204,8 @@ public class ChaineLibrairie {
         }
 
         ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(recommendationsLivres);
-        Collections.sort(livresNonAchetesParClient, comparatorRecommendation);
-        return livresNonAchetesParClient;
+        Collections.sort(livresRecommendes, comparatorRecommendation);
+        return livresRecommendes;
     }
 
     /**

@@ -124,7 +124,7 @@ public class Client extends Personne {
             for (DetailLivre detailLivre: detailLivres) {
                 String isbn = detailLivre.getLivre().getISBN();
                 int quantite = detailLivre.getQuantite();
-                this.chaineLibrairie.getMagasinBD().removeStockLivre(magasinId, isbn, quantite);
+                this.chaineLibrairie.getMagasinBD().retirerStockLivre(magasinId, isbn, quantite);
             }
 
             // Obtenir le prochain identifiant de commande

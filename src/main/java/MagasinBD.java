@@ -97,7 +97,7 @@ public class MagasinBD {
      * @param quantiteRetiree La quantité a retirée du livre dans le magasin.
      * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
-    public void removeStockLivre(String idMagasin, String isbnLivre, int quantiteRetiree) throws SQLException {
+    public void retirerStockLivre(String idMagasin, String isbnLivre, int quantiteRetiree) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             UPDATE POSSEDER
             SET qte = qte - ?

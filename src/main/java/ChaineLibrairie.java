@@ -98,6 +98,7 @@ public class ChaineLibrairie {
         return this.vendeurBD;
     }
 
+
     /**
      * Rechercher un livre selon une recherche données.
      * @param livres La liste des livres dans laquelle effectuer la recherche.

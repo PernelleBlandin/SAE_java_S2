@@ -135,4 +135,17 @@ public class CommandeBD {
 
         return listeCommandes;
     }
+
+    public ResultSet getCommandesIterator(int mois, int annee) throws SQLException {
+        PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
+            SELECT idcli, nomcli, prenomcli, adressecli, codepostal, villecli, numcom, datecom, qte, prixvente, isbn, titre, nommag
+            FROM CLIENT NATURAL JOIN COMMANDE NATURAL JOIN DETAILCOMMANDE NATURAL JOIN LIVRE NATURAL JOIN MAGASIN
+            WHERE MONTH(datecom) = ? AND YEAR(datecom) = ?
+            ORDER BY idmag, numcom
+        """);
+        commandesStatement.setInt(1, mois);
+        commandesStatement.setInt(2, annee);
+
+        return commandesStatement.executeQuery();
+    }
 }

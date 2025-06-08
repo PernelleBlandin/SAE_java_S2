@@ -1,7 +1,18 @@
 import java.util.List;
 import java.util.Set;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+
+import java.io.File;
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -31,10 +42,10 @@ public class ChaineLibrairie {
         try {
             // TODO: A modifier via des variables par exemple ou .env
 
-            String nomServeur = "servinfo-maria:3306";
-            String nomBase = "DBgautier";
-            String nomLogin = "gautier";
-            String motDePasse = "gautier";
+            String nomServeur = "localhost:3306";
+            String nomBase = "Librairie";
+            String nomLogin = "root";
+            String motDePasse = "root_mdp";
 
             this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
         } catch (SQLException e) {
@@ -207,6 +218,105 @@ public class ChaineLibrairie {
         ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(recommendationsLivres);
         Collections.sort(livresRecommendes, comparatorRecommendation);
         return livresRecommendes;
+    }
+
+    /**
+     * Exporter les factures d'un mois et d'une année dans le dossier "./factures/<annee>-<mois>".
+     * @param mois Le mois demandé.
+     * @param annee L'année demandé.
+     * @throws SQLException En cas d'exception SQL.
+     */
+    public void exporterFactures(int mois, int annee) throws SQLException, PasDeCommandeException {
+        ResultSet commandesIterator = this.commandeBD.getCommandesIterator(mois, annee);
+        if (!commandesIterator.next()) throw new PasDeCommandeException();
+
+        String dirPath = String.format("./factures/%d-%d", annee, mois);
+        File directory = new File(dirPath);
+        if (!directory.exists()) directory.mkdirs();
+        
+        // On a utilisé next avant pour l'exception, on refait marche arrière pour la boucle
+        commandesIterator.previous();
+
+        Integer curNumCom = null;
+        List<String> curHeadersLines = new ArrayList<>();
+        List<DetailLivre> curDetailLivres = new ArrayList<>();
+
+        while (commandesIterator.next()) {
+            Integer numCom = commandesIterator.getInt("numcom");
+            if (curNumCom == null || !curNumCom.equals(numCom)) {
+                if (curNumCom != null) {
+                    String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
+                    this.enregistrerFacturePDF(filePath, curHeadersLines, curDetailLivres);
+
+                    String nomcli = commandesIterator.getString("nomcli");
+                    String prenomcli = commandesIterator.getString("prenomcli");
+                    String adressecli = commandesIterator.getString("adressecli");
+                    String codepostal = commandesIterator.getString("codepostal");
+                    String villecli = commandesIterator.getString("villecli");
+
+                    Date datecom = commandesIterator.getDate("datecom");
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String dateDisplay = dateFormat.format(datecom);
+
+                    String nomMag = commandesIterator.getString("villecli");
+
+                    curHeadersLines = new ArrayList<>(Arrays.asList(
+                        String.format("%s %s", nomcli, prenomcli),
+                        adressecli,
+                        String.format("%s %s", codepostal, villecli),
+                        this.centrerTexte(String.format("Commande n°%d du %s - Magasin : %s", numCom, dateDisplay, nomMag), 100)
+                    ));
+                    curDetailLivres = new ArrayList<>();
+                }
+                curNumCom = numCom;
+            }
+
+            String isbnLivre = commandesIterator.getString("isbn");
+            String titreLivre = commandesIterator.getString("titre");
+            Livre livre = new Livre(isbnLivre, titreLivre);
+
+            int quantite = commandesIterator.getInt("qte");
+            double prixvente = commandesIterator.getDouble("prixvente");
+
+            DetailLivre detailLivre = new DetailLivre(livre, curDetailLivres.size() + 1, quantite, prixvente);
+            curDetailLivres.add(detailLivre);
+        }
+
+        // Enregistrer la dernière facture
+        String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
+        this.enregistrerFacturePDF(filePath, curHeadersLines, curDetailLivres);
+    }
+
+    /**
+     * Centrer un texte suivant une longueur donnée. 
+     * @param texte Un texte.
+     * @param longueurAffichage Une longueur donnée.
+     * @return Le texte centré.
+     */
+    private String centrerTexte(String texte, int longueurAffichage) {
+        int margeDebut = (longueurAffichage - texte.length()) / 2;
+        int margeFin = margeDebut;
+        if (texte.length() % 2 != 0) margeFin++;
+
+        return String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", App.truncate(texte, longueurAffichage));
+    }
+
+    private void enregistrerFacturePDF(String path, List<String> headersLines, List<DetailLivre> detailLivres) {
+        try {
+            Document document = new Document();
+            for (String line: headersLines) {
+                document.add(new Paragraph(line));
+            }
+
+            List<String> detailLivresTextuels = ChaineLibrairie.genererCorpsCommandeTextuel(detailLivres, 100);
+            for (String line: detailLivresTextuels) {
+                document.add(new Paragraph(line));
+            }
+
+            document.close();
+        } catch (DocumentException e) {
+            System.err.println("Erreur lors de l'engistrement de la facture " + path);
+        }
     }
 
     /**

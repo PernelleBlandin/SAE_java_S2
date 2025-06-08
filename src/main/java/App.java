@@ -518,12 +518,12 @@ public String obtenirEntreeUtilisateur() {
             Magasin magasin = vendeur.getMagasin();
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
-            this.afficherTexte("A : Ajouter livre");
-            this.afficherTexte("S : Accès stock magasins");
-            this.afficherTexte("M : Modifications stock magasin");
-            this.afficherTexte("C : Passer commande client");
-            this.afficherTexte("T : Transférer Livre stock");
-            this.afficherTexte("Q : Retour");
+            this.afficherTexte("A: Ajouter livre");
+            this.afficherTexte("S: Accès stock magasins");
+            this.afficherTexte("M: Modifications stock magasin");
+            this.afficherTexte("C: Passer commande client");
+            this.afficherTexte("T: Transférer Livre stock");
+            this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String commande = this.obtenirCommandeUtilisateur();
@@ -545,20 +545,19 @@ public String obtenirEntreeUtilisateur() {
 
         }
 
-
-
-    // Menu Administrateur
-
+    /**
+     * Afficher le menu administrateur.
+     */
     public void menuAdministrateur() {
         boolean finCommande = false;
         while (!finCommande) {
-
             this.afficherTitre("Menu Administrateur");
-            this.afficherTexte("C : Création compte vendeur");
-            this.afficherTexte("M : Ajout magasin");
-            this.afficherTexte("S : Modification stock global");
-            this.afficherTexte("V : Statistique de vente");
-            this.afficherTexte("Q : Retour");
+            this.afficherTexte("C: Création compte vendeur");
+            this.afficherTexte("M: Ajout magasin");
+            this.afficherTexte("S: Modification stock global");
+            this.afficherTexte("V: Statistiques de vente");
+            this.afficherTexte("F: Exporter les factures en PDF");
+            this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String commande = this.obtenirCommandeUtilisateur();
@@ -579,6 +578,17 @@ public String obtenirEntreeUtilisateur() {
                /*case "v": {
                 * accéder aux statistique de vente
                } */
+                case "f": {
+                    try {
+                        this.chaineLibrairie.exporterFactures(02, 2020);
+                        System.out.println("Facture exporté dans le dossier ./factures/");
+                    } catch (SQLException e) {
+                        System.err.println("Erreur : Un problème est survenue avec la BD" + e.getMessage());
+                    } catch (PasDeCommandeException e) {
+                        System.err.println("Erreur : Il n'y a aucune commande à exporter.");
+                    }
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;

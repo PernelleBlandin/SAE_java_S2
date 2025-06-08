@@ -20,6 +20,12 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>3.5.3</version>
         </dependency>
+        <!-- TODO: Utiliser la nouvelle version 9.2.0 -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.4</version>
+        </dependency>
     </dependencies>
 
     <properties>

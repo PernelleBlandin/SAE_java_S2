@@ -1,11 +1,17 @@
 import java.util.List;
 import java.util.Set;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -238,7 +244,9 @@ public class ChaineLibrairie {
         commandesIterator.previous();
 
         Integer curNumCom = null;
-        List<String> curHeadersLines = new ArrayList<>();
+        List<String> curCustomersInfos = new ArrayList<>();
+        String curTitle = null;
+        String curSubTitle = null;
         List<DetailLivre> curDetailLivres = new ArrayList<>();
 
         while (commandesIterator.next()) {
@@ -246,28 +254,29 @@ public class ChaineLibrairie {
             if (curNumCom == null || !curNumCom.equals(numCom)) {
                 if (curNumCom != null) {
                     String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-                    this.enregistrerFacturePDF(filePath, curHeadersLines, curDetailLivres);
-
-                    String nomcli = commandesIterator.getString("nomcli");
-                    String prenomcli = commandesIterator.getString("prenomcli");
-                    String adressecli = commandesIterator.getString("adressecli");
-                    String codepostal = commandesIterator.getString("codepostal");
-                    String villecli = commandesIterator.getString("villecli");
-
-                    Date datecom = commandesIterator.getDate("datecom");
-                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                    String dateDisplay = dateFormat.format(datecom);
-
-                    String nomMag = commandesIterator.getString("villecli");
-
-                    curHeadersLines = new ArrayList<>(Arrays.asList(
-                        String.format("%s %s", nomcli, prenomcli),
-                        adressecli,
-                        String.format("%s %s", codepostal, villecli),
-                        this.centrerTexte(String.format("Commande n°%d du %s - Magasin : %s", numCom, dateDisplay, nomMag), 100)
-                    ));
-                    curDetailLivres = new ArrayList<>();
+                    this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, curDetailLivres);
                 }
+
+                String nomcli = commandesIterator.getString("nomcli");
+                String prenomcli = commandesIterator.getString("prenomcli");
+                String adressecli = commandesIterator.getString("adressecli");
+                String codepostal = commandesIterator.getString("codepostal");
+                String villecli = commandesIterator.getString("villecli");
+
+                Date datecom = commandesIterator.getDate("datecom");
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String dateDisplay = dateFormat.format(datecom);
+
+                String nomMag = commandesIterator.getString("nommag");
+
+                curCustomersInfos = new ArrayList<>(Arrays.asList(
+                    String.format("%s %s", nomcli, prenomcli),
+                    adressecli,
+                    String.format("%s %s", codepostal, villecli)
+                ));
+                curTitle = String.format("Commande n°%d du %s", numCom, dateDisplay);
+                curSubTitle = String.format("Magasin : %s", nomMag);
+                curDetailLivres = new ArrayList<>();
                 curNumCom = numCom;
             }
 
@@ -284,37 +293,62 @@ public class ChaineLibrairie {
 
         // Enregistrer la dernière facture
         String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-        this.enregistrerFacturePDF(filePath, curHeadersLines, curDetailLivres);
+        this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, curDetailLivres);
     }
 
-    /**
-     * Centrer un texte suivant une longueur donnée. 
-     * @param texte Un texte.
-     * @param longueurAffichage Une longueur donnée.
-     * @return Le texte centré.
-     */
-    private String centrerTexte(String texte, int longueurAffichage) {
-        int margeDebut = (longueurAffichage - texte.length()) / 2;
-        int margeFin = margeDebut;
-        if (texte.length() % 2 != 0) margeFin++;
-
-        return String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", App.truncate(texte, longueurAffichage));
-    }
-
-    private void enregistrerFacturePDF(String path, List<String> headersLines, List<DetailLivre> detailLivres) {
+    private void enregistrerFacturePDF(String path, List<String> customerInfos, String title, String subtitle, List<DetailLivre> detailLivres) {
         try {
-            Document document = new Document();
-            for (String line: headersLines) {
-                document.add(new Paragraph(line));
-            }
+            Document document = new Document(new PdfDocument(new PdfWriter(path)));
 
-            List<String> detailLivresTextuels = ChaineLibrairie.genererCorpsCommandeTextuel(detailLivres, 100);
-            for (String line: detailLivresTextuels) {
-                document.add(new Paragraph(line));
+            // Header avec les infos du client
+            document.add(new Paragraph(String.join("\n", customerInfos)));
+            
+            // Titre principal
+            Paragraph titlePDF = new Paragraph(title);
+            titlePDF.simulateBold();
+            titlePDF.setFontSize(18);
+            titlePDF.setTextAlignment(TextAlignment.CENTER);
+            titlePDF.setMarginTop(15);
+            document.add(titlePDF);
+
+            // Titre secondaire
+            Paragraph subtitlePDF = new Paragraph(subtitle);
+            subtitlePDF.setFontSize(12);
+            subtitlePDF.setTextAlignment(TextAlignment.CENTER);
+            subtitlePDF.setMarginTop(10);
+            document.add(subtitlePDF);
+
+            // Table
+            Table table = new Table(UnitValue.createPercentArray(new float[]{15, 45, 10, 15, 15}));
+            table.setWidth(UnitValue.createPercentValue(100)); 
+
+            table.addHeaderCell(new Cell().add(new Paragraph("ISBN")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Titre")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Qte")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Prix")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Total")));
+
+            double totalCommande = 0.00;
+            for (DetailLivre detail : detailLivres) {
+                totalCommande += detail.getPrixVente() * detail.getQuantite();
+
+                table.addCell(new Cell().add(new Paragraph(detail.getLivre().getISBN())));
+                table.addCell(new Cell().add(new Paragraph(detail.getLivre().getTitre())));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(detail.getQuantite()))));
+                table.addCell(new Cell().add(new Paragraph(String.format("%.2f€", detail.getPrixVente()))));
+                table.addCell(new Cell().add(new Paragraph(String.format("%.2f€", detail.getPrixVente() * detail.getQuantite()))));
             }
+            document.add(table);
+
+            // Montant total
+            Paragraph total = new Paragraph(String.format("Total : %6.2f€", totalCommande));
+            total.setFontSize(12);
+            total.setTextAlignment(TextAlignment.RIGHT);
+            total.setMarginTop(5);
+            document.add(total);
 
             document.close();
-        } catch (DocumentException e) {
+        } catch (IOException e) {
             System.err.println("Erreur lors de l'engistrement de la facture " + path);
         }
     }

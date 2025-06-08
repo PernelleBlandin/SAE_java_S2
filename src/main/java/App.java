@@ -42,11 +42,18 @@ public class App {
     }
 
     /**
+     * Afficher le séparateur du début.
+     */
+    public void afficherTitreDebut() {
+        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
+    }
+
+    /**
      * Afficher un titre dans le terminal de manière centrée, en y ajoutant une bordure au départ et un séparateur.
      * @param titre Le titre a afficher.
      */
     public void afficherTitre(String titre) {
-        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
+        this.afficherTitreDebut();
         this.afficherTexteCentrer(App.truncate(titre, this.longueurAffichage - 4));
         this.afficherSeperateurMilieu();
     }
@@ -86,7 +93,7 @@ public class App {
     }
 
     /**
-     * Obtenir l'entrée de l'utilisateur dans le terminal.
+     * Obtenir la commande de l'utilisateur dans le terminal.
      * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
      * @return La réponse de l'utilisateur.
      */
@@ -104,7 +111,12 @@ public class App {
         }
     }
 
-public String obtenirEntreeUtilisateur() {
+    /**
+     * Obtenir l'entrée de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public String obtenirEntreeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
             return commandeBrute.strip();
@@ -118,6 +130,27 @@ public String obtenirEntreeUtilisateur() {
         }
     }
 
+    /**
+     * Obtenir l'entrée d'un nombre de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public Integer obtenirEntreeNombreUtilisateur() {
+        try {
+            String entreeBrut = System.console().readLine();
+            return Integer.parseInt(entreeBrut.strip());
+        } catch (java.lang.NumberFormatException e) {
+            System.out.println("Erreur : L'entrée que vous avez indiquée n'est pas un nombre.");
+            return null;
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
 
     /**
      * Afficher dans le terminal une introduction en ASCII de l'application.
@@ -579,14 +612,7 @@ public String obtenirEntreeUtilisateur() {
                 * accéder aux statistique de vente
                } */
                 case "f": {
-                    try {
-                        this.chaineLibrairie.exporterFactures(02, 2020);
-                        System.out.println("Facture exporté dans le dossier ./factures/");
-                    } catch (SQLException e) {
-                        System.err.println("Erreur : Un problème est survenue avec la BD" + e.getMessage());
-                    } catch (PasDeCommandeException e) {
-                        System.err.println("Erreur : Il n'y a aucune commande à exporter.");
-                    }
+                    this.exporterFactures();
                     break;
                 }
                 case "q": {
@@ -598,9 +624,36 @@ public String obtenirEntreeUtilisateur() {
                     break;
                 }
             }
-            }
-
         }
+    }
+
+    public void exporterFactures() {
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quel mois voulez-vous exporter les factures (1-12) ?");
+        this.afficherTitreFin();
+        Integer mois = this.obtenirEntreeNombreUtilisateur();
+        if (mois == null) return;
+
+        if (mois < 0 || mois > 12) {
+            System.err.println("Erreur : Le mois doit être compris entre 1 et 12.");
+            return;
+        }
+
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quelle année voulez-vous exporter les factures ?");
+        this.afficherTitreFin();
+        Integer annee = this.obtenirEntreeNombreUtilisateur();
+        if (annee == null) return;
+
+        try {
+            this.chaineLibrairie.exporterFactures(mois, annee);
+            System.out.println(String.format("Factures exportés dans le dossier ./factures/%d-%d", annee, mois));
+        } catch (SQLException e) {
+            System.err.println("Erreur : Un problème est survenue avec la BD" + e.getMessage());
+        } catch (PasDeCommandeException e) {
+            System.err.println("Erreur : Il n'y a aucune facture à exporter.");
+        }
+    }
 
     // Panier Client
 

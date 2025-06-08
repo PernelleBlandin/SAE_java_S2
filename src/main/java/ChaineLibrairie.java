@@ -250,6 +250,7 @@ public class ChaineLibrairie {
         String curSubTitle = null;
         List<DetailLivre> curDetailLivres = new ArrayList<>();
 
+        // TODO: Mettre le mode de livraison dans la facture
         while (commandesIterator.next()) {
             Integer numCom = commandesIterator.getInt("numcom");
             if (curNumCom == null || !curNumCom.equals(numCom)) {

@@ -227,10 +227,11 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Exporter les factures d'un mois et d'une année dans le dossier "./factures/<annee>-<mois>".
+     * Exporter les factures d'un mois et d'une année dans le dossier "./factures/annee-mois".
      * @param mois Le mois demandé.
      * @param annee L'année demandé.
      * @throws SQLException En cas d'exception SQL.
+     * @throws PasDeCommandeException S'il n'y a pas de factures à exporter.
      */
     public void exporterFactures(int mois, int annee) throws SQLException, PasDeCommandeException {
         ResultSet commandesIterator = this.commandeBD.getCommandesIterator(mois, annee);

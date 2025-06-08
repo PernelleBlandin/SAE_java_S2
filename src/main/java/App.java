@@ -627,6 +627,9 @@ public class App {
         }
     }
 
+    /**
+     * Afficher le menu pour exporter des factures.
+     */
     public void exporterFactures() {
         this.afficherTitreDebut();
         this.afficherTexteCentrer("De quel mois voulez-vous exporter les factures (1-12) ?");

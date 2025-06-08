@@ -136,6 +136,13 @@ public class CommandeBD {
         return listeCommandes;
     }
 
+    /**
+     * Obtenir l'iterateur des commandes pour un mois et une année.
+     * @param mois Un mois.
+     * @param annee Une année.
+     * @return L'iterateur des commandes pour le mois et l'année donnée.
+     * @throws SQLException Exception SQL en cas de problème avec la BD.
+     */
     public ResultSet getCommandesIterator(int mois, int annee) throws SQLException {
         PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
             SELECT idcli, nomcli, prenomcli, adressecli, codepostal, villecli, numcom, datecom, qte, prixvente, isbn, titre, nommag

@@ -18,6 +18,10 @@ public class Magasin extends Identifiable {
         this.possessions = possessions;
     }
     
+    public Magasin(String id, String nom, String ville) {
+        super(id, nom);
+        this.ville = ville;
+    }
 
     /**
      * Obtenir la ville du magasin.

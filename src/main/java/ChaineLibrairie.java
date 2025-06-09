@@ -69,6 +69,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des livres.
+     * 
      * @return La classe de la base de données pour récupérer des livres.
      */
     public LivreBD getLivreBD() {
@@ -77,6 +78,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des clients.
+     * 
      * @return La classe de la base de données pour récupérer des clients.
      */
     public ClientBD getClientBD() {
@@ -85,6 +87,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des commandes.
+     * 
      * @return La classe de la base de données pour récupérer des commandes.
      */
     public CommandeBD getCommandeBD() {
@@ -93,6 +96,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer les paniers clients.
+     * 
      * @return La classe de la base de données pour récupérer les paniers clients.
      */
     public PanierBD getPanierBD() {
@@ -101,6 +105,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des magasins.
+     * 
      * @return La classe de la base de données pour récupérer des magasins.
      */
     public MagasinBD getMagasinBD() {
@@ -109,22 +114,23 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des vendeurs.
+     * 
      * @return La classe de la base de données pour récupérer des vendeurs.
      */
     public VendeurBD getVendeurBD() {
         return this.vendeurBD;
     }
 
-
     /**
      * Rechercher un livre selon une recherche données.
-     * @param livres La liste des livres dans laquelle effectuer la recherche.
+     * 
+     * @param livres    La liste des livres dans laquelle effectuer la recherche.
      * @param recherche La recherche utilisateur.
      * @return Les livres étant inclus dans la recherche.
      */
     public List<Livre> rechercherLivres(List<Livre> livres, String recherche) {
         List<Livre> livresCorrespondants = new ArrayList<>();
-        for (Livre livre: livres) {
+        for (Livre livre : livres) {
             if (livre.estIncluDansRecherche(recherche)) {
                 livresCorrespondants.add(livre);
             }
@@ -134,6 +140,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir le nombre de vente d'un livre dans toute la chaîne de librairie.
+     * 
      * @param livre Le livre concerné.
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
@@ -148,6 +155,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la liste des livres triés par leur nombre de ventes.
+     * 
      * @param listeLivres La liste de livres initial.
      * @return La liste de livres triés par leur nombre de ventes.
      */
@@ -160,11 +168,16 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
-     * On vérifie d'abord suivant les autres clients, puis selon les classifications similaires du client par rapport à ces dernieres commandes.
-     * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex aequo.
+     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le
+     * plus pertinant.
+     * On vérifie d'abord suivant les autres clients, puis selon les classifications
+     * similaires du client par rapport à ces dernieres commandes.
+     * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex
+     * aequo.
+     * 
      * @param client Le client.
-     * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
+     * @return La liste des livres recommandés pour un client, triés dans l'ordre le
+     *         plus pertinant.
      * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
     public List<Livre> onVousRecommande(Client client) throws SQLException {
@@ -172,7 +185,7 @@ public class ChaineLibrairie {
         List<Livre> listeLivresMagasin = this.livreBD.obtenirLivreEnStockMagasin(magasinClient);
 
         List<Commande> commandesClient = client.getCommandes();
-        
+
         Panier panierClient = client.getPanier();
         List<DetailLivre> detailPanierClient = panierClient.getDetailLivres();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
@@ -184,17 +197,18 @@ public class ChaineLibrairie {
         // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
         List<Livre> livresNonAchetes = client.getLivresNonAchetes(listeLivresMagasin);
         List<Livre> livresRecommendes = this.getLivresTriesParVentes(livresNonAchetes);
-        
+
         HashMap<Livre, Integer> recommendationsLivres = new HashMap<>();
         List<Client> clientsCommuns = this.clientBD.obtenirClientsAyantLivresCommuns(client.getId());
-        for (Client clientQuelconque: clientsCommuns) {
+        for (Client clientQuelconque : clientsCommuns) {
             List<Livre> livresAchetesParAutreClient = clientQuelconque.getLivresAchetes();
-            for (DetailLivre detailCommande: clientQuelconque.getDetailCommandes()) {
+            for (DetailLivre detailCommande : clientQuelconque.getDetailCommandes()) {
                 Livre livre = detailCommande.getLivre();
                 if (livresRecommendes.contains(livre)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
-                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
-    
+                    if (curLivreRecommendations == null)
+                        curLivreRecommendations = 0;
+
                     if (livresAchetesParAutreClient.contains(livre)) {
                         curLivreRecommendations += 3;
                     } else {
@@ -208,12 +222,13 @@ public class ChaineLibrairie {
         // Recommendations suivant classifications similaires
 
         Set<String> classificationsClient = client.getClassifications();
-        for (Livre livre: livresRecommendes) {
-            for (String classification: livre.getClassifications()) {
+        for (Livre livre : livresRecommendes) {
+            for (String classification : livre.getClassifications()) {
                 if (classificationsClient.contains(classification)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
-                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
-    
+                    if (curLivreRecommendations == null)
+                        curLivreRecommendations = 0;
+
                     curLivreRecommendations += 1;
                     recommendationsLivres.put(livre, curLivreRecommendations);
                     break;
@@ -221,16 +236,19 @@ public class ChaineLibrairie {
             }
         }
 
-        ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(recommendationsLivres);
+        ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(
+                recommendationsLivres);
         Collections.sort(livresRecommendes, comparatorRecommendation);
         return livresRecommendes;
     }
 
     /**
-     * Exporter les factures d'un mois et d'une année dans le dossier "./factures/annee-mois".
-     * @param mois Le mois demandé.
+     * Exporter les factures d'un mois et d'une année dans le dossier
+     * "./factures/annee-mois".
+     * 
+     * @param mois  Le mois demandé.
      * @param annee L'année demandé.
-     * @throws SQLException En cas d'exception SQL.
+     * @throws SQLException           En cas d'exception SQL.
      * @throws PasDeCommandeException S'il n'y a pas de factures à exporter.
      */
     public void exporterFactures(int mois, int annee) throws SQLException, PasDeCommandeException {
@@ -240,7 +258,7 @@ public class ChaineLibrairie {
         String dirPath = String.format("./factures/%d-%d", annee, mois);
         File directory = new File(dirPath);
         if (!directory.exists()) directory.mkdirs();
-        
+
         // On a utilisé next avant pour l'exception, on refait marche arrière pour la boucle
         commandesIterator.previous();
 
@@ -248,6 +266,7 @@ public class ChaineLibrairie {
         List<String> curCustomersInfos = new ArrayList<>();
         String curTitle = null;
         String curSubTitle = null;
+        String detailCommande = null;
         List<DetailLivre> curDetailLivres = new ArrayList<>();
 
         // TODO: Mettre le mode de livraison dans la facture
@@ -256,7 +275,7 @@ public class ChaineLibrairie {
             if (curNumCom == null || !curNumCom.equals(numCom)) {
                 if (curNumCom != null) {
                     String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-                    this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, curDetailLivres);
+                    this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
                 }
 
                 String nomcli = commandesIterator.getString("nomcli");
@@ -269,13 +288,19 @@ public class ChaineLibrairie {
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String dateDisplay = dateFormat.format(datecom);
 
+                String enLigne = commandesIterator.getString("enligne").equals("O") ? "Commande en ligne" : "Commande sur place";
+                String livraison = commandesIterator.getString("livraison").equals("C") ? "Livraison à domicile" : "Récupérer sur place";
+                detailCommande = String.format("%s | %s", enLigne, livraison);
+
                 String nomMag = commandesIterator.getString("nommag");
 
-                curCustomersInfos = new ArrayList<>(Arrays.asList(
-                    String.format("%s %s", nomcli, prenomcli),
-                    adressecli,
-                    String.format("%s %s", codepostal, villecli)
-                ));
+                curCustomersInfos = new ArrayList<>(
+                    Arrays.asList(
+                        String.format("%s %s", nomcli, prenomcli),
+                        adressecli,
+                        String.format("%s %s", codepostal, villecli)
+                    )
+                );
                 curTitle = String.format("Commande n°%d du %s", numCom, dateDisplay);
                 curSubTitle = String.format("Magasin : %s", nomMag);
                 curDetailLivres = new ArrayList<>();
@@ -295,16 +320,16 @@ public class ChaineLibrairie {
 
         // Enregistrer la dernière facture
         String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-        this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, curDetailLivres);
+        this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
     }
 
-    private void enregistrerFacturePDF(String path, List<String> customerInfos, String title, String subtitle, List<DetailLivre> detailLivres) {
+    private void enregistrerFacturePDF(String path, List<String> customerInfos, String title, String subtitle, String detailsCommande, List<DetailLivre> detailLivres) {
         try {
             Document document = new Document(new PdfDocument(new PdfWriter(path)));
 
             // Header avec les infos du client
             document.add(new Paragraph(String.join("\n", customerInfos)));
-            
+
             // Titre principal
             Paragraph titlePDF = new Paragraph(title);
             titlePDF.simulateBold();
@@ -320,9 +345,15 @@ public class ChaineLibrairie {
             subtitlePDF.setMarginTop(10);
             document.add(subtitlePDF);
 
+            // Détails livraison + en ligne
+            Paragraph details = new Paragraph(detailsCommande);
+            subtitlePDF.setFontSize(10);
+            subtitlePDF.setMarginTop(10);
+            document.add(details);
+
             // Table
-            Table table = new Table(UnitValue.createPercentArray(new float[]{15, 45, 10, 15, 15}));
-            table.setWidth(UnitValue.createPercentValue(100)); 
+            Table table = new Table(UnitValue.createPercentArray(new float[] { 15, 45, 10, 15, 15 }));
+            table.setWidth(UnitValue.createPercentValue(100));
 
             table.addHeaderCell(new Cell().add(new Paragraph("ISBN")));
             table.addHeaderCell(new Cell().add(new Paragraph("Titre")));
@@ -356,8 +387,10 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment. 
-     * @param detailLivres Les détails des livres, avec leur quantité et prix d'achat.
+     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment.
+     * 
+     * @param detailLivres      Les détails des livres, avec leur quantité et prix
+     *                          d'achat.
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */

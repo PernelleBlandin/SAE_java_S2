@@ -145,7 +145,7 @@ public class CommandeBD {
      */
     public ResultSet getCommandesIterator(int mois, int annee) throws SQLException {
         PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
-            SELECT idcli, nomcli, prenomcli, adressecli, codepostal, villecli, numcom, datecom, qte, prixvente, isbn, titre, nommag
+            SELECT idcli, nomcli, prenomcli, adressecli, codepostal, villecli, numcom, datecom, qte, prixvente, isbn, titre, nommag, enligne, livraison
             FROM CLIENT NATURAL JOIN COMMANDE NATURAL JOIN DETAILCOMMANDE NATURAL JOIN LIVRE NATURAL JOIN MAGASIN
             WHERE MONTH(datecom) = ? AND YEAR(datecom) = ?
             ORDER BY idmag, numcom

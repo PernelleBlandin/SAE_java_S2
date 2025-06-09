@@ -487,6 +487,7 @@ public String obtenirEntreeUtilisateur() {
 
                 /*case "m" : {
                 *ajouter une nouvelle boutique appartenant à la chaîne de librairie
+                
                 } 
                 */
 
@@ -779,7 +780,6 @@ public String obtenirEntreeUtilisateur() {
         List<String> donnees = new ArrayList<>();
         donnees.add("Nom");
         donnees.add("Prenom");
-        donnees.add("Magasin");
         HashMap<String, String> dicoDonnees = new HashMap<>();
 
 
@@ -792,7 +792,13 @@ public String obtenirEntreeUtilisateur() {
                 System.out.println("Entrer une chaine de caracteres");
             }
             dicoDonnees.put(donnee, entree);
+            
         }
+        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner un magasin");
+        if (resultatSelectionMagasin == null) 
+            {return;}
+        else {dicoDonnees.put("Magasin", resultatSelectionMagasin;)}
         System.out.println(dicoDonnees);
 
     }

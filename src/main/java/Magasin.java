@@ -17,6 +17,7 @@ public class Magasin extends Identifiable {
         this.ville = ville;
         this.possessions = possessions;
     }
+    
 
     /**
      * Obtenir la ville du magasin.

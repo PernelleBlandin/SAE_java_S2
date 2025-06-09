@@ -794,11 +794,11 @@ public String obtenirEntreeUtilisateur() {
             dicoDonnees.put(donnee, entree);
             
         }
-        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner un magasin");
         if (resultatSelectionMagasin == null) 
             {return;}
-        else {dicoDonnees.put("Magasin", resultatSelectionMagasin;)}
+        else {dicoDonnees.put("Magasin", resultatSelectionMagasin.getElement().getNom();)}
         System.out.println(dicoDonnees);
 
     }

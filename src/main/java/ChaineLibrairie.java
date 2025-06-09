@@ -35,8 +35,12 @@ public class ChaineLibrairie {
 
     /**
      * Intiailiser la chaîne de librairie.
+     * @param bdHost L'adresse et le port de la base de données.
+     * @param bdBase Le nom de la base de données.
+     * @param bdLogin Le nom d'utilisateur.
+     * @param bdPassword Le mot de passe de l'utilisateur.
      */
-    public ChaineLibrairie() {
+    public ChaineLibrairie(String bdHost, String bdBase, String bdLogin, String bdPassword) {
         // Base de données
         try {
             this.connexionMariaDB = new ConnexionMariaDB();
@@ -46,14 +50,7 @@ public class ChaineLibrairie {
         }
 
         try {
-            // TODO: A modifier via des variables par exemple ou .env
-
-            String nomServeur = "localhost:3306";
-            String nomBase = "Librairie";
-            String nomLogin = "root";
-            String motDePasse = "root_mdp";
-
-            this.connexionMariaDB.connecter(nomServeur, nomBase, nomLogin, motDePasse);
+            this.connexionMariaDB.connecter(bdHost, bdBase, bdLogin, bdPassword);
         } catch (SQLException e) {
             System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
             System.exit(1);

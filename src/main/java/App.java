@@ -567,76 +567,152 @@ public class App {
             String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "a": {
+                    Integer nbPages = null;
+                    Double prix = null;
+                    Integer anneeDePublication = null;
+
+                    this.afficherTitreDebut();
                     this.afficherTexte("Entrez l'identifiant du livre :");
+                    this.afficherTitreFin();
                     String inputIsbn = this.obtenirEntreeUtilisateur();
                     String isbn = inputIsbn.trim();
 
+                    this.afficherTitreDebut();
                     this.afficherTexte("Entrez son titre :");
+                    this.afficherTitreFin();
                     String inputTitre = this.obtenirEntreeUtilisateur();
                     String titre = inputTitre.trim();
 
-                    this.afficherTexte("Entrez son nombre de pages :");
-                    String inputNbPages = this.obtenirEntreeUtilisateur();
-                    String nbPagesString = inputNbPages.trim();
-                    int nbPages = Integer.parseInt(nbPagesString);
-
-                    this.afficherTexte("Entrez son prix :");
-                    String inputPrix = this.obtenirEntreeUtilisateur();
-                    String prixString = inputPrix.trim();
-                    double prix = Double.parseDouble(prixString);
-
-                    this.afficherTexte("Entrez son année de publication :");
-                    String inputAnneeDePublication = this.obtenirEntreeUtilisateur();
-                    String anneeDePublicationString = inputAnneeDePublication.trim();
-                    int anneeDePublication = Integer.parseInt(anneeDePublicationString);
-
-                    this.afficherTexte("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules) :");
-                    String inputAuteurs = this.obtenirEntreeUtilisateur();
-                    String[] infoAuteurs = inputAuteurs.split(",");
-                    for (int i = 0; i < infoAuteurs.length; i++){
-                        infoAuteurs[i] = infoAuteurs[i].trim();
+                    try{
+                        this.afficherTitreDebut();
+                        this.afficherTexte("Entrez son nombre de pages :");
+                        this.afficherTitreFin();
+                        String inputNbPages = this.obtenirEntreeUtilisateur();
+                        String nbPagesString = inputNbPages.trim();
+                        nbPages = Integer.parseInt(nbPagesString);
                     }
-                    String nom;
+                    catch (NumberFormatException e) {
+                        System.err.println("Le nombre de pages doit etre un nombre entier");
+                        break;
+                    }
+
+                    try {
+                        this.afficherTitreDebut();
+                        this.afficherTexte("Entrez son prix :");
+                        this.afficherTitreFin();
+                        String inputPrix = this.obtenirEntreeUtilisateur();
+                        String prixString = inputPrix.trim();
+                        prix = Double.parseDouble(prixString);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Le prix doit etre en décimal");
+                        break;
+                    }
+                    try{
+                        this.afficherTitreDebut();
+                        this.afficherTexte("Entrez son année de publication :");
+                        this.afficherTitreFin();
+                        String inputAnneeDePublication = this.obtenirEntreeUtilisateur();
+                        String anneeDePublicationString = inputAnneeDePublication.trim();
+                        anneeDePublication = Integer.parseInt(anneeDePublicationString);
+                    } 
+                    catch (NumberFormatException e){
+                        System.err.println("L'année de publication doit etre un nombre entier");
+                        break;
+                    }
+                    String[] infoAuteurs;
+                    String auteurNom;
                     int naissance;
                     int deces;
-
-                    nom = infoAuteurs[0];
-                    naissance = Integer.parseInt(infoAuteurs[1]);
-                    deces = Integer.parseInt(infoAuteurs[2]);
-
+                    try {
+                        this.afficherTitreDebut();
+                        this.afficherTexte("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules) :");
+                        this.afficherTitreFin();
+                        String inputAuteurs = this.obtenirEntreeUtilisateur();
+                        infoAuteurs = inputAuteurs.split(",");
+                        for (int i = 0; i < infoAuteurs.length; i++){
+                            infoAuteurs[i] = infoAuteurs[i].trim();
+                        }
+                        if(infoAuteurs.length != 3) {
+                            System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
+                            break;
+                        }
+                        auteurNom = infoAuteurs[0];
+                        naissance = Integer.parseInt(infoAuteurs[1]);
+                        deces = Integer.parseInt(infoAuteurs[2]);
+                    }catch (Exception e) {
+                        System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
+                        break;
+                    }
                     Set<String> auteur = new HashSet<>();
-                    auteur.add(nom);
-                    try{
-                        boolean auteurExistant = this.chaineLibrairie.getLivreBD().auteurExistant(nom);
-                        if(auteurExistant == false){
+                    auteur.add(auteurNom);
+                    String auteurExistant;
+                    String idAuteur = "";
+                    try {
+                        auteurExistant = this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom);
+                        if(auteurExistant == null){
+                            this.afficherTitreDebut();
                             this.afficherTexte("Entrez son identifiant :");
+                            this.afficherTitreFin();
                             String input = this.obtenirEntreeUtilisateur();
-                            String idAuteur = input.trim();
-                            this.chaineLibrairie.getLivreBD().ajouteAuteur(idAuteur, nom, naissance, deces);
-                        }    
+                            idAuteur = input.trim();
+                        }
                     } catch(SQLException e){
                         System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
                         break;
                     }
 
+                    this.afficherTitreDebut();
                     this.afficherTexte("Entrez l'éditeur :");
+                    this.afficherTitreFin();
                     String inputEditeur = this.obtenirEntreeUtilisateur();
-                    String editeurString = inputEditeur.trim();
+                    String editeurNom = inputEditeur.trim();
                     Set<String> editeur = new HashSet<>();
-                    editeur.add(editeurString);
+                    editeur.add(editeurNom);
 
+                    this.afficherTitreDebut();
                     this.afficherTexte("Entrez le nom de sa classification :");
+                    this.afficherTitreFin();
                     String inputClassification = this.obtenirEntreeUtilisateur();
-                    String  classificationString = inputClassification.trim();
+                    String  classificationNom = inputClassification.trim();
                     Set<String> classification = new HashSet<>();
-                    classification.add(classificationString);
-                    
-                    this.afficherTexte("Entrez la quantité :");
-                    String inputQuantite = this.obtenirEntreeUtilisateur();
-                    String quantite = inputQuantite.trim();
-                    
+                    classification.add(classificationNom);
+                    String classificationExistante;
+                    String idClassifications = "";
+                    try {
+                        classificationExistante = this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom);
+                        if(classificationExistante == null){
+                            this.afficherTitreDebut();
+                            this.afficherTexte("Entrez son identifiant :");
+                            this.afficherTitreFin();
+                            String input = this.obtenirEntreeUtilisateur();
+                            idClassifications = input.trim();
+                        }
+                    } catch(SQLException e){
+                        System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
+                        break;
+                    }
+                    try {
+                        if(this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null  && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
+                            this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
+                        } 
+                        else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) != null) {
+                            this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, naissance, deces);
+                        } 
+                        else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) != null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
+                            this.chaineLibrairie.getLivreBD().ajouteLivreAuteurExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idClassifications);
+                        } 
+                        else {
+                            this.chaineLibrairie.getLivreBD().ajouteLivreAuteurExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom);
+                        }
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de l'ajout du livre en base de données : " + e.getMessage());
+                        break;
+                    }
+                    this.afficherTitreDebut();
+                    this.afficherTexte("Livre ajouté avec succes");
+                    this.afficherTitreFin();
                     Livre livre = new Livre(isbn, titre, nbPages, anneeDePublication, prix, auteur, editeur, classification);
-                    
+                    break;
                 }
                 case "q": {
                     finCommande = true;

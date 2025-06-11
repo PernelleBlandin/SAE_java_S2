@@ -2,7 +2,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Arrays;
 
 /**
  * L'application sous le format ligne de commandes.
@@ -600,13 +599,17 @@ public class App {
                     this.creationCompteVendeur();
                     break;
                 }
-
                 case "m" : {
-                List<String> donneesRecuperees = this.demanderInfoMagasin();
-                this.chaineLibrairie.ajouterMagasin(this.Magasin.Magasin(donneesRecuperees.get(0), donneesRecuperees.get(1), donneesRecuperees.get(2)));
-                } 
-                
+                    HashMap<String, String> donneesMagasin = this.demanderInfosMagasin();
+                    try {
+                        this.chaineLibrairie.getMagasinBD().creerMagasin(donneesMagasin);
+                        System.out.println(String.format("Magasin %s créé avec succès !", donneesMagasin.get("nom")));
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la création du magasin en BD : " + e.getMessage());
+                    }
 
+                    break;
+                } 
                 /*case "s": {
                  * 
                 } */
@@ -987,7 +990,6 @@ public class App {
         }
     }
 
-
     //Fonctionnalités administrateur Hashmap
 
     public void creationCompteVendeur(){
@@ -1006,44 +1008,41 @@ public class App {
                 System.out.println("Entrer une chaine de caracteres");
             }
             dicoDonnees.put(donnee, entree);
-            
         }
-        List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-        ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner un magasin");
-        if (resultatSelectionMagasin == null) 
-            {return;}
-        else {dicoDonnees.put("Magasin", resultatSelectionMagasin.getElement().getNom();)}
-        System.out.println(dicoDonnees);
 
+        try {
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner un magasin");
+            if (resultatSelectionMagasin == null) return;
+
+            dicoDonnees.put("Magasin", resultatSelectionMagasin.getElement().getNom());
+            System.out.println(dicoDonnees);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+        }
     }
 
-
-
-    public List<String> demanderInfoMagasin() {
-        List<String> donneesDemandees = new Arrays.asList<>("id", "nom", "ville");
-        List<String> donneesRecuperees = new ArrayList<>();
-
-        for(String donnee : donneesDemandees ){
-            System.out.println();
-            System.out.println(donnee);
-            String entree = this.obtenirEntreeUtilisateur();
-            while(!(entree instanceof String)){
-                System.out.println("Entrer une chaine de caracteres");
-            }
-            donneesRecuperees.add(donnee);
-            System.out.println(donneesRecuperees);
-            return donneesRecuperees;
+    /**
+     * Demander à l'utilisateur les informations du magasin (nom et ville).
+     * @return Un dictionnaire avec les informations indiquées par l'utilisateur.
+     */
+    public HashMap<String, String> demanderInfosMagasin() {
+        HashMap<String, String> donneesMagasin = new HashMap<>();
         
-            }
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer(String.format("Quel est le nom du magasin ?"));
+        this.afficherTitreFin();
+        
+        String nomMag = this.obtenirEntreeUtilisateur();
+        donneesMagasin.put("nom", nomMag);
 
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer(String.format("Quel est la ville du magasin ?"));
+        this.afficherTitreFin();
 
-        }
+        String villeMag = this.obtenirEntreeUtilisateur();
+        donneesMagasin.put("ville", villeMag);
 
-
-
-
-
-
-
-
+        return donneesMagasin;
+    }
 }

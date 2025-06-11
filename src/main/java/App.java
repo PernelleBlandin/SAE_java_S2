@@ -1,4 +1,6 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -40,11 +42,18 @@ public class App {
     }
 
     /**
+     * Afficher le séparateur du début.
+     */
+    public void afficherTitreDebut() {
+        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
+    }
+
+    /**
      * Afficher un titre dans le terminal de manière centrée, en y ajoutant une bordure au départ et un séparateur.
      * @param titre Le titre a afficher.
      */
     public void afficherTitre(String titre) {
-        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
+        this.afficherTitreDebut();
         this.afficherTexteCentrer(App.truncate(titre, this.longueurAffichage - 4));
         this.afficherSeperateurMilieu();
     }
@@ -84,6 +93,25 @@ public class App {
     }
 
     /**
+     * Obtenir la commande de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public String obtenirCommandeUtilisateur() {
+        try {
+            String commandeBrute = System.console().readLine();
+            return commandeBrute.strip().toLowerCase();
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
+    /**
      * Obtenir l'entrée de l'utilisateur dans le terminal.
      * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
      * @return La réponse de l'utilisateur.
@@ -91,7 +119,29 @@ public class App {
     public String obtenirEntreeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
-            return commandeBrute.strip().toLowerCase();
+            return commandeBrute.strip();
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
+    /**
+     * Obtenir l'entrée d'un nombre de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public Integer obtenirEntreeNombreUtilisateur() {
+        try {
+            String entreeBrut = System.console().readLine();
+            return Integer.parseInt(entreeBrut.strip());
+        } catch (java.lang.NumberFormatException e) {
+            System.out.println("Erreur : L'entrée que vous avez indiquée n'est pas un nombre.");
+            return null;
         } catch (Exception e) {
             // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
             // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
@@ -130,7 +180,7 @@ public class App {
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c": {
                     this.connexionClient();
@@ -138,6 +188,10 @@ public class App {
                 }
                 case "v": {
                     this.connexionVendeur();
+                    break;
+                }
+                case "a": {
+                    this.menuAdministrateur();
                     break;
                 }
                 case "q": {
@@ -189,7 +243,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
                     if (nbPage > 0) nbPage--;
@@ -247,7 +301,7 @@ public class App {
         this.afficherTexte("N: Non");
         this.afficherTitreFin();
 
-        String confirm = this.obtenirEntreeUtilisateur();
+        String confirm = this.obtenirCommandeUtilisateur();
         return confirm.equals("o");
     }
 
@@ -260,7 +314,7 @@ public class App {
         this.afficherTexte("Q: Retour");
         this.afficherTitreFin();
 
-        String recherche = this.obtenirEntreeUtilisateur();
+        String recherche = this.obtenirCommandeUtilisateur();
         if (recherche.equals("q")) return null;
 
         return recherche;
@@ -301,7 +355,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "l": {
                     List<Livre> listeLivres;
@@ -428,7 +482,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "a": {
                     if (livreEnStock) {
@@ -497,15 +551,15 @@ public class App {
             Magasin magasin = vendeur.getMagasin();
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
-            this.afficherTexte("A : Ajouter livre");
-            this.afficherTexte("S : Accès stock magasins");
-            this.afficherTexte("M : Modifications stock magasin");
-            this.afficherTexte("C : Passer commande client");
-            this.afficherTexte("T : Transférer Livre stock");
-            this.afficherTexte("Q : Retour");
+            this.afficherTexte("A: Ajouter livre");
+            this.afficherTexte("S: Accès stock magasins");
+            this.afficherTexte("M: Modifications stock magasin");
+            this.afficherTexte("C: Passer commande client");
+            this.afficherTexte("T: Transférer Livre stock");
+            this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 /*case "A": {
                 *ajouter un livre avec ses caract dans la liste des possessions du magasin
@@ -523,6 +577,86 @@ public class App {
             }
 
         }
+
+    /**
+     * Afficher le menu administrateur.
+     */
+    public void menuAdministrateur() {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre("Menu Administrateur");
+            this.afficherTexte("C: Création compte vendeur");
+            this.afficherTexte("M: Ajout magasin");
+            this.afficherTexte("S: Modification stock global");
+            this.afficherTexte("V: Statistiques de vente");
+            this.afficherTexte("F: Exporter les factures en PDF");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirCommandeUtilisateur();
+            switch (commande) {
+                case "c": {
+                    this.creationCompteVendeur();
+                    break;
+                }
+
+                /*case "m" : {
+                *ajouter une nouvelle boutique appartenant à la chaîne de librairie
+                } 
+                */
+
+                /*case "s": {
+                 * 
+                } */
+               /*case "v": {
+                * accéder aux statistique de vente
+               } */
+                case "f": {
+                    this.exporterFactures();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Afficher le menu pour exporter des factures.
+     */
+    public void exporterFactures() {
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quel mois voulez-vous exporter les factures (1-12) ?");
+        this.afficherTitreFin();
+        Integer mois = this.obtenirEntreeNombreUtilisateur();
+        if (mois == null) return;
+
+        if (mois < 0 || mois > 12) {
+            System.err.println("Erreur : Le mois doit être compris entre 1 et 12.");
+            return;
+        }
+
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quelle année voulez-vous exporter les factures ?");
+        this.afficherTitreFin();
+        Integer annee = this.obtenirEntreeNombreUtilisateur();
+        if (annee == null) return;
+
+        try {
+            this.chaineLibrairie.exporterFactures(mois, annee);
+            System.out.println(String.format("Factures exportés dans le dossier ./factures/%d-%d", annee, mois));
+        } catch (SQLException e) {
+            System.err.println("Erreur : Un problème est survenue avec la BD" + e.getMessage());
+        } catch (PasDeCommandeException e) {
+            System.err.println("Erreur : Il n'y a aucune facture à exporter.");
+        }
+    }
 
     // Panier Client
 
@@ -585,7 +719,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "p": {
                     if (!ruptureProduit) {
@@ -664,7 +798,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c":
                     return 'C';
@@ -737,7 +871,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String entree = this.obtenirEntreeUtilisateur();
+            String entree = this.obtenirCommandeUtilisateur();
             if (entree.equals("q")) return null;
 
             try {
@@ -837,7 +971,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "q": {
                     finCommande = true;
@@ -850,4 +984,39 @@ public class App {
             }
         }
     }
+
+
+    //Fonctionnalités administrateur Hashmap
+
+    public void creationCompteVendeur(){
+        List<String> donnees = new ArrayList<>();
+        donnees.add("Nom");
+        donnees.add("Prenom");
+        donnees.add("Magasin");
+        HashMap<String, String> dicoDonnees = new HashMap<>();
+
+
+        System.out.println("Pour interrompre, tapez \"exit\"");
+        for(String donnee : donnees ){
+            System.out.println();
+            System.out.println(donnee);
+            String entree = this.obtenirEntreeUtilisateur();
+            while(!(entree instanceof String)){
+                System.out.println("Entrer une chaine de caracteres");
+            }
+            dicoDonnees.put(donnee, entree);
+        }
+        System.out.println(dicoDonnees);
+
+    }
+
+
+
+
+
+
+
+
+
+
 }

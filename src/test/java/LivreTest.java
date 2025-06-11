@@ -77,9 +77,9 @@ public class LivreTest {
 
     @Test
     public void testsGetDatePubli() {
-        assertEquals(2003, this.livre1.getDatePubli());
-        assertEquals(2010, this.livre2.getDatePubli());
-        assertEquals(2008, this.livre3.getDatePubli());
+        assertEquals(Integer.valueOf(2003), this.livre1.getDatePubli());
+        assertEquals(Integer.valueOf(2010), this.livre2.getDatePubli());
+        assertEquals(Integer.valueOf(2008), this.livre3.getDatePubli());
     }
 
     @Test

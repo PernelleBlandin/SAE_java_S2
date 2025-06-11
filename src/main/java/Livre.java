@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Set;
 
 /** Un livre */
@@ -5,8 +6,8 @@ public class Livre {
     private String isbn;
     private String titre;
     private Integer nbpages;
-    private int datepubli;
-    private double prix;
+    private Integer datepubli;
+    private Double prix;
     private Set<String> auteurs;
     private Set<String> editeurs;
     private Set<String> classifications;
@@ -22,7 +23,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, Set<String> auteurs, Set<String> editeurs, Set<String> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, Integer datepubli, Double prix, Set<String> auteurs, Set<String> editeurs, Set<String> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -31,6 +32,23 @@ public class Livre {
         this.auteurs = auteurs;
         this.editeurs = editeurs;
         this.classifications = classifications;
+    }
+
+    /**
+     * Créer un livre partiel, utilisé pour l'édition de factures.
+     * @param isbn L'ISBN du livre.
+     * @param titre Le titre du livre.
+     */
+    public Livre(String isbn, String titre) {
+        this.isbn = isbn;
+        this.titre = titre;
+        
+        this.nbpages = null;
+        this.datepubli = null;
+        this.prix = null;
+        this.auteurs = new HashSet<>();
+        this.editeurs =new HashSet<>();
+        this.classifications = new HashSet<>();
     }
 
     /**
@@ -61,7 +79,7 @@ public class Livre {
      * Obtenir la date de publication d'un livre.
      * @return La date de publication du livre.
      */
-    public int getDatePubli() {
+    public Integer getDatePubli() {
         return this.datepubli;
     }
 
@@ -69,7 +87,7 @@ public class Livre {
      * Obtenir le prix d'un livre.
      * @return Le prix du livre.
      */
-    public double getPrix() {
+    public Double getPrix() {
         return this.prix;
     }
 

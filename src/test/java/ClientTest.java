@@ -10,8 +10,6 @@ import java.util.Set;
 import org.junit.Test;
 
 public class ClientTest {
-    private ChaineLibrairie chaineLibrairieVide = new ChaineLibrairie();
-
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
@@ -68,12 +66,12 @@ public class ClientTest {
     private DetailLivre detailCommande2 = new DetailLivre(livre2, 1, 1, 16.4);
     private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
     private Panier panierClient1 = new Panier(1, magasinOrleans, detailCommandesPanierClient1);
-    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
+    private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
 
     // Client 2
     private List<Commande> commandesClient2 = new ArrayList<>();
     private Panier panierClient2 = new Panier(2, magasinMarseille, new ArrayList<>());
-    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
+    private Client client2 = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, null);
 
     // Client 3
     private DetailLivre detailCommande3 = new DetailLivre(livre3, 2, 4, 11.9);
@@ -82,7 +80,7 @@ public class ClientTest {
     private Commande commande3 = new Commande(3, Date.valueOf("2024-09-01"), 'N', 'M', magasinParis, new ArrayList<>(Arrays.asList(detailCommande4)));
     private List<Commande> commandesClient3 = new ArrayList<>(Arrays.asList(commande2, commande3));
     private Panier panierClient3 = new Panier(3, magasinOrleans, new ArrayList<>());
-    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
+    private Client client3 = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, null);
 
     @Test
     public void testsGetId() {
@@ -149,17 +147,17 @@ public class ClientTest {
 
     @Test
     public void testsSetPanier() {
-        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
+        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
         assertEquals(this.panierClient1, client1Copie.getPanier());
         client1Copie.setPanier(this.panierClient2);
         assertEquals(this.panierClient2, client1Copie.getPanier());
 
-        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
+        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, null);
         assertEquals(this.panierClient2, client2Copie.getPanier());
         client2Copie.setPanier(this.panierClient3);
         assertEquals(this.panierClient3, client2Copie.getPanier());
 
-        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
+        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, null);
         assertEquals(this.panierClient3, client3Copie.getPanier());
         client3Copie.setPanier(this.panierClient1);
         assertEquals(this.panierClient1, client3Copie.getPanier());
@@ -167,17 +165,17 @@ public class ClientTest {
 
     @Test
     public void testsSetMagasin() {
-        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, this.chaineLibrairieVide);
+        Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
         assertEquals(this.magasinOrleans, client1Copie.getMagasin());
         client1Copie.setMagasin(this.magasinParis);
         assertEquals(this.magasinParis, client1Copie.getMagasin());
 
-        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, this.chaineLibrairieVide);
+        Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, null);
         assertEquals(this.magasinMarseille, client2Copie.getMagasin());
         client2Copie.setMagasin(this.magasinOrleans);
         assertEquals(this.magasinOrleans, client2Copie.getMagasin());
 
-        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, this.chaineLibrairieVide);
+        Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, null);
         assertEquals(this.magasinOrleans, client3Copie.getMagasin());
         client3Copie.setMagasin(this.magasinMarseille);
         assertEquals(this.magasinMarseille, client3Copie.getMagasin());

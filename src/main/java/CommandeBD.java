@@ -135,4 +135,24 @@ public class CommandeBD {
 
         return listeCommandes;
     }
+
+    /**
+     * Obtenir l'iterateur des commandes pour un mois et une année.
+     * @param mois Un mois.
+     * @param annee Une année.
+     * @return L'iterateur des commandes pour le mois et l'année donnée.
+     * @throws SQLException Exception SQL en cas de problème avec la BD.
+     */
+    public ResultSet getCommandesIterator(int mois, int annee) throws SQLException {
+        PreparedStatement commandesStatement = this.connexionMariaDB.prepareStatement("""
+            SELECT idcli, nomcli, prenomcli, adressecli, codepostal, villecli, numcom, datecom, qte, prixvente, isbn, titre, nommag, enligne, livraison
+            FROM CLIENT NATURAL JOIN COMMANDE NATURAL JOIN DETAILCOMMANDE NATURAL JOIN LIVRE NATURAL JOIN MAGASIN
+            WHERE MONTH(datecom) = ? AND YEAR(datecom) = ?
+            ORDER BY idmag, numcom
+        """);
+        commandesStatement.setInt(1, mois);
+        commandesStatement.setInt(2, annee);
+
+        return commandesStatement.executeQuery();
+    }
 }

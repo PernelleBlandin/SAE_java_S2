@@ -1,107 +1,133 @@
 import java.util.List;
 import java.util.Set;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 
 /** La chaîne de librairie */
 public class ChaineLibrairie {
-    private List<Livre> livres;
-    private List<Client> clients;
-    private List<Personnel> personnels;
-    private List<Magasin> magasins;
+    private ConnexionMariaDB connexionMariaDB;
+
+    private LivreBD livreBD;
+    private ClientBD clientBD;
+    private CommandeBD commandeBD;
+    private PanierBD panierBD;
+    private MagasinBD magasinBD;
+    private VendeurBD vendeurBD;
 
     /**
      * Intiailiser la chaîne de librairie.
+     * @param bdHost L'adresse et le port de la base de données.
+     * @param bdBase Le nom de la base de données.
+     * @param bdLogin Le nom d'utilisateur.
+     * @param bdPassword Le mot de passe de l'utilisateur.
      */
-    public ChaineLibrairie() {
-        this.livres = new ArrayList<>();
-        this.clients = new ArrayList<>();
-        this.personnels = new ArrayList<>();
-        this.magasins = new ArrayList<>();
-    }
-
-    /**
-     * Obtenir la liste des livres de la chaîne de librairie.
-     * @return La liste des livres de la chaîne de librairie.
-     */
-    public List<Livre> getLivres() {
-        return this.livres;
-    }
-
-    /**
-     * Obtenir la liste des clients de la chaîne de librairie.
-     * @return La liste des clients de la chaîne de librairie.
-     */
-    public List<Client> getClients() {
-        return this.clients;
-    }
-
-    /**
-     * Obtenir la liste des personnels de la chaîne de librairie.
-     * @return La liste des personnels de la chaîne de librairie.
-     */
-    public List<Personnel> getPersonnels() {
-        return this.personnels;
-    }
-
-    /**
-     * Obtenir la liste des magasins de la chaîne de librairie.
-     * @return La liste des magasins de la chaîne de librairie.
-     */
-    public List<Magasin> getMagasins() {
-        return this.magasins;
-    }
-
-    /**
-     * Ajouter un livre à la chaîne de librairie.
-     * @param livre Le livre à ajouter.
-     */
-    public void ajouterLivre(Livre livre) {
-        this.livres.add(livre);
-    }
-
-    /**
-     * Ajouter un client à la chaîne de librairie.
-     * @param client Le client à ajouter.
-     */
-    public void ajouterClient(Client client) {
-        this.clients.add(client);
-    }
-
-    /**
-     * Ajouter un magasin à la chaîne de librairie.
-     * @param magasin Le magasin à ajouter.
-     */
-    public void ajouterMagasin(Magasin magasin) {
-        this.magasins.add(magasin);
-    }
-
-    /**
-     * Trouver un client à partir de son nom et prénom.
-     * @param nom Le nom du client.
-     * @param prenom Le prénom du client.
-     * @return Le client trouvé, ou null si aucun n'a été trouvé.s
-     */
-    public Client trouverClient(String nom, String prenom) {
-        for (Client client: this.clients) {
-            if (client.getNom().equals(nom) && client.getPrenom().equals(prenom)) {
-                return client;
-            }
+    public ChaineLibrairie(String bdHost, String bdBase, String bdLogin, String bdPassword) {
+        // Base de données
+        try {
+            this.connexionMariaDB = new ConnexionMariaDB();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver MariaDB non trouvé.");
+            System.exit(1);
         }
-        return null;
+
+        try {
+            this.connexionMariaDB.connecter(bdHost, bdBase, bdLogin, bdPassword);
+        } catch (SQLException e) {
+            System.err.println("Impossible de se connecter à la BD : " + e.getMessage());
+            System.exit(1);
+        }
+
+        this.livreBD = new LivreBD(this.connexionMariaDB);
+        this.clientBD = new ClientBD(this, this.connexionMariaDB);
+        this.commandeBD = new CommandeBD(this, this.connexionMariaDB);
+        this.panierBD = new PanierBD(this, this.connexionMariaDB);
+        this.magasinBD = new MagasinBD(this.connexionMariaDB);
+        this.vendeurBD = new VendeurBD(this.connexionMariaDB);
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des livres.
+     * 
+     * @return La classe de la base de données pour récupérer des livres.
+     */
+    public LivreBD getLivreBD() {
+        return this.livreBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des clients.
+     * 
+     * @return La classe de la base de données pour récupérer des clients.
+     */
+    public ClientBD getClientBD() {
+        return this.clientBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des commandes.
+     * 
+     * @return La classe de la base de données pour récupérer des commandes.
+     */
+    public CommandeBD getCommandeBD() {
+        return this.commandeBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer les paniers clients.
+     * 
+     * @return La classe de la base de données pour récupérer les paniers clients.
+     */
+    public PanierBD getPanierBD() {
+        return this.panierBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des magasins.
+     * 
+     * @return La classe de la base de données pour récupérer des magasins.
+     */
+    public MagasinBD getMagasinBD() {
+        return this.magasinBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour récupérer des vendeurs.
+     * 
+     * @return La classe de la base de données pour récupérer des vendeurs.
+     */
+    public VendeurBD getVendeurBD() {
+        return this.vendeurBD;
     }
 
     /**
      * Rechercher un livre selon une recherche données.
-     * @param livres La liste des livres dans laquelle effectuer la recherche.
+     * 
+     * @param livres    La liste des livres dans laquelle effectuer la recherche.
      * @param recherche La recherche utilisateur.
      * @return Les livres étant inclus dans la recherche.
      */
     public List<Livre> rechercherLivres(List<Livre> livres, String recherche) {
         List<Livre> livresCorrespondants = new ArrayList<>();
-        for (Livre livre: livres) {
+        for (Livre livre : livres) {
             if (livre.estIncluDansRecherche(recherche)) {
                 livresCorrespondants.add(livre);
             }
@@ -110,39 +136,23 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir la liste de l'ensemble des commandes de la chaîne de librairie.
-     * @return La liste des commandes de la chaîne de librairie, tous magasins et clients confondus.
-     */
-    public List<Commande> getCommandes() {
-        List<Commande> commandes = new ArrayList<>();
-        
-        List<Client> clients = this.getClients();
-        for (Client client: clients) {
-            commandes.addAll(client.getCommandes());
-        }
-        return commandes;
-    }
-
-    /**
      * Obtenir le nombre de vente d'un livre dans toute la chaîne de librairie.
+     * 
      * @param livre Le livre concerné.
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
     public int getNombreVentesLivre(Livre livre) {
-        int nbVentes = 0;
-        List<Commande> commandes = this.getCommandes();
-        for (Commande commande: commandes) {
-            List<DetailCommande> detailCommandes = commande.getDetailCommandes();
-            for (DetailCommande detailCommande: detailCommandes) {
-                Livre livreCommande = detailCommande.getLivre();
-                if (livreCommande.equals(livre)) nbVentes++;
-            }
+        try {
+            return this.getLivreBD().getNombreVentesLivre(livre.getISBN());
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération du nombre de ventes d'un livre : " + e.getMessage());
+            return 0;
         }
-        return nbVentes;
     }
 
     /**
      * Obtenir la liste des livres triés par leur nombre de ventes.
+     * 
      * @param listeLivres La liste de livres initial.
      * @return La liste de livres triés par leur nombre de ventes.
      */
@@ -155,135 +165,239 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
-     * On vérifie d'abord suivant les autres clients. Puis à defaut, les livres ayant les mêmes genres que ceux achetés par ce client, avec un tri selon le nombre de ventes nationals;
-     * Enfin, s'il y a toujours pas de résultat, on renvoie le classement des livres les plus vendus.
+     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le
+     * plus pertinant.
+     * On vérifie d'abord suivant les autres clients, puis selon les classifications
+     * similaires du client par rapport à ces dernieres commandes.
+     * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex
+     * aequo.
+     * 
      * @param client Le client.
-     * @return La liste des livres recommandés pour un client, triés dans l'ordre le plus pertinant.
+     * @return La liste des livres recommandés pour un client, triés dans l'ordre le
+     *         plus pertinant.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
      */
-    public List<Livre> onVousRecommande(Client client) {
-        Panier panierClient = client.getPanier();
-        List<DetailCommande> detailPanierClient = panierClient.getDetailCommandes();
-        
+    public List<Livre> onVousRecommande(Client client) throws SQLException {
+        Magasin magasinClient = client.getMagasin();
+        List<Livre> listeLivresMagasin = this.livreBD.obtenirLivreEnStockMagasin(magasinClient);
+
         List<Commande> commandesClient = client.getCommandes();
+
+        Panier panierClient = client.getPanier();
+        List<DetailLivre> detailPanierClient = panierClient.getDetailLivres();
         if (commandesClient.size() == 0 && detailPanierClient.size() == 0) {
-            return this.getLivresTriesParVentes(this.livres);
-        } 
+            return this.getLivresTriesParVentes(listeLivresMagasin);
+        }
 
         // -- Recommendations par rapport aux autres clients
 
-        // Aide : https://www.w3schools.com/java/java_hashmap.asp
-        HashMap<Livre, Integer> livresRecommandes = new HashMap<>();
-        for (Client clientQuelconque: this.clients) {
-            // On ne regarde pas le client lui-même.
-            if (client.equals(clientQuelconque)) continue;
-   
-            int pourcentageLivresCommuns = this.getPourcentageLivresCommuns(client, clientQuelconque);
-            // Si le pourcentage = 100, cela veut dire qu'ils ont déjà achetés les mêmes livres, dont pas la peine de vérifier davantage
-            if (pourcentageLivresCommuns > 0 && pourcentageLivresCommuns < 100) {
-                Set<Livre> livresNonPossedes = this.getLivresClient2NonAchetesParClient1(client, clientQuelconque);
-                for (Livre livre: livresNonPossedes) {
-                    Integer curLivreRecommendations = livresRecommandes.get(livre);
-                    if (curLivreRecommendations == null) curLivreRecommendations = 0;
+        // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
+        List<Livre> livresNonAchetes = client.getLivresNonAchetes(listeLivresMagasin);
+        List<Livre> livresRecommendes = this.getLivresTriesParVentes(livresNonAchetes);
 
-                    curLivreRecommendations += pourcentageLivresCommuns;
-                    livresRecommandes.put(livre, curLivreRecommendations);
+        HashMap<Livre, Integer> recommendationsLivres = new HashMap<>();
+        List<Client> clientsCommuns = this.clientBD.obtenirClientsAyantLivresCommuns(client.getId());
+        for (Client clientQuelconque : clientsCommuns) {
+            List<Livre> livresAchetesParAutreClient = clientQuelconque.getLivresAchetes();
+            for (DetailLivre detailCommande : clientQuelconque.getDetailCommandes()) {
+                Livre livre = detailCommande.getLivre();
+                if (livresRecommendes.contains(livre)) {
+                    Integer curLivreRecommendations = recommendationsLivres.get(livre);
+                    if (curLivreRecommendations == null)
+                        curLivreRecommendations = 0;
+
+                    if (livresAchetesParAutreClient.contains(livre)) {
+                        curLivreRecommendations += 3;
+                    } else {
+                        curLivreRecommendations += 2;
+                    }
+                    recommendationsLivres.put(livre, curLivreRecommendations);
                 }
             }
         }
 
-        // -- Suivant les thèmes des livres précédents achetés + leur nombre de ventes
-        if (livresRecommandes.size() == 0) {
-            Set<Livre> livresAchetes = client.getLivresAchetes();
-            HashMap<String, Integer> classificationsOccurenceClient = client.getClassificationsOccurence();
+        // Recommendations suivant classifications similaires
 
-            List<Livre> listeLivre = this.getLivres();
-            for (Livre livre: listeLivre) {
-                // On ne mets pas en avant les livres que le client a déjà acheté
-                if (!livresAchetes.contains(livre)) {
-                    int occurenceClassificationLivreMax = 0;
-                    List<String> listeClassifications = livre.getClassifications();
-                    for (String classification: listeClassifications) {
-                        Integer occurenceClassification = classificationsOccurenceClient.get(classification);
-                        if (occurenceClassification != null) {
-                            if (occurenceClassification > occurenceClassificationLivreMax) {
-                                occurenceClassificationLivreMax = occurenceClassification;
-                            }
-                        }
-                    }
-    
-                    if (occurenceClassificationLivreMax != 0) {
-                        livresRecommandes.put(livre, occurenceClassificationLivreMax);
-                    }
+        Set<String> classificationsClient = client.getClassifications();
+        for (Livre livre : livresRecommendes) {
+            for (String classification : livre.getClassifications()) {
+                if (classificationsClient.contains(classification)) {
+                    Integer curLivreRecommendations = recommendationsLivres.get(livre);
+                    if (curLivreRecommendations == null)
+                        curLivreRecommendations = 0;
+
+                    curLivreRecommendations += 1;
+                    recommendationsLivres.put(livre, curLivreRecommendations);
+                    break;
                 }
             }
         }
 
-        // Si livres en commun avec d'autres clients ou thèmes du livre
-        if (livresRecommandes.size() >= 1) {
-            List<Livre> listeLivresCopie = new ArrayList<>(this.getLivres());
-            ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(livresRecommandes);
-            Collections.sort(listeLivresCopie, comparatorRecommendation);
-
-            return listeLivresCopie;
-        }
-
-        // -- Valeur de secours
-        return this.getLivresTriesParVentes(this.livres);
+        ComparatorLivreRecommandation comparatorRecommendation = new ComparatorLivreRecommandation(
+                recommendationsLivres);
+        Collections.sort(livresRecommendes, comparatorRecommendation);
+        return livresRecommendes;
     }
 
     /**
-     * Obtenir le pourcentage de livres communs entre deux clients.
-     * @param client1 Le client 1.
-     * @param client2 Le client 2.
-     * @return Le pourcentage (sous forme d'entier) de livres en communs entre les deux clients.
+     * Exporter les factures d'un mois et d'une année dans le dossier
+     * "./factures/annee-mois".
+     * 
+     * @param mois  Le mois demandé.
+     * @param annee L'année demandé.
+     * @throws SQLException           En cas d'exception SQL.
+     * @throws PasDeCommandeException S'il n'y a pas de factures à exporter.
      */
-    public int getPourcentageLivresCommuns(Client client1, Client client2) {
-        Set<Livre> livresClient2 = client2.getLivresAchetes();
-        if (livresClient2.size() == 0) return 0;
-        
-        int nbLivreEnCommun = 0;
-        Set<Livre> livresClient1 = client1.getLivresAchetes();
-        for (Livre livre: livresClient2) {
-            if (livresClient1.contains(livre)) nbLivreEnCommun++;
-        }
+    public void exporterFactures(int mois, int annee) throws SQLException, PasDeCommandeException {
+        ResultSet commandesIterator = this.commandeBD.getCommandesIterator(mois, annee);
+        if (!commandesIterator.next()) throw new PasDeCommandeException();
 
-        return (nbLivreEnCommun / livresClient2.size()) * 100;
-    }
+        String dirPath = String.format("./factures/%d-%d", annee, mois);
+        File directory = new File(dirPath);
+        if (!directory.exists()) directory.mkdirs();
 
-    /**
-     * Obtenir l'ensemble des livres d'un client B non acheté par un client A.
-     * @param client1 Le premier client.
-     * @param client2 Le deuxième client.
-     * @return Les livres du client B non acheté par le client A.
-     */
-    public Set<Livre> getLivresClient2NonAchetesParClient1(Client client1, Client client2) {
-        Set<Livre> livresClient1 = client1.getLivresAchetes();
-        Set<Livre> livresClient2 = client2.getLivresAchetes();
+        // On a utilisé next avant pour l'exception, on refait marche arrière pour la boucle
+        commandesIterator.previous();
 
-        Set<Livre> livresNonPossedesClient1 = new HashSet<>();
-        for (Livre livre: livresClient2) {
-            if (!livresClient1.contains(livre)) {
-                livresNonPossedesClient1.add(livre);
+        Integer curNumCom = null;
+        List<String> curCustomersInfos = new ArrayList<>();
+        String curTitle = null;
+        String curSubTitle = null;
+        String detailCommande = null;
+        List<DetailLivre> curDetailLivres = new ArrayList<>();
+
+        while (commandesIterator.next()) {
+            Integer numCom = commandesIterator.getInt("numcom");
+            if (curNumCom == null || !curNumCom.equals(numCom)) {
+                if (curNumCom != null) {
+                    String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
+                    this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
+                }
+
+                String nomcli = commandesIterator.getString("nomcli");
+                String prenomcli = commandesIterator.getString("prenomcli");
+                String adressecli = commandesIterator.getString("adressecli");
+                String codepostal = commandesIterator.getString("codepostal");
+                String villecli = commandesIterator.getString("villecli");
+
+                Date datecom = commandesIterator.getDate("datecom");
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String dateDisplay = dateFormat.format(datecom);
+
+                String enLigne = commandesIterator.getString("enligne").equals("O") ? "Commande en ligne" : "Commande sur place";
+                String livraison = commandesIterator.getString("livraison").equals("C") ? "Livraison à domicile" : "Récupérer sur place";
+                detailCommande = String.format("%s | %s", enLigne, livraison);
+
+                String nomMag = commandesIterator.getString("nommag");
+
+                curCustomersInfos = new ArrayList<>(
+                    Arrays.asList(
+                        String.format("%s %s", nomcli, prenomcli),
+                        adressecli,
+                        String.format("%s %s", codepostal, villecli)
+                    )
+                );
+                curTitle = String.format("Commande n°%d du %s", numCom, dateDisplay);
+                curSubTitle = String.format("Magasin : %s", nomMag);
+                curDetailLivres = new ArrayList<>();
+                curNumCom = numCom;
             }
+
+            String isbnLivre = commandesIterator.getString("isbn");
+            String titreLivre = commandesIterator.getString("titre");
+            Livre livre = new Livre(isbnLivre, titreLivre);
+
+            int quantite = commandesIterator.getInt("qte");
+            double prixvente = commandesIterator.getDouble("prixvente");
+
+            DetailLivre detailLivre = new DetailLivre(livre, curDetailLivres.size() + 1, quantite, prixvente);
+            curDetailLivres.add(detailLivre);
         }
-        return livresNonPossedesClient1;
+
+        // Enregistrer la dernière facture
+        String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
+        this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
+    }
+
+    private void enregistrerFacturePDF(String path, List<String> customerInfos, String title, String subtitle, String detailsCommande, List<DetailLivre> detailLivres) {
+        try {
+            Document document = new Document(new PdfDocument(new PdfWriter(path)));
+
+            // Header avec les infos du client
+            document.add(new Paragraph(String.join("\n", customerInfos)));
+
+            // Titre principal
+            Paragraph titlePDF = new Paragraph(title);
+            titlePDF.simulateBold();
+            titlePDF.setFontSize(18);
+            titlePDF.setTextAlignment(TextAlignment.CENTER);
+            titlePDF.setMarginTop(15);
+            document.add(titlePDF);
+
+            // Titre secondaire
+            Paragraph subtitlePDF = new Paragraph(subtitle);
+            subtitlePDF.setFontSize(12);
+            subtitlePDF.setTextAlignment(TextAlignment.CENTER);
+            subtitlePDF.setMarginTop(10);
+            document.add(subtitlePDF);
+
+            // Détails livraison + en ligne
+            Paragraph details = new Paragraph(detailsCommande);
+            subtitlePDF.setFontSize(10);
+            subtitlePDF.setMarginTop(10);
+            document.add(details);
+
+            // Table
+            Table table = new Table(UnitValue.createPercentArray(new float[] { 15, 45, 10, 15, 15 }));
+            table.setWidth(UnitValue.createPercentValue(100));
+
+            table.addHeaderCell(new Cell().add(new Paragraph("ISBN")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Titre")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Qte")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Prix")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Total")));
+
+            double totalCommande = 0.00;
+            for (DetailLivre detail : detailLivres) {
+                totalCommande += detail.getPrixVente() * detail.getQuantite();
+
+                table.addCell(new Cell().add(new Paragraph(detail.getLivre().getISBN())));
+                table.addCell(new Cell().add(new Paragraph(detail.getLivre().getTitre())));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(detail.getQuantite()))));
+                table.addCell(new Cell().add(new Paragraph(String.format("%.2f€", detail.getPrixVente()))));
+                table.addCell(new Cell().add(new Paragraph(String.format("%.2f€", detail.getPrixVente() * detail.getQuantite()))));
+            }
+            document.add(table);
+
+            // Montant total
+            Paragraph total = new Paragraph(String.format("Total : %6.2f€", totalCommande));
+            total.setFontSize(12);
+            total.setTextAlignment(TextAlignment.RIGHT);
+            total.setMarginTop(5);
+            document.add(total);
+
+            document.close();
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'engistrement de la facture " + path);
+        }
     }
 
     /**
-     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment. 
-     * @param detailCommandes Les détails des commandes (livres, quantité, ...).
+     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment.
+     * 
+     * @param detailLivres      Les détails des livres, avec leur quantité et prix
+     *                          d'achat.
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */
-    public List<String> genererCorpsCommandeTextuel(List<DetailCommande> detailCommandes, int longueurAffichage) {
-        if (detailCommandes.size() == 0) return new ArrayList<>();
+    public static List<String> genererCorpsCommandeTextuel(List<DetailLivre> detailLivres, int longueurAffichage) {
+        if (detailLivres.size() == 0) return new ArrayList<>();
 
         double totalCommande = 0.00;
         List<String> res = new ArrayList<>();
         res.add("       ISBN                               Titre                              Qte    Prix   Total");
-        for (int i = 0; i < detailCommandes.size(); i++) {
-            DetailCommande detailCommande = detailCommandes.get(i);
+        for (int i = 0; i < detailLivres.size(); i++) {
+            DetailLivre detailCommande = detailLivres.get(i);
             Livre livre = detailCommande.getLivre();
 
             String numLigne = String.format("%2s", detailCommande.getNumLigne());

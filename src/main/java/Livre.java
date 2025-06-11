@@ -1,16 +1,16 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 /** Un livre */
 public class Livre {
     private String isbn;
     private String titre;
     private Integer nbpages;
-    private int datepubli;
-    private double prix;
-    private List<Auteur> auteurs;
-    private List<String> editeurs;
-    private List<String> classifications;
+    private Integer datepubli;
+    private Double prix;
+    private Set<String> auteurs;
+    private Set<String> editeurs;
+    private Set<String> classifications;
 
     /**
      * Créer un livre.
@@ -23,7 +23,7 @@ public class Livre {
      * @param editeurs Les éditeurs du livre.
      * @param classifications Les classifications du livre.
      */
-    public Livre(String isbn, String titre, Integer nbpages, int datepubli, double prix, List<Auteur> auteurs, List<String> editeurs, List<String> classifications) {
+    public Livre(String isbn, String titre, Integer nbpages, Integer datepubli, Double prix, Set<String> auteurs, Set<String> editeurs, Set<String> classifications) {
         this.isbn = isbn;
         this.titre = titre;
         this.nbpages = nbpages;
@@ -32,6 +32,23 @@ public class Livre {
         this.auteurs = auteurs;
         this.editeurs = editeurs;
         this.classifications = classifications;
+    }
+
+    /**
+     * Créer un livre partiel, utilisé pour l'édition de factures.
+     * @param isbn L'ISBN du livre.
+     * @param titre Le titre du livre.
+     */
+    public Livre(String isbn, String titre) {
+        this.isbn = isbn;
+        this.titre = titre;
+        
+        this.nbpages = null;
+        this.datepubli = null;
+        this.prix = null;
+        this.auteurs = new HashSet<>();
+        this.editeurs =new HashSet<>();
+        this.classifications = new HashSet<>();
     }
 
     /**
@@ -62,7 +79,7 @@ public class Livre {
      * Obtenir la date de publication d'un livre.
      * @return La date de publication du livre.
      */
-    public int getDatePubli() {
+    public Integer getDatePubli() {
         return this.datepubli;
     }
 
@@ -70,7 +87,7 @@ public class Livre {
      * Obtenir le prix d'un livre.
      * @return Le prix du livre.
      */
-    public double getPrix() {
+    public Double getPrix() {
         return this.prix;
     }
 
@@ -78,7 +95,7 @@ public class Livre {
      * Obtenir la liste des auteurs d'un livre.
      * @return La liste des auteurs du livre.
      */
-    public List<Auteur> getAuteurs() {
+    public Set<String> getAuteurs() {
         return this.auteurs;
     }
 
@@ -86,7 +103,7 @@ public class Livre {
      * Obtenir la liste des éditeurs d'un livre.
      * @return La liste des éditeurs du livre.
      */
-    public List<String> getEditeurs() {
+    public Set<String> getEditeurs() {
         return this.editeurs;
     }
 
@@ -94,18 +111,17 @@ public class Livre {
      * Obtenir la liste des classifications d'un livre.
      * @return La liste des classifications du livre.
      */
-    public List<String> getClassifications() {
+    public Set<String> getClassifications() {
         return this.classifications;
     }
 
     /**
      * Obtenir les auteurs d'un livre sous forme d'une chaîne de caractères.
-     * Source : https://stackoverflow.com/questions/1751844/java-convert-liststring-to-a-joind-string
      * @return Une chaîne de caractères avec les auteurs du livre, délimité par une virgule.
      */
     public String joinNomAuteurs() {
         if (this.auteurs.size() == 0) return "Inconnu";
-        return this.auteurs.stream().map(Auteur::getNom).collect(Collectors.joining(", "));
+        return String.join(", ", this.auteurs);
     }
 
     /**
@@ -128,6 +144,7 @@ public class Livre {
 
     /**
      * Indique si un livre est inclu dans une recherche donnée.
+     * Aide : http://w3schools.com/java/ref_string_split.asp
      * @param recherche Une recherche utilisateur.
      * @return true si le livre est inclu dans la recherche donnée, sinon false.
      */
@@ -135,9 +152,15 @@ public class Livre {
         String titreString = this.getTitre().toLowerCase();
         String auteursString = this.joinNomAuteurs().toLowerCase();
         String editeursString = this.joinNomEditeurs().toLowerCase();
-        String classificationsString = this.joinNomEditeurs().toLowerCase();
+        String classificationsString = this.joinClassifications().toLowerCase();
 
-        return titreString.contains(recherche) || auteursString.contains(recherche) || editeursString.contains(recherche) || classificationsString.contains(recherche);
+        String[] mots = recherche.toLowerCase().split(" ");
+        for (String mot: mots) {
+            if (!(titreString.contains(mot) || auteursString.contains(mot) || editeursString.contains(mot) || classificationsString.contains(mot))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -147,7 +170,7 @@ public class Livre {
      */
     @Override
     public String toString() {
-        return String.format("%s | par %s | %.2f€", this.getTitre(), this.joinNomAuteurs(), this.getPrix());
+        return String.format("%s | par %s", this.getTitre(), this.joinNomAuteurs());
     }
 
     /**
@@ -165,5 +188,14 @@ public class Livre {
 
         Livre livre2 = (Livre) o;
         return this.getISBN().equals(livre2.getISBN());
+    }
+
+    /**
+     * Redéfinition du hashcode d'un livre.
+     * @return Le hashcode du livre. 
+     */
+    @Override
+    public int hashCode() {
+        return this.isbn.hashCode();
     }
 }

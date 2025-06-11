@@ -1,13 +1,14 @@
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * L'application sous le format ligne de commandes.
  */
 public class App {
-    /** La longueur d'affichage des menus */
-    private int longueurAffichage;
-    /** La chaîne de librairie */
     private ChaineLibrairie chaineLibrairie;
+    private int longueurAffichage;
 
     /**
      * Créer l'application en ligne de commandes.
@@ -30,14 +31,21 @@ public class App {
      * Limiter la taille d'un texte.
      * Si jamais le texte dépasse la longueur d'affichage, on ajoute des "..." à la fin pour le limiter à la taille maximal.
      * @param texte Un texte
-     * @param longueurAffichage La longueur d'affichage.
+     * @param longueurTexteMax La longueur d'affichage maximal du texte.
      * @return Le texte qui ne dépasse par la longueur d'affichage indiquée.
      */
-    public static String truncate(String texte, int longueurAffichage) {
-        int maxCaracteres = longueurAffichage;
+    public static String truncate(String texte, int longueurTexteMax) {
+        int maxCaracteres = longueurTexteMax;
         if (texte.length() <= maxCaracteres) return texte;
 
         return texte.substring(0, maxCaracteres - 3) + "...";
+    }
+
+    /**
+     * Afficher le séparateur du début.
+     */
+    public void afficherTitreDebut() {
+        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
     }
 
     /**
@@ -45,7 +53,7 @@ public class App {
      * @param titre Le titre a afficher.
      */
     public void afficherTitre(String titre) {
-        System.out.println("╭" + "─".repeat(this.longueurAffichage - 2) + "╮");
+        this.afficherTitreDebut();
         this.afficherTexteCentrer(App.truncate(titre, this.longueurAffichage - 4));
         this.afficherSeperateurMilieu();
     }
@@ -85,6 +93,25 @@ public class App {
     }
 
     /**
+     * Obtenir la commande de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public String obtenirCommandeUtilisateur() {
+        try {
+            String commandeBrute = System.console().readLine();
+            return commandeBrute.strip().toLowerCase();
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
+    /**
      * Obtenir l'entrée de l'utilisateur dans le terminal.
      * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
      * @return La réponse de l'utilisateur.
@@ -92,7 +119,29 @@ public class App {
     public String obtenirEntreeUtilisateur() {
         try {
             String commandeBrute = System.console().readLine();
-            return commandeBrute.strip().toLowerCase();
+            return commandeBrute.strip();
+        } catch (Exception e) {
+            // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
+            // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
+
+            System.out.println("Programme arrêté manuellement.");
+            System.exit(0);
+            return null;
+        }
+    }
+
+    /**
+     * Obtenir l'entrée d'un nombre de l'utilisateur dans le terminal.
+     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * @return La réponse de l'utilisateur.
+     */
+    public Integer obtenirEntreeNombreUtilisateur() {
+        try {
+            String entreeBrut = System.console().readLine();
+            return Integer.parseInt(entreeBrut.strip());
+        } catch (java.lang.NumberFormatException e) {
+            System.out.println("Erreur : L'entrée que vous avez indiquée n'est pas un nombre.");
+            return null;
         } catch (Exception e) {
             // On utilise Exception ici et non l'exception précise pour gérer l'arrêt avec CTRL+C
             // Pour viser la bonne exception, il faudrait installer le paquet "jline", mais pour plus de simpliciter, on ne le fait pas.
@@ -131,10 +180,18 @@ public class App {
             this.afficherTexte("Q: Quitter");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c": {
                     this.connexionClient();
+                    break;
+                }
+                case "v": {
+                    this.connexionVendeur();
+                    break;
+                }
+                case "a": {
+                    this.menuAdministrateur();
                     break;
                 }
                 case "q": {
@@ -159,7 +216,7 @@ public class App {
      * @return L'élément choisi
      */
     public <T> ResultatSelection<T> selectionnerElement(List<T> elements, int nbPage, String titre) {
-        int maxElementsParPage = 5;
+        int maxElementsParPage = 10;
         int totalPages = elements.size() / (maxElementsParPage + 1);
 
         boolean finCommande = false;
@@ -186,7 +243,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
                     if (nbPage > 0) nbPage--;
@@ -244,7 +301,7 @@ public class App {
         this.afficherTexte("N: Non");
         this.afficherTitreFin();
 
-        String confirm = this.obtenirEntreeUtilisateur();
+        String confirm = this.obtenirCommandeUtilisateur();
         return confirm.equals("o");
     }
 
@@ -257,7 +314,7 @@ public class App {
         this.afficherTexte("Q: Retour");
         this.afficherTitreFin();
 
-        String recherche = this.obtenirEntreeUtilisateur();
+        String recherche = this.obtenirCommandeUtilisateur();
         if (recherche.equals("q")) return null;
 
         return recherche;
@@ -270,13 +327,13 @@ public class App {
      */
     public void connexionClient() {
         // TODO: Voir comment on fait ça
-        // Voir aussi si on choisi le magasin à ce moment-là
-        Client client = this.chaineLibrairie.trouverClient("Petit", "Louis");
-
-        // TODO: Choisir le magasin au début (ou bien changer magasin après coup dans le menu)
-        // Faire un avertissement si panier avec des élements et changement de magasin
-
-        this.client(client);
+        try {
+            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            this.client(client);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
+            return;
+        }
     }
 
     /**
@@ -298,15 +355,27 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "l": {
-                    this.consulterCatalogueClient(client, this.chaineLibrairie.getLivres(), "Catalogue de livres");
+                    List<Livre> listeLivres;
+                    try {
+                        listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        break;
+                    }
+
+                    this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres");
                     break;
                 }
                 case "r": {
-                    List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
-                    this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    try {
+                        List<Livre> livresRecommandes = this.chaineLibrairie.onVousRecommande(client);
+                        this.consulterCatalogueClient(client, livresRecommandes, "Livres recommandés");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
+                    }
                     break;
                 }
                 case "p": {
@@ -320,8 +389,15 @@ public class App {
                 case "s": {
                     String recherche = this.demanderRecherche();
                     if (recherche != null) {
-                        List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(this.chaineLibrairie.getLivres(), recherche);
-                        this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                        // TODO: Voir si on fait la requête de recherche en SQL
+                        List<Livre> listeLivres;
+                        try {
+                            listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+                            List<Livre> livresCorrespondants = this.chaineLibrairie.rechercherLivres(listeLivres, recherche);
+                            this.consulterCatalogueClient(client, livresCorrespondants, String.format("Recherche de livres - %s", recherche));
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        }
                     }
                     break;
                 }
@@ -366,23 +442,74 @@ public class App {
     public void afficherLivre(Client client, Livre livre) {
         boolean finCommande = false;
         while (!finCommande) {
+            String nbPages = "Inconnu";
+            Integer nbpagesInteger = livre.getNbPages();
+            if (nbpagesInteger != null) nbPages = String.valueOf(nbpagesInteger);
+
             this.afficherTitre(livre.getTitre());
             this.afficherTexte(String.format("Auteur : %s", livre.joinNomAuteurs()));
             this.afficherTexte(String.format("Prix : %.2f€", livre.getPrix()));
             this.afficherTexte(String.format("Classification : %s", livre.joinClassifications()));
             this.afficherTexte(String.format("Éditeur : %s", livre.joinNomEditeurs()));
-            // TODO: On pourrait ajouter un descriptif du livre
-
+            this.afficherTexte(String.format("Nombre de pages : %s", nbPages));
             this.afficherSeperateurMilieu();
-            this.afficherTexte("A: Ajouter au panier");
+
+            Panier panierClient = client.getPanier();
+            Magasin magasin = client.getMagasin();
+            int quantiteLivrePanier = panierClient.getQuantiteLivre(livre);
+
+            int quantiteLivreStock;
+            try {
+                quantiteLivreStock = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+            } catch (SQLException e) {
+                System.err.println("Une erreur est survenu lors de la récupération du stock du livre.");
+                finCommande = true;
+                break;
+            }
+
+            boolean livreEnStock = quantiteLivreStock > 0 && quantiteLivreStock > quantiteLivrePanier;
+            if (livreEnStock) {
+                int quantiteEnStock = quantiteLivreStock - quantiteLivrePanier;
+                this.afficherTexte(String.format("A: Ajouter au panier (quantité en stock : %d)", quantiteEnStock));
+            } else {
+                this.afficherTexte(String.format("⚠ Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                this.afficherSeperateurMilieu();
+            }
+
+            if (quantiteLivrePanier > 0) {
+                this.afficherTexte(String.format("R: Retirer une quantité de votre panier (quantité : %d)", quantiteLivrePanier));
+            }
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "a": {
-                    int quantiteLivre = client.getPanier().ajouterLivre(livre);
-                    System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), quantiteLivre));
+                    if (livreEnStock) {
+                        DetailLivre detailLivre = panierClient.ajouterLivre(livre);
+                        System.out.println(String.format("Livre \"%s\" ajouté au panier ! (quantité actuelle : %d)", livre.getTitre(), detailLivre.getQuantite()));
+
+                        try {
+                            this.chaineLibrairie.getPanierBD().ajouterLivre(panierClient, detailLivre);
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+                        }
+                    } else {
+                        System.err.println(String.format("Ce livre n'est plus en stock dans votre magasin %s.", magasin.toString()));
+                    }
+                    break;
+                }
+                case "r": {
+                    if (quantiteLivrePanier > 0) {
+                        try {
+                            panierClient.retirerQuantiteLivre(livre, 1);
+                            this.chaineLibrairie.getPanierBD().updatePanier(panierClient);
+                        } catch (LivreIntrouvableException e) {
+                            System.err.println("Le livre n'a pas été trouvé dans votre panier...");
+                        } catch (SQLException e) {
+                            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+                        }
+                    }
                     break;
                 }
                 case "q": {
@@ -397,6 +524,140 @@ public class App {
         }
     }
 
+    //Connexion Vendeur
+
+    /**
+     * Se connecter en tant que vendeur dans l'application.
+     */
+    public void connexionVendeur(){
+        // TODO: Voir comment on fait ça
+
+        try {
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.menuVendeur(vendeur);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du vendeur : " + e.getMessage());
+            return;
+        }
+    }
+
+    /**
+     * Afficher le menu vendeur. 
+     * @param vendeur Un vendeur.
+     */
+    public void menuVendeur(Vendeur vendeur) {
+        boolean finCommande = false;
+        while (!finCommande) {
+            Magasin magasin = vendeur.getMagasin();
+
+            this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
+            this.afficherTexte("A: Ajouter livre");
+            this.afficherTexte("S: Accès stock magasins");
+            this.afficherTexte("M: Modifications stock magasin");
+            this.afficherTexte("C: Passer commande client");
+            this.afficherTexte("T: Transférer Livre stock");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirCommandeUtilisateur();
+            switch (commande) {
+                /*case "A": {
+                *ajouter un livre avec ses caract dans la liste des possessions du magasin
+
+                }*/
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+            }
+
+        }
+
+    /**
+     * Afficher le menu administrateur.
+     */
+    public void menuAdministrateur() {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre("Menu Administrateur");
+            this.afficherTexte("C: Création compte vendeur");
+            this.afficherTexte("M: Ajout magasin");
+            this.afficherTexte("S: Modification stock global");
+            this.afficherTexte("V: Statistiques de vente");
+            this.afficherTexte("F: Exporter les factures en PDF");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirCommandeUtilisateur();
+            switch (commande) {
+                case "c": {
+                    this.creationCompteVendeur();
+                    break;
+                }
+
+                /*case "m" : {
+                *ajouter une nouvelle boutique appartenant à la chaîne de librairie
+                } 
+                */
+
+                /*case "s": {
+                 * 
+                } */
+               /*case "v": {
+                * accéder aux statistique de vente
+               } */
+                case "f": {
+                    this.exporterFactures();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Afficher le menu pour exporter des factures.
+     */
+    public void exporterFactures() {
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quel mois voulez-vous exporter les factures (1-12) ?");
+        this.afficherTitreFin();
+        Integer mois = this.obtenirEntreeNombreUtilisateur();
+        if (mois == null) return;
+
+        if (mois < 0 || mois > 12) {
+            System.err.println("Erreur : Le mois doit être compris entre 1 et 12.");
+            return;
+        }
+
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("De quelle année voulez-vous exporter les factures ?");
+        this.afficherTitreFin();
+        Integer annee = this.obtenirEntreeNombreUtilisateur();
+        if (annee == null) return;
+
+        try {
+            this.chaineLibrairie.exporterFactures(mois, annee);
+            System.out.println(String.format("Factures exportés dans le dossier ./factures/%d-%d", annee, mois));
+        } catch (SQLException e) {
+            System.err.println("Erreur : Un problème est survenue avec la BD" + e.getMessage());
+        } catch (PasDeCommandeException e) {
+            System.err.println("Erreur : Il n'y a aucune facture à exporter.");
+        }
+    }
+
     // Panier Client
 
     /**
@@ -408,34 +669,73 @@ public class App {
         while (!finCommande) {
             Panier panier = client.getPanier();
             Magasin magasin = client.getMagasin();
-            List<DetailCommande> detailCommandes = panier.getDetailCommandes();
+            List<DetailLivre> detailLivresPanier = panier.getDetailLivres();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
-            if (detailCommandes.size() > 0) {
-                List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(detailCommandes, this.longueurAffichage);
-                for (String ligne: detailCommandeTextuel) {
-                    this.afficherTexte(ligne);
+            boolean ruptureProduit = false;
+            if (detailLivresPanier.size() > 0) {
+                double totalCommande = 0.00;
+                this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
+                for (DetailLivre detailLivre: detailLivresPanier) {
+                    Livre livre = detailLivre.getLivre();
+                    int livreQuantite = detailLivre.getQuantite();
+                    double totalLivre = detailLivre.getPrixVente() * livreQuantite;
+
+                    String numLigne = String.format("%2s", detailLivre.getNumLigne());
+                    String isbn = String.format("%13s", livre.getISBN());
+                    String titre = String.format("%-59s", livre.getTitre());
+                    String qte = String.format("%3s", livreQuantite);
+                    String prix = String.format("%6.2f€", detailLivre.getPrixVente());
+                    String total = String.format("%6.2f€", totalLivre);
+
+                    totalCommande += totalLivre;
+                    this.afficherTexte(String.format("%s %s %s %s %s %s", numLigne, isbn, titre, qte, prix, total));
+
+                    int quantiteEnStock;
+                    try {
+                        quantiteEnStock = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenu lors de la récupération du stock du livre.");
+                        return;
+                    }
+
+                    if (livreQuantite > quantiteEnStock) {
+                        ruptureProduit = true;
+                        this.afficherTexte(String.format("  → ⚠ Quantité dans le panier supérieure au stock du magasin (%d disponible)", quantiteEnStock));
+                    }
                 }
+
+                this.afficherTexte(String.format("%-" + (longueurAffichage - 11) + "s%s", "", "-------"));
+                this.afficherTexte(String.format("%-" + (longueurAffichage - 11) + "s%6.2f€", "", totalCommande));
             } else {
                 this.afficherTexte("Vous n'avez aucun livre dans votre panier !");
             }
 
             this.afficherSeperateurMilieu();
-            if (detailCommandes.size() > 0) {
+            if (detailLivresPanier.size() > 0) {
                 this.afficherTexte("P: Passer la commande");
                 this.afficherTexte("S: Supprimer un livre");
             }
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "p": {
-                    finCommande = this.commander(client, panier);
+                    if (!ruptureProduit) {
+                        finCommande = this.commander(client, panier);
+                    } else {
+                        System.err.println("Un ou des articles dans votre panier sont en rupture. Merci de retirer les livres en rupture pour commander.");
+                    }
                     break;
                 }
                 case "s": {
-                    this.supprimerLivrePanier(client, panier);
+                    this.supprimerLivrePanier(panier);
+                    try {
+                        this.chaineLibrairie.getPanierBD().updatePanier(panier);
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+                    }
                     break;
                 }
                 case "q": {
@@ -457,8 +757,8 @@ public class App {
      * @return true si la commande a été réalisée, sinon false.
      */
     public boolean commander(Client client, Panier panier) {
-        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
-        if (detailCommandes.size() == 0) {
+        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
             return false;
         }
@@ -466,9 +766,19 @@ public class App {
         this.afficherTitre("Passer une commande");
         Character modeLivraison = this.demanderModeLivraison();
         if (modeLivraison != null) {
-            client.commander(modeLivraison, detailCommandes);
-            System.out.println("Merci pour votre commande !");
-            return true;
+            try {
+                boolean commandeReussie = client.commander(modeLivraison, 'O');
+                if (commandeReussie) {
+                    this.chaineLibrairie.getPanierBD().viderPanier(panier.getId());
+                    panier.viderPanier();
+
+                    System.out.println("Merci pour votre commande !");
+                }
+                return commandeReussie;
+            } catch (SQLException e) {
+                System.err.println("Une erreur est survenue lors de l'enregistrement de la commande : " + e.getMessage());
+                return false;
+            }
         }
 
         return false;
@@ -488,7 +798,7 @@ public class App {
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String commande = this.obtenirEntreeUtilisateur();
+            String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
                 case "c":
                     return 'C';
@@ -509,13 +819,12 @@ public class App {
 
     /**
      * Supprimer un livre de son panier.
-     * @param client Un client. 
      * @param panier Son panier.
      * @return true si un livre a été retiré de son panier, sinon false.
      */
-    public boolean supprimerLivrePanier(Client client, Panier panier) {
-        List<DetailCommande> detailCommandes = panier.getDetailCommandes();
-        if (detailCommandes.size() == 0) {
+    public boolean supprimerLivrePanier(Panier panier) {
+        List<DetailLivre> detailLivres = panier.getDetailLivres();
+        if (detailLivres.size() == 0) {
             System.err.println("ERREUR: Vous n'avez aucun livre actuellement dans votre panier.");
             return false;
         }
@@ -526,13 +835,17 @@ public class App {
             resultatSelectionLivre = this.selectionnerElement(livresPanier, resultatSelectionLivre.getNbPage(), "Supprimer un livre du panier");
             if (resultatSelectionLivre != null) {
                 Livre livre = resultatSelectionLivre.getElement();
-                DetailCommande detailCommande = panier.getDetailCommandeLivre(livre);
 
-                Integer quantite = this.demanderQuantiterSupprimer(detailCommande);
-                if (quantite != null) {
-                    System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
-                    panier.retirerQuantiteLivre(livre, quantite);
-                    return true;
+                try {
+                    DetailLivre detailLivre = panier.getDetailLivre(livre);
+                    Integer quantite = this.demanderQuantiterSupprimer(detailLivre);
+                    if (quantite != null) {
+                        System.out.println(String.format("Retrait de %dx %s du panier effectuée !", quantite, livre.getTitre()));
+                        panier.retirerQuantiteLivre(livre, quantite);
+                        return true;
+                    }
+                } catch (LivreIntrouvableException e) {
+                    System.out.println("Livre introuvable, il a été supprimé du panier...");
                 }
             }
         }
@@ -540,25 +853,25 @@ public class App {
     }
 
     /**
-     * Demander la quantité à supprimer du détail d'unecommande.
-     * @param detailCommande Le détail d'une commande.
+     * Demander la quantité à supprimer d'un livre dans un panier.
+     * @param detailLivre Le détail d'une commande.
      * @return La quantité à supprimer, ou null si opération annulée.
      */
-    public Integer demanderQuantiterSupprimer(DetailCommande detailCommande) {
+    public Integer demanderQuantiterSupprimer(DetailLivre detailLivre) {
         Integer quantite = null;
-        int quantitePanier = detailCommande.getQuantite();
+        int quantitePanier = detailLivre.getQuantite();
         if (quantitePanier == 1) quantite = 1;
 
-        Livre livre = detailCommande.getLivre();
+        Livre livre = detailLivre.getLivre();
         while (quantite == null) {
             this.afficherTitre(String.format("Quelle est la quantité du livre %s que vous voulez retirer ?", livre.getTitre()));
-            this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailCommande.getQuantite()));
+            this.afficherTexte(String.format("Il est présent à %d exemplaire(s).", detailLivre.getQuantite()));
             this.afficherSeperateurMilieu();
             this.afficherTexte("Nombre: Quantité à retirer");
             this.afficherTexte("Q: Annuler");
             this.afficherTitreFin();
 
-            String entree = this.obtenirEntreeUtilisateur();
+            String entree = this.obtenirCommandeUtilisateur();
             if (entree.equals("q")) return null;
 
             try {
@@ -588,25 +901,37 @@ public class App {
      * @param client Le client.
      */
     public void changerMagasin(Client client) {
-        List<Magasin> magasins = this.chaineLibrairie.getMagasins();
+        List<Magasin> magasins;
+        try {
+            magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur s'est produite lors de la récupération des magasins : " + e.getMessage());
+            return;
+        }
+
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
         if (resultatSelectionMagasin == null) return;
 
         Panier panier = client.getPanier();
         Magasin magasin = resultatSelectionMagasin.getElement();
-        boolean effectuerChangement = true;
-
-        if (panier.getDetailCommandes().size() > 0 && !panier.getMagasin().equals(magasin)) {
+        
+        boolean effectuerChangement = false;
+        if (panier.getDetailLivres().size() > 0 && !panier.getMagasin().equals(magasin)) {
             effectuerChangement = this.demanderConfirmation(
                 String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
                 "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
             );
-            if (effectuerChangement) client.setPanier(new Panier(magasin));
+            if (!effectuerChangement) return;
         }
 
         if (effectuerChangement) {
-            client.setMagasin(magasin);
-            System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+            panier.setMagasin(magasin);
+            try {
+                this.chaineLibrairie.getPanierBD().changerMagasin(panier);
+                System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
+            } catch (SQLException e) {
+                System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+            }
         } else {
             System.out.println("Magasin non changé.");
         }
@@ -617,7 +942,7 @@ public class App {
      * @param client Un client.
      */
     public void consulterCommandesClient(Client client) {
-        List<Commande> commandes = client.getCommandesTriesParDateDesc();
+        List<Commande> commandes = client.getCommandes();
         ResultatSelection<Commande> resultatSelectionCommande = new ResultatSelection<>();
         while (resultatSelectionCommande != null) {
             resultatSelectionCommande = this.selectionnerElement(commandes, resultatSelectionCommande.getNbPage(), "Sélectionner une commande à afficher");
@@ -637,7 +962,7 @@ public class App {
         while (!finCommande) {
             this.afficherTitre(commande.toString());
 
-            List<String> detailCommandeTextuel = this.chaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
+            List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
             for (String ligne: detailCommandeTextuel) {
                 this.afficherTexte(ligne);
             }
@@ -646,7 +971,7 @@ public class App {
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
-            String entreeUtilisateur = this.obtenirEntreeUtilisateur();
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "q": {
                     finCommande = true;
@@ -659,4 +984,39 @@ public class App {
             }
         }
     }
+
+
+    //Fonctionnalités administrateur Hashmap
+
+    public void creationCompteVendeur(){
+        List<String> donnees = new ArrayList<>();
+        donnees.add("Nom");
+        donnees.add("Prenom");
+        donnees.add("Magasin");
+        HashMap<String, String> dicoDonnees = new HashMap<>();
+
+
+        System.out.println("Pour interrompre, tapez \"exit\"");
+        for(String donnee : donnees ){
+            System.out.println();
+            System.out.println(donnee);
+            String entree = this.obtenirEntreeUtilisateur();
+            while(!(entree instanceof String)){
+                System.out.println("Entrer une chaine de caracteres");
+            }
+            dicoDonnees.put(donnee, entree);
+        }
+        System.out.println(dicoDonnees);
+
+    }
+
+
+
+
+
+
+
+
+
+
 }

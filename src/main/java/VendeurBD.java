@@ -1,6 +1,7 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /** Liaison entre les vendeurs et la base de données. */
 public class VendeurBD {
@@ -47,5 +48,43 @@ public class VendeurBD {
         result.close();
 
         return new Vendeur(idVendeur, nom, prenom, magasin);
+    }
+
+    /**
+     * Obtenir le plus grand identifiant de magasin.
+     * @return Le plus grand identifiant de magasin.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public int getMaxVendeurId() throws SQLException {
+        Statement statement = this.connexionMariaDB.createStatement();
+		ResultSet result = statement.executeQuery("""
+            SELECT IFNULL(MAX(idvendeur), 0) maxIdMag
+            FROM VENDEUR
+        """);
+
+		result.next();
+		int maxIdCli = result.getInt("maxIdMag");
+		result.close();
+
+		return maxIdCli;
+    }
+
+    /**
+     * Créer un vendeur en base de données.
+     * @param nom Le nom du vendeur.
+     * @param prenom Le prénom du vendeur.
+     * @param idMagasin L'identifiant du magasin auquel il est rattaché.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public void creerVendeur(String nom, String prenom, String idMagasin) throws SQLException {
+        int maxVendeurId = this.getMaxVendeurId();
+
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("INSERT INTO VENDEUR(idvendeur, nomvendeur, prenomvendeur, idmag) VALUES (?, ?, ?, ?)");
+        statement.setInt(1, maxVendeurId + 1);
+        statement.setString(2, nom);
+        statement.setString(3, prenom);
+        statement.setString(4, idMagasin);
+
+        statement.executeUpdate();
     }
 }

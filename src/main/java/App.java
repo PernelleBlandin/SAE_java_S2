@@ -1,5 +1,4 @@
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -992,33 +991,37 @@ public class App {
 
     //Fonctionnalités administrateur Hashmap
 
+    /**
+     * Demander les informations et créer un compte vendeur.
+     */
     public void creationCompteVendeur(){
-        List<String> donneesDemandees = new ArrayList<>();
-        donneesDemandees.add("Nom");
-        donneesDemandees.add("Prenom");
-        HashMap<String, String> dicoDonnees = new HashMap<>();
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer(String.format("Quel est le prénom du vendeur ?"));
+        this.afficherTitreFin();
+        String prenom = this.obtenirEntreeUtilisateur();
 
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer(String.format("Quel est le nom du vendeur ?"));
+        this.afficherTitreFin();
+        String nom = this.obtenirEntreeUtilisateur();
 
-        System.out.println("Pour interrompre, tapez \"exit\"");
-        for(String donnee : donneesDemandees ){
-            System.out.println();
-            System.out.println(donnee);
-            String entree = this.obtenirEntreeUtilisateur();
-            while(!(entree instanceof String)){
-                System.out.println("Entrer une chaine de caracteres");
-            }
-            dicoDonnees.put(donnee, entree);
+        Magasin magasinVendeur;
+        try {
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner le magasin du vendeur");
+            if (resultatSelectionMagasin == null) return;
+
+            magasinVendeur = resultatSelectionMagasin.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+            return;
         }
 
         try {
-            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner un magasin");
-            if (resultatSelectionMagasin == null) return;
-
-            dicoDonnees.put("Magasin", resultatSelectionMagasin.getElement().getNom());
-            System.out.println(dicoDonnees);
+            this.chaineLibrairie.getVendeurBD().creerVendeur(nom, prenom, magasinVendeur.getId());
+            System.out.println(String.format("Le vendeur %s %s a bien été enregistré !", nom, prenom));
         } catch (SQLException e) {
-            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+           System.err.println("Une erreur est survenue lors de la création du vendeur en BD : " + e.getMessage());
         }
     }
 

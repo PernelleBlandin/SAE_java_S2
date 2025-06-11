@@ -140,4 +140,12 @@ public class LivreBD {
 
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
+    public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
+        //setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) classe MagasinBD
+        PreparedStatement statement= this.connexionMariaDB.prepareStatement("""SELECT
+                
+                """);
+        
+        
+    }
 }

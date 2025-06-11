@@ -1078,4 +1078,36 @@ public class App {
         }
         System.out.println(dicoDonnees);
     }
+
+
+    public void transfertLivre(Livre livre){
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Quel est le magasin dont on fait le transfert ?");
+        this.afficherTitreFin();
+        String magasinSource= this.obtenirEntreeUtilisateur();
+
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Dans quel magasin voulez vous transférer livre ?");
+        this.afficherTitreFin();
+        String magasinDest= this.obtenirEntreeUtilisateur();
+
+        try{
+
+        List<Livre> stockMagSource= this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(magasinSource);
+        List<Livre> stockMagDest= obtenirLivreEnStockMagasin (magasinDest);
+
+        List<Magasin> magasins =this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        ResultatSelection resultatSelectionMagasin= this.selectionnerElement(magasins, 0, "Séléctionnez le magasin source" );
+        
+        if (resultatSelectionMagasin ==null) return; 
+        }catch (SQLException e){
+            System.err.println("Une erreur est survenue lors de la récupération des magasins: "+ e.getMessage());
+        }
+        
+
+
+
+
+
+    }
 }

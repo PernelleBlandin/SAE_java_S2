@@ -48,4 +48,5 @@ public class VendeurBD {
 
         return new Vendeur(idVendeur, nom, prenom, magasin);
     }
+    
 }

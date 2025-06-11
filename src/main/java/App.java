@@ -1,11 +1,17 @@
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * L'application sous le format ligne de commandes.
  */
+
 public class App {
     private ChaineLibrairie chaineLibrairie;
     private int longueurAffichage;
@@ -551,20 +557,87 @@ public class App {
             Magasin magasin = vendeur.getMagasin();
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
-            this.afficherTexte("A: Ajouter livre");
-            this.afficherTexte("S: Accès stock magasins");
-            this.afficherTexte("M: Modifications stock magasin");
-            this.afficherTexte("C: Passer commande client");
-            this.afficherTexte("T: Transférer Livre stock");
-            this.afficherTexte("Q: Retour");
+            this.afficherTexte("A : Ajouter livre");
+            this.afficherTexte("S : Accès stock magasins");
+            this.afficherTexte("M : Modifications stock magasin");
+            this.afficherTexte("C : Passer commande client");
+            this.afficherTexte("T : Transférer Livre stock");
+            this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
 
-            String commande = this.obtenirCommandeUtilisateur();
+            String commande = this.obtenirEntreeUtilisateur();
             switch (commande) {
-                /*case "A": {
-                *ajouter un livre avec ses caract dans la liste des possessions du magasin
+                case "a": {
+                    this.afficherTexte("Entrez l'identifiant du livre :");
+                    String isbn = this.obtenirEntreeUtilisateur();
 
-                }*/
+                    this.afficherTexte("Entrez son titre :");
+                    String titre = this.obtenirEntreeUtilisateur();
+
+                    this.afficherTexte("Entrez son nombre de pages :");
+                    String nbPagesString = this.obtenirEntreeUtilisateur();
+                    int nbPages = Integer.parseInt(nbPagesString);
+
+                    this.afficherTexte("Entrez son prix :");
+                    String prixString = this.obtenirEntreeUtilisateur();
+                    double prix = Double.parseDouble(prixString);
+
+                    this.afficherTexte("Entrez son année de publication :");
+                    String anneeDePublicationString = this.obtenirEntreeUtilisateur();
+                    int anneeDePublication = Integer.parseInt(anneeDePublicationString);
+
+                    this.afficherTexte("Entrez l'id de ou des auteurs, leurs noms, leurs années de naissances et de décès\n(séparés par des virgules) :");
+                    String inputAuteurs = this.obtenirEntreeUtilisateur();
+                    String[] infoAuteurs = inputAuteurs.split(",");
+                    Map<String, List<String>> listeAuteurs = new HashMap<>();
+                    for (int i=0; i<infoAuteurs.length; i++){
+                        if(i%4 == 0){
+                            listeAuteurs.put(infoAuteurs[i-3], Arrays.asList(infoAuteurs[i-2], infoAuteurs[i-1], infoAuteurs[i]));
+                        }
+                    }
+                    this.afficherTexte("Entrez l'id des éditeurs et leurs noms (séparés par des virgules) :");
+                    String inputEditeurs = this.obtenirEntreeUtilisateur();
+                    String[] infoEditeurs = inputEditeurs.split(",");
+                    Map<String, String> listeEditeurs = new HashMap<>();
+                    for (int i=0; i<infoEditeurs.length; i++){
+                        if(i%2 == 0){
+                            listeEditeurs.put(infoAuteurs[i-1], infoAuteurs[i]);
+                        }
+                    }
+
+                    this.afficherTexte("Entrez l'id et les noms de ses classifications (séparés par des virgules) :");
+                    String inputClassifications = this.obtenirEntreeUtilisateur();
+                    String[] infoClassifications = inputClassifications.split(",");
+                    Map<String, String> listeClassifications = new HashMap<>();
+                    for (int i=0; i<infoEditeurs.length; i++){
+                        if(i%2 == 0){
+                            listeClassifications.put(infoClassifications[i-1], infoClassifications[i]);
+                        }
+                    }
+                    this.afficherTexte("Entrez la quantité :");
+                    String quantite = this.obtenirEntreeUtilisateur();
+                    Set auteurs = new HashSet<>();
+                    for (String nomAuteur : listeAuteurs.keySet()) {
+                        List<String> noms = listeAuteurs.get(nomAuteur);
+                        auteurs.add(noms.get(0));
+                    }
+
+                    Set<String> editeurs = new HashSet<>();
+                    for (String nomEditeur : listeEditeurs.keySet()) {
+                        List<String> noms = listeEditeurs.get(nomEditeur);
+                            editeurs.add(noms.get(0));
+                        }
+                    }
+
+                    Set classifications = new HashSet<>();
+                    for (String nomClassification : listeClassifications.keySet()) {
+                        List<String> noms = listeClassifications.get(0);
+                        classifications.add(noms.get(0));
+                    }
+                    
+                    Livre livre = new Livre(isbn, titre, nbPages, anneeDePublication, prix, auteurs, editeurs, classifications);
+                    
+                    }
                 case "q": {
                     finCommande = true;
                     break;
@@ -577,7 +650,6 @@ public class App {
             }
 
         }
-
     /**
      * Afficher le menu administrateur.
      */
@@ -1009,14 +1081,3 @@ public class App {
         System.out.println(dicoDonnees);
 
     }
-
-
-
-
-
-
-
-
-
-
-}

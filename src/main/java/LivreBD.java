@@ -91,8 +91,66 @@ public class LivreBD {
         return nbVentes;
     }
 
-    public void ajouteLivreChaineLib(String isbn, String titre, Integer nbpages, Integer datepubli, Double prix, Map infoAuteurs, Set<String> editeurs, Set<String> classifications){
+    public void ajouteLivreChaineLib(String isbn, String titre, Integer nbpages, Integer datepubli, Double prix, String idAuteur, Set<String> infoAuteurs, String idEditeur, Set<String> editeurs, Set<String> classifications, String idClassification){
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO LIVRE(isbn, titre, nbpages, datepubli, prix)
+            VALUES (?, ?, ?, ?, ?)
+        """);
+        statement.setString(1, isbn);
+        statement.setString(2, titre);
+        statement.setInt(3, nbpages);
+        statement.setInt(4, datepubli);
+        statement.setInt(5, prix);
         
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO ECRIRE(isbn, idauteur)
+            VALUES (?, ?)
+        """);
+        statement.setString(1, isbn);
+        statement.setString(2, idAuteur);
+
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO AUTEUR(idauteur, nomauteur, anneenais, anneedeces)
+            VALUES (?, ?, ?, ?)
+        """);
+        String nom;
+        int naissance;
+        int deces;
+        statement.setString(1, idAuteur);
+        for (int i = 0; i < infoAuteurs.length; i++){
+            nom = infoAuteurs[0];
+            //TODO NAISSANCE DECES
+        }
+        statement.setString(2, );
+        statement.setInt(3, );
+        statement.setInt(4, );
+
+    }
+
+    public boolean auteurExistant(String nomAuteur) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT nomAuteur
+            FROM AUTEUR
+            WHERE nomAuteur = ?
+        """);
+        statement.setString(1, nomAuteur);
+        
+        ResultSet result = statement.executeQuery();
+    
+        return result.next();
+    }
+
+    public void ajouteAuteur(String idAuteur, String nomAuteur, Integer anneeNais, Integer anneeDeces) throws SQLException{
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            INSERT INTO AUTEUR(idauteur, nomauteur, anneenais, anneedeces)
+            VALUES (?, ?, ?, ?)
+        """);
+        statement.setString(1, idAuteur);
+        statement.setString(2, nomAuteur);
+        statement.setInt(3, anneeNais);
+        statement.setInt(4, anneeDeces);
+
+		statement.executeUpdate();
     }
 
     /**

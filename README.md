@@ -5,4 +5,4 @@ Groupe 13
 
 ## Liens
 - [✏️ Diagramme de classe (draw.io)](https://drive.google.com/file/d/1fHpUTWCHGkRSFFMDe-zA4JGd-uvZ3wkl/view?usp=sharing)
-- [📖 Rapport](https://docs.google.com/document/d/1WvG_TcJhYLaewdhM_5lgZ9TRppco08ks_aNRwweUdIg/edit?usp=sharing)
+- [📖 Rapport](https://docs.google.com/document/d/1NVCCsoKsJhSS38EF_UT1WfU4J9ioHVuKZpIynuFowzg/edit?tab=t.0)

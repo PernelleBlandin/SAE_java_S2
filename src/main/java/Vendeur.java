@@ -6,13 +6,10 @@ public class Vendeur extends Personne {
      * @param id L'identifiant du vendeur.
      * @param nom Le nom du prénom du vendeur.
      * @param prenom Le prénom du vendeur.
-     * @param adresse L'adresse du vendeur.
-     * @param codePostal Le code postal du vendeur.
-     * @param ville La ville du vendeur.
      * @param magasin Le magasin rattaché au vendeur
      */
-    public Vendeur(int id, String nom, String prenom, String adresse, String codePostal, String ville, Magasin magasin) {
-        super(id, nom, prenom, adresse, codePostal, ville);
+    public Vendeur(int id, String nom, String prenom, Magasin magasin) {
+        super(id, nom, prenom);
         this.magasin = magasin;
     }
 
@@ -20,7 +17,7 @@ public class Vendeur extends Personne {
         return this.magasin;
     }
 
-        /**
+    /**
      * Définir le magasin pour un vendeur.
      * @param magasin Le nouveau magasin du client.
      */

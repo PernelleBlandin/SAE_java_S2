@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /** Liaison entre les livres et la base de données. */
@@ -88,6 +89,10 @@ public class LivreBD {
         result.close();
 
         return nbVentes;
+    }
+
+    public void ajouteLivreChaineLib(String isbn, String titre, Integer nbpages, Integer datepubli, Double prix, Map infoAuteurs, Set<String> editeurs, Set<String> classifications){
+        
     }
 
     /**

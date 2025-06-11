@@ -1,10 +1,6 @@
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List; 
-
 /** Un vendeur */
-public class Vendeur extends Personnel {
+public class Vendeur extends Personne {
+    private Magasin magasin;
     /**
      * Créer un vendeur.
      * @param id L'identifiant du vendeur.
@@ -17,6 +13,10 @@ public class Vendeur extends Personnel {
         this.magasin = magasin;
     }
 
+    /**
+     * Obtenir le magasin du vendeur.
+     * @return Le magasin du vendeur.
+     */
     public Magasin getMagasin() {
         return this.magasin;
     }
@@ -25,7 +25,7 @@ public class Vendeur extends Personnel {
      * Définir le magasin pour un vendeur.
      * @param magasin Le nouveau magasin du client.
      */
-    public Vendeur(int id, String nom, String prenom, String adresse, String codePostal, String ville) {
-        super(id, nom, prenom, adresse, codePostal, ville, "Vendeur");
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
     }
 }

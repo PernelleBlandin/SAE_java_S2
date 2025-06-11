@@ -37,17 +37,12 @@ public class Vendeur extends Personnel {
         
     }
 
-     /*public void setMagasin(Magasin magasin) {
+    /*public void setMagasin(Magasin magasin) {
         this.magasin = magasin;
     }
 
-    public void ajouteLivreChaineLib(Livre livre){}
 
-    public void majStock(){}
-
-    public void accesStock(){}*/
-
-    public void transfererLivre(Livre livre, Magasin magasinVendeur, Magasin magasinDestination, int qte){
+    public void transfererLivre(Livre livre, Magasin magasinVendeur, Magasin magasinDestination, int qte){ //requete  dans livre .bd
         //fct verifDispo ->Emrecan
         //Mettre à jour la quantité disponible d'un livre
         //Vérifier la disponibilité d'un livre dans une librairie. 
@@ -56,27 +51,6 @@ public class Vendeur extends Personnel {
 
         
 
-
-        List<Posseder> possessionMag= magasinVendeur.getPossessions();
-        List<Posseder> possessionMagDest = magasinDestination.getPossessions();
-        for(Posseder book : possessionMag){
-            if(book.equals(livre)){
-                int qteMag= book.getQuantite();
-                this.magasin
-            }
-        }
-        //TEST 1ERE VERSION
-        //if possessionMag
-        /*if (!possessionMagDest.contains(livre)){
-            possessionMagDest.add(livre);
-        }
-        else{ }//ajouter qte a la qte actuel*/
-        List<Posseder> possessionsMagasin =  magasinVendeur.getPossessions();
-        if (possessionsMagasin.contains(livre))
-        {    }
-            {livreQte= possessionsMagasin.getQuantite();
-            if (qte>){
-        }}
 
 
     }

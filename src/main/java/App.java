@@ -585,6 +585,7 @@ public class App {
         while (!finCommande) {
             this.afficherTitre("Menu Administrateur");
             this.afficherTexte("C: Création compte vendeur");
+            this.afficherTexte("X: Suppression compte vendeur");
             this.afficherTexte("M: Ajout magasin");
             this.afficherTexte("S: Modification stock global");
             this.afficherTexte("V: Statistiques de vente");
@@ -596,6 +597,10 @@ public class App {
             switch (commande) {
                 case "c": {
                     this.creationCompteVendeur();
+                    break;
+                }
+                case "x": {
+                    this.suppressionCompteVendeur();
                     break;
                 }
                 case "m" : {
@@ -1022,6 +1027,31 @@ public class App {
             System.out.println(String.format("Le vendeur %s %s a bien été enregistré !", nom, prenom));
         } catch (SQLException e) {
            System.err.println("Une erreur est survenue lors de la création du vendeur en BD : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Supprimer le compte d'un vendeur
+     */
+    public void suppressionCompteVendeur(){
+        Vendeur vendeurSupp;
+        try {
+            List<Vendeur> vendeurs = this.chaineLibrairie.getVendeurBD().obtenirListeVendeur();
+            ResultatSelection<Vendeur> resultatSelectionVendeur = this.selectionnerElement(vendeurs, 0, "Sélectionner le vendeur dont le compte va être supprimé");
+            if (resultatSelectionVendeur == null) {
+                return;
+            }
+            vendeurSupp = resultatSelectionVendeur.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des vendeurs : " + e.getMessage());
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getVendeurBD().supprimerVendeur(vendeurSupp.getId());
+            System.out.println(String.format("Le vendeur %s %s a bien été supprimé !", vendeurSupp.getNom(), vendeurSupp.getPrenom()));
+        } catch (SQLException e) {
+           System.err.println("Une erreur est survenue lors de la suppression du vendeur en BD : " + e.getMessage());
         }
     }
 

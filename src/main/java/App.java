@@ -1,4 +1,3 @@
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -616,28 +615,27 @@ public class App {
                     }
                     this.afficherTexte("Entrez la quantité :");
                     String quantite = this.obtenirEntreeUtilisateur();
-                    Set auteurs = new HashSet<>();
+                    Set<String> auteurs = new HashSet<>();
                     for (String nomAuteur : listeAuteurs.keySet()) {
                         List<String> noms = listeAuteurs.get(nomAuteur);
                         auteurs.add(noms.get(0));
                     }
 
                     Set<String> editeurs = new HashSet<>();
-                    for (String nomEditeur : listeEditeurs.keySet()) {
-                        List<String> noms = listeEditeurs.get(nomEditeur);
-                            editeurs.add(noms.get(0));
-                        }
-                    }
+                    // for (String nomEditeur : listeEditeurs.keySet()) {
+                    //     List<String> noms = listeEditeurs.get(nomEditeur);
+                    //     editeurs.add(noms.get(0));
+                    // }
 
-                    Set classifications = new HashSet<>();
-                    for (String nomClassification : listeClassifications.keySet()) {
-                        List<String> noms = listeClassifications.get(0);
-                        classifications.add(noms.get(0));
-                    }
+                    Set<String> classifications = new HashSet<>();
+                    // for (String nomClassification : listeClassifications.keySet()) {
+                    //     List<String> noms = listeClassifications.get(0);
+                    //     classifications.add(noms.get(0));
+                    // }
                     
                     Livre livre = new Livre(isbn, titre, nbPages, anneeDePublication, prix, auteurs, editeurs, classifications);
                     
-                    }
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -1079,5 +1077,5 @@ public class App {
             dicoDonnees.put(donnee, entree);
         }
         System.out.println(dicoDonnees);
-
     }
+}

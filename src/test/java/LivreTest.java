@@ -193,4 +193,11 @@ public class LivreTest {
         assertFalse(this.livre2.equals(livre1Equals));
         assertFalse(this.livre1.equals(null));
     }
+
+    @Test
+    public void testsHashCode() {
+        assertEquals(-1025344318, this.livre1.hashCode());
+        assertEquals(-538572828, this.livre2.hashCode());
+        assertEquals(349700178, this.livre3.hashCode());
+    }
 }

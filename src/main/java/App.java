@@ -996,12 +996,12 @@ public class App {
      */
     public void creationCompteVendeur(){
         this.afficherTitreDebut();
-        this.afficherTexteCentrer(String.format("Quel est le prénom du vendeur ?"));
+        this.afficherTexteCentrer("Quel est le prénom du vendeur ?");
         this.afficherTitreFin();
         String prenom = this.obtenirEntreeUtilisateur();
 
         this.afficherTitreDebut();
-        this.afficherTexteCentrer(String.format("Quel est le nom du vendeur ?"));
+        this.afficherTexteCentrer("Quel est le nom du vendeur ?");
         this.afficherTitreFin();
         String nom = this.obtenirEntreeUtilisateur();
 
@@ -1033,14 +1033,14 @@ public class App {
         HashMap<String, String> donneesMagasin = new HashMap<>();
         
         this.afficherTitreDebut();
-        this.afficherTexteCentrer(String.format("Quel est le nom du magasin ?"));
+        this.afficherTexteCentrer("Quel est le nom du magasin ?");
         this.afficherTitreFin();
         
         String nomMag = this.obtenirEntreeUtilisateur();
         donneesMagasin.put("nom", nomMag);
 
         this.afficherTitreDebut();
-        this.afficherTexteCentrer(String.format("Quel est la ville du magasin ?"));
+        this.afficherTexteCentrer("Quel est la ville du magasin ?");
         this.afficherTitreFin();
 
         String villeMag = this.obtenirEntreeUtilisateur();

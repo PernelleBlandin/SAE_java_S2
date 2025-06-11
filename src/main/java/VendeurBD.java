@@ -121,8 +121,6 @@ public class VendeurBD {
     /**
      * Supprimer un vendeur en base de données.
      * @param id L'identifiant du vendeur
-     * @param nom Le nom de vendeur
-     * @param prenom Le prenom du vendeur
      * @throws SQLException Exception SQL en cas de problème.
      */
     public void supprimerVendeur(int id) throws SQLException{

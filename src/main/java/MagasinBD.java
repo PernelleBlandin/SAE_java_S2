@@ -153,4 +153,17 @@ public class MagasinBD {
 
         statement.executeUpdate();
     }
+
+    /**
+     * Supprimer un magasin de la base de données.
+     * @param idMag L'identifiant du magasin
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public void supprimerMagasin(String idMag) throws SQLException{
+
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("DELETE FROM MAGASIN where idmag = ?");
+        statement.setString(1, idMag);
+
+        statement.executeUpdate();
+    }
 }

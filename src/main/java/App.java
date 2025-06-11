@@ -586,6 +586,7 @@ public class App {
             this.afficherTitre("Menu Administrateur");
             this.afficherTexte("C: Création compte vendeur");
             this.afficherTexte("X: Suppression compte vendeur");
+            this.afficherTexte("W: Suppression magasin");
             this.afficherTexte("M: Ajout magasin");
             this.afficherTexte("S: Modification stock global");
             this.afficherTexte("V: Statistiques de vente");
@@ -601,6 +602,10 @@ public class App {
                 }
                 case "x": {
                     this.suppressionCompteVendeur();
+                    break;
+                }
+                case "w": {
+                    this.suppressionMagasin();
                     break;
                 }
                 case "m" : {
@@ -1053,6 +1058,33 @@ public class App {
         } catch (SQLException e) {
            System.err.println("Une erreur est survenue lors de la suppression du vendeur en BD : " + e.getMessage());
         }
+    }
+
+    /**
+     * Supprimer un magasin
+     */
+    public void suppressionMagasin() {
+        Magasin magasinSupp;
+        try {
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner le magasin du vendeur");
+            if (resultatSelectionMagasin == null) {
+                return;
+            }
+            magasinSupp = resultatSelectionMagasin.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getMagasinBD().supprimerMagasin(magasinSupp.getId());
+            System.out.println(String.format("Le magasin %s de %s a bien été supprimé !", magasinSupp.getNom(), magasinSupp.getVille()));
+        } catch (SQLException e) {
+           System.err.println("Une erreur est survenue lors de la suppression du magasin en BD : " + e.getMessage());
+        }
+        
+        
     }
 
     /**

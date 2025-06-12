@@ -5,7 +5,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /** Liaison entre les livres et la base de données. */
@@ -26,7 +25,6 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public List<Livre> obtenirListeLivre() throws SQLException {
-        // TODO: Voir pour optimiser avec système de page?
         Statement statement = this.connexionMariaDB.createStatement();
         ResultSet result = statement.executeQuery("SELECT isbn FROM LIVRE");
 
@@ -185,8 +183,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void ajouteLivreAuteurNonExistantClassificationNonExistante(String isbn, String titre, int nbpages, int datepubli, double prix, String nomAuteur, String nomClass, String nomEditeur, String idAuteur, String idDewey, int anneeNais, int anneeDeces) throws SQLException {
-        
-        String idEdit = getIdEditeur(nomEditeur);
+        String idEdit = this.getIdEditeur(nomEditeur);
         PreparedStatement statementAuteur = this.connexionMariaDB.prepareStatement("""
             INSERT INTO AUTEUR(idauteur, nomauteur, anneenais, anneedeces)
             VALUES (?, ?, ?, ?)
@@ -256,8 +253,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void ajouteLivreAuteurExistantClassificationNonExistante(String isbn, String titre, int nbpages, int datepubli, double prix, String nomAuteur, String nomClass, String nomEditeur, String idDewey) throws SQLException {
-       
-        String idEdit = getIdEditeur(nomEditeur);
+        String idEdit = this.getIdEditeur(nomEditeur);
         PreparedStatement statementClass = this.connexionMariaDB.prepareStatement("""
             INSERT INTO CLASSIFICATION(iddewey, nomclass)
             VALUES (?, ?)
@@ -277,7 +273,7 @@ public class LivreBD {
         statementLivre.setDouble(5, prix);
         statementLivre.executeUpdate();
 
-        String idAuteur = getIdAuteur(nomAuteur);
+        String idAuteur = this.getIdAuteur(nomAuteur);
 
         PreparedStatement statementEcrire = this.connexionMariaDB.prepareStatement("""
             INSERT INTO ECRIRE(isbn, idauteur)
@@ -321,8 +317,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void ajouteLivreAuteurNonExistantClassificationExistante(String isbn, String titre, int nbpages, int datepubli, double prix, String nomAuteur, String nomClass, String nomEditeur, String idAuteur, int anneeNais, int anneeDeces) throws SQLException {
-        
-        String idEdit = getIdEditeur(nomEditeur);
+        String idEdit = this.getIdEditeur(nomEditeur);
         PreparedStatement statementAuteur = this.connexionMariaDB.prepareStatement("""
             INSERT INTO AUTEUR(idauteur, nomauteur, anneenais, anneedeces)
             VALUES (?, ?, ?, ?)
@@ -333,7 +328,7 @@ public class LivreBD {
         statementAuteur.setInt(4, anneeDeces);
         statementAuteur.executeUpdate();
 
-        String idDewey = getIdDewey(nomClass);
+        String idDewey = this.getIdDewey(nomClass);
 
         PreparedStatement statementLivre = this.connexionMariaDB.prepareStatement("""
             INSERT INTO LIVRE(isbn, titre, nbpages, datepubli, prix)
@@ -385,8 +380,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void ajouteLivreAuteurExistantClassificationExistante(String isbn, String titre, int nbpages, int datepubli, double prix, String nomAuteur, String nomClass, String nomEditeur) throws SQLException {
-        
-        String idEdit = getIdEditeur(nomEditeur);
+        String idEdit = this.getIdEditeur(nomEditeur);
         PreparedStatement statementLivre = this.connexionMariaDB.prepareStatement("""
             INSERT INTO LIVRE(isbn, titre, nbpages, datepubli, prix)
             VALUES (?, ?, ?, ?, ?)
@@ -398,8 +392,8 @@ public class LivreBD {
         statementLivre.setDouble(5, prix);
         statementLivre.executeUpdate();
 
-        String idAuteur = getIdAuteur(nomAuteur);
-        String idDewey = getIdDewey(nomClass);
+        String idAuteur = this.getIdAuteur(nomAuteur);
+        String idDewey = this.getIdDewey(nomClass);
 
         PreparedStatement statementEcrire = this.connexionMariaDB.prepareStatement("""
             INSERT INTO ECRIRE(isbn, idauteur)

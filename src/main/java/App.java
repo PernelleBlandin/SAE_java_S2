@@ -1,10 +1,8 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -331,7 +329,6 @@ public class App {
      * Accéder à un menu de connexion pour choisir son compte client.
      */
     public void connexionClient() {
-        // TODO: Voir comment on fait ça
         try {
             Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
             this.client(client);
@@ -394,7 +391,6 @@ public class App {
                 case "s": {
                     String recherche = this.demanderRecherche();
                     if (recherche != null) {
-                        // TODO: Voir si on fait la requête de recherche en SQL
                         List<Livre> listeLivres;
                         try {
                             listeLivres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
@@ -529,14 +525,12 @@ public class App {
         }
     }
 
-    //Connexion Vendeur
+    // Connexion Vendeur
 
     /**
      * Se connecter en tant que vendeur dans l'application.
      */
     public void connexionVendeur(){
-        // TODO: Voir comment on fait ça
-
         try {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
             this.menuVendeur(vendeur);
@@ -572,86 +566,91 @@ public class App {
                     Integer anneeDePublication = null;
 
                     this.afficherTitreDebut();
-                    this.afficherTexte("Entrez l'identifiant du livre :");
+                    this.afficherTexteCentrer("Entrez l'identifiant du livre");
                     this.afficherTitreFin();
                     String inputIsbn = this.obtenirEntreeUtilisateur();
                     String isbn = inputIsbn.trim();
 
                     this.afficherTitreDebut();
-                    this.afficherTexte("Entrez son titre :");
+                    this.afficherTexteCentrer("Entrez son titre");
                     this.afficherTitreFin();
                     String inputTitre = this.obtenirEntreeUtilisateur();
                     String titre = inputTitre.trim();
 
                     try{
                         this.afficherTitreDebut();
-                        this.afficherTexte("Entrez son nombre de pages :");
+                        this.afficherTexteCentrer("Entrez son nombre de pages");
                         this.afficherTitreFin();
                         String inputNbPages = this.obtenirEntreeUtilisateur();
                         String nbPagesString = inputNbPages.trim();
                         nbPages = Integer.parseInt(nbPagesString);
                     }
                     catch (NumberFormatException e) {
-                        System.err.println("Le nombre de pages doit etre un nombre entier");
+                        System.err.println("Erreur : Le nombre de pages doit-être un nombre entier.");
                         break;
                     }
 
                     try {
                         this.afficherTitreDebut();
-                        this.afficherTexte("Entrez son prix :");
+                        this.afficherTexteCentrer("Entrez son prix");
                         this.afficherTitreFin();
                         String inputPrix = this.obtenirEntreeUtilisateur();
                         String prixString = inputPrix.trim();
                         prix = Double.parseDouble(prixString);
                     } catch (NumberFormatException e) {
-                        System.err.println("Le prix doit etre en décimal");
+                        System.err.println("Le prix doit-être en décimal");
                         break;
                     }
-                    try{
+
+                    try {
                         this.afficherTitreDebut();
-                        this.afficherTexte("Entrez son année de publication :");
+                        this.afficherTexteCentrer("Entrez son année de publication");
                         this.afficherTitreFin();
                         String inputAnneeDePublication = this.obtenirEntreeUtilisateur();
                         String anneeDePublicationString = inputAnneeDePublication.trim();
                         anneeDePublication = Integer.parseInt(anneeDePublicationString);
-                    } 
-                    catch (NumberFormatException e){
+                    } catch (NumberFormatException e){
                         System.err.println("L'année de publication doit etre un nombre entier");
                         break;
                     }
+
                     String[] infoAuteurs;
                     String auteurNom;
                     int naissance;
                     int deces;
                     try {
                         this.afficherTitreDebut();
-                        this.afficherTexte("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules) :");
+                        this.afficherTexteCentrer("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules)");
                         this.afficherTitreFin();
                         String inputAuteurs = this.obtenirEntreeUtilisateur();
+                        
                         infoAuteurs = inputAuteurs.split(",");
                         for (int i = 0; i < infoAuteurs.length; i++){
                             infoAuteurs[i] = infoAuteurs[i].trim();
                         }
-                        if(infoAuteurs.length != 3) {
+                        
+                        if (infoAuteurs.length != 3) {
                             System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
                             break;
                         }
                         auteurNom = infoAuteurs[0];
                         naissance = Integer.parseInt(infoAuteurs[1]);
                         deces = Integer.parseInt(infoAuteurs[2]);
-                    }catch (Exception e) {
+                    } catch (NumberFormatException e) {
                         System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
                         break;
                     }
+
                     Set<String> auteur = new HashSet<>();
                     auteur.add(auteurNom);
+
                     String auteurExistant;
                     String idAuteur = "";
                     try {
                         auteurExistant = this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom);
-                        if(auteurExistant == null){
+                        if (auteurExistant == null){
                             this.afficherTitreDebut();
-                            this.afficherTexte("Entrez son identifiant :");
+                            this.afficherTexte("Entrez l'identifiant de l'auteur");
                             this.afficherTitreFin();
                             String input = this.obtenirEntreeUtilisateur();
                             idAuteur = input.trim();
@@ -662,7 +661,7 @@ public class App {
                     }
 
                     this.afficherTitreDebut();
-                    this.afficherTexte("Entrez l'éditeur :");
+                    this.afficherTexteCentrer("Entrez l'éditeur");
                     this.afficherTitreFin();
                     String inputEditeur = this.obtenirEntreeUtilisateur();
                     String editeurNom = inputEditeur.trim();
@@ -670,19 +669,21 @@ public class App {
                     editeur.add(editeurNom);
 
                     this.afficherTitreDebut();
-                    this.afficherTexte("Entrez le nom de sa classification :");
+                    this.afficherTexteCentrer("Entrez le nom de sa classification");
                     this.afficherTitreFin();
                     String inputClassification = this.obtenirEntreeUtilisateur();
-                    String  classificationNom = inputClassification.trim();
+                    String classificationNom = inputClassification.trim();
+                    
                     Set<String> classification = new HashSet<>();
                     classification.add(classificationNom);
+                    
                     String classificationExistante;
                     String idClassifications = "";
                     try {
                         classificationExistante = this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom);
                         if(classificationExistante == null){
                             this.afficherTitreDebut();
-                            this.afficherTexte("Entrez son identifiant :");
+                            this.afficherTexteCentrer("Entrez l'identifiant de la classification");
                             this.afficherTitreFin();
                             String input = this.obtenirEntreeUtilisateur();
                             idClassifications = input.trim();
@@ -691,27 +692,23 @@ public class App {
                         System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
                         break;
                     }
+
                     try {
-                        if(this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null  && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
+                        if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null  && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
-                        } 
-                        else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) != null) {
+                        } else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) != null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, naissance, deces);
-                        } 
-                        else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) != null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
+                        } else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) != null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idClassifications);
-                        } 
-                        else {
+                        } else {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom);
                         }
                     } catch (SQLException e) {
                         System.err.println("Une erreur est survenue lors de l'ajout du livre en base de données : " + e.getMessage());
                         break;
                     }
-                    this.afficherTitreDebut();
-                    this.afficherTexte("Livre ajouté avec succes");
-                    this.afficherTitreFin();
-                    Livre livre = new Livre(isbn, titre, nbPages, anneeDePublication, prix, auteur, editeur, classification);
+
+                    System.out.println("Livre ajouté avec succès !");
                     break;
                 }
                 case "q": {
@@ -723,9 +720,9 @@ public class App {
                     break;
                 }
             }
-            }
-
         }
+    }
+
     /**
      * Afficher le menu administrateur.
      */

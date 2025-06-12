@@ -96,6 +96,16 @@ public class App {
     }
 
     /**
+     * Afficher un titre avecc un séparateur de début et de fin uniquement.
+     * @param titre Le titre
+     */
+    public void afficherTitreUniquement(String titre) {
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer(titre);
+        this.afficherTitreFin();
+    }
+
+    /**
      * Obtenir la commande de l'utilisateur dans le terminal.
      * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
      * @return La réponse de l'utilisateur.
@@ -565,22 +575,16 @@ public class App {
                     Double prix = null;
                     Integer anneeDePublication = null;
 
-                    this.afficherTitreDebut();
-                    this.afficherTexteCentrer("Entrez l'identifiant du livre");
-                    this.afficherTitreFin();
+                    this.afficherTitreUniquement("Entrez l'identifiant du livre");
                     String inputIsbn = this.obtenirEntreeUtilisateur();
                     String isbn = inputIsbn.trim();
 
-                    this.afficherTitreDebut();
-                    this.afficherTexteCentrer("Entrez son titre");
-                    this.afficherTitreFin();
+                    this.afficherTitreUniquement("Entrez son titre");
                     String inputTitre = this.obtenirEntreeUtilisateur();
                     String titre = inputTitre.trim();
 
                     try{
-                        this.afficherTitreDebut();
-                        this.afficherTexteCentrer("Entrez son nombre de pages");
-                        this.afficherTitreFin();
+                        this.afficherTitreUniquement("Entrez son nombre de pages");
                         String inputNbPages = this.obtenirEntreeUtilisateur();
                         String nbPagesString = inputNbPages.trim();
                         nbPages = Integer.parseInt(nbPagesString);
@@ -591,9 +595,7 @@ public class App {
                     }
 
                     try {
-                        this.afficherTitreDebut();
-                        this.afficherTexteCentrer("Entrez son prix");
-                        this.afficherTitreFin();
+                        this.afficherTitreUniquement("Entrez son prix");
                         String inputPrix = this.obtenirEntreeUtilisateur();
                         String prixString = inputPrix.trim();
                         prix = Double.parseDouble(prixString);
@@ -603,9 +605,7 @@ public class App {
                     }
 
                     try {
-                        this.afficherTitreDebut();
-                        this.afficherTexteCentrer("Entrez son année de publication");
-                        this.afficherTitreFin();
+                        this.afficherTitreUniquement("Entrez son année de publication");
                         String inputAnneeDePublication = this.obtenirEntreeUtilisateur();
                         String anneeDePublicationString = inputAnneeDePublication.trim();
                         anneeDePublication = Integer.parseInt(anneeDePublicationString);
@@ -619,9 +619,7 @@ public class App {
                     int naissance;
                     int deces;
                     try {
-                        this.afficherTitreDebut();
-                        this.afficherTexteCentrer("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules)");
-                        this.afficherTitreFin();
+                        this.afficherTitreUniquement("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules)");
                         String inputAuteurs = this.obtenirEntreeUtilisateur();
                         
                         infoAuteurs = inputAuteurs.split(",");
@@ -649,9 +647,7 @@ public class App {
                     try {
                         auteurExistant = this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom);
                         if (auteurExistant == null){
-                            this.afficherTitreDebut();
-                            this.afficherTexte("Entrez l'identifiant de l'auteur");
-                            this.afficherTitreFin();
+                            this.afficherTitreUniquement("Entrez l'identifiant de l'auteur");
                             String input = this.obtenirEntreeUtilisateur();
                             idAuteur = input.trim();
                         }
@@ -660,17 +656,14 @@ public class App {
                         break;
                     }
 
-                    this.afficherTitreDebut();
-                    this.afficherTexteCentrer("Entrez l'éditeur");
+                    this.afficherTitreUniquement("Entrez l'éditeur");
                     this.afficherTitreFin();
                     String inputEditeur = this.obtenirEntreeUtilisateur();
                     String editeurNom = inputEditeur.trim();
                     Set<String> editeur = new HashSet<>();
                     editeur.add(editeurNom);
 
-                    this.afficherTitreDebut();
-                    this.afficherTexteCentrer("Entrez le nom de sa classification");
-                    this.afficherTitreFin();
+                    this.afficherTitreUniquement("Entrez le nom de sa classification");
                     String inputClassification = this.obtenirEntreeUtilisateur();
                     String classificationNom = inputClassification.trim();
                     
@@ -682,9 +675,7 @@ public class App {
                     try {
                         classificationExistante = this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom);
                         if(classificationExistante == null){
-                            this.afficherTitreDebut();
-                            this.afficherTexteCentrer("Entrez l'identifiant de la classification");
-                            this.afficherTitreFin();
+                            this.afficherTitreUniquement("Entrez l'identifiant de la classification");
                             String input = this.obtenirEntreeUtilisateur();
                             idClassifications = input.trim();
                         }
@@ -776,9 +767,7 @@ public class App {
      * Afficher le menu pour exporter des factures.
      */
     public void exporterFactures() {
-        this.afficherTitreDebut();
-        this.afficherTexteCentrer("De quel mois voulez-vous exporter les factures (1-12) ?");
-        this.afficherTitreFin();
+        this.afficherTitreUniquement("De quel mois voulez-vous exporter les factures (1-12) ?");
         Integer mois = this.obtenirEntreeNombreUtilisateur();
         if (mois == null) return;
 
@@ -787,9 +776,7 @@ public class App {
             return;
         }
 
-        this.afficherTitreDebut();
-        this.afficherTexteCentrer("De quelle année voulez-vous exporter les factures ?");
-        this.afficherTitreFin();
+        this.afficherTitreUniquement("De quelle année voulez-vous exporter les factures ?");
         Integer annee = this.obtenirEntreeNombreUtilisateur();
         if (annee == null) return;
 

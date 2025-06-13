@@ -191,7 +191,11 @@ public class LivreBD {
         statementAuteur.setString(1, idAuteur);
         statementAuteur.setString(2, nomAuteur);
         statementAuteur.setInt(3, anneeNais);
-        statementAuteur.setInt(4, anneeDeces);
+        if (anneeDeces == -1) {
+            statementAuteur.setNull(4, java.sql.Types.INTEGER);
+        } else {
+            statementAuteur.setInt(4, anneeDeces);
+        }
         statementAuteur.executeUpdate();
 
         PreparedStatement statementClass = this.connexionMariaDB.prepareStatement("""
@@ -325,7 +329,11 @@ public class LivreBD {
         statementAuteur.setString(1, idAuteur);
         statementAuteur.setString(2, nomAuteur);
         statementAuteur.setInt(3, anneeNais);
-        statementAuteur.setInt(4, anneeDeces);
+        if (anneeDeces == -1) {
+            statementAuteur.setNull(4, java.sql.Types.INTEGER); // Si l'année de décès donné par l'utilisateur est -1 on met NULL grace a java.sql.Types.INTEGER
+        } else {
+            statementAuteur.setInt(4, anneeDeces);
+        }
         statementAuteur.executeUpdate();
 
         String idDewey = this.getIdDewey(nomClass);

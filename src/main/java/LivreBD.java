@@ -474,27 +474,12 @@ public class LivreBD {
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
 
-    /**
-     * Afficher tous les ISBN des livres dans la base de données.
-     * @throws SQLException Exception SQL en cas d'erreur.
-     */
-    public void toutLesIsbn() throws SQLException {
-        Statement statement = this.connexionMariaDB.createStatement();
-        ResultSet result = statement.executeQuery("SELECT isbn FROM LIVRE");
-
-        while (result.next()) {
-            String isbn = result.getString("isbn");
-            System.out.println(isbn);
-        }
-        result.close();
-    }
-
-    /**
-     * Supprimer un livre de la base de données.
+        /**
+     * Supprime un livre de la base de données.
      * Supprime aussi les entrées associées dans les tables ECRIRE, EDITER, POSSEDER, DETAILCOMMANDE, DETAILPANIER et THEMES.
      * @param isbn L'ISBN du livre à supprimer.
-     * @throws SQLException Exception SQL en cas d'erreur.
-     */
+     * @throws SQLException exception SQL en cas d'erreur.
+        */
     public void supprimerLivre(String isbn) throws SQLException {
         PreparedStatement ps = connexionMariaDB.prepareStatement("DELETE FROM ECRIRE WHERE isbn = ?");
         ps.setString(1, isbn);
@@ -532,6 +517,12 @@ public class LivreBD {
         ps.close();
     }
 
+    /**
+     * Obtenir le titre dun livre a partir de son ISBN.
+     * @param isbn L'ISBN du livre.
+     * @return Le titre du livre ou null s'il n'existe pas.
+     *@throws SQLException Exception SQL en cas d'erreur.
+     */
     public String getTitreLivre(String isbn) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT titre

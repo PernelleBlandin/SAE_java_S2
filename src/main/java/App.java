@@ -561,8 +561,9 @@ public class App {
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
             this.afficherTexte("A : Ajouter livre");
-            this.afficherTexte("S : Accès stock magasins");
-            this.afficherTexte("M : Modifications stock magasin");
+            this.afficherTexte("S : Supprimer livre");
+            this.afficherTexte("M : Mettre à jour la quantité d'un livre");
+            this.afficherTexte("D : Vérifier la disponibilité d'un livre");
             this.afficherTexte("C : Passer commande client");
             this.afficherTexte("T : Transférer Livre stock");
             this.afficherTexte("Q : Retour");
@@ -722,6 +723,37 @@ public class App {
                     }
 
                     System.out.println("Livre ajouté avec succès !");
+                    break;
+                }
+                case "s": {
+                    this.afficherTitreUniquement("Entrez l'identifiant du livre à supprimer");
+                    String isbn = this.obtenirEntreeUtilisateur();
+                    try {
+                    if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
+                        System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
+                        break;
+                    }
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+
+                    try {
+                        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + " ?")) {
+                            System.out.println("Suppression annulée.");
+                            break;
+                        }
+                    }
+                    catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+                    try {
+                        this.chaineLibrairie.getLivreBD().supprimerLivre(isbn);
+                        System.out.println("Livre supprimé avec succès !");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
+                    }
                     break;
                 }
                 case "q": {

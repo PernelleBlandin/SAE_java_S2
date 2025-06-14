@@ -725,6 +725,105 @@ public class App {
                     System.out.println("Livre ajouté avec succès !");
                     break;
                 }
+                case "s": {
+                    this.afficherTitreUniquement("Entrez l'identifiant du livre à supprimer");
+                    String isbn = this.obtenirEntreeUtilisateur();
+                    try {
+                    if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
+                        System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
+                        break;
+                    }
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+
+                    try {
+                        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + " ?")) {
+                            System.out.println("Suppression annulée.");
+                            break;
+                        }
+                    }
+                    catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+                    try {
+                        this.chaineLibrairie.getLivreBD().supprimerLivre(isbn);
+                        System.out.println("Livre supprimé avec succès !");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
+                    }
+                    break;
+                }
+                case "d": {
+                    this.afficherTitreUniquement("Entrez l'identifient du livre à vérifier");
+                    String isbn = this.obtenirEntreeUtilisateur();
+                    try {
+                        if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
+                            System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
+                            break;
+                        }
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+
+                    int qte = 0;
+                    try {
+                        qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), isbn);
+                        if (qte !=0){
+                            System.out.println("Le livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
+                        }
+                        else{
+                            System.out.println("Le livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
+                        }
+
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du stock du livre : " + e.getMessage());
+                    }
+                    break;
+                }
+                case "m": {
+                    this.afficherTitreUniquement("Entrez l'identifiant du livre à mettre à jour");
+                    String isbn = this.obtenirEntreeUtilisateur();
+                    try {
+                        if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
+                            System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
+                            break;
+                        }
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+                    Integer quantite = null;
+                    try { 
+                        this.afficherTitreUniquement("Entrez la nouvelle quantite du livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" :");//  \" = (guillmets affiché)
+                        quantite = this.obtenirEntreeNombreUtilisateur();
+                        if(quantite==null||quantite<0){
+                            System.err.println("Erreur : La quantite doit etre un nombre entier positif");
+                            break;
+                        }
+                        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir mettre à jour la quantité du livre " + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + " ?")) {
+                            System.out.println("Mise à jour annulée.");
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.err.println("Erreur : La quantité doit être un nombre entier positif.");
+                        break;
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
+                        break;
+                    }
+
+                    try {
+                        this.chaineLibrairie.getMagasinBD().majQuantiteLivre(magasin.getId(), isbn, quantite);
+                        System.out.println("Quantité mise à jour avec succès !");
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
+                    }
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;

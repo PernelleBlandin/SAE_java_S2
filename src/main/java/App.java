@@ -880,13 +880,46 @@ public class App {
                 /*case "s": {
                  * 
                 } */
-               /*case "v": {
-                * accéder aux statistique de vente
-               } */
+                case "v": {
+                    this.menuStatistiques();
+                    break;
+                }
                  case "f": {
                     this.exporterFactures();
                     break;
                 }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }    
+        }
+    }
+
+    /**
+     * Afficher le menu de statistiques.
+     */
+    public void menuStatistiques() {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre("Menu Statistiques");
+            this.afficherTexte("L: Nombre de livres vendus par magasin");
+            this.afficherTexte("C: Chiffre d'affaire 2024 par thème");
+            this.afficherTexte("M: Evolution CA des magasin par mois en 2024");
+            this.afficherTexte("O: Evolution CA - En Magasin / En Ligne");
+            this.afficherTexte("E: 10 éditeurs les plus importants en nombres d'auteurs");
+            this.afficherTexte("R: Quantité livre M. Gosciny en fonction origine clients");
+            this.afficherTexte("S: Valeur du stock par magasin");
+            this.afficherTexte("T: Evolution CA Total par client");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirCommandeUtilisateur();
+            switch (commande) {
                 case "q": {
                     finCommande = true;
                     break;

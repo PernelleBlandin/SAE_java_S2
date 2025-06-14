@@ -1,7 +1,9 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -204,6 +206,63 @@ public class App {
                 }
                 case "a": {
                     this.menuAdministrateur();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Afficher une liste d'élements sur des pages.
+     * 
+     * @param <T> Le type de l'élément
+     * @param elements La liste des éléments possible à sélectionner.
+     * @param titre Le titre du menu.
+     */
+    public <T> void afficherListeElements(List<T> elements, String titre) {
+        int maxElementsParPage = 10;
+        int totalPages = elements.size() / (maxElementsParPage + 1);
+
+        int nbPage = 0;
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
+
+            int debutIndex = nbPage * maxElementsParPage;
+            int finIndex = Math.min(debutIndex + maxElementsParPage, elements.size());
+
+            boolean hasResults = debutIndex < finIndex;
+            if (hasResults) {
+                for (int i = debutIndex; i < finIndex; i++) {
+                    T element = elements.get(i);
+                    this.afficherTexte(String.format("%d - %s", i + 1, element.toString()));
+                }
+            } else {
+                this.afficherTexte("Il n'y a aucun résultat.");
+            }
+
+            this.afficherSeperateurMilieu();
+            if (nbPage > 0) this.afficherTexte("P: Page précédente");
+            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
+            switch (entreeUtilisateur) {
+                case "p": {
+                    if (nbPage > 0) nbPage--;
+                    break;
+                }
+                case "s": {
+                    if (nbPage + 1 <= totalPages) nbPage++;
                     break;
                 }
                 case "q": {
@@ -920,6 +979,38 @@ public class App {
 
             String commande = this.obtenirCommandeUtilisateur();
             switch (commande) {
+                case "l": {
+                    this.getNbLivresParMagasinParAn();
+                    break;
+                }
+                case "c": {
+                    this.getCA2024ParTheme();
+                    break;
+                }
+                case "m": {
+                    this.getEvolutionCAParMoisParMagasin2024();
+                    break;
+                }
+                case "o": {
+                    this.getComparaisonVentesLigneMagasin();
+                    break;
+                }
+                case "e": {
+                    this.getTop10EditeursNbAuteurs();
+                    break;
+                }
+                case "r": {
+                    this.getQteLivresGoscinyOrigineClients();
+                    break;
+                }
+                case "s": {
+                    this.getValeurStockParMagasin();
+                    break;
+                }
+                case "t": {
+                    this.getEvolutionCATotalParClient();
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -930,6 +1021,174 @@ public class App {
                 }
             }    
         }
+    }
+
+    /**
+     * Afficher les statistiques du nombre de livres vendus par magasin.
+     */
+    public void getNbLivresParMagasinParAn() {
+        Map<String, Map<Integer, Integer>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getNbLivresParMagasinParAn();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Nombre de livres vendus par magasin");
+    }
+
+    /**
+     * Afficher les statistiques du chiffre d'affaire 2024 par thème.
+     */
+    public void getCA2024ParTheme() {
+        Map<String, Double> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getCA2024ParTheme();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Chiffre d'affaire 2024 par thème");
+    }
+
+    /**
+     * Afficher les statistiques de l'évolution CA des magasins par mois en 2024.
+     */
+    public void getEvolutionCAParMoisParMagasin2024() {
+        Map<String, Map<Integer, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getEvolutionCAParMoisParMagasin2024();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution CA des magasins par mois en 2024");
+    }
+
+    /**
+     * Afficher les statistiques de l'évolution du CA, avec la comparaison ventes en ligne et en magasin.
+     */
+    public void getComparaisonVentesLigneMagasin() {
+        Map<String, Map<Integer, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getComparaisonVentesLigneMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution CA : Comparaison ventes en ligne et en magasin");
+    }
+
+    /**
+     * Afficher les statistiques des dix éditeurs les plus importants en nombre d'auteurs.
+     */
+    public void getTop10EditeursNbAuteurs() {
+        Map<String, Integer> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getTop10EditeursNbAuteurs();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Dix éditeurs les plus importants en nombre d'auteurs");
+    }
+
+    /**
+     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     */
+    public void getQteLivresGoscinyOrigineClients() {
+        Map<String, Integer> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Quantité de livres de R. Goscinny achetés en fonction de l'origine des clients");
+    }
+ 
+    /**
+     * Afficher les statistiques sur l'évolution du CA Total par client.
+     */
+    public void getValeurStockParMagasin() {
+        Map<String, Double> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getValeurStockParMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution du CA Total par client");
+    }
+
+    /**
+     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     */
+    public void getEvolutionCATotalParClient() {
+        Map<Integer, Map<String, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getEvolutionCATotalParClient();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Valeur du stock par magasin");
+    }
+
+    /**
+     * Convertir une map "simple" (clé/valeur) en une liste de chaîne de caractères.
+     * @param <T> Le type de la clé.
+     * @param <K> Le type de la valeur.
+     * @param dictionnaire Un dictionnaire clé/valeur.
+     * @return Une liste de String de la map.
+     */
+    private <T, K> List<String> convertSimpleMapToStringList(Map<T, K> dictionnaire) {
+        List<String> resultat = new ArrayList<>();
+        for (Map.Entry<T, K> entree: dictionnaire.entrySet()) {
+            String cle = entree.getKey().toString();
+            String valeur = entree.getValue().toString();
+
+            resultat.add(String.format("%s : %s", cle, valeur));
+        }
+        return resultat;
+    }
+
+    /**
+     * Convertir une map "complexe" { cleInitiale: { valeurInitiale: valeurFinal } } en une liste de chaîne de caractères.
+     * @param <T> Le type de la clé initiale.
+     * @param <K> Le type de la valeur initiale.
+     * @param <Z> Le type de la valeur finale
+     * @param dictionnaire Un dictionnaire.
+     * @return Une liste de String de la map.
+     */
+    private <T, K, Z> List<String> convertDoubleMapToStringList(Map<T, Map<K, Z>> dictionnaire) {
+        List<String> resultat = new ArrayList<>();
+        for (Map.Entry<T, Map<K, Z>> entree: dictionnaire.entrySet()) {
+            String cle = entree.getKey().toString();
+            Map<K, Z> valeur = entree.getValue();
+
+            List<String> valeursString = this.convertSimpleMapToStringList(valeur);
+            for (String valeurString: valeursString) {
+                resultat.add(String.format("%s - %s", cle, valeurString));
+            }
+        }
+        return resultat;
     }
 
     /**

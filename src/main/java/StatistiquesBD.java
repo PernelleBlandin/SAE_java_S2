@@ -11,7 +11,6 @@ public class StatistiquesBD {
     /**
      * Instancier la classe StatistiquesBD.
      * 
-     * @param chaineLibrairie  Les données de la chaîne de librairie.
      * @param connexionMariaDB La connexion avec la base de données.
      */
     public StatistiquesBD(ConnexionMariaDB connexionMariaDB) {

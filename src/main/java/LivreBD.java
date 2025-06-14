@@ -482,8 +482,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
-        //setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) classe MagasinBD
-        //1)verif stock; 2)enlever si c'est bon(update) 3) augmenterstockDestination 4)Insertions si stock existe pass dans destination
+
         PreparedStatement stockSource= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ? ");
         stockSource.setString(1, magSource.getId());
         stockSource.setString(1, livre.getISBN());

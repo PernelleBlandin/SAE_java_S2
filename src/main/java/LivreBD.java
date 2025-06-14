@@ -473,7 +473,14 @@ public class LivreBD {
 
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
-      
+    /**
+     * Transfert une certaine quantité d'un livre du magasin initial vers un autre magasin 
+     * @param livre Le livre qui sera transféré
+     * @param magSource Le magasin source.
+     * @param magDestination Le magasin destination.
+     * @param qte La quantité à transférer.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
         //setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) classe MagasinBD
         //1)verif stock; 2)enlever si c'est bon(update) 3) augmenterstockDestination 4)Insertions si stock existe pass dans destination

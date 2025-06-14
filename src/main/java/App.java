@@ -1080,34 +1080,54 @@ public class App {
     }
 
 
-    public void transfertLivre(Livre livre){
-        this.afficherTitreDebut();
-        this.afficherTexteCentrer("Quel est le magasin dont on fait le transfert ?");
-        this.afficherTitreFin();
-        String magasinSource= this.obtenirEntreeUtilisateur();
-
-        this.afficherTitreDebut();
-        this.afficherTexteCentrer("Dans quel magasin voulez vous transférer livre ?");
-        this.afficherTitreFin();
-        String magasinDest= this.obtenirEntreeUtilisateur();
-
-        try{
-
-        List<Livre> stockMagSource= this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(magasinSource);
-        List<Livre> stockMagDest= obtenirLivreEnStockMagasin (magasinDest);
-
-        List<Magasin> magasins =this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-        ResultatSelection resultatSelectionMagasin= this.selectionnerElement(magasins, 0, "Séléctionnez le magasin source" );
+/**
+ * Transférer un livre d'un magasin à un autre.
+ * @param vendeur Le vendeur effectuant le transfert
+ */
+public void transfertLivre(Vendeur vendeur) {
+    try {
+        List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
+        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
         
-        if (resultatSelectionMagasin ==null) return; 
-        }catch (SQLException e){
-            System.err.println("Une erreur est survenue lors de la récupération des magasins: "+ e.getMessage());
+        if (selectionLivre == null) return;
+        Livre livre = selectionLivre.getElement();
+
+        Magasin magasinSource = vendeur.getMagasin();
+        
+        List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        List<Magasin> magasins = new ArrayList<>();
+
+        for (Magasin m : tousMagasins) {
+            if (!m.getId().equals(magasinSource.getId())) {
+                magasins.add(m);
+            }
+        } 
+        ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
+        if (selectionMagasin == null) return;
+        Magasin magasinDestination = selectionMagasin.getElement();
+
+        int stockActuel= this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(),livre.getISBN());
+        this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
+        this.afficherTexte(String.format("Stock disponible dans %s: %d",magasinSource.toString(),stockActuel));
+        this.afficherTexte("Entrez la quantité à transférer:");
+        this.afficherTitreFin();
+        
+        Integer quantite = this.obtenirEntreeNombreUtilisateur();
+        if (quantite == null || quantite <= 0 || quantite > stockActuel) {
+            System.err.println("Quantité invalide");
+            return;
         }
-        
-
-
-
-
-
+        boolean confirmation = this.demanderConfirmation(
+            "Confirmer le transfert", 
+            String.format("Transfert de %d exemplaire(s) de %s de %s vers %s", 
+                quantite, livre.getTitre(),magasinSource.toString(), magasinDestination.toString())
+        );
+        if (confirmation) {
+            this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource,magasinDestination,quantite);
+            System.out.println("Transfert effectué avec succès !");
+        }
+    } catch (SQLException e) {
+        System.err.println("Erreur lors du transfert: "+e.getMessage());
     }
+}
 }

@@ -583,6 +583,18 @@ public class LivreBD {
             existeDeja= rs.next();
 
         }
-        try(PreparedStatement st=)
+        try(PreparedStatement stInsert= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values(?,?,?)")){
+            if(!existeDeja){
+                stInsert.setString(1, idMagasin);
+                stInsert.setString(2, isbn);
+                stInsert.setInt(3, nvellQte);
+            }
+            else{
+                PreparedStatement stUpdate= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte=? where idmag = ? and isbn= ?");
+                stUpdate.setInt(1, nvellQte);
+                stUpdate.setString(2, idMagasin);
+                stUpdate.setString(3, isbn);
+            }
+        }
     }
 }

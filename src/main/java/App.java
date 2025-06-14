@@ -702,6 +702,10 @@ public class App {
                     System.out.println("Livre ajouté avec succès !");
                     break;
                 }
+                case "t":{
+                    this.transfertLivre();
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;

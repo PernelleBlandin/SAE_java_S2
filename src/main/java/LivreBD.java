@@ -473,7 +473,7 @@ public class LivreBD {
 
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
-
+      
     public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
         //setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) classe MagasinBD
         //1)verif stock; 2)enlever si c'est bon(update) 3) augmenterstockDestination 4)Insertions si stock existe pass dans destination
@@ -573,7 +573,13 @@ public class LivreBD {
         }
         return null;
     }
-
+    /**
+     * Modifie le stock d'un livre dans un magasin.
+     * @param isbn L'ISBN du livre.
+     * @param idMagasin l'ID du magasin dans lequel on fait les modifications.
+     * @param nvellQte la nouvelle quantité du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public void modifierStockMagasin(String isbn, String idMagasin, int nvellQte) throws SQLException{
         boolean existeDeja=false;
         try(PreparedStatement verifSiExiste= this.connexionMariaDB.prepareStatement(" SELECT qte FROM POSSEDER where idmag=? and isbn= ?")){

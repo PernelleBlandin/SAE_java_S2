@@ -142,10 +142,23 @@ public class LivreBD {
     }
     public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
         //setStockLivre(String idMagasin, String isbnLivre, int nouvelleQuantite) classe MagasinBD
-        PreparedStatement statement= this.connexionMariaDB.prepareStatement("""SELECT
-                
-                """);
+        //1)verif stock; 2)enlever si c'est bon(update) 3) augmenterstockDestination 4)Insertions si stock existe pass dans destination
+        PreparedStatement stockSource= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ? ");
+        stockSource.setString(1, magSource.getId());
+        stockSource.setString(1, livre.getISBN());
+        ResultSet rs= stockSource.executeQuery();
+
+        if (rs.next() || rs.getInt("qte")<qte){
+            throw new SQLException("Stock insuffisant dans le magasin source");
+        }
+
+        PreparedStatement diminuerStockSource= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte-? where idmag= ? and isbn=?");
+        diminuerStockSource.setInt(1, qte);
+        diminuerStockSource.setString(2, magSource.getId());
+        diminuerStockSource.setString(3, livre.getISBN());
+
         
-        
+
+         
     }
 }

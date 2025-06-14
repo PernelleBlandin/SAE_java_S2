@@ -157,8 +157,25 @@ public class LivreBD {
         diminuerStockSource.setString(2, magSource.getId());
         diminuerStockSource.setString(3, livre.getISBN());
 
-        
+        PreparedStatement stockDest= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ?");
+        stockDest.setString(1, magSource.getId());
+        stockDest.setString(1, livre.getISBN());
+        ResultSet rs2= stockDest.executeQuery();
 
+        if(rs2.next()){
+            PreparedStatement augmenterStockDest= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte+? where idmag= ? and isbn=?");
+            augmenterStockDest.setInt(1, qte);
+            augmenterStockDest.setString(2, magDestination.getId());
+            augmenterStockDest.setString(3, livre.getISBN());
+            augmenterStockDest.executeUpdate();
+        }
+        else{
+            PreparedStatement ajoutLivreDest= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values (?,?,?)");
+            ajoutLivreDest.setString(1, magDestination.getId());
+            ajoutLivreDest.setString(2, livre.getISBN());
+            ajoutLivreDest.setInt(3, qte);
+        }
+        
          
     }
 }

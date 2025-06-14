@@ -53,7 +53,7 @@ public class VendeurBD {
      */
     public Vendeur obtenirVendeurParId(int idVendeur) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
-            SELECT nomvendeur, prenomvendeur, nommag, villemag 
+            SELECT nomvendeur, prenomvendeur, idmag, nommag, villemag 
             FROM VENDEUR NATURAL JOIN MAGASIN
             WHERE idvendeur = ?;
         """);

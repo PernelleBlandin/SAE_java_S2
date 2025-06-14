@@ -271,7 +271,7 @@ public class ChaineLibrairie {
             if (curNumCom == null || !curNumCom.equals(numCom)) {
                 if (curNumCom != null) {
                     String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-                    this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
+                    this.genererFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
                 }
 
                 String nomcli = commandesIterator.getString("nomcli");
@@ -316,10 +316,10 @@ public class ChaineLibrairie {
 
         // Enregistrer la dernière facture
         String filePath = String.format("%s/facture-%d.pdf", dirPath, curNumCom);
-        this.enregistrerFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
+        this.genererFacturePDF(filePath, curCustomersInfos, curTitle, curSubTitle, detailCommande, curDetailLivres);
     }
 
-    private void enregistrerFacturePDF(String path, List<String> customerInfos, String title, String subtitle, String detailsCommande, List<DetailLivre> detailLivres) {
+    private void genererFacturePDF(String path, List<String> customerInfos, String title, String subtitle, String detailsCommande, List<DetailLivre> detailLivres) {
         try {
             Document document = new Document(new PdfDocument(new PdfWriter(path)));
 

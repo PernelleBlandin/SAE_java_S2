@@ -191,7 +191,11 @@ public class LivreBD {
         statementAuteur.setString(1, idAuteur);
         statementAuteur.setString(2, nomAuteur);
         statementAuteur.setInt(3, anneeNais);
-        statementAuteur.setInt(4, anneeDeces);
+        if (anneeDeces == -1) {
+            statementAuteur.setNull(4, java.sql.Types.INTEGER);
+        } else {
+            statementAuteur.setInt(4, anneeDeces);
+        }
         statementAuteur.executeUpdate();
 
         PreparedStatement statementClass = this.connexionMariaDB.prepareStatement("""
@@ -325,7 +329,11 @@ public class LivreBD {
         statementAuteur.setString(1, idAuteur);
         statementAuteur.setString(2, nomAuteur);
         statementAuteur.setInt(3, anneeNais);
-        statementAuteur.setInt(4, anneeDeces);
+        if (anneeDeces == -1) {
+            statementAuteur.setNull(4, java.sql.Types.INTEGER); // Si l'année de décès donné par l'utilisateur est -1 on met NULL grace a java.sql.Types.INTEGER
+        } else {
+            statementAuteur.setInt(4, anneeDeces);
+        }
         statementAuteur.executeUpdate();
 
         String idDewey = this.getIdDewey(nomClass);
@@ -464,5 +472,68 @@ public class LivreBD {
         result.close();
 
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
+    }
+
+        /**
+     * Supprime un livre de la base de données.
+     * Supprime aussi les entrées associées dans les tables ECRIRE, EDITER, POSSEDER, DETAILCOMMANDE, DETAILPANIER et THEMES.
+     * @param isbn L'ISBN du livre à supprimer.
+     * @throws SQLException exception SQL en cas d'erreur.
+        */
+    public void supprimerLivre(String isbn) throws SQLException {
+        PreparedStatement ps = connexionMariaDB.prepareStatement("DELETE FROM ECRIRE WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM EDITER WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM POSSEDER WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM DETAILCOMMANDE WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM DETAILPANIER WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM THEMES WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+
+        ps = connexionMariaDB.prepareStatement("DELETE FROM LIVRE WHERE isbn = ?");
+        ps.setString(1, isbn);
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    /**
+     * Obtenir le titre dun livre a partir de son ISBN.
+     * @param isbn L'ISBN du livre.
+     * @return Le titre du livre ou null s'il n'existe pas.
+     *@throws SQLException Exception SQL en cas d'erreur.
+     */
+    public String getTitreLivre(String isbn) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT titre
+            FROM LIVRE
+            WHERE isbn = ?
+        """);
+        statement.setString(1, isbn);
+        ResultSet result = statement.executeQuery();
+        if (result.next()) {
+            return result.getString("titre");
+        }
+        return null;
     }
 }

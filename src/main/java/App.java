@@ -561,8 +561,9 @@ public class App {
 
             this.afficherTitre(String.format("Menu Vendeur - %s | Magasin : %s", vendeur.toString(), magasin.toString()));
             this.afficherTexte("A : Ajouter livre");
-            this.afficherTexte("S : Accès stock magasins");
-            this.afficherTexte("M : Modifications stock magasin");
+            this.afficherTexte("S : Supprimer livre");
+            this.afficherTexte("D : Vérifier la quantité d'un livre");
+            this.afficherTexte("M : Mettre à jour la quantité d'un livre");
             this.afficherTexte("C : Passer commande client");
             this.afficherTexte("T : Transférer Livre stock");
             this.afficherTexte("Q : Retour");
@@ -578,10 +579,18 @@ public class App {
                     this.afficherTitreUniquement("Entrez l'identifiant du livre");
                     String inputIsbn = this.obtenirEntreeUtilisateur();
                     String isbn = inputIsbn.trim();
+                    if(isbn.isEmpty()){
+                        System.err.println("Erreur : Veuillez entrer un identifient");
+                        break;
+                    }
 
                     this.afficherTitreUniquement("Entrez son titre");
                     String inputTitre = this.obtenirEntreeUtilisateur();
                     String titre = inputTitre.trim();
+                    if(titre.isEmpty()){
+                        System.err.println("Erreur : Veuillez entrer un titre");
+                        break;
+                    }
 
                     try{
                         this.afficherTitreUniquement("Entrez son nombre de pages");
@@ -589,18 +598,27 @@ public class App {
                         String nbPagesString = inputNbPages.trim();
                         nbPages = Integer.parseInt(nbPagesString);
                     }
-                    catch (NumberFormatException e) {
-                        System.err.println("Erreur : Le nombre de pages doit-être un nombre entier.");
+                    catch(NumberFormatException e){
+                        System.err.println("Erreur : Le nombre de pages doit etre un nombre entier.");
+                        break;
+                    }
+                    if(nbPages <=0) {
+                        System.err.println("Erreur : Le nombre de pages ne peut pas 0 ou négatif.");
                         break;
                     }
 
-                    try {
+                    try{
                         this.afficherTitreUniquement("Entrez son prix");
                         String inputPrix = this.obtenirEntreeUtilisateur();
                         String prixString = inputPrix.trim();
                         prix = Double.parseDouble(prixString);
-                    } catch (NumberFormatException e) {
-                        System.err.println("Le prix doit-être en décimal");
+                    } 
+                    catch (NumberFormatException e) {
+                        System.err.println("Le prix doit etre en décimale (mettre un . au lieu de ,)");
+                        break;
+                    }
+                    if(prix <=0){
+                        System.err.println("Erreur : Le prix ne peut pas être négatif ou egal a 0.");
                         break;
                     }
 
@@ -613,13 +631,17 @@ public class App {
                         System.err.println("L'année de publication doit etre un nombre entier");
                         break;
                     }
+                    if(anneeDePublication <= 0){
+                        System.err.println("Erreur : L'année de publication ne peut pas être négative ou egale a 0.");
+                        break;
+                    }
 
                     String[] infoAuteurs;
                     String auteurNom;
                     int naissance;
                     int deces;
                     try {
-                        this.afficherTitreUniquement("Entrez le nom de l'auteur, son année de naissance et décès (séparés par des virgules)");
+                        this.afficherTitreUniquement("Entrez nom, année naissance, décès (-1 si vivant) de l'auteur, séparés par virgules :");
                         String inputAuteurs = this.obtenirEntreeUtilisateur();
                         
                         infoAuteurs = inputAuteurs.split(",");
@@ -628,17 +650,20 @@ public class App {
                         }
                         
                         if (infoAuteurs.length != 3) {
-                            System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
+                            System.err.println("Erreur : Veuillez entrez nom, année naissance, décès (-1 si vivant) de l'auteur, séparés par virgules.");
                             break;
                         }
                         auteurNom = infoAuteurs[0];
                         naissance = Integer.parseInt(infoAuteurs[1]);
                         deces = Integer.parseInt(infoAuteurs[2]);
                     } catch (NumberFormatException e) {
-                        System.err.println("Erreur : Veuillez entrer le nom de l'auteur, son année de naissance et son année de décès (séparés par des virgules).");
+                        System.err.println("Erreur : l'année de naissance et décès (-1 si vivant) doivent etre des nombres entiers.");
                         break;
                     }
-
+                    if(deces<naissance && deces!=-1){
+                        System.err.println("Erreur : L'année de décès ne peut pas être inférieure à l'année de naissance.");
+                        break;
+                    }
                     Set<String> auteur = new HashSet<>();
                     auteur.add(auteurNom);
 
@@ -657,7 +682,6 @@ public class App {
                     }
 
                     this.afficherTitreUniquement("Entrez l'éditeur");
-                    this.afficherTitreFin();
                     String inputEditeur = this.obtenirEntreeUtilisateur();
                     String editeurNom = inputEditeur.trim();
                     Set<String> editeur = new HashSet<>();
@@ -683,7 +707,6 @@ public class App {
                         System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
                         break;
                     }
-
                     try {
                         if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null  && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
@@ -700,10 +723,6 @@ public class App {
                     }
 
                     System.out.println("Livre ajouté avec succès !");
-                    break;
-                }
-                case "t":{
-                    this.transfertLivre();
                     break;
                 }
                 case "q": {

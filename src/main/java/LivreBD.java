@@ -573,4 +573,16 @@ public class LivreBD {
         }
         return null;
     }
+
+    public void modifierStockMagasin(String isbn, String idMagasin, int nvellQte) throws SQLException{
+        boolean existeDeja=false;
+        try(PreparedStatement verifSiExiste= this.connexionMariaDB.prepareStatement(" SELECT qte FROM POSSEDER where idmag=? and isbn= ?")){
+            verifSiExiste.setString(1, idMagasin);
+            verifSiExiste.setString(2, isbn);
+            ResultSet rs= verifSiExiste.executeQuery();
+            existeDeja= rs.next();
+
+        }
+        try(PreparedStatement st=)
+    }
 }

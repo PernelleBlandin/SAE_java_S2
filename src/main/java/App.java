@@ -635,7 +635,7 @@ public class App {
             this.afficherTexte("S : Supprimer livre");
             this.afficherTexte("D : Vérifier la quantité d'un livre");
             this.afficherTexte("M : Mettre à jour la quantité d'un livre");
-            this.afficherTexte("C : Agir en tant que Client");
+            this.afficherTexte("C : Agir en tant que client (ex: passer commande)");
             this.afficherTexte("T : Transférer Livre stock");
             this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
@@ -1689,6 +1689,7 @@ public class App {
 
 	/**
 	 * Supprime un livre dans le stock du magasin du vendeur.
+     * @param vendeur Un vendeur.
 	 */
 	public void supprimerLivre(Vendeur vendeur){
 		List<Livre> livresDisponibles = null;
@@ -1719,6 +1720,7 @@ public class App {
 
 	/**
 	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
+     * @param vendeur Un vendeur.
 	 */
 	public void dispoStock(Vendeur vendeur){
 		Magasin magasin = vendeur.getMagasin();
@@ -1752,6 +1754,7 @@ public class App {
 
 	/**
 	 * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
+     * @param vendeur Un vendeur.
 	 */
 	public void majQuantite(Vendeur vendeur){
 		Magasin magasin = vendeur.getMagasin();
@@ -1790,22 +1793,20 @@ public class App {
 		}
 	}
     /**
-     * Vendeur passe une commande pour un client
-     * @param vendeur
+     * Permet à un vendeur d'agir en tant qu'un client pour passer une commande par exemple.
+     * @param vendeur Un vendeur
      */
     public void agirEnClient(Vendeur vendeur){
         try{
             List<Client> listeClients= this.chaineLibrairie.getClientBD().obtenirListeClient();
             ResultatSelection<Client> selectionClient= this.selectionnerElement(listeClients, 0, "Séléctionner le client pour la commande");
-            if (selectionClient==null){return;}
+            if (selectionClient== null) return;
+
             Client client = selectionClient.getElement();
-
             this.menuClient(client);
-
-        }catch(SQLException e){
-            System.err.println("Une erreur est survenue lors de la commande.");
+        } catch(SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des clients : " + e.getMessage());
         }
-
     }
 
 }

@@ -437,7 +437,7 @@ public class App {
                         break;
                     }
 
-                    this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres");
+                    this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres globaux");
                     break;
                 }
                 case "o": {

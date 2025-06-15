@@ -1,9 +1,3 @@
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 /** Un vendeur */
 public class Vendeur extends Personne {
     private Magasin magasin;
@@ -19,11 +13,9 @@ public class Vendeur extends Personne {
         this.magasin = magasin;
     }
 
-    
-
     /**
-     * Obtenir un magasin
-     * @return Un magasin
+     * Obtenir le magasin du vendeur.
+     * @return Le magasin du vendeur.
      */
     public Magasin getMagasin() {
         return this.magasin;
@@ -36,12 +28,4 @@ public class Vendeur extends Personne {
     public void setMagasin(Magasin magasin) {
         this.magasin = magasin;
     }
-    
-    public void majStock(){}
-
-    public void accesStock(){}
-
-    public void passerCommande(){}
-
-    public void transfertLivre(){}
 }

@@ -473,7 +473,48 @@ public class LivreBD {
 
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
+    /**
+     * Transfert une certaine quantité d'un livre du magasin initial vers un autre magasin 
+     * @param livre Le livre qui sera transféré
+     * @param magSource Le magasin source.
+     * @param magDestination Le magasin destination.
+     * @param qte La quantité à transférer.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
+        PreparedStatement stockSource= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ? ");
+        stockSource.setString(1, magSource.getId());
+        stockSource.setString(1, livre.getISBN());
+        ResultSet rs= stockSource.executeQuery();
 
+        if (rs.next() || rs.getInt("qte") < qte){
+            throw new SQLException("Stock insuffisant dans le magasin source");
+        }
+
+        PreparedStatement diminuerStockSource= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte-? where idmag= ? and isbn=?");
+        diminuerStockSource.setInt(1, qte);
+        diminuerStockSource.setString(2, magSource.getId());
+        diminuerStockSource.setString(3, livre.getISBN());
+
+        PreparedStatement stockDest= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ?");
+        stockDest.setString(1, magSource.getId());
+        stockDest.setString(1, livre.getISBN());
+        ResultSet rs2= stockDest.executeQuery();
+
+        if (rs2.next()){
+            PreparedStatement augmenterStockDest= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte+? where idmag= ? and isbn=?");
+            augmenterStockDest.setInt(1, qte);
+            augmenterStockDest.setString(2, magDestination.getId());
+            augmenterStockDest.setString(3, livre.getISBN());
+            augmenterStockDest.executeUpdate();
+        } else{
+            PreparedStatement ajoutLivreDest= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values (?,?,?)");
+            ajoutLivreDest.setString(1, magDestination.getId());
+            ajoutLivreDest.setString(2, livre.getISBN());
+            ajoutLivreDest.setInt(3, qte);
+        }
+    }
+        
     /**
      * Supprime un livre de la base de données.
      * Supprime aussi les entrées associées dans les tables ECRIRE, EDITER, POSSEDER, DETAILCOMMANDE, DETAILPANIER et THEMES.
@@ -535,5 +576,35 @@ public class LivreBD {
             return result.getString("titre");
         }
         return null;
+    }
+    /**
+     * Modifie le stock d'un livre dans un magasin.
+     * @param isbn L'ISBN du livre.
+     * @param idMagasin l'ID du magasin dans lequel on fait les modifications.
+     * @param nvellQte la nouvelle quantité du livre dans le magasin.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public void modifierStockMagasin(String isbn, String idMagasin, int nvellQte) throws SQLException{
+        boolean existeDeja=false;
+        try(PreparedStatement verifSiExiste= this.connexionMariaDB.prepareStatement(" SELECT qte FROM POSSEDER where idmag=? and isbn= ?")){
+            verifSiExiste.setString(1, idMagasin);
+            verifSiExiste.setString(2, isbn);
+            ResultSet rs= verifSiExiste.executeQuery();
+            existeDeja= rs.next();
+
+        }
+        try(PreparedStatement stInsert= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values(?,?,?)")){
+            if(!existeDeja){
+                stInsert.setString(1, idMagasin);
+                stInsert.setString(2, isbn);
+                stInsert.setInt(3, nvellQte);
+            }
+            else{
+                PreparedStatement stUpdate= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte=? where idmag = ? and isbn= ?");
+                stUpdate.setInt(1, nvellQte);
+                stUpdate.setString(2, idMagasin);
+                stUpdate.setString(3, isbn);
+            }
+        }
     }
 }

@@ -882,6 +882,10 @@ public class App {
                     }
                     break;
                 }
+                case "t":{
+                    this.transfertLivre(vendeur);
+                    break;
+                }
                 case "q": {
                     finCommande = true;
                     break;
@@ -1654,4 +1658,99 @@ public class App {
 
         return donneesMagasin;
     }
+
+
+/**
+ * Transférer un livre d'un magasin à un autre.
+ * @param vendeur Le vendeur effectuant le transfert
+ */
+public void transfertLivre(Vendeur vendeur) {
+    try {
+        List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
+        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
+        
+        if (selectionLivre == null) return;
+        Livre livre = selectionLivre.getElement();
+
+        Magasin magasinSource = vendeur.getMagasin();
+        
+        List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        List<Magasin> magasins = new ArrayList<>();
+
+        for (Magasin m : tousMagasins) {
+            if (!m.getId().equals(magasinSource.getId())) {
+                magasins.add(m);
+            }
+        } 
+        ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
+        if (selectionMagasin == null) return;
+        Magasin magasinDestination = selectionMagasin.getElement();
+
+        int stockActuel= this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(),livre.getISBN());
+        this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
+        this.afficherTexte(String.format("Stock disponible dans %s: %d",magasinSource.toString(),stockActuel));
+        this.afficherTexte("Entrez la quantité à transférer:");
+        this.afficherTitreFin();
+        
+        Integer quantite = this.obtenirEntreeNombreUtilisateur();
+        if (quantite == null || quantite <= 0 || quantite > stockActuel) {
+            System.err.println("Quantité invalide");
+            return;
+        }
+        boolean confirmation = this.demanderConfirmation(
+            "Confirmer le transfert", 
+            String.format("Transfert de %d exemplaire(s) de %s de %s vers %s", 
+                quantite, livre.getTitre(),magasinSource.toString(), magasinDestination.toString())
+        );
+        if (confirmation) {
+            this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource,magasinDestination,quantite);
+            System.out.println("Transfert effectué avec succès !");
+        }
+    } catch (SQLException e) {
+        System.err.println("Erreur lors du transfert: "+e.getMessage());
+    }
+}
+
+/**
+ * Modifie le stock d'un livre dans un magasin
+ */
+public void modifierStockGlobal() {
+    try {
+        List<Livre> livres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+        ResultatSelection<Livre> selection =selectionnerElement(livres, 0, "Sélectionnez un livre");
+        if (selection == null) return;
+        
+        Livre livre = selection.getElement();
+
+        List<Magasin> magasins=this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+        ResultatSelection<Magasin> selectionMag = selectionnerElement(magasins,0,"Sélectionnez un magasin");
+        if (selectionMag == null) return;
+        
+        Magasin magasin=selectionMag.getElement();
+        
+        afficherTitre("Modification stock pour " + livre.getTitre());
+        afficherTexte("Magasin: " +magasin.getNom());
+        afficherTexte("Stock actuel: "+this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN()));
+        afficherTexte("Entrez la nouvelle quantité:");
+        afficherTitreFin();
+        
+        Integer nouvelleQte = obtenirEntreeNombreUtilisateur();
+        if (nouvelleQte==null || nouvelleQte<0) {
+            System.err.println("Quantité invalide");
+            return;
+        }
+
+        if (demanderConfirmation("Confirmer modification", 
+            String.format("Définir stock à %d pour %s dans %s ?", 
+                nouvelleQte, livre.getTitre(), magasin.getNom()))) {
+            
+            this.chaineLibrairie.getLivreBD().modifierStockMagasin(livre.getISBN(),magasin.getId(), nouvelleQte);
+            
+            System.out.println("Stock mis à jour avec succès !");
+        }
+        
+    } catch (SQLException e) {
+        System.err.println("Erreur lors de la modification: "+e.getMessage());
+    }
+}
 }

@@ -152,6 +152,24 @@ public class ClientBD {
         return new Client(idClient, nom, prenom, adresse, codepostal, villecli, magasinClient, listeCommandes, panier, this.chaineLibrairie);
     }
 
+     /**
+     * Changer le magasin d'un client.
+     * @param idClient L'identifiant du client.
+     * @param idMagasin L'identifiant du nouveau magasin du client.
+     * @throws SQLException Exception SQL en cas d'erreur venant de la base de données.
+     */
+    public void changerMagasin(int idClient, String idMagasin) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            UPDATE CLIENT
+            SET idmag = ?
+            WHERE idcli = ?  
+        """);
+        statement.setString(1, idMagasin);
+        statement.setInt(2, idClient);
+
+        statement.executeUpdate();
+    }
+
     /**
      * Obtenir la liste des commandes d'un client.
      * @param idClient L'identifiant du client.

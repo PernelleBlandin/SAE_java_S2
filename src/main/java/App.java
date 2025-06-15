@@ -1410,7 +1410,7 @@ public class App {
         Panier panier = client.getPanier();
         Magasin magasin = resultatSelectionMagasin.getElement();
         
-        boolean effectuerChangement = false;
+        boolean effectuerChangement = true;
         if (panier.getDetailLivres().size() > 0 && !panier.getMagasin().equals(magasin)) {
             effectuerChangement = this.demanderConfirmation(
                 String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
@@ -1421,8 +1421,10 @@ public class App {
 
         if (effectuerChangement) {
             panier.setMagasin(magasin);
+            client.setMagasin(magasin);
             try {
                 this.chaineLibrairie.getPanierBD().changerMagasin(panier);
+                this.chaineLibrairie.getClientBD().changerMagasin(client.getId(), magasin.getId());
                 System.out.println(String.format("Le magasin a été changé pour %s.", magasin.toString()));
             } catch (SQLException e) {
                 System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());

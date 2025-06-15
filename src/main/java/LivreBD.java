@@ -482,15 +482,7 @@ public class LivreBD {
      * @throws SQLException Exception SQL en cas d'erreur.
      */
     public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException {
-    if (livre == null || livre.getISBN() == null || magSource == null || magSource.getId() == null 
-        || magDestination == null || magDestination.getId() == null) {
-        throw new SQLException("Paramètre invalide (null détecté): "
-            + "Livre=" + livre + ", ISBN=" + (livre != null ? livre.getISBN() : "null")
-            + ", magSource=" + magSource + ", IDsrc=" + (magSource != null ? magSource.getId() : "null")
-            + ", magDest=" + magDestination + ", IDdest=" + (magDestination != null ? magDestination.getId() : "null")
-        );
-    }
-
+    
     PreparedStatement stockSource = this.connexionMariaDB.prepareStatement("SELECT qte FROM POSSEDER where idmag = ? AND isbn = ?");
     stockSource.setString(1,magSource.getId());
     stockSource.setString(2,livre.getISBN());

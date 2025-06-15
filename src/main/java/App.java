@@ -1683,7 +1683,7 @@ public class App {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			break;
+			return;
 		}
 		
 		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à supprimer");
@@ -1693,7 +1693,7 @@ public class App {
 		
 		if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + livre.getTitre() + " ?")) {
 			System.out.println("Suppression annulée.");
-			break;
+			return;
 		}
 
 		try {
@@ -1713,11 +1713,11 @@ public class App {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			break;
+			return;
 		}
 		
 		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
-		if (selectionLivre == null) break;
+		if (selectionLivre == null) return;
 		
 		Livre livre = selectionLivre.getElement();
 	
@@ -1745,11 +1745,11 @@ public class App {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			break;
+			return;
 		}
 		
 		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
-		if (selectionLivre == null) break;
+		if (selectionLivre == null) return;
 		
 		Livre livre = selectionLivre.getElement();
 		Integer quantite = null;
@@ -1759,12 +1759,12 @@ public class App {
 		
 		if (quantite == null || quantite < 0) {
 			System.err.println("Erreur : La quantité doit être un nombre entier positif");
-			break;
+			return;
 		}
 		
 		if (!this.demanderConfirmation("Êtes-vous sûr de votre choix ?")) {
 			System.out.println("Mise à jour annulée.");
-			break;
+			return;
 		}
 		
 		try {

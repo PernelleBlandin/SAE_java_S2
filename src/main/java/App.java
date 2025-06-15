@@ -1687,7 +1687,7 @@ public class App {
 		}
 		
 		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à supprimer");
-		if (selectionLivre == null) break;
+		if (selectionLivre == null) return;
 		
 		Livre livre = selectionLivre.getElement();
 		

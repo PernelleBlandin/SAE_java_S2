@@ -784,15 +784,15 @@ public class App {
                     break;
                 }
                 case "s": {
-                    this.supprimerLivre();
+                    this.supprimerLivre(vendeur);
                     break;
                 }
                 case "d": {
-					this.dispoStock();
+					this.dispoStock(vendeur);
                     break;
                 }
                 case "m": {
-					this.majQuantite();
+					this.majQuantite(vendeur);
                     break;
                 }
                 case "c":{
@@ -1677,7 +1677,8 @@ public class App {
 	/**
 	 * Supprime un livre dnas le stock du magasin du vendeur
 	 */
-	public void supprimerLivre(){
+	public void supprimerLivre(Vendeur vendeur){
+		
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
@@ -1707,7 +1708,7 @@ public class App {
 	/**
 	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
 	 */
-	public void dispoStock(){
+	public void dispoStock(Vendeur vendeur){
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
@@ -1739,7 +1740,7 @@ public class App {
 	/**
 	 * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
 	 */
-	public void majQuantite(){
+	public void majQuantite(Vendeur vendeur){
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());

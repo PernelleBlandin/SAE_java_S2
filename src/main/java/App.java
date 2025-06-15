@@ -1675,13 +1675,13 @@ public class App {
 	}
 
 	/**
-	 * Supprime un livre dnas le stock du magasin du vendeur
+	 * Supprime un livre dans le stock du magasin du vendeur.
 	 */
 	public void supprimerLivre(Vendeur vendeur){
-		Magasin magasin = vendeur.getMagasin();
 		List<Livre> livresDisponibles = null;
 		try {
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+            Magasin magasin = vendeur.getMagasin();
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
 			return;
@@ -1691,7 +1691,6 @@ public class App {
 		if (selectionLivre == null) return;
 		
 		Livre livre = selectionLivre.getElement();
-		
 		if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + livre.getTitre() + " ?")) {
 			System.out.println("Suppression annulée.");
 			return;

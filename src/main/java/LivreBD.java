@@ -597,25 +597,6 @@ public class LivreBD {
     }
 
     /**
-     * Obtenir le titre dun livre a partir de son ISBN.
-     * @param isbn L'ISBN du livre.
-     * @return Le titre du livre ou null s'il n'existe pas.
-     *@throws SQLException Exception SQL en cas d'erreur.
-     */
-    public String getTitreLivre(String isbn) throws SQLException {
-        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
-            SELECT titre
-            FROM LIVRE
-            WHERE isbn = ?
-        """);
-        statement.setString(1, isbn);
-        ResultSet result = statement.executeQuery();
-        if (result.next()) {
-            return result.getString("titre");
-        }
-        return null;
-    }
-    /**
      * Modifie le stock d'un livre dans un magasin.
      * @param isbn L'ISBN du livre.
      * @param idMagasin l'ID du magasin dans lequel on fait les modifications.

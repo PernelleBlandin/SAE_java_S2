@@ -635,7 +635,7 @@ public class App {
             this.afficherTexte("S : Supprimer livre");
             this.afficherTexte("D : Vérifier la quantité d'un livre");
             this.afficherTexte("M : Mettre à jour la quantité d'un livre");
-            this.afficherTexte("C : Passer commande client");
+            this.afficherTexte("C : Agir en tant que Client");
             this.afficherTexte("T : Transférer Livre stock");
             this.afficherTexte("Q : Retour");
             this.afficherTitreFin();
@@ -809,7 +809,7 @@ public class App {
                     break;
                 }
                 case "c":{
-                    // this.passerCommandePourClient(vendeur);
+                    this.agirEnClient(vendeur);
                     break;
                 }
                 case "t":{
@@ -1793,36 +1793,19 @@ public class App {
      * Vendeur passe une commande pour un client
      * @param vendeur
      */
-    public void passerCommandePourClient(Vendeur vendeur){
+    public void agirEnClient(Vendeur vendeur){
         try{
-            List<Client> clients= this.chaineLibrairie.getClientBD().obtenirListeClient();
-            ResultatSelection<Client> selectionClient= this.selectionnerElement(clients, 0, "Sélectionner le client pour la commande");
-            if (selectionClient == null) {return ;}
+            List<Client> listeClients= this.chaineLibrairie.getClientBD().obtenirListeClient();
+            ResultatSelection<Client> selectionClient= this.selectionnerElement(listeClients, 0, "Séléctionner le client pour la commande");
+            if (selectionClient==null){return;}
+            Client client = selectionClient.getElement();
 
-            Client client= selectionClient.getElement();
-            //comment choisir le livre
+            this.menuClient(client);
 
-
-            this.afficherTexte("Entrez la quantité désirée: ");
-            Integer qte= this.obtenirEntreeNombreUtilisateur();
-            if (qte==null || qte<0) {
-	            System.err.println("Quantité invalide");
-	            return;}
-            
-
-            boolean confirmer= this.demanderConfirmation("Confirmer la commande ?");
-            if(!confirmer){
-                System.out.println("Commande annulée");
-                return;
-            }
+        }catch(SQLException e){
+            System.err.println("Une erreur est survenue lors de la commande.");
         }
-        this.chaineLibrairie.getCommandeBD().enregistrerCommande(client, null);
 
-        System.out.println("Commande enregistrée avec succès !");
-        
     }
-    catch(SQLException e){
-            System.err.println("Une erreur est survenue lors de la commande" +e.getMessage());
-        }
 
 }

@@ -826,7 +826,7 @@ public class App {
             this.afficherTexte("X: Suppression compte vendeur");
             this.afficherTexte("W: Suppression magasin");
             this.afficherTexte("M: Ajout magasin");
-            this.afficherTexte("S: Modification stock global");
+            this.afficherTexte("G: Modification stock global");
             this.afficherTexte("V: Statistiques de vente");
             this.afficherTexte("F: Exporter les factures en PDF");
             this.afficherTexte("Q: Retour");
@@ -857,7 +857,7 @@ public class App {
 
                     break;
                 } 
-                case "s": {
+                case "g": {
                     this.modifierStockGlobal();
                     break;
                 } 

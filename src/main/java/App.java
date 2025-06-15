@@ -399,7 +399,7 @@ public class App {
     public void connexionClient() {
         try {
             Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
-            this.client(client);
+            this.menuClient(client);
         } catch (SQLException e) {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
@@ -410,13 +410,14 @@ public class App {
      * Accéder au menu pour un client donné.
      * @param client Un client.
      */
-    public void client(Client client) {
+    public void menuClient(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
             Magasin magasin = client.getMagasin();
 
             this.afficherTitre(String.format("Menu Client - %s | Magasin : %s", client.toString(), magasin.toString()));
-            this.afficherTexte("L: Catalogue de livres");
+            this.afficherTexte("L: Catalogue de livres globaux");
+            this.afficherTexte("O: Catalogue de livres en stock");
             this.afficherTexte("P: Panier client");
             this.afficherTexte("R: Recommandations");
             this.afficherTexte("S: Rechercher livres");
@@ -437,6 +438,18 @@ public class App {
                     }
 
                     this.consulterCatalogueClient(client, listeLivres, "Catalogue de livres");
+                    break;
+                }
+                case "o": {
+                    List<Livre> listeLivres;
+                    try {
+                        listeLivres = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(magasin);
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la récupération des livres : " + e.getMessage());
+                        break;
+                    }
+
+                    this.consulterCatalogueClient(client, listeLivres, String.format("Catalogue de livres en stock à %s", magasin.toString()));
                     break;
                 }
                 case "r": {

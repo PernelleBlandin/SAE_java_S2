@@ -784,102 +784,15 @@ public class App {
                     break;
                 }
                 case "s": {
-                    this.afficherTitreUniquement("Entrez l'identifiant du livre à supprimer");
-                    String isbn = this.obtenirEntreeUtilisateur();
-                    try {
-                    if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
-                        System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
-                        break;
-                    }
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
-                        break;
-                    }
-
-                    try {
-                        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + " ?")) {
-                            System.out.println("Suppression annulée.");
-                            break;
-                        }
-                    }
-                    catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
-                        break;
-                    }
-                    try {
-                        this.chaineLibrairie.getLivreBD().supprimerLivre(isbn);
-                        System.out.println("Livre supprimé avec succès !");
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
-                    }
+                    this.supprimerLivre();
                     break;
                 }
                 case "d": {
-                    this.afficherTitreUniquement("Entrez l'identifient du livre à vérifier");
-                    String isbn = this.obtenirEntreeUtilisateur();
-                    try {
-                        if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
-                            System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
-                            break;
-                        }
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
-                        break;
-                    }
-
-                    int qte = 0;
-                    try {
-                        qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), isbn);
-                        if (qte !=0){
-                            System.out.println("Le livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
-                        }
-                        else{
-                            System.out.println("Le livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
-                        }
-
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du stock du livre : " + e.getMessage());
-                    }
+					this.dispoStock();
                     break;
                 }
                 case "m": {
-                    this.afficherTitreUniquement("Entrez l'identifiant du livre à mettre à jour");
-                    String isbn = this.obtenirEntreeUtilisateur();
-                    try {
-                        if(this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) == null){
-                            System.err.println("Erreur : Aucun livre trouvé avec cet identifiant.");
-                            break;
-                        }
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
-                        break;
-                    }
-                    Integer quantite = null;
-                    try { 
-                        this.afficherTitreUniquement("Entrez la nouvelle quantite du livre \"" + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + "\" :");//  \" = (guillmets affiché)
-                        quantite = this.obtenirEntreeNombreUtilisateur();
-                        if(quantite==null||quantite<0){
-                            System.err.println("Erreur : La quantite doit etre un nombre entier positif");
-                            break;
-                        }
-                        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir mettre à jour la quantité du livre " + this.chaineLibrairie.getLivreBD().getTitreLivre(isbn) + " ?")) {
-                            System.out.println("Mise à jour annulée.");
-                            break;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.err.println("Erreur : La quantité doit être un nombre entier positif.");
-                        break;
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la récupération du titre du livre : " + e.getMessage());
-                        break;
-                    }
-
-                    try {
-                        this.chaineLibrairie.getMagasinBD().majQuantiteLivre(magasin.getId(), isbn, quantite);
-                        System.out.println("Quantité mise à jour avec succès !");
-                    } catch (SQLException e) {
-                        System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
-                    }
+					this.majQuantite();
                     break;
                 }
                 case "c":{
@@ -1665,100 +1578,200 @@ public class App {
     }
 
 
-/**
- * Transférer un livre d'un magasin à un autre.
- * @param vendeur Le vendeur effectuant le transfert
- */
-public void transfertLivre(Vendeur vendeur) {
-    
+	/**
+	 * Transférer un livre d'un magasin à un autre.
+	 * @param vendeur Le vendeur effectuant le transfert
+	 */
+	public void transfertLivre(Vendeur vendeur) {
+	
+	    try {
+	
+	        List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
+	        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
+	        
+	        if (selectionLivre == null) return;
+	        Livre livre = selectionLivre.getElement();
+	
+	        Magasin magasinSource = vendeur.getMagasin();
+	        
+	        List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+	        List<Magasin> magasins = new ArrayList<>();
+	
+	        for (Magasin m : tousMagasins) {
+	            if (!m.getId().equals(magasinSource.getId())) {
+	                magasins.add(m);
+	            }
+	        } 
+	        ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
+	        if (selectionMagasin == null) return;
+	        Magasin magasinDestination = selectionMagasin.getElement();
+	
+	        int stockActuel= this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(),livre.getISBN());
+	        this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
+	        this.afficherTexte(String.format("Stock disponible dans %s: %d",magasinSource.toString(),stockActuel));
+	        this.afficherTexte("Entrez la quantité à transférer:");
+	        this.afficherTitreFin();
+	        
+	        Integer quantite = this.obtenirEntreeNombreUtilisateur();
+	        if (quantite == null || quantite <= 0 || quantite > stockActuel) {
+	            System.err.println("Quantité invalide");
+	            return;
+	        }
+	        boolean confirmation = this.demanderConfirmation(
+	            "Confirmer le transfert", 
+	            String.format("Transfert de %d exemplaire(s) de %s de %s vers %s", 
+	                quantite, livre.getTitre(),magasinSource.toString(), magasinDestination.toString())
+	        );
+	        if (confirmation) {
+	            this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource,magasinDestination,quantite);
+	            System.out.println("Transfert effectué avec succès !");
+	        }
+	    } catch (SQLException e) {
+	        System.err.println("Erreur lors du transfert: "+e.getMessage());
+	    }
+	}
 
-    try {
+	/**
+	 * Modifie le stock d'un livre dans un magasin
+	 */
+	public void modifierStockGlobal() {
+	    try {
+	        List<Livre> livres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+	        ResultatSelection<Livre> selection =selectionnerElement(livres, 0, "Sélectionnez un livre");
+	        if (selection == null) return;
+	        
+	        Livre livre = selection.getElement();
+	
+	        List<Magasin> magasins=this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+	        ResultatSelection<Magasin> selectionMag = selectionnerElement(magasins,0,"Sélectionnez un magasin");
+	        if (selectionMag == null) return;
+	        
+	        Magasin magasin=selectionMag.getElement();
+	        
+	        afficherTitre("Modification stock pour " + livre.getTitre());
+	        afficherTexte("Magasin: " +magasin.getNom());
+	        afficherTexte("Stock actuel: "+this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN()));
+	        afficherTexte("Entrez la nouvelle quantité:");
+	        afficherTitreFin();
+	        
+	        Integer nouvelleQte = obtenirEntreeNombreUtilisateur();
+	        if (nouvelleQte==null || nouvelleQte<0) {
+	            System.err.println("Quantité invalide");
+	            return;
+	        }
+	
+	        if (demanderConfirmation("Confirmer modification", 
+	            String.format("Définir stock à %d pour %s dans %s ?", 
+	                nouvelleQte, livre.getTitre(), magasin.getNom()))) {
+	            
+	            this.chaineLibrairie.getLivreBD().modifierStockMagasin(livre.getISBN(),magasin.getId(), nouvelleQte);
+	            
+	            System.out.println("Stock mis à jour avec succès !");
+	        }
+	        
+	    } catch (SQLException e) {
+	        System.err.println("Erreur lors de la modification: "+e.getMessage());
+	    }
+	}
 
-        List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
-        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
-        
-        if (selectionLivre == null) return;
-        Livre livre = selectionLivre.getElement();
+	/**
+	 * Supprime un livre dnas le stock du magasin du vendeur
+	 */
+	public void supprimerLivre(){
+		List<Livre> livresDisponibles = null;
+		try {
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+			return;
+		}
+		
+		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à supprimer");
+		if (selectionLivre == null) return;
+		
+		Livre livre = selectionLivre.getElement();
+		
+		if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + livre.getTitre() + " ?")) {
+			System.out.println("Suppression annulée.");
+			return;
+		}
 
-        Magasin magasinSource = vendeur.getMagasin();
-        
-        List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-        List<Magasin> magasins = new ArrayList<>();
+		try {
+			this.chaineLibrairie.getLivreBD().supprimerLivre(livre.getISBN());
+			System.out.println("Livre supprimé avec succès !");
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
+		}
+	}
 
-        for (Magasin m : tousMagasins) {
-            if (!m.getId().equals(magasinSource.getId())) {
-                magasins.add(m);
-            }
-        } 
-        ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
-        if (selectionMagasin == null) return;
-        Magasin magasinDestination = selectionMagasin.getElement();
+	/**
+	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
+	 */
+	public void dispoStock(){
+		List<Livre> livresDisponibles = null;
+		try {
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+			return;
+		}
+		
+		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
+		if (selectionLivre == null) return;
+		
+		Livre livre = selectionLivre.getElement();
+	
+		int qte = 0;
+		try {
+			qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+			if (qte !=0){
+				System.out.println("Le livre \"" + livre.getTitre() + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
+			}
+			else{
+				System.out.println("Le livre \"" + livre.getTitre() + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
+			}
+	
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la récupération du stock du livre : " + e.getMessage());
+		}
+	}
 
-        int stockActuel= this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(),livre.getISBN());
-        this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
-        this.afficherTexte(String.format("Stock disponible dans %s: %d",magasinSource.toString(),stockActuel));
-        this.afficherTexte("Entrez la quantité à transférer:");
-        this.afficherTitreFin();
-        
-        Integer quantite = this.obtenirEntreeNombreUtilisateur();
-        if (quantite == null || quantite <= 0 || quantite > stockActuel) {
-            System.err.println("Quantité invalide");
-            return;
-        }
-        boolean confirmation = this.demanderConfirmation(
-            "Confirmer le transfert", 
-            String.format("Transfert de %d exemplaire(s) de %s de %s vers %s", 
-                quantite, livre.getTitre(),magasinSource.toString(), magasinDestination.toString())
-        );
-        if (confirmation) {
-            this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource,magasinDestination,quantite);
-            System.out.println("Transfert effectué avec succès !");
-        }
-    } catch (SQLException e) {
-        System.err.println("Erreur lors du transfert: "+e.getMessage());
-    }
-}
-
-/**
- * Modifie le stock d'un livre dans un magasin
- */
-public void modifierStockGlobal() {
-    try {
-        List<Livre> livres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
-        ResultatSelection<Livre> selection =selectionnerElement(livres, 0, "Sélectionnez un livre");
-        if (selection == null) return;
-        
-        Livre livre = selection.getElement();
-
-        List<Magasin> magasins=this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-        ResultatSelection<Magasin> selectionMag = selectionnerElement(magasins,0,"Sélectionnez un magasin");
-        if (selectionMag == null) return;
-        
-        Magasin magasin=selectionMag.getElement();
-        
-        afficherTitre("Modification stock pour " + livre.getTitre());
-        afficherTexte("Magasin: " +magasin.getNom());
-        afficherTexte("Stock actuel: "+this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN()));
-        afficherTexte("Entrez la nouvelle quantité:");
-        afficherTitreFin();
-        
-        Integer nouvelleQte = obtenirEntreeNombreUtilisateur();
-        if (nouvelleQte==null || nouvelleQte<0) {
-            System.err.println("Quantité invalide");
-            return;
-        }
-
-        if (demanderConfirmation("Confirmer modification", 
-            String.format("Définir stock à %d pour %s dans %s ?", 
-                nouvelleQte, livre.getTitre(), magasin.getNom()))) {
-            
-            this.chaineLibrairie.getLivreBD().modifierStockMagasin(livre.getISBN(),magasin.getId(), nouvelleQte);
-            
-            System.out.println("Stock mis à jour avec succès !");
-        }
-        
-    } catch (SQLException e) {
-        System.err.println("Erreur lors de la modification: "+e.getMessage());
-    }
-}
+	/**
+	 * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
+	 */
+	public void majQuantite(){
+		List<Livre> livresDisponibles = null;
+		try {
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+			return;
+		}
+		
+		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
+		if (selectionLivre == null) return;
+		
+		Livre livre = selectionLivre.getElement();
+		Integer quantite = null;
+		
+		this.afficherTitreUniquement("Entrez la nouvelle quantité du livre \"" + livre.getTitre() + "\" :");
+		quantite = this.obtenirEntreeNombreUtilisateur();
+		
+		if (quantite == null || quantite < 0) {
+			System.err.println("Erreur : La quantité doit être un nombre entier positif");
+			return;
+		}
+		
+		if (!this.demanderConfirmation("Êtes-vous sûr de votre choix ?")) {
+			System.out.println("Mise à jour annulée.");
+			return;
+		}
+		
+		try {
+			this.chaineLibrairie.getMagasinBD().majQuantiteLivre(magasin.getId(), livre.getISBN(), quantite);
+			System.out.println("Quantité mise à jour avec succès !");
+		} catch (SQLException e) {
+			System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
+		}
+	}
 }

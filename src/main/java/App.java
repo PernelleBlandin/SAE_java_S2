@@ -1728,7 +1728,7 @@ public class App {
 		Magasin magasin = vendeur.getMagasin();
 		List<Livre> livresDisponibles = null;
 		try {
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
 			return;
@@ -1744,8 +1744,7 @@ public class App {
 			qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
 			if (qte !=0){
 				System.out.println("Le livre \"" + livre.getTitre() + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
-			}
-			else{
+			} else {
 				System.out.println("Le livre \"" + livre.getTitre() + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
 			}
 	
@@ -1762,7 +1761,7 @@ public class App {
 		Magasin magasin = vendeur.getMagasin();
 		List<Livre> livresDisponibles = null;
 		try {
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
+			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
 			return;
@@ -1788,7 +1787,7 @@ public class App {
 		}
 		
 		try {
-			this.chaineLibrairie.getMagasinBD().majQuantiteLivre(magasin.getId(), livre.getISBN(), quantite);
+			this.chaineLibrairie.getMagasinBD().setStockLivre(magasin.getId(), livre.getISBN(), quantite);
 			System.out.println("Quantité mise à jour avec succès !");
 		} catch (SQLException e) {
 			System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());

@@ -165,24 +165,4 @@ public class MagasinBD {
 
         statement.executeUpdate();
     }
-
-    /**
-     * Met à jour la quantité d'un livre dans un magasin.
-     * @param id L'identifiant du magasin.
-     * @param isbn L'ISBN du livre.
-     * @param quantite La nouvelle quantité du livre.
-     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
-     */
-    public void majQuantiteLivre(String id, String isbn, Integer quantite) throws SQLException {
-        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
-            UPDATE POSSEDER
-            SET qte = ?
-            WHERE idmag = ? AND isbn = ?;
-        """);
-        statement.setInt(1, quantite);
-        statement.setString(2, id);
-        statement.setString(3, isbn);
-
-        statement.executeUpdate();
-    }
 }

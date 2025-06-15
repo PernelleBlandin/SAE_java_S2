@@ -481,39 +481,50 @@ public class LivreBD {
      * @param qte La quantité à transférer.
      * @throws SQLException Exception SQL en cas d'erreur.
      */
-    public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException{
-        PreparedStatement stockSource= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ? ");
-        stockSource.setString(1, magSource.getId());
-        stockSource.setString(1, livre.getISBN());
-        ResultSet rs= stockSource.executeQuery();
+    public void transfertLivre(Livre livre, Magasin magSource, Magasin magDestination, int qte) throws SQLException {
+    PreparedStatement stockSource = this.connexionMariaDB.prepareStatement("SELECT qte FROM POSSEDER where idmag = ? AND isbn = ?");
+    stockSource.setString(1,magSource.getId());
+    stockSource.setString(2,livre.getISBN());
+    ResultSet rs=stockSource.executeQuery();
 
-        if (rs.next() || rs.getInt("qte") < qte){
-            throw new SQLException("Stock insuffisant dans le magasin source");
-        }
-
-        PreparedStatement diminuerStockSource= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte-? where idmag= ? and isbn=?");
-        diminuerStockSource.setInt(1, qte);
-        diminuerStockSource.setString(2, magSource.getId());
-        diminuerStockSource.setString(3, livre.getISBN());
-
-        PreparedStatement stockDest= this.connexionMariaDB.prepareStatement("SELECT qte from POSSEDER WHERE idmag= ? and isbn= ?");
-        stockDest.setString(1, magSource.getId());
-        stockDest.setString(1, livre.getISBN());
-        ResultSet rs2= stockDest.executeQuery();
-
-        if (rs2.next()){
-            PreparedStatement augmenterStockDest= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte= qte+? where idmag= ? and isbn=?");
-            augmenterStockDest.setInt(1, qte);
-            augmenterStockDest.setString(2, magDestination.getId());
-            augmenterStockDest.setString(3, livre.getISBN());
-            augmenterStockDest.executeUpdate();
-        } else{
-            PreparedStatement ajoutLivreDest= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values (?,?,?)");
-            ajoutLivreDest.setString(1, magDestination.getId());
-            ajoutLivreDest.setString(2, livre.getISBN());
-            ajoutLivreDest.setInt(3, qte);
-        }
+    if (!rs.next()||rs.getInt("qte") < qte) {
+        rs.close();
+        stockSource.close();
+        throw new SQLException("Stock insuffisant dans le magasin source");
     }
+    rs.close();
+    stockSource.close();
+
+    PreparedStatement diminuerStockSource = this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte = qte - ? where idmag = ? AND isbn = ?");
+    diminuerStockSource.setInt(1,qte);
+    diminuerStockSource.setString(2,magSource.getId());
+    diminuerStockSource.setString(3, livre.getISBN());
+    diminuerStockSource.executeUpdate();
+    diminuerStockSource.close();
+
+    PreparedStatement stockDest = this.connexionMariaDB.prepareStatement("SELECT qte FROM POSSEDER WHERE idmag = ? AND isbn = ?");
+    stockDest.setString(1,magDestination.getId());
+    stockDest.setString(2,livre.getISBN());
+    ResultSet rs2 = stockDest.executeQuery();
+
+    if (rs2.next()) {
+        PreparedStatement augmenterStockDest = this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte = qte + ? WHERE idmag = ? AND isbn = ?");
+        augmenterStockDest.setInt(1,qte);
+        augmenterStockDest.setString(2,magDestination.getId());
+        augmenterStockDest.setString(3, livre.getISBN());
+        augmenterStockDest.executeUpdate();
+        augmenterStockDest.close();
+    } else {
+        PreparedStatement ajoutLivreDest = this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte)values (?, ?, ?)");
+        ajoutLivreDest.setString(1,magDestination.getId());
+        ajoutLivreDest.setString(2,livre.getISBN());
+        ajoutLivreDest.setInt(3, qte);
+        ajoutLivreDest.executeUpdate();
+        ajoutLivreDest.close();
+    }
+    rs2.close();
+    stockDest.close();
+}
         
     /**
      * Supprime un livre de la base de données.

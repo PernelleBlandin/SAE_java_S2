@@ -882,6 +882,10 @@ public class App {
                     }
                     break;
                 }
+                case "c":{
+                    this.passerCommandePourClient(vendeur);
+                    break;
+                }
                 case "t":{
                     this.transfertLivre(vendeur);
                     break;

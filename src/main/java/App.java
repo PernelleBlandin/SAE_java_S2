@@ -944,9 +944,10 @@ public class App {
 
                     break;
                 } 
-                /*case "s": {
-                 * 
-                } */
+                case "s": {
+                    this.modifierStockGlobal();
+                    break;
+                } 
                 case "v": {
                     this.menuStatistiques();
                     break;
@@ -1669,7 +1670,10 @@ public class App {
  * @param vendeur Le vendeur effectuant le transfert
  */
 public void transfertLivre(Vendeur vendeur) {
+    
+
     try {
+
         List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
         ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
         

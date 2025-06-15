@@ -474,12 +474,12 @@ public class LivreBD {
         return new Livre(isbn, titre, nbpages, date, prix, setAuteurs, setEditeurs, setClassifications);
     }
 
-        /**
+    /**
      * Supprime un livre de la base de données.
      * Supprime aussi les entrées associées dans les tables ECRIRE, EDITER, POSSEDER, DETAILCOMMANDE, DETAILPANIER et THEMES.
      * @param isbn L'ISBN du livre à supprimer.
      * @throws SQLException exception SQL en cas d'erreur.
-        */
+    */
     public void supprimerLivre(String isbn) throws SQLException {
         PreparedStatement ps = connexionMariaDB.prepareStatement("DELETE FROM ECRIRE WHERE isbn = ?");
         ps.setString(1, isbn);

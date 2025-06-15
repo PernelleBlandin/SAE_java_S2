@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -205,6 +206,63 @@ public class App {
                 }
                 case "a": {
                     this.menuAdministrateur();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Afficher une liste d'élements sur des pages.
+     * 
+     * @param <T> Le type de l'élément
+     * @param elements La liste des éléments possible à sélectionner.
+     * @param titre Le titre du menu.
+     */
+    public <T> void afficherListeElements(List<T> elements, String titre) {
+        int maxElementsParPage = 10;
+        int totalPages = elements.size() / (maxElementsParPage + 1);
+
+        int nbPage = 0;
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre(String.format("%s - page n°%d sur %d", titre, nbPage + 1, totalPages + 1));
+
+            int debutIndex = nbPage * maxElementsParPage;
+            int finIndex = Math.min(debutIndex + maxElementsParPage, elements.size());
+
+            boolean hasResults = debutIndex < finIndex;
+            if (hasResults) {
+                for (int i = debutIndex; i < finIndex; i++) {
+                    T element = elements.get(i);
+                    this.afficherTexte(String.format("%d - %s", i + 1, element.toString()));
+                }
+            } else {
+                this.afficherTexte("Il n'y a aucun résultat.");
+            }
+
+            this.afficherSeperateurMilieu();
+            if (nbPage > 0) this.afficherTexte("P: Page précédente");
+            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String entreeUtilisateur = this.obtenirCommandeUtilisateur();
+            switch (entreeUtilisateur) {
+                case "p": {
+                    if (nbPage > 0) nbPage--;
+                    break;
+                }
+                case "s": {
+                    if (nbPage + 1 <= totalPages) nbPage++;
                     break;
                 }
                 case "q": {
@@ -844,6 +902,8 @@ public class App {
         while (!finCommande) {
             this.afficherTitre("Menu Administrateur");
             this.afficherTexte("C: Création compte vendeur");
+            this.afficherTexte("X: Suppression compte vendeur");
+            this.afficherTexte("W: Suppression magasin");
             this.afficherTexte("M: Ajout magasin");
             this.afficherTexte("S: Modification stock global");
             this.afficherTexte("V: Statistiques de vente");
@@ -857,18 +917,32 @@ public class App {
                     this.creationCompteVendeur();
                     break;
                 }
+                case "x": {
+                    this.suppressionCompteVendeur();
+                    break;
+                }
+                case "w": {
+                    this.suppressionMagasin();
+                    break;
+                }
+                case "m" : {
+                    HashMap<String, String> donneesMagasin = this.demanderInfosMagasin();
+                    try {
+                        this.chaineLibrairie.getMagasinBD().creerMagasin(donneesMagasin);
+                        System.out.println(String.format("Magasin %s créé avec succès !", donneesMagasin.get("nom")));
+                    } catch (SQLException e) {
+                        System.err.println("Une erreur est survenue lors de la création du magasin en BD : " + e.getMessage());
+                    }
 
-                /*case "m" : {
-                *ajouter une nouvelle boutique appartenant à la chaîne de librairie
+                    break;
                 } 
-                */
-
                 /*case "s": {
                  * 
                 } */
-               /*case "v": {
-                * accéder aux statistique de vente
-               } */
+                case "v": {
+                    this.menuStatistiques();
+                    break;
+                }
                  case "f": {
                     this.exporterFactures();
                     break;
@@ -883,6 +957,238 @@ public class App {
                 }
             }    
         }
+    }
+
+    /**
+     * Afficher le menu de statistiques.
+     */
+    public void menuStatistiques() {
+        boolean finCommande = false;
+        while (!finCommande) {
+            this.afficherTitre("Menu Statistiques");
+            this.afficherTexte("L: Nombre de livres vendus par magasin");
+            this.afficherTexte("C: Chiffre d'affaire 2024 par thème");
+            this.afficherTexte("M: Evolution CA des magasin par mois en 2024");
+            this.afficherTexte("O: Evolution CA - En Magasin / En Ligne");
+            this.afficherTexte("E: 10 éditeurs les plus importants en nombres d'auteurs");
+            this.afficherTexte("R: Quantité livre M. Gosciny en fonction origine clients");
+            this.afficherTexte("S: Valeur du stock par magasin");
+            this.afficherTexte("T: Evolution CA Total par client");
+            this.afficherTexte("Q: Retour");
+            this.afficherTitreFin();
+
+            String commande = this.obtenirCommandeUtilisateur();
+            switch (commande) {
+                case "l": {
+                    this.getNbLivresParMagasinParAn();
+                    break;
+                }
+                case "c": {
+                    this.getCA2024ParTheme();
+                    break;
+                }
+                case "m": {
+                    this.getEvolutionCAParMoisParMagasin2024();
+                    break;
+                }
+                case "o": {
+                    this.getComparaisonVentesLigneMagasin();
+                    break;
+                }
+                case "e": {
+                    this.getTop10EditeursNbAuteurs();
+                    break;
+                }
+                case "r": {
+                    this.getQteLivresGoscinyOrigineClients();
+                    break;
+                }
+                case "s": {
+                    this.getValeurStockParMagasin();
+                    break;
+                }
+                case "t": {
+                    this.getEvolutionCATotalParClient();
+                    break;
+                }
+                case "q": {
+                    finCommande = true;
+                    break;
+                }
+                default: {
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+                }
+            }    
+        }
+    }
+
+    /**
+     * Afficher les statistiques du nombre de livres vendus par magasin.
+     */
+    public void getNbLivresParMagasinParAn() {
+        Map<String, Map<Integer, Integer>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getNbLivresParMagasinParAn();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Nombre de livres vendus par magasin");
+    }
+
+    /**
+     * Afficher les statistiques du chiffre d'affaire 2024 par thème.
+     */
+    public void getCA2024ParTheme() {
+        Map<String, Double> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getCA2024ParTheme();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Chiffre d'affaire 2024 par thème");
+    }
+
+    /**
+     * Afficher les statistiques de l'évolution CA des magasins par mois en 2024.
+     */
+    public void getEvolutionCAParMoisParMagasin2024() {
+        Map<String, Map<Integer, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getEvolutionCAParMoisParMagasin2024();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution CA des magasins par mois en 2024");
+    }
+
+    /**
+     * Afficher les statistiques de l'évolution du CA, avec la comparaison ventes en ligne et en magasin.
+     */
+    public void getComparaisonVentesLigneMagasin() {
+        Map<String, Map<Integer, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getComparaisonVentesLigneMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution CA : Comparaison ventes en ligne et en magasin");
+    }
+
+    /**
+     * Afficher les statistiques des dix éditeurs les plus importants en nombre d'auteurs.
+     */
+    public void getTop10EditeursNbAuteurs() {
+        Map<String, Integer> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getTop10EditeursNbAuteurs();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Dix éditeurs les plus importants en nombre d'auteurs");
+    }
+
+    /**
+     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     */
+    public void getQteLivresGoscinyOrigineClients() {
+        Map<String, Integer> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Quantité de livres de R. Goscinny achetés en fonction de l'origine des clients");
+    }
+ 
+    /**
+     * Afficher les statistiques sur l'évolution du CA Total par client.
+     */
+    public void getValeurStockParMagasin() {
+        Map<String, Double> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getValeurStockParMagasin();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertSimpleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Evolution du CA Total par client");
+    }
+
+    /**
+     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     */
+    public void getEvolutionCATotalParClient() {
+        Map<Integer, Map<String, Double>> statistiques;
+        try {
+            statistiques = this.chaineLibrairie.getStatistiquesBD().getEvolutionCATotalParClient();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des statistiques : " + e.getMessage());
+            return;
+        }
+
+        List<String> resultats = this.convertDoubleMapToStringList(statistiques);
+        this.afficherListeElements(resultats, "Valeur du stock par magasin");
+    }
+
+    /**
+     * Convertir une map "simple" (clé/valeur) en une liste de chaîne de caractères.
+     * @param <T> Le type de la clé.
+     * @param <K> Le type de la valeur.
+     * @param dictionnaire Un dictionnaire clé/valeur.
+     * @return Une liste de String de la map.
+     */
+    private <T, K> List<String> convertSimpleMapToStringList(Map<T, K> dictionnaire) {
+        List<String> resultat = new ArrayList<>();
+        for (Map.Entry<T, K> entree: dictionnaire.entrySet()) {
+            String cle = entree.getKey().toString();
+            String valeur = entree.getValue().toString();
+
+            resultat.add(String.format("%s : %s", cle, valeur));
+        }
+        return resultat;
+    }
+
+    /**
+     * Convertir une map "complexe" { cleInitiale: { valeurInitiale: valeurFinal } } en une liste de chaîne de caractères.
+     * @param <T> Le type de la clé initiale.
+     * @param <K> Le type de la valeur initiale.
+     * @param <Z> Le type de la valeur finale
+     * @param dictionnaire Un dictionnaire.
+     * @return Une liste de String de la map.
+     */
+    private <T, K, Z> List<String> convertDoubleMapToStringList(Map<T, Map<K, Z>> dictionnaire) {
+        List<String> resultat = new ArrayList<>();
+        for (Map.Entry<T, Map<K, Z>> entree: dictionnaire.entrySet()) {
+            String cle = entree.getKey().toString();
+            Map<K, Z> valeur = entree.getValue();
+
+            List<String> valeursString = this.convertSimpleMapToStringList(valeur);
+            for (String valeurString: valeursString) {
+                resultat.add(String.format("%s - %s", cle, valeurString));
+            }
+        }
+        return resultat;
     }
 
     /**
@@ -1239,27 +1545,113 @@ public class App {
         }
     }
 
-
     //Fonctionnalités administrateur Hashmap
 
+    /**
+     * Demander les informations et créer un compte vendeur.
+     */
     public void creationCompteVendeur(){
-        List<String> donnees = new ArrayList<>();
-        donnees.add("Nom");
-        donnees.add("Prenom");
-        donnees.add("Magasin");
-        HashMap<String, String> dicoDonnees = new HashMap<>();
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Quel est le prénom du vendeur ?");
+        this.afficherTitreFin();
+        String prenom = this.obtenirEntreeUtilisateur();
 
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Quel est le nom du vendeur ?");
+        this.afficherTitreFin();
+        String nom = this.obtenirEntreeUtilisateur();
 
-        System.out.println("Pour interrompre, tapez \"exit\"");
-        for(String donnee : donnees ){
-            System.out.println();
-            System.out.println(donnee);
-            String entree = this.obtenirEntreeUtilisateur();
-            while(!(entree instanceof String)){
-                System.out.println("Entrer une chaine de caracteres");
-            }
-            dicoDonnees.put(donnee, entree);
+        Magasin magasinVendeur;
+        try {
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner le magasin du vendeur");
+            if (resultatSelectionMagasin == null) return;
+
+            magasinVendeur = resultatSelectionMagasin.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+            return;
         }
-        System.out.println(dicoDonnees);
+
+        try {
+            this.chaineLibrairie.getVendeurBD().creerVendeur(nom, prenom, magasinVendeur.getId());
+            System.out.println(String.format("Le vendeur %s %s a bien été enregistré !", nom, prenom));
+        } catch (SQLException e) {
+           System.err.println("Une erreur est survenue lors de la création du vendeur en BD : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Supprimer le compte d'un vendeur
+     */
+    public void suppressionCompteVendeur(){
+        Vendeur vendeurSupp;
+        try {
+            List<Vendeur> vendeurs = this.chaineLibrairie.getVendeurBD().obtenirListeVendeur();
+            ResultatSelection<Vendeur> resultatSelectionVendeur = this.selectionnerElement(vendeurs, 0, "Sélectionner le vendeur dont le compte va être supprimé");
+            if (resultatSelectionVendeur == null) {
+                return;
+            }
+            vendeurSupp = resultatSelectionVendeur.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des vendeurs : " + e.getMessage());
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getVendeurBD().supprimerVendeur(vendeurSupp.getId());
+            System.out.println(String.format("Le vendeur %s %s a bien été supprimé !", vendeurSupp.getNom(), vendeurSupp.getPrenom()));
+        } catch (SQLException e) {
+           System.err.println("Une erreur est survenue lors de la suppression du vendeur en BD : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Supprimer un magasin
+     */
+    public void suppressionMagasin() {
+        Magasin magasinSupp;
+        try {
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner le magasin du vendeur");
+            if (resultatSelectionMagasin == null) {
+                return;
+            }
+            magasinSupp = resultatSelectionMagasin.getElement();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération des magasins : " + e.getMessage());
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getMagasinBD().supprimerMagasin(magasinSupp.getId());
+            System.out.println(String.format("Le magasin %s de %s a bien été supprimé !", magasinSupp.getNom(), magasinSupp.getVille()));
+        } catch (SQLException e) {
+           System.err.println("Une erreur est survenue lors de la suppression du magasin en BD : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Demander à l'utilisateur les informations du magasin (nom et ville).
+     * @return Un dictionnaire avec les informations indiquées par l'utilisateur.
+     */
+    public HashMap<String, String> demanderInfosMagasin() {
+        HashMap<String, String> donneesMagasin = new HashMap<>();
+        
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Quel est le nom du magasin ?");
+        this.afficherTitreFin();
+        
+        String nomMag = this.obtenirEntreeUtilisateur();
+        donneesMagasin.put("nom", nomMag);
+
+        this.afficherTitreDebut();
+        this.afficherTexteCentrer("Quel est la ville du magasin ?");
+        this.afficherTitreFin();
+
+        String villeMag = this.obtenirEntreeUtilisateur();
+        donneesMagasin.put("ville", villeMag);
+
+        return donneesMagasin;
     }
 }

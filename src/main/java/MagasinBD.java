@@ -3,6 +3,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /** Liaison entre les magasins et la base de données. */
@@ -111,6 +113,60 @@ public class MagasinBD {
     }
 
     /**
+     * Obtenir le plus grand identifiant de magasin.
+     * @return Le plus grand identifiant de magasin.
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public int getMaxMagasinId() throws SQLException {
+        Statement statement = this.connexionMariaDB.createStatement();
+		ResultSet result = statement.executeQuery("""
+            SELECT IFNULL(MAX(idmag), 0) maxIdMag
+            FROM MAGASIN
+        """);
+
+		result.next();
+		int maxIdCli = result.getInt("maxIdMag");
+		result.close();
+
+		return maxIdCli;
+    }
+
+    /**
+     * Créer un magasin et le stocker en base de données.
+     * @param donneesMagasin Un dictionnaire avec les données du magasin (nom et ville).
+     * @throws SQLException Exception SQL en cas d'erreur avec la BD ou s'il manque une information dans le dictionnaire.
+     */
+    public void creerMagasin(HashMap<String, String> donneesMagasin) throws SQLException {
+        List<String> clesRequises = new ArrayList<>(Arrays.asList("nom", "ville"));
+        for (String cle: clesRequises) {
+            if (!donneesMagasin.containsKey(cle)) {
+                throw new SQLException("Clé manquante dans les données : " + cle);
+            }
+        }
+
+        int maxMagasinId = this.getMaxMagasinId();
+
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("INSERT INTO MAGASIN(idmag, nommag, villemag) VALUES (?, ?, ?)");
+        statement.setInt(1, maxMagasinId + 1);
+        statement.setString(2, donneesMagasin.get("nom"));
+        statement.setString(3, donneesMagasin.get("ville"));
+
+        statement.executeUpdate();
+    }
+
+    /**
+     * Supprimer un magasin de la base de données.
+     * @param idMag L'identifiant du magasin
+     * @throws SQLException Exception SQL en cas de problème.
+     */
+    public void supprimerMagasin(String idMag) throws SQLException{
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("DELETE FROM MAGASIN where idmag = ?");
+        statement.setString(1, idMag);
+
+        statement.executeUpdate();
+    }
+
+    /**
      * Met à jour la quantité d'un livre dans un magasin.
      * @param id L'identifiant du magasin.
      * @param isbn L'ISBN du livre.
@@ -128,6 +184,5 @@ public class MagasinBD {
         statement.setString(3, isbn);
 
         statement.executeUpdate();
-        statement.close();
     }
 }

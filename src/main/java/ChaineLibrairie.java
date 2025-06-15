@@ -32,6 +32,7 @@ public class ChaineLibrairie {
     private PanierBD panierBD;
     private MagasinBD magasinBD;
     private VendeurBD vendeurBD;
+    private StatistiquesBD statistiquesBD;
 
     /**
      * Intiailiser la chaîne de librairie.
@@ -62,6 +63,7 @@ public class ChaineLibrairie {
         this.panierBD = new PanierBD(this, this.connexionMariaDB);
         this.magasinBD = new MagasinBD(this.connexionMariaDB);
         this.vendeurBD = new VendeurBD(this.connexionMariaDB);
+        this.statistiquesBD = new StatistiquesBD(this.connexionMariaDB);
     }
 
     /**
@@ -116,6 +118,15 @@ public class ChaineLibrairie {
      */
     public VendeurBD getVendeurBD() {
         return this.vendeurBD;
+    }
+
+    /**
+     * Obtenir la classe de la base de données pour les statistiques.
+     * 
+     * @return La classe de la base de données pour les statistiques.
+     */
+    public StatistiquesBD getStatistiquesBD() {
+        return this.statistiquesBD;
     }
 
     /**

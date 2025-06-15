@@ -796,7 +796,7 @@ public class App {
                     break;
                 }
                 case "c":{
-                    this.passerCommandePourClient(vendeur);
+                    // this.passerCommandePourClient(vendeur);
                     break;
                 }
                 case "t":{
@@ -1709,6 +1709,7 @@ public class App {
 	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
 	 */
 	public void dispoStock(Vendeur vendeur){
+		Magasin magasin = vendeur.getMagasin();
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());

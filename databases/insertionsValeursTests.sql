@@ -168,7 +168,13 @@ insert into ECRIRE(isbn,idauteur) values
 	('9780768939812', 'OL6835078A');
 
 -- les stocks de livres
--- TODO
+insert into POSSEDER(idmag, isbn, qte) values
+	(7, '9782205054750', 2),
+	(4, '9780446570992', 7),
+	(1, '9780340932056', 10),
+	(4, '9780768939866', 10),
+	(7, '9780768939866', 1),
+	(2, '9782205054750', 9);
 
 -- Les commandes
 insert into COMMANDE(numcom, datecom, enligne, livraison, idcli, idmag) values

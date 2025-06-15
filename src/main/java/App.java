@@ -826,7 +826,7 @@ public class App {
             this.afficherTexte("X: Suppression compte vendeur");
             this.afficherTexte("W: Suppression magasin");
             this.afficherTexte("M: Ajout magasin");
-            this.afficherTexte("G: Modification stock global");
+            this.afficherTexte("S: Modification stock global");
             this.afficherTexte("V: Statistiques de vente");
             this.afficherTexte("F: Exporter les factures en PDF");
             this.afficherTexte("Q: Retour");
@@ -857,7 +857,7 @@ public class App {
 
                     break;
                 } 
-                case "g": {
+                case "s": {
                     this.modifierStockGlobal();
                     break;
                 } 
@@ -1777,4 +1777,40 @@ public class App {
 			System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
 		}
 	}
+    /**
+     * Vendeur passe une commande pour un client
+     * @param vendeur
+     */
+    public void passerCommandePourClient(Vendeur vendeur){
+        try{
+            List<Client> clients= this.chaineLibrairie.getClientBD().obtenirListeClient();
+            ResultatSelection<Client> selectionClient= this.selectionnerElement(clients, 0, "Sélectionner le client pour la commande");
+            if (selectionClient == null) {return ;}
+
+            Client client= selectionClient.getElement();
+            //comment choisir le livre
+
+
+            this.afficherTexte("Entrez la quantité désirée: ");
+            Integer qte= this.obtenirEntreeNombreUtilisateur();
+            if (qte==null || qte<0) {
+	            System.err.println("Quantité invalide");
+	            return;}
+            
+
+            boolean confirmer= this.demanderConfirmation("Confirmer la commande ?");
+            if(!confirmer){
+                System.out.println("Commande annulée");
+                return;
+            }
+        }
+        this.chaineLibrairie.getCommandeBD().enregistrerCommande(client, null);
+
+        System.out.println("Commande enregistrée avec succès !");
+        
+    }
+    catch(SQLException e){
+            System.err.println("Une erreur est survenue lors de la commande" +e.getMessage());
+        }
+
 }

@@ -603,6 +603,7 @@ public class LivreBD {
             verifSiExiste.setString(2, isbn);
             ResultSet rs= verifSiExiste.executeQuery();
             existeDeja= rs.next();
+            rs.close();
 
         }
         try(PreparedStatement stInsert= this.connexionMariaDB.prepareStatement("INSERT INTO POSSEDER (idmag, isbn, qte) values(?,?,?)")){
@@ -610,12 +611,15 @@ public class LivreBD {
                 stInsert.setString(1, idMagasin);
                 stInsert.setString(2, isbn);
                 stInsert.setInt(3, nvellQte);
+                stInsert.executeUpdate();
             }
             else{
                 PreparedStatement stUpdate= this.connexionMariaDB.prepareStatement("UPDATE POSSEDER SET qte=? where idmag = ? and isbn= ?");
                 stUpdate.setInt(1, nvellQte);
                 stUpdate.setString(2, idMagasin);
                 stUpdate.setString(3, isbn);
+                stUpdate.executeUpdate();
+                stUpdate.close();
             }
         }
     }

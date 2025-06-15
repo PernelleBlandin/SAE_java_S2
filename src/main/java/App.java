@@ -1677,7 +1677,7 @@ public class App {
 	/**
 	 * Supprime un livre dnas le stock du magasin du vendeur
 	 */
-	public void supprimerLivre();{
+	public void supprimerLivre(){
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
@@ -1707,7 +1707,7 @@ public class App {
 	/**
 	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
 	 */
-	public void dispoStock();
+	public void dispoStock(){
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());
@@ -1739,7 +1739,7 @@ public class App {
 	/**
 	 * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
 	 */
-	public void majQuantite();
+	public void majQuantite(){
 		List<Livre> livresDisponibles = null;
 		try {
 			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(vendeur.getMagasin());

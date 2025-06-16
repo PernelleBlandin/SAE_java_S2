@@ -33,9 +33,8 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx</artifactId>
-            <version>25-ea+20</version>
-            <type>pom</type>
+            <artifactId>javafx-controls</artifactId>
+            <version>24.0.1</version>
         </dependency>
     </dependencies>
 

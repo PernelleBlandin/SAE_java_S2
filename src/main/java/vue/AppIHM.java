@@ -6,7 +6,10 @@ import java.util.Map;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 import modele.ChaineLibrairie;
+import vue.connection.ConnexionView;
+import vue.customers.CustomerHomeView;
 
 /** L'IHM de notre application */
 public class AppIHM extends Application {
@@ -39,8 +42,16 @@ public class AppIHM extends Application {
     /**
      * Changer de scène pour le mode connexion.
      */
-    public void modeConnexion(){
-        ConnexionView vue = new ConnexionView(this, this.chaineLibrairie);
+    public void showConnexion(){
+        ConnexionView vue = new ConnexionView(this);
+        this.primaryStage.setScene(vue.getScene());
+    }
+
+    /**
+     * Changer de scène pour le mode client.
+     */
+    public void showCustomer(){
+        CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
 
@@ -53,7 +64,7 @@ public class AppIHM extends Application {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Livre Express");
 
-        this.modeConnexion();
+        this.showConnexion();
         primaryStage.show();
     }
 

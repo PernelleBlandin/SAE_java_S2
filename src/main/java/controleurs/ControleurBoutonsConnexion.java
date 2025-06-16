@@ -15,22 +15,22 @@ public class ControleurBoutonsConnexion implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         Button bouton = (Button) event.getSource();
 
-        // String label = bouton.getText();
-        // switch (label) {
-        //     case "Client": {
-        //         this.app.modeClient();
-        //         break;
-        //     }
-        //     case "Vendeur": {
-        //         this.app.modeVendeur();
-        //         break;
-        //     }
-        //     case "Administrateur": {
-        //         this.app.modeAdministrateur();
-        //         break;
-        //     }
-        //     default:
-        //         break;
-        // }
+        String label = bouton.getText();
+        switch (label) {
+            case "Client": {
+                this.app.showCustomer();
+                break;
+            }
+            // case "Vendeur": {
+            //     this.app.modeVendeur();
+            //     break;
+            // }
+            // case "Administrateur": {
+            //     this.app.modeAdministrateur();
+            //     break;
+            // }
+            default:
+                break;
+        }
     }
 }

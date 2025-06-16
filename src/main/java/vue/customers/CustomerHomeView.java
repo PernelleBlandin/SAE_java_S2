@@ -1,11 +1,16 @@
 package vue.customers;
 
+import controleurs.ControleurDeconnexion;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import modeles.ChaineLibrairie;
 import vue.AppIHM;
+import vue.BibliothequeComposants;
 
 /** La vue de l'accueil d'un client */
 public class CustomerHomeView {
@@ -26,8 +31,10 @@ public class CustomerHomeView {
         this.app = app;
 
         BorderPane root = new BorderPane();
+        root.setStyle("-fx-background-color: #ffffff;");
+        root.setPrefSize(1920, 1080);
 
-        VBox header = this.getHeader();
+        HBox header = this.getHeader();
         root.setTop(header);
         
         this.scene = new Scene(root);
@@ -37,10 +44,26 @@ public class CustomerHomeView {
      * Obtenir le header du menu client.
      * @return Le header du menu client.
      */
-    public VBox getHeader() {
-        VBox root = new VBox();
+    public HBox getHeader() {
+        HBox root = new HBox();
 
-        root.getChildren().addAll(new Label("test"));
+        ImageView logo = new ImageView("/images/logo.png");
+        logo.setFitWidth(304.6);
+        logo.setFitHeight(91.2);
+
+        Button buttonLogo = new Button();
+        buttonLogo.setAlignment(Pos.CENTER);
+        buttonLogo.setStyle("-fx-background-color: transparent;");
+        buttonLogo.setGraphic(logo);
+
+        TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
+
+        Button panierButton = new Button("Panier");
+
+        Button deconnexionButton = new Button("Déconnexion");
+        deconnexionButton.setOnAction(new ControleurDeconnexion(this.app));
+
+        root.getChildren().addAll(buttonLogo, searchBar, panierButton, deconnexionButton);
 
         return root;
     }

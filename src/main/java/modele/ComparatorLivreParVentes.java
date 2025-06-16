@@ -1,3 +1,4 @@
+package modele;
 import java.util.Comparator;
 
 /** Comparer deux livre par rapport à leurs nombre de ventes */

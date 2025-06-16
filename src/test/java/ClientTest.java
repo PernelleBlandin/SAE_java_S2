@@ -9,6 +9,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import modele.Client;
+import modele.Commande;
+import modele.DetailLivre;
+import modele.Livre;
+import modele.Magasin;
+import modele.Panier;
+
 public class ClientTest {
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");

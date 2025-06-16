@@ -1,3 +1,4 @@
+package modele;
 /** Un magasin de la chaîne de librairie */
 public class Magasin {
     private String id;

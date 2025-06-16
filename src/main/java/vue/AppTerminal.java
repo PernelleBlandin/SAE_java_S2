@@ -1,3 +1,4 @@
+package vue;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,11 +7,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import modele.ChaineLibrairie;
+import modele.Client;
+import modele.Commande;
+import modele.DetailLivre;
+import modele.Livre;
+import modele.LivreIntrouvableException;
+import modele.Magasin;
+import modele.Panier;
+import modele.PasDeCommandeException;
+import modele.ResultatSelection;
+import modele.Vendeur;
+
 /**
  * L'application sous le format ligne de commandes.
  */
 
-public class App {
+public class AppTerminal {
     private ChaineLibrairie chaineLibrairie;
     private int longueurAffichage;
 
@@ -18,7 +31,7 @@ public class App {
      * Créer l'application en ligne de commandes.
      * @param chaineLibrairie La chaîne de librairie.
      */
-    public App(ChaineLibrairie chaineLibrairie) {
+    public AppTerminal(ChaineLibrairie chaineLibrairie) {
         this.longueurAffichage = 100;
         this.chaineLibrairie = chaineLibrairie;
     }
@@ -58,7 +71,7 @@ public class App {
      */
     public void afficherTitre(String titre) {
         this.afficherTitreDebut();
-        this.afficherTexteCentrer(App.truncate(titre, this.longueurAffichage - 4));
+        this.afficherTexteCentrer(AppTerminal.truncate(titre, this.longueurAffichage - 4));
         this.afficherSeperateurMilieu();
     }
 
@@ -71,7 +84,7 @@ public class App {
         int margeFin = margeDebut;
         if (texte.length() % 2 != 0) margeFin++;
 
-        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", App.truncate(texte, this.longueurAffichage - 4), "") + " │");
+        System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", AppTerminal.truncate(texte, this.longueurAffichage - 4), "") + " │");
     }
 
     /**
@@ -79,7 +92,7 @@ public class App {
      * @param texte Un texte.
      */
     public void afficherTexte(String texte) {
-        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", App.truncate(texte, this.longueurAffichage - 4)));
+        System.out.println(String.format("| %-" + (this.longueurAffichage - 4) + "s |", AppTerminal.truncate(texte, this.longueurAffichage - 4)));
     }
 
     /**

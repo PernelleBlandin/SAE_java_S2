@@ -1,3 +1,4 @@
+package modele;
 import java.util.Comparator;
 import java.util.HashMap;
 

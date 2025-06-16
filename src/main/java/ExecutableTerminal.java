@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import modele.ChaineLibrairie;
+import vue.AppTerminal;
+
 /** L'exécutable de l'application. */
-public class Executable {
+public class ExecutableTerminal {
     /** L'exécutable de l'application. */
-    public Executable() {}
+    public ExecutableTerminal() {}
 
     /**
      * Lancer l'application.
@@ -34,7 +37,7 @@ public class Executable {
         // Initialisation de la chaîne de librairie
         ChaineLibrairie chaineLibrairie = new ChaineLibrairie(bdHost, bdBase, bdLogin, bdPassword);
 
-        App app = new App(chaineLibrairie);
+        AppTerminal app = new AppTerminal(chaineLibrairie);
         app.run();
     }
 }

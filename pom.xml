@@ -75,7 +75,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Executable</mainClass>
+                            <mainClass>ExecutableTerminal</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

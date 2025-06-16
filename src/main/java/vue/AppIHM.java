@@ -40,7 +40,7 @@ public class AppIHM extends Application {
         String bdPassword = arguments.getOrDefault("bd-password", "gautier");
 
         // Initialisation de la chaîne de librairie
-        this.chaineLibrairie = new ChaineLibrairie(bdHost, bdBase, bdLogin, bdPassword);
+        // this.chaineLibrairie = new ChaineLibrairie(bdHost, bdBase, bdLogin, bdPassword);
     }
 
     /**

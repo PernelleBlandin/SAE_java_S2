@@ -9,10 +9,10 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
-import modele.Commande;
-import modele.DetailLivre;
-import modele.Livre;
-import modele.Magasin;
+import modeles.Commande;
+import modeles.DetailLivre;
+import modeles.Livre;
+import modeles.Magasin;
 
 public class CommandeTest {
     private Livre livre1 = new Livre(

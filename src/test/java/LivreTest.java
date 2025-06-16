@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import modele.Livre;
+import modeles.Livre;
 
 public class LivreTest {
     private Livre livre1 = new Livre(

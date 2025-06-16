@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 /** Une personne */
 public abstract class Personne {
     private int id;

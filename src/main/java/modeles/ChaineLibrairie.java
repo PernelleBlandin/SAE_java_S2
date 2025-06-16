@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 import java.util.List;
 import java.util.Set;
 

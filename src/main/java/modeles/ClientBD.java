@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

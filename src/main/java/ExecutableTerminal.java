@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import modele.ChaineLibrairie;
+import modeles.ChaineLibrairie;
 import vue.AppTerminal;
 
 /** L'exécutable de l'application. */

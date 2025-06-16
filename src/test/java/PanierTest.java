@@ -9,11 +9,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modele.DetailLivre;
-import modele.Livre;
-import modele.LivreIntrouvableException;
-import modele.Magasin;
-import modele.Panier;
+import modeles.DetailLivre;
+import modeles.Livre;
+import modeles.LivreIntrouvableException;
+import modeles.Magasin;
+import modeles.Panier;
 
 public class PanierTest {
     private Livre livre1 = new Livre(

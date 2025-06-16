@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 /**
  * Le résultat d'une sélection dans une liste de pages.
  * Aide type génériques classe : https://www.geeksforgeeks.org/generic-class-in-java/

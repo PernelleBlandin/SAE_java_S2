@@ -2,7 +2,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import modele.Magasin;
+import modeles.Magasin;
 
 public class MagasinTest {
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");

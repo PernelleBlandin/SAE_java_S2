@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 /** Un vendeur */
 public class Vendeur extends Personne {
     private Magasin magasin;

@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import modele.ChaineLibrairie;
-import modele.Client;
-import modele.Commande;
-import modele.DetailLivre;
-import modele.Livre;
-import modele.LivreIntrouvableException;
-import modele.Magasin;
-import modele.Panier;
-import modele.PasDeCommandeException;
-import modele.ResultatSelection;
-import modele.Vendeur;
+import modeles.ChaineLibrairie;
+import modeles.Client;
+import modeles.Commande;
+import modeles.DetailLivre;
+import modeles.Livre;
+import modeles.LivreIntrouvableException;
+import modeles.Magasin;
+import modeles.Panier;
+import modeles.PasDeCommandeException;
+import modeles.ResultatSelection;
+import modeles.Vendeur;
 
 /**
  * L'application sous le format ligne de commandes.

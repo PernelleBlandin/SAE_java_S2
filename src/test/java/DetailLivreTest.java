@@ -5,8 +5,8 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
-import modele.DetailLivre;
-import modele.Livre;
+import modeles.DetailLivre;
+import modeles.Livre;
 
 public class DetailLivreTest {
     private Livre livre1 = new Livre(

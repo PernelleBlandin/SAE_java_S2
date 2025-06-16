@@ -6,8 +6,7 @@ import java.util.Map;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import modele.ChaineLibrairie;
+import modeles.ChaineLibrairie;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerHomeView;
 

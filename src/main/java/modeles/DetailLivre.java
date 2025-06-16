@@ -1,4 +1,4 @@
-package modele;
+package modeles;
 /** Les détails d'un livre, dans le cadre d'une commande ou d'un panier client */
 public class DetailLivre {
     private Livre livre;

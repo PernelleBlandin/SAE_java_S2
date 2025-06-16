@@ -7,12 +7,14 @@ import javafx.scene.layout.VBox;
 import modele.ChaineLibrairie;
 import vue.AppIHM;
 
+/** La vue de l'accueil d'un client */
 public class CustomerHomeView {
     /** La vue principal */
     private AppIHM app;
     /** Le modèle */
     private ChaineLibrairie modele;
 
+    /** La scène de la vue */
     private Scene scene;
 
     /**
@@ -31,6 +33,10 @@ public class CustomerHomeView {
         this.scene = new Scene(root);
     }
 
+    /**
+     * Obtenir le header du menu client.
+     * @return Le header du menu client.
+     */
     public VBox getHeader() {
         VBox root = new VBox();
 

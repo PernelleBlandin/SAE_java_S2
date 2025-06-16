@@ -13,10 +13,15 @@ import vue.customers.CustomerHomeView;
 
 /** L'IHM de notre application */
 public class AppIHM extends Application {
+    /** Le modèle */
     private ChaineLibrairie chaineLibrairie;
+    /** Le stage principal */
     private Stage primaryStage;
 
     @Override
+    /**
+     * Initialiser l'application IHM.
+     */
     public void init() {
         // Obtention des arguments pour la connexion avec la BD
         Map<String, String> arguments = new HashMap<>();
@@ -56,8 +61,8 @@ public class AppIHM extends Application {
     }
 
     /**
-     * créer le graphe de scène et lance le jeu
-     * @param stage la fenêtre principale
+     * Créer le graphe de scène et lance l'application.
+     * @param stage La fenêtre principale.
      */
     @Override
     public void start(Stage stage) {

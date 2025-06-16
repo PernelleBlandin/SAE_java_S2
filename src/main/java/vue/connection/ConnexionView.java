@@ -48,6 +48,10 @@ public class ConnexionView {
         this.scene = new Scene(root);
     }
 
+    /**
+     * Obtenir la VBox de connexion, permettant de choisir le mode de connexion (Client/Vendeur/Administrateur).
+     * @return La VBox de connexion.
+     */
     private VBox getConnexionBox() {
         VBox root = new VBox();
 

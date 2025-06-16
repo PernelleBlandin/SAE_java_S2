@@ -1,5 +1,6 @@
 package vue;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
+import modeles.Client;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerHomeView;
 
@@ -40,7 +42,7 @@ public class AppIHM extends Application {
         String bdPassword = arguments.getOrDefault("bd-password", "gautier");
 
         // Initialisation de la chaîne de librairie
-        // this.chaineLibrairie = new ChaineLibrairie(bdHost, bdBase, bdLogin, bdPassword);
+        this.chaineLibrairie = new ChaineLibrairie(bdHost, bdBase, bdLogin, bdPassword);
     }
 
     /**
@@ -55,8 +57,15 @@ public class AppIHM extends Application {
      * Changer de scène pour le mode client.
      */
     public void showCustomer(){
-        CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie);
-        this.primaryStage.setScene(vue.getScene());
+        // TODO: Voir pour client
+        try {
+            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie, client);
+            this.primaryStage.setScene(vue.getScene());
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
+            return;
+        }
     }
 
     /**

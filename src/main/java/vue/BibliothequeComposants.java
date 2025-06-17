@@ -41,6 +41,7 @@ public class BibliothequeComposants {
         root.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
         root.setPromptText(placeholder);
         root.setMinHeight(50);
+        root.setPrefWidth(18*50);
 
         return root;
     }
@@ -55,8 +56,8 @@ public class BibliothequeComposants {
      */
     public static BorderPane getBookCardSeller(Livre livre, ChaineLibrairie modele, MAJVueInterface app) throws SQLException {
         BorderPane root = new BorderPane();
-        root.setMinWidth(250);
-        root.setPrefWidth(250);
+        root.setMinWidth(100);
+        root.setPrefWidth(100);
 
         root.setStyle("-fx-border-color: black");
         root.setPadding(new Insets(10));

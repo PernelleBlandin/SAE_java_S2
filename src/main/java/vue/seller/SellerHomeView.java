@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.ControleurAcceuilVendeur;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurVoirPlusSeller;
 import javafx.geometry.HPos;
@@ -101,7 +102,7 @@ public class SellerHomeView implements MAJVueInterface {
         logo.setFitHeight(91.2);
         Button boutonLogo = new Button();
         boutonLogo.setGraphic(logo);
-        // TODO METTRE LA CLASSE RETOURACCUEIL DANS LE SET boutonLogo.setOnAction();
+        boutonLogo.setOnAction(new ControleurAcceuilVendeur(this.app));
 
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
@@ -109,7 +110,7 @@ public class SellerHomeView implements MAJVueInterface {
         buttonLogo.setGraphic(logo);
 
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
-        
+        HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);
@@ -148,7 +149,7 @@ public class SellerHomeView implements MAJVueInterface {
         // rpClient.setOnAction(new ControleurAgirCommeClient(this.app));
 
         left.getChildren().addAll(ajouterLivre, supprimerLivre, majQteLivre, transfertLivre, rpClient);
-        left.setPadding(new Insets(30, 50, 0, 10));
+        left.setPadding(new Insets(30, 50, 0, 15));
 
         return left;
     }
@@ -259,8 +260,8 @@ public class SellerHomeView implements MAJVueInterface {
         return vbox;
     }
 
-    public void showListBooks(List<Livre> listeLivres) {
-        SellerListBook vue = new SellerListBook(this, this.modele, listeLivres);
+    public void showListBooks(String titre, List<Livre> listeLivres) {
+        SellerListBook vue = new SellerListBook(this, this.modele, titre, listeLivres );
         this.app.getPrimaryStage().setScene(vue.getScene());
     }
     /**
@@ -280,5 +281,9 @@ public class SellerHomeView implements MAJVueInterface {
      */
     public Scene getScene() {
         return this.scene;
+    }
+
+    public AppIHM getApp() {
+        return this.app;
     }
 }

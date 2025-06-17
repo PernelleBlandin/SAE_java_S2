@@ -80,7 +80,7 @@ public class AppIHM extends Application {
         this.primaryStage.setScene(vue.getScene());
     }
 
-    public void modeVendeur(){
+    public void showSeller(){
         try {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
             this.chaineLibrairie.setVendeurActuel(vendeur);

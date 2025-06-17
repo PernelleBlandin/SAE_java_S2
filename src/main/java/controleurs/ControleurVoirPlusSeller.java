@@ -11,6 +11,8 @@ import vue.seller.SellerHomeView;
 public class ControleurVoirPlusSeller implements EventHandler<ActionEvent> {
     /** Vue de l'acceuil de la page vendeur */
     SellerHomeView sellerHomeView;
+    /** Le titre du menu */
+    private String titre;
     /** Une liste de livres */
     private List<Livre> listeLivres;
 
@@ -30,6 +32,6 @@ public class ControleurVoirPlusSeller implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        this.sellerHomeView.showListBooks(this.listeLivres);
+        this.sellerHomeView.showListBooks(this.titre, this.listeLivres);
     }
 }

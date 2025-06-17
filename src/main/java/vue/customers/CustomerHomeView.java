@@ -30,13 +30,12 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
-import modeles.Panier;
 import vue.AppIHM;
 import vue.BibliothequeComposants;
-import vue.MAJVueInterface;
+import vue._components.BookCardComponent;
 
 /** La vue de l'accueil d'un client */
-public class CustomerHomeView implements MAJVueInterface {
+public class CustomerHomeView {
     /** La vue principal */
     private AppIHM app;
     /** Le modèle */
@@ -102,8 +101,7 @@ public class CustomerHomeView implements MAJVueInterface {
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
         HBox.setHgrow(searchBar, Priority.ALWAYS);
 
-        Panier panier = this.modele.getClientActuel().getPanier();
-        Button panierButton = new Button(String.format("Panier (%d)", panier.getDetailLivres().size()));
+        Button panierButton = new Button("Panier");
         panierButton.setMinSize(70, 30);
         
         Button deconnexionButton = new Button("Déconnexion");
@@ -206,16 +204,12 @@ public class CustomerHomeView implements MAJVueInterface {
         HBox livresRecommendes = new HBox();
         livresRecommendes.setSpacing(20);
 
-        try {
-            for (int i = 0; i < livres.size() && i < 4; i++) {
-                Livre livre = livres.get(i);
-                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
-                
-                HBox.setHgrow(bookCard, Priority.ALWAYS);
-                livresRecommendes.getChildren().add(bookCard);
-            }
-        } catch (SQLException e) {
-            // TODO: handle exception
+        for (int i = 0; i < livres.size() && i < 4; i++) {
+            Livre livre = livres.get(i);
+            BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
+            
+            HBox.setHgrow(bookCard, Priority.ALWAYS);
+            livresRecommendes.getChildren().add(bookCard);
         }
 
         vbox.getChildren().addAll(recommendationsVBox, livresRecommendes);
@@ -242,16 +236,12 @@ public class CustomerHomeView implements MAJVueInterface {
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
 
-        try {
-            for (int i = 0; i < livres.size() && i < 4; i++) {
-                Livre livre = livres.get(i);
-                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
-                
-                HBox.setHgrow(bookCard, Priority.ALWAYS);
-                topLivresVentes.getChildren().add(bookCard);
-            }
-        } catch (SQLException e) {
-            // TODO: handle exception
+        for (int i = 0; i < livres.size() && i < 4; i++) {
+            Livre livre = livres.get(i);
+            BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
+            
+            HBox.setHgrow(bookCard, Priority.ALWAYS);
+            topLivresVentes.getChildren().add(bookCard);
         }
 
         vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
@@ -266,17 +256,6 @@ public class CustomerHomeView implements MAJVueInterface {
     public void showListBooks(String titre, List<Livre> listeLivres) {
         CustomerListBook vue = new CustomerListBook(this, this.modele, titre, listeLivres);
         this.app.getPrimaryStage().setScene(vue.getScene());
-    }
-
-    /**
-     * Mettre à jour l'affichage
-     */
-    public void miseAJourAffichage() {
-        this.header = this.getHeader();
-        this.root.setTop(this.header);
-
-        this.center = this.getCenter();
-        this.root.setCenter(this.center);
     }
 
     /**

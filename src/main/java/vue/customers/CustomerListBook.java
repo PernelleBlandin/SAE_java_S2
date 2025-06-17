@@ -1,6 +1,5 @@
 package vue.customers;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import controleurs.ControleurAcceuilClient;
@@ -18,9 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-
-import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
+import vue._components.BookCardComponent;
 
 /** Page d'une liste de livres */
 public class CustomerListBook implements MAJVueInterface {
@@ -119,13 +117,10 @@ public class CustomerListBook implements MAJVueInterface {
                 if (index >= this.listeLivres.size()) break;
 
                 Livre livre = this.listeLivres.get(index);
-                try {
-                    BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
-                    HBox.setHgrow(bookCard, Priority.ALWAYS);
-                    hboxLigne.getChildren().add(bookCard);
-                } catch (SQLException e) {
-                    // TODO: handle exception
-                }
+
+                BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
+                HBox.setHgrow(bookCard, Priority.ALWAYS);
+                hboxLigne.getChildren().add(bookCard);
             }
             center.getChildren().add(hboxLigne);
         }

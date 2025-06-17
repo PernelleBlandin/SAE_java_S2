@@ -9,11 +9,11 @@ import modeles.Client;
 import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.Panier;
-import vue.MAJVueInterface;
+import vue._components.BookCardComponent;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
 public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
-    private MAJVueInterface app;
+    private BookCardComponent component;
     private ChaineLibrairie modele;
     private Livre livre;
 
@@ -23,8 +23,8 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
      * @param modele Le modèle.
      * @param livre Le livre à ajouter.
      */
-    public ControleurAjouterPanier(MAJVueInterface app, ChaineLibrairie modele, Livre livre) {
-        this.app = app;
+    public ControleurAjouterPanier(BookCardComponent component, ChaineLibrairie modele, Livre livre) {
+        this.component = component;
         this.modele = modele;
         this.livre = livre;
     }
@@ -47,6 +47,8 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
             return;
         }
 
-        this.app.miseAJourAffichage();
+        int curQuantiteStock = this.component.getQuantite();
+        this.component.setQuantite(curQuantiteStock - 1);
+        this.component.miseAJourAffichage();
     }
 }

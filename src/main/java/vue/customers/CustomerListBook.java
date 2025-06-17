@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
@@ -78,6 +79,7 @@ public class CustomerListBook implements MAJVueInterface {
                 Livre livre = this.listeLivres.get(index);
                 try {
                     BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
+                    HBox.setHgrow(bookCard, Priority.ALWAYS);
                     hboxLigne.getChildren().add(bookCard);
                 } catch (SQLException e) {
                     // TODO: handle exception

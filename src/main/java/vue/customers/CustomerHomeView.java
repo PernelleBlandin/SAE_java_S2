@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import controleurs.ControleurAcceuilClient;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurVoirPlus;
 import javafx.geometry.HPos;
@@ -84,6 +85,7 @@ public class CustomerHomeView implements MAJVueInterface {
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
+        buttonLogo.setOnAction(new ControleurAcceuilClient(this.app));
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
@@ -177,8 +179,6 @@ public class CustomerHomeView implements MAJVueInterface {
     private VBox getRecommendations() {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
-
-
 
         Client client = this.modele.getClientActuel();
         List<Livre> livres = new ArrayList<>();

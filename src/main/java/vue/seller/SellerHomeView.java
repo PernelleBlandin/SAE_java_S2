@@ -43,6 +43,8 @@ public class SellerHomeView implements MAJVueInterface {
     private BorderPane root;
     /** VBox Central */
     private VBox center;
+    /** VBox a gauche */
+    private VBox left;
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
@@ -61,6 +63,9 @@ public class SellerHomeView implements MAJVueInterface {
 
         this.center = this.getCenter();
         this.root.setCenter(center);
+
+        this.left = this.getLeft();
+        this.root.setLeft(left);
         
         this.scene = new Scene(this.root);
     }
@@ -153,7 +158,6 @@ public class SellerHomeView implements MAJVueInterface {
         magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();
-        magasinComboBox.getItems().addAll(listeMagasins);
         magasinComboBox.setValue(vendeur.getMagasin());
         magasinComboBox.setMaxWidth(Double.MAX_VALUE);
 
@@ -201,7 +205,7 @@ public class SellerHomeView implements MAJVueInterface {
 
         List<Livre> livres = new ArrayList<>();
         try {
-            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes(5);
+            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
         } catch (SQLException e) {
             // TODO: handle exception
         }
@@ -230,6 +234,8 @@ public class SellerHomeView implements MAJVueInterface {
      */
     public void miseAJourAffichage() {
         this.center = this.getCenter();
+        this.left = this.getLeft();
+        this.root.setLeft(this.left);
         this.root.setCenter(this.center);
     }
 

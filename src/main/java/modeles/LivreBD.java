@@ -95,19 +95,16 @@ public class LivreBD {
 
     /**
      * Obtenir les meilleures ventes nationales.
-     * @param nbLivres Le nombre de livres retournés.
      * @return Les meilleures livres vendus.
      * @throws SQLException Exception SQL en cas d'erreur.
      */
-    public List<Livre> obtenirLivresMeilleuresVentes(int nbLivres) throws SQLException {
+    public List<Livre> obtenirLivresMeilleuresVentes() throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT isbn, COUNT(numcom) nbVentes
             FROM LIVRE NATURAL JOIN DETAILCOMMANDE
             GROUP BY isbn
-            ORDER BY nbVentes DESC
-            LIMIT ?;
+            ORDER BY nbVentes DESC;
         """);
-        statement.setInt(1, nbLivres);
 
         ResultSet result = statement.executeQuery();
 
@@ -118,6 +115,7 @@ public class LivreBD {
             livres.add(livre);
         }
         result.close();
+        
         return livres;
     }
 

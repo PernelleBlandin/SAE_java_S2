@@ -2,27 +2,28 @@ package controleurs;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue.MAJVueInterface;
+import vue.customers.CustomerHomeView;
 
+/** Contrôleur du bouton "Info" sur un livre */
 public class ControleurInfoLivre implements EventHandler<ActionEvent> {
-    private MAJVueInterface app;
-    private ChaineLibrairie modele;
+    /** Un livre */
     private Livre livre;
 
-    public ControleurInfoLivre(MAJVueInterface app, ChaineLibrairie modele, Livre livre) {
-        this.app = app;
-        this.modele = modele;
+    /**
+     * Initialiser le contrôleur d'info de livres.
+     * @param livre Un livre.
+     */
+    public ControleurInfoLivre(Livre livre) {
         this.livre = livre;
     }
 
     @Override
+    /**
+     * Récupère les informations d'un clic sur le bouton "Info" pour afficher une pop-up.
+     * @param event Un événement.
+     */
     public void handle(ActionEvent event) {
-        // TODO
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.showAndWait();
+        CustomerHomeView.sendAlertInfoLivre(this.livre);
     }
 }

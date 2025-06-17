@@ -46,6 +46,14 @@ public class AppIHM extends Application {
     }
 
     /**
+     * Obtenir le stage principal de l'IHM.
+     * @return Le stage principal de l'IHM.
+     */
+    public Stage getPrimaryStage() {
+        return this.primaryStage;
+    }
+
+    /**
      * Changer de scène pour le mode connexion.
      */
     public void showConnexion(){

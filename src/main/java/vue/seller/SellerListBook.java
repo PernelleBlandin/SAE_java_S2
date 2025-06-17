@@ -18,7 +18,7 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import vue.MAJVueInterface;
-import vue._components.BookCardComponent;
+import vue._components.BookCardComponentSeller;
 
 /** Page d'une liste de livres */
 public class SellerListBook implements MAJVueInterface {
@@ -118,7 +118,7 @@ public class SellerListBook implements MAJVueInterface {
 
                 Livre livre = this.listeLivres.get(index);
 
-                BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
+                BorderPane bookCard = new BookCardComponentSeller(livre, 3);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }

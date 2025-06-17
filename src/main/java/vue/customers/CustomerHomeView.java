@@ -52,7 +52,6 @@ public class CustomerHomeView {
 
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #ffffff;");
-        root.setPrefSize(1920, 1080);
 
         HBox header = this.getHeader();
         root.setTop(header);

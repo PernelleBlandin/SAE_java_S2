@@ -91,8 +91,8 @@ public class AppIHM extends Application {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Livre Express");
 
-        this.primaryStage.setWidth(1920);
-        this.primaryStage.setHeight(1080);
+        this.primaryStage.setWidth(1280);
+        this.primaryStage.setHeight(720);
 
         this.showConnexion();
         primaryStage.show();

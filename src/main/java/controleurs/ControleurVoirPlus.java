@@ -15,7 +15,7 @@ public class ControleurVoirPlus implements EventHandler<ActionEvent> {
     private List<Livre> listeLivres;
 
     /**
-     * Initialiser le contrôleur du bouton "Voir plus", affichant une oliste de livres.
+     * Initialiser le contrôleur du bouton "Voir plus", affichant une liste de livres.
      * @param customerHomeView La vue de l'acceuil de la page client.
      * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
      */
@@ -23,9 +23,13 @@ public class ControleurVoirPlus implements EventHandler<ActionEvent> {
         this.customerHomeView = customerHomeView;
         this.listeLivres = listeLivres;
     }
+
     @Override
+    /**
+     * Recevoir un événement lors du clic sur le bouton "Voir plus", pour afficher une liste de livres.
+     * @param event Un événement.
+     */
     public void handle(ActionEvent event) {
-        System.out.println("aaa");
         this.customerHomeView.showListBooks(this.listeLivres);
     }
 }

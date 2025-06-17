@@ -16,10 +16,13 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
@@ -155,6 +158,10 @@ public Scene getScene() {
         
     }
 
+/**
+     * TilePane à mettre au centre du BorderPane quand on change sa partie centrale en mode statistique.
+     * @return centre Le TilePane
+     */
     public TilePane fenetreStat() {
         TilePane centre = new TilePane();
 
@@ -175,10 +182,21 @@ public Scene getScene() {
         //PieChart
         PieChart pieChartParTheme= new PieChart();
         pieChartParTheme.setTitle("Chiffre d'affaire 2024 par thème");
-        Map <String, Double> dataParTheme= this.modele.getStatistiquesBD().getCA2024ParTheme();
-
+        try{
+            Map <String, Double> dataParTheme = this.modele.getStatistiquesBD().getCA2024ParTheme();
+            for(String key: dataParTheme.keySet()){
+                PieChart.Data categorie=new PieChart.Data(key, dataParTheme.get(key));
+                pieChartParTheme.getData().add(categorie);
+        }
+        //pieChartParTheme.setLegendSide(side.RIGHT);
+        }catch (SQLException e){
+            // TODO: handle exception
+            
+        }
 
         //AreaChart
+        AreaChart areaChartCAParChart = new AreaChart();
+
 
         //LineChart
 
@@ -189,11 +207,48 @@ public Scene getScene() {
         //PieChart
 
         //LineChart
+        centre.getChildren().addAll(pieChartParTheme);
         return centre;
         }
 
+    /**
+     * VBox à mettre au centre du BorderPane quand on change sa partie centrale en mode facture.
+     * @return centre La VBox
+     */
+    //A finir d'implementer avec le popup et récup les donner de la fact
+    public VBox fenetreFacture() {
+        VBox centre = new VBox(20);
+
+        Label sousTitre = new Label("Exporter des factures");
+
+
+        HBox lesTF = new HBox();
+        TextField moisTF = new TextField();
+        moisTF.setText("Mois");
+
+        TextField anneeTF = new TextField();
+        moisTF.setText("Année");
+        lesTF.getChildren().addAll(moisTF, anneeTF);
         
+
+        Button btnExporter = new Button("Exporter");
+
+        centre.getChildren().addAll(sousTitre, lesTF, btnExporter);
+
+        return centre;
+    }
         
+    /**
+     * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
+     * @return lesMag La VBox
+     */
+    public VBox fenetreGestionMagasins() {
+        VBox lesMag = new VBox(10);
+
+        
+
+        return lesMag;
+    }
         
 
     public void modeStat() {
@@ -209,7 +264,7 @@ public Scene getScene() {
     // }
 
     // public void modeGestionVendeurs() {
-    //     this.root.setCenter(fenetregestionVendeurs());
+    //     this.root.setCenter(fenetreGestionVendeurs());
     // }
 
     // public void modeStocksSelectMag() {

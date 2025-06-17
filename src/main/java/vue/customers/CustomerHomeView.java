@@ -30,6 +30,7 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
+import modeles.Panier;
 import vue.AppIHM;
 import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
@@ -46,6 +47,8 @@ public class CustomerHomeView implements MAJVueInterface {
 
     /** La scène principal */
     private BorderPane root;
+    /** Le header */
+    private HBox header;
     /** VBox Central */
     private VBox center;
 
@@ -61,13 +64,21 @@ public class CustomerHomeView implements MAJVueInterface {
         this.root = new BorderPane();
         this.root.setStyle("-fx-background-color: #ffffff;");
 
-        HBox header = this.getHeader();
-        this.root.setTop(header);
+        this.header = this.getHeader();
+        this.root.setTop(this.header);
 
         this.center = this.getCenter();
-        this.root.setCenter(center);
+        this.root.setCenter(this.center);
         
         this.scene = new Scene(this.root);
+    }
+
+    /**
+     * Obtenir l'application principale.
+     * @return L'application principale.
+     */
+    public AppIHM getApp() {
+        return this.app;
     }
 
     /**
@@ -90,8 +101,9 @@ public class CustomerHomeView implements MAJVueInterface {
         
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
         HBox.setHgrow(searchBar, Priority.ALWAYS);
-        
-        Button panierButton = new Button("Panier");
+
+        Panier panier = this.modele.getClientActuel().getPanier();
+        Button panierButton = new Button(String.format("Panier (%d)", panier.getDetailLivres().size()));
         panierButton.setMinSize(70, 30);
         
         Button deconnexionButton = new Button("Déconnexion");
@@ -152,20 +164,21 @@ public class CustomerHomeView implements MAJVueInterface {
 
     /**
      * Obtenir le titre d'une section, avec un bouton "Voir tout".
-     * @param titre Le titre de la section.
+     * @param titreSection Le titre de la section.
+     * @param titreListe Le titre du menu après le bouton "Voir tout".
      * @return La section, avec son titre et un bouton "Voir tout".
      */
-    private GridPane getSectionTitle(String titre, List<Livre> listeLivres) {
+    private GridPane getSectionTitle(String titreSection, String titreListe, List<Livre> listeLivres) {
         GridPane section = new GridPane();
         section.setPadding(new Insets(20, 0, 0, 0));
 
-        Label titleLabel = new Label(titre);
+        Label titleLabel = new Label(titreSection);
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         GridPane.setHgrow(titleLabel, Priority.ALWAYS);
         section.add(titleLabel, 0, 0);
         
         Button viewAllButton = new Button("Voir tout");
-        viewAllButton.setOnAction(new ControleurVoirPlus(this, listeLivres));
+        viewAllButton.setOnAction(new ControleurVoirPlus(this, titreListe, listeLivres));
         GridPane.setHalignment(viewAllButton, HPos.RIGHT);
         section.add(viewAllButton, 1, 0);
         
@@ -188,7 +201,7 @@ public class CustomerHomeView implements MAJVueInterface {
             // TODO: handle exception
         }
 
-        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande", livres);
+        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande", "Recommandations", livres);
 
         HBox livresRecommendes = new HBox();
         livresRecommendes.setSpacing(20);
@@ -224,7 +237,7 @@ public class CustomerHomeView implements MAJVueInterface {
             // TODO: handle exception
         }
 
-        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes", livres);
+        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes", "Liste des meilleures Ventes", livres);
 
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
@@ -247,10 +260,11 @@ public class CustomerHomeView implements MAJVueInterface {
 
     /**
      * Afficher la page affichant la liste de livres.
+     * @param titre Le titre du menu.
      * @param listeLivres Une liste de livres.
      */
-    public void showListBooks(List<Livre> listeLivres) {
-        CustomerListBook vue = new CustomerListBook(this, this.modele, listeLivres);
+    public void showListBooks(String titre, List<Livre> listeLivres) {
+        CustomerListBook vue = new CustomerListBook(this, this.modele, titre, listeLivres);
         this.app.getPrimaryStage().setScene(vue.getScene());
     }
 
@@ -258,6 +272,9 @@ public class CustomerHomeView implements MAJVueInterface {
      * Mettre à jour l'affichage
      */
     public void miseAJourAffichage() {
+        this.header = this.getHeader();
+        this.root.setTop(this.header);
+
         this.center = this.getCenter();
         this.root.setCenter(this.center);
     }

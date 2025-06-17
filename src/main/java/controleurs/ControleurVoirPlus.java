@@ -11,6 +11,8 @@ import vue.customers.CustomerHomeView;
 public class ControleurVoirPlus implements EventHandler<ActionEvent> {
     /** Vue de l'acceuil de la page client */
     private CustomerHomeView customerHomeView;
+    /** Le titre du menu */
+    private String titre;
     /** Une liste de livres */
     private List<Livre> listeLivres;
 
@@ -19,8 +21,9 @@ public class ControleurVoirPlus implements EventHandler<ActionEvent> {
      * @param customerHomeView La vue de l'acceuil de la page client.
      * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
      */
-    public ControleurVoirPlus(CustomerHomeView customerHomeView, List<Livre> listeLivres) {
+    public ControleurVoirPlus(CustomerHomeView customerHomeView, String titre, List<Livre> listeLivres) {
         this.customerHomeView = customerHomeView;
+        this.titre = titre;
         this.listeLivres = listeLivres;
     }
 
@@ -30,6 +33,6 @@ public class ControleurVoirPlus implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        this.customerHomeView.showListBooks(this.listeLivres);
+        this.customerHomeView.showListBooks(this.titre, this.listeLivres);
     }
 }

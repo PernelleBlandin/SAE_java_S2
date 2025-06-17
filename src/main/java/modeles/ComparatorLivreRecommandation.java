@@ -8,7 +8,7 @@ public class ComparatorLivreRecommandation implements Comparator<Livre> {
     
     /**
      * Initialiser le comparateur.
-     * @param recommendationsLivres Un dictionnaire avec comme clé un livre et comme valeur son nombre de recommendations.
+     * @param recommendationsLivres Un dictionnaire avec comme clé un livre et comme valeur son nombre de recommandations.
      */
     public ComparatorLivreRecommandation(HashMap<Livre, Integer> recommendationsLivres) {
         this.recommendationsLivres = recommendationsLivres;

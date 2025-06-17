@@ -37,8 +37,8 @@ public class ConnexionView implements VueInterface{
         StackPane root = new StackPane();
 
         ImageView image = new ImageView("/images/connexionBackground.jpg");
-        image.setFitWidth(1920);
-        image.setFitHeight(1080);
+        image.setFitWidth(1280);
+        image.setFitHeight(720);
 
         VBox connexionBox = this.getConnexionBox();
         StackPane.setMargin(connexionBox, new Insets(200, 300, 200, 300));

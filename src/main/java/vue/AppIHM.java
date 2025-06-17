@@ -48,6 +48,14 @@ public class AppIHM extends Application {
     }
 
     /**
+     * Obtenir le stage principal de l'IHM.
+     * @return Le stage principal de l'IHM.
+     */
+    public Stage getPrimaryStage() {
+        return this.primaryStage;
+    }
+
+    /**
      * Changer de scène pour le mode connexion.
      */
     public void showConnexion(){
@@ -83,7 +91,6 @@ public class AppIHM extends Application {
 
         SellerHomeView vue = new SellerHomeView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
-
     }
 
     /**
@@ -95,8 +102,8 @@ public class AppIHM extends Application {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Livre Express");
 
-        this.primaryStage.setWidth(1920);
-        this.primaryStage.setHeight(1080);
+        this.primaryStage.setWidth(1280);
+        this.primaryStage.setHeight(720);
 
         this.showConnexion();
         primaryStage.show();

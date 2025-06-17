@@ -2,13 +2,17 @@ package vue.customers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import controleurs.ControleurDeconnexion;
+import controleurs.ControleurVoirPlus;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -146,19 +150,20 @@ public class CustomerHomeView implements MAJVueInterface {
 
     /**
      * Obtenir le titre d'une section, avec un bouton "Voir tout".
-     * @param title Le titre de la section.
+     * @param titre Le titre de la section.
      * @return La section, avec son titre et un bouton "Voir tout".
      */
-    private GridPane getSectionTitle(String title) {
+    private GridPane getSectionTitle(String titre, List<Livre> listeLivres) {
         GridPane section = new GridPane();
         section.setPadding(new Insets(20, 0, 0, 0));
 
-        Label titleLabel = new Label(title);
+        Label titleLabel = new Label(titre);
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         GridPane.setHgrow(titleLabel, Priority.ALWAYS);
         section.add(titleLabel, 0, 0);
         
         Button viewAllButton = new Button("Voir tout");
+        viewAllButton.setOnAction(new ControleurVoirPlus(this, listeLivres));
         GridPane.setHalignment(viewAllButton, HPos.RIGHT);
         section.add(viewAllButton, 1, 0);
         
@@ -173,7 +178,7 @@ public class CustomerHomeView implements MAJVueInterface {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
 
-        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande");
+
 
         Client client = this.modele.getClientActuel();
         List<Livre> livres = new ArrayList<>();
@@ -182,6 +187,8 @@ public class CustomerHomeView implements MAJVueInterface {
         } catch (SQLException e) {
             // TODO: handle exception
         }
+
+        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande", livres);
 
         HBox livresRecommendes = new HBox();
         livresRecommendes.setSpacing(20);
@@ -210,14 +217,14 @@ public class CustomerHomeView implements MAJVueInterface {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
 
-        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes");
-
         List<Livre> livres = new ArrayList<>();
         try {
-            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes(5);
+            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
         } catch (SQLException e) {
             // TODO: handle exception
         }
+
+        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes", livres);
 
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
@@ -239,11 +246,43 @@ public class CustomerHomeView implements MAJVueInterface {
     }
 
     /**
+     * Afficher la page affichant la liste de livres.
+     * @param listeLivres Une liste de livres.
+     */
+    public void showListBooks(List<Livre> listeLivres) {
+        CustomerListBook vue = new CustomerListBook(this, this.modele, listeLivres);
+        this.app.getPrimaryStage().setScene(vue.getScene());
+    }
+
+    /**
      * Mettre à jour l'affichage
      */
     public void miseAJourAffichage() {
         this.center = this.getCenter();
         this.root.setCenter(this.center);
+    }
+
+    /**
+     * Afficher une pop-up avec les informations du livre. 
+     * @param livre Un livre.
+     */
+    public static void sendAlertInfoLivre(Livre livre) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(String.format("Informations sur le livre %s", livre.getTitre()));
+        alert.setHeaderText(null);
+
+        Integer nbPagesLivre = livre.getNbPages();
+        String nbPagesString = nbPagesLivre == null ? "Inconnu" : String.valueOf(nbPagesLivre);
+
+        List<String> detailsLivres = new ArrayList<>(Arrays.asList(
+            String.format("Auteur : %s", livre.joinNomAuteurs()),
+            String.format("Prix : %.2f€", livre.getPrix()),
+            String.format("Classification : %s", livre.joinClassifications()),
+            String.format("Éditeur : %s", livre.joinNomEditeurs()),
+            String.format("Nombre de pages : %s", nbPagesString))
+        );
+        alert.setContentText(String.join("\n", detailsLivres));
+        alert.showAndWait();
     }
 
     /**

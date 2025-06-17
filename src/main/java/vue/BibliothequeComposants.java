@@ -3,6 +3,7 @@ package vue;
 import java.sql.SQLException;
 
 import controleurs.ControleurAjouterPanier;
+import controleurs.ControleurInfoLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -38,6 +39,14 @@ public class BibliothequeComposants {
         return root;
     }
 
+    /**
+     * Afficher une carte pour un livre.
+     * @param livre Un livre.
+     * @param modele Le modèle.
+     * @param app L'application IHM.
+     * @return La carte d'un livre.
+     * @throws SQLException Exception SQL en cas d'erreur avec la BD.
+     */
     public static BorderPane getBookCard(Livre livre, ChaineLibrairie modele, MAJVueInterface app) throws SQLException {
         BorderPane root = new BorderPane();
         root.setMinWidth(250);
@@ -86,6 +95,7 @@ public class BibliothequeComposants {
         // Bouton d'info
         Button infoButton = new Button();
         infoButton.setPrefSize(30, 30);
+        infoButton.setOnAction(new ControleurInfoLivre(livre));
 
         // Configurer l'icône
         ImageView infoIcon = new ImageView("./images/info.png");

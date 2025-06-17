@@ -36,10 +36,10 @@ public class ControleurBoutonsConnexion implements EventHandler<ActionEvent> {
                 this.app.modeVendeur();
                 break;
             }
-            // case "Administrateur": {
-            //     this.app.modeAdministrateur();
-            //     break;
-            // }
+             case "Administrateur": {
+                 this.app.modeAdministrateur();
+                 break;
+             }
             default:
                 break;
         }

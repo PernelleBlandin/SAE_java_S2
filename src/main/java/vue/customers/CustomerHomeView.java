@@ -31,7 +31,7 @@ import vue.MAJVueInterface;
 
 /** La vue de l'accueil d'un client */
 public class CustomerHomeView implements MAJVueInterface {
-    /** La vue principal */
+    /** La vue principale */
     private AppIHM app;
     /** Le modèle */
     private ChaineLibrairie modele;

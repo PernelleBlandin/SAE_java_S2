@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
+import vue.admin.AdminHomeView;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerHomeView;
 
@@ -78,9 +79,17 @@ public class AppIHM extends Application {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
+    }
+    public void modeAdministrateur() {
+
+        AdminHomeView vue = new AdminHomeView(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
+
+    
+    }
 
         
-    }
+    
 
     /**
      * Créer le graphe de scène et lance l'application.

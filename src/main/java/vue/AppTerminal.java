@@ -1,4 +1,5 @@
 package vue;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,13 +23,14 @@ import modeles.Vendeur;
 /**
  * L'application sous le format ligne de commandes.
  */
-
 public class AppTerminal {
+
     private ChaineLibrairie chaineLibrairie;
     private int longueurAffichage;
 
     /**
      * Créer l'application en ligne de commandes.
+     *
      * @param chaineLibrairie La chaîne de librairie.
      */
     public AppTerminal(ChaineLibrairie chaineLibrairie) {
@@ -45,15 +47,19 @@ public class AppTerminal {
     }
 
     /**
-     * Limiter la taille d'un texte.
-     * Si jamais le texte dépasse la longueur d'affichage, on ajoute des "..." à la fin pour le limiter à la taille maximal.
+     * Limiter la taille d'un texte. Si jamais le texte dépasse la longueur
+     * d'affichage, on ajoute des "..." à la fin pour le limiter à la taille
+     * maximal.
+     *
      * @param texte Un texte
      * @param longueurTexteMax La longueur d'affichage maximal du texte.
      * @return Le texte qui ne dépasse par la longueur d'affichage indiquée.
      */
     public static String truncate(String texte, int longueurTexteMax) {
         int maxCaracteres = longueurTexteMax;
-        if (texte.length() <= maxCaracteres) return texte;
+        if (texte.length() <= maxCaracteres) {
+            return texte;
+        }
 
         return texte.substring(0, maxCaracteres - 3) + "...";
     }
@@ -66,7 +72,9 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher un titre dans le terminal de manière centrée, en y ajoutant une bordure au départ et un séparateur.
+     * Afficher un titre dans le terminal de manière centrée, en y ajoutant une
+     * bordure au départ et un séparateur.
+     *
      * @param titre Le titre a afficher.
      */
     public void afficherTitre(String titre) {
@@ -76,19 +84,24 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher un texte de manière centrée, selon la longueur d'affichage dans les attributs de la classe.
+     * Afficher un texte de manière centrée, selon la longueur d'affichage dans
+     * les attributs de la classe.
+     *
      * @param texte Un texte.
      */
     public void afficherTexteCentrer(String texte) {
         int margeDebut = (this.longueurAffichage - 4 - texte.length()) / 2;
         int margeFin = margeDebut;
-        if (texte.length() % 2 != 0) margeFin++;
+        if (texte.length() % 2 != 0) {
+            margeFin++;
+        }
 
         System.out.println("│ " + String.format("%" + margeDebut + "s%s%" + margeFin + "s", "", AppTerminal.truncate(texte, this.longueurAffichage - 4), "") + " │");
     }
 
     /**
      * Afficher un texte en respectant la "charte graphique" de l'application.
+     *
      * @param texte Un texte.
      */
     public void afficherTexte(String texte) {
@@ -111,6 +124,7 @@ public class AppTerminal {
 
     /**
      * Afficher un titre avecc un séparateur de début et de fin uniquement.
+     *
      * @param titre Le titre
      */
     public void afficherTitreUniquement(String titre) {
@@ -120,8 +134,9 @@ public class AppTerminal {
     }
 
     /**
-     * Obtenir la commande de l'utilisateur dans le terminal.
-     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * Obtenir la commande de l'utilisateur dans le terminal. En cas d'exception
+     * (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     *
      * @return La réponse de l'utilisateur.
      */
     public String obtenirCommandeUtilisateur() {
@@ -139,8 +154,9 @@ public class AppTerminal {
     }
 
     /**
-     * Obtenir l'entrée de l'utilisateur dans le terminal.
-     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * Obtenir l'entrée de l'utilisateur dans le terminal. En cas d'exception
+     * (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     *
      * @return La réponse de l'utilisateur.
      */
     public String obtenirEntreeUtilisateur() {
@@ -158,8 +174,10 @@ public class AppTerminal {
     }
 
     /**
-     * Obtenir l'entrée d'un nombre de l'utilisateur dans le terminal.
-     * En cas d'exception (généralement CTRL+C/CTRL+D), on arrête le programme normalement.
+     * Obtenir l'entrée d'un nombre de l'utilisateur dans le terminal. En cas
+     * d'exception (généralement CTRL+C/CTRL+D), on arrête le programme
+     * normalement.
+     *
      * @return La réponse de l'utilisateur.
      */
     public Integer obtenirEntreeNombreUtilisateur() {
@@ -184,18 +202,19 @@ public class AppTerminal {
      */
     public void bienvenue() {
         System.out.println("╭──────────────────────────────────────────────────────────────────────────────────────────────────╮");
-		System.out.println("│ ██      ██ ██    ██ ██████  ███████     ███████ ██   ██ ██████  ██████  ███████ ███████ ███████  │");
+        System.out.println("│ ██      ██ ██    ██ ██████  ███████     ███████ ██   ██ ██████  ██████  ███████ ███████ ███████  │");
         System.out.println("│ ██      ██ ██    ██ ██   ██ ██          ██       ██ ██  ██   ██ ██   ██ ██      ██      ██       │");
         System.out.println("│ ██      ██ ██    ██ ██████  █████       █████     ███   ██████  ██████  █████   ███████ ███████  │");
         System.out.println("│ ██      ██  ██  ██  ██   ██ ██          ██       ██ ██  ██      ██   ██ ██           ██      ██  │");
         System.out.println("│ ███████ ██   ████   ██   ██ ███████     ███████ ██   ██ ██      ██   ██ ███████ ███████ ███████  │");
-		System.out.println("│──────────────────────────────────────────────────────────────────────────────────────────────────│");
+        System.out.println("│──────────────────────────────────────────────────────────────────────────────────────────────────│");
         System.out.println("│                             SAE 2.01 : Développement d'une application                           │");
         System.out.println("╰──────────────────────────────────────────────────────────────────────────────────────────────────╯");
     }
 
     /**
-     * Afficher le menu principal en choisisant son compte (client/vendeur/administrateur).
+     * Afficher le menu principal en choisisant son compte
+     * (client/vendeur/administrateur).
      */
     public void menu() {
         boolean finCommande = false;
@@ -235,7 +254,7 @@ public class AppTerminal {
 
     /**
      * Afficher une liste d'élements sur des pages.
-     * 
+     *
      * @param <T> Le type de l'élément
      * @param elements La liste des éléments possible à sélectionner.
      * @param titre Le titre du menu.
@@ -263,19 +282,27 @@ public class AppTerminal {
             }
 
             this.afficherSeperateurMilieu();
-            if (nbPage > 0) this.afficherTexte("P: Page précédente");
-            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
+            if (nbPage > 0) {
+                this.afficherTexte("P: Page précédente");
+            }
+            if (nbPage < totalPages) {
+                this.afficherTexte("S: Page suivante");
+            }
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
-                    if (nbPage > 0) nbPage--;
+                    if (nbPage > 0) {
+                        nbPage--;
+                    }
                     break;
                 }
                 case "s": {
-                    if (nbPage + 1 <= totalPages) nbPage++;
+                    if (nbPage + 1 <= totalPages) {
+                        nbPage++;
+                    }
                     break;
                 }
                 case "q": {
@@ -291,8 +318,9 @@ public class AppTerminal {
     }
 
     /**
-     * Sélectionner un élément dans une liste de page.
-     * Aide pour les types génériques : https://www.baeldung.com/java-generics#generic-methods
+     * Sélectionner un élément dans une liste de page. Aide pour les types
+     * génériques : https://www.baeldung.com/java-generics#generic-methods
+     *
      * @param <T> Le type de l'élément
      * @param elements La liste des éléments possible à sélectionner.
      * @param nbPage La page actuelle.
@@ -321,20 +349,30 @@ public class AppTerminal {
             }
 
             this.afficherSeperateurMilieu();
-            if (hasResults) this.afficherTexte("Nombre: Sélection dans la liste");
-            if (nbPage > 0) this.afficherTexte("P: Page précédente");
-            if (nbPage < totalPages) this.afficherTexte("S: Page suivante");
+            if (hasResults) {
+                this.afficherTexte("Nombre: Sélection dans la liste");
+            }
+            if (nbPage > 0) {
+                this.afficherTexte("P: Page précédente");
+            }
+            if (nbPage < totalPages) {
+                this.afficherTexte("S: Page suivante");
+            }
             this.afficherTexte("Q: Retour");
             this.afficherTitreFin();
 
             String entreeUtilisateur = this.obtenirCommandeUtilisateur();
             switch (entreeUtilisateur) {
                 case "p": {
-                    if (nbPage > 0) nbPage--;
+                    if (nbPage > 0) {
+                        nbPage--;
+                    }
                     break;
                 }
                 case "s": {
-                    if (nbPage + 1 <= totalPages) nbPage++;
+                    if (nbPage + 1 <= totalPages) {
+                        nbPage++;
+                    }
                     break;
                 }
                 case "q": {
@@ -362,6 +400,7 @@ public class AppTerminal {
 
     /**
      * Demander une confirmation à un utilisateur (Oui/Non).
+     *
      * @param titre Le titre de la confirmation.
      * @return true si c'est oui, false si c'est non.
      */
@@ -371,6 +410,7 @@ public class AppTerminal {
 
     /**
      * Demander une confirmation à un utilisateur (Oui/Non).
+     *
      * @param titre Le titre de la confirmation.
      * @param description La description de la confirmation.
      * @return true si c'est oui, false si c'est non.
@@ -390,7 +430,9 @@ public class AppTerminal {
     }
 
     /**
-     * Demander à l'utilisateur la recherche qu'il souhaite réaliser dans le terminal.
+     * Demander à l'utilisateur la recherche qu'il souhaite réaliser dans le
+     * terminal.
+     *
      * @return La recherche de l'utilisateur, ou null s'il a annulé l'opération.
      */
     public String demanderRecherche() {
@@ -399,13 +441,14 @@ public class AppTerminal {
         this.afficherTitreFin();
 
         String recherche = this.obtenirCommandeUtilisateur();
-        if (recherche.equals("q")) return null;
+        if (recherche.equals("q")) {
+            return null;
+        }
 
         return recherche;
     }
 
     // Client
-
     /**
      * Accéder à un menu de connexion pour choisir son compte client.
      */
@@ -421,12 +464,13 @@ public class AppTerminal {
 
     /**
      * Accéder au menu pour un client donné.
+     *
      * @param client Un client.
      */
     public void menuClient(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
-            Magasin magasin = client.getMagasin();
+            Magasin magasin = client.vendeur();
 
             this.afficherTitre(String.format("Menu Client - %s | Magasin : %s", client.toString(), magasin.toString()));
             this.afficherTexte("L: Catalogue de livres globaux");
@@ -513,7 +557,9 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher la catalogue de livre sous forme de page et afficher les détails d'un livre choisi.
+     * Afficher la catalogue de livre sous forme de page et afficher les détails
+     * d'un livre choisi.
+     *
      * @param client Un client.
      * @param livres La liste des livres à afficher dans les pages.
      * @param titre Le titre du menu.
@@ -530,7 +576,9 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les détails d'un livre et laisser la possibilité de l'ajouter dans son panier client.
+     * Afficher les détails d'un livre et laisser la possibilité de l'ajouter
+     * dans son panier client.
+     *
      * @param client Un client.
      * @param livre Le livre choisi.
      */
@@ -539,7 +587,9 @@ public class AppTerminal {
         while (!finCommande) {
             String nbPages = "Inconnu";
             Integer nbpagesInteger = livre.getNbPages();
-            if (nbpagesInteger != null) nbPages = String.valueOf(nbpagesInteger);
+            if (nbpagesInteger != null) {
+                nbPages = String.valueOf(nbpagesInteger);
+            }
 
             this.afficherTitre(livre.getTitre());
             this.afficherTexte(String.format("Auteur : %s", livre.joinNomAuteurs()));
@@ -550,7 +600,7 @@ public class AppTerminal {
             this.afficherSeperateurMilieu();
 
             Panier panierClient = client.getPanier();
-            Magasin magasin = client.getMagasin();
+            Magasin magasin = client.vendeur();
             int quantiteLivrePanier = panierClient.getQuantiteLivre(livre);
 
             int quantiteLivreStock;
@@ -620,11 +670,10 @@ public class AppTerminal {
     }
 
     // Connexion Vendeur
-
     /**
      * Se connecter en tant que vendeur dans l'application.
      */
-    public void connexionVendeur(){
+    public void connexionVendeur() {
         try {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
             this.menuVendeur(vendeur);
@@ -635,7 +684,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher le menu vendeur. 
+     * Afficher le menu vendeur.
+     *
      * @param vendeur Un vendeur.
      */
     public void menuVendeur(Vendeur vendeur) {
@@ -663,7 +713,7 @@ public class AppTerminal {
                     this.afficherTitreUniquement("Entrez l'identifiant du livre");
                     String inputIsbn = this.obtenirEntreeUtilisateur();
                     String isbn = inputIsbn.trim();
-                    if(isbn.isEmpty()){
+                    if (isbn.isEmpty()) {
                         System.err.println("Erreur : Veuillez entrer un identifient");
                         break;
                     }
@@ -671,37 +721,35 @@ public class AppTerminal {
                     this.afficherTitreUniquement("Entrez son titre");
                     String inputTitre = this.obtenirEntreeUtilisateur();
                     String titre = inputTitre.trim();
-                    if(titre.isEmpty()){
+                    if (titre.isEmpty()) {
                         System.err.println("Erreur : Veuillez entrer un titre");
                         break;
                     }
 
-                    try{
+                    try {
                         this.afficherTitreUniquement("Entrez son nombre de pages");
                         String inputNbPages = this.obtenirEntreeUtilisateur();
                         String nbPagesString = inputNbPages.trim();
                         nbPages = Integer.parseInt(nbPagesString);
-                    }
-                    catch(NumberFormatException e){
+                    } catch (NumberFormatException e) {
                         System.err.println("Erreur : Le nombre de pages doit etre un nombre entier.");
                         break;
                     }
-                    if(nbPages <=0) {
+                    if (nbPages <= 0) {
                         System.err.println("Erreur : Le nombre de pages ne peut pas 0 ou négatif.");
                         break;
                     }
 
-                    try{
+                    try {
                         this.afficherTitreUniquement("Entrez son prix");
                         String inputPrix = this.obtenirEntreeUtilisateur();
                         String prixString = inputPrix.trim();
                         prix = Double.parseDouble(prixString);
-                    } 
-                    catch (NumberFormatException e) {
+                    } catch (NumberFormatException e) {
                         System.err.println("Le prix doit etre en décimale (mettre un . au lieu de ,)");
                         break;
                     }
-                    if(prix <=0){
+                    if (prix <= 0) {
                         System.err.println("Erreur : Le prix ne peut pas être négatif ou egal a 0.");
                         break;
                     }
@@ -711,11 +759,11 @@ public class AppTerminal {
                         String inputAnneeDePublication = this.obtenirEntreeUtilisateur();
                         String anneeDePublicationString = inputAnneeDePublication.trim();
                         anneeDePublication = Integer.parseInt(anneeDePublicationString);
-                    } catch (NumberFormatException e){
+                    } catch (NumberFormatException e) {
                         System.err.println("L'année de publication doit etre un nombre entier");
                         break;
                     }
-                    if(anneeDePublication <= 0){
+                    if (anneeDePublication <= 0) {
                         System.err.println("Erreur : L'année de publication ne peut pas être négative ou egale a 0.");
                         break;
                     }
@@ -727,12 +775,12 @@ public class AppTerminal {
                     try {
                         this.afficherTitreUniquement("Entrez nom, année naissance, décès (-1 si vivant) de l'auteur, séparés par virgules :");
                         String inputAuteurs = this.obtenirEntreeUtilisateur();
-                        
+
                         infoAuteurs = inputAuteurs.split(",");
-                        for (int i = 0; i < infoAuteurs.length; i++){
+                        for (int i = 0; i < infoAuteurs.length; i++) {
                             infoAuteurs[i] = infoAuteurs[i].trim();
                         }
-                        
+
                         if (infoAuteurs.length != 3) {
                             System.err.println("Erreur : Veuillez entrez nom, année naissance, décès (-1 si vivant) de l'auteur, séparés par virgules.");
                             break;
@@ -744,7 +792,7 @@ public class AppTerminal {
                         System.err.println("Erreur : l'année de naissance et décès (-1 si vivant) doivent etre des nombres entiers.");
                         break;
                     }
-                    if(deces<naissance && deces!=-1){
+                    if (deces < naissance && deces != -1) {
                         System.err.println("Erreur : L'année de décès ne peut pas être inférieure à l'année de naissance.");
                         break;
                     }
@@ -755,12 +803,12 @@ public class AppTerminal {
                     String idAuteur = "";
                     try {
                         auteurExistant = this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom);
-                        if (auteurExistant == null){
+                        if (auteurExistant == null) {
                             this.afficherTitreUniquement("Entrez l'identifiant de l'auteur");
                             String input = this.obtenirEntreeUtilisateur();
                             idAuteur = input.trim();
                         }
-                    } catch(SQLException e){
+                    } catch (SQLException e) {
                         System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
                         break;
                     }
@@ -774,25 +822,25 @@ public class AppTerminal {
                     this.afficherTitreUniquement("Entrez le nom de sa classification");
                     String inputClassification = this.obtenirEntreeUtilisateur();
                     String classificationNom = inputClassification.trim();
-                    
+
                     Set<String> classification = new HashSet<>();
                     classification.add(classificationNom);
-                    
+
                     String classificationExistante;
                     String idClassifications = "";
                     try {
                         classificationExistante = this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom);
-                        if(classificationExistante == null){
+                        if (classificationExistante == null) {
                             this.afficherTitreUniquement("Entrez l'identifiant de la classification");
                             String input = this.obtenirEntreeUtilisateur();
                             idClassifications = input.trim();
                         }
-                    } catch(SQLException e){
+                    } catch (SQLException e) {
                         System.err.println("Une erreur est survenue lors de la récupération des données en base de données. " + e.getMessage());
                         break;
                     }
                     try {
-                        if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null  && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
+                        if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) == null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
                         } else if (this.chaineLibrairie.getLivreBD().getIdAuteur(auteurNom) == null && this.chaineLibrairie.getLivreBD().getIdDewey(classificationNom) != null) {
                             this.chaineLibrairie.getLivreBD().ajouteLivreAuteurNonExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, naissance, deces);
@@ -814,18 +862,18 @@ public class AppTerminal {
                     break;
                 }
                 case "d": {
-					this.dispoStock(vendeur);
+                    this.dispoStock(vendeur);
                     break;
                 }
                 case "m": {
-					this.majQuantite(vendeur);
+                    this.majQuantite(vendeur);
                     break;
                 }
-                case "c":{
+                case "c": {
                     this.agirEnClient(vendeur);
                     break;
                 }
-                case "t":{
+                case "t": {
                     this.transfertLivre(vendeur);
                     break;
                 }
@@ -872,7 +920,7 @@ public class AppTerminal {
                     this.suppressionMagasin();
                     break;
                 }
-                case "m" : {
+                case "m": {
                     HashMap<String, String> donneesMagasin = this.demanderInfosMagasin();
                     try {
                         this.chaineLibrairie.getMagasinBD().creerMagasin(donneesMagasin);
@@ -882,16 +930,16 @@ public class AppTerminal {
                     }
 
                     break;
-                } 
+                }
                 case "s": {
                     this.modifierStockGlobal();
                     break;
-                } 
+                }
                 case "v": {
                     this.menuStatistiques();
                     break;
                 }
-                 case "f": {
+                case "f": {
                     this.exporterFactures();
                     break;
                 }
@@ -903,7 +951,7 @@ public class AppTerminal {
                     System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                     break;
                 }
-            }    
+            }
         }
     }
 
@@ -967,7 +1015,7 @@ public class AppTerminal {
                     System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
                     break;
                 }
-            }    
+            }
         }
     }
 
@@ -1004,7 +1052,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les statistiques de l'évolution CA des magasins par mois en 2024.
+     * Afficher les statistiques de l'évolution CA des magasins par mois en
+     * 2024.
      */
     public void getEvolutionCAParMoisParMagasin2024() {
         Map<String, Map<Integer, Double>> statistiques;
@@ -1020,7 +1069,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les statistiques de l'évolution du CA, avec la comparaison ventes en ligne et en magasin.
+     * Afficher les statistiques de l'évolution du CA, avec la comparaison
+     * ventes en ligne et en magasin.
      */
     public void getComparaisonVentesLigneMagasin() {
         Map<String, Map<Integer, Double>> statistiques;
@@ -1036,7 +1086,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les statistiques des dix éditeurs les plus importants en nombre d'auteurs.
+     * Afficher les statistiques des dix éditeurs les plus importants en nombre
+     * d'auteurs.
      */
     public void getTop10EditeursNbAuteurs() {
         Map<String, Integer> statistiques;
@@ -1052,7 +1103,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     * Afficher les statistiques sur la quantité de livres de René Goscinny
+     * achetés en fonction de l'origine des clients.
      */
     public void getQteLivresGoscinyOrigineClients() {
         Map<String, Integer> statistiques;
@@ -1066,7 +1118,7 @@ public class AppTerminal {
         List<String> resultats = this.convertSimpleMapToStringList(statistiques);
         this.afficherListeElements(resultats, "Quantité de livres de R. Goscinny achetés en fonction de l'origine des clients");
     }
- 
+
     /**
      * Afficher les statistiques sur l'évolution du CA Total par client.
      */
@@ -1084,7 +1136,8 @@ public class AppTerminal {
     }
 
     /**
-     * Afficher les statistiques sur la quantité de livres de René Goscinny achetés en fonction de l'origine des clients.
+     * Afficher les statistiques sur la quantité de livres de René Goscinny
+     * achetés en fonction de l'origine des clients.
      */
     public void getEvolutionCATotalParClient() {
         Map<Integer, Map<String, Double>> statistiques;
@@ -1100,7 +1153,9 @@ public class AppTerminal {
     }
 
     /**
-     * Convertir une map "simple" (clé/valeur) en une liste de chaîne de caractères.
+     * Convertir une map "simple" (clé/valeur) en une liste de chaîne de
+     * caractères.
+     *
      * @param <T> Le type de la clé.
      * @param <K> Le type de la valeur.
      * @param dictionnaire Un dictionnaire clé/valeur.
@@ -1108,7 +1163,7 @@ public class AppTerminal {
      */
     private <T, K> List<String> convertSimpleMapToStringList(Map<T, K> dictionnaire) {
         List<String> resultat = new ArrayList<>();
-        for (Map.Entry<T, K> entree: dictionnaire.entrySet()) {
+        for (Map.Entry<T, K> entree : dictionnaire.entrySet()) {
             String cle = entree.getKey().toString();
             String valeur = entree.getValue().toString();
 
@@ -1118,7 +1173,9 @@ public class AppTerminal {
     }
 
     /**
-     * Convertir une map "complexe" { cleInitiale: { valeurInitiale: valeurFinal } } en une liste de chaîne de caractères.
+     * Convertir une map "complexe" { cleInitiale: { valeurInitiale: valeurFinal
+     * } } en une liste de chaîne de caractères.
+     *
      * @param <T> Le type de la clé initiale.
      * @param <K> Le type de la valeur initiale.
      * @param <Z> Le type de la valeur finale
@@ -1127,12 +1184,12 @@ public class AppTerminal {
      */
     private <T, K, Z> List<String> convertDoubleMapToStringList(Map<T, Map<K, Z>> dictionnaire) {
         List<String> resultat = new ArrayList<>();
-        for (Map.Entry<T, Map<K, Z>> entree: dictionnaire.entrySet()) {
+        for (Map.Entry<T, Map<K, Z>> entree : dictionnaire.entrySet()) {
             String cle = entree.getKey().toString();
             Map<K, Z> valeur = entree.getValue();
 
             List<String> valeursString = this.convertSimpleMapToStringList(valeur);
-            for (String valeurString: valeursString) {
+            for (String valeurString : valeursString) {
                 resultat.add(String.format("%s - %s", cle, valeurString));
             }
         }
@@ -1145,7 +1202,9 @@ public class AppTerminal {
     public void exporterFactures() {
         this.afficherTitreUniquement("De quel mois voulez-vous exporter les factures (1-12) ?");
         Integer mois = this.obtenirEntreeNombreUtilisateur();
-        if (mois == null) return;
+        if (mois == null) {
+            return;
+        }
 
         if (mois < 0 || mois > 12) {
             System.err.println("Erreur : Le mois doit être compris entre 1 et 12.");
@@ -1154,7 +1213,9 @@ public class AppTerminal {
 
         this.afficherTitreUniquement("De quelle année voulez-vous exporter les factures ?");
         Integer annee = this.obtenirEntreeNombreUtilisateur();
-        if (annee == null) return;
+        if (annee == null) {
+            return;
+        }
 
         try {
             this.chaineLibrairie.exporterFactures(mois, annee);
@@ -1167,16 +1228,16 @@ public class AppTerminal {
     }
 
     // Panier Client
-
     /**
      * Voir son panier client
+     *
      * @param client Un client.
      */
     public void voirPanier(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
             Panier panier = client.getPanier();
-            Magasin magasin = client.getMagasin();
+            Magasin magasin = client.vendeur();
             List<DetailLivre> detailLivresPanier = panier.getDetailLivres();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 
@@ -1184,7 +1245,7 @@ public class AppTerminal {
             if (detailLivresPanier.size() > 0) {
                 double totalCommande = 0.00;
                 this.afficherTexte("       ISBN                               Titre                              Qte    Prix   Total");
-                for (DetailLivre detailLivre: detailLivresPanier) {
+                for (DetailLivre detailLivre : detailLivresPanier) {
                     Livre livre = detailLivre.getLivre();
                     int livreQuantite = detailLivre.getQuantite();
                     double totalLivre = detailLivre.getPrixVente() * livreQuantite;
@@ -1260,6 +1321,7 @@ public class AppTerminal {
 
     /**
      * Commander les éléments dans son panier.
+     *
      * @param client Un client.
      * @param panier Son panier.
      * @return true si la commande a été réalisée, sinon false.
@@ -1294,7 +1356,9 @@ public class AppTerminal {
 
     /**
      * Demander à un client son mode de livraison.
-     * @return Le mode de livraison du client (C: Chez lui, M: En magasin), ou null si demande annulée
+     *
+     * @return Le mode de livraison du client (C: Chez lui, M: En magasin), ou
+     * null si demande annulée
      */
     public Character demanderModeLivraison() {
         boolean finCommande = false;
@@ -1327,6 +1391,7 @@ public class AppTerminal {
 
     /**
      * Supprimer un livre de son panier.
+     *
      * @param panier Son panier.
      * @return true si un livre a été retiré de son panier, sinon false.
      */
@@ -1362,13 +1427,16 @@ public class AppTerminal {
 
     /**
      * Demander la quantité à supprimer d'un livre dans un panier.
+     *
      * @param detailLivre Le détail d'une commande.
      * @return La quantité à supprimer, ou null si opération annulée.
      */
     public Integer demanderQuantiterSupprimer(DetailLivre detailLivre) {
         Integer quantite = null;
         int quantitePanier = detailLivre.getQuantite();
-        if (quantitePanier == 1) quantite = 1;
+        if (quantitePanier == 1) {
+            quantite = 1;
+        }
 
         Livre livre = detailLivre.getLivre();
         while (quantite == null) {
@@ -1380,7 +1448,9 @@ public class AppTerminal {
             this.afficherTitreFin();
 
             String entree = this.obtenirCommandeUtilisateur();
-            if (entree.equals("q")) return null;
+            if (entree.equals("q")) {
+                return null;
+            }
 
             try {
                 quantite = Integer.parseInt(entree);
@@ -1399,13 +1469,16 @@ public class AppTerminal {
         }
 
         boolean confirmation = this.demanderConfirmation(String.format("Confirmez-vous la suppression de %dx %s ?", quantite, livre.getTitre()));
-        if (confirmation) return quantite;
+        if (confirmation) {
+            return quantite;
+        }
 
         return null;
     }
 
     /**
      * Changer de magasin client.
+     *
      * @param client Le client.
      */
     public void changerMagasin(Client client) {
@@ -1418,18 +1491,22 @@ public class AppTerminal {
         }
 
         ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Changer de magasin");
-        if (resultatSelectionMagasin == null) return;
+        if (resultatSelectionMagasin == null) {
+            return;
+        }
 
         Panier panier = client.getPanier();
         Magasin magasin = resultatSelectionMagasin.getElement();
-        
+
         boolean effectuerChangement = true;
         if (panier.getDetailLivres().size() > 0 && !panier.getMagasin().equals(magasin)) {
             effectuerChangement = this.demanderConfirmation(
-                String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()), 
-                "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
+                    String.format("Voulez-vous vraiment définir votre magasin actuel pour %s ?", magasin.toString()),
+                    "Vous avez des articles dans votre panier. Changer de magasin réinitialisera votre panier."
             );
-            if (!effectuerChangement) return;
+            if (!effectuerChangement) {
+                return;
+            }
         }
 
         if (effectuerChangement) {
@@ -1448,7 +1525,9 @@ public class AppTerminal {
     }
 
     /**
-     * Permettre à un client de consulter la liste de ses commandes et de voir le détail d'une d'entre-elle.
+     * Permettre à un client de consulter la liste de ses commandes et de voir
+     * le détail d'une d'entre-elle.
+     *
      * @param client Un client.
      */
     public void consulterCommandesClient(Client client) {
@@ -1465,6 +1544,7 @@ public class AppTerminal {
 
     /**
      * Afficher les détails d'une commande.
+     *
      * @param commande Une commande.
      */
     public void afficherCommande(Commande commande) {
@@ -1473,7 +1553,7 @@ public class AppTerminal {
             this.afficherTitre(commande.toString());
 
             List<String> detailCommandeTextuel = ChaineLibrairie.genererCorpsCommandeTextuel(commande.getDetailCommandes(), this.longueurAffichage);
-            for (String ligne: detailCommandeTextuel) {
+            for (String ligne : detailCommandeTextuel) {
                 this.afficherTexte(ligne);
             }
 
@@ -1496,11 +1576,10 @@ public class AppTerminal {
     }
 
     //Fonctionnalités administrateur Hashmap
-
     /**
      * Demander les informations et créer un compte vendeur.
      */
-    public void creationCompteVendeur(){
+    public void creationCompteVendeur() {
         this.afficherTitreDebut();
         this.afficherTexteCentrer("Quel est le prénom du vendeur ?");
         this.afficherTitreFin();
@@ -1515,7 +1594,9 @@ public class AppTerminal {
         try {
             List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
             ResultatSelection<Magasin> resultatSelectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionner le magasin du vendeur");
-            if (resultatSelectionMagasin == null) return;
+            if (resultatSelectionMagasin == null) {
+                return;
+            }
 
             magasinVendeur = resultatSelectionMagasin.getElement();
         } catch (SQLException e) {
@@ -1527,14 +1608,14 @@ public class AppTerminal {
             this.chaineLibrairie.getVendeurBD().creerVendeur(nom, prenom, magasinVendeur.getId());
             System.out.println(String.format("Le vendeur %s %s a bien été enregistré !", nom, prenom));
         } catch (SQLException e) {
-           System.err.println("Une erreur est survenue lors de la création du vendeur en BD : " + e.getMessage());
+            System.err.println("Une erreur est survenue lors de la création du vendeur en BD : " + e.getMessage());
         }
     }
 
     /**
      * Supprimer le compte d'un vendeur
      */
-    public void suppressionCompteVendeur(){
+    public void suppressionCompteVendeur() {
         Vendeur vendeurSupp;
         try {
             List<Vendeur> vendeurs = this.chaineLibrairie.getVendeurBD().obtenirListeVendeur();
@@ -1552,7 +1633,7 @@ public class AppTerminal {
             this.chaineLibrairie.getVendeurBD().supprimerVendeur(vendeurSupp.getId());
             System.out.println(String.format("Le vendeur %s %s a bien été supprimé !", vendeurSupp.getNom(), vendeurSupp.getPrenom()));
         } catch (SQLException e) {
-           System.err.println("Une erreur est survenue lors de la suppression du vendeur en BD : " + e.getMessage());
+            System.err.println("Une erreur est survenue lors de la suppression du vendeur en BD : " + e.getMessage());
         }
     }
 
@@ -1577,21 +1658,23 @@ public class AppTerminal {
             this.chaineLibrairie.getMagasinBD().supprimerMagasin(magasinSupp.getId());
             System.out.println(String.format("Le magasin %s de %s a bien été supprimé !", magasinSupp.getNom(), magasinSupp.getVille()));
         } catch (SQLException e) {
-           System.err.println("Une erreur est survenue lors de la suppression du magasin en BD : " + e.getMessage());
+            System.err.println("Une erreur est survenue lors de la suppression du magasin en BD : " + e.getMessage());
         }
     }
 
     /**
      * Demander à l'utilisateur les informations du magasin (nom et ville).
-     * @return Un dictionnaire avec les informations indiquées par l'utilisateur.
+     *
+     * @return Un dictionnaire avec les informations indiquées par
+     * l'utilisateur.
      */
     public HashMap<String, String> demanderInfosMagasin() {
         HashMap<String, String> donneesMagasin = new HashMap<>();
-        
+
         this.afficherTitreDebut();
         this.afficherTexteCentrer("Quel est le nom du magasin ?");
         this.afficherTitreFin();
-        
+
         String nomMag = this.obtenirEntreeUtilisateur();
         donneesMagasin.put("nom", nomMag);
 
@@ -1605,220 +1688,242 @@ public class AppTerminal {
         return donneesMagasin;
     }
 
-
-	/**
-	 * Transférer un livre d'un magasin à un autre.
-	 * @param vendeur Le vendeur effectuant le transfert
-	 */
-	public void transfertLivre(Vendeur vendeur) {
-	
-	    try {
-	
-	        List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
-	        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
-	        
-	        if (selectionLivre == null) return;
-	        Livre livre = selectionLivre.getElement();
-	
-	        Magasin magasinSource = vendeur.getMagasin();
-	        
-	        List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-	        List<Magasin> magasins = new ArrayList<>();
-	
-	        for (Magasin m : tousMagasins) {
-	            if (!m.getId().equals(magasinSource.getId())) {
-	                magasins.add(m);
-	            }
-	        } 
-	        ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
-	        if (selectionMagasin == null) return;
-	        Magasin magasinDestination = selectionMagasin.getElement();
-	
-	        int stockActuel= this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(),livre.getISBN());
-	        this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
-	        this.afficherTexte(String.format("Stock disponible dans %s: %d",magasinSource.toString(),stockActuel));
-	        this.afficherTexte("Entrez la quantité à transférer:");
-	        this.afficherTitreFin();
-	        
-	        Integer quantite = this.obtenirEntreeNombreUtilisateur();
-	        if (quantite == null || quantite <= 0 || quantite > stockActuel) {
-	            System.err.println("Quantité invalide");
-	            return;
-	        }
-	        boolean confirmation = this.demanderConfirmation(
-	            "Confirmer le transfert", 
-	            String.format("Transfert de %d exemplaire(s) de %s de %s vers %s", 
-	                quantite, livre.getTitre(),magasinSource.toString(), magasinDestination.toString())
-	        );
-	        if (confirmation) {
-	            this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource,magasinDestination,quantite);
-	            System.out.println("Transfert effectué avec succès !");
-	        }
-	    } catch (SQLException e) {
-	        System.err.println("Erreur lors du transfert: "+e.getMessage());
-	    }
-	}
-
-	/**
-	 * Modifie le stock d'un livre dans un magasin
-	 */
-	public void modifierStockGlobal() {
-	    try {
-	        List<Livre> livres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
-	        ResultatSelection<Livre> selection =selectionnerElement(livres, 0, "Sélectionnez un livre");
-	        if (selection == null) return;
-	        
-	        Livre livre = selection.getElement();
-	
-	        List<Magasin> magasins=this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
-	        ResultatSelection<Magasin> selectionMag = selectionnerElement(magasins,0,"Sélectionnez un magasin");
-	        if (selectionMag == null) return;
-	        
-	        Magasin magasin=selectionMag.getElement();
-	        
-	        afficherTitre("Modification stock pour " + livre.getTitre());
-	        afficherTexte("Magasin: " +magasin.getNom());
-	        afficherTexte("Stock actuel: "+this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN()));
-	        afficherTexte("Entrez la nouvelle quantité:");
-	        afficherTitreFin();
-	        
-	        Integer nouvelleQte = obtenirEntreeNombreUtilisateur();
-	        if (nouvelleQte==null || nouvelleQte<0) {
-	            System.err.println("Quantité invalide");
-	            return;
-	        }
-	
-	        if (demanderConfirmation("Confirmer modification", 
-	            String.format("Définir stock à %d pour %s dans %s ?", 
-	                nouvelleQte, livre.getTitre(), magasin.getNom()))) {
-	            
-	            this.chaineLibrairie.getLivreBD().modifierStockMagasin(livre.getISBN(),magasin.getId(), nouvelleQte);
-	            
-	            System.out.println("Stock mis à jour avec succès !");
-	        }
-	        
-	    } catch (SQLException e) {
-	        System.err.println("Erreur lors de la modification: "+e.getMessage());
-	    }
-	}
-
-	/**
-	 * Supprime un livre dans le stock du magasin du vendeur.
-     * @param vendeur Un vendeur.
-	 */
-	public void supprimerLivre(Vendeur vendeur){
-		List<Livre> livresDisponibles = null;
-		try {
-            Magasin magasin = vendeur.getMagasin();
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			return;
-		}
-		
-		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à supprimer");
-		if (selectionLivre == null) return;
-		
-		Livre livre = selectionLivre.getElement();
-		if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + livre.getTitre() + " ?")) {
-			System.out.println("Suppression annulée.");
-			return;
-		}
-
-		try {
-			this.chaineLibrairie.getLivreBD().supprimerLivre(livre.getISBN());
-			System.out.println("Livre supprimé avec succès !");
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
-		}
-	}
-
-	/**
-	 * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
-     * @param vendeur Un vendeur.
-	 */
-	public void dispoStock(Vendeur vendeur){
-		Magasin magasin = vendeur.getMagasin();
-		List<Livre> livresDisponibles = null;
-		try {
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			return;
-		}
-		
-		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
-		if (selectionLivre == null) return;
-		
-		Livre livre = selectionLivre.getElement();
-	
-		int qte = 0;
-		try {
-			qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
-			if (qte !=0){
-				System.out.println("Le livre \"" + livre.getTitre() + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
-			} else {
-				System.out.println("Le livre \"" + livre.getTitre() + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
-			}
-	
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la récupération du stock du livre : " + e.getMessage());
-		}
-	}
-
-	/**
-	 * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
-     * @param vendeur Un vendeur.
-	 */
-	public void majQuantite(Vendeur vendeur){
-		Magasin magasin = vendeur.getMagasin();
-		List<Livre> livresDisponibles = null;
-		try {
-			livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
-			return;
-		}
-		
-		ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
-		if (selectionLivre == null) return;
-		
-		Livre livre = selectionLivre.getElement();
-		Integer quantite = null;
-		
-		this.afficherTitreUniquement("Entrez la nouvelle quantité du livre \"" + livre.getTitre() + "\" :");
-		quantite = this.obtenirEntreeNombreUtilisateur();
-		
-		if (quantite == null || quantite < 0) {
-			System.err.println("Erreur : La quantité doit être un nombre entier positif");
-			return;
-		}
-		
-		if (!this.demanderConfirmation("Êtes-vous sûr de votre choix ?")) {
-			System.out.println("Mise à jour annulée.");
-			return;
-		}
-		
-		try {
-			this.chaineLibrairie.getMagasinBD().setStockLivre(magasin.getId(), livre.getISBN(), quantite);
-			System.out.println("Quantité mise à jour avec succès !");
-		} catch (SQLException e) {
-			System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
-		}
-	}
     /**
-     * Permet à un vendeur d'agir en tant qu'un client pour passer une commande par exemple.
+     * Transférer un livre d'un magasin à un autre.
+     *
+     * @param vendeur Le vendeur effectuant le transfert
+     */
+    public void transfertLivre(Vendeur vendeur) {
+
+        try {
+
+            List<Livre> livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreEnStockMagasin(vendeur.getMagasin());
+            ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à transférer");
+
+            if (selectionLivre == null) {
+                return;
+            }
+            Livre livre = selectionLivre.getElement();
+
+            Magasin magasinSource = vendeur.getMagasin();
+
+            List<Magasin> tousMagasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            List<Magasin> magasins = new ArrayList<>();
+
+            for (Magasin m : tousMagasins) {
+                if (!m.getId().equals(magasinSource.getId())) {
+                    magasins.add(m);
+                }
+            }
+            ResultatSelection<Magasin> selectionMagasin = this.selectionnerElement(magasins, 0, "Sélectionnez le magasin de destination");
+            if (selectionMagasin == null) {
+                return;
+            }
+            Magasin magasinDestination = selectionMagasin.getElement();
+
+            int stockActuel = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasinSource.getId(), livre.getISBN());
+            this.afficherTitre(String.format("Transfert de %s", livre.getTitre()));
+            this.afficherTexte(String.format("Stock disponible dans %s: %d", magasinSource.toString(), stockActuel));
+            this.afficherTexte("Entrez la quantité à transférer:");
+            this.afficherTitreFin();
+
+            Integer quantite = this.obtenirEntreeNombreUtilisateur();
+            if (quantite == null || quantite <= 0 || quantite > stockActuel) {
+                System.err.println("Quantité invalide");
+                return;
+            }
+            boolean confirmation = this.demanderConfirmation(
+                    "Confirmer le transfert",
+                    String.format("Transfert de %d exemplaire(s) de %s de %s vers %s",
+                            quantite, livre.getTitre(), magasinSource.toString(), magasinDestination.toString())
+            );
+            if (confirmation) {
+                this.chaineLibrairie.getLivreBD().transfertLivre(livre, magasinSource, magasinDestination, quantite);
+                System.out.println("Transfert effectué avec succès !");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors du transfert: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Modifie le stock d'un livre dans un magasin
+     */
+    public void modifierStockGlobal() {
+        try {
+            List<Livre> livres = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+            ResultatSelection<Livre> selection = selectionnerElement(livres, 0, "Sélectionnez un livre");
+            if (selection == null) {
+                return;
+            }
+
+            Livre livre = selection.getElement();
+
+            List<Magasin> magasins = this.chaineLibrairie.getMagasinBD().obtenirListeMagasin();
+            ResultatSelection<Magasin> selectionMag = selectionnerElement(magasins, 0, "Sélectionnez un magasin");
+            if (selectionMag == null) {
+                return;
+            }
+
+            Magasin magasin = selectionMag.getElement();
+
+            afficherTitre("Modification stock pour " + livre.getTitre());
+            afficherTexte("Magasin: " + magasin.getNom());
+            afficherTexte("Stock actuel: " + this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN()));
+            afficherTexte("Entrez la nouvelle quantité:");
+            afficherTitreFin();
+
+            Integer nouvelleQte = obtenirEntreeNombreUtilisateur();
+            if (nouvelleQte == null || nouvelleQte < 0) {
+                System.err.println("Quantité invalide");
+                return;
+            }
+
+            if (demanderConfirmation("Confirmer modification",
+                    String.format("Définir stock à %d pour %s dans %s ?",
+                            nouvelleQte, livre.getTitre(), magasin.getNom()))) {
+
+                this.chaineLibrairie.getLivreBD().modifierStockMagasin(livre.getISBN(), magasin.getId(), nouvelleQte);
+
+                System.out.println("Stock mis à jour avec succès !");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la modification: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Supprime un livre dans le stock du magasin du vendeur.
+     *
+     * @param vendeur Un vendeur.
+     */
+    public void supprimerLivre(Vendeur vendeur) {
+        List<Livre> livresDisponibles = null;
+        try {
+            Magasin magasin = vendeur.getMagasin();
+            livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+            return;
+        }
+
+        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre à supprimer");
+        if (selectionLivre == null) {
+            return;
+        }
+
+        Livre livre = selectionLivre.getElement();
+        if (!this.demanderConfirmation("Êtes-vous sûr de vouloir supprimer " + livre.getTitre() + " ?")) {
+            System.out.println("Suppression annulée.");
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getLivreBD().supprimerLivre(livre.getISBN());
+            System.out.println("Livre supprimé avec succès !");
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la suppression du livre en base de données : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Donne la disponibilité d'un livre dans le stock du magasin du vendeur
+     *
+     * @param vendeur Un vendeur.
+     */
+    public void dispoStock(Vendeur vendeur) {
+        Magasin magasin = vendeur.getMagasin();
+        List<Livre> livresDisponibles = null;
+        try {
+            livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+            return;
+        }
+
+        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
+        if (selectionLivre == null) {
+            return;
+        }
+
+        Livre livre = selectionLivre.getElement();
+
+        int qte = 0;
+        try {
+            qte = this.chaineLibrairie.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+            if (qte != 0) {
+                System.out.println("Le livre \"" + livre.getTitre() + "\" est en stock chez \"" + magasin.toString() + "\" d'une quantité de " + qte + ".");
+            } else {
+                System.out.println("Le livre \"" + livre.getTitre() + "\" n'est plus en stock chez \"" + magasin.toString() + "\".");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du stock du livre : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Met à jour disponibilité d'un livre dans le stock du magasin du vendeur
+     *
+     * @param vendeur Un vendeur.
+     */
+    public void majQuantite(Vendeur vendeur) {
+        Magasin magasin = vendeur.getMagasin();
+        List<Livre> livresDisponibles = null;
+        try {
+            livresDisponibles = this.chaineLibrairie.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupération du livre : " + e.getMessage());
+            return;
+        }
+
+        ResultatSelection<Livre> selectionLivre = this.selectionnerElement(livresDisponibles, 0, "Sélectionnez le livre");
+        if (selectionLivre == null) {
+            return;
+        }
+
+        Livre livre = selectionLivre.getElement();
+        Integer quantite = null;
+
+        this.afficherTitreUniquement("Entrez la nouvelle quantité du livre \"" + livre.getTitre() + "\" :");
+        quantite = this.obtenirEntreeNombreUtilisateur();
+
+        if (quantite == null || quantite < 0) {
+            System.err.println("Erreur : La quantité doit être un nombre entier positif");
+            return;
+        }
+
+        if (!this.demanderConfirmation("Êtes-vous sûr de votre choix ?")) {
+            System.out.println("Mise à jour annulée.");
+            return;
+        }
+
+        try {
+            this.chaineLibrairie.getMagasinBD().setStockLivre(magasin.getId(), livre.getISBN(), quantite);
+            System.out.println("Quantité mise à jour avec succès !");
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la mise à jour de la quantité en base de données : " + e.getMessage());
+        }
+    }
+
+    /**
+     * Permet à un vendeur d'agir en tant qu'un client pour passer une commande
+     * par exemple.
+     *
      * @param vendeur Un vendeur
      */
-    public void agirEnClient(Vendeur vendeur){
-        try{
-            List<Client> listeClients= this.chaineLibrairie.getClientBD().obtenirListeClient();
-            ResultatSelection<Client> selectionClient= this.selectionnerElement(listeClients, 0, "Séléctionner le client pour la commande");
-            if (selectionClient== null) return;
+    public void agirEnClient(Vendeur vendeur) {
+        try {
+            List<Client> listeClients = this.chaineLibrairie.getClientBD().obtenirListeClient();
+            ResultatSelection<Client> selectionClient = this.selectionnerElement(listeClients, 0, "Séléctionner le client pour la commande");
+            if (selectionClient == null) {
+                return;
+            }
 
             Client client = selectionClient.getElement();
             this.menuClient(client);
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.err.println("Une erreur est survenue lors de la récupération des clients : " + e.getMessage());
         }
     }

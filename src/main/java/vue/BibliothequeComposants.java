@@ -19,10 +19,18 @@ import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
 
-/** Une bibliothèque de composants */
+/**
+ * Une bibliothèque de composants
+ */
 public class BibliothequeComposants {
-    /** Constructeur privé car bibliothèque */
-    public BibliothequeComposants() {};
+
+    /**
+     * Constructeur privé car bibliothèque
+     */
+    public BibliothequeComposants() {
+    }
+
+    ;
 
     /**
      * Obtenir une barre de recherche.
@@ -42,7 +50,7 @@ public class BibliothequeComposants {
         BorderPane root = new BorderPane();
         root.setMinWidth(250);
         root.setPrefWidth(250);
-        
+
         root.setStyle("-fx-border-color: black");
         root.setPadding(new Insets(10));
 
@@ -52,7 +60,7 @@ public class BibliothequeComposants {
         root.setTop(bookImage);
 
         Client client = modele.getClientActuel();
-        Magasin magasin = client.getMagasin();
+        Magasin magasin = client.vendeur();
 
         int enStock = modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
 
@@ -60,9 +68,9 @@ public class BibliothequeComposants {
         Label labelTitre = new Label(livre.getTitre());
         labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         vboxDetails.getChildren().addAll(
-            labelTitre,
-            new Label(livre.joinNomAuteurs()),
-            new Label(String.format("%.2f€ - %d en stock", livre.getPrix(), enStock))
+                labelTitre,
+                new Label(livre.joinNomAuteurs()),
+                new Label(String.format("%.2f€ - %d en stock", livre.getPrix(), enStock))
         );
         root.setCenter(vboxDetails);
 

@@ -1,3 +1,4 @@
+
 import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
@@ -17,61 +18,62 @@ import modeles.Magasin;
 import modeles.Panier;
 
 public class ClientTest {
+
     private Magasin magasinParis = new Magasin("1", "La librairie parisienne", "Paris");
     private Magasin magasinMarseille = new Magasin("2", "Cap au Sud", "Marseille");
     private Magasin magasinOrleans = new Magasin("7", "Loire et livres", "Orléans");
 
     private Livre livre1 = new Livre(
-        "9782205054750",
-        "Les cavernes",
-        48,
-        2003,
-        8.81,
-        new HashSet<>(Arrays.asList("Léo")),
-        new HashSet<>(Arrays.asList("Dargaud")),
-        new HashSet<>(Arrays.asList("Arts décorartifs"))
+            "9782205054750",
+            "Les cavernes",
+            48,
+            2003,
+            8.81,
+            new HashSet<>(Arrays.asList("Léo")),
+            new HashSet<>(Arrays.asList("Dargaud")),
+            new HashSet<>(Arrays.asList("Arts décorartifs"))
     );
 
     private Livre livre2 = new Livre(
-        "9780446570992",
-        "Abraham Lincoln",
-        null,
-        2010,
-        16.4,
-        new HashSet<>(Arrays.asList("Seth Grahame-Smith")),
-        new HashSet<>(Arrays.asList("Hachette Book Group Usa")),
-        new HashSet<>(Arrays.asList("Littérature américaine"))
+            "9780446570992",
+            "Abraham Lincoln",
+            null,
+            2010,
+            16.4,
+            new HashSet<>(Arrays.asList("Seth Grahame-Smith")),
+            new HashSet<>(Arrays.asList("Hachette Book Group Usa")),
+            new HashSet<>(Arrays.asList("Littérature américaine"))
     );
 
     private Livre livre3 = new Livre(
-        "9780340932056",
-        "Kipper",
-        32,
-        2008,
-        11.9,
-        new HashSet<>(Arrays.asList("Mick Inkpen")),
-        new HashSet<>(Arrays.asList("Hodder Children'S")),
-        new HashSet<>(Arrays.asList("Littérature anglaise"))
+            "9780340932056",
+            "Kipper",
+            32,
+            2008,
+            11.9,
+            new HashSet<>(Arrays.asList("Mick Inkpen")),
+            new HashSet<>(Arrays.asList("Hodder Children'S")),
+            new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     private Livre livre4 = new Livre(
-        "9780148104904",
-        "Cooper",
-        54,
-        2009,
-        8.99,
-        new HashSet<>(Arrays.asList("Mick Inkpen")),
-        new HashSet<>(Arrays.asList("Hodder Children'S")),
-        new HashSet<>(Arrays.asList("Littérature anglaise"))
+            "9780148104904",
+            "Cooper",
+            54,
+            2009,
+            8.99,
+            new HashSet<>(Arrays.asList("Mick Inkpen")),
+            new HashSet<>(Arrays.asList("Hodder Children'S")),
+            new HashSet<>(Arrays.asList("Littérature anglaise"))
     );
 
     // Client 1
     private DetailLivre detailCommande1 = new DetailLivre(livre1, 1, 2, 7.98);
     private Commande commande1 = new Commande(1, Date.valueOf("2020-08-11"), 'N', 'M', magasinOrleans, new ArrayList<>(Arrays.asList(detailCommande1)));
     private List<Commande> commandesClient1 = new ArrayList<>(Arrays.asList(commande1));
-    
+
     private DetailLivre detailCommande2 = new DetailLivre(livre2, 1, 1, 16.4);
-    private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2)); 
+    private List<DetailLivre> detailCommandesPanierClient1 = new ArrayList<>(Arrays.asList(detailCommande2));
     private Panier panierClient1 = new Panier(1, magasinOrleans, detailCommandesPanierClient1);
     private Client client1 = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
 
@@ -133,9 +135,9 @@ public class ClientTest {
 
     @Test
     public void testsGetMagasin() {
-        assertEquals(magasinOrleans, this.client1.getMagasin());
-        assertEquals(magasinMarseille, this.client2.getMagasin());
-        assertEquals(magasinOrleans, this.client3.getMagasin());
+        assertEquals(magasinOrleans, this.client1.vendeur());
+        assertEquals(magasinMarseille, this.client2.vendeur());
+        assertEquals(magasinOrleans, this.client3.vendeur());
     }
 
     @Test
@@ -173,19 +175,19 @@ public class ClientTest {
     @Test
     public void testsSetMagasin() {
         Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
-        assertEquals(this.magasinOrleans, client1Copie.getMagasin());
+        assertEquals(this.magasinOrleans, client1Copie.vendeur());
         client1Copie.setMagasin(this.magasinParis);
-        assertEquals(this.magasinParis, client1Copie.getMagasin());
+        assertEquals(this.magasinParis, client1Copie.vendeur());
 
         Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, null);
-        assertEquals(this.magasinMarseille, client2Copie.getMagasin());
+        assertEquals(this.magasinMarseille, client2Copie.vendeur());
         client2Copie.setMagasin(this.magasinOrleans);
-        assertEquals(this.magasinOrleans, client2Copie.getMagasin());
+        assertEquals(this.magasinOrleans, client2Copie.vendeur());
 
         Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, null);
-        assertEquals(this.magasinOrleans, client3Copie.getMagasin());
+        assertEquals(this.magasinOrleans, client3Copie.vendeur());
         client3Copie.setMagasin(this.magasinMarseille);
-        assertEquals(this.magasinMarseille, client3Copie.getMagasin());
+        assertEquals(this.magasinMarseille, client3Copie.vendeur());
     }
 
     @Test
@@ -230,7 +232,7 @@ public class ClientTest {
     public void testsGetClassifications() {
         Set<String> classificationsClient1 = new HashSet<>(Arrays.asList("Arts décorartifs"));
         assertEquals(classificationsClient1, this.client1.getClassifications());
-    
+
         Set<String> classificationsClient2 = new HashSet<>(Arrays.asList());
         assertEquals(classificationsClient2, this.client2.getClassifications());
 

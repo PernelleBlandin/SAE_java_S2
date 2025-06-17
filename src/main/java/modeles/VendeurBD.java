@@ -9,13 +9,15 @@ import java.util.List;
 /** Liaison entre les vendeurs et la base de données. */
 public class VendeurBD {
     private ConnexionMariaDB connexionMariaDB;
+    ChaineLibrairie chaineLibrairie;
 
     /**
      * Instancier la classe VendeurBD.
      * @param connexionMariaDB La connexion avec la base de données.
      */
-    public VendeurBD(ConnexionMariaDB connexionMariaDB) {
+    public VendeurBD(ConnexionMariaDB connexionMariaDB, ChaineLibrairie chaineLibrairie) {
         this.connexionMariaDB = connexionMariaDB;
+        this.chaineLibrairie = chaineLibrairie;
     }
     
 
@@ -38,7 +40,7 @@ public class VendeurBD {
             String nomVendeur = result.getString("nomvendeur");
             String prenomVendeur = result.getString("prenomvendeur");
             
-            Vendeur vendeur = new Vendeur(idVendeur, nomVendeur, prenomVendeur, null);
+            Vendeur vendeur = new Vendeur(idVendeur, nomVendeur, prenomVendeur, null, this.chaineLibrairie);
             listeVendeurs.add(vendeur);
         }
         result.close();
@@ -78,7 +80,7 @@ public class VendeurBD {
 
         result.close();
 
-        return new Vendeur(idVendeur, nom, prenom, magasin);
+        return new Vendeur(idVendeur, nom, prenom, magasin, this.chaineLibrairie);
     }
 
     /**

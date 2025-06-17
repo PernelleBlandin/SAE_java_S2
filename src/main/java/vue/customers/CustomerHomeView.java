@@ -98,6 +98,10 @@ public class CustomerHomeView {
         return root;
     }
 
+    /**
+     * Obtenir l'élement central.
+     * @return L'élement central de la page.
+     */
     public VBox getCenter() {
         VBox root = new VBox();
 
@@ -136,6 +140,31 @@ public class CustomerHomeView {
         return root;
     }
 
+    /**
+     * Obtenir le titre d'une section, avec un bouton "Voir tout".
+     * @param title Le titre de la section.
+     * @return La section, avec son titre et un bouton "Voir tout".
+     */
+    private GridPane getSectionTitle(String title) {
+        GridPane section = new GridPane();
+        section.setPadding(new Insets(20, 0, 0, 0));
+
+        Label titleLabel = new Label(title);
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        GridPane.setHgrow(titleLabel, Priority.ALWAYS);
+        section.add(titleLabel, 0, 0);
+        
+        Button viewAllButton = new Button("Voir tout");
+        GridPane.setHalignment(viewAllButton, HPos.RIGHT);
+        section.add(viewAllButton, 1, 0);
+        
+        return section;
+    }
+
+    /**
+     * Obtenir la VBox des recommendations.
+     * @return La VBox des recommendations.
+     */
     private VBox getRecommendations() {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
@@ -152,41 +181,56 @@ public class CustomerHomeView {
         HBox livresRecommendes = new HBox();
         livresRecommendes.setSpacing(20);
 
-        for (int i = 0; i < livres.size() && i < 5; i++) {
-            Livre livre = livres.get(i);
-            BorderPane bookCard = BibliothequeComposants.getBookCard(livre);
-            
-            HBox.setHgrow(bookCard, Priority.ALWAYS);
-            livresRecommendes.getChildren().add(bookCard);
+        try {
+            for (int i = 0; i < livres.size() && i < 5; i++) {
+                Livre livre = livres.get(i);
+                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.client.getMagasin(), this.modele.getMagasinBD());
+                
+                HBox.setHgrow(bookCard, Priority.ALWAYS);
+                livresRecommendes.getChildren().add(bookCard);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
         }
 
         vbox.getChildren().addAll(recommendationsVBox, livresRecommendes);
         return vbox;
     }
 
+    /**
+     * Obtenir la VBox des meilleures ventes.
+     * @return La VBox des meilleures ventes.
+     */
     private VBox getMeilleuresVentes() {
         VBox vbox = new VBox();
+        vbox.setSpacing(20);
 
         GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes");
 
-        vbox.getChildren().add(recommendationsVBox);
+        List<Livre> livres = new ArrayList<>();
+        try {
+            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes(5);
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+
+        HBox topLivresVentes = new HBox();
+        topLivresVentes.setSpacing(20);
+
+        try {
+            for (int i = 0; i < livres.size() && i < 5; i++) {
+                Livre livre = livres.get(i);
+                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.client.getMagasin(), this.modele.getMagasinBD());
+                
+                HBox.setHgrow(bookCard, Priority.ALWAYS);
+                topLivresVentes.getChildren().add(bookCard);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+
+        vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
         return vbox;
-    }
-
-    private GridPane getSectionTitle(String title) {
-        GridPane section = new GridPane();
-        section.setPadding(new Insets(20, 0, 0, 0));
-
-        Label titleLabel = new Label(title);
-        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        GridPane.setHgrow(titleLabel, Priority.ALWAYS);
-        section.add(titleLabel, 0, 0);
-        
-        Button viewAllButton = new Button("Voir tout");
-        GridPane.setHalignment(viewAllButton, HPos.RIGHT);
-        section.add(viewAllButton, 1, 0);
-        
-        return section;
     }
 
     /**

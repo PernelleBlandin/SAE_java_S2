@@ -94,6 +94,34 @@ public class LivreBD {
     }
 
     /**
+     * Obtenir les meilleures ventes nationales.
+     * @param nbLivres Le nombre de livres retournés.
+     * @return Les meilleures livres vendus.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public List<Livre> obtenirLivresMeilleuresVentes(int nbLivres) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT isbn, COUNT(numcom) nbVentes
+            FROM LIVRE NATURAL JOIN DETAILCOMMANDE
+            GROUP BY isbn
+            ORDER BY nbVentes DESC
+            LIMIT ?;
+        """);
+        statement.setInt(1, nbLivres);
+
+        ResultSet result = statement.executeQuery();
+
+        List<Livre> livres = new ArrayList<>();
+        while (result.next()) {
+            String isbn = result.getString("isbn");
+            Livre livre = this.obtenirLivre(isbn);
+            livres.add(livre);
+        }
+        result.close();
+        return livres;
+    }
+
+    /**
      * Obtenir le nombre de ventes d'un livre.
      * @param isbn Son ISBN.
      * @return Son nombre de ventes.

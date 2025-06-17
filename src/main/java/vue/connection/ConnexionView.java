@@ -34,7 +34,6 @@ public class ConnexionView {
         this.app = app;
 
         StackPane root = new StackPane();
-        root.setPrefSize(1920, 1080);
 
         ImageView image = new ImageView("/images/connexionBackground.jpg");
         image.setFitWidth(1920);

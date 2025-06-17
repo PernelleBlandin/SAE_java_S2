@@ -1,5 +1,7 @@
 package vue;
 
+import java.sql.SQLException;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.Livre;
+import modeles.Magasin;
+import modeles.MagasinBD;
 
 /** Une bibliothèque de composants */
 public class BibliothequeComposants {
@@ -32,7 +36,7 @@ public class BibliothequeComposants {
         return root;
     }
 
-    public static BorderPane getBookCard(Livre livre) {
+    public static BorderPane getBookCard(Livre livre, Magasin magasin, MagasinBD magasinBD) throws SQLException {
         BorderPane root = new BorderPane();
         root.setMinWidth(250);
         root.setPrefWidth(250);
@@ -45,8 +49,7 @@ public class BibliothequeComposants {
         bookImage.setFitWidth(100);
         root.setTop(bookImage);
 
-        // TODO en stock
-        int enStock = 2;
+        int enStock = magasinBD.obtenirStockLivre(magasin.getId(), livre.getISBN());
 
         VBox vboxDetails = new VBox();
         Label labelTitre = new Label(livre.getTitre());

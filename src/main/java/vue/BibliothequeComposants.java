@@ -19,6 +19,7 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
+import modeles.Vendeur;
 
 /**
  * Une bibliothèque de composants
@@ -48,7 +49,7 @@ public class BibliothequeComposants {
     }
 
     /**
-     * Afficher une carte pour un livre.
+     * Afficher une carte pour un livre sur la page client.
      * @param livre Un livre.
      * @param modele Le modèle.
      * @param app L'application IHM.
@@ -112,6 +113,64 @@ public class BibliothequeComposants {
         infoButton.setGraphic(infoIcon);
 
         hboxBoutons.getChildren().addAll(addPanierButton, infoButton);
+
+        root.setBottom(hboxBoutons);
+
+        return root;
+    }
+
+    /**
+     * Afficher une carte pour un livre sur la page vendeur
+     * @param livre Un livre.
+     * @param modele Le modèle.
+     * @param app L'application IHM.
+     * @return La carte d'un livre.
+     * @throws SQLException Exception SQL en cas d'erreur avec la BD.
+     */
+    public static BorderPane getBookCardSeller(Livre livre, ChaineLibrairie modele, MAJVueInterface app) throws SQLException {
+        BorderPane root = new BorderPane();
+        root.setMinWidth(250);
+        root.setPrefWidth(250);
+
+        root.setStyle("-fx-border-color: black");
+        root.setPadding(new Insets(10));
+
+        ImageView bookImage = new ImageView("./images/unknownBook.png");
+        bookImage.setFitHeight(100);
+        bookImage.setFitWidth(100);
+        root.setTop(bookImage);
+
+        Vendeur vendeur = modele.getVendeurActuel();
+        Magasin magasin = vendeur.getMagasin();
+
+        int enStock = modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+
+        VBox vboxDetails = new VBox();
+        Label labelTitre = new Label(livre.getTitre());
+        labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        vboxDetails.getChildren().addAll(
+                labelTitre,
+                new Label(livre.joinNomAuteurs()),
+                new Label(String.format("%.2f€ - %d en stock", livre.getPrix(), enStock))
+        );
+        root.setCenter(vboxDetails);
+
+        HBox hboxBoutons = new HBox();
+        hboxBoutons.setSpacing(5);
+        hboxBoutons.setAlignment(javafx.geometry.Pos.CENTER);
+
+        // Bouton d'info
+        Button infoButton = new Button();
+        infoButton.setPrefSize(30, 30);
+        infoButton.setOnAction(new ControleurInfoLivre(livre));
+
+        // Configurer l'icône
+        ImageView infoIcon = new ImageView("./images/info.png");
+        infoIcon.setFitHeight(24);
+        infoIcon.setFitWidth(24);
+        infoButton.setGraphic(infoIcon);
+
+        hboxBoutons.getChildren().addAll(infoButton);
 
         root.setBottom(hboxBoutons);
 

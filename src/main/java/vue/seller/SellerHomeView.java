@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controleurs.ControleurDeconnexion;
+import controleurs.ControleurVoirPlusSeller;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,25 +30,41 @@ import vue.AppIHM;
 import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
 
-/** La vue de l'accueil d'un vendeur */
+/**
+ * La vue de l'accueil d'un vendeur
+ */
 public class SellerHomeView implements MAJVueInterface {
-    /** La vue principal */
+
+    /**
+     * La vue principal
+     */
     private AppIHM app;
-    /** Le modèle */
+    /**
+     * Le modèle
+     */
     private ChaineLibrairie modele;
 
-    /** La scène de la vue */
+    /**
+     * La scène de la vue
+     */
     private Scene scene;
 
-    /** La scène principal */
+    /**
+     * La scène principal
+     */
     private BorderPane root;
-    /** VBox Central */
+    /**
+     * VBox Central
+     */
     private VBox center;
-    /** VBox a gauche */
+    /**
+     * VBox a gauche
+     */
     private VBox left;
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
+     *
      * @param app La vue principal.
      * @param modele Le modèle.
      */
@@ -66,52 +83,55 @@ public class SellerHomeView implements MAJVueInterface {
 
         this.left = this.getLeft();
         this.root.setLeft(left);
-        
+
         this.scene = new Scene(this.root);
     }
 
     /**
      * Obtenir le header du menu vendeur.
+     *
      * @return Le header du menu vendeur.
      */
     public HBox getHeader() {
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
-        
+
         ImageView logo = new ImageView("/images/logo.png");
         logo.setFitWidth(304.6);
         logo.setFitHeight(91.2);
-        
+        Button boutonLogo = new Button();
+        boutonLogo.setGraphic(logo);
+        // TODO METTRE LA CLASSE RETOURACCUEIL DANS LE SET boutonLogo.setOnAction();
+
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
         buttonLogo.setGraphic(logo);
-        
+
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
         HBox.setHgrow(searchBar, Priority.ALWAYS);
-        
-        
+
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);
         deconnexionButton.setOnAction(new ControleurDeconnexion(this.app));
-        
+
         header.getChildren().addAll(buttonLogo, searchBar, deconnexionButton);
-        
+
         header.setSpacing(10);
         header.setPadding(new Insets(10, 20, 10, 20));
 
         return header;
     }
 
-
     /**
      * Obtenir l'élement de gauche.
+     *
      * @return L'élement a gauche de la page.
      */
-    public VBox getLeft(){
-        VBox left = new VBox();
+    public VBox getLeft() {
+        VBox left = new VBox(70);
         Vendeur vendeur = this.modele.getVendeurActuel();
-        
+
         Button ajouterLivre = new Button("Ajouter un livre");
         // ajouterLivre.setOnAction(new ControleurAjouterLivre(this.app));
 
@@ -128,12 +148,14 @@ public class SellerHomeView implements MAJVueInterface {
         // rpClient.setOnAction(new ControleurAgirCommeClient(this.app));
 
         left.getChildren().addAll(ajouterLivre, supprimerLivre, majQteLivre, transfertLivre, rpClient);
-        
+        left.setPadding(new Insets(30, 50, 0, 50));
+
         return left;
     }
 
     /**
      * Obtenir l'élement central.
+     *
      * @return L'élement central de la page.
      */
     public VBox getCenter() {
@@ -165,7 +187,7 @@ public class SellerHomeView implements MAJVueInterface {
         VBox meilleuresVentesVBox = this.getMeilleuresVentes();
 
         center.getChildren().addAll(welcome, magasinLabel, magasinComboBox, meilleuresVentesVBox);
-        
+
         center.setSpacing(10);
         center.setPadding(new Insets(10, 20, 10, 20));
 
@@ -174,10 +196,17 @@ public class SellerHomeView implements MAJVueInterface {
 
     /**
      * Obtenir le titre d'une section, avec un bouton "Voir tout".
+     *
      * @param title Le titre de la section.
      * @return La section, avec son titre et un bouton "Voir tout".
      */
     private GridPane getSectionTitle(String title) {
+        List<Livre> listeLivres = new ArrayList<>();
+        try {
+            listeLivres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
         GridPane section = new GridPane();
         section.setPadding(new Insets(20, 0, 0, 0));
 
@@ -185,16 +214,17 @@ public class SellerHomeView implements MAJVueInterface {
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         GridPane.setHgrow(titleLabel, Priority.ALWAYS);
         section.add(titleLabel, 0, 0);
-        
+
         Button viewAllButton = new Button("Voir tout");
+        viewAllButton.setOnAction(new ControleurVoirPlusSeller(this, listeLivres));
         GridPane.setHalignment(viewAllButton, HPos.RIGHT);
         section.add(viewAllButton, 1, 0);
-        
         return section;
     }
 
     /**
      * Obtenir la VBox des meilleures ventes.
+     *
      * @return La VBox des meilleures ventes.
      */
     private VBox getMeilleuresVentes() {
@@ -213,22 +243,26 @@ public class SellerHomeView implements MAJVueInterface {
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
 
-        // try {
-        //     for (int i = 0; i < livres.size() && i < 5; i++) {
-        //         Livre livre = livres.get(i);
-        //         BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
-                
-        //         HBox.setHgrow(bookCard, Priority.ALWAYS);
-        //         topLivresVentes.getChildren().add(bookCard);
-        //     }
-        // } catch (SQLException e) {
-        //     // TODO: handle exception
-        // }
+        try {
+            for (int i = 0; i < livres.size() && i < 5; i++) {
+                Livre livre = livres.get(i);
+                BorderPane bookCard = BibliothequeComposants.getBookCardSeller(livre, this.modele, this);
+
+                HBox.setHgrow(bookCard, Priority.ALWAYS);
+                topLivresVentes.getChildren().add(bookCard);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
 
         vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
         return vbox;
     }
 
+    public void showListBooks(List<Livre> listeLivres) {
+        SellerListBook vue = new SellerListBook(this, this.modele, listeLivres);
+        this.app.getPrimaryStage().setScene(vue.getScene());
+    }
     /**
      * Mettre à jour l'affichage
      */
@@ -241,6 +275,7 @@ public class SellerHomeView implements MAJVueInterface {
 
     /**
      * Obtenir la scène de l'accueil d'un vendeur.
+     *
      * @return La scène de l'accueil d'un vendeur.
      */
     public Scene getScene() {

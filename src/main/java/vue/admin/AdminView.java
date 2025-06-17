@@ -4,31 +4,40 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import controleurs.ControleurDeconnexion;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
 import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
+
 import vue.AppIHM;
 import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
 
 /** La vue de l'accueil d'un admin */
-public class AdminHomeView {
+public class AdminView {
     
     /** La vue principale */
     private AppIHM app;
@@ -40,11 +49,12 @@ public class AdminHomeView {
 
     /** La scène principal */
     private BorderPane root;
-    /** VBox centrale */
-    private VBox center;
     
-    /** HBox du cote */
-    private HBox aside;
+    /**HBox du header*/
+    private HBox header;
+    
+    /** VBox du cote */
+    private VBox aside;
 
 
 
@@ -53,7 +63,7 @@ public class AdminHomeView {
      * @param app La vue principal.
      * @param modele Le modèle.
      */
-    public AdminHomeView(AppIHM app, ChaineLibrairie modele) {
+    public AdminView(AppIHM app, ChaineLibrairie modele) {
         this.app = app;
         this.modele = modele;
 
@@ -63,8 +73,8 @@ public class AdminHomeView {
         HBox header = this.getHeader();
         this.root.setTop(header);
 
-        this.center = this.getAside();
-        this.root.setCenter(center);
+        this.aside = this.getAside();
+        this.root.setCenter(fenetreStat());
         
         this.scene = new Scene(this.root);
     }
@@ -110,7 +120,7 @@ public Scene getScene() {
      * @return L'élement de cote de la page.
      */
     public VBox getAside(){
-        VBox aside = new VBox(20);
+        VBox aside = new VBox(100);
         aside.setPadding(new Insets(30,50,0,50));
 
         List<String> nomsMenu = new ArrayList<>(Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures", "Gérer des stocks"));
@@ -135,11 +145,74 @@ public Scene getScene() {
         //this.boutonExporterFacture.setOnAction(GestionStock);
         
         
+        
         aside.getChildren().addAll(boutonMagVendeur, boutonExporterFacture ,boutonGereStock, boutonTabBord);
 
         return aside;
         
     }
+
+    public TilePane fenetreStat() {
+        TilePane centre = new TilePane();
+
+        //BarChart
+        // CategoryAxis xAxis = new CategoryAxis();
+        // NumberAxis yAxis= new NumberAxis();
+
+        // XYChart.Series series= new XYChart.Series<>();
+        // Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
+        // for(String key: dataBar.keySet()){
+        //    series.getData().add(new XYChart.Data("key",  dataBar.get(key)) {
+            
+        //    }) 
+        // }
+
+        BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
+
+        //PieChart
+
+        //AreaChart
+
+        //LineChart
+
+        //BarChart
+
+        //PieChart
+
+        //PieChart
+
+        //LineChart
+        
+        }
+
+        
+        
+        
+
+    public void modeStat() {
+        this.root.setCenter(fenetreStat());
+    }
+
+    public void modeFacture() {
+        this.root.setCenter(fenetreFact());
+    }
+
+    public void modeGestionMagasins() {
+        this.root.setCenter(fenetreGestionMagasins());
+    }
+
+    public void modeGestionVendeurs() {
+        this.root.setCenter(fenetregestionVendeurs());
+    }
+
+    public void modeStocksSelectMag() {
+        this.root.setCenter(fenetreStockSelectMag());
+    }
+
+    public void modeStockUnMag() {
+        this.root.setCenter(fenetreStockParMag());
+    }
+    
 
 }
 

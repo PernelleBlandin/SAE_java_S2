@@ -109,7 +109,7 @@ public class SellerHomeView implements MAJVueInterface {
         buttonLogo.setGraphic(logo);
 
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
-        HBox.setHgrow(searchBar, Priority.ALWAYS);
+        
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);
@@ -118,7 +118,7 @@ public class SellerHomeView implements MAJVueInterface {
         header.getChildren().addAll(buttonLogo, searchBar, deconnexionButton);
 
         header.setSpacing(10);
-        header.setPadding(new Insets(10, 20, 10, 20));
+        header.setPadding(new Insets(10, 20, 10, 0));
 
         return header;
     }
@@ -148,7 +148,7 @@ public class SellerHomeView implements MAJVueInterface {
         // rpClient.setOnAction(new ControleurAgirCommeClient(this.app));
 
         left.getChildren().addAll(ajouterLivre, supprimerLivre, majQteLivre, transfertLivre, rpClient);
-        left.setPadding(new Insets(30, 50, 0, 50));
+        left.setPadding(new Insets(30, 50, 0, 10));
 
         return left;
     }

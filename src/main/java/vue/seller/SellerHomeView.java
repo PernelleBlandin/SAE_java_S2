@@ -30,7 +30,7 @@ import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
 
 /** La vue de l'accueil d'un client */
-public class DealerHomeView implements MAJVueInterface {
+public class SellerHomeView implements MAJVueInterface {
     /** La vue principal */
     private AppIHM app;
     /** Le modèle */
@@ -49,7 +49,7 @@ public class DealerHomeView implements MAJVueInterface {
      * @param app La vue principal.
      * @param modele Le modèle.
      */
-    public DealerHomeView(AppIHM app, ChaineLibrairie modele) {
+    public SellerHomeView(AppIHM app, ChaineLibrairie modele) {
         this.app = app;
         this.modele = modele;
 

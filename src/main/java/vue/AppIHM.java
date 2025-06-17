@@ -70,6 +70,18 @@ public class AppIHM extends Application {
         this.primaryStage.setScene(vue.getScene());
     }
 
+    public void modeVendeur(){
+        try {
+            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
+            this.chaineLibrairie.setClientActuel(client);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
+            return;
+        }
+
+        
+    }
+
     /**
      * Créer le graphe de scène et lance l'application.
      * @param stage La fenêtre principale.

@@ -34,7 +34,7 @@ public class BibliothequeComposants {
         TextField root = new TextField();
         root.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
         root.setPromptText(placeholder);
-        root.setMinHeight(50);
+        root.setMinHeight(20);
 
         return root;
     }
@@ -56,8 +56,8 @@ public class BibliothequeComposants {
         root.setPadding(new Insets(10));
 
         ImageView bookImage = new ImageView("./images/unknownBook.png");
-        bookImage.setFitHeight(100);
-        bookImage.setFitWidth(100);
+        bookImage.setFitHeight(60);
+        bookImage.setFitWidth(60);
         root.setTop(bookImage);
 
         Client client = modele.getClientActuel();

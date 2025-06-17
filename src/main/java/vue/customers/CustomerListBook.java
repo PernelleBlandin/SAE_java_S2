@@ -65,7 +65,7 @@ public class CustomerListBook implements MAJVueInterface {
         VBox center = new VBox();
 
         int nbLignes = 2;
-        int nbColonnes = 5;
+        int nbColonnes = 4;
         int nbElementsParPage = nbLignes * nbColonnes;
 
         for (int intLigne = 0; intLigne < nbLignes; intLigne++) {

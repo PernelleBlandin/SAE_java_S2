@@ -79,8 +79,8 @@ public class CustomerHomeView implements MAJVueInterface {
         header.setAlignment(Pos.CENTER_LEFT);
         
         ImageView logo = new ImageView("/images/logo.png");
-        logo.setFitWidth(304.6);
-        logo.setFitHeight(91.2);
+        logo.setFitWidth(3046 / 15);
+        logo.setFitHeight(912 / 15);
         
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
@@ -92,10 +92,10 @@ public class CustomerHomeView implements MAJVueInterface {
         HBox.setHgrow(searchBar, Priority.ALWAYS);
         
         Button panierButton = new Button("Panier");
-        panierButton.setMinSize(120, 50);
+        panierButton.setMinSize(70, 30);
         
         Button deconnexionButton = new Button("Déconnexion");
-        deconnexionButton.setMinSize(120, 50);
+        deconnexionButton.setMinSize(70, 30);
         deconnexionButton.setOnAction(new ControleurDeconnexion(this.app));
         
         header.getChildren().addAll(buttonLogo, searchBar, panierButton, deconnexionButton);
@@ -117,7 +117,7 @@ public class CustomerHomeView implements MAJVueInterface {
 
         // Début
         Label welcome = new Label(String.format("Bienvenue %s ! 👋", client.toString()));
-        welcome.setFont(Font.font("Arial", FontWeight.BOLD, 32));
+        welcome.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         welcome.setMaxWidth(Double.MAX_VALUE);
         welcome.setAlignment(Pos.CENTER);
 
@@ -160,7 +160,7 @@ public class CustomerHomeView implements MAJVueInterface {
         section.setPadding(new Insets(20, 0, 0, 0));
 
         Label titleLabel = new Label(titre);
-        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         GridPane.setHgrow(titleLabel, Priority.ALWAYS);
         section.add(titleLabel, 0, 0);
         
@@ -194,7 +194,7 @@ public class CustomerHomeView implements MAJVueInterface {
         livresRecommendes.setSpacing(20);
 
         try {
-            for (int i = 0; i < livres.size() && i < 5; i++) {
+            for (int i = 0; i < livres.size() && i < 4; i++) {
                 Livre livre = livres.get(i);
                 BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
                 
@@ -230,7 +230,7 @@ public class CustomerHomeView implements MAJVueInterface {
         topLivresVentes.setSpacing(20);
 
         try {
-            for (int i = 0; i < livres.size() && i < 5; i++) {
+            for (int i = 0; i < livres.size() && i < 4; i++) {
                 Livre livre = livres.get(i);
                 BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
                 
@@ -275,6 +275,7 @@ public class CustomerHomeView implements MAJVueInterface {
         String nbPagesString = nbPagesLivre == null ? "Inconnu" : String.valueOf(nbPagesLivre);
 
         List<String> detailsLivres = new ArrayList<>(Arrays.asList(
+            String.format("Titre : %s", livre.getTitre()),
             String.format("Auteur : %s", livre.joinNomAuteurs()),
             String.format("Prix : %.2f€", livre.getPrix()),
             String.format("Classification : %s", livre.joinClassifications()),

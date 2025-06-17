@@ -17,7 +17,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
 import vue._components.BookCardComponent;
 
@@ -119,7 +118,7 @@ public class SellerListBook implements MAJVueInterface {
 
                 Livre livre = this.listeLivres.get(index);
 
-                BorderPane bookCard = new BibliothequeComposants();
+                BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }

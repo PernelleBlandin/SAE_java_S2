@@ -30,6 +30,7 @@ import modeles.Vendeur;
 import vue.AppIHM;
 import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
+import vue._components.BookCardComponentSeller;
 
 /**
  * La vue de l'accueil d'un vendeur
@@ -131,7 +132,6 @@ public class SellerHomeView implements MAJVueInterface {
      */
     public VBox getLeft() {
         VBox left = new VBox(70);
-        Vendeur vendeur = this.modele.getVendeurActuel();
 
         Button ajouterLivre = new Button("Ajouter un livre");
         // ajouterLivre.setOnAction(new ControleurAjouterLivre(this.app));
@@ -169,13 +169,6 @@ public class SellerHomeView implements MAJVueInterface {
         welcome.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         welcome.setMaxWidth(Double.MAX_VALUE);
         welcome.setAlignment(Pos.CENTER);
-
-        List<Magasin> listeMagasins = new ArrayList<>();
-        try {
-            listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
-        } catch (SQLException e) {
-            // TODO: handle exception
-        }
 
         Label magasinLabel = new Label("Votre magasin");
         magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
@@ -244,18 +237,12 @@ public class SellerHomeView implements MAJVueInterface {
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
 
-        try {
-            for (int i = 0; i < livres.size() && i < 5; i++) {
-                Livre livre = livres.get(i);
-                BorderPane bookCard = BibliothequeComposants.getBookCardSeller(livre, this.modele, this);
-
-                HBox.setHgrow(bookCard, Priority.ALWAYS);
-                topLivresVentes.getChildren().add(bookCard);
-            }
-        } catch (SQLException e) {
-            // TODO: handle exception
+        for (int i = 0; i < livres.size() && i < 5; i++) {
+            Livre livre = livres.get(i);
+            BorderPane bookCard = new BookCardComponentSeller(livre, 3);
+            HBox.setHgrow(bookCard, Priority.ALWAYS);
+            topLivresVentes.getChildren().add(bookCard);
         }
-
         vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
         return vbox;
     }

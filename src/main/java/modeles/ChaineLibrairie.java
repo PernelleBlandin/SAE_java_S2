@@ -35,6 +35,8 @@ public class ChaineLibrairie {
     private VendeurBD vendeurBD;
     private StatistiquesBD statistiquesBD;
 
+    private Client clientActuel;
+
     /**
      * Intiailiser la chaîne de librairie.
      * @param bdHost L'adresse et le port de la base de données.
@@ -128,6 +130,22 @@ public class ChaineLibrairie {
      */
     public StatistiquesBD getStatistiquesBD() {
         return this.statistiquesBD;
+    }
+
+    /**
+     * Définir le client actuel.
+     * @param client Un client.
+     */
+    public void setClientActuel(Client client) {
+        this.clientActuel = client;
+    }
+
+    /**
+     * Obtenir le client actuel.
+     * @return Le client actuel.
+     */
+    public Client getClientActuel() {
+        return this.clientActuel;
     }
 
     /**

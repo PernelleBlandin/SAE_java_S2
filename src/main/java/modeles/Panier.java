@@ -111,7 +111,7 @@ public class Panier {
      * @return La detail livre créé/modifié.
      */
     public DetailLivre ajouterLivre(Livre livre) {
-       DetailLivre detailLivre;
+        DetailLivre detailLivre;
         try {
             detailLivre = this.getDetailLivre(livre);
             detailLivre.ajouterQuantite();

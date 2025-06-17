@@ -27,39 +27,42 @@ import modeles.Livre;
 import modeles.Magasin;
 import vue.AppIHM;
 import vue.BibliothequeComposants;
+import vue.MAJVueInterface;
 
 /** La vue de l'accueil d'un client */
-public class CustomerHomeView {
+public class CustomerHomeView implements MAJVueInterface {
     /** La vue principal */
     private AppIHM app;
     /** Le modèle */
     private ChaineLibrairie modele;
 
-    private Client client;
-
     /** La scène de la vue */
     private Scene scene;
+
+    /** La scène principal */
+    private BorderPane root;
+    /** VBox Central */
+    private VBox center;
 
     /**
      * Initialiser la vue de l'accueil d'un client.
      * @param app La vue principal.
      * @param modele Le modèle.
      */
-    public CustomerHomeView(AppIHM app, ChaineLibrairie modele, Client client) {
+    public CustomerHomeView(AppIHM app, ChaineLibrairie modele) {
         this.app = app;
         this.modele = modele;
-        this.client = client;
 
-        BorderPane root = new BorderPane();
-        root.setStyle("-fx-background-color: #ffffff;");
+        this.root = new BorderPane();
+        this.root.setStyle("-fx-background-color: #ffffff;");
 
         HBox header = this.getHeader();
-        root.setTop(header);
+        this.root.setTop(header);
 
-        VBox center = this.getCenter();
-        root.setCenter(center);
+        this.center = this.getCenter();
+        this.root.setCenter(center);
         
-        this.scene = new Scene(root);
+        this.scene = new Scene(this.root);
     }
 
     /**
@@ -67,8 +70,8 @@ public class CustomerHomeView {
      * @return Le header du menu client.
      */
     public HBox getHeader() {
-        HBox root = new HBox();
-        root.setAlignment(Pos.CENTER_LEFT);
+        HBox header = new HBox();
+        header.setAlignment(Pos.CENTER_LEFT);
         
         ImageView logo = new ImageView("/images/logo.png");
         logo.setFitWidth(304.6);
@@ -89,12 +92,12 @@ public class CustomerHomeView {
         deconnexionButton.setMinSize(120, 50);
         deconnexionButton.setOnAction(new ControleurDeconnexion(this.app));
         
-        root.getChildren().addAll(buttonLogo, searchBar, panierButton, deconnexionButton);
+        header.getChildren().addAll(buttonLogo, searchBar, panierButton, deconnexionButton);
         
-        root.setSpacing(10);
-        root.setPadding(new Insets(10, 20, 10, 20));
+        header.setSpacing(10);
+        header.setPadding(new Insets(10, 20, 10, 20));
 
-        return root;
+        return header;
     }
 
     /**
@@ -102,17 +105,19 @@ public class CustomerHomeView {
      * @return L'élement central de la page.
      */
     public VBox getCenter() {
-        VBox root = new VBox();
+        VBox center = new VBox();
+
+        Client client = this.modele.getClientActuel();
 
         // Début
-        Label welcome = new Label(String.format("Bienvenue %s ! 👋", this.client.toString()));
+        Label welcome = new Label(String.format("Bienvenue %s ! 👋", client.toString()));
         welcome.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         welcome.setMaxWidth(Double.MAX_VALUE);
         welcome.setAlignment(Pos.CENTER);
 
-        List<Magasin> listeMagains = new ArrayList<>();
+        List<Magasin> listeMagasins = new ArrayList<>();
         try {
-            listeMagains = this.modele.getMagasinBD().obtenirListeMagasin();
+            listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
             // TODO: handle exception
         }
@@ -121,8 +126,8 @@ public class CustomerHomeView {
         magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();
-        magasinComboBox.getItems().addAll(listeMagains);
-        magasinComboBox.setValue(this.client.getMagasin());
+        magasinComboBox.getItems().addAll(listeMagasins);
+        magasinComboBox.setValue(client.getMagasin());
         magasinComboBox.setMaxWidth(Double.MAX_VALUE);
 
         // Recommendations
@@ -131,12 +136,12 @@ public class CustomerHomeView {
         // Meilleures ventes
         VBox meilleuresVentesVBox = this.getMeilleuresVentes();
 
-        root.getChildren().addAll(welcome, magasinLabel, magasinComboBox, recommendationsVBox, meilleuresVentesVBox);
+        center.getChildren().addAll(welcome, magasinLabel, magasinComboBox, recommendationsVBox, meilleuresVentesVBox);
         
-        root.setSpacing(10);
-        root.setPadding(new Insets(10, 20, 10, 20));
+        center.setSpacing(10);
+        center.setPadding(new Insets(10, 20, 10, 20));
 
-        return root;
+        return center;
     }
 
     /**
@@ -170,6 +175,7 @@ public class CustomerHomeView {
 
         GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande");
 
+        Client client = this.modele.getClientActuel();
         List<Livre> livres = new ArrayList<>();
         try {
             livres = this.modele.onVousRecommande(client);
@@ -183,7 +189,7 @@ public class CustomerHomeView {
         try {
             for (int i = 0; i < livres.size() && i < 5; i++) {
                 Livre livre = livres.get(i);
-                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.client.getMagasin(), this.modele.getMagasinBD());
+                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
                 
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 livresRecommendes.getChildren().add(bookCard);
@@ -219,7 +225,7 @@ public class CustomerHomeView {
         try {
             for (int i = 0; i < livres.size() && i < 5; i++) {
                 Livre livre = livres.get(i);
-                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.client.getMagasin(), this.modele.getMagasinBD());
+                BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
                 
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 topLivresVentes.getChildren().add(bookCard);
@@ -230,6 +236,14 @@ public class CustomerHomeView {
 
         vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
         return vbox;
+    }
+
+    /**
+     * Mettre à jour l'affichage
+     */
+    public void miseAJourAffichage() {
+        this.center = this.getCenter();
+        this.root.setCenter(this.center);
     }
 
     /**

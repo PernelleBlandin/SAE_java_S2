@@ -60,12 +60,14 @@ public class AppIHM extends Application {
         // TODO: Voir pour client
         try {
             Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
-            CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie, client);
-            this.primaryStage.setScene(vue.getScene());
+            this.chaineLibrairie.setClientActuel(client);
         } catch (SQLException e) {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
+
+        CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
     }
 
     /**

@@ -2,6 +2,7 @@ package vue;
 
 import java.sql.SQLException;
 
+import controleurs.ControleurAjouterPanier;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,9 +14,10 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import modeles.ChaineLibrairie;
+import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
-import modeles.MagasinBD;
 
 /** Une bibliothèque de composants */
 public class BibliothequeComposants {
@@ -36,7 +38,7 @@ public class BibliothequeComposants {
         return root;
     }
 
-    public static BorderPane getBookCard(Livre livre, Magasin magasin, MagasinBD magasinBD) throws SQLException {
+    public static BorderPane getBookCard(Livre livre, ChaineLibrairie modele, MAJVueInterface app) throws SQLException {
         BorderPane root = new BorderPane();
         root.setMinWidth(250);
         root.setPrefWidth(250);
@@ -49,7 +51,10 @@ public class BibliothequeComposants {
         bookImage.setFitWidth(100);
         root.setTop(bookImage);
 
-        int enStock = magasinBD.obtenirStockLivre(magasin.getId(), livre.getISBN());
+        Client client = modele.getClientActuel();
+        Magasin magasin = client.getMagasin();
+
+        int enStock = modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
 
         VBox vboxDetails = new VBox();
         Label labelTitre = new Label(livre.getTitre());
@@ -67,7 +72,12 @@ public class BibliothequeComposants {
 
         // Bouton ajout panier
         Button addPanierButton = new Button("Ajouter au panier");
-        if (enStock == 0) addPanierButton.setDisable(true);
+        if (enStock == 0) {
+            addPanierButton.setDisable(true);
+        } else {
+            ControleurAjouterPanier controleur = new ControleurAjouterPanier(app, modele, livre);
+            addPanierButton.setOnAction(controleur);
+        }
 
         addPanierButton.setPrefHeight(30);
         addPanierButton.setMaxWidth(Double.MAX_VALUE);

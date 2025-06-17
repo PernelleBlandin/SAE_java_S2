@@ -1,15 +1,4 @@
 package modeles;
-import java.util.List;
-import java.util.Set;
-
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.properties.TextAlignment;
-import com.itextpdf.layout.properties.UnitValue;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +11,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
-/** La chaîne de librairie */
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+
+/**
+ * La chaîne de librairie
+ */
 public class ChaineLibrairie {
+
     private ConnexionMariaDB connexionMariaDB;
 
     private LivreBD livreBD;
@@ -36,9 +39,11 @@ public class ChaineLibrairie {
     private StatistiquesBD statistiquesBD;
 
     private Client clientActuel;
+    private Vendeur vendeurActuel;
 
     /**
      * Intiailiser la chaîne de librairie.
+     *
      * @param bdHost L'adresse et le port de la base de données.
      * @param bdBase Le nom de la base de données.
      * @param bdLogin Le nom d'utilisateur.
@@ -65,13 +70,13 @@ public class ChaineLibrairie {
         this.commandeBD = new CommandeBD(this, this.connexionMariaDB);
         this.panierBD = new PanierBD(this, this.connexionMariaDB);
         this.magasinBD = new MagasinBD(this.connexionMariaDB);
-        this.vendeurBD = new VendeurBD(this.connexionMariaDB);
+        this.vendeurBD = new VendeurBD(this.connexionMariaDB, this);
         this.statistiquesBD = new StatistiquesBD(this.connexionMariaDB);
     }
 
     /**
      * Obtenir la classe de la base de données pour récupérer des livres.
-     * 
+     *
      * @return La classe de la base de données pour récupérer des livres.
      */
     public LivreBD getLivreBD() {
@@ -80,7 +85,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des clients.
-     * 
+     *
      * @return La classe de la base de données pour récupérer des clients.
      */
     public ClientBD getClientBD() {
@@ -89,7 +94,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des commandes.
-     * 
+     *
      * @return La classe de la base de données pour récupérer des commandes.
      */
     public CommandeBD getCommandeBD() {
@@ -97,9 +102,11 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir la classe de la base de données pour récupérer les paniers clients.
-     * 
-     * @return La classe de la base de données pour récupérer les paniers clients.
+     * Obtenir la classe de la base de données pour récupérer les paniers
+     * clients.
+     *
+     * @return La classe de la base de données pour récupérer les paniers
+     * clients.
      */
     public PanierBD getPanierBD() {
         return this.panierBD;
@@ -107,7 +114,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des magasins.
-     * 
+     *
      * @return La classe de la base de données pour récupérer des magasins.
      */
     public MagasinBD getMagasinBD() {
@@ -116,7 +123,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour récupérer des vendeurs.
-     * 
+     *
      * @return La classe de la base de données pour récupérer des vendeurs.
      */
     public VendeurBD getVendeurBD() {
@@ -125,7 +132,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la classe de la base de données pour les statistiques.
-     * 
+     *
      * @return La classe de la base de données pour les statistiques.
      */
     public StatistiquesBD getStatistiquesBD() {
@@ -134,14 +141,25 @@ public class ChaineLibrairie {
 
     /**
      * Définir le client actuel.
+     *
      * @param client Un client.
      */
     public void setClientActuel(Client client) {
         this.clientActuel = client;
     }
 
+     /**
+     * Définir le vendeur actuel.
+     *
+     * @param vendeur Un vendeur.
+     */
+    public void setVendeurActuel(Vendeur vendeur){
+        this.vendeurActuel = vendeur;
+    }
+
     /**
      * Obtenir le client actuel.
+     *
      * @return Le client actuel.
      */
     public Client getClientActuel() {
@@ -149,9 +167,18 @@ public class ChaineLibrairie {
     }
 
     /**
+     * Obtenir le vendeur actuel.
+     *
+     * @return Le vendeur actuel.
+     */
+    public Vendeur getVendeurActuel() {
+        return this.vendeurActuel;
+    }
+
+    /**
      * Rechercher un livre selon une recherche données.
-     * 
-     * @param livres    La liste des livres dans laquelle effectuer la recherche.
+     *
+     * @param livres La liste des livres dans laquelle effectuer la recherche.
      * @param recherche La recherche utilisateur.
      * @return Les livres étant inclus dans la recherche.
      */
@@ -167,7 +194,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir le nombre de vente d'un livre dans toute la chaîne de librairie.
-     * 
+     *
      * @param livre Le livre concerné.
      * @return Le nombre de vente du livre dans toute la chaîne de librairie.
      */
@@ -182,7 +209,7 @@ public class ChaineLibrairie {
 
     /**
      * Obtenir la liste des livres triés par leur nombre de ventes.
-     * 
+     *
      * @param listeLivres La liste de livres initial.
      * @return La liste de livres triés par leur nombre de ventes.
      */
@@ -195,20 +222,20 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Obtenir la liste des livres recommandés pour un client, triés dans l'ordre le
-     * plus pertinant.
-     * On vérifie d'abord suivant les autres clients, puis selon les classifications
-     * similaires du client par rapport à ces dernieres commandes.
-     * Enfin, on tri selon le nombre de ventes nationals, notammant en cas d'ex
-     * aequo.
-     * 
+     * Obtenir la liste des livres recommandés pour un client, triés dans
+     * l'ordre le plus pertinant. On vérifie d'abord suivant les autres clients,
+     * puis selon les classifications similaires du client par rapport à ces
+     * dernieres commandes. Enfin, on tri selon le nombre de ventes nationals,
+     * notammant en cas d'ex aequo.
+     *
      * @param client Le client.
-     * @return La liste des livres recommandés pour un client, triés dans l'ordre le
-     *         plus pertinant.
-     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     * @return La liste des livres recommandés pour un client, triés dans
+     * l'ordre le plus pertinant.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de
+     * données.
      */
     public List<Livre> onVousRecommande(Client client) throws SQLException {
-        Magasin magasinClient = client.getMagasin();
+        Magasin magasinClient = client.vendeur();
         List<Livre> listeLivresMagasin = this.livreBD.obtenirLivreEnStockMagasin(magasinClient);
 
         List<Commande> commandesClient = client.getCommandes();
@@ -220,7 +247,6 @@ public class ChaineLibrairie {
         }
 
         // -- Recommendations par rapport aux autres clients
-
         // On tri par défaut suivant le nombre de ventes en cas d'ex aequo.
         List<Livre> livresNonAchetes = client.getLivresNonAchetes(listeLivresMagasin);
         List<Livre> livresRecommendes = this.getLivresTriesParVentes(livresNonAchetes);
@@ -233,8 +259,9 @@ public class ChaineLibrairie {
                 Livre livre = detailCommande.getLivre();
                 if (livresRecommendes.contains(livre)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
-                    if (curLivreRecommendations == null)
+                    if (curLivreRecommendations == null) {
                         curLivreRecommendations = 0;
+                    }
 
                     if (livresAchetesParAutreClient.contains(livre)) {
                         curLivreRecommendations += 3;
@@ -247,14 +274,14 @@ public class ChaineLibrairie {
         }
 
         // Recommendations suivant classifications similaires
-
         Set<String> classificationsClient = client.getClassifications();
         for (Livre livre : livresRecommendes) {
             for (String classification : livre.getClassifications()) {
                 if (classificationsClient.contains(classification)) {
                     Integer curLivreRecommendations = recommendationsLivres.get(livre);
-                    if (curLivreRecommendations == null)
+                    if (curLivreRecommendations == null) {
                         curLivreRecommendations = 0;
+                    }
 
                     curLivreRecommendations += 1;
                     recommendationsLivres.put(livre, curLivreRecommendations);
@@ -272,19 +299,23 @@ public class ChaineLibrairie {
     /**
      * Exporter les factures d'un mois et d'une année dans le dossier
      * "./factures/annee-mois".
-     * 
-     * @param mois  Le mois demandé.
+     *
+     * @param mois Le mois demandé.
      * @param annee L'année demandé.
-     * @throws SQLException           En cas d'exception SQL.
+     * @throws SQLException En cas d'exception SQL.
      * @throws PasDeCommandeException S'il n'y a pas de factures à exporter.
      */
     public void exporterFactures(int mois, int annee) throws SQLException, PasDeCommandeException {
         ResultSet commandesIterator = this.commandeBD.getCommandesIterator(mois, annee);
-        if (!commandesIterator.next()) throw new PasDeCommandeException();
+        if (!commandesIterator.next()) {
+            throw new PasDeCommandeException();
+        }
 
         String dirPath = String.format("./factures/%d-%d", annee, mois);
         File directory = new File(dirPath);
-        if (!directory.exists()) directory.mkdirs();
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
 
         // On a utilisé next avant pour l'exception, on refait marche arrière pour la boucle
         commandesIterator.previous();
@@ -321,11 +352,11 @@ public class ChaineLibrairie {
                 String nomMag = commandesIterator.getString("nommag");
 
                 curCustomersInfos = new ArrayList<>(
-                    Arrays.asList(
-                        String.format("%s %s", nomcli, prenomcli),
-                        adressecli,
-                        String.format("%s %s", codepostal, villecli)
-                    )
+                        Arrays.asList(
+                                String.format("%s %s", nomcli, prenomcli),
+                                adressecli,
+                                String.format("%s %s", codepostal, villecli)
+                        )
                 );
                 curTitle = String.format("Commande n°%d du %s", numCom, dateDisplay);
                 curSubTitle = String.format("Magasin : %s", nomMag);
@@ -378,7 +409,7 @@ public class ChaineLibrairie {
             document.add(details);
 
             // Table
-            Table table = new Table(UnitValue.createPercentArray(new float[] { 15, 45, 10, 15, 15 }));
+            Table table = new Table(UnitValue.createPercentArray(new float[]{15, 45, 10, 15, 15}));
             table.setWidth(UnitValue.createPercentValue(100));
 
             table.addHeaderCell(new Cell().add(new Paragraph("ISBN")));
@@ -413,15 +444,18 @@ public class ChaineLibrairie {
     }
 
     /**
-     * Génère le corps d'une commande pour l'afficher sous forme de facture notamment.
-     * 
-     * @param detailLivres      Les détails des livres, avec leur quantité et prix
-     *                          d'achat.
+     * Génère le corps d'une commande pour l'afficher sous forme de facture
+     * notamment.
+     *
+     * @param detailLivres Les détails des livres, avec leur quantité et prix
+     * d'achat.
      * @param longueurAffichage La longueur d'affichage maximal.
      * @return Une liste avec tout le texte nécessaire.
      */
     public static List<String> genererCorpsCommandeTextuel(List<DetailLivre> detailLivres, int longueurAffichage) {
-        if (detailLivres.size() == 0) return new ArrayList<>();
+        if (detailLivres.size() == 0) {
+            return new ArrayList<>();
+        }
 
         double totalCommande = 0.00;
         List<String> res = new ArrayList<>();

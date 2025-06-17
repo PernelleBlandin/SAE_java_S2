@@ -143,7 +143,7 @@ public class CustomerHomeView {
 
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();
         magasinComboBox.getItems().addAll(listeMagasins);
-        magasinComboBox.setValue(client.getMagasin());
+        magasinComboBox.setValue(client.vendeur());
         magasinComboBox.setMaxWidth(Double.MAX_VALUE);
 
         // Recommendations

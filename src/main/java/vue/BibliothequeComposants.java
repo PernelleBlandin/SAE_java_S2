@@ -1,13 +1,22 @@
 package vue;
-
 import javafx.scene.control.TextField;
+
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-/** Une bibliothèque de composants */
+
+/**
+ * Une bibliothèque de composants
+ */
 public class BibliothequeComposants {
-    /** Constructeur privé car bibliothèque */
-    public BibliothequeComposants() {};
+
+    /**
+     * Constructeur privé car bibliothèque
+     */
+    public BibliothequeComposants() {
+    }
+
+    ;
 
     /**
      * Obtenir une barre de recherche.
@@ -18,7 +27,8 @@ public class BibliothequeComposants {
         TextField root = new TextField();
         root.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
         root.setPromptText(placeholder);
-        root.setMinHeight(20);
+        root.setMinHeight(50);
+        root.setPrefWidth(18*50);
 
         return root;
     }

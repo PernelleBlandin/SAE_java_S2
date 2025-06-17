@@ -3,6 +3,7 @@ package vue;
 import java.sql.SQLException;
 
 import controleurs.ControleurAjouterPanier;
+import controleurs.ControleurInfoLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -86,6 +87,7 @@ public class BibliothequeComposants {
         // Bouton d'info
         Button infoButton = new Button();
         infoButton.setPrefSize(30, 30);
+        infoButton.setOnAction(new ControleurInfoLivre(app, modele, livre));
 
         // Configurer l'icône
         ImageView infoIcon = new ImageView("./images/info.png");

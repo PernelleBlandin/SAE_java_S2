@@ -78,8 +78,6 @@ public class AppIHM extends Application {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
-
-        
     }
 
     /**

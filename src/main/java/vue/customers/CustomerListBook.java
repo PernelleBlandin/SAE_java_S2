@@ -1,17 +1,24 @@
 package vue.customers;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import controleurs.ControleurAcceuilClient;
+import controleurs.ControleurNavigation;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue.BibliothequeComposants;
 import vue.MAJVueInterface;
+import vue._components.BookCardComponent;
 
 /** Page d'une liste de livres */
 public class CustomerListBook implements MAJVueInterface {
@@ -29,6 +36,7 @@ public class CustomerListBook implements MAJVueInterface {
     private VBox center;
 
     private int curPage;
+    private String titre;
     private List<Livre> listeLivres;
 
     /**
@@ -37,11 +45,13 @@ public class CustomerListBook implements MAJVueInterface {
      * @param modele Le modèle.
      * @param listeLivres Une liste de livres.
      */
-    public CustomerListBook(CustomerHomeView customerView, ChaineLibrairie modele, List<Livre> listeLivres) {
+    public CustomerListBook(CustomerHomeView customerView, ChaineLibrairie modele, String titre, List<Livre> listeLivres) {
         this.customerView = customerView;
         this.modele = modele;
 
         this.curPage = 0;
+
+        this.titre = titre;
         this.listeLivres = listeLivres;
 
         this.root = new BorderPane();
@@ -55,6 +65,22 @@ public class CustomerListBook implements MAJVueInterface {
         
         this.scene = new Scene(this.root);
     }
+
+    /**
+     * Obtenir la page actuelle.
+     * @return La page actuelle.
+     */
+    public int getCurPage() {
+        return this.curPage;
+    }
+
+    /**
+     * Définir la page actuelle.
+     * @param page La nouvelle page.
+     */
+    public void setCurPage(int page) {
+        this.curPage = page;
+    }
     
     /**
      * Obtenir l'élement central.
@@ -63,8 +89,23 @@ public class CustomerListBook implements MAJVueInterface {
     public VBox getCenter() {
         VBox center = new VBox();
 
+        BorderPane borderPaneTitre = new BorderPane();
+
+        Button backButton = new Button("Retour");
+        backButton.setOnAction(new ControleurAcceuilClient(this.customerView.getApp()));
+        borderPaneTitre.setLeft(backButton);
+
+        Label labelTitre = new Label(this.titre);
+        labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        labelTitre.setMaxWidth(Double.MAX_VALUE);
+        labelTitre.setAlignment(Pos.CENTER);
+
+        borderPaneTitre.setCenter(labelTitre);
+        
+        center.getChildren().add(borderPaneTitre);
+
         int nbLignes = 2;
-        int nbColonnes = 5;
+        int nbColonnes = 4;
         int nbElementsParPage = nbLignes * nbColonnes;
 
         for (int intLigne = 0; intLigne < nbLignes; intLigne++) {
@@ -76,17 +117,40 @@ public class CustomerListBook implements MAJVueInterface {
                 if (index >= this.listeLivres.size()) break;
 
                 Livre livre = this.listeLivres.get(index);
-                try {
-                    BorderPane bookCard = BibliothequeComposants.getBookCard(livre, this.modele, this);
-                    hboxLigne.getChildren().add(bookCard);
-                } catch (SQLException e) {
-                    // TODO: handle exception
-                }
+
+                BorderPane bookCard = new BookCardComponent(this.modele, livre, 3);
+                HBox.setHgrow(bookCard, Priority.ALWAYS);
+                hboxLigne.getChildren().add(bookCard);
             }
             center.getChildren().add(hboxLigne);
         }
+
+        int maxPages = Math.ceilDiv(this.listeLivres.size(), nbElementsParPage);
+
+        // Boutons navigations
+
+        HBox hboxBoutons = new HBox();
+
+        Button previousButton = new Button("Précédent");
+        if (this.curPage == 0) previousButton.setDisable(true);
+        previousButton.setOnAction(new ControleurNavigation(this));
+        previousButton.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+
+        Label currentPageLabel = new Label(String.format("Page %d sur %d", this.curPage + 1, maxPages));
+        currentPageLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+
+        Button nextButton = new Button("Suivant");
+        if ((this.curPage + 1) >= maxPages) nextButton.setDisable(true);
+        nextButton.setOnAction(new ControleurNavigation(this));
+        nextButton.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+
+        hboxBoutons.setSpacing(10);
+        hboxBoutons.setAlignment(Pos.CENTER);
+        hboxBoutons.getChildren().addAll(previousButton, currentPageLabel, nextButton);
+
+        center.getChildren().add(hboxBoutons);
         
-        center.setSpacing(10);
+        center.setSpacing(15);
         center.setPadding(new Insets(10, 20, 10, 20));
 
         return center;

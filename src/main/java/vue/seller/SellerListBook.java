@@ -118,7 +118,7 @@ public class SellerListBook implements MAJVueInterface {
 
                 Livre livre = this.listeLivres.get(index);
 
-                BorderPane bookCard = new BookCardComponentSeller(livre, 3);
+                BorderPane bookCard = new BookCardComponentSeller(this.modele, livre, 3);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }

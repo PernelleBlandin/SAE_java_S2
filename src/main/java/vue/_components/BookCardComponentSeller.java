@@ -10,17 +10,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import modeles.ChaineLibrairie;
 import modeles.Livre;
 
 public class BookCardComponentSeller extends BorderPane {
+    private ChaineLibrairie modele;
     private Livre livre;
     private int quantite;
 
-    public BookCardComponentSeller(Livre livre, int quantite) {
+    public BookCardComponentSeller(ChaineLibrairie modele, Livre livre, int quantite) {
         super();
-
+        
+        this.modele = modele;
         this.livre = livre;
         this.quantite = quantite;
+        
 
         this.setMinWidth(250);
         this.setPrefWidth(250);

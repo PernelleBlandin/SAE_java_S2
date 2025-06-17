@@ -239,7 +239,7 @@ public class SellerHomeView implements MAJVueInterface {
 
         for (int i = 0; i < livres.size() && i < 5; i++) {
             Livre livre = livres.get(i);
-            BorderPane bookCard = new BookCardComponentSeller(livre, 3);
+            BorderPane bookCard = new BookCardComponentSeller(this.modele, livre, 3);
             HBox.setHgrow(bookCard, Priority.ALWAYS);
             topLivresVentes.getChildren().add(bookCard);
         }

@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
@@ -73,8 +74,10 @@ public class AdminView {
         HBox header = this.getHeader();
         this.root.setTop(header);
 
-        this.aside = this.getAside();
-        this.root.setCenter(fenetreStat());
+        VBox aside = this.getAside();
+        this.root.setLeft(aside);
+
+        this.root.setCenter(fenetreStat()); 
         
         this.scene = new Scene(this.root);
     }
@@ -167,9 +170,13 @@ public Scene getScene() {
         //    }) 
         // }
 
-        BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
+        //BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
 
         //PieChart
+        PieChart pieChartParTheme= new PieChart();
+        pieChartParTheme.setTitle("Chiffre d'affaire 2024 par thème");
+        Map <String, Double> dataParTheme= this.modele.getStatistiquesBD().getCA2024ParTheme();
+
 
         //AreaChart
 
@@ -182,7 +189,7 @@ public Scene getScene() {
         //PieChart
 
         //LineChart
-        
+        return centre;
         }
 
         
@@ -193,25 +200,25 @@ public Scene getScene() {
         this.root.setCenter(fenetreStat());
     }
 
-    public void modeFacture() {
-        this.root.setCenter(fenetreFact());
-    }
+    // public void modeFacture() {
+    //     this.root.setCenter(fenetreFact());
+    // }
 
-    public void modeGestionMagasins() {
-        this.root.setCenter(fenetreGestionMagasins());
-    }
+    // public void modeGestionMagasins() {
+    //     this.root.setCenter(fenetreGestionMagasins());
+    // }
 
-    public void modeGestionVendeurs() {
-        this.root.setCenter(fenetregestionVendeurs());
-    }
+    // public void modeGestionVendeurs() {
+    //     this.root.setCenter(fenetregestionVendeurs());
+    // }
 
-    public void modeStocksSelectMag() {
-        this.root.setCenter(fenetreStockSelectMag());
-    }
+    // public void modeStocksSelectMag() {
+    //     this.root.setCenter(fenetreStockSelectMag());
+    // }
 
-    public void modeStockUnMag() {
-        this.root.setCenter(fenetreStockParMag());
-    }
+    // public void modeStockUnMag() {
+    //     this.root.setCenter(fenetreStockParMag());
+    // }
     
 
 }

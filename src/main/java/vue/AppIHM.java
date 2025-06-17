@@ -9,7 +9,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
-import vue.admin.AdminHomeView;
+import vue.admin.AdminView;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerHomeView;
 
@@ -82,7 +82,7 @@ public class AppIHM extends Application {
     }
     public void modeAdministrateur() {
 
-        AdminHomeView vue = new AdminHomeView(this, this.chaineLibrairie);
+        AdminView vue = new AdminView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
 
     

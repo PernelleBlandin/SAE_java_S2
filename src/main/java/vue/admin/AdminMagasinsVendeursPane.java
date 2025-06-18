@@ -56,6 +56,10 @@ public class AdminMagasinsVendeursPane extends VBox {
         return new TitleAndBackButtonPane("Vendeurs de " + this.magasin.getNom(), new ControleurBoutonRetourMagasin(this.adminScene));
     }
 
+    /**
+     * Obtenir la liste des vendeurs.
+     * @return La liste des vendeurs.
+     */
     private VBox listeVendeurs() {
         VBox laListe = new VBox(10);
 

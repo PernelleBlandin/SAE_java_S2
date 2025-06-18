@@ -1,6 +1,5 @@
 package vue.customers;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import controleurs.ControleurAcceuilClient;
@@ -15,51 +14,40 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import modeles.ChaineLibrairie;
-import modeles.DetailLivre;
 import modeles.Livre;
-import modeles.LivreIntrouvableException;
-import modeles.Magasin;
-import modeles.Panier;
-import vue._components.bookCard.CustomerBookCardComponent;
 
 /** Page d'une liste de livres */
 public class CustomerListBookPane extends VBox {
-    /** La vue principal */
     private CustomerScene customerScene;
-    /** Le modèle */
-    private ChaineLibrairie modele;
 
-    private int curPage;
     private String titre;
     private List<Livre> listeLivres;
 
-    /**
-     * Initialiser la vue de l'accueil d'un client.
-     * @param customerScene La vue de l'accueil du client.
-     * @param modele Le modèle.
-     * @param listeLivres Une liste de livres.
-     */
-    public CustomerListBookPane(CustomerScene customerScene, ChaineLibrairie modele, String titre, List<Livre> listeLivres) {
-        this.customerScene = customerScene;
-        this.modele = modele;
+    private int curPage;
+    private int nbLignes;
+    private int nbColonnes;
 
-        this.curPage = 0;
+    public CustomerListBookPane(CustomerScene customerScene, String titre, List<Livre> listeLivres) {
+        this.customerScene = customerScene;
 
         this.titre = titre;
         this.listeLivres = listeLivres;
 
+        this.curPage = 0;
+        this.nbLignes = 2;
+        this.nbColonnes = 4;
+
         this.setSpacing(15);
         this.setPadding(new Insets(10, 20, 10, 20));
 
-        this.miseAJourAffichage();
+        this.getChildren().addAll(
+            this.getTitleAndBackButton(),
+            this.getListeLivres(),
+            this.getNavigationsBoutons()
+        );
     }
-    
-    /**
-     * Obtenir l'élement central.
-     */
-    public void miseAJourAffichage() {
-        this.getChildren().clear();
+
+    private BorderPane getTitleAndBackButton() {
         BorderPane borderPaneTitre = new BorderPane();
 
         Button backButton = new Button("Retour");
@@ -72,15 +60,17 @@ public class CustomerListBookPane extends VBox {
         labelTitre.setAlignment(Pos.CENTER);
 
         borderPaneTitre.setCenter(labelTitre);
-        
-        this.getChildren().add(borderPaneTitre);
+        return borderPaneTitre;
+    }
+
+    private VBox getListeLivres() {
+        VBox listeLivresVBox = new VBox();
+        listeLivresVBox.setSpacing(20);
 
         int nbLignes = 2;
         int nbColonnes = 4;
         int nbElementsParPage = nbLignes * nbColonnes;
 
-        Panier panier = this.modele.getClientActuel().getPanier();
-        Magasin magasin = this.modele.getClientActuel().getMagasin();
         for (int intLigne = 0; intLigne < nbLignes; intLigne++) {
             HBox hboxLigne = new HBox();
             hboxLigne.setSpacing(15);
@@ -90,32 +80,21 @@ public class CustomerListBookPane extends VBox {
                 if (index >= this.listeLivres.size()) break;
 
                 Livre livre = this.listeLivres.get(index);
-                
-                int quantiteStock = 0;
-                try {
-                    quantiteStock = this.modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
-                    if (quantiteStock >= 1) {
-                        DetailLivre detailLivre = panier.getDetailLivre(livre);
-                        quantiteStock -= detailLivre.getQuantite();
-                    }
-                } catch (LivreIntrouvableException e) {
-                    // On ignore l'exception ici
-                } catch (SQLException e) {
-                    // TODO: handle exception
-                }
 
-                BorderPane bookCard = new CustomerBookCardComponent(livre, quantiteStock, this.modele);
+                BorderPane bookCard = this.customerScene.createOrGetCardComponent(livre);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }
-            this.getChildren().add(hboxLigne);
+            listeLivresVBox.getChildren().add(hboxLigne);
         }
 
-        int maxPages = Math.ceilDiv(this.listeLivres.size(), nbElementsParPage);
+        return listeLivresVBox;
+    }
 
-        // Boutons navigations
-
+    private HBox getNavigationsBoutons() {
         HBox hboxBoutons = new HBox();
+
+        int maxPages = Math.ceilDiv(this.listeLivres.size(), this.nbColonnes * this.nbLignes);
 
         Button previousButton = new Button("Précédent");
         if (this.curPage == 0) previousButton.setDisable(true);
@@ -134,7 +113,12 @@ public class CustomerListBookPane extends VBox {
         hboxBoutons.setAlignment(Pos.CENTER);
         hboxBoutons.getChildren().addAll(previousButton, currentPageLabel, nextButton);
 
-        this.getChildren().add(hboxBoutons);
+        return hboxBoutons;
+    }
+    
+    public void miseAJourAffichage() {
+        this.getChildren().set(1, this.getListeLivres());
+        this.getChildren().set(2, this.getNavigationsBoutons());
     }
 
     /**

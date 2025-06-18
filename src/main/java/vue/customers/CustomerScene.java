@@ -66,7 +66,7 @@ public class CustomerScene {
 
         // Pour des questions de performance, on l'initialise qu'une seule fois
         this.homePane = new CustomerHomePane(this, this.modele);
-        this.showHome();
+        this.root.setCenter(this.homePane);
 
         this.scene = new Scene(this.root);
     }
@@ -109,6 +109,7 @@ public class CustomerScene {
     }
 
     public void showHome() {
+        this.homePane.miseAJourAffichage();
         this.root.setCenter(this.homePane);
     }
 
@@ -123,10 +124,10 @@ public class CustomerScene {
     /**
      * Afficher la page affichant la liste de livres.
      * @param titre Le titre du menu.
-     * @param listeLivresISBN Une liste de livres.
+     * @param listeLivres Une liste de livres.
      */
     public void showListBooks(String titre, List<Livre> listeLivres) {
-        CustomerListBookPane customerListBookPane = new CustomerListBookPane(this, this.modele, titre, listeLivres);
+        CustomerListBookPane customerListBookPane = new CustomerListBookPane(this, titre, listeLivres);
         this.root.setCenter(customerListBookPane);
     }
 

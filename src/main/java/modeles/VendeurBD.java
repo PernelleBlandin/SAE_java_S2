@@ -76,7 +76,7 @@ public class VendeurBD {
             
         };
        
-    }
+    
 
     /**
      * Obtenir un vendeur par son identifiant.

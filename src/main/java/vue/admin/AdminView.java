@@ -286,6 +286,10 @@ public Scene getScene() {
         ImageView viewVendeurs = new ImageView(imgVendeurs);
         Image imgPoubelle = new Image("file:srrc/main/ressources/images/trashcan.png");
         ImageView viewPoubelle = new ImageView(imgPoubelle);
+        viewVendeurs.setFitHeight(35);
+        viewVendeurs.setFitWidth(35);
+        viewPoubelle.setFitHeight(35);
+        viewPoubelle.setFitWidth(35);
 
         try { for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
             HBox ligneMag = new HBox(10);

@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import controleurs.ControleurAcceuil;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurRecherche;
-import controleurs.seller.ControleurAcceuilVendeur;
 import controleurs.seller.ControleurMenuVendeur;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -95,7 +95,7 @@ public class SellerScene implements SceneListBooksInterface {
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
-        buttonLogo.setOnAction(new ControleurAcceuilVendeur(this));
+        buttonLogo.setOnAction(new ControleurAcceuil(this));
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");

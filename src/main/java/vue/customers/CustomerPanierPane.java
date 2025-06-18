@@ -2,7 +2,7 @@ package vue.customers;
 
 import java.util.List;
 
-import controleurs.customers.ControleurAcceuilClient;
+import controleurs.ControleurAcceuil;
 import controleurs.customers.ControleurBoutonPayer;
 import controleurs.customers.ControleurRetirerLivrePanier;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -64,7 +64,7 @@ public class CustomerPanierPane extends VBox {
         BorderPane borderPaneTitre = new BorderPane();
 
         Button backButton = new Button("Retour");
-        backButton.setOnAction(new ControleurAcceuilClient(this.customerScene));
+        backButton.setOnAction(new ControleurAcceuil(this.customerScene));
         borderPaneTitre.setLeft(backButton);
 
         Label labelTitre = new Label("Panier client");

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import controleurs.ControleurAcceuil;
 import controleurs.ControleurDeconnexion;
 import controleurs.admin.ControleurMenuAdmin;
 import javafx.geometry.Insets;
@@ -68,8 +69,7 @@ public class AdminScene implements SceneInterface {
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
-        // TODO
-        // buttonLogo.setOnAction(new ControleurAcceuilClient(this));
+        buttonLogo.setOnAction(new ControleurAcceuil(this));
         buttonLogo.setGraphic(logo);
 
         Button deconnexionButton = new Button("Déconnexion");

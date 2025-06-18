@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import controleurs.ControleurAcceuil;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurRecherche;
-import controleurs.customers.ControleurAcceuilClient;
 import controleurs.customers.ControleurBoutonPanier;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -88,7 +88,7 @@ public class CustomerScene implements SceneListBooksInterface {
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
-        buttonLogo.setOnAction(new ControleurAcceuilClient(this));
+        buttonLogo.setOnAction(new ControleurAcceuil(this));
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");

@@ -2,7 +2,7 @@ package vue.seller;
 
 import java.util.List;
 
-import controleurs.seller.ControleurAcceuilVendeur;
+import controleurs.ControleurAcceuil;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,7 +43,7 @@ public class SellerListBooksPane extends BaseListBooksPane {
         BorderPane borderPaneTitre = new BorderPane();
 
         Button backButton = new Button("Retour");
-        backButton.setOnAction(new ControleurAcceuilVendeur(this.sellerScene));
+        backButton.setOnAction(new ControleurAcceuil(this.sellerScene));
         borderPaneTitre.setLeft(backButton);
 
         Label labelTitre = new Label(this.getTitre());

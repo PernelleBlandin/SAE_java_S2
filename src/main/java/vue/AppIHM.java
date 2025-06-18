@@ -88,10 +88,18 @@ public class AppIHM extends Application {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
+    }
+    public void modeAdministrateur() {
+
+        AdminView vue = new AdminView(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
 
         SellerHomeView vue = new SellerHomeView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
+
+        
+    
 
     /**
      * Créer le graphe de scène et lance l'application.

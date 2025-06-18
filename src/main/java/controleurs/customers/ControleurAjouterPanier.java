@@ -43,7 +43,6 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
             this.modele.getPanierBD().ajouterLivre(panier, detailLivre);
         } catch (SQLException e) {
             // TODO
-            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
             return;
         }
 

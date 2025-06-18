@@ -115,31 +115,32 @@ public class Client extends Personne {
      */
     public boolean commander(char modeLivraison, char enLigne) throws SQLException {
         Panier panier = this.getPanier();
-        List<DetailLivre> detailLivres = new ArrayList<>(panier.getDetailLivres());
+        if (!panier.estCommandable(this.chaineLibrairie.getMagasinBD())) return false;
         
-        if (detailLivres.size() > 0) {
-            Magasin magasin = panier.getMagasin();
-            String magasinId = magasin.getId();
+        Magasin magasin = panier.getMagasin();
+        String magasinId = magasin.getId();
 
-            // Retirer dans les stocks du magasin
-            for (DetailLivre detailLivre: detailLivres) {
-                String isbn = detailLivre.getLivre().getISBN();
-                int quantite = detailLivre.getQuantite();
-                this.chaineLibrairie.getMagasinBD().retirerStockLivre(magasinId, isbn, quantite);
-            }
-
-            // Obtenir le prochain identifiant de commande
-            int maxCommandeId = this.chaineLibrairie.getCommandeBD().getMaxCommandeId();
-            int nouveauCommandeId = maxCommandeId + 1;
-
-            // Créer la commande, l'ajouter au client et enregistrement en BD
-            Commande commande = new Commande(nouveauCommandeId, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, magasin, detailLivres);
-            this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
-            this.commandes.addFirst(commande);
-            
-            return true;
+        // Retirer dans les stocks du magasin
+        List<DetailLivre> detailLivres = new ArrayList<>(panier.getDetailLivres());
+        for (DetailLivre detailLivre: detailLivres) {
+            String isbn = detailLivre.getLivre().getISBN();
+            int quantite = detailLivre.getQuantite();
+            this.chaineLibrairie.getMagasinBD().retirerStockLivre(magasinId, isbn, quantite);
         }
-        return false;
+
+        // Obtenir le prochain identifiant de commande
+        int maxCommandeId = this.chaineLibrairie.getCommandeBD().getMaxCommandeId();
+        int nouveauCommandeId = maxCommandeId + 1;
+
+        // Créer la commande, l'ajouter au client et enregistrement en BD
+        Commande commande = new Commande(nouveauCommandeId, Date.valueOf(LocalDate.now()), enLigne, modeLivraison, magasin, detailLivres);
+        this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
+        this.commandes.addFirst(commande);
+
+        this.panier.viderPanier();
+        this.chaineLibrairie.getPanierBD().viderPanier(panier.getId());
+        
+        return true;
     }
 
     /**

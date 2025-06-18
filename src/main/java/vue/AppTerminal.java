@@ -1277,9 +1277,6 @@ public class AppTerminal {
             try {
                 boolean commandeReussie = client.commander(modeLivraison, 'O');
                 if (commandeReussie) {
-                    this.chaineLibrairie.getPanierBD().viderPanier(panier.getId());
-                    panier.viderPanier();
-
                     System.out.println("Merci pour votre commande !");
                 }
                 return commandeReussie;

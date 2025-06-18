@@ -2,8 +2,9 @@ package controleurs;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import modeles.Livre;
-import vue.customers.CustomerScene;
+import vue._components.AlertInfoLivre;
 
 /** Contrôleur du bouton "Info" sur un livre */
 public class ControleurInfoLivre implements EventHandler<ActionEvent> {
@@ -19,6 +20,7 @@ public class ControleurInfoLivre implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        CustomerScene.sendAlertInfoLivre(this.livre);
+        Alert alert = new AlertInfoLivre(this.livre);
+        alert.show();
     }
 }

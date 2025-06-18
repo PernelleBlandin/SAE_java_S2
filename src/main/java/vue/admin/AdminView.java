@@ -134,7 +134,7 @@ public Scene getScene() {
         List<String> nomsMenu = new ArrayList<>(Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures"));
 
         Button boutonTabBord = new Button("Tableau de bord");
-        Button boutonMagVendeur = new Button("Magasins & vendeurs");
+        Button boutonMagVendeur = new Button("Les Magasins (Gestion vendeurs/stock)");
         Button boutonExporterFacture = new Button("Exporter des factures");
 
 

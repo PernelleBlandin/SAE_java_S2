@@ -3,6 +3,8 @@ package vue.admin;
 import java.sql.SQLException;
 import java.util.Map;
 
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -11,6 +13,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 
 public class FenetreStat extends BorderPane {
@@ -25,22 +28,27 @@ public class FenetreStat extends BorderPane {
         this.modele = modele;
     }
 
+
     //GRAPH TABLEAU DE BORD
+
 
     //1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
     // BarChart
         // CategoryAxis xAxis = new CategoryAxis();
         // NumberAxis yAxis= new NumberAxis();
 
+
         // XYChart.Series series= new XYChart.Series<>();
         // Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
         // for(String key: dataBar.keySet()){
         //    series.getData().add(new XYChart.Data("key",  dataBar.get(key)) {
-            
-        //    }) 
+           
+        //    })
         // }
 
+
         // BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
+
 
     public PieChart graphCA2024ParTheme() {
     //2)PieChart
@@ -55,26 +63,34 @@ public class FenetreStat extends BorderPane {
        
         }catch (SQLException e){
             // TODO: handle exception
-            
+           
         }return pieChartParTheme;
-    } 
+    }
+
 
     //3) AreaChart Map<String, Map<Integer, Double>> getEvolutionCAParMoisParMagasin2024()
+
 
     //    AreaChart
         // AreaChart areaChartCAParChart = new AreaChart();
 
 
-        
+
+
+       
     //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
 
-    //        //LineChart  Map<String, Map<Integer, Double>> 
+
+    //        //LineChart  Map<String, Map<Integer, Double>>
         // NumberAxis xAxisLine = new NumberAxis();
         // NumberAxis yAxisLine = new NumberAxis();
         // //xAxis.setLabel(null);
 
+
         // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
         // XYChart.Series series3 = new XYChart.Series<>();
+
+
 
 
     public BarChart graphTop10EditeursNbAuteurs(){
@@ -94,9 +110,10 @@ public class FenetreStat extends BorderPane {
         barChartTopDix.getData().addAll(series4);
     }catch (SQLException e){
             // TODO: handle exception
-            
+           
     }return barChartTopDix;
     }
+
 
     //6)
     public PieChart graphQteLivresGoscinyOrigineClients(){
@@ -111,35 +128,65 @@ public class FenetreStat extends BorderPane {
         //pieChartParTheme.setLegendSide(side.RIGHT);
         }catch (SQLException e){
             // TODO: handle exception
-            
+           
         }return pieChartGosciny;
     }
 
-    //7)  PieChart Map<String, Double> getValeurStockParMagasin() 
+
+    //7)  PieChart Map<String, Double> getValeurStockParMagasin()
     //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
     //
     public HBox fenetreStat() {
         ComboBox comboBoxChoix = new ComboBox<>();
-        comboBoxChoix.getItems().add("Nombre de livres vendus par magasin");
-        comboBoxChoix.getItems().add("CA 2024 par thème");
-        comboBoxChoix.getItems().add("Evolution CA des magasins par mois en 2024");
-        comboBoxChoix.getItems().add("Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin");
-        comboBoxChoix.getItems().add("Valeur du stock par magasin");
-        comboBoxChoix.getItems().add("Evolution CA total par client");
-        comboBoxChoix.getItems().add("10 éditeurs les plus importants en nombres d'auteurs ");
-        comboBoxChoix.getItems().add("Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
-         
+        comboBoxChoix.getItems().addAll("Nombre de livres vendus par magasin",
+         "CA 2024 par thème",
+         "Evolution CA des magasins par mois en 2024",
+         "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
+         "Valeur du stock par magasin",
+         "Evolution CA total par client",
+         "10 éditeurs les plus importants en nombres d'auteurs ",
+         "Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
 
+
+        VBox afficheChart= new VBox();
+        afficheChart.setAlignment(Pos.CENTER);
+
+
+        comboBoxChoix.setOnAction(new EventHandler<ActionEvent>() {
+           
+        @Override
+        public void handle (ActionEvent e){
         String valCombo= (String) comboBoxChoix.getValue();
-
-        
-    
-        
+        if(valCombo!= null){
+            switch (valCombo) {
+                //case "Nombre de livres vendus par magasin":{
+                    //break;
+                //}
+                case "CA 2024 par thème":{
+                    this.graphCA2024ParTheme();
+                    break;
+                }
+                   
+                   
+           
+                default:{
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
+            }
+        }}
+        });
+     
+       
         HBox hbox = new HBox(comboBoxChoix);
 
-        return hbox;
 
-        }
+        return hbox;
+    }
+}
+
+
+
+
 
     
-}
+

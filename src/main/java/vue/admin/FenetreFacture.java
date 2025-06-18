@@ -18,10 +18,10 @@ import javafx.scene.text.FontWeight;
 
 public class FenetreFacture extends VBox {
 
-//     /** La fenêtre principale AdminView */
-//     private AdminView fenetrePrin;
-//     /** Le modèle */
-//     private ChaineLibrairie modele;
+    /** La fenêtre principale AdminView */
+    private AdminView fenetrePrin;
+    /** Le modèle */
+    private ChaineLibrairie modele;
 
     public FenetreFacture(AdminView fenetrePrin, ChaineLibrairie modele) {
         this.fenetrePrin = fenetrePrin;
@@ -45,9 +45,9 @@ public class FenetreFacture extends VBox {
     //A finir d'implementer avec le popup et récup les donner de la fact
     private HBox lesTF() {
 
-//         HBox lesTF = new HBox(30);
-//         TextField moisTF = new TextField();
-//         moisTF.setPromptText("Mois");
+        HBox lesTF = new HBox(30);
+        TextField moisTF = new TextField();
+        moisTF.setPromptText("Mois");
 
         TextField anneeTF = new TextField();
         anneeTF.setPromptText("Année");

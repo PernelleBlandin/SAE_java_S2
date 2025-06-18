@@ -166,13 +166,13 @@ public Scene getScene() {
     }
 
     public void modeFacture() {
-        //FenetreFacture fenetreFacture = new FenetreFacture(this, modele);
-        //this.root.setCenter(fenetreFacture);
+        FenetreFacture fenetreFacture = new FenetreFacture(this, modele);
+        this.root.setCenter(fenetreFacture);
     }
 
     public void modeGestionMagasins() {
-        //FenetreGestionMagasins fenetreGestionMagasins = new FenetreGestionMagasins(this, modele);
-        //this.root.setCenter(fenetreGestionMagasins);
+        FenetreGestionMagasins fenetreGestionMagasins = new FenetreGestionMagasins(this, modele);
+        this.root.setCenter(fenetreGestionMagasins);
     }
 
     public void modeGestionVendeurs(Magasin magasin) {
@@ -181,7 +181,7 @@ public Scene getScene() {
     }
 
     public void modeStock(Magasin magasin) {
-        FenetreStock fenetreStock = new FenetreStock(this, modele, magasin)
+        FenetreStock fenetreStock = new FenetreStock(this, modele, magasin);
         this.root.setCenter(fenetreStock);
     }
     

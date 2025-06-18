@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -15,6 +16,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
+
+
 
 public class FenetreStat extends BorderPane {
 
@@ -137,51 +140,44 @@ public class FenetreStat extends BorderPane {
     //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
     //
     public HBox fenetreStat() {
-        ComboBox comboBoxChoix = new ComboBox<>();
-        comboBoxChoix.getItems().addAll("Nombre de livres vendus par magasin",
-         "CA 2024 par thème",
-         "Evolution CA des magasins par mois en 2024",
-         "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
-         "Valeur du stock par magasin",
-         "Evolution CA total par client",
-         "10 éditeurs les plus importants en nombres d'auteurs ",
-         "Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
+    ComboBox<String> comboBoxChoix = new ComboBox<>();
+    comboBoxChoix.getItems().addAll(
+        "Nombre de livres vendus par magasin",
+        "CA 2024 par thème", 
+        "Evolution CA des magasins par mois en 2024",
+        "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
+        "Valeur du stock par magasin",
+        "Evolution CA total par client",
+        "10 éditeurs les plus importants en nombres d'auteurs",
+        "Quantité de livres de René Goscinny achetées en fonction de l'origine des clients"
+    );
 
+    VBox afficheChart = new VBox();
+    afficheChart.setAlignment(Pos.CENTER);
 
-        VBox afficheChart= new VBox();
-        afficheChart.setAlignment(Pos.CENTER);
-
-
-        comboBoxChoix.setOnAction(new EventHandler<ActionEvent>() {
-           
+    comboBoxChoix.setOnAction(new EventHandler<ActionEvent>() {
         @Override
-        public void handle (ActionEvent e){
-        String valCombo= (String) comboBoxChoix.getValue();
-        if(valCombo!= null){
-            switch (valCombo) {
-                //case "Nombre de livres vendus par magasin":{
-                    //break;
-                //}
-                case "CA 2024 par thème":{
-                    this.graphCA2024ParTheme();
-                    break;
+        public void handle(ActionEvent e) {
+            String valCombo = comboBoxChoix.getValue();
+            if (valCombo != null) {
+                switch (valCombo) {
+                    case "CA 2024 par thème":
+                        afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
+                    // Ajoutez les autres cas ici
+                    default:
+                        System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                        break;
                 }
-                   
-                   
-           
-                default:{
-                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                    break;
             }
-        }}
-        });
-     
-       
-        HBox hbox = new HBox(comboBoxChoix);
-
-
-        return hbox;
-    }
+        }
+    });
+    
+    HBox hbox = new HBox(20, comboBoxChoix, afficheChart);
+    hbox.setAlignment(Pos.CENTER);
+    
+    return hbox;
+}
 }
 
 

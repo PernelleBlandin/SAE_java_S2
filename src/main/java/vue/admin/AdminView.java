@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.HBox;
@@ -244,7 +245,29 @@ public Scene getScene() {
      */
     public VBox fenetreGestionMagasins() {
         VBox lesMag = new VBox(10);
+        Image imgVendeurs = new Image("file:srrc/main/ressources/images/multiple_sellers_silhouette.png");
+        ImageView viewVendeurs = new ImageView(imgVendeurs);
+        Image imgPoubelle = new Image("file:srrc/main/ressources/images/trashcan.png");
+        ImageView viewPoubelle = new ImageView(imgPoubelle);
 
+        try { for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
+            HBox ligneMag = new HBox(10);
+            Label leMag = new Label(unMag.getNom() + "()" + unMag.getVille() + ")");
+            Button vendeursDuMag = new Button(null, viewVendeurs);
+            Button supprimerMag = new Button(null, viewPoubelle);
+
+            //vendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
+            //supprimerMag.setOnAction(new ControleurSupprMag(mag));
+
+            ligneMag.getChildren().addAll(leMag, vendeursDuMag, supprimerMag);
+
+        }
+
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
         
 
         return lesMag;

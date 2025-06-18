@@ -4,10 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controleurs.ControleurAcceuilVendeur;
 import controleurs.ControleurPage;
+import controleurs.seller.ControleurAcceuilVendeur;
+import controleurs.seller.ControleurVoirPlusSeller;
 import controleurs.ControleurDeconnexion;
-import controleurs.ControleurVoirPlusSeller;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

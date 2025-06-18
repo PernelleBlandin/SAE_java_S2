@@ -2,8 +2,8 @@ package vue.seller;
 
 import java.util.List;
 
-import controleurs.ControleurAcceuilVendeur;
-import controleurs.ControleurNavigationVendeur;
+import controleurs.seller.ControleurAcceuilVendeur;
+import controleurs.seller.ControleurNavigationVendeur;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

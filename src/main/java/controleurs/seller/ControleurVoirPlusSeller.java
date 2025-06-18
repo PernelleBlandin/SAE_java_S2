@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.seller;
 
 import java.util.List;
 

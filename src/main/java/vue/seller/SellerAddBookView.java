@@ -2,9 +2,9 @@ package vue.seller;
 
 import java.sql.SQLException;
 
-import controleurs.ControleurAcceuilVendeur;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurPage;
+import controleurs.seller.ControleurAcceuilVendeur;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,12 +18,11 @@ import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Vendeur;
 import vue.AppIHM;
-import vue.BibliothequeComposants;
-import vue.MAJVueInterface;
+import vue._components.SearchBar;
 /**
  * La vue de "ajouter un livre"
  */
-public class SellerAddBookView implements MAJVueInterface{
+public class SellerAddBookView{
 
     /**
      * La vue principal
@@ -96,7 +95,7 @@ public class SellerAddBookView implements MAJVueInterface{
         buttonLogo.setGraphic(logo);
         buttonLogo.setOnAction(new ControleurAcceuilVendeur(this.app));
 
-        TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
+        SearchBar searchBar = new SearchBar("Rechercher un livre...");
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);

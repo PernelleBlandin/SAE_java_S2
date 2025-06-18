@@ -124,8 +124,11 @@ public class FenetreStat extends BorderPane {
     public PieChart graphQteLivresGoscinyOrigineClients(){
         PieChart pieChartGosciny= new PieChart();
         pieChartGosciny.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
+        pieChartGosciny.setPrefWidth(500);
+        pieChartGosciny.setPrefHeight(400);
         try{
             Map<String, Integer> dataGosciny = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
+            System.out.println("Data Gosciny "+ dataGosciny);
             for(String key: dataGosciny.keySet()){
                 PieChart.Data categorie2=new PieChart.Data(key, dataGosciny.get(key));
                 pieChartGosciny.getData().add(categorie2);
@@ -139,9 +142,29 @@ public class FenetreStat extends BorderPane {
 
 
     //7)  PieChart Map<String, Double> getValeurStockParMagasin()
+    public PieChart graphValeurStockParMagasin(){
+    PieChart pieChartValStockMag= new PieChart();
+        pieChartValStockMag.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
+        pieChartValStockMag.setPrefWidth(500);
+        pieChartValStockMag.setPrefHeight(400);
+        try{
+            Map<String, Integer> dataStockMag = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
+            System.out.println("Data Gosciny "+ dataGosciny);
+            for(String key: dataGosciny.keySet()){
+                PieChart.Data categorie2=new PieChart.Data(key, dataGosciny.get(key));
+                pieChartValStockMag.getData().add(categorie2);
+            }
+        //pieChartParTheme.setLegendSide(side.RIGHT);
+        }catch (SQLException e){
+            // TODO: handle exception
+           
+        }return pieChartValStockMag;
+
+    }
     //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
     //
-    public HBox fenetreStat() {
+    public VBox fenetreStat() {
+    
     ComboBox<String> comboBoxChoix = new ComboBox<>();
     comboBoxChoix.getItems().addAll(
         "Nombre de livres vendus par magasin",
@@ -163,9 +186,31 @@ public class FenetreStat extends BorderPane {
             String valCombo = comboBoxChoix.getValue();
             if (valCombo != null) {
                 switch (valCombo) {
+                    case "Nombre de livres vendus par magasin":
+                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
                     case "CA 2024 par thème":
                         afficheChart.getChildren().setAll(graphCA2024ParTheme());
                         break;
+                    case "Evolution CA des magasins par mois en 2024":
+                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
+                    case "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin":
+                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
+                    case "10 éditeurs les plus importants en nombres d'auteurs":
+                        afficheChart.getChildren().setAll(graphTop10EditeursNbAuteurs());
+                        break;
+                    case "Quantité de livres de René Goscinny achetées en fonction de l'origine des clients":
+                        afficheChart.getChildren().setAll(graphQteLivresGoscinyOrigineClients());
+                        break;
+                    case "Valeur du stock par magasin":
+                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
+                    case "Evolution CA total par client":
+                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        break;
+                        
                     // Ajoutez les autres cas ici
                     default:
                         System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
@@ -175,10 +220,10 @@ public class FenetreStat extends BorderPane {
         }
     });
     
-    HBox hbox = new HBox(20, comboBoxChoix, afficheChart);
-    hbox.setAlignment(Pos.CENTER);
+    VBox affichage = new VBox(20, comboBoxChoix, afficheChart);
+    affichage.setAlignment(Pos.CENTER);
     
-    return hbox;
+    return affichage;
 }
 }
 

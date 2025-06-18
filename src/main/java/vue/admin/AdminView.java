@@ -222,13 +222,26 @@ public Scene getScene() {
         }
 
 
-        //PieChart
+        //PieChart  Map<String, Integer> getQteLivresGoscinyOrigineClients()
+        PieChart pieChartGosciny= new PieChart();
+        pieChartGosciny.setTitle("Quantité de livres de René Gosciny achetés en fonction de l'origine des clients");
+        try{
+            Map<String, Integer> dataGosciny = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
+            for(String key: dataGosciny.keySet()){
+                PieChart.Data categorie2=new PieChart.Data(key, dataGosciny.get(key));
+                pieChartGosciny.getData().add(categorie2);
+        }
+        //pieChartParTheme.setLegendSide(side.RIGHT);
+        }catch (SQLException e){
+            // TODO: handle exception
+            
+        }
 
         //PieChart
 
         //LineChart
         
-        centre.getChildren().addAll(pieChartParTheme, barChartTopDix);
+        centre.getChildren().addAll(pieChartParTheme, barChartTopDix,pieChartGosciny);
         return centre;
         }
 

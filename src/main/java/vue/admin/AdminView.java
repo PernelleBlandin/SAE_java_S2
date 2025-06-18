@@ -16,8 +16,10 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -76,7 +78,7 @@ public class AdminView {
         VBox aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.root.setCenter(fenetreGestionMagasins()); 
+        this.root.setCenter(fenetreStat()); 
         
         this.scene = new Scene(this.root);
     }
@@ -206,23 +208,23 @@ public Scene getScene() {
         
 
 //BarChart  Map<String, Integer> getTop10EditeursNbAuteurs()
-    //     NumberAxis xAxisBar = new NumberAxis();
-    //     CategoryAxis yAxisBar = new CategoryAxis();
-    //     BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
-    //     XYChart.Series<String, Number> series4 = new XYChart.Series<>();
-    //     barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
-    //     xAxisBar.setTickLabelRotation(90);
-    //     try{
-    //         Map<String, Integer> dataTopDix= this.modele.getStatistiquesBD().getTop10EditeursNbAuteurs();
-    //         for(String key: dataTopDix.keySet()){
-    //             BarChart.Data categorie=new XYChart.Data(dataTopDix.get(key), key);
-    //             series4.getData().add(categorie);
-    //     }
-    //     barChartTopDix.getData().addAll(series4);
-    // }catch (SQLException e){
-    //         // TODO: handle exception
+        NumberAxis xAxisBar = new NumberAxis();
+        CategoryAxis yAxisBar = new CategoryAxis();
+        BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
+        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+        barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
+        xAxisBar.setTickLabelRotation(90);
+        try{
+            Map<String, Integer> dataTopDix= this.modele.getStatistiquesBD().getTop10EditeursNbAuteurs();
+            for(String key: dataTopDix.keySet()){
+                BarChart.Data categorie=new XYChart.Data(dataTopDix.get(key), key);
+                series4.getData().add(categorie);
+        }
+        barChartTopDix.getData().addAll(series4);
+    }catch (SQLException e){
+            // TODO: handle exception
             
-    //     }
+        }
 
 
         //PieChart  Map<String, Integer> getQteLivresGoscinyOrigineClients()
@@ -244,8 +246,12 @@ public Scene getScene() {
 
         //LineChart
         
-        centre.getChildren().addAll(pieChartParTheme,pieChartGosciny);
-        return centre;
+        centre.getChildren().addAll(pieChartParTheme,barChartTopDix,pieChartGosciny);
+        ScrollPane scrollPane = new ScrollPane(centre);
+        scrollPane.setFitToWidth(true);
+        //scrollPane.setFitToHeight(true); // (facultatif)
+        //return scrollPane;
+
         }
 
     /**

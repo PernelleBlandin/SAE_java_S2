@@ -103,6 +103,7 @@ public Scene getScene() {
         buttonLogo.setGraphic(logo);
 
         Label titre = new Label("Connecté en tant qu'administrateur");
+        titre.setFont(Font.font("Arial", FontWeight.BOLD, 24));
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);
@@ -110,7 +111,7 @@ public Scene getScene() {
         
         header.getChildren().addAll(buttonLogo, titre, deconnexionButton);
 
-        header.setSpacing(10);
+        header.setSpacing(100);
         header.setPadding(new Insets(10, 20, 10, 20));
 
         return header;
@@ -264,11 +265,13 @@ public Scene getScene() {
         TextField anneeTF = new TextField();
         anneeTF.setPromptText("Année");
         lesTF.getChildren().addAll(moisTF, anneeTF);
+        lesTF.setAlignment(Pos.CENTER);
         
 
         Button btnExporter = new Button("Exporter");
 
         centre.getChildren().addAll(sousTitre, lesTF, btnExporter);
+        centre.setAlignment(Pos.TOP_CENTER);
 
         return centre;
     }

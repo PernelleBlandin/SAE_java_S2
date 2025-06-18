@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -157,14 +158,11 @@ public Scene getScene() {
         
     }
 
-/**
-     * TilePane à mettre au centre du BorderPane quand on change sa partie centrale en mode statistique.
-     * @return centre Le TilePane
-     */
-    public TilePane fenetreStat() {
-        TilePane centre = new TilePane();
 
-        //BarChart
+    //GRAPH TABLEAU DE BORD
+
+    //1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
+    // BarChart
         // CategoryAxis xAxis = new CategoryAxis();
         // NumberAxis yAxis= new NumberAxis();
 
@@ -176,9 +174,10 @@ public Scene getScene() {
         //    }) 
         // }
 
-        //BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
+        // BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
 
-        //PieChart
+    public PieChart graphCA2024ParTheme() {
+    //2)PieChart
         PieChart pieChartParTheme= new PieChart();
         pieChartParTheme.setTitle("Chiffre d'affaire 2024 par thème");
         try{
@@ -187,17 +186,23 @@ public Scene getScene() {
                 PieChart.Data categorie=new PieChart.Data(key, dataParTheme.get(key));
                 pieChartParTheme.getData().add(categorie);
         }
-        //pieChartParTheme.setLegendSide(side.RIGHT);
+       
         }catch (SQLException e){
             // TODO: handle exception
             
-        }
+        }return pieChartParTheme;
+    } 
 
-        //         AreaChart
+    //3) AreaChart Map<String, Map<Integer, Double>> getEvolutionCAParMoisParMagasin2024()
+
+    //    AreaChart
         // AreaChart areaChartCAParChart = new AreaChart();
 
 
-        //        //LineChart  Map<String, Map<Integer, Double>> 
+        
+    //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
+
+    //        //LineChart  Map<String, Map<Integer, Double>> 
         // NumberAxis xAxisLine = new NumberAxis();
         // NumberAxis yAxisLine = new NumberAxis();
         // //xAxis.setLabel(null);
@@ -205,9 +210,9 @@ public Scene getScene() {
         // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
         // XYChart.Series series3 = new XYChart.Series<>();
 
-        
 
-//BarChart  Map<String, Integer> getTop10EditeursNbAuteurs()
+    public BarChart graphTop10EditeursNbAuteurs(){
+        //5) BarChart  Map<String, Integer> getTop10EditeursNbAuteurs()
         NumberAxis xAxisBar = new NumberAxis();
         CategoryAxis yAxisBar = new CategoryAxis();
         BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
@@ -224,10 +229,11 @@ public Scene getScene() {
     }catch (SQLException e){
             // TODO: handle exception
             
-        }
+    }return barChartTopDix;
+    }
 
-
-        //PieChart  Map<String, Integer> getQteLivresGoscinyOrigineClients()
+    //6)
+    public PieChart graphQteLivresGoscinyOrigineClients(){
         PieChart pieChartGosciny= new PieChart();
         pieChartGosciny.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
         try{
@@ -240,17 +246,32 @@ public Scene getScene() {
         }catch (SQLException e){
             // TODO: handle exception
             
-        }
+        }return pieChartGosciny;
+    }
 
-        //PieChart
+    //7)  PieChart Map<String, Double> getValeurStockParMagasin() 
+    //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
+    //
+    public HBox fenetreStat() {
+        ComboBox comboBoxChoix = new ComboBox<>();
+        comboBoxChoix.getItems().add("Nombre de livres vendus par magasin");
+        comboBoxChoix.getItems().add("CA 2024 par thème");
+        comboBoxChoix.getItems().add("Evolution CA des magasins par mois en 2024");
+        comboBoxChoix.getItems().add("Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin");
+        comboBoxChoix.getItems().add("Valeur du stock par magasin");
+        comboBoxChoix.getItems().add("Evolution CA total par client");
+        comboBoxChoix.getItems().add("10 éditeurs les plus importants en nombres d'auteurs ");
+        comboBoxChoix.getItems().add("Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
+         
 
-        //LineChart
+        String valCombo= (String) comboBoxChoix.getValue();
+
         
-        centre.getChildren().addAll(pieChartParTheme,barChartTopDix,pieChartGosciny);
-        ScrollPane scrollPane = new ScrollPane(centre);
-        scrollPane.setFitToWidth(true);
-        //scrollPane.setFitToHeight(true); // (facultatif)
-        //return scrollPane;
+    
+        
+        HBox hbox = new HBox(comboBoxChoix);
+
+        return hbox;
 
         }
 

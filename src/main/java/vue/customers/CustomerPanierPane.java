@@ -124,14 +124,14 @@ public class CustomerPanierPane extends VBox {
         return tableView;
     }
 
-    public Label getLabelTotal(Panier panier) {
+    private Label getLabelTotal(Panier panier) {
         Label labelTotal = new Label(String.format("Total : %.2f€", panier.getTotalPanier()));
         labelTotal.setMaxWidth(Double.MAX_VALUE);
         labelTotal.setAlignment(Pos.BASELINE_RIGHT);
         return labelTotal;
     }
 
-    public VBox getPaiementPart(Panier panier) {
+    private VBox getPaiementPart(Panier panier) {
         VBox paiementVBox = new VBox();
         paiementVBox.setSpacing(20);
 

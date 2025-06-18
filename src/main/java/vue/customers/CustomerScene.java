@@ -1,8 +1,6 @@
 package vue.customers;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,10 +10,8 @@ import controleurs.ControleurDeconnexion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -155,31 +151,6 @@ public class CustomerScene {
         this.bookCards.put(livre, bookCard);
 
         return bookCard;
-    }
-
-
-    /**
-     * Afficher une pop-up avec les informations du livre. 
-     * @param livre Un livre.
-     */
-    public static void sendAlertInfoLivre(Livre livre) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(String.format("Informations sur le livre %s", livre.getTitre()));
-        alert.setHeaderText(null);
-
-        Integer nbPagesLivre = livre.getNbPages();
-        String nbPagesString = nbPagesLivre == null ? "Inconnu" : String.valueOf(nbPagesLivre);
-
-        List<String> detailsLivres = new ArrayList<>(Arrays.asList(
-            String.format("Titre : %s", livre.getTitre()),
-            String.format("Auteur : %s", livre.joinNomAuteurs()),
-            String.format("Prix : %.2f€", livre.getPrix()),
-            String.format("Classification : %s", livre.joinClassifications()),
-            String.format("Éditeur : %s", livre.joinNomEditeurs()),
-            String.format("Nombre de pages : %s", nbPagesString))
-        );
-        alert.setContentText(String.join("\n", detailsLivres));
-        alert.showAndWait();
     }
 
     /**

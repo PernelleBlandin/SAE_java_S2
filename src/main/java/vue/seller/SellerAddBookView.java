@@ -64,6 +64,7 @@ public class SellerAddBookView{
     private TextField editeur = new TextField();
     private TextField classification = new TextField();
     private TextField idClassification = new TextField();
+    private TextField nbPages = new TextField();
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
@@ -145,34 +146,7 @@ public class SellerAddBookView{
         Label titre5 = new Label("Nom, année naissance et décès (-1 si vivant) de l'auteur\n(séparés par des virgules)");
 
         Label titre6 = new Label("Identifiant de l'auteur");
-
         this.idAuteur.setDisable(true);
-        String auteurNom = null;
-        int naissance = -1;
-        int deces = -1;
-        if(auteur.getText()!=null){
-            String[] infoAuteurs = auteur.getText().split(",");
-            if(infoAuteurs.length==3){
-                for (int i = 0; i < infoAuteurs.length; i++) {
-                    infoAuteurs[i] = infoAuteurs[i].trim();
-                }
-                if (infoAuteurs.length != 3) {
-                    // TODO erreur handle exception
-                }
-                auteurNom = infoAuteurs[0];
-                naissance = Integer.parseInt(infoAuteurs[1]);
-                deces = Integer.parseInt(infoAuteurs[2]);
-                String auteurExistant;
-                try {
-                    auteurExistant = this.modele.getLivreBD().getIdAuteur(auteurNom);
-                    if (auteurExistant == null){
-                        this.idAuteur.setDisable(false);
-                    }
-                }catch (SQLException e){
-                    // TODO erreur base de donnée
-                }
-            }
-        }
 
         Label titre7 = new Label("Nom de l'éditeur");
 
@@ -181,62 +155,9 @@ public class SellerAddBookView{
         Label titre9 = new Label("Identifiant de classification");
         this.idClassification.setDisable(true);
         String classificationExistante;
-        if(classification.getText()!=null && classification.getText().length()!=0){
-            try {
-                classificationExistante = this.modele.getLivreBD().getIdDewey(this.classification.getText());
-                if (classificationExistante == null) {
-                    this.idClassification.setDisable(false);
-                }
-            } catch (SQLException e) {
-                // TODO erreur handle exception
-            }
-        }
 
         Button valider = new Button("Valider");
         valider.setOnAction(new ControleurValider(this));
-        if (this.idLivre.getText().length() != 0 && this.titreLivre.getText().length() != 0 && this.prix.getText().length() != 0 && this.anneePubli.getText().length() != 0 && this.auteur.getText().length() != 0 && this.editeur.getText().length() != 0 && this.classification.getText().length() != 0) {
-            String isbn = this.idLivre.getText();
-            String titre = this.titreLivre.getText();
-            int nbPages = 0;
-            int anneeDePublication = 0;
-            double prix = 0.0;
-            try {
-                nbPages = Integer.parseInt(this.prix.getText());
-                anneeDePublication = Integer.parseInt(this.anneePubli.getText());
-                prix = Double.parseDouble(this.prix.getText());
-            } catch (NumberFormatException e) {
-                // TODO erreur handle exception
-            }
-            String editeurNom = this.editeur.getText();
-            String classificationNom = this.classification.getText();
-            String idClassifications = this.idClassification.getText();
-            String idAuteur = this.idAuteur.getText();
-            try {
-                if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && this.modele.getLivreBD().getIdDewey(this.classification.getText()) == null) {
-                    this.modele.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
-                    popUpLivreAjoute().showAndWait();
-                    reset();
-                } else
-
-                if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && this.modele.getLivreBD().getIdDewey(this.classification.getText()) != null) {
-                    this.modele.getLivreBD().ajouteLivreAuteurNonExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, naissance, deces);
-                    popUpLivreAjoute().showAndWait();
-                    reset();
-                } else 
-                
-                if (this.modele.getLivreBD().getIdAuteur(auteurNom) != null && this.modele.getLivreBD().getIdDewey(this.classification.getText()) == null) {
-                    this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idClassifications);
-                    popUpLivreAjoute().showAndWait();
-                    reset();
-                } else {
-                    this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom);
-                    popUpLivreAjoute().showAndWait();
-                    reset();
-                }
-            } catch (SQLException e) {
-                // TODO erreur handle exception
-            }
-        }
 
         centerLeft.getChildren().addAll(titre1, this.idLivre, titre2, this.titreLivre, titre3, this.prix, titre4, this.anneePubli, titre5, this.auteur, titre7, this.editeur, titre8, this.classification);
         centerLeft.setSpacing(10);
@@ -335,5 +256,49 @@ public class SellerAddBookView{
         alerte.setTitle("Livre Express");
         alerte.setHeaderText("Livre ajouté avec succès");
         return alerte;
+    }
+
+    public TextField getIdLivre(){ 
+        return this.idLivre;
+    }
+
+    public TextField getTitreLivre(){
+        return this.titreLivre;
+    }
+
+    public TextField getPrix(){
+        return this.prix;
+    }
+
+    public TextField getAnneePubli(){
+        return this.anneePubli;
+    }
+
+    public TextField getAuteur(){
+        return this.auteur;
+    }
+
+    public TextField getIdAuteur(){
+        return this.idAuteur;
+    }
+    
+    public TextField getEditeur(){
+        return this.editeur;
+    }
+
+    public TextField getClassification(){
+        return this.classification;
+    }
+
+    public TextField getIdClassification(){
+        return this.idClassification;
+    }
+
+    public ChaineLibrairie getModele(){
+        return this.modele;
+    }
+    
+    public TextField getNbPages() {
+        return this.nbPages;
     }
 }

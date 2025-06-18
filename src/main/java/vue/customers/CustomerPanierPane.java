@@ -68,6 +68,8 @@ public class CustomerPanierPane extends VBox {
         List<DetailLivre> detailsLivres = panier.getDetailLivres();
     
         TableView<DetailLivre> tableView = new TableView<>();
+        tableView.setMaxHeight(300);
+
         TableColumn<DetailLivre, String> isbnColumn = new TableColumn<>("ISBN");
         isbnColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLivre().getISBN()));
         isbnColumn.setPrefWidth(100);
@@ -131,6 +133,7 @@ public class CustomerPanierPane extends VBox {
 
     public VBox getPaiementPart(Panier panier) {
         VBox paiementVBox = new VBox();
+        paiementVBox.setSpacing(20);
 
         // TiltedPane Livraison
         TitledPane titledPaneLivraison = new TitledPane();
@@ -162,6 +165,7 @@ public class CustomerPanierPane extends VBox {
         }
 
         paiementVBox.getChildren().addAll(titledPaneLivraison, buttonPayer);
+        paiementVBox.setAlignment(Pos.CENTER_RIGHT);
 
         return paiementVBox;
     }

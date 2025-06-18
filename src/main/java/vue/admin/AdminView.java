@@ -265,9 +265,22 @@ public Scene getScene() {
          
 
         String valCombo= (String) comboBoxChoix.getValue();
-
+        switch (valCombo) {
+            //case "Nombre de livres vendus par magasin":{
+                //break;
+            //}
+            case "CA 2024 par thème":{
+                this.graphCA2024ParTheme();
+                break;
+            }
+                
+                
         
-    
+            default:{
+                System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                break;
+        }
+        }    
         
         HBox hbox = new HBox(comboBoxChoix);
 

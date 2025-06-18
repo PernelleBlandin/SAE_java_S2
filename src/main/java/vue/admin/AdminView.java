@@ -90,7 +90,7 @@ public Scene getScene() {
      * @return Le header du menu admin.
      */
     public HBox getHeader() {
-        HBox header = new HBox();
+        HBox header = new HBox(40);
         header.setAlignment(Pos.CENTER_LEFT);
         
         ImageView logo = new ImageView("/images/logo.png");
@@ -252,17 +252,17 @@ public Scene getScene() {
      */
     //A finir d'implementer avec le popup et récup les donner de la fact
     public VBox fenetreFacture() {
-        VBox centre = new VBox(20);
+        VBox centre = new VBox(40);
 
         Label sousTitre = new Label("Exporter des factures");
 
 
         HBox lesTF = new HBox(30);
         TextField moisTF = new TextField();
-        moisTF.setText("Mois");
+        moisTF.setPromptText("Mois");
 
         TextField anneeTF = new TextField();
-        anneeTF.setText("Année");
+        anneeTF.setPromptText("Année");
         lesTF.getChildren().addAll(moisTF, anneeTF);
         
 

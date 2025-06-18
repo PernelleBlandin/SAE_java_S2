@@ -14,7 +14,7 @@ import modeles.Magasin;
 import modeles.Vendeur;
 
 
-public class FenetreGestionVendeurs extends BorderPane {
+public class FenetreGestionVendeurs extends VBox {
 
     /** La fenêtre principale AdminView */
     private AdminView fenetrePrin;
@@ -36,33 +36,25 @@ public class FenetreGestionVendeurs extends BorderPane {
         
         try { 
             for(Vendeur unVendeur : this.modele.getVendeurBD().obtenirListeVendeurParMagasin(magasin.getId())) {
-            Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
-            ImageView viewVendeurs = new ImageView(imgVendeurs);
             Image imgPoubelle = new Image("/images/trashcan.png");
             ImageView viewPoubelle = new ImageView(imgPoubelle);
-            viewVendeurs.setFitHeight(35);
-            viewVendeurs.setFitWidth(35);
             viewPoubelle.setFitHeight(35);
             viewPoubelle.setFitWidth(35);
 
-            BorderPane ligneMag = new BorderPane();
-            HBox lesBtn = new HBox(10);
-            Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
+            BorderPane ligneVendeur = new BorderPane();
+            Label leVendeur = new Label(unVendeur.getNom() + unVendeur.getNom());
 
-            Button btnVendeursDuMag = new Button();
-            btnVendeursDuMag.setGraphic(viewVendeurs);
-            Button btnSupprimerMag = new Button();
-            btnSupprimerMag.setGraphic(viewPoubelle);
+            Button btnSupprimerVendeur = new Button();
+            btnSupprimerVendeur.setGraphic(viewPoubelle);
 
-            lesBtn.getChildren().addAll(btnVendeursDuMag, btnSupprimerMag);
 
             //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
             //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
         
-            ligneMag.setLeft(leMag);
-            ligneMag.setRight(lesBtn);
+            ligneVendeur.setLeft(leVendeur);
+            ligneVendeur.setRight(btnSupprimerVendeur);
 
-            lesMag.getChildren().add(ligneMag);
+            lesVendeurs.getChildren().add(ligneVendeur);
 
         }
 
@@ -73,7 +65,7 @@ public class FenetreGestionVendeurs extends BorderPane {
         
         
 
-        return lesMag;
+        return lesVendeurs;
     }
         
     

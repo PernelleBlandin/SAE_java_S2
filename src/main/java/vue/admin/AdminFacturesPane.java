@@ -13,18 +13,14 @@ import modeles.ChaineLibrairie;
 
 /** Pane de l'exportation des factures dans la page administrateur */
 public class AdminFacturesPane extends VBox {
-    /** La fenêtre principale AdminScene */
-    private AdminScene adminScene;
     /** Le modèle */
     private ChaineLibrairie modele;
 
     /**
      * Initiailiser la pane des factures dans la page administrateur.
-     * @param adminScene La scène administrateur.
      * @param modele Le modèle.
      */
-    public AdminFacturesPane(AdminScene adminScene, ChaineLibrairie modele) {
-        this.adminScene = adminScene;
+    public AdminFacturesPane(ChaineLibrairie modele) {
         this.modele = modele;
 
         this.setSpacing(50);

@@ -21,11 +21,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.DetailLivre;
 import modeles.Panier;
+import vue._components.TitleAndBackButtonPane;
 
 /** La pane pour afficher le panier client */
 public class CustomerPanierPane extends VBox {
@@ -61,19 +60,7 @@ public class CustomerPanierPane extends VBox {
      * @return Le titre de la page.
      */
     private BorderPane getTitre() {
-        BorderPane borderPaneTitre = new BorderPane();
-
-        Button backButton = new Button("Retour");
-        backButton.setOnAction(new ControleurAcceuil(this.customerScene));
-        borderPaneTitre.setLeft(backButton);
-
-        Label labelTitre = new Label("Panier client");
-        labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        labelTitre.setMaxWidth(Double.MAX_VALUE);
-        labelTitre.setAlignment(Pos.CENTER);
-        borderPaneTitre.setCenter(labelTitre);
-
-        return borderPaneTitre;
+        return new TitleAndBackButtonPane("Panier client", new ControleurAcceuil(this.customerScene));
     }
     
     /**

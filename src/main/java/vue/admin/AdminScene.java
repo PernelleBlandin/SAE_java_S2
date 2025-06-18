@@ -108,7 +108,7 @@ public class AdminScene implements SceneInterface {
      * Afficher la page pour exporter des factures.
      */
     public void showExportFactures() {
-        AdminFacturesPane facturesPane = new AdminFacturesPane(this, this.modele);
+        AdminFacturesPane facturesPane = new AdminFacturesPane(this.modele);
         this.root.setCenter(facturesPane);
     }
 

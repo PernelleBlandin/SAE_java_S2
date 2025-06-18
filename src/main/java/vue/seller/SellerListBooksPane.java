@@ -3,17 +3,13 @@ package vue.seller;
 import java.util.List;
 
 import controleurs.ControleurAcceuil;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.Livre;
 import vue._components.BaseListBooksPane;
+import vue._components.TitleAndBackButtonPane;
 
 /**
  * Pane de la liste des livres à afficher au vendeur.
@@ -40,19 +36,7 @@ public class SellerListBooksPane extends BaseListBooksPane {
      * @return Le BorderPane contenant ses deux informations.
      */
     protected BorderPane getTitleAndBackButtonPane() {
-        BorderPane borderPaneTitre = new BorderPane();
-
-        Button backButton = new Button("Retour");
-        backButton.setOnAction(new ControleurAcceuil(this.sellerScene));
-        borderPaneTitre.setLeft(backButton);
-
-        Label labelTitre = new Label(this.getTitre());
-        labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        labelTitre.setMaxWidth(Double.MAX_VALUE);
-        labelTitre.setAlignment(Pos.CENTER);
-
-        borderPaneTitre.setCenter(labelTitre);
-        return borderPaneTitre;
+        return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
     }
 
     /**

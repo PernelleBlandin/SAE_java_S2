@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonRetourMagasin;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,11 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import modeles.Vendeur;
+import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 
 /** Pane affichant la liste des vendeurs d'un magasin */
@@ -49,13 +49,11 @@ public class AdminMagasinsVendeursPane extends VBox {
     }
 
     /**
-     * Obtenir le titre du menu.
-     * @return Le label du titre du menu.
+     * Obtenir le titre du menu avec un bouton "Retour".
+     * @return Le titre du menu avec un bouton "Retour".
      */
-    private Label titre() {
-        Label titre = new Label("Vendeurs de " + this.magasin.getNom());
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        return titre;
+    private BorderPane titre() {
+        return new TitleAndBackButtonPane("Vendeurs de " + this.magasin.getNom(), new ControleurBoutonRetourMagasin(this.adminScene));
     }
 
     private VBox listeVendeurs() {

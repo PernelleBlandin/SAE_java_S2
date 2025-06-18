@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.customers.ControleurInfoLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -13,12 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import vue._components.SearchBar;
+import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.numberField.NumberFieldDisableButton;
 
@@ -53,13 +53,11 @@ public class AdminMagasinsStockPane extends VBox {
     }
 
     /**
-     * Obtenir le titre du menu.
-     * @return Le label du titre du menu.
+     * Obtenir le titre du menu avec un bouton "Retour".
+     * @return Le titre du menu avec un bouton "Retour".
      */
-    private Label titre() {
-        Label titre = new Label("Stock - " + this.magasin.getNom());
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        return titre;
+    private BorderPane titre() {
+        return new TitleAndBackButtonPane("Stock - " + this.magasin.getNom(), new ControleurBoutonRetourMagasin(this.adminScene));
     }
 
     /**

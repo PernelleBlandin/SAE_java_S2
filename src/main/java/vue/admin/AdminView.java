@@ -313,9 +313,10 @@ public Scene getScene() {
             //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
             //btnsupprimerMag.setOnAction(new ControleurSupprMag(mag));
         
-            ligneMag.getChildren().addAll(leMag, lesBtn);
+            ligneMag.setLeft(leMag);
+            ligneMag.setRight(lesBtn);
 
-            lesMag.getChildren().add(ligneMag);
+            lesMag.getChildren().add(titre, ligneMag);
 
         }
 

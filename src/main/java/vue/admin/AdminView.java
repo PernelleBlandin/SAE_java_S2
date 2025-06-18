@@ -75,7 +75,7 @@ public class AdminView {
         VBox aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.root.setCenter(fenetreStat()); 
+        this.root.setCenter(fenetreFacture()); 
         
         this.scene = new Scene(this.root);
     }
@@ -312,13 +312,13 @@ public Scene getScene() {
         this.root.setCenter(fenetreStat());
     }
 
-    // public void modeFacture() {
-    //     this.root.setCenter(fenetreFact());
-    // }
+    public void modeFacture() {
+        this.root.setCenter(fenetreFacture());
+    }
 
-    // public void modeGestionMagasins() {
-    //     this.root.setCenter(fenetreGestionMagasins());
-    // }
+    public void modeGestionMagasins() {
+        this.root.setCenter(fenetreGestionMagasins());
+    }
 
     // public void modeGestionVendeurs() {
     //     this.root.setCenter(fenetreGestionVendeurs());

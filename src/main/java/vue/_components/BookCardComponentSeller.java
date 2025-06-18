@@ -26,8 +26,8 @@ public class BookCardComponentSeller extends BorderPane {
         this.quantite = quantite;
         
 
-        this.setMinWidth(250);
-        this.setPrefWidth(250);
+        this.setMinWidth(100);
+        this.setPrefWidth(100);
 
         this.setStyle("-fx-border-color: black");
         this.setPadding(new Insets(10));

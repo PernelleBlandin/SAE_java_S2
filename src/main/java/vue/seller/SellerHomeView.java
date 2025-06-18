@@ -111,7 +111,6 @@ public class SellerHomeView implements MAJVueInterface {
         buttonLogo.setGraphic(logo);
 
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
-        HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);

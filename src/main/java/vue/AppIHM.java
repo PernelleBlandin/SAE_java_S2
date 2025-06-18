@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Vendeur;
-import vue.admin.AdminView;
+import vue.admin.AdminScene;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerScene;
 import vue.seller.SellerScene;
@@ -109,7 +109,7 @@ public class AppIHM extends Application {
      * Changer de scène pour le mode administrateur.
      */
     public void modeAdministrateur() {
-        AdminView vue = new AdminView(this, this.chaineLibrairie);
+        AdminScene vue = new AdminScene(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
 

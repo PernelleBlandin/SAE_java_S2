@@ -1,5 +1,4 @@
 package vue.admin;
-package vue.admin;
 
 import modeles.ChaineLibrairie;
 import javafx.geometry.Pos;
@@ -14,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class FenetreFacture extends VBox {
 
@@ -25,7 +26,16 @@ public class FenetreFacture extends VBox {
     public FenetreFacture(AdminView fenetrePrin, ChaineLibrairie modele) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
+        this.getChildren().addAll(this.titre(), this.lesTF(), this.btnExporter());
+        this.setAlignment(Pos.TOP_CENTER);
     }
+
+    private Label titre() {
+        Label titre = new Label("Exporter des factures");
+        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
+        return titre;
+    }
+
 
     
     /**
@@ -33,11 +43,7 @@ public class FenetreFacture extends VBox {
      * @return centre La VBox
      */
     //A finir d'implementer avec le popup et récup les donner de la fact
-    public VBox fenetreFacture() {
-        VBox centre = new VBox(40);
-
-        Label sousTitre = new Label("Exporter des factures");
-
+    private HBox lesTF() {
 
         HBox lesTF = new HBox(30);
         TextField moisTF = new TextField();
@@ -45,16 +51,18 @@ public class FenetreFacture extends VBox {
 
         TextField anneeTF = new TextField();
         anneeTF.setPromptText("Année");
+
         lesTF.getChildren().addAll(moisTF, anneeTF);
         lesTF.setAlignment(Pos.CENTER);
+
+        return lesTF;
+    }
         
 
+    private Button btnExporter() {
         Button btnExporter = new Button("Exporter");
 
-        centre.getChildren().addAll(sousTitre, lesTF, btnExporter);
-        centre.setAlignment(Pos.TOP_CENTER);
-
-        return centre;
+        return btnExporter;
     }
 
  }

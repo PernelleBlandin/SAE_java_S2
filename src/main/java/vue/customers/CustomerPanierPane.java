@@ -3,6 +3,7 @@ package vue.customers;
 import java.util.List;
 
 import controleurs.customers.ControleurAcceuilClient;
+import controleurs.customers.ControleurBoutonPayer;
 import controleurs.customers.ControleurRetirerLivrePanier;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -42,6 +43,7 @@ public class CustomerPanierPane extends VBox {
         Panier panier = this.modele.getClientActuel().getPanier();
         this.getChildren().addAll(
             this.getTitre(),
+            this.produitsIndisponiblesBox(panier),
             this.getTableView(panier),
             this.getLabelTotal(panier),
             this.getPaiementPart(panier)
@@ -64,6 +66,24 @@ public class CustomerPanierPane extends VBox {
         return borderPaneTitre;
     }
     
+    private VBox produitsIndisponiblesBox(Panier panier) {
+        VBox vbox = new VBox();
+
+        List<String> produitsPlusEnStock = panier.getProduitPlusEnStock(this.modele.getMagasinBD());
+        if (produitsPlusEnStock.size() >= 1) {
+            vbox.setMaxWidth(Double.MAX_VALUE);
+            vbox.setPadding(new Insets(15, 10, 15, 10));
+            vbox.setStyle("-fx-background-color: #FFCCCB; -fx-border-color: red; -fx-border-width: 5px; -fx-border-style: solid;");
+
+            vbox.getChildren().add(new Label("Certains produits de votre panier ne sont plus disponibles :"));
+            for (String produit: produitsPlusEnStock) {
+                vbox.getChildren().add(new Label(String.format("- %s", produit)));
+            }
+        }
+
+        return vbox;
+    }
+
     private TableView<DetailLivre> getTableView(Panier panier) {
         List<DetailLivre> detailsLivres = panier.getDetailLivres();
     
@@ -156,9 +176,9 @@ public class CustomerPanierPane extends VBox {
 
         // Bouton Payer
         Button buttonPayer = new Button("Payer");
-        
-        List<DetailLivre> detailsLivres = panier.getDetailLivres();
-        if (detailsLivres.size() == 0) {
+        buttonPayer.setOnAction(new ControleurBoutonPayer(this.customerScene, this.modele, toggleGroupLivraison));
+
+        if (!panier.estCommandable(this.modele.getMagasinBD())) {
             buttonPayer.setDisable(true);
         } else {
             buttonPayer.disableProperty().bind(toggleGroupLivraison.selectedToggleProperty().isNull());
@@ -173,8 +193,9 @@ public class CustomerPanierPane extends VBox {
     public void miseAJourAffichage() {
         Panier panier = this.modele.getClientActuel().getPanier();
 
-        this.getChildren().set(1, this.getTableView(panier));
-        this.getChildren().set(2, this.getLabelTotal(panier));
-        this.getChildren().set(3, this.getPaiementPart(panier));
+        this.getChildren().set(1, this.produitsIndisponiblesBox(panier));
+        this.getChildren().set(2, this.getTableView(panier));
+        this.getChildren().set(3, this.getLabelTotal(panier));
+        this.getChildren().set(4, this.getPaiementPart(panier));
     }
 }

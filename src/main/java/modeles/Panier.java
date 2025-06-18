@@ -1,4 +1,5 @@
 package modeles;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,5 +173,46 @@ public class Panier {
             total += detailLivre.getPrixVente() * detailLivre.getQuantite();
         }
         return total;
+    }
+
+    /**
+     * Indique si le panier est commandable.
+     * @param magasinBD La base de données magasin.
+     * @return Vrai s'il est commandable, sinon false.
+     */
+    public boolean estCommandable(MagasinBD magasinBD) {
+        if (this.detailLivres.size() == 0) return false;
+
+        for (DetailLivre detailLivre: this.detailLivres) {
+            try {
+                int quantiteEnStock = magasinBD.obtenirStockLivre(this.magasin.getId(), detailLivre.getLivre().getISBN());
+                if (detailLivre.getQuantite() > quantiteEnStock) return false;
+            } catch (SQLException e) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Obtenir une liste de chaîne de caractères contenant les livres n'étant plus en stock dans le magasin. 
+     * @param magasinBD La base de données Magasin.
+     * @return Une liste avec les noms des produits indisponibles, avec leur quantité en magasin.
+     */
+    public List<String> getProduitPlusEnStock(MagasinBD magasinBD) {
+        List<String> produitsPlusEnStock = new ArrayList<>();
+        for (DetailLivre detailLivre: this.detailLivres) {
+            Livre livre = detailLivre.getLivre();
+            try {
+                int quantiteEnStock = magasinBD.obtenirStockLivre(this.magasin.getId(), livre.getISBN());
+                if (detailLivre.getQuantite() > quantiteEnStock) {
+                    produitsPlusEnStock.add(String.format("%s (%d en stock)", livre.toString(), quantiteEnStock));
+                };
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                produitsPlusEnStock.add(String.format("%s (0 en stock)", livre.toString()));
+            }
+        }
+        return produitsPlusEnStock;
     }
 }

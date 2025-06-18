@@ -1,6 +1,7 @@
 package controleurs.customers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.EventHandler;
@@ -13,9 +14,17 @@ import vue.customers.CustomerScene;
 public class ControleurCustomerRecherche implements EventHandler<KeyEvent> {
     private CustomerScene customerScene;
     private ChaineLibrairie modele;
+    private List<Livre> listLivres;
+    
     public ControleurCustomerRecherche(CustomerScene customerScene, ChaineLibrairie modele) {
         this.customerScene = customerScene;
         this.modele = modele;
+
+        try {
+            this.listLivres = this.modele.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            this.listLivres = new ArrayList<>();
+        }
     }
 
     @Override
@@ -26,14 +35,8 @@ public class ControleurCustomerRecherche implements EventHandler<KeyEvent> {
         if (search.equals("")) {
             this.customerScene.showHome();
         } else {
-            try {
-                List<Livre> tousLesLivres = this.modele.getLivreBD().obtenirListeLivre();
-                List<Livre> listeLivresRecherche = this.modele.rechercherLivres(tousLesLivres, search);
-
-                this.customerScene.showListBooks("Recherche", listeLivresRecherche);
-            } catch (SQLException e) {
-                // TODO: handle exception
-            }
+            List<Livre> listeLivresRecherche = this.modele.rechercherLivres(this.listLivres, search);
+            this.customerScene.showListBooks("Recherche", listeLivresRecherche);
         }
     }
 }

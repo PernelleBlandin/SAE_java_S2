@@ -50,18 +50,12 @@ public class ControleurChangerMagasin implements EventHandler<ActionEvent> {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (!result.isPresent() || !result.get().getText().equals("Oui")) return;
-
-            panier.setMagasin(magasinChoisi);
-            try {
-                this.modele.getPanierBD().changerMagasin(panier);
-            } catch (SQLException e) {
-               // TODO
-            }
         }
         
         panier.setMagasin(magasinChoisi);
         client.setMagasin(magasinChoisi);
         try {
+            this.modele.getPanierBD().changerMagasin(panier);
             this.modele.getClientBD().changerMagasin(client.getId(), magasinChoisi.getId());
         } catch (SQLException e) {
             // TODO

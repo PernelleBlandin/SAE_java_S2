@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import controleurs.ControleurDeconnexion;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -254,39 +256,48 @@ public Scene getScene() {
     //
     public HBox fenetreStat() {
         ComboBox comboBoxChoix = new ComboBox<>();
-        comboBoxChoix.getItems().add("Nombre de livres vendus par magasin");
-        comboBoxChoix.getItems().add("CA 2024 par thème");
-        comboBoxChoix.getItems().add("Evolution CA des magasins par mois en 2024");
-        comboBoxChoix.getItems().add("Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin");
-        comboBoxChoix.getItems().add("Valeur du stock par magasin");
-        comboBoxChoix.getItems().add("Evolution CA total par client");
-        comboBoxChoix.getItems().add("10 éditeurs les plus importants en nombres d'auteurs ");
-        comboBoxChoix.getItems().add("Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
-         
+        comboBoxChoix.getItems().addAll("Nombre de livres vendus par magasin",
+         "CA 2024 par thème",
+         "Evolution CA des magasins par mois en 2024",
+         "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
+         "Valeur du stock par magasin",
+         "Evolution CA total par client",
+         "10 éditeurs les plus importants en nombres d'auteurs ",
+         "Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
 
+        VBox afficheChart= new VBox();
+        afficheChart.setAlignment(Pos.CENTER);
+
+        comboBoxChoix.setOnAction(new EventHandler<ActionEvent>() {
+            
+        @Override
+        public void handle (ActionEvent e){
         String valCombo= (String) comboBoxChoix.getValue();
-        switch (valCombo) {
-            //case "Nombre de livres vendus par magasin":{
-                //break;
-            //}
-            case "CA 2024 par thème":{
-                this.graphCA2024ParTheme();
-                break;
+        if(valCombo!= null){
+            switch (valCombo) {
+                //case "Nombre de livres vendus par magasin":{
+                    //break;
+                //}
+                case "CA 2024 par thème":{
+                    this.graphCA2024ParTheme();
+                    break;
+                }
+                    
+                    
+            
+                default:{
+                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
+                    break;
             }
-                
-                
-        
-            default:{
-                System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                break;
-        }
-        }    
+        }}
+        });
+      
         
         HBox hbox = new HBox(comboBoxChoix);
 
         return hbox;
-
-        }
+    }
+}
 
     /**
      * VBox à mettre au centre du BorderPane quand on change sa partie centrale en mode facture.

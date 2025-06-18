@@ -316,7 +316,7 @@ public Scene getScene() {
             ligneMag.setLeft(leMag);
             ligneMag.setRight(lesBtn);
 
-            lesMag.getChildren().add(titre, ligneMag);
+            lesMag.getChildren().addAll(titre, ligneMag);
 
         }
 

@@ -28,14 +28,13 @@ import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
-import vue.BibliothequeComposants;
-import vue.MAJVueInterface;
 import vue._components.BookCardComponentSeller;
+import vue._components.SearchBar;
 
 /**
  * La vue de l'accueil d'un vendeur
  */
-public class SellerHomeView implements MAJVueInterface {
+public class SellerHomeView {
 
     /**
      * La vue principal
@@ -110,7 +109,7 @@ public class SellerHomeView implements MAJVueInterface {
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
         buttonLogo.setGraphic(logo);
 
-        TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
+        TextField searchBar = new SearchBar("Rechercher un livre...");
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);

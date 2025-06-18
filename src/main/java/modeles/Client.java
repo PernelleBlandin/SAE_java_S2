@@ -79,7 +79,7 @@ public class Client extends Personne {
      *
      * @return Le magasin du client pour sa prochaine commande.
      */
-    public Magasin vendeur() {
+    public Magasin getMagasin() {
         return this.magasin;
     }
 

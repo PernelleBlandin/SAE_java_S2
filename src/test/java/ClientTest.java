@@ -135,9 +135,9 @@ public class ClientTest {
 
     @Test
     public void testsGetMagasin() {
-        assertEquals(magasinOrleans, this.client1.vendeur());
-        assertEquals(magasinMarseille, this.client2.vendeur());
-        assertEquals(magasinOrleans, this.client3.vendeur());
+        assertEquals(magasinOrleans, this.client1.getMagasin());
+        assertEquals(magasinMarseille, this.client2.getMagasin());
+        assertEquals(magasinOrleans, this.client3.getMagasin());
     }
 
     @Test
@@ -175,19 +175,19 @@ public class ClientTest {
     @Test
     public void testsSetMagasin() {
         Client client1Copie = new Client(1, "Rodriguez", "Fatima", "188 chemin de la Forêt", "45000", "Orléans", magasinOrleans, commandesClient1, panierClient1, null);
-        assertEquals(this.magasinOrleans, client1Copie.vendeur());
+        assertEquals(this.magasinOrleans, client1Copie.getMagasin());
         client1Copie.setMagasin(this.magasinParis);
-        assertEquals(this.magasinParis, client1Copie.vendeur());
+        assertEquals(this.magasinParis, client1Copie.getMagasin());
 
         Client client2Copie = new Client(2, "Garcia", "Hugo", "167 avenue de la Forêt", "06000", "Nice", magasinMarseille, commandesClient2, panierClient2, null);
-        assertEquals(this.magasinMarseille, client2Copie.vendeur());
+        assertEquals(this.magasinMarseille, client2Copie.getMagasin());
         client2Copie.setMagasin(this.magasinOrleans);
-        assertEquals(this.magasinOrleans, client2Copie.vendeur());
+        assertEquals(this.magasinOrleans, client2Copie.getMagasin());
 
         Client client3Copie = new Client(3, "Martin", "Julie", "133 boulevard de l'Université", "45000", "Orléans", magasinOrleans, commandesClient3, panierClient3, null);
-        assertEquals(this.magasinOrleans, client3Copie.vendeur());
+        assertEquals(this.magasinOrleans, client3Copie.getMagasin());
         client3Copie.setMagasin(this.magasinMarseille);
-        assertEquals(this.magasinMarseille, client3Copie.vendeur());
+        assertEquals(this.magasinMarseille, client3Copie.getMagasin());
     }
 
     @Test

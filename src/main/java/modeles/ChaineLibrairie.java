@@ -235,7 +235,7 @@ public class ChaineLibrairie {
      * données.
      */
     public List<Livre> onVousRecommande(Client client) throws SQLException {
-        Magasin magasinClient = client.vendeur();
+        Magasin magasinClient = client.getMagasin();
         List<Livre> listeLivresMagasin = this.livreBD.obtenirLivreEnStockMagasin(magasinClient);
 
         List<Commande> commandesClient = client.getCommandes();

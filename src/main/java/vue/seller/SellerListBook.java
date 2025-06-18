@@ -17,11 +17,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue.MAJVueInterface;
 import vue._components.BookCardComponentSeller;
 
 /** Page d'une liste de livres */
-public class SellerListBook implements MAJVueInterface {
+public class SellerListBook {
     /** La vue principal */
     private SellerHomeView sellerHomeView;
     /** Le modèle */

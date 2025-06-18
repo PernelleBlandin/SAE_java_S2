@@ -262,7 +262,7 @@ public Scene getScene() {
         moisTF.setText("Mois");
 
         TextField anneeTF = new TextField();
-        moisTF.setText("Année");
+        anneeTF.setText("Année");
         lesTF.getChildren().addAll(moisTF, anneeTF);
         
 

@@ -130,12 +130,11 @@ public Scene getScene() {
         VBox aside = new VBox(100);
         aside.setPadding(new Insets(30,50,0,50));
 
-        List<String> nomsMenu = new ArrayList<>(Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures", "Gérer des stocks"));
+        List<String> nomsMenu = new ArrayList<>(Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures"));
 
         Button boutonTabBord = new Button("Tableau de bord");
         Button boutonMagVendeur = new Button("Magasins & vendeurs");
         Button boutonExporterFacture = new Button("Exporter des factures");
-        Button boutonGereStock = new Button("Gérer des stocks");
 
 
         
@@ -148,12 +147,10 @@ public Scene getScene() {
         //ControleurExporterFacture exportFact = new ControleurExporterFacture(this.modele);
         //this.boutonExporterFacture.setOnAction(exportFact);
 
-        //ControleurGereStock gestionStock = new ControleurGereStock(this.modele);
-        //this.boutonExporterFacture.setOnAction(GestionStock);
         
         
         
-        aside.getChildren().addAll(boutonMagVendeur, boutonExporterFacture ,boutonGereStock, boutonTabBord);
+        aside.getChildren().addAll(boutonMagVendeur, boutonExporterFacture, boutonTabBord);
 
         return aside;
         
@@ -177,13 +174,10 @@ public Scene getScene() {
         this.root.setCenter(fenetreGestionMagasins);
     }
 
-    // public void modeGestionVendeurs(Magasin magasin) {
-    //     this.root.setCenter(fenetreGestionVendeurs(magasin));
-    // }
-
-    // public void modeStocksSelectMag() {
-    //     this.root.setCenter(fenetreStockSelectMag());
-    // }
+    public void modeGestionVendeurs(Magasin magasin) {
+        FenetreGestionVendeurs fenetreGestionVendeurs = new FenetreGestionVendeurs(this, modele, magasin);
+        this.root.setCenter(fenetreGestionVendeurs);
+    }
 
     // public void modeStockUnMag() {
     //     this.root.setCenter(fenetreStockParMag());

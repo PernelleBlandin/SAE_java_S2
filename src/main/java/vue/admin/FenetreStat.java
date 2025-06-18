@@ -12,14 +12,13 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 
 
 
-public class FenetreStat extends BorderPane {
+public class FenetreStat extends HBox {
 
     /** La fenêtre principale AdminView */
     private AdminView fenetrePrin;

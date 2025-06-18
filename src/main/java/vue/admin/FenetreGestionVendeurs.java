@@ -20,20 +20,27 @@ public class FenetreGestionVendeurs extends VBox {
     private AdminView fenetrePrin;
     /** Le modèle */
     private ChaineLibrairie modele;
+    /** Le magasin pris en paramètre */
+    private Magasin magasin;
 
-    public FenetreGestionVendeurs(AdminView fenetrePrin, ChaineLibrairie modele) {
+    public FenetreGestionVendeurs(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
+        this.magasin = magasin;
+        this.getChildren().addAll(this.titre(), this.listeVendeurs());
     }
-
-     
-    public VBox fenetreGestionVendeurs(Magasin magasin) {
-        VBox lesVendeurs = new VBox(10);
-        Label titre = new Label("Vendeurs");
+ 
+      
+    private Label titre() { 
+        Label titre = new Label("Vendeurs de " + this.magasin.getNom());
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        lesVendeurs.getChildren().add(titre);
-
-        
+        return titre; 
+    }
+      
+      
+    private VBox listeVendeurs() {
+    
+        VBox laListe =new VBox(10);
         try { 
             for(Vendeur unVendeur : this.modele.getVendeurBD().obtenirListeVendeurParMagasin(magasin.getId())) {
             Image imgPoubelle = new Image("/images/trashcan.png");
@@ -42,7 +49,8 @@ public class FenetreGestionVendeurs extends VBox {
             viewPoubelle.setFitWidth(35);
 
             BorderPane ligneVendeur = new BorderPane();
-            Label leVendeur = new Label(unVendeur.getNom() + unVendeur.getNom());
+            Label leVendeur = new Label(unVendeur.getNom() + unVendeur.getPrenom());
+            HBox lesBtn = new HBox(10);
 
             Button btnSupprimerVendeur = new Button();
             btnSupprimerVendeur.setGraphic(viewPoubelle);
@@ -54,7 +62,7 @@ public class FenetreGestionVendeurs extends VBox {
             ligneVendeur.setLeft(leVendeur);
             ligneVendeur.setRight(btnSupprimerVendeur);
 
-            lesVendeurs.getChildren().add(ligneVendeur);
+            laListe.getChildren().add(ligneVendeur);
 
         }
 
@@ -65,7 +73,7 @@ public class FenetreGestionVendeurs extends VBox {
         
         
 
-        return lesVendeurs;
+        return laListe;
     }
         
     

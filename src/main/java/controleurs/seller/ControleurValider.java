@@ -62,9 +62,11 @@ public class ControleurValider implements EventHandler<ActionEvent> {
                 if (this.sellerAddBookView.getModele().getLivreBD().getIdAuteur(auteurNom) == null) {
                     if (idAuteur == null || idAuteur.trim().isEmpty()) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Champ manquant");
+                        alert.setTitle("Livre Express");
+                        alert.setHeaderText("Champ manquant");
                         alert.setContentText("Veuillez saisir un identifiant pour l'auteur.");
                         alert.showAndWait();
+                        this.sellerAddBookView.miseAJourAffichage();
                         return;
                     }
                 }
@@ -72,9 +74,11 @@ public class ControleurValider implements EventHandler<ActionEvent> {
                 if (this.sellerAddBookView.getModele().getLivreBD().getIdDewey(classificationNom) == null) {
                     if (idClassifications == null || idClassifications.trim().isEmpty()) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Champ manquant");
+                        alert.setTitle("Livre Express");
+                        alert.setHeaderText("Champ manquant");
                         alert.setContentText("Veuillez saisir un identifiant pour la classification.");
                         alert.showAndWait();
+                        this.sellerAddBookView.miseAJourAffichage();
                         return;
                     }
                 }

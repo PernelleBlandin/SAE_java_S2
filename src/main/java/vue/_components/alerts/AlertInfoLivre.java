@@ -7,8 +7,15 @@ import java.util.List;
 import javafx.scene.control.Alert;
 import modeles.Livre;
 
+/** Alerte contenant les informations d'un livre */
 public class AlertInfoLivre extends Alert {
+    /** Un livre */
     private Livre livre;
+
+    /**
+     * Initialiser l'alerte avec les informations du livre.
+     * @param livre Un livre.
+     */
     public AlertInfoLivre(Livre livre) {
         super(AlertType.INFORMATION);
 
@@ -17,6 +24,9 @@ public class AlertInfoLivre extends Alert {
         this.setAlertData();
     }
 
+    /**
+     * Définir les informations du livre dans l'alerte.
+     */
     public void setAlertData() {
         this.setTitle(String.format("Informations sur le livre %s", livre.getTitre()));
         this.setHeaderText(null);

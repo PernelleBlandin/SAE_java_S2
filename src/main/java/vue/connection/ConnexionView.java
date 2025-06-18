@@ -24,6 +24,9 @@ public class ConnexionView {
     /** La vue principal */
     private AppIHM app;
 
+    /**
+     * La scène de la page de connexion.
+     */
     private Scene scene;
 
     /**

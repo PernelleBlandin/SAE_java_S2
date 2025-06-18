@@ -11,23 +11,38 @@ import modeles.ChaineLibrairie;
 import modeles.Livre;
 import vue.customers.CustomerScene;
 
+/**
+ * Le contrôleur de la barre de recherche client
+ */
 public class ControleurCustomerRecherche implements EventHandler<KeyEvent> {
+    /** La scène de la page client */
     private CustomerScene customerScene;
+    /** Le modèle de données */
     private ChaineLibrairie modele;
-    private List<Livre> listLivres;
+    /** La liste des livres */
+    private List<Livre> listBooks;
     
+    /**
+     * Initialiser le contrôleur de la barre de recherche de livres.
+     * @param customerScene La scène de la page "Client".
+     * @param modele Le modèle de données.
+     */
     public ControleurCustomerRecherche(CustomerScene customerScene, ChaineLibrairie modele) {
         this.customerScene = customerScene;
         this.modele = modele;
 
         try {
-            this.listLivres = this.modele.getLivreBD().obtenirListeLivre();
+            this.listBooks = this.modele.getLivreBD().obtenirListeLivre();
         } catch (SQLException e) {
-            this.listLivres = new ArrayList<>();
+            this.listBooks = new ArrayList<>();
         }
     }
 
     @Override
+    /**
+     * Recevoir un événement lors de la saisie d'un caractère dans la barre de recherche.
+     * @param event Un événement.
+     */
     public void handle(KeyEvent event) {
         TextField textField = (TextField) event.getSource();
 
@@ -35,7 +50,7 @@ public class ControleurCustomerRecherche implements EventHandler<KeyEvent> {
         if (search.equals("")) {
             this.customerScene.showHome();
         } else {
-            List<Livre> listeLivresRecherche = this.modele.rechercherLivres(this.listLivres, search);
+            List<Livre> listeLivresRecherche = this.modele.rechercherLivres(this.listBooks, search);
             this.customerScene.showListBooks("Recherche", listeLivresRecherche);
         }
     }

@@ -11,14 +11,15 @@ import vue.customers.CustomerScene;
 public class ControleurVoirPlus implements EventHandler<ActionEvent> {
     /** Vue de l'acceuil de la page client */
     private CustomerScene customerScene;
-    /** Le titre du menu */
+    /** Le titre de la liste */
     private String titre;
     /** Une liste de livres */
     private List<Livre> listeLivres;
 
     /**
      * Initialiser le contrôleur du bouton "Voir plus", affichant une liste de livres.
-     * @param customerScene La vue de l'acceuil de la page client.
+     * @param customerScene La scène de la page client.
+     * @param titre Le titre de la liste de livres.
      * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
      */
     public ControleurVoirPlus(CustomerScene customerScene, String titre, List<Livre> listeLivres) {

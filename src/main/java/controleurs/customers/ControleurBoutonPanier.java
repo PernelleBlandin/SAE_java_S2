@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import vue.customers.CustomerScene;
 
+/** Contrôleur du bouton pour accéder au panier */
 public class ControleurBoutonPanier implements EventHandler<ActionEvent> {
     private CustomerScene customerScene;
 
     /**
      * Initiailiser le contrôleur du bouton "Ajouter Panier"
-     * @param customerScene La vue de la page "Client".
+     * @param customerScene La scène de la page "Client".
      */
     public ControleurBoutonPanier(CustomerScene customerScene) {
         this.customerScene = customerScene;

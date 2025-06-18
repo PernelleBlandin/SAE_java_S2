@@ -14,13 +14,17 @@ import modeles.Panier;
 import vue._components.alerts.AlertYesNo;
 import vue.customers.CustomerScene;
 
+/** Le contrôleur du ComboBox pour changer de magasin */
 public class ControleurChangerMagasin implements EventHandler<ActionEvent> {
+    /** La scène de la page "Client" */
     private CustomerScene customerScene;
+    /** Le modèle de données */
     private ChaineLibrairie modele;
 
     /**
      * Initiailiser le contrôleur du bouton de l'image pour retourner à l'acceuil.
-     * @param customerScene La vue à mettre à jour en cas de clic sur le bouton. 
+     * @param customerScene La scène de la page "Client" 
+     * @param modele Le modèle de données.
      */
     public ControleurChangerMagasin(CustomerScene customerScene, ChaineLibrairie modele) {
         this.customerScene = customerScene;

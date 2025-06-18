@@ -12,10 +12,23 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import vue.customers.CustomerScene;
 
+/**
+ * Contrôleur du bouton "Payer" dans le panier client.
+ */
 public class ControleurBoutonPayer implements EventHandler<ActionEvent> {
+    /** La scène de la page client */
     private CustomerScene customerScene;
+    /** Le modèle de données */
     private ChaineLibrairie modele;
+    /** Le groupe de radio button pour le choix de la livraison */
     private ToggleGroup groupLivraison;
+
+    /**
+     * Initialiser le contrôleur du bouton "Payer".
+     * @param customerScene La scène de la page client
+     * @param modele Le modèle de données
+     * @param groupLivraison Le groupe de radio button pour le choix de la livraison
+     */
     public ControleurBoutonPayer(CustomerScene customerScene, ChaineLibrairie modele, ToggleGroup groupLivraison) {
         this.customerScene = customerScene;
         this.modele = modele;
@@ -23,6 +36,10 @@ public class ControleurBoutonPayer implements EventHandler<ActionEvent> {
     }
 
     @Override
+    /**
+     * Recevoir un événement du bouton "Payer" pour effectuer la paiement.
+     * @param event Un événément.
+     */
     public void handle(ActionEvent event) {
         RadioButton selectedLivraison = (RadioButton) this.groupLivraison.getSelectedToggle();
         char livraison = selectedLivraison.getText().equals("En magasin") ? 'M' : 'C';

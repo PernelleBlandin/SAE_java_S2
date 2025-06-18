@@ -8,8 +8,13 @@ import vue._components.alerts.AlertInfoLivre;
 
 /** Contrôleur du bouton "Info" sur un livre */
 public class ControleurInfoLivre implements EventHandler<ActionEvent> {
+    /** Un livre */
     private Livre livre;
 
+    /**
+     * Initialiser le contrôleur bouton d'informations d'un livre. 
+     * @param livre Un livre.
+     */
     public ControleurInfoLivre(Livre livre) {
         this.livre = livre;
     }

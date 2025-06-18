@@ -10,7 +10,7 @@ public class ControleurAcceuilClient implements EventHandler<ActionEvent> {
 
     /**
      * Initiailiser le contrôleur du bouton de l'image pour retourner à l'acceuil.
-     * @param customerScene La vue à mettre à jour en cas de clic sur le bouton. 
+     * @param customerScene La scène de la page client. 
      */
     public ControleurAcceuilClient(CustomerScene customerScene) {
         this.customerScene = customerScene;

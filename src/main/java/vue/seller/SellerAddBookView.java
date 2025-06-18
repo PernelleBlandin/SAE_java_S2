@@ -159,7 +159,7 @@ public class SellerAddBookView{
         try {
             idAuteurBD = this.modele.getLivreBD().getIdAuteur(this.nomAuteur.getText());
         } catch (SQLException e) {
-            //  TODO erreur handle exception 
+            e.printStackTrace();
         }
         if ((idAuteurBD == null || idAuteurBD.isEmpty()) && !this.nomAuteur.getText().isEmpty()) {
             this.idAuteur.setDisable(false);
@@ -181,7 +181,7 @@ public class SellerAddBookView{
         try {
             idClassificationBD = this.modele.getLivreBD().getIdDewey(this.classification.getText());
         } catch (SQLException e) {
-            // TODO erreur handle exception
+            e.printStackTrace();
         }
         if ((idClassificationBD == null || idClassificationBD.isEmpty()) && !this.classification.getText().isEmpty()) {
             this.idClassification.setDisable(false);
@@ -228,7 +228,7 @@ public class SellerAddBookView{
         try {
             res = this.modele.getLivreBD().getIdDewey(titre);
         } catch (SQLException e) {
-            // TODO erreur handle exception
+            e.printStackTrace();
         }
         return res;
     }

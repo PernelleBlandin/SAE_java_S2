@@ -83,7 +83,7 @@ public class ControleurValider implements EventHandler<ActionEvent> {
                     this.sellerAddBookView.reset();
                 }
             } catch (SQLException e) {
-                // TODO erreur handle exception
+                e.printStackTrace();
             }
         }
         

@@ -30,6 +30,9 @@ public class CustomerHomePane extends VBox {
     /** Le modèle */
     private ChaineLibrairie modele;
 
+    private List<Livre> recommendedLivres;
+    private List<Livre> meilleursVentesLivres;
+
     /**
      * Initialiser la vue de l'accueil d'un client.
      * @param customerScene La vue principal.
@@ -39,21 +42,58 @@ public class CustomerHomePane extends VBox {
         this.customerScene = customerScene;
         this.modele = modele;
 
+        this.initRecommendedLivres();
+        this.initMeilleuresVentesLivres();
+
         this.setSpacing(10);
         this.setPadding(new Insets(10, 20, 10, 20));
 
-        this.miseAJourAffichage();
+        Client client = this.modele.getClientActuel();
+        this.getChildren().addAll(
+            this.getTitleLabel(client),
+            this.getMagasinsList(client),
+            this.getRecommendations(),
+            this.getMeilleuresVentes()
+        );
     }
 
-    public void miseAJourAffichage() {
+    private void initRecommendedLivres() {
         Client client = this.modele.getClientActuel();
 
-        // Début
+        this.recommendedLivres = new ArrayList<>();
+        try {
+            this.recommendedLivres = this.modele.onVousRecommande(client);
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+    }
+
+    private void initMeilleuresVentesLivres() {
+        this.meilleursVentesLivres = new ArrayList<>();
+        try {
+            this.meilleursVentesLivres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+    }
+
+    private Label getTitleLabel(Client client) {
         Label welcome = new Label(String.format("Bienvenue %s ! 👋", client.toString()));
         welcome.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         welcome.setMaxWidth(Double.MAX_VALUE);
         welcome.setAlignment(Pos.CENTER);
 
+        return welcome;
+    }
+
+    private VBox getMagasinsList(Client client) {
+        VBox magasinsVBox = new VBox();
+
+        // Label
+        Label magasinLabel = new Label("Votre magasin");
+        magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+
+        // Combo-box avec liste magasin
         List<Magasin> listeMagasins = new ArrayList<>();
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
@@ -61,21 +101,13 @@ public class CustomerHomePane extends VBox {
             // TODO: handle exception
         }
 
-        Label magasinLabel = new Label("Votre magasin");
-        magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
-
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();
         magasinComboBox.getItems().addAll(listeMagasins);
         magasinComboBox.setValue(client.getMagasin());
         magasinComboBox.setMaxWidth(Double.MAX_VALUE);
 
-        // Recommendations
-        VBox recommendationsVBox = this.getRecommendations();
-
-        // Meilleures ventes
-        VBox meilleuresVentesVBox = this.getMeilleuresVentes();
-
-        this.getChildren().addAll(welcome, magasinLabel, magasinComboBox, recommendationsVBox, meilleuresVentesVBox);
+        magasinsVBox.getChildren().addAll(magasinLabel, magasinComboBox);
+        return magasinsVBox;
     }
 
     /**
@@ -109,28 +141,20 @@ public class CustomerHomePane extends VBox {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
 
-        Client client = this.modele.getClientActuel();
-        List<Livre> livres = new ArrayList<>();
-        try {
-            livres = this.modele.onVousRecommande(client);
-        } catch (SQLException e) {
-            // TODO: handle exception
-        }
+        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande", "Recommandations", this.recommendedLivres);
 
-        GridPane recommendationsVBox = this.getSectionTitle("Livre Express vous recommande", "Recommandations", livres);
+        HBox livresRecommandesHBox = new HBox();
+        livresRecommandesHBox.setSpacing(20);
 
-        HBox livresRecommendes = new HBox();
-        livresRecommendes.setSpacing(20);
-
-        for (int i = 0; i < livres.size() && i < 4; i++) {
-            Livre livre = livres.get(i);
+        for (int i = 0; i < this.recommendedLivres.size() && i < 4; i++) {
+            Livre livre = this.recommendedLivres.get(i);
             BorderPane bookCard = this.customerScene.createOrGetCardComponent(livre);
             
             HBox.setHgrow(bookCard, Priority.ALWAYS);
-            livresRecommendes.getChildren().add(bookCard);
+            livresRecommandesHBox.getChildren().add(bookCard);
         }
 
-        vbox.getChildren().addAll(recommendationsVBox, livresRecommendes);
+        vbox.getChildren().addAll(recommendationsVBox, livresRecommandesHBox);
         return vbox;
     }
 
@@ -142,20 +166,13 @@ public class CustomerHomePane extends VBox {
         VBox vbox = new VBox();
         vbox.setSpacing(20);
 
-        List<Livre> livres = new ArrayList<>();
-        try {
-            livres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
-        } catch (SQLException e) {
-            // TODO: handle exception
-        }
-
-        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes", "Liste des meilleures ventes", livres);
+        GridPane recommendationsVBox = this.getSectionTitle("Meilleures Ventes", "Liste des meilleures ventes", this.meilleursVentesLivres);
 
         HBox topLivresVentes = new HBox();
         topLivresVentes.setSpacing(20);
 
-        for (int i = 0; i < livres.size() && i < 4; i++) {
-            Livre livre = livres.get(i);
+        for (int i = 0; i < this.meilleursVentesLivres.size() && i < 4; i++) {
+            Livre livre = this.meilleursVentesLivres.get(i);
             BorderPane bookCard = this.customerScene.createOrGetCardComponent(livre);
             
             HBox.setHgrow(bookCard, Priority.ALWAYS);
@@ -164,5 +181,10 @@ public class CustomerHomePane extends VBox {
 
         vbox.getChildren().addAll(recommendationsVBox, topLivresVentes);
         return vbox;
+    }
+
+    public void miseAJourAffichage() {
+        this.getChildren().set(2, this.getRecommendations());
+        this.getChildren().set(3, this.getMeilleuresVentes());
     }
 }

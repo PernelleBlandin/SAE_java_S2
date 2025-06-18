@@ -26,7 +26,7 @@ import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.LivreIntrouvableException;
 import vue.AppIHM;
-import vue.BibliothequeComposants;
+import vue._components.SearchBar;
 import vue._components.bookCard.CustomerBookCardComponent;
 
 public class CustomerScene {
@@ -89,7 +89,7 @@ public class CustomerScene {
         buttonLogo.setOnAction(new ControleurAcceuilClient(this));
         buttonLogo.setGraphic(logo);
         
-        TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
+        TextField searchBar = new SearchBar("Rechercher un livre...");
         HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button panierButton = new Button("Panier");

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -26,7 +27,7 @@ public class FenetreStock extends VBox {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
         this.magasin = magasin;
-        this.getChildren().addAll(this.titre(), this.barreRecherche());
+        this.getChildren().addAll(this.titre(), this.barreRecherche(), this.listeLivres());
     }
 
     private Label titre() {
@@ -55,6 +56,7 @@ public class FenetreStock extends VBox {
 
             BorderPane ligneLivre = new BorderPane();
             Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
+            HBox lesBtn = new HBox(10);
 
             Button btnInfo = new Button();
             btnInfo.setGraphic(viewInfo);
@@ -63,14 +65,15 @@ public class FenetreStock extends VBox {
             Button btnSauvegarde = new Button();
             btnSauvegarde.setGraphic(viewSauvegarde);
 
-            lesBtn.getChildren().addAll(btnInfo)
+            lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
 
-            //btnLivresDuMag.setOnAction(new ControleurVoirLivres(mag));
-            //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
+            //btnInfo.setOnAction(new ControleurInfo());
+            //btnSauveNouveauStock.setOnAction(new ControleurSauveNouveauStock());
+    
         
             ligneLivre.setLeft(leLivre);
-            ligneLivre.setRight(btnSupprimerLivre);
+            ligneLivre.setRight(lesBtn);
 
             laListe.getChildren().add(ligneLivre);
 
@@ -81,8 +84,6 @@ public class FenetreStock extends VBox {
             // TODO: handle exception
         }
         
-        
-
         return laListe;
     }
 }

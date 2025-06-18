@@ -38,7 +38,7 @@ public class ConnexionView {
 
         StackPane root = new StackPane();
 
-        ImageView image = new ImageView("/images/connexionBackground.jpg");
+        ImageView image = new ImageView(getClass().getResource("/images/connexionBackground.jpg").toExternalForm());
         image.setFitWidth(1280);
         image.setFitHeight(720);
 

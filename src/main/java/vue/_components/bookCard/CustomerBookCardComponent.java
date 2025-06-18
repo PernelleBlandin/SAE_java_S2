@@ -77,7 +77,7 @@ public class CustomerBookCardComponent extends BaseBookCardComponent {
         infoButton.setOnAction(new ControleurInfoLivre(this.livre));
 
         // Configurer l'icône
-        ImageView infoIcon = new ImageView("./images/info.png");
+        ImageView infoIcon = new ImageView(getClass().getResource("/images/info.png").toExternalForm());
         infoIcon.setFitHeight(24);
         infoIcon.setFitWidth(24);
         infoButton.setGraphic(infoIcon);

@@ -9,7 +9,6 @@ import controleurs.admin.ControleurBoutonMagasinVendeur;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -71,12 +70,9 @@ public class AdminMagasinsPane extends VBox {
         }
 
         for (Magasin magasin : listeMagasins) {
-            Image imgStock = new Image("/images/book.png");
-            ImageView viewStock = new ImageView(imgStock);
-            Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
-            ImageView viewVendeurs = new ImageView(imgVendeurs);
-            Image imgPoubelle = new Image("/images/trashcan.png");
-            ImageView viewPoubelle = new ImageView(imgPoubelle);
+            ImageView viewStock = new ImageView(getClass().getResource("/images/book.png").toExternalForm());
+            ImageView viewVendeurs = new ImageView(getClass().getResource("/images/multiple_sellers_silhouette.png").toExternalForm());
+            ImageView viewPoubelle = new ImageView(getClass().getResource("/images/trashcan.png").toExternalForm());
 
             viewVendeurs.setFitHeight(35);
             viewVendeurs.setFitWidth(35);

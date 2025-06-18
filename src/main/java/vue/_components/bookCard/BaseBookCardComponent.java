@@ -75,7 +75,7 @@ public abstract class BaseBookCardComponent extends BorderPane {
      * @return La pane du dessus, affichant la couverture du livre. 
      */
     private ImageView top() {
-        ImageView bookImage = new ImageView("./images/unknownBook.png");
+        ImageView bookImage = new ImageView(getClass().getResource("/images/unknownBook.png").toExternalForm());
         bookImage.setFitHeight(60);
         bookImage.setFitWidth(60);
         return bookImage;

@@ -81,7 +81,7 @@ public class CustomerScene implements SceneListBooksInterface {
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
         
-        ImageView logo = new ImageView("/images/logo.png");
+        ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());
         logo.setFitWidth(3046 / 15);
         logo.setFitHeight(912 / 15);
         

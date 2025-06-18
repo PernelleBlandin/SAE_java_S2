@@ -9,7 +9,6 @@ import controleurs.customers.ControleurInfoLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -85,8 +84,7 @@ public class AdminMagasinsStockPane extends VBox {
 
         for (Livre livre: listeLivres) {
             // Info
-            Image imgInfo = new Image("/images/info.png");
-            ImageView viewInfo = new ImageView(imgInfo);
+            ImageView viewInfo = new ImageView(getClass().getResource("/images/info.png").toExternalForm());
             viewInfo.setFitHeight(35);
             viewInfo.setFitWidth(35);
 
@@ -96,8 +94,7 @@ public class AdminMagasinsStockPane extends VBox {
 
             // Sauvegarde
 
-            Image imgSauvegarde = new Image("/images/disquette.png");
-            ImageView viewSauvegarde = new ImageView(imgSauvegarde);
+            ImageView viewSauvegarde = new ImageView(getClass().getResource("/images/disquette.png").toExternalForm());
             viewSauvegarde.setFitHeight(35);
             viewSauvegarde.setFitWidth(35);
 

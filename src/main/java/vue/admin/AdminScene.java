@@ -68,7 +68,7 @@ public class AdminScene implements SceneInterface {
         header.setPadding(new Insets(10, 10, 10, 10));
 
         // Logo
-        ImageView logo = new ImageView("/images/logo.png");
+        ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());
         logo.setFitWidth(3046 / 15);
         logo.setFitHeight(912 / 15);
 

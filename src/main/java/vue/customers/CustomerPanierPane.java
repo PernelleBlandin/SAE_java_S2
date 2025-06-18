@@ -27,6 +27,7 @@ import modeles.ChaineLibrairie;
 import modeles.DetailLivre;
 import modeles.Panier;
 
+/** La pane pour afficher le panier client */
 public class CustomerPanierPane extends VBox {
     /** La vue principal */
     private CustomerScene customerScene;
@@ -75,6 +76,11 @@ public class CustomerPanierPane extends VBox {
         return borderPaneTitre;
     }
     
+    /**
+     * Obtenir une VBox, qui contient un message si des produits présent dans le panier ne sont plus en stock dans le magasin du client.
+     * @param panier Le panier client.
+     * @return La VBox contenant si nécessaire un message si produits indisponibles.
+     */
     private VBox produitsIndisponiblesBox(Panier panier) {
         VBox vbox = new VBox();
 
@@ -93,6 +99,11 @@ public class CustomerPanierPane extends VBox {
         return vbox;
     }
 
+    /**
+     * Obtenir la table des livres présents dans le panier.
+     * @param panier Le panier client.
+     * @return La table des livres présents dans le panier client.
+     */
     private TableView<DetailLivre> getTableView(Panier panier) {
         List<DetailLivre> detailsLivres = panier.getDetailLivres();
     

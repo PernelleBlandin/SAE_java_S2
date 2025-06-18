@@ -13,13 +13,16 @@ import vue._components.bookCard.CustomerBookCardComponent;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
 public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
+    /** La carte du livre, affiché dans la vue */
     private CustomerBookCardComponent component;
+    /** Le modèle de données */
     private ChaineLibrairie modele;
+    /** Le livre à ajouter au panier */
     private Livre livre;
 
     /**
      * Initiailiser le contrôleur du bouton "Ajouter Panier"
-     * @param app La vue à mettre à jour en cas de clic sur le bouton. 
+     * @param component La carte du livre. 
      * @param modele Le modèle.
      * @param livre Le livre à ajouter.
      */

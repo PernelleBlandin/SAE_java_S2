@@ -15,9 +15,19 @@ import javafx.scene.text.FontWeight;
 import modeles.Livre;
 import vue._components.BaseListBooksPane;
 
+/**
+ * Pane de la liste des livres à afficher au client.
+ */
 public class CustomerListBooksPane extends BaseListBooksPane {
+    /** La scène de la page client */
     private CustomerScene customerScene;
 
+    /**
+     * Initialiser la pane affichant la liste des livres à afficher au client.
+     * @param titre Le titre de la liste.
+     * @param listeLivres La liste des livres.
+     * @param customerScene La scène de la page client.
+     */
     public CustomerListBooksPane(String titre, List<Livre> listeLivres, CustomerScene customerScene) {
         super(titre, listeLivres);
         this.customerScene = customerScene;
@@ -25,6 +35,10 @@ public class CustomerListBooksPane extends BaseListBooksPane {
         this.addComponents();
     }
 
+    /**
+     * Obtenir le titre et le bouton retour de la pane.
+     * @return Le BorderPane contenant ses deux informations.
+     */
     protected BorderPane getTitleAndBackButtonPane() {
         BorderPane borderPaneTitre = new BorderPane();
 
@@ -41,6 +55,10 @@ public class CustomerListBooksPane extends BaseListBooksPane {
         return borderPaneTitre;
     }
 
+    /**
+     * Obtenir la VBox contenant la liste des "cartes" des livres.
+     * @return La VBox contenant la liste des "cartes" des livres.
+     */
     protected VBox getListeLivresPane() {
         VBox listeLivresVBox = new VBox();
         listeLivresVBox.setSpacing(20);

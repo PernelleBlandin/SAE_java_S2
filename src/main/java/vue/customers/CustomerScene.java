@@ -38,6 +38,7 @@ public class CustomerScene {
 
     /** La scène principal */
     private BorderPane root;
+    /** La liste des "cartes" des livres */
     private HashMap<Livre, CustomerBookCardComponent> bookCards;
 
     /** Le header */

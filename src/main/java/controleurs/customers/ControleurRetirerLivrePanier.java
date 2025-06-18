@@ -11,6 +11,7 @@ import modeles.LivreIntrouvableException;
 import modeles.Panier;
 import vue.customers.CustomerPanierPane;
 
+/** Le contrôleur du bouton "Supprimer" dans la page "Panier" pour un livre */
 public class ControleurRetirerLivrePanier implements EventHandler<ActionEvent> {
     /** Vue du panier client */
     private CustomerPanierPane customerPanierView;

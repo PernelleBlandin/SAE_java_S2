@@ -31,11 +31,13 @@ public class CustomerHomePane extends VBox {
     /** Le modèle */
     private ChaineLibrairie modele;
 
+    /** La liste des livres recommandés */
     private List<Livre> recommendedLivres;
+    /** La liste des meilleures ventes */
     private List<Livre> meilleursVentesLivres;
 
     /**
-     * Initialiser la vue de l'accueil d'un client.
+     * Initialiser le pane de l'accueil d'un client.
      * @param customerScene La vue principal.
      * @param modele Le modèle.
      */
@@ -58,6 +60,9 @@ public class CustomerHomePane extends VBox {
         );
     }
 
+    /**
+     * Récupérer la liste des livres recommendés, et le stocker dans les variables de la classe.
+     */
     private void initRecommendedLivres() {
         Client client = this.modele.getClientActuel();
 
@@ -69,6 +74,9 @@ public class CustomerHomePane extends VBox {
         }
     }
 
+    /**
+     * Récupérer la liste des meilleures ventes de livres, et le stocker dans les variables de la classe.
+     */
     private void initMeilleuresVentesLivres() {
         this.meilleursVentesLivres = new ArrayList<>();
         try {
@@ -78,6 +86,11 @@ public class CustomerHomePane extends VBox {
         }
     }
 
+    /**
+     * Obtenir le titre, sous forme d'un label, de la page.
+     * @param client Le client.
+     * @return Le titre de la page
+     */
     private Label getTitleLabel(Client client) {
         Label welcome = new Label(String.format("Bienvenue %s ! 👋", client.toString()));
         welcome.setFont(Font.font("Arial", FontWeight.BOLD, 24));
@@ -87,6 +100,11 @@ public class CustomerHomePane extends VBox {
         return welcome;
     }
 
+    /**
+     * Obtenir la liste des magasins, avec un titre et un combo-box pour le changer.
+     * @param client Un client.
+     * @return La liste des magasins et le titre de la VBox.
+     */
     private VBox getMagasinsList(Client client) {
         VBox magasinsVBox = new VBox();
         magasinsVBox.setSpacing(10);
@@ -187,6 +205,9 @@ public class CustomerHomePane extends VBox {
         return vbox;
     }
 
+    /**
+     * Mettre à jour l'affichage de la pane.
+     */
     public void miseAJourAffichage() {
         this.getChildren().set(2, this.getRecommendations());
         this.getChildren().set(3, this.getMeilleuresVentes());

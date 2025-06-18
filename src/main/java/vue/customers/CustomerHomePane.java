@@ -88,6 +88,7 @@ public class CustomerHomePane extends VBox {
 
     private VBox getMagasinsList(Client client) {
         VBox magasinsVBox = new VBox();
+        magasinsVBox.setSpacing(10);
 
         // Label
         Label magasinLabel = new Label("Votre magasin");

@@ -39,11 +39,16 @@ public class CustomerPanierPane extends VBox {
         this.setSpacing(15);
         this.setPadding(new Insets(10, 20, 10, 20));
 
-        this.miseAJourAffichage();
+        Panier panier = this.modele.getClientActuel().getPanier();
+        this.getChildren().addAll(
+            this.getTitre(),
+            this.getTableView(panier),
+            this.getLabelTotal(panier),
+            this.getPaiementPart(panier)
+        );
     }
 
-    public void miseAJourAffichage() {
-        // Titre
+    private BorderPane getTitre() {
         BorderPane borderPaneTitre = new BorderPane();
 
         Button backButton = new Button("Retour");
@@ -56,9 +61,10 @@ public class CustomerPanierPane extends VBox {
         labelTitre.setAlignment(Pos.CENTER);
         borderPaneTitre.setCenter(labelTitre);
 
-        // Table
-
-        Panier panier = this.modele.getClientActuel().getPanier();
+        return borderPaneTitre;
+    }
+    
+    private TableView<DetailLivre> getTableView(Panier panier) {
         List<DetailLivre> detailsLivres = panier.getDetailLivres();
     
         TableView<DetailLivre> tableView = new TableView<>();
@@ -113,14 +119,20 @@ public class CustomerPanierPane extends VBox {
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
         tableView.getItems().addAll(detailsLivres);
+        return tableView;
+    }
 
-        // Label Total
-
+    public Label getLabelTotal(Panier panier) {
         Label labelTotal = new Label(String.format("Total : %.2f€", panier.getTotalPanier()));
         labelTotal.setMaxWidth(Double.MAX_VALUE);
         labelTotal.setAlignment(Pos.BASELINE_RIGHT);
+        return labelTotal;
+    }
 
-        // Livraison
+    public VBox getPaiementPart(Panier panier) {
+        VBox paiementVBox = new VBox();
+
+        // TiltedPane Livraison
         TitledPane titledPaneLivraison = new TitledPane();
         titledPaneLivraison.setCollapsible(false);
         titledPaneLivraison.setText("Livraison");
@@ -139,14 +151,26 @@ public class CustomerPanierPane extends VBox {
         hboxModeLivraison.getChildren().addAll(radioButtonMagasin,radioButtonLivraison);
         titledPaneLivraison.setContent(hboxModeLivraison);
 
-        // Payer
+        // Bouton Payer
         Button buttonPayer = new Button("Payer");
+        
+        List<DetailLivre> detailsLivres = panier.getDetailLivres();
         if (detailsLivres.size() == 0) {
             buttonPayer.setDisable(true);
         } else {
             buttonPayer.disableProperty().bind(toggleGroupLivraison.selectedToggleProperty().isNull());
         }
 
-        this.getChildren().setAll(borderPaneTitre, tableView, labelTotal, titledPaneLivraison, buttonPayer);
+        paiementVBox.getChildren().addAll(titledPaneLivraison, buttonPayer);
+
+        return paiementVBox;
+    }
+
+    public void miseAJourAffichage() {
+        Panier panier = this.modele.getClientActuel().getPanier();
+
+        this.getChildren().set(1, this.getTableView(panier));
+        this.getChildren().set(2, this.getLabelTotal(panier));
+        this.getChildren().set(3, this.getPaiementPart(panier));
     }
 }

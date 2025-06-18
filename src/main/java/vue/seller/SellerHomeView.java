@@ -148,16 +148,16 @@ public class SellerHomeView {
         ajouterLivre.setOnAction(new ControleurPage(this.app));
 
         Button supprimerLivre = new Button("Supprimer un livre");
-        // supprimerLivre.setOnAction(new ControleurSupprimerLivre(this.app));
+        supprimerLivre.setOnAction(new ControleurPage(this.app));
 
         Button majQteLivre = new Button("Mettre à jour la quantité d'un livre");
-        // majQteLivre.setOnAction(new ControleurMajQteLivre(this.app));
+        // majQteLivre.setOnAction(new ControleurPage(this.app));
 
         Button transfertLivre = new Button("Transférer un livre");
-        // transfertLivre.setOnAction(new ControleurTransfertLivre(this.app));
+        // transfertLivre.setOnAction(new ControleurPage(this.app));
 
         Button rpClient = new Button("Agir en tant que client");
-        // rpClient.setOnAction(new ControleurAgirCommeClient(this.app));
+        // rpClient.setOnAction(new ControleurPage(this.app));
 
         left.getChildren().addAll(ajouterLivre, supprimerLivre, majQteLivre, transfertLivre, rpClient);
         left.setPadding(new Insets(30, 50, 0, 15));

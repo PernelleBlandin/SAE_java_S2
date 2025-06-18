@@ -7,6 +7,7 @@ import java.util.List;
 import controleurs.ControleurDeconnexion;
 import controleurs.customers.ControleurAcceuilClient;
 import controleurs.customers.ControleurBoutonPanier;
+import controleurs.customers.ControleurCustomerRecherche;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -86,6 +87,7 @@ public class CustomerScene {
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");
+        searchBar.setOnKeyPressed(new ControleurCustomerRecherche(this, this.modele));
         HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button panierButton = new Button("Panier");
@@ -106,6 +108,11 @@ public class CustomerScene {
 
     public void showHome() {
         this.homePane.miseAJourAffichage();
+        this.root.setCenter(this.homePane);
+    }
+    
+    public void reloadHome() {
+        this.homePane = new CustomerHomePane(this, this.modele);
         this.root.setCenter(this.homePane);
     }
 

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modeles.Livre;
-import vue._components.AlertInfoLivre;
+import vue._components.alerts.AlertInfoLivre;
 
 /** Contrôleur du bouton "Info" sur un livre */
 public class ControleurInfoLivre implements EventHandler<ActionEvent> {

@@ -37,7 +37,7 @@ public abstract class BaseListBooksPane extends VBox {
     public void addComponents() {
         this.getChildren().addAll(
             this.getTitleAndBackButtonPane(),
-            this.getListeLivresPane(),
+            this.listeLivres.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
             this.getNavigationsBoutonsPane()
         );
     }
@@ -54,6 +54,17 @@ public abstract class BaseListBooksPane extends VBox {
     
     protected abstract VBox getListeLivresPane();
 
+    private VBox aucunResultatBox() {
+        VBox vbox = new VBox();
+        vbox.setAlignment(Pos.CENTER);
+
+        Label label = new Label("Aucun résultat.");
+        label.setFont(Font.font("Arial", FontWeight.NORMAL, 48));
+
+        vbox.getChildren().add(label);
+        return vbox;
+    }
+
     private HBox getNavigationsBoutonsPane() {
         HBox hboxBoutons = new HBox();
 
@@ -64,7 +75,10 @@ public abstract class BaseListBooksPane extends VBox {
         previousButton.setOnAction(new ControleurNavigation(this));
         previousButton.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
-        Label currentPageLabel = new Label(String.format("Page %d sur %d", this.curPage + 1, maxPages));
+        int curPageAffichage = this.curPage;
+        if (maxPages > 0) curPageAffichage++;
+
+        Label currentPageLabel = new Label(String.format("Page %d sur %d", curPageAffichage, maxPages));
         currentPageLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
         Button nextButton = new Button("Suivant");
@@ -83,7 +97,7 @@ public abstract class BaseListBooksPane extends VBox {
      * Mettre à jour l'affichage de la liste.
      */
     public void miseAJourAffichage() {
-        this.getChildren().set(1, this.getListeLivresPane());
+        this.getChildren().set(1, this.listeLivres.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox());
         this.getChildren().set(2, this.getNavigationsBoutonsPane());
     }
 

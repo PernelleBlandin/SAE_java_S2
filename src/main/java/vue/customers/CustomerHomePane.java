@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controleurs.ControleurVoirPlus;
+import controleurs.customers.ControleurChangerMagasin;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -106,6 +107,8 @@ public class CustomerHomePane extends VBox {
         magasinComboBox.getItems().addAll(listeMagasins);
         magasinComboBox.setValue(client.getMagasin());
         magasinComboBox.setMaxWidth(Double.MAX_VALUE);
+
+        magasinComboBox.setOnAction(new ControleurChangerMagasin(this.customerScene, this.modele));
 
         magasinsVBox.getChildren().addAll(magasinLabel, magasinComboBox);
         return magasinsVBox;

@@ -145,13 +145,15 @@ public class SellerAddBookView{
 
         Label titre4 = new Label("Année de publication :");
 
-        Label titre5 = new Label("Nom de l'auteur :");
+        Label titre5 = new Label("Prix :");
 
-        Label titre6 = new Label("Date de naissance de l'auteur :");
+        Label titre6 = new Label("Nom de l'auteur :");
 
-        Label titre7 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
+        Label titre7 = new Label("Date de naissance de l'auteur :");
 
-        Label titre8 = new Label("Identifiant de l'auteur :");
+        Label titre8 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
+
+        Label titre9 = new Label("Identifiant de l'auteur :");
         this.idAuteur.setDisable(true);
         String idAuteurBD = null;
         try {
@@ -161,6 +163,7 @@ public class SellerAddBookView{
         }
         if ((idAuteurBD == null || idAuteurBD.isEmpty()) && !this.nomAuteur.getText().isEmpty()) {
             this.idAuteur.setDisable(false);
+            this.idAuteur.setText("");
         } else if (idAuteurBD != null && !idAuteurBD.isEmpty()) {
             this.idAuteur.setText(idAuteurBD);
             this.idAuteur.setDisable(true);
@@ -168,11 +171,11 @@ public class SellerAddBookView{
             this.idAuteur.setDisable(true);
         }
 
-        Label titre9 = new Label("Nom de l'éditeur :");
+        Label titre10 = new Label("Nom de l'éditeur :");
 
-        Label titre10 = new Label("Nom de classification :");
+        Label titre11 = new Label("Nom de classification :");
 
-        Label titre11 = new Label("Identifiant de classification :");
+        Label titre12 = new Label("Identifiant de classification :");
         this.idClassification.setDisable(true);
         String idClassificationBD = null;
         try {
@@ -182,6 +185,7 @@ public class SellerAddBookView{
         }
         if ((idClassificationBD == null || idClassificationBD.isEmpty()) && !this.classification.getText().isEmpty()) {
             this.idClassification.setDisable(false);
+            this.idClassification.setText("");
         } else if (idClassificationBD != null && !idClassificationBD.isEmpty()) {
             this.idClassification.setText(idClassificationBD);
             this.idClassification.setDisable(true);
@@ -197,17 +201,18 @@ public class SellerAddBookView{
             titre2, this.titreLivre,
             titre3, this.nbPages,
             titre4, this.anneePubli,
-            titre5, this.nomAuteur,
-            titre6, this.naissance
+            titre5, this.prix,
+            titre6, this.nomAuteur,
+            titre7, this.naissance
         );
         centerLeft.setSpacing(10);
         centerLeft.setPadding(new Insets(10, 20, 10, 20));
         centerRight.getChildren().addAll(
-            titre7, this.deces,
-            titre8, this.idAuteur,
-            titre9, this.editeur,
-            titre10, this.classification,
-            titre11, this.idClassification,
+            titre8, this.deces,
+            titre9, this.idAuteur,
+            titre10, this.editeur,
+            titre11, this.classification,
+            titre12, this.idClassification,
             valider
         );
         centerRight.setSpacing(10);

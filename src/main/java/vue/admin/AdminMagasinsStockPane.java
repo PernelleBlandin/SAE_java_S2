@@ -4,9 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.customers.ControleurInfoLivre;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -17,21 +18,32 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
+import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
+import vue._components.numberField.NumberFieldDisableButton;
 
+/** Pane des stocks d'un magasin. */
 public class AdminMagasinsStockPane extends VBox {
-    private AdminScene fenetrePrin;
+    /** La scène adminsitrateur */
+    private AdminScene adminScene;
     /** Le modèle */
     private ChaineLibrairie modele;
     /** Le magasin pris en paramètre */
     private Magasin magasin;
 
-    public AdminMagasinsStockPane(AdminScene fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
-        this.fenetrePrin = fenetrePrin;
+    /**
+     * Initialiser la pane des stocks d'un magasin.
+     * @param adminScene La scène administrateur.
+     * @param modele Le modèle.
+     * @param magasin Le magasin.
+     */
+    public AdminMagasinsStockPane(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
+        this.adminScene = adminScene;
         this.modele = modele;
         this.magasin = magasin;
 
         this.setSpacing(50);
+        this.setPadding(new Insets(15, 20, 10, 15));
 
         this.getChildren().addAll(
             this.titre(), 
@@ -40,18 +52,29 @@ public class AdminMagasinsStockPane extends VBox {
         );
     }
 
+    /**
+     * Obtenir le titre du menu.
+     * @return Le label du titre du menu.
+     */
     private Label titre() {
         Label titre = new Label("Stock - " + this.magasin.getNom());
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         return titre;
     }
 
-    private TextField barreRecherche() {
-        TextField barreRecherche = new TextField();
-        barreRecherche.setPromptText("Rechercher");
+    /**
+     * Obtenir la barre de recherche des livres.
+     * @return La barre de recherche des livres.
+     */
+    private SearchBar barreRecherche() {
+        SearchBar barreRecherche = new SearchBar("Rechercher ...");
         return barreRecherche;
     }
 
+    /**
+     * Obtenir le widget avec la liste des livres.
+     * @return Le widget avec la liste des livres.
+     */
     private VBox listeLivres() {
         VBox laListe = new VBox(10);
 
@@ -63,27 +86,39 @@ public class AdminMagasinsStockPane extends VBox {
         }
 
         for (Livre livre: listeLivres) {
+            // Info
             Image imgInfo = new Image("/images/info.png");
             ImageView viewInfo = new ImageView(imgInfo);
-            Image imgSauvegarde = new Image("/images/disquette.png");
-            ImageView viewSauvegarde = new ImageView(imgSauvegarde);
             viewInfo.setFitHeight(35);
             viewInfo.setFitWidth(35);
 
-            BorderPane ligneLivre = new BorderPane();
-            Label leLivre = new Label(livre.getTitre() + " - " + livre.getAuteurs());
-            HBox lesBtn = new HBox(10);
-
             Button btnInfo = new Button();
             btnInfo.setGraphic(viewInfo);
-            TextField majNbExemplaire = new TextField();
-            majNbExemplaire.setPromptText("Future quantité totale");
+            btnInfo.setOnAction(new ControleurInfoLivre(livre));
+
+            // Sauvegarde
+
+            Image imgSauvegarde = new Image("/images/disquette.png");
+            ImageView viewSauvegarde = new ImageView(imgSauvegarde);
+            viewSauvegarde.setFitHeight(35);
+            viewSauvegarde.setFitWidth(35);
+
             Button btnSauvegarde = new Button();
+            btnSauvegarde.setDisable(true);
             btnSauvegarde.setGraphic(viewSauvegarde);
+
+            // Number Input
+
+            NumberFieldDisableButton majNbExemplaire = new NumberFieldDisableButton(btnSauvegarde);
+            majNbExemplaire.setPrefHeight(35);
+            majNbExemplaire.setPromptText("Future quantité totale");
+
+            BorderPane ligneLivre = new BorderPane();
+            Label leLivre = new Label(livre.getTitre() + " - " + livre.joinNomAuteurs());
+            HBox lesBtn = new HBox(10);
 
             lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
-            // btnInfo.setOnAction(new ControleurInfo());
             // btnSauveNouveauStock.setOnAction(new ControleurSauveNouveauStock());
 
             ligneLivre.setLeft(leLivre);

@@ -1,7 +1,7 @@
 package vue;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 /** L'interface d'une scène */
 public interface SceneInterface {
@@ -9,7 +9,7 @@ public interface SceneInterface {
      * Obtenir le header de la scène.
      * @return Le hader
      */
-    public HBox getHeader();
+    public Pane getHeader();
 
     /**
      * Afficher la page d'accueil.

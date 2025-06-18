@@ -34,6 +34,7 @@ import javafx.scene.text.FontWeight;
 
 import modeles.ChaineLibrairie;
 import modeles.Client;
+import modeles.Vendeur;
 import modeles.Livre;
 import modeles.Magasin;
 
@@ -81,7 +82,7 @@ public class AdminView {
         VBox aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.root.setCenter(fenetreStat()); 
+        //this.root.setCenter(????????Stat); 
         
         this.scene = new Scene(this.root);
     }
@@ -161,242 +162,25 @@ public Scene getScene() {
     }
 
 
-    //GRAPH TABLEAU DE BORD
-
-    //1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
-    // BarChart
-        // CategoryAxis xAxis = new CategoryAxis();
-        // NumberAxis yAxis= new NumberAxis();
-
-        // XYChart.Series series= new XYChart.Series<>();
-        // Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
-        // for(String key: dataBar.keySet()){
-        //    series.getData().add(new XYChart.Data("key",  dataBar.get(key)) {
-            
-        //    }) 
-        // }
-
-        // BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
-
-    public PieChart graphCA2024ParTheme() {
-    //2)PieChart
-        PieChart pieChartParTheme= new PieChart();
-        pieChartParTheme.setTitle("Chiffre d'affaire 2024 par thème");
-        try{
-            Map <String, Double> dataParTheme = this.modele.getStatistiquesBD().getCA2024ParTheme();
-            for(String key: dataParTheme.keySet()){
-                PieChart.Data categorie=new PieChart.Data(key, dataParTheme.get(key));
-                pieChartParTheme.getData().add(categorie);
-        }
-       
-        }catch (SQLException e){
-            // TODO: handle exception
-            
-        }return pieChartParTheme;
-    } 
-
-    //3) AreaChart Map<String, Map<Integer, Double>> getEvolutionCAParMoisParMagasin2024()
-
-    //    AreaChart
-        // AreaChart areaChartCAParChart = new AreaChart();
-
-
-        
-    //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
-
-    //        //LineChart  Map<String, Map<Integer, Double>> 
-        // NumberAxis xAxisLine = new NumberAxis();
-        // NumberAxis yAxisLine = new NumberAxis();
-        // //xAxis.setLabel(null);
-
-        // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
-        // XYChart.Series series3 = new XYChart.Series<>();
-
-
-    public BarChart graphTop10EditeursNbAuteurs(){
-        //5) BarChart  Map<String, Integer> getTop10EditeursNbAuteurs()
-        NumberAxis xAxisBar = new NumberAxis();
-        CategoryAxis yAxisBar = new CategoryAxis();
-        BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
-        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
-        barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
-        xAxisBar.setTickLabelRotation(90);
-        try{
-            Map<String, Integer> dataTopDix= this.modele.getStatistiquesBD().getTop10EditeursNbAuteurs();
-            for(String key: dataTopDix.keySet()){
-                BarChart.Data categorie=new XYChart.Data(dataTopDix.get(key), key);
-                series4.getData().add(categorie);
-        }
-        barChartTopDix.getData().addAll(series4);
-    }catch (SQLException e){
-            // TODO: handle exception
-            
-    }return barChartTopDix;
-    }
-
-    //6)
-    public PieChart graphQteLivresGoscinyOrigineClients(){
-        PieChart pieChartGosciny= new PieChart();
-        pieChartGosciny.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
-        try{
-            Map<String, Integer> dataGosciny = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
-            for(String key: dataGosciny.keySet()){
-                PieChart.Data categorie2=new PieChart.Data(key, dataGosciny.get(key));
-                pieChartGosciny.getData().add(categorie2);
-            }
-        //pieChartParTheme.setLegendSide(side.RIGHT);
-        }catch (SQLException e){
-            // TODO: handle exception
-            
-        }return pieChartGosciny;
-    }
-
-    //7)  PieChart Map<String, Double> getValeurStockParMagasin() 
-    //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
-    //
-    public HBox fenetreStat() {
-        ComboBox comboBoxChoix = new ComboBox<>();
-        comboBoxChoix.getItems().addAll("Nombre de livres vendus par magasin",
-         "CA 2024 par thème",
-         "Evolution CA des magasins par mois en 2024",
-         "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
-         "Valeur du stock par magasin",
-         "Evolution CA total par client",
-         "10 éditeurs les plus importants en nombres d'auteurs ",
-         "Quantité de livres deRené Goscinny achetées en fonction de l'origine des clients");
-
-        VBox afficheChart= new VBox();
-        afficheChart.setAlignment(Pos.CENTER);
-
-        comboBoxChoix.setOnAction(new EventHandler<ActionEvent>() {
-            
-        @Override
-        public void handle (ActionEvent e){
-        String valCombo= (String) comboBoxChoix.getValue();
-        if(valCombo!= null){
-            switch (valCombo) {
-                //case "Nombre de livres vendus par magasin":{
-                    //break;
-                //}
-                case "CA 2024 par thème":{
-                    this.graphCA2024ParTheme();
-                    break;
-                }
-                    
-                    
-            
-                default:{
-                    System.err.println("ERREUR: Choix invalide, veuillez réessayer...");
-                    break;
-            }
-        }}
-        });
-      
-        
-        HBox hbox = new HBox(comboBoxChoix);
-
-        return hbox;
-    }
-}
-
-    /**
-     * VBox à mettre au centre du BorderPane quand on change sa partie centrale en mode facture.
-     * @return centre La VBox
-     */
-    //A finir d'implementer avec le popup et récup les donner de la fact
-    public VBox fenetreFacture() {
-        VBox centre = new VBox(40);
-
-        Label sousTitre = new Label("Exporter des factures");
-
-
-        HBox lesTF = new HBox(30);
-        TextField moisTF = new TextField();
-        moisTF.setPromptText("Mois");
-
-        TextField anneeTF = new TextField();
-        anneeTF.setPromptText("Année");
-        lesTF.getChildren().addAll(moisTF, anneeTF);
-        lesTF.setAlignment(Pos.CENTER);
-        
-
-        Button btnExporter = new Button("Exporter");
-
-        centre.getChildren().addAll(sousTitre, lesTF, btnExporter);
-        centre.setAlignment(Pos.TOP_CENTER);
-
-        return centre;
-    }
-        
-    /**
-     * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
-     * @return lesMag La VBox
-     */
-    public VBox fenetreGestionMagasins() {
-        VBox lesMag = new VBox(10);
-
-        Label titre = new Label("Magasins");
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        lesMag.getChildren().add(titre);
-
-        
-        try { 
-            for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
-            Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
-            ImageView viewVendeurs = new ImageView(imgVendeurs);
-            Image imgPoubelle = new Image("/images/trashcan.png");
-            ImageView viewPoubelle = new ImageView(imgPoubelle);
-            viewVendeurs.setFitHeight(35);
-            viewVendeurs.setFitWidth(35);
-            viewPoubelle.setFitHeight(35);
-            viewPoubelle.setFitWidth(35);
-
-            BorderPane ligneMag = new BorderPane();
-            HBox lesBtn = new HBox(10);
-            Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
-
-            Button btnVendeursDuMag = new Button();
-            btnVendeursDuMag.setGraphic(viewVendeurs);
-            Button btnSupprimerMag = new Button();
-            btnSupprimerMag.setGraphic(viewPoubelle);
-
-            lesBtn.getChildren().addAll(btnVendeursDuMag, btnSupprimerMag);
-
-            //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
-            //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
-        
-            ligneMag.setLeft(leMag);
-            ligneMag.setRight(lesBtn);
-
-            lesMag.getChildren().add(ligneMag);
-
-        }
-
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        
-        
-
-        return lesMag;
-    }
-        
+   
 
     public void modeStat() {
-        this.root.setCenter(fenetreStat());
+        FenetreStat fenetreStat = new FenetreStat(this, modele);
+        this.root.setCenter(fenetreStat);
     }
 
     public void modeFacture() {
-        this.root.setCenter(fenetreFacture());
+        FenetreFacture fenetreFacture = new FenetreFacture(this, modele);
+        this.root.setCenter(fenetreFacture);
     }
 
     public void modeGestionMagasins() {
-        this.root.setCenter(fenetreGestionMagasins());
+        FenetreGestionMagasins fenetreGestionMagasins = new FenetreGestionMagasins(this, modele);
+        this.root.setCenter(fenetreGestionMagasins);
     }
 
-    // public void modeGestionVendeurs() {
-    //     this.root.setCenter(fenetreGestionVendeurs());
+    // public void modeGestionVendeurs(Magasin magasin) {
+    //     this.root.setCenter(fenetreGestionVendeurs(magasin));
     // }
 
     // public void modeStocksSelectMag() {

@@ -12,12 +12,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.chart.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
@@ -195,19 +189,46 @@ public Scene getScene() {
         }
 
         //AreaChart
-        AreaChart areaChartCAParChart = new AreaChart();
+        // AreaChart areaChartCAParChart = new AreaChart();
 
 
-        //LineChart
+        // //LineChart  Map<String, Map<Integer, Double>> 
+        // NumberAxis xAxisLine = new NumberAxis();
+        // NumberAxis yAxisLine = new NumberAxis();
+        // //xAxis.setLabel(null);
 
-        //BarChart
+        // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
+        // XYChart.Series series3 = new XYChart.Series<>();
+
+        
+
+//BarChart  Map<String, Integer> getTop10EditeursNbAuteurs()
+        NumberAxis xAxisBar = new NumberAxis();
+        CategoryAxis yAxisBar = new CategoryAxis();
+        BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
+        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+        barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
+        xAxisBar.setTickLabelRotation(90);
+        try{
+            Map<String, Integer> dataTopDix= this.modele.getStatistiquesBD().getTop10EditeursNbAuteurs();
+            for(String key: dataTopDix.keySet()){
+                BarChart.Data categorie=new XYChart.Data(dataTopDix.get(key), key);
+                series4.getData().add(categorie);
+        }
+        barChartTopDix.getData().addAll(series4);
+    }catch (SQLException e){
+            // TODO: handle exception
+            
+        }
+
 
         //PieChart
 
         //PieChart
 
         //LineChart
-        centre.getChildren().addAll(pieChartParTheme);
+        
+        centre.getChildren().addAll(pieChartParTheme, barChartTopDix);
         return centre;
         }
 

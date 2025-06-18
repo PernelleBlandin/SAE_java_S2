@@ -17,6 +17,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -298,24 +299,23 @@ public Scene getScene() {
             viewPoubelle.setFitHeight(35);
             viewPoubelle.setFitWidth(35);
 
-            HBox ligneMag = new HBox(10);
+            BorderPane ligneMag = new BorderPane();
+            HBox lesBtn = new HBox(10);
             Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
-            Button vendeursDuMag = new Button();
-            vendeursDuMag.setGraphic(viewVendeurs);
-            
-            Button supprimerMag = new Button();
-            supprimerMag.setGraphic(viewPoubelle);
-            
 
+            Button btnVendeursDuMag = new Button();
+            btnVendeursDuMag.setGraphic(viewVendeurs);
+            Button btnsupprimerMag = new Button();
+            btnsupprimerMag.setGraphic(viewPoubelle);
 
-            //vendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
-            //supprimerMag.setOnAction(new ControleurSupprMag(mag));
+            lesBtn.getChildren().addAll(btnVendeursDuMag, btnsupprimerMag);
+
+            //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
+            //btnsupprimerMag.setOnAction(new ControleurSupprMag(mag));
         
-            ligneMag.getChildren().addAll(leMag, vendeursDuMag, supprimerMag);
-            ligneMag.setAlignment(Pos.BASELINE_LEFT);
+            ligneMag.getChildren().addAll(leMag, lesBtn);
 
             lesMag.getChildren().add(ligneMag);
-            //lesMag.setAlignment(Pos.);
 
         }
 

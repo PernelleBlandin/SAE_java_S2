@@ -30,7 +30,7 @@ public class ControleurPage implements EventHandler<ActionEvent>{
                 break;
             }
             case "Supprimer un livre":{
-                // this.app.showDeleteBookSeller();
+                this.app.showDeleteBookSeller();
                 break;
             }
             case "Mettre à jour la quantité d'un livre": {

@@ -135,7 +135,6 @@ public class SellerAddBookView{
         VBox centerLeft = new VBox();
         VBox centerRight = new VBox();
         HBox center = new HBox();
-        Vendeur vendeur = this.modele.getVendeurActuel();
 
         Label titre1 = new Label("Identifiant du livre :");
     
@@ -244,7 +243,7 @@ public class SellerAddBookView{
 
         Button ajouterLivre = new Button("Ajouter un livre");
         ajouterLivre.setOnAction(new ControleurPage(this.app));
-        ajouterLivre.setStyle("-fx-background-color: #808080");
+        ajouterLivre.setDisable(true);
 
         Button supprimerLivre = new Button("Supprimer un livre");
         supprimerLivre.setOnAction(new ControleurPage(this.app));

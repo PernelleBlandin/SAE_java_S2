@@ -20,14 +20,8 @@ public class ControleurValider implements EventHandler<ActionEvent> {
      * @param event Un évènement
      */
     public void handle(ActionEvent event) {
-        if (this.sellerAddBookView.getIdLivre().getText().length() != 0 && 
-            this.sellerAddBookView.getTitreLivre().getText().length() != 0 && 
-            this.sellerAddBookView.getPrix().getText().length() != 0 && 
-            this.sellerAddBookView.getAnneePubli().getText().length() != 0 && 
-            this.sellerAddBookView.getNomAuteur().getText().length() != 0 && 
-            this.sellerAddBookView.getEditeur().getText().length() != 0 && 
-            this.sellerAddBookView.getClassification().getText().length() != 0){
-
+        if (this.sellerAddBookView.getIdLivre().getText().length() != 0 && this.sellerAddBookView.getTitreLivre().getText().length() != 0 && this.sellerAddBookView.getPrix().getText().length() != 0 && this.sellerAddBookView.getAnneePubli().getText().length() != 0 && this.sellerAddBookView.getNomAuteur().getText().length() != 0 && this.sellerAddBookView.getEditeur().getText().length() != 0 && this.sellerAddBookView.getClassification().getText().length() != 0){
+            
             String isbn = this.sellerAddBookView.getIdLivre().getText();
             String titre = this.sellerAddBookView.getTitreLivre().getText();
             int nbPages = 0;

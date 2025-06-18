@@ -13,6 +13,8 @@ import modeles.Vendeur;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerScene;
 import vue.seller.SellerAddBookView;
+import vue.seller.SellerDeleteBookView;
+import vue.seller.SellerDeleteBookView;
 import vue.seller.SellerHomeView;
 
 /** L'IHM de notre application */
@@ -122,6 +124,20 @@ public class AppIHM extends Application {
     }
 
     /**
+     * Changer de scène pour le mode "supprimer livre".
+     */
+    public void showDeleteBookSeller() {
+        try {
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.chaineLibrairie.setVendeurActuel(vendeur);
+            SellerDeleteBookView vue = new SellerDeleteBookView(this, this.chaineLibrairie);
+            this.primaryStage.setScene(vue.getScene());
+        } catch (SQLException e) {
+            // TODO gérer l'erreur
+        }
+    } 
+
+    /**
      * Créer le graphe de scène et lance l'application.
      * @param stage La fenêtre principale.
      */
@@ -144,5 +160,6 @@ public class AppIHM extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    } 
+    }
+
 }

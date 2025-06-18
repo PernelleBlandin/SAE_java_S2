@@ -2,6 +2,7 @@ package vue.seller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import controleurs.seller.ControleurAcceuilVendeur;
@@ -25,12 +26,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
+import modeles.Client;
+import modeles.DetailLivre;
 import modeles.Livre;
+import modeles.LivreIntrouvableException;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
 import vue._components.SearchBar;
+import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.BookCardComponentSeller;
+import vue._components.bookCard.CustomerBookCardComponent;
 
 /**
  * La vue de l'accueil d'un vendeur
@@ -55,14 +61,19 @@ public class SellerHomeView {
      * La scène principal
      */
     private BorderPane root;
+
     /**
      * VBox Central
      */
     private VBox center;
+
     /**
      * VBox a gauche
      */
     private VBox left;
+
+    /** La liste des "cartes" des livres */
+    private HashMap<Livre, CustomerBookCardComponent> bookCards;
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
@@ -79,6 +90,8 @@ public class SellerHomeView {
 
         HBox header = this.getHeader();
         this.root.setTop(header);
+
+        this.bookCards = new HashMap<>();
 
         this.center = this.getCenter();
         this.root.setCenter(center);
@@ -259,6 +272,31 @@ public class SellerHomeView {
         this.root.setCenter(this.center);
     }
 
+      /**
+     * Créer ou obtenir la "carte" d'un livre, affichant les informations de ce dernier.
+     * @param livre Un livre.
+     * @return La carte du livre.
+     */
+    public CustomerBookCardComponent createOrGetCardComponent(Livre livre) {
+        if (this.bookCards.containsKey(livre)) {
+            return this.bookCards.get(livre);
+        }
+
+        Vendeur vendeur = this.modele.getVendeurActuel();
+
+        int quantiteStock = 0;
+        try {
+            quantiteStock = this.modele.getMagasinBD().obtenirStockLivre(vendeur.getMagasin().getId(), livre.getISBN());
+        } catch (SQLException e) {
+            new AlertErreurException("Impossible de récupérer le stock du livre.", e);
+        }
+
+        CustomerBookCardComponent bookCard = new CustomerBookCardComponent(livre, quantiteStock, this.modele);
+        this.bookCards.put(livre, bookCard);
+
+        return bookCard;
+    }
+    
     /**
      * Obtenir la scène de l'accueil d'un vendeur.
      *

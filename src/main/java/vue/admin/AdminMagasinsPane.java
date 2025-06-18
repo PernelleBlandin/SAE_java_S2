@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
+import vue._components.alerts.AlertErreurException;
 
 public class AdminMagasinsPane extends VBox {
     private AdminScene adminScene;
@@ -53,7 +54,7 @@ public class AdminMagasinsPane extends VBox {
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les magasins.", e);
         }
 
         for (Magasin magasin : listeMagasins) {

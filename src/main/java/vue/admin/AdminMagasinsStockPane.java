@@ -17,6 +17,7 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
+import vue._components.alerts.AlertErreurException;
 
 public class AdminMagasinsStockPane extends VBox {
     private AdminScene fenetrePrin;
@@ -58,7 +59,7 @@ public class AdminMagasinsStockPane extends VBox {
         try {
             listeLivres = this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les livres.", e);
         }
 
         for (Livre livre: listeLivres) {

@@ -11,12 +11,15 @@ import javafx.scene.chart.Chart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
+import vue._components.alerts.AlertErreur;
+import vue._components.alerts.AlertErreurException;
 
 public class AdminStatsPane extends VBox {
     /** Le modèle */
@@ -92,9 +95,8 @@ public class AdminStatsPane extends VBox {
                 PieChart.Data categorie = new PieChart.Data(key, dataParTheme.get(key));
                 pieChartParTheme.getData().add(categorie);
             }
-
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les données.", e);
 
         }
         return pieChartParTheme;
@@ -117,24 +119,25 @@ public class AdminStatsPane extends VBox {
     // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
     // XYChart.Series series3 = new XYChart.Series<>();
 
-    public BarChart graphTop10EditeursNbAuteurs() {
+    public BarChart<Number, String> graphTop10EditeursNbAuteurs() {
         // 5) BarChart Map<String, Integer> getTop10EditeursNbAuteurs()
         NumberAxis xAxisBar = new NumberAxis();
         CategoryAxis yAxisBar = new CategoryAxis();
-        BarChart barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
-        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+        
+        BarChart<Number, String> barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
+        XYChart.Series<Number, String> series4 = new XYChart.Series<>();
+        
         barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
         xAxisBar.setTickLabelRotation(90);
         try {
             Map<String, Integer> dataTopDix = this.modele.getStatistiquesBD().getTop10EditeursNbAuteurs();
             for (String key : dataTopDix.keySet()) {
-                BarChart.Data categorie = new XYChart.Data(dataTopDix.get(key), key);
+                XYChart.Data<Number, String> categorie = new XYChart.Data<>(dataTopDix.get(key), key);
                 series4.getData().add(categorie);
             }
-            barChartTopDix.getData().addAll(series4);
+            barChartTopDix.getData().add(series4);
         } catch (SQLException e) {
-            // TODO: handle exception
-
+            new AlertErreurException("Impossible de récupérer les données.", e);
         }
         return barChartTopDix;
     }
@@ -153,7 +156,7 @@ public class AdminStatsPane extends VBox {
             }
             // pieChartParTheme.setLegendSide(side.RIGHT);
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les données.", e);
 
         }
         return pieChartGosciny;
@@ -171,9 +174,8 @@ public class AdminStatsPane extends VBox {
                 PieChart.Data categorie3 = new PieChart.Data(key, dataStockMag.get(key));
                 pieChartValStockMag.getData().add(categorie3);
             }
-
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les données.", e);
 
         }
         return pieChartValStockMag;

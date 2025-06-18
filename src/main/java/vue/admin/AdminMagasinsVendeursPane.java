@@ -16,6 +16,7 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import modeles.Vendeur;
+import vue._components.alerts.AlertErreurException;
 
 public class AdminMagasinsVendeursPane extends VBox {
     private AdminScene fenetrePrin;
@@ -50,7 +51,7 @@ public class AdminMagasinsVendeursPane extends VBox {
         try {
             listeVendeurs = this.modele.getVendeurBD().obtenirListeVendeurParMagasin(this.magasin.getId());
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Impossible de récupérer les vendeurs.", e);
         }
 
         for (Vendeur vendeur: listeVendeurs) {

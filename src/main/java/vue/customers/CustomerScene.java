@@ -123,7 +123,7 @@ public class CustomerScene {
      * @param listeLivres Une liste de livres.
      */
     public void showListBooks(String titre, List<Livre> listeLivres) {
-        CustomerListBooksPane customerListBookPane = new CustomerListBooksPane(this, titre, listeLivres);
+        CustomerListBooksPane customerListBookPane = new CustomerListBooksPane(titre, listeLivres, this);
         this.root.setCenter(customerListBookPane);
     }
 

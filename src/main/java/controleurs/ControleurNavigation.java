@@ -3,37 +3,26 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import vue.customers.CustomerListBooksPane;
+import vue._components.BaseListBooksPane;
 
 public class ControleurNavigation implements EventHandler<ActionEvent> {
-    /** Vue de l'acceuil de la page client */
-    private CustomerListBooksPane customerListView;
-
-    /**
-     * Initialiser le contrôleur du bouton "Voir plus", affichant une liste de livres.
-     * @param customerListView La vue de l'acceuil de la page client.
-     * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
-     */
-    public ControleurNavigation(CustomerListBooksPane customerListView) {
-        this.customerListView = customerListView;
+    private BaseListBooksPane listBookPane;
+    public ControleurNavigation(BaseListBooksPane listBooksPane) {
+        this.listBookPane = listBooksPane;
     }
 
     @Override
-    /**
-     * Recevoir un événement lors du clic sur le bouton "Voir plus", pour afficher une liste de livres.
-     * @param event Un événement.
-     */
     public void handle(ActionEvent event) {
         Button button = (Button) event.getSource();
 
-        int pageActuelle = this.customerListView.getCurPage();
+        int pageActuelle = this.listBookPane.getCurPage();
         String labelText = button.getText();
         if (labelText.equals("Précédent")) {
-            this.customerListView.setCurPage(--pageActuelle);
+            this.listBookPane.setCurPage(--pageActuelle);
         } else {
-            this.customerListView.setCurPage(++pageActuelle);
+            this.listBookPane.setCurPage(++pageActuelle);
         }
 
-        this.customerListView.miseAJourAffichage();
+        this.listBookPane.miseAJourAffichage();
     }
 }

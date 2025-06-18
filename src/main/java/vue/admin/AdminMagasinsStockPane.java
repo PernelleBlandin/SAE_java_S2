@@ -1,8 +1,9 @@
 package vue.admin;
 
-import modeles.ChaineLibrairie;
-import modeles.Magasin;
-import modeles.Livre;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,27 +14,34 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import modeles.ChaineLibrairie;
+import modeles.Livre;
+import modeles.Magasin;
 
-public class FenetreStock extends VBox {
-    /** La fenêtre principale AdminView */
-    private AdminView fenetrePrin;
+public class AdminMagasinsStockPane extends VBox {
+    private AdminScene fenetrePrin;
     /** Le modèle */
     private ChaineLibrairie modele;
     /** Le magasin pris en paramètre */
     private Magasin magasin;
 
-
-    public FenetreStock(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
+    public AdminMagasinsStockPane(AdminScene fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
         this.magasin = magasin;
+
         this.setSpacing(50);
-        this.getChildren().addAll(this.titre(), this.barreRecherche(), this.listeLivres());
+
+        this.getChildren().addAll(
+            this.titre(), 
+            this.barreRecherche(), 
+            this.listeLivres()
+        );
     }
 
     private Label titre() {
         Label titre = new Label("Stock - " + this.magasin.getNom());
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
+        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         return titre;
     }
 
@@ -44,10 +52,16 @@ public class FenetreStock extends VBox {
     }
 
     private VBox listeLivres() {
-        VBox laListe =new VBox(10);
+        VBox laListe = new VBox(10);
 
-        try { 
-            for(Livre unLivre : this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin)) {
+        List<Livre> listeLivres = new ArrayList<>();
+        try {
+            listeLivres = this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+
+        for (Livre livre: listeLivres) {
             Image imgInfo = new Image("/images/info.png");
             ImageView viewInfo = new ImageView(imgInfo);
             Image imgSauvegarde = new Image("/images/disquette.png");
@@ -56,7 +70,7 @@ public class FenetreStock extends VBox {
             viewInfo.setFitWidth(35);
 
             BorderPane ligneLivre = new BorderPane();
-            Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
+            Label leLivre = new Label(livre.getTitre() + " - " + livre.getAuteurs());
             HBox lesBtn = new HBox(10);
 
             Button btnInfo = new Button();
@@ -68,28 +82,15 @@ public class FenetreStock extends VBox {
 
             lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
-
             // btnInfo.setOnAction(new ControleurInfo());
             // btnSauveNouveauStock.setOnAction(new ControleurSauveNouveauStock());
-    
-        
+
             ligneLivre.setLeft(leLivre);
             ligneLivre.setRight(lesBtn);
 
             laListe.getChildren().add(ligneLivre);
-
         }
 
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        
         return laListe;
     }
 }
-
-
-
-
-

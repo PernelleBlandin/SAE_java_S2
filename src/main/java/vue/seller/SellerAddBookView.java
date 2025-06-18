@@ -159,8 +159,13 @@ public class SellerAddBookView{
         } catch (SQLException e) {
             //  TODO erreur handle exception 
         }
-        if (idAuteurBD == null && !(this.nomAuteur.getText().isEmpty())) {
+        if ((idAuteurBD == null || idAuteurBD.isEmpty()) && !this.nomAuteur.getText().isEmpty()) {
             this.idAuteur.setDisable(false);
+        } else if (idAuteurBD != null && !idAuteurBD.isEmpty()) {
+            this.idAuteur.setText(idAuteurBD);
+            this.idAuteur.setDisable(true);
+        } else {
+            this.idAuteur.setDisable(true);
         }
 
         Label titre9 = new Label("Nom de l'éditeur :");
@@ -175,8 +180,13 @@ public class SellerAddBookView{
         } catch (SQLException e) {
             // TODO erreur handle exception
         }
-        if (idClassificationBD == null && !(this.classification.getText().isEmpty())) {
+        if ((idClassificationBD == null || idClassificationBD.isEmpty()) && !this.classification.getText().isEmpty()) {
             this.idClassification.setDisable(false);
+        } else if (idClassificationBD != null && !idClassificationBD.isEmpty()) {
+            this.idClassification.setText(idClassificationBD);
+            this.idClassification.setDisable(true);
+        } else {
+            this.idClassification.setDisable(true);
         }
     
         Button valider = new Button("Valider");

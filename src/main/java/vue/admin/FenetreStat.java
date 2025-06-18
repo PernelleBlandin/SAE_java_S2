@@ -3,6 +3,8 @@ package vue.admin;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.bouncycastle.jcajce.provider.asymmetric.dsa.DSASigner.dsaRMD160;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,6 +14,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -150,9 +153,15 @@ public class FenetreStat extends BorderPane {
         try{
             Map<String, Double> dataStockMag = this.modele.getStatistiquesBD().getValeurStockParMagasin();
             for(String key: dataStockMag.keySet()){
-                PieChart.Data categorie3=new PieChart.Data(key, dataStockMag.get(key));
-                pieChartValStockMag.getData().add(categorie3);
+                double valeurData= dataStockMag.get(key);
+                PieChart.Data dataStock=new PieChart.Data(key,valeurData );
+                pieChartValStockMag.getData().add(dataStock);
+
+                Tooltip tooltip= new Tooltip(key+ " : "+ String.format("%.2f €", valeurData));
+                Tooltip.install(dataStock.getNode(), tooltip);
             }
+
+            
 
         }catch (SQLException e){
             // TODO: handle exception
@@ -204,7 +213,7 @@ public class FenetreStat extends BorderPane {
                         afficheChart.getChildren().setAll(graphQteLivresGoscinyOrigineClients());
                         break;
                     case "Valeur du stock par magasin":
-                        afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        afficheChart.getChildren().setAll(graphValeurStockParMagasin());
                         break;
                     case "Evolution CA total par client":
                         //afficheChart.getChildren().setAll(graphCA2024ParTheme());

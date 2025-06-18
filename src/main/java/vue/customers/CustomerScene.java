@@ -87,7 +87,7 @@ public class CustomerScene {
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");
-        searchBar.setOnKeyPressed(new ControleurCustomerRecherche(this, this.modele));
+        searchBar.setOnKeyTyped(new ControleurCustomerRecherche(this, this.modele));
         HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button panierButton = new Button("Panier");

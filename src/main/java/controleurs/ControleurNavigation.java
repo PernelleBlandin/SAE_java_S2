@@ -3,37 +3,39 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import vue.customers.CustomerListBook;
+import vue._components.BaseListBooksPane;
 
+/**
+ * Le contrôleur des boutons de navigations dans la liste de livres.
+ */
 public class ControleurNavigation implements EventHandler<ActionEvent> {
-    /** Vue de l'acceuil de la page client */
-    private CustomerListBook customerListView;
+    /** Une pane contenant la liste des livres affiché */
+    private BaseListBooksPane listBookPane;
 
     /**
-     * Initialiser le contrôleur du bouton "Voir plus", affichant une liste de livres.
-     * @param customerListView La vue de l'acceuil de la page client.
-     * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
+     * Initialiser le contrôleur des boutons de navigations sur le composant des liste de livres.
+     * @param listBooksPane Le composant de la liste des livres.
      */
-    public ControleurNavigation(CustomerListBook customerListView) {
-        this.customerListView = customerListView;
+    public ControleurNavigation(BaseListBooksPane listBooksPane) {
+        this.listBookPane = listBooksPane;
     }
 
     @Override
     /**
-     * Recevoir un événement lors du clic sur le bouton "Voir plus", pour afficher une liste de livres.
+     * Recevoir un événement lors d'un clic sur les boutons "Suivant" ou "Précédent".
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
         Button button = (Button) event.getSource();
 
-        int pageActuelle = this.customerListView.getCurPage();
+        int pageActuelle = this.listBookPane.getCurPage();
         String labelText = button.getText();
         if (labelText.equals("Précédent")) {
-            this.customerListView.setCurPage(--pageActuelle);
+            this.listBookPane.setCurPage(--pageActuelle);
         } else {
-            this.customerListView.setCurPage(++pageActuelle);
+            this.listBookPane.setCurPage(++pageActuelle);
         }
 
-        this.customerListView.miseAJourAffichage();
+        this.listBookPane.miseAJourAffichage();
     }
 }

@@ -16,15 +16,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import vue.AppIHM;
-import vue.VueInterface;
 
 /**
  * La vue de l'accueil du jeu.
  */
-public class ConnexionView implements VueInterface{
+public class ConnexionView {
     /** La vue principal */
     private AppIHM app;
 
+    /**
+     * La scène de la page de connexion.
+     */
     private Scene scene;
 
     /**

@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.customers;
 
 import java.sql.SQLException;
 
@@ -9,21 +9,25 @@ import modeles.Client;
 import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.Panier;
-import vue._components.BookCardComponent;
+import vue._components.alerts.AlertErreurException;
+import vue._components.bookCard.CustomerBookCardComponent;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
 public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
-    private BookCardComponent component;
+    /** La carte du livre, affiché dans la vue */
+    private CustomerBookCardComponent component;
+    /** Le modèle de données */
     private ChaineLibrairie modele;
+    /** Le livre à ajouter au panier */
     private Livre livre;
 
     /**
      * Initiailiser le contrôleur du bouton "Ajouter Panier"
-     * @param app La vue à mettre à jour en cas de clic sur le bouton. 
+     * @param component La carte du livre. 
      * @param modele Le modèle.
      * @param livre Le livre à ajouter.
      */
-    public ControleurAjouterPanier(BookCardComponent component, ChaineLibrairie modele, Livre livre) {
+    public ControleurAjouterPanier(CustomerBookCardComponent component, ChaineLibrairie modele, Livre livre) {
         this.component = component;
         this.modele = modele;
         this.livre = livre;
@@ -42,8 +46,7 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
         try {
             this.modele.getPanierBD().ajouterLivre(panier, detailLivre);
         } catch (SQLException e) {
-            // TODO
-            System.err.println("Une erreur est survenue lors de la mise à jour du panier en base de données : " + e.getMessage());
+            new AlertErreurException("Une erreur est survenue lors de l'ajout du livre au panier.", e);
             return;
         }
 

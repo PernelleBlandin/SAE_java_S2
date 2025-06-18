@@ -1,12 +1,10 @@
 package vue._components.bookCard;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.Livre;
 
 /** La base d'une carte pour un livre */
@@ -32,14 +30,20 @@ public abstract class BaseBookCardComponent extends BorderPane {
 
         this.setStyle("-fx-border-color: black");
         this.setPadding(new Insets(10));
+    }
 
-        // Positions des widgets
-
+    /**
+     * Initialiser les composants.
+     */
+    public void initComponents() {
         ImageView top = this.top();
         this.setTop(top);
 
         VBox center = this.center();
         this.setCenter(center);
+
+        HBox bottom = this.bottom();
+        this.setBottom(bottom);
     }
 
     /**
@@ -78,18 +82,14 @@ public abstract class BaseBookCardComponent extends BorderPane {
     }
 
     /**
-     * Obtenir la pane du milieu, affichant les informations du livre (titre, auteur, prix, stock). 
-     * @return La pane du milieu, affichant les informations du livre (titre, auteur, prix, stock). 
+     * Obtenir la pane du milieu affichant les informations du livre. 
+     * @return La pane du milieu affichant les informations du livre. 
      */
-    private VBox center() {
-        VBox vboxDetails = new VBox();
-        Label labelTitre = new Label(livre.getTitre());
-        labelTitre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        vboxDetails.getChildren().addAll(
-            labelTitre,
-            new Label(livre.joinNomAuteurs()),
-            new Label(String.format("%.2f€ - %d en stock", livre.getPrix(), this.quantite))
-        );
-        return vboxDetails;
-    }
+    protected abstract VBox center();
+
+    /**
+     * Obtenir le composant en bas de la carte, avec les actions possibles.
+     * @return Le composant de bas de carte.
+     */
+    protected abstract HBox bottom();
 }

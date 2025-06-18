@@ -21,7 +21,7 @@ import vue.AppIHM;
  * La vue de l'accueil du jeu.
  */
 public class ConnexionView {
-    /** La vue principal */
+    /** La vue principale */
     private AppIHM app;
 
     /**
@@ -31,7 +31,7 @@ public class ConnexionView {
 
     /**
      * Initialiser la vue de l'accueil.
-     * @param app La vue principal.
+     * @param app La vue principale.
      */
     public ConnexionView(AppIHM app) {
         this.app = app;

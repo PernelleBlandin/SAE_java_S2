@@ -10,9 +10,10 @@ import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Vendeur;
+import vue.admin.AdminView;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerScene;
-import vue.seller.SellerHomeView;
+import vue.seller.SellerScene;
 
 /** L'IHM de notre application */
 public class AppIHM extends Application {
@@ -56,6 +57,14 @@ public class AppIHM extends Application {
     }
 
     /**
+     * Mettre le stage principal de l'IHM.
+     * @param primaryStage Le stage principal de l'IHM.
+     */
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+    
+    /**
      * Changer de scène pour le mode connexion.
      */
     public void showConnexion(){
@@ -80,6 +89,9 @@ public class AppIHM extends Application {
         this.primaryStage.setScene(vue.getScene());
     }
 
+    /**
+     * Changer de scène pour le mode vendeur.
+     */
     public void showSeller(){
         try {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
@@ -88,18 +100,18 @@ public class AppIHM extends Application {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
-    }
-    public void modeAdministrateur() {
 
+        SellerScene vue = new SellerScene(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
+    }
+
+    /**
+     * Changer de scène pour le mode administrateur.
+     */
+    public void modeAdministrateur() {
         AdminView vue = new AdminView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
-
-        SellerHomeView vue = new SellerHomeView(this, this.chaineLibrairie);
-        this.primaryStage.setScene(vue.getScene());
     }
-
-        
-    
 
     /**
      * Créer le graphe de scène et lance l'application.

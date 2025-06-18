@@ -24,22 +24,24 @@ public abstract class BaseListBooksPane extends VBox {
     /** La page actuelle */
     private int curPage;
     /** Le nombre de lignes */
-    private int nbLignes;
+    protected int nbLignes;
     /** Le nombre de colonnes */
-    private int nbColonnes;
+    protected int nbColonnes;
 
     /**
      * Initialiser la base de la liste des livres à afficher.
      * @param titre Le titre de la liste. 
      * @param listeLivres La liste de livres à afficher.
+     * @param nbLignes Le nombre de lignes
+     * @param nbColonnes Le nombre de colonnes
      */
-    public BaseListBooksPane(String titre, List<Livre> listeLivres) {
+    public BaseListBooksPane(String titre, List<Livre> listeLivres, int nbLignes, int nbColonnes) {
         this.titre = titre;
         this.listeLivres = listeLivres;
 
         this.curPage = 0;
-        this.nbLignes = 2;
-        this.nbColonnes = 4;
+        this.nbLignes = nbLignes;
+        this.nbColonnes = nbColonnes;
 
         this.setSpacing(15);
         this.setPadding(new Insets(10, 20, 10, 20));

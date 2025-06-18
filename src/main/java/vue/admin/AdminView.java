@@ -96,7 +96,7 @@ public Scene getScene() {
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(120, 50);
-        deconnexionButton.setOnAction(new ControleurDeconnexion(this.app));
+        deconnexionButton.setOnAction(new ControleurDeconnexion(this.app, this.modele));
         
         header.getChildren().addAll(buttonLogo, titre, deconnexionButton);
 

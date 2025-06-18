@@ -143,6 +143,31 @@ public class LivreBD {
     }
 
     /**
+     * Obtenir le nombre de ventes d'un livre dans un magasin.
+     * @param isbn Son ISBN.
+     * @param idMagasin L'identifiant d'un magasin
+     * @return Son nombre de ventes.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public int getNombreVentesLivreMagasin(String isbn, String idMagasin) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT COUNT(numcom) nbVentes
+            FROM COMMANDE NATURAL JOIN DETAILCOMMANDE
+            WHERE isbn = ? AND idmag = ?
+        """);
+        statement.setString(1, isbn);
+        statement.setString(2, idMagasin);
+
+        ResultSet result = statement.executeQuery();
+        
+        result.next();
+        int nbVentes = result.getInt("nbVentes");
+        result.close();
+
+        return nbVentes;
+    }
+
+    /**
      * Obtenir l'ID d'un auteur à partir de son nom.
      * @param nomAuteur Le nom de l'auteur.
      * @return L'ID de l'auteur ou null s'il n'existe pas.

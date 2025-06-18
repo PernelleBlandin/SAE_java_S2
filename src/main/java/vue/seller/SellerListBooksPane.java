@@ -1,8 +1,8 @@
-package vue.customers;
+package vue.seller;
 
 import java.util.List;
 
-import controleurs.customers.ControleurAcceuilClient;
+import controleurs.seller.ControleurAcceuilVendeur;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,21 +16,21 @@ import modeles.Livre;
 import vue._components.BaseListBooksPane;
 
 /**
- * Pane de la liste des livres à afficher au client.
+ * Pane de la liste des livres à afficher au vendeur.
  */
-public class CustomerListBooksPane extends BaseListBooksPane {
-    /** La scène de la page client */
-    private CustomerScene customerScene;
+public class SellerListBooksPane extends BaseListBooksPane {
+    /** La scène de la page vendeur */
+    private SellerScene sellerScene;
 
     /**
      * Initialiser la pane affichant la liste des livres à afficher au client.
      * @param titre Le titre de la liste.
      * @param listeLivres La liste des livres.
-     * @param customerScene La scène de la page client.
+     * @param sellerScene La scène de la page client.
      */
-    public CustomerListBooksPane(String titre, List<Livre> listeLivres, CustomerScene customerScene) {
-        super(titre, listeLivres, 2, 4);
-        this.customerScene = customerScene;
+    public SellerListBooksPane(String titre, List<Livre> listeLivres, SellerScene sellerScene) {
+        super(titre, listeLivres, 2, 3);
+        this.sellerScene = sellerScene;
 
         this.addComponents();
     }
@@ -43,7 +43,7 @@ public class CustomerListBooksPane extends BaseListBooksPane {
         BorderPane borderPaneTitre = new BorderPane();
 
         Button backButton = new Button("Retour");
-        backButton.setOnAction(new ControleurAcceuilClient(this.customerScene));
+        backButton.setOnAction(new ControleurAcceuilVendeur(this.sellerScene));
         borderPaneTitre.setLeft(backButton);
 
         Label labelTitre = new Label(this.getTitre());
@@ -63,8 +63,6 @@ public class CustomerListBooksPane extends BaseListBooksPane {
         VBox listeLivresVBox = new VBox();
         listeLivresVBox.setSpacing(20);
 
-        int nbLignes = 2;
-        int nbColonnes = 4;
         int nbElementsParPage = nbLignes * nbColonnes;
 
         List<Livre> listeLivres = this.getListeLivres();
@@ -78,7 +76,7 @@ public class CustomerListBooksPane extends BaseListBooksPane {
 
                 Livre livre = listeLivres.get(index);
 
-                BorderPane bookCard = this.customerScene.createOrGetCardComponent(livre);
+                BorderPane bookCard = this.sellerScene.createOrGetCardComponent(livre);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }

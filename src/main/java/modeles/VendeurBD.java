@@ -8,20 +8,17 @@ import java.util.List;
 
 /** Liaison entre les vendeurs et la base de données. */
 public class VendeurBD {
+    /** La connexion MariaDB */
     private ConnexionMariaDB connexionMariaDB;
-    ChaineLibrairie chaineLibrairie;
 
     /**
      * Instancier la classe VendeurBD.
      * @param connexionMariaDB La connexion avec la base de données.
      */
-    public VendeurBD(ConnexionMariaDB connexionMariaDB, ChaineLibrairie chaineLibrairie) {
+    public VendeurBD(ConnexionMariaDB connexionMariaDB) {
         this.connexionMariaDB = connexionMariaDB;
-        this.chaineLibrairie = chaineLibrairie;
     }
     
-
-
     /**
      * Obtenir la liste des vendeurs de la base de données.
      * @return La liste des vendeurs de la base de données.
@@ -40,7 +37,7 @@ public class VendeurBD {
             String nomVendeur = result.getString("nomvendeur");
             String prenomVendeur = result.getString("prenomvendeur");
             
-            Vendeur vendeur = new Vendeur(idVendeur, nomVendeur, prenomVendeur, null, this.chaineLibrairie);
+            Vendeur vendeur = new Vendeur(idVendeur, nomVendeur, prenomVendeur, null);
             listeVendeurs.add(vendeur);
         }
         result.close();
@@ -112,7 +109,7 @@ public class VendeurBD {
 
         result.close();
 
-        return new Vendeur(idVendeur, nom, prenom, magasin, this.chaineLibrairie);
+        return new Vendeur(idVendeur, nom, prenom, magasin);
     }
 
     /**

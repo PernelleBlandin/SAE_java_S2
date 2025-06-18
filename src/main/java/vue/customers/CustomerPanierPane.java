@@ -29,14 +29,14 @@ import modeles.Panier;
 
 /** La pane pour afficher le panier client */
 public class CustomerPanierPane extends VBox {
-    /** La vue principal */
+    /** La scène de la page client. */
     private CustomerScene customerScene;
     /** Le modèle */
     private ChaineLibrairie modele;
 
     /**
      * Initialiser le widget du panier.
-     * @param customerScene La scène du client. 
+     * @param customerScene La scène de la page client. 
      * @param modele Le modèle.
      */
     public CustomerPanierPane(CustomerScene customerScene, ChaineLibrairie modele) {

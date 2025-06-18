@@ -2,7 +2,6 @@ package modeles;
 /** Un vendeur */
 public class Vendeur extends Personne {
     private Magasin magasin;
-    private ChaineLibrairie chaineLibrairie;
 
     /**
      * Créer un vendeur.
@@ -10,12 +9,10 @@ public class Vendeur extends Personne {
      * @param nom Le nom du prénom du vendeur.
      * @param prenom Le prénom du vendeur.
      * @param magasin Le magasin rattaché au vendeur
-     * @param chaineLibrairie La chaîne de librairie.
      */
-    public Vendeur(int id, String nom, String prenom, Magasin magasin, ChaineLibrairie chaineLibrairie) {
+    public Vendeur(int id, String nom, String prenom, Magasin magasin) {
         super(id, nom, prenom);
         this.magasin = magasin;
-        this.chaineLibrairie = chaineLibrairie;
     }
 
     /**
@@ -32,9 +29,5 @@ public class Vendeur extends Personne {
      */
     public void setMagasin(Magasin magasin) {
         this.magasin = magasin;
-    }
-
-    public ChaineLibrairie getChaineLibrairie(){
-        return this.chaineLibrairie;
     }
 }

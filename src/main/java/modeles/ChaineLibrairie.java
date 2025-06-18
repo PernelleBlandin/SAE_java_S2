@@ -70,7 +70,7 @@ public class ChaineLibrairie {
         this.commandeBD = new CommandeBD(this, this.connexionMariaDB);
         this.panierBD = new PanierBD(this, this.connexionMariaDB);
         this.magasinBD = new MagasinBD(this.connexionMariaDB);
-        this.vendeurBD = new VendeurBD(this.connexionMariaDB, this);
+        this.vendeurBD = new VendeurBD(this.connexionMariaDB);
         this.statistiquesBD = new StatistiquesBD(this.connexionMariaDB);
     }
 

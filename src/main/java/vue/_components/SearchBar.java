@@ -18,6 +18,6 @@ public class SearchBar extends TextField {
 
         this.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
         this.setPromptText(this.placeholder);
-        this.setMinHeight(20);
+        this.setMinHeight(30);
     }
 }

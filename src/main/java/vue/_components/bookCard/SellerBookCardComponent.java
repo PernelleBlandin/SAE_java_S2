@@ -1,6 +1,5 @@
 package vue._components.bookCard;
 
-import controleurs.customers.ControleurAjouterPanier;
 import controleurs.customers.ControleurInfoLivre;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,24 +9,23 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import modeles.ChaineLibrairie;
 import modeles.Livre;
 
-/** La carte d'un livre à afficher au client */
-public class CustomerBookCardComponent extends BaseBookCardComponent {
-    /** Le modèle */
-    private ChaineLibrairie modele;
+/** La carte d'un livre à afficher au vendeur */
+public class SellerBookCardComponent extends BaseBookCardComponent {
+    /** Le nombre de ventes dans le magasin du vendeur */
+    private int nbVentes;
 
     /**
      * Initialiser une carte d'un livre à afficher au client.
      * @param livre Un livre. 
-     * @param quantite La quantité du livre présent dans le magasin client.
-     * @param modele Le modèle de données.
+     * @param quantite La quantité du livre présent dans le magasin.
+     * @param nbVentes Le nombre de ventes dans le magasin du vendeur.
      */
-    public CustomerBookCardComponent(Livre livre, int quantite, ChaineLibrairie modele) {
+    public SellerBookCardComponent(Livre livre, int quantite, int nbVentes) {
         super(livre, quantite);
 
-        this.modele = modele;
+        this.nbVentes = nbVentes;
 
         this.initComponents();
     }
@@ -44,36 +42,26 @@ public class CustomerBookCardComponent extends BaseBookCardComponent {
         vboxDetails.getChildren().addAll(
             labelTitre,
             new Label(livre.joinNomAuteurs()),
-            new Label(String.format("%.2f€ - %d en stock", livre.getPrix(), this.quantite))
+            new Label(String.format("%.2f€ - %d en stock - %d ventes dans le magasin", livre.getPrix(), this.quantite, this.nbVentes))
         );
         return vboxDetails;
     }
 
     /**
-     * Obtenir le composant en bas de la carte, avec le bouton "Ajouter au panier" et d'informations
+     * Obtenir le composant en bas de la carte, avec le bouton d'informations
      * @return Le composant de bas de carte.
      */
-    @Override
     protected HBox bottom() {
         HBox hboxBoutons = new HBox();
+        hboxBoutons.setMaxHeight(Double.MAX_VALUE);
+
         hboxBoutons.setSpacing(5);
         hboxBoutons.setAlignment(javafx.geometry.Pos.CENTER);
 
-        // Bouton ajout panier
-        Button addPanierButton = new Button("Ajouter au panier");
-        if (this.quantite == 0) {
-            addPanierButton.setDisable(true);
-        } else {
-            addPanierButton.setOnAction(new ControleurAjouterPanier(this, this.modele, this.livre));
-        }
-
-        addPanierButton.setPrefHeight(30);
-        addPanierButton.setMaxWidth(Double.MAX_VALUE);
-        HBox.setHgrow(addPanierButton, Priority.ALWAYS);
-
         // Bouton d'info
-        Button infoButton = new Button();
-        infoButton.setPrefSize(30, 30);
+        Button infoButton = new Button("Informations");
+        infoButton.setMaxHeight(Double.MAX_VALUE);
+        HBox.setHgrow(infoButton, Priority.ALWAYS);
         infoButton.setOnAction(new ControleurInfoLivre(this.livre));
 
         // Configurer l'icône
@@ -82,7 +70,7 @@ public class CustomerBookCardComponent extends BaseBookCardComponent {
         infoIcon.setFitWidth(24);
         infoButton.setGraphic(infoIcon);
 
-        hboxBoutons.getChildren().addAll(addPanierButton, infoButton);
+        hboxBoutons.getChildren().add(infoButton);
         return hboxBoutons;
     }
 }

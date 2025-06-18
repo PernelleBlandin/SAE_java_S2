@@ -27,7 +27,7 @@ import vue._components.alerts.AlertErreurException;
 
 /** La vue de l'accueil d'un client */
 public class CustomerHomePane extends VBox {
-    /** La vue principal */
+    /** La scène de la page client */
     private CustomerScene customerScene;
     /** Le modèle */
     private ChaineLibrairie modele;
@@ -39,7 +39,7 @@ public class CustomerHomePane extends VBox {
 
     /**
      * Initialiser le pane de l'accueil d'un client.
-     * @param customerScene La vue principal.
+     * @param customerScene La scène de la page client
      * @param modele Le modèle.
      */
     public CustomerHomePane(CustomerScene customerScene, ChaineLibrairie modele) {

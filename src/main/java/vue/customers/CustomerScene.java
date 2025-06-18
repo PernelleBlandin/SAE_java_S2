@@ -24,6 +24,7 @@ import modeles.Livre;
 import modeles.LivreIntrouvableException;
 import vue.AppIHM;
 import vue._components.SearchBar;
+import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.CustomerBookCardComponent;
 
 /** La scène du client */
@@ -162,10 +163,10 @@ public class CustomerScene {
                 DetailLivre detailLivre = client.getPanier().getDetailLivre(livre);
                 quantiteStock -= detailLivre.getQuantite();
             }
-        } catch (LivreIntrouvableException e) {
-            // On ignore l'exception ici
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e);
+        } catch (LivreIntrouvableException e) {
+            // On ignore, cela veut dire que le livre n'est pas dans le panier
         }
 
         CustomerBookCardComponent bookCard = new CustomerBookCardComponent(livre, quantiteStock, this.modele);

@@ -11,6 +11,7 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Magasin;
 import modeles.Panier;
+import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertYesNo;
 import vue.customers.CustomerScene;
 
@@ -62,7 +63,8 @@ public class ControleurChangerMagasin implements EventHandler<ActionEvent> {
             this.modele.getPanierBD().changerMagasin(panier);
             this.modele.getClientBD().changerMagasin(client.getId(), magasinChoisi.getId());
         } catch (SQLException e) {
-            // TODO
+            new AlertErreurException("Le changement de magasin n'a pas pu être effectuée.", e);
+            return;
         }
 
         this.customerScene.reloadHome();

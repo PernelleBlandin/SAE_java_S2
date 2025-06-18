@@ -23,6 +23,7 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
+import vue._components.alerts.AlertErreurException;
 
 /** La vue de l'accueil d'un client */
 public class CustomerHomePane extends VBox {
@@ -70,7 +71,7 @@ public class CustomerHomePane extends VBox {
         try {
             this.recommendedLivres = this.modele.onVousRecommande(client);
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("La liste des livres recommendés n'a pas pu être recupérée.", e);
         }
     }
 
@@ -82,7 +83,7 @@ public class CustomerHomePane extends VBox {
         try {
             this.meilleursVentesLivres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("La liste des meilleures ventes n'a pas pu être recupérée.", e);
         }
     }
 
@@ -118,7 +119,7 @@ public class CustomerHomePane extends VBox {
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("La liste des magasins n'a pas pu être récupérée.", e);
         }
 
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();

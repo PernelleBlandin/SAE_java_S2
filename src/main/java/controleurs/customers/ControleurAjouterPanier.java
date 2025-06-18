@@ -9,6 +9,7 @@ import modeles.Client;
 import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.Panier;
+import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.CustomerBookCardComponent;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
@@ -45,7 +46,7 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
         try {
             this.modele.getPanierBD().ajouterLivre(panier, detailLivre);
         } catch (SQLException e) {
-            // TODO
+            new AlertErreurException("Une erreur est survenue lors de l'ajout du livre au panier.", e);
             return;
         }
 

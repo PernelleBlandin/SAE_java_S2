@@ -9,6 +9,8 @@ import modeles.Client;
 import modeles.DetailLivre;
 import modeles.LivreIntrouvableException;
 import modeles.Panier;
+import vue._components.alerts.AlertErreur;
+import vue._components.alerts.AlertErreurException;
 import vue.customers.CustomerPanierPane;
 
 /** Le contrôleur du bouton "Supprimer" dans la page "Panier" pour un livre */
@@ -45,9 +47,11 @@ public class ControleurRetirerLivrePanier implements EventHandler<ActionEvent> {
 
             this.customerPanierView.miseAJourAffichage();
         } catch (SQLException e) {
-            // TODO
+            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e);
+            return;
         } catch (LivreIntrouvableException e) {
-            // TODO: afficher popup
+            new AlertErreur("Le livre n'a pas pu être trouvé dans le panier.");
+            return;
         }
     }
 }

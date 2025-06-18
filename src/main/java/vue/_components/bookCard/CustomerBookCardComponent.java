@@ -1,7 +1,7 @@
 package vue._components.bookCard;
 
-import controleurs.ControleurAjouterPanier;
-import controleurs.ControleurInfoLivre;
+import controleurs.customers.ControleurAjouterPanier;
+import controleurs.customers.ControleurInfoLivre;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;

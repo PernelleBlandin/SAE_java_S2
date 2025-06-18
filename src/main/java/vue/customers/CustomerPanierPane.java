@@ -2,8 +2,8 @@ package vue.customers;
 
 import java.util.List;
 
-import controleurs.ControleurAcceuilClient;
-import controleurs.ControleurRetirerLivrePanier;
+import controleurs.customers.ControleurAcceuilClient;
+import controleurs.customers.ControleurRetirerLivrePanier;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

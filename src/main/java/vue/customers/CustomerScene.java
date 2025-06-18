@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
-import controleurs.ControleurAcceuilClient;
-import controleurs.ControleurBoutonPanier;
 import controleurs.ControleurDeconnexion;
+import controleurs.customers.ControleurAcceuilClient;
+import controleurs.customers.ControleurBoutonPanier;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

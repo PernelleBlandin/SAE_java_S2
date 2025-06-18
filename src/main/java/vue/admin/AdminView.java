@@ -76,7 +76,7 @@ public class AdminView {
         VBox aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.root.setCenter(fenetreStat()); 
+        this.root.setCenter(fenetreGestionMagasins()); 
         
         this.scene = new Scene(this.root);
     }

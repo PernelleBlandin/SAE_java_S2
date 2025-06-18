@@ -287,29 +287,35 @@ public Scene getScene() {
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         lesMag.getChildren().addAll(titre);
 
-        Image imgVendeurs = new Image("file:src/main/ressources/images/multiple_sellers_silhouette.png");
-        ImageView viewVendeurs = new ImageView(imgVendeurs);
-        Image imgPoubelle = new Image("file:src/main/ressources/images/trashcan.png");
-        ImageView viewPoubelle = new ImageView(imgPoubelle);
-        viewVendeurs.setFitHeight(35);
-        viewVendeurs.setFitWidth(35);
-        viewPoubelle.setFitHeight(35);
-        viewPoubelle.setFitWidth(35);
-
+        
         try { for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
+            Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
+            ImageView viewVendeurs = new ImageView(imgVendeurs);
+            Image imgPoubelle = new Image("/images/trashcan.png");
+            ImageView viewPoubelle = new ImageView(imgPoubelle);
+            viewVendeurs.setFitHeight(35);
+            viewVendeurs.setFitWidth(35);
+            viewPoubelle.setFitHeight(35);
+            viewPoubelle.setFitWidth(35);
+
             HBox ligneMag = new HBox(10);
             Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
             Button vendeursDuMag = new Button();
             vendeursDuMag.setGraphic(viewVendeurs);
+            
             Button supprimerMag = new Button();
             supprimerMag.setGraphic(viewPoubelle);
+            
 
 
             //vendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
             //supprimerMag.setOnAction(new ControleurSupprMag(mag));
-
+        
             ligneMag.getChildren().addAll(leMag, vendeursDuMag, supprimerMag);
+            ligneMag.setAlignment(Pos.BASELINE_LEFT);
+
             lesMag.getChildren().add(ligneMag);
+            //lesMag.setAlignment(Pos.);
 
         }
 

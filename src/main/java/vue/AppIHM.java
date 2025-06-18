@@ -11,7 +11,7 @@ import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.Vendeur;
 import vue.connection.ConnexionView;
-import vue.customers.CustomerHomeView;
+import vue.customers.CustomerScene;
 import vue.seller.SellerAddBookView;
 import vue.seller.SellerHomeView;
 
@@ -85,7 +85,7 @@ public class AppIHM extends Application {
             return;
         }
 
-        CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie);
+        CustomerScene vue = new CustomerScene(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
 

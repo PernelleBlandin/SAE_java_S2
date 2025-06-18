@@ -9,11 +9,11 @@ import modeles.Client;
 import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.Panier;
-import vue._components.BookCardComponent;
+import vue._components.bookCard.CustomerBookCardComponent;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
 public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
-    private BookCardComponent component;
+    private CustomerBookCardComponent component;
     private ChaineLibrairie modele;
     private Livre livre;
 
@@ -23,7 +23,7 @@ public class ControleurAjouterPanier implements EventHandler<ActionEvent> {
      * @param modele Le modèle.
      * @param livre Le livre à ajouter.
      */
-    public ControleurAjouterPanier(BookCardComponent component, ChaineLibrairie modele, Livre livre) {
+    public ControleurAjouterPanier(CustomerBookCardComponent component, ChaineLibrairie modele, Livre livre) {
         this.component = component;
         this.modele = modele;
         this.livre = livre;

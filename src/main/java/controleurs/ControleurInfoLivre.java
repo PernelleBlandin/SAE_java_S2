@@ -3,17 +3,12 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modeles.Livre;
-import vue.customers.CustomerHomeView;
+import vue.customers.CustomerScene;
 
 /** Contrôleur du bouton "Info" sur un livre */
 public class ControleurInfoLivre implements EventHandler<ActionEvent> {
-    /** Un livre */
     private Livre livre;
 
-    /**
-     * Initialiser le contrôleur d'info de livres.
-     * @param livre Un livre.
-     */
     public ControleurInfoLivre(Livre livre) {
         this.livre = livre;
     }
@@ -24,6 +19,6 @@ public class ControleurInfoLivre implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        CustomerHomeView.sendAlertInfoLivre(this.livre);
+        CustomerScene.sendAlertInfoLivre(this.livre);
     }
 }

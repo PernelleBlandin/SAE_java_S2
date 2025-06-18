@@ -1,4 +1,4 @@
-package vue._components;
+package vue._components.alerts;
 
 import java.util.ArrayList;
 import java.util.Arrays;

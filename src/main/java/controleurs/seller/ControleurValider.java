@@ -3,6 +3,7 @@ package controleurs.seller;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import vue.seller.SellerAddBookView;
 
 public class ControleurValider implements EventHandler<ActionEvent> {
@@ -56,6 +57,31 @@ public class ControleurValider implements EventHandler<ActionEvent> {
             String classificationNom = this.sellerAddBookView.getClassification().getText();
             String idClassifications = this.sellerAddBookView.getIdClassification().getText();
             String idAuteur = this.sellerAddBookView.getIdAuteur().getText();
+
+            try {
+                if (this.sellerAddBookView.getModele().getLivreBD().getIdAuteur(auteurNom) == null) {
+                    if (idAuteur == null || idAuteur.trim().isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Champ manquant");
+                        alert.setContentText("Veuillez saisir un identifiant pour l'auteur.");
+                        alert.showAndWait();
+                        return;
+                    }
+                }
+
+                if (this.sellerAddBookView.getModele().getLivreBD().getIdDewey(classificationNom) == null) {
+                    if (idClassifications == null || idClassifications.trim().isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Champ manquant");
+                        alert.setContentText("Veuillez saisir un identifiant pour la classification.");
+                        alert.showAndWait();
+                        return;
+                    }
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             
             try {
                 if (this.sellerAddBookView.getModele().getLivreBD().getIdAuteur(auteurNom) == null && 

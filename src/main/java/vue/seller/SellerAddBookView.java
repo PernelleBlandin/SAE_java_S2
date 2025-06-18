@@ -191,6 +191,7 @@ public class SellerAddBookView{
             this.idClassification.setDisable(true);
         } else {
             this.idClassification.setDisable(true);
+            this.idClassification.setText("");
         }
     
         Button valider = new Button("Valider");

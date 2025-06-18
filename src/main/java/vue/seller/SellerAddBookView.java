@@ -215,7 +215,7 @@ public class SellerAddBookView implements MAJVueInterface{
 
         Button ajouterLivre = new Button("Ajouter un livre");
         ajouterLivre.setOnAction(new ControleurPage(this.app));
-
+        ajouterLivre.setStyle("-fx-background-color: #808080");
 
         Button supprimerLivre = new Button("Supprimer un livre");
         supprimerLivre.setOnAction(new ControleurPage(this.app));

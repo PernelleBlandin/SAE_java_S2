@@ -67,7 +67,6 @@ public class SellerAddBookView{
     private TextField classification = new TextField();
     private TextField idClassification = new TextField();
     private TextField nbPages = new TextField();
-    private int cpt = 0;
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
@@ -136,6 +135,7 @@ public class SellerAddBookView{
         VBox centerLeft = new VBox();
         VBox centerRight = new VBox();
         HBox center = new HBox();
+        Vendeur vendeur = this.modele.getVendeurActuel();
 
         Label titre1 = new Label("Identifiant du livre :");
     
@@ -152,17 +152,33 @@ public class SellerAddBookView{
         Label titre7 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
 
         Label titre8 = new Label("Identifiant de l'auteur :");
+        this.idAuteur.setDisable(true);
+        String idAuteurBD = null;
+        try {
+            idAuteurBD = this.modele.getLivreBD().getIdAuteur(this.nomAuteur.getText());
+        } catch (SQLException e) {
+            //  TODO erreur handle exception 
+        }
+        if (idAuteurBD == null || idAuteurBD.isEmpty()) {
+            this.idAuteur.setDisable(false);
+        }
 
         Label titre9 = new Label("Nom de l'éditeur :");
 
         Label titre10 = new Label("Nom de classification :");
 
         Label titre11 = new Label("Identifiant de classification :");
-
-        if(this.cpt == 0) {
-            idAuteur.setDisable(true);
-            idClassification.setDisable(true);
+        this.idClassification.setDisable(true);
+        String idClassificationBD = null;
+        try {
+            idClassificationBD = this.modele.getLivreBD().getIdDewey(this.classification.getText());
+        } catch (SQLException e) {
+            // TODO erreur handle exception
         }
+        if (idClassificationBD == null || idClassificationBD.isEmpty()) {
+            this.idClassification.setDisable(false);
+        }
+    
         Button valider = new Button("Valider");
         valider.setOnAction(new ControleurValider(this));
 
@@ -240,7 +256,6 @@ public class SellerAddBookView{
         this.left = this.getLeft();
         this.root.setLeft(this.left);
         this.root.setCenter(this.center);
-        this.cpt++;
     }
     
     /**
@@ -262,7 +277,6 @@ public class SellerAddBookView{
     }
 
     public void reset(){
-        this.cpt = 0;
         this.idLivre.setText("");
         this.titreLivre.setText("");
         this.prix.setText("");

@@ -17,7 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue._components.BookCardComponentSeller;
+import vue._components.bookCard.BookCardComponentSeller;
 
 /** Page d'une liste de livres */
 public class SellerListBook {

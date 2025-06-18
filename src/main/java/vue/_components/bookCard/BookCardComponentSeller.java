@@ -1,4 +1,4 @@
-package vue._components;
+package vue._components.bookCard;
 
 import controleurs.customers.ControleurInfoLivre;
 import javafx.geometry.Insets;

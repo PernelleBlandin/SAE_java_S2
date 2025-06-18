@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controleurs.ControleurPage;
 import controleurs.seller.ControleurAcceuilVendeur;
+import controleurs.seller.ControleurPage;
 import controleurs.seller.ControleurVoirPlusSeller;
 import controleurs.ControleurDeconnexion;
 import javafx.geometry.HPos;
@@ -29,8 +29,8 @@ import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
-import vue._components.BookCardComponentSeller;
 import vue._components.SearchBar;
+import vue._components.bookCard.BookCardComponentSeller;
 
 /**
  * La vue de l'accueil d'un vendeur

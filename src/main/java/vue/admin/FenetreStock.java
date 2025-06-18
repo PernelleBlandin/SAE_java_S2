@@ -1,14 +1,15 @@
 // package vue.admin;
 
-// import modeles.ChaineLibrairie;
-// import modeles.Magasin;
-// import modeles.Livre;
-// import javafx.scene.control.Button;
-// import javafx.scene.control.Label;
-// import javafx.scene.control.TextField;
-// import javafx.scene.image.Image;
-// import javafx.scene.image.ImageView;
-// import javafx.scene.layout.BorderPane;
+import modeles.ChaineLibrairie;
+import modeles.Magasin;
+import modeles.Livre;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 // import javafx.scene.text.Font;
 // import javafx.scene.text.FontWeight;
@@ -22,12 +23,12 @@ public class FenetreStock extends VBox {
 //     private Magasin magasin;
 
 
-//     public FenetreStock(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
-//         this.fenetrePrin = fenetrePrin;
-//         this.modele = modele;
-//         this.magasin = magasin;
-//         this.getChildren().addAll(this.titre(), this.barreRecherche());
-//     }
+    public FenetreStock(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
+        this.fenetrePrin = fenetrePrin;
+        this.modele = modele;
+        this.magasin = magasin;
+        this.getChildren().addAll(this.titre(), this.barreRecherche(), this.listeLivres());
+    }
 
 //     private Label titre() {
 //         Label titre = new Label("Stock - " + this.magasin.getNom());
@@ -53,8 +54,9 @@ public class FenetreStock extends VBox {
 //             viewInfo.setFitHeight(35);
 //             viewInfo.setFitWidth(35);
 
-//             BorderPane ligneLivre = new BorderPane();
-//             Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
+            BorderPane ligneLivre = new BorderPane();
+            Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
+            HBox lesBtn = new HBox(10);
 
 //             Button btnInfo = new Button();
 //             btnInfo.setGraphic(viewInfo);
@@ -63,29 +65,28 @@ public class FenetreStock extends VBox {
 //             Button btnSauvegarde = new Button();
 //             btnSauvegarde.setGraphic(viewSauvegarde);
 
-//             lesBtn.getChildren().addAll(btnInfo)
+            lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
 
-//             //btnLivresDuMag.setOnAction(new ControleurVoirLivres(mag));
-//             //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
+            //btnInfo.setOnAction(new ControleurInfo());
+            //btnSauveNouveauStock.setOnAction(new ControleurSauveNouveauStock());
+    
         
-//             ligneLivre.setLeft(leLivre);
-//             ligneLivre.setRight(btnSupprimerLivre);
+            ligneLivre.setLeft(leLivre);
+            ligneLivre.setRight(lesBtn);
 
 //             laListe.getChildren().add(ligneLivre);
 
 //         }
 
             
-//         } catch (Exception e) {
-//             // TODO: handle exception
-//         }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         
-        
-
-//         return laListe;
-//     }
- }
+        return laListe;
+    }
+}
 
 
 

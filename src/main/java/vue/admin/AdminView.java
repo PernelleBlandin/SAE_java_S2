@@ -180,9 +180,10 @@ public Scene getScene() {
         this.root.setCenter(fenetreGestionVendeurs);
     }
 
-    // public void modeStockUnMag() {
-    //     this.root.setCenter(fenetreStockParMag());
-    // }
+    public void modeStock(Magasin magasin) {
+        FenetreStock fenetreStock = new FenetreStock(this, modele, magasin)
+        this.root.setCenter(fenetreStock);
+    }
     
 
 }

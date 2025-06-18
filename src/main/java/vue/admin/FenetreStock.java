@@ -27,6 +27,7 @@ public class FenetreStock extends VBox {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
         this.magasin = magasin;
+        this.setSpacing(50);
         this.getChildren().addAll(this.titre(), this.barreRecherche(), this.listeLivres());
     }
 

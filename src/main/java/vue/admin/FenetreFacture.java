@@ -5,12 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import modeles.ChaineLibrairie;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -28,6 +22,7 @@ public class FenetreFacture extends VBox {
         this.modele = modele;
         this.getChildren().addAll(this.titre(), this.lesTF(), this.btnExporter());
         this.setAlignment(Pos.TOP_CENTER);
+        this.setSpacing(50);
     }
 
     private Label titre() {

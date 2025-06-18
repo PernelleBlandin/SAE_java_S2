@@ -81,7 +81,7 @@ public class AdminView {
         this.root.setLeft(aside);
 
         
-        this.modeStat();
+        this.modeFacture();
 
         this.scene = new Scene(this.root);
     }

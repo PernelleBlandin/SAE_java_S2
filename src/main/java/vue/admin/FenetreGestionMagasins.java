@@ -1,28 +1,17 @@
 package vue.admin;
 
+import modeles.ChaineLibrairie;
+import modeles.Magasin;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
-import modeles.ChaineLibrairie;
-import modeles.Magasin;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import modeles.ChaineLibrairie;
-import modeles.Magasin;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
  public class FenetreGestionMagasins extends VBox {
 
@@ -35,7 +24,8 @@ import javafx.scene.text.FontWeight;
     public FenetreGestionMagasins(AdminView fenetrePrin, ChaineLibrairie modele) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
-        this.getChildren().addAll(this.titre());
+        this.setSpacing(50);
+        this.getChildren().addAll(this.titre(), this.listeMagasins());
     }
 
 
@@ -50,8 +40,8 @@ import javafx.scene.text.FontWeight;
      * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
      * @return laListe La VBox
      */
-    private HBox listeMagasins() {
-        HBox laListe = new HBox(10);
+    private VBox listeMagasins() {
+        VBox laListe = new VBox(10);
 
         
         try { 

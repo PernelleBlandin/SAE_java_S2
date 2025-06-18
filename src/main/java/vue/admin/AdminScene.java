@@ -14,11 +14,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import vue.AppIHM;
 import vue.SceneInterface;
+import vue._components.MenuAsidePane;
 
 public class AdminScene implements SceneInterface {
     /** La vue principale */
@@ -46,7 +46,9 @@ public class AdminScene implements SceneInterface {
         this.root.setStyle("-fx-background-color: #ffffff;");
 
         this.root.setTop(this.getHeader());
-        this.root.setLeft(this.getAside());
+
+        List<String> nomsMenu = new ArrayList<>(Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures"));
+        this.root.setLeft(new MenuAsidePane(nomsMenu, new ControleurMenuAdmin(this)));
 
         this.showHome();
 
@@ -82,26 +84,6 @@ public class AdminScene implements SceneInterface {
         header.setPadding(new Insets(10, 20, 10, 20));
 
         return header;
-    }
-
-    /**
-     * Obtenir l'élement de côté.
-     * 
-     * @return L'élement de côté de la page.
-     */
-    public VBox getAside() {
-        VBox aside = new VBox(100);
-        aside.setPadding(new Insets(30, 50, 0, 50));
-
-        List<String> nomsMenu = new ArrayList<>(
-                Arrays.asList("Tableau de bord", "Magasins & vendeurs", "Exporter des factures"));
-        for (String menu : nomsMenu) {
-            Button button = new Button(menu);
-            aside.getChildren().add(button);
-
-            button.setOnAction(new ControleurMenuAdmin(this));
-        }
-        return aside;
     }
 
     /**

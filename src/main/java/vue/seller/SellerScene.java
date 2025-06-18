@@ -19,13 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
 import vue.SceneListBooksInterface;
+import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookCardComponent;
@@ -47,8 +47,6 @@ public class SellerScene implements SceneListBooksInterface {
 
     /** Le header */
     private HBox header;
-    /** VBox a gauche */
-    private VBox left;
 
     /** Le pane de la page d'accueil */
     private SellerHomePane homePane;
@@ -74,8 +72,14 @@ public class SellerScene implements SceneListBooksInterface {
         this.homePane = new SellerHomePane(this, this.modele);
         this.root.setCenter(this.homePane);
 
-        this.left = this.getLeft();
-        this.root.setLeft(left);
+        List<String> nomsMenu = new ArrayList<>(Arrays.asList(
+            "Ajouter un livre",
+            "Supprimer un livre",
+            "Mettre à jour la quantité d'un livre",
+            "Transférer un livre",
+            "Agir en tant que client"
+        ));
+        this.root.setLeft(new MenuAsidePane(nomsMenu, new ControleurMenuVendeur(this)));
 
         this.scene = new Scene(this.root);
     }
@@ -112,34 +116,6 @@ public class SellerScene implements SceneListBooksInterface {
         header.setPadding(new Insets(10, 20, 10, 20));
 
         return header;
-    }
-
-    /**
-     * Obtenir l'élement de gauche.
-     *
-     * @return L'élement a gauche de la page.
-     */
-    public VBox getLeft() {
-        VBox left = new VBox(70);
-
-        List<String> listMenu = new ArrayList<>(Arrays.asList(
-            "Ajouter un livre",
-            "Supprimer un livre",
-            "Mettre à jour la quantité d'un livre",
-            "Transférer un livre",
-            "Agir en tant que client"
-        ));
-
-        for (String menu: listMenu) {
-            Button button = new Button(menu);
-            
-            left.getChildren().add(button);
-            button.setOnAction(new ControleurMenuVendeur(this));
-        }
-
-        left.setPadding(new Insets(30, 50, 0, 15));
-        left.setAlignment(Pos.TOP_CENTER);
-        return left;
     }
 
     /**

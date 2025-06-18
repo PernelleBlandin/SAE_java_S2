@@ -3,18 +3,18 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import vue.customers.CustomerListBookPane;
+import vue.customers.CustomerListBooksPane;
 
 public class ControleurNavigation implements EventHandler<ActionEvent> {
     /** Vue de l'acceuil de la page client */
-    private CustomerListBookPane customerListView;
+    private CustomerListBooksPane customerListView;
 
     /**
      * Initialiser le contrôleur du bouton "Voir plus", affichant une liste de livres.
      * @param customerListView La vue de l'acceuil de la page client.
      * @param listeLivres Une liste de livres à afficher en cas de clic sur le bouton.
      */
-    public ControleurNavigation(CustomerListBookPane customerListView) {
+    public ControleurNavigation(CustomerListBooksPane customerListView) {
         this.customerListView = customerListView;
     }
 

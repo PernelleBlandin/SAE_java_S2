@@ -17,7 +17,7 @@ import javafx.scene.text.FontWeight;
 import modeles.Livre;
 
 /** Page d'une liste de livres */
-public class CustomerListBookPane extends VBox {
+public class CustomerListBooksPane extends VBox {
     private CustomerScene customerScene;
 
     private String titre;
@@ -27,7 +27,7 @@ public class CustomerListBookPane extends VBox {
     private int nbLignes;
     private int nbColonnes;
 
-    public CustomerListBookPane(CustomerScene customerScene, String titre, List<Livre> listeLivres) {
+    public CustomerListBooksPane(CustomerScene customerScene, String titre, List<Livre> listeLivres) {
         this.customerScene = customerScene;
 
         this.titre = titre;

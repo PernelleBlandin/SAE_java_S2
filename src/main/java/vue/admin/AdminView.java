@@ -257,7 +257,7 @@ public Scene getScene() {
         Label sousTitre = new Label("Exporter des factures");
 
 
-        HBox lesTF = new HBox();
+        HBox lesTF = new HBox(30);
         TextField moisTF = new TextField();
         moisTF.setText("Mois");
 

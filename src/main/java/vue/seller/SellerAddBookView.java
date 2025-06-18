@@ -67,6 +67,7 @@ public class SellerAddBookView{
     private TextField classification = new TextField();
     private TextField idClassification = new TextField();
     private TextField nbPages = new TextField();
+    private int cpt = 0;
 
     /**
      * Initialiser la vue de l'accueil d'un vendeur.
@@ -135,7 +136,6 @@ public class SellerAddBookView{
         VBox centerLeft = new VBox();
         VBox centerRight = new VBox();
         HBox center = new HBox();
-        Vendeur vendeur = this.modele.getVendeurActuel();
 
         Label titre1 = new Label("Identifiant du livre :");
     
@@ -152,15 +152,17 @@ public class SellerAddBookView{
         Label titre7 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
 
         Label titre8 = new Label("Identifiant de l'auteur :");
-        idAuteur.setDisable(true);
 
         Label titre9 = new Label("Nom de l'éditeur :");
 
         Label titre10 = new Label("Nom de classification :");
 
         Label titre11 = new Label("Identifiant de classification :");
-        idClassification.setDisable(true);
-    
+
+        if(this.cpt == 0) {
+            idAuteur.setDisable(true);
+            idClassification.setDisable(true);
+        }
         Button valider = new Button("Valider");
         valider.setOnAction(new ControleurValider(this));
 
@@ -238,6 +240,7 @@ public class SellerAddBookView{
         this.left = this.getLeft();
         this.root.setLeft(this.left);
         this.root.setCenter(this.center);
+        this.cpt++;
     }
     
     /**
@@ -259,11 +262,15 @@ public class SellerAddBookView{
     }
 
     public void reset(){
+        this.cpt = 0;
         this.idLivre.setText("");
         this.titreLivre.setText("");
         this.prix.setText("");
         this.anneePubli.setText("");
+        this.nbPages.setText("");
         this.nomAuteur.setText("");
+        this.naissance.setText("");
+        this.deces.setText("");
         this.idAuteur.setText("");
         this.editeur.setText("");
         this.classification.setText("");

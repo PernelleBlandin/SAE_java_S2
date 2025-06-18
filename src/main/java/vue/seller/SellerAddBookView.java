@@ -152,29 +152,17 @@ public class SellerAddBookView{
         Label titre7 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
 
         Label titre8 = new Label("Identifiant de l'auteur :");
+        idAuteur.setDisable(true);
 
         Label titre9 = new Label("Nom de l'éditeur :");
 
         Label titre10 = new Label("Nom de classification :");
 
         Label titre11 = new Label("Identifiant de classification :");
-
+        idClassification.setDisable(true);
+    
         Button valider = new Button("Valider");
         valider.setOnAction(new ControleurValider(this));
-        try{
-            if (this.modele.getLivreBD().getIdAuteur(nomAuteur.getText()) != null && !this.modele.getLivreBD().getIdAuteur(nomAuteur.getText()).isEmpty()) {
-                idAuteur.setDisable(true);
-            } else {
-                idAuteur.setDisable(false);
-            }
-            if (this.modele.getLivreBD().getIdDewey(classification.getText()) != null &&  !this.modele.getLivreBD().getIdDewey(classification.getText()).isEmpty()) {
-                idClassification.setDisable(true);
-            } else {
-                idClassification.setDisable(false);
-            }
-        }catch (SQLException e) {
-            // TODO erreur handle exception
-        }
 
         centerLeft.getChildren().addAll(
             titre1, this.idLivre,

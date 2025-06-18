@@ -26,7 +26,20 @@ public class ControleurValider implements EventHandler<ActionEvent> {
             this.sellerAddBookView.getNomAuteur().getText().length() != 0 && 
             this.sellerAddBookView.getEditeur().getText().length() != 0 && 
             this.sellerAddBookView.getClassification().getText().length() != 0) {
-            
+            try {
+                if (this.sellerAddBookView.getModele().getLivreBD().getIdAuteur(this.sellerAddBookView.getNomAuteur().getText()) != null && !this.sellerAddBookView.getModele().getLivreBD().getIdAuteur(this.sellerAddBookView.getNomAuteur().getText()).isEmpty()) {
+                    this.sellerAddBookView.getIdAuteur().setDisable(true);
+                } else {
+                    this.sellerAddBookView.getIdAuteur().setDisable(false);
+                }
+                if (this.sellerAddBookView.getModele().getLivreBD().getIdDewey(this.sellerAddBookView.getClassification().getText()) != null && !this.sellerAddBookView.getModele().getLivreBD().getIdDewey(this.sellerAddBookView.getClassification().getText()).isEmpty()) {
+                    this.sellerAddBookView.getIdClassification().setDisable(true);
+                } else {
+                    this.sellerAddBookView.getIdClassification().setDisable(false);
+                }
+            }catch (SQLException e) {
+                // TODO erreur handle exception
+            }
             String isbn = this.sellerAddBookView.getIdLivre().getText();
             String titre = this.sellerAddBookView.getTitreLivre().getText();
             int nbPages = 0;

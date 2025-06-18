@@ -46,6 +46,38 @@ public class VendeurBD {
         return listeVendeurs;
     }
 
+
+    /**
+     * Obtenir la liste des vendeurs de la base de données par magasin.
+     * @return La liste des vendeurs de la base de données par magasin.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public List<Vendeur> obtenirListeVendeurParMagasin(String idmag) throws SQLException {
+        PreparedStatement ps = this.connexionMariaDB.prepareStatement("""
+            SELECT idvendeur, nomvendeur, prenomvendeur
+            FROM VENDEUR natural join MAGASIN
+            WHERE idmag = ?;
+            """);
+        ps.setString(1, idmag);
+        ResultSet result = ps.executeQuery();
+
+        List<Vendeur> listeVendeurs = new ArrayList<>();
+        while (result.next()) {
+            int idVendeur = result.getInt("idvendeur");
+            String nomVendeur = result.getString("nomvendeur");
+            String prenomVendeur = result.getString("prenomvendeur");
+            
+            Vendeur vendeur = new Vendeur(idVendeur, nomVendeur, prenomVendeur, null);
+            listeVendeurs.add(vendeur);
+        }
+        result.close();
+
+        return listeVendeurs;
+            
+        };
+       
+    }
+
     /**
      * Obtenir un vendeur par son identifiant.
      * @param idVendeur L'identifiant du vendeur.

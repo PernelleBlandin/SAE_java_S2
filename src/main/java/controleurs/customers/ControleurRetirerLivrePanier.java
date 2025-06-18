@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.customers;
 
 import java.sql.SQLException;
 

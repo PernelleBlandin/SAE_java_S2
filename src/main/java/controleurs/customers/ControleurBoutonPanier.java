@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.customers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

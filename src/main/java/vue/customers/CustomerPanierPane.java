@@ -33,6 +33,11 @@ public class CustomerPanierPane extends VBox {
     /** Le modèle */
     private ChaineLibrairie modele;
 
+    /**
+     * Initialiser le widget du panier.
+     * @param customerScene La scène du client. 
+     * @param modele Le modèle.
+     */
     public CustomerPanierPane(CustomerScene customerScene, ChaineLibrairie modele) {
         this.customerScene = customerScene;
         this.modele = modele;
@@ -50,6 +55,10 @@ public class CustomerPanierPane extends VBox {
         );
     }
 
+    /**
+     * Obtenir le widget du titre.
+     * @return Le titre de la page.
+     */
     private BorderPane getTitre() {
         BorderPane borderPaneTitre = new BorderPane();
 
@@ -151,6 +160,11 @@ public class CustomerPanierPane extends VBox {
         return labelTotal;
     }
 
+    /**
+     * Obtenir la VBox du paiement (mode livraison) + bouton payer.
+     * @param panier Le panier client.
+     * @return La VBox du paiement (mode livraison) + bouton payer
+     */
     private VBox getPaiementPart(Panier panier) {
         VBox paiementVBox = new VBox();
         paiementVBox.setSpacing(20);
@@ -190,6 +204,9 @@ public class CustomerPanierPane extends VBox {
         return paiementVBox;
     }
 
+    /**
+     * Mettre à jour la page du panier.
+     */
     public void miseAJourAffichage() {
         Panier panier = this.modele.getClientActuel().getPanier();
 

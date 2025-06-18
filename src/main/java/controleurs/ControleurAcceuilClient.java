@@ -2,18 +2,18 @@ package controleurs;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import vue.AppIHM;
+import vue.customers.CustomerScene;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
 public class ControleurAcceuilClient implements EventHandler<ActionEvent> {
-    private AppIHM app;
+    private CustomerScene customerScene;
 
     /**
      * Initiailiser le contrôleur du bouton de l'image pour retourner à l'acceuil.
-     * @param app La vue à mettre à jour en cas de clic sur le bouton. 
+     * @param customerScene La vue à mettre à jour en cas de clic sur le bouton. 
      */
-    public ControleurAcceuilClient(AppIHM app) {
-        this.app = app;
+    public ControleurAcceuilClient(CustomerScene customerScene) {
+        this.customerScene = customerScene;
     }
 
     @Override
@@ -22,6 +22,6 @@ public class ControleurAcceuilClient implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        this.app.showCustomer();
+        this.customerScene.showHome();
     }
 }

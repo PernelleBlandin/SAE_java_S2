@@ -161,4 +161,16 @@ public class Panier {
     public void viderPanier() {
         this.detailLivres.clear();
     }
+
+    /**
+     * Obtenir le total du panier.
+     * @return Le total du panier.
+     */
+    public double getTotalPanier() {
+        double total = 0.0;
+        for (DetailLivre detailLivre: this.detailLivres) {
+            total += detailLivre.getPrixVente() * detailLivre.getQuantite();
+        }
+        return total;
+    }
 }

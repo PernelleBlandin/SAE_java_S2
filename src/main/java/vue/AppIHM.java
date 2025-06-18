@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
 import vue.connection.ConnexionView;
-import vue.customers.CustomerHomeView;
+import vue.customers.CustomerScene;
 
 /** L'IHM de notre application */
 public class AppIHM extends Application {
@@ -74,7 +74,7 @@ public class AppIHM extends Application {
             return;
         }
 
-        CustomerHomeView vue = new CustomerHomeView(this, this.chaineLibrairie);
+        CustomerScene vue = new CustomerScene(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
 

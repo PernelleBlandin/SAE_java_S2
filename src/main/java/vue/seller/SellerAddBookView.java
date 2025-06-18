@@ -159,7 +159,7 @@ public class SellerAddBookView{
         } catch (SQLException e) {
             //  TODO erreur handle exception 
         }
-        if (idAuteurBD == null || idAuteurBD.isEmpty()) {
+        if (idAuteurBD == null && !(this.nomAuteur.getText().isEmpty())) {
             this.idAuteur.setDisable(false);
         }
 
@@ -175,7 +175,7 @@ public class SellerAddBookView{
         } catch (SQLException e) {
             // TODO erreur handle exception
         }
-        if (idClassificationBD == null || idClassificationBD.isEmpty()) {
+        if (idClassificationBD == null && !(this.classification.getText().isEmpty())) {
             this.idClassification.setDisable(false);
         }
     

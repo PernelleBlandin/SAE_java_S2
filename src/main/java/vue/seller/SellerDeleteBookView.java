@@ -26,6 +26,7 @@ import modeles.Livre;
 import vue.AppIHM;
 import vue._components.BaseListBooksPane;
 import vue._components.SearchBar;
+import vue._components.bookCard.BookCardDeleteComponentSeller;
 
 /**
  * Vue pour la suppression d'un livre côté vendeur.
@@ -171,7 +172,7 @@ public class SellerDeleteBookView extends BaseListBooksPane{
                 }
                 Livre livre = listeLivres.get(index);
 
-            BorderPane bookCard = this.sellerHomeView.createOrGetCardComponent(livre);
+            BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele);
             HBox.setHgrow(bookCard, javafx.scene.layout.Priority.ALWAYS);
             hboxLigne.getChildren().add(bookCard);
             }
@@ -267,7 +268,7 @@ public class SellerDeleteBookView extends BaseListBooksPane{
 
                 Livre livre = listeLivres.get(index);
 
-                BorderPane bookCard = this.sellerHomeView.createOrGetCardComponent(livre);
+                BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }

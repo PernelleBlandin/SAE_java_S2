@@ -19,10 +19,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -76,13 +74,13 @@ public class AdminView {
         this.root = new BorderPane();
         this.root.setStyle("-fx-background-color: #ffffff;");
 
-        HBox header = this.getHeader();
+        this.header = this.getHeader();
         this.root.setTop(header);
 
-        VBox aside = this.getAside();
+        this.aside = this.getAside();
         this.root.setLeft(aside);
 
-        //this.root.setCenter(????????Stat); 
+        this.modeStat(); 
         
         this.scene = new Scene(this.root);
     }

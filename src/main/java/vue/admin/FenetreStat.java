@@ -29,6 +29,8 @@ public class FenetreStat extends BorderPane {
     public FenetreStat(AdminView fenetrePrin, ChaineLibrairie modele) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
+
+        this.setCenter(this.fenetreStat());
     }
 
 

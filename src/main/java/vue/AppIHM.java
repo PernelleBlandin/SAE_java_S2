@@ -133,7 +133,7 @@ public class AppIHM extends Application {
             SellerDeleteBookView vue = new SellerDeleteBookView(this, this.chaineLibrairie);
             this.primaryStage.setScene(vue.getScene());
         } catch (SQLException e) {
-            // TODO gérer l'erreur
+            // TODO 
         }
     } 
 

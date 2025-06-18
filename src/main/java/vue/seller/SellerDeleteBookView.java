@@ -1,6 +1,7 @@
 package vue.seller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import controleurs.ControleurDeconnexion;
@@ -68,14 +69,15 @@ public class SellerDeleteBookView extends BaseListBooksPane{
     private SellerHomeView sellerHomeView;
 
     /**
-     * Constructeur de la vue SellerDeleteBook.
+     * Constructeur de la vue SellerDeleteBookView.
      * @param app L'application principale
      * @param modele Le modèle de la chaîne de librairies
      */
     public SellerDeleteBookView(AppIHM app, ChaineLibrairie modele) throws SQLException {
-        super("Supprimer un livre", modele.getLivreBD().obtenirListeLivre());
+        super("Supprimer un livre", listeLivres(modele));
         this.app = app;
         this.modele = modele;
+        this.sellerHomeView = new SellerHomeView(app, modele);
 
         this.root = new BorderPane();
         this.root.setStyle("-fx-background-color: #ffffff;");
@@ -90,6 +92,22 @@ public class SellerDeleteBookView extends BaseListBooksPane{
         this.root.setLeft(left);
 
         this.scene = new Scene(this.root);
+    }
+
+    /**
+     * Récupère la liste des livres depuis le modèle.
+     * Si une exception SQL survient, retourne une liste vide.
+     *
+     * @param modele Le modèle de la chaîne de librairies
+     * @return La liste des livres, ou une liste vide en cas d'erreur SQL
+     */
+    private static List<Livre> listeLivres(ChaineLibrairie modele) {
+        try {
+            return modele.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            // TODO handle exception
+        }
+        return new ArrayList<>();
     }
 
     /**

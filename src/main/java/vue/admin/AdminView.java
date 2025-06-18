@@ -75,7 +75,7 @@ public class AdminView {
         VBox aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.root.setCenter(fenetreFacture()); 
+        this.root.setCenter(fenetreGestionMagasins()); 
         
         this.scene = new Scene(this.root);
     }
@@ -282,9 +282,14 @@ public Scene getScene() {
      */
     public VBox fenetreGestionMagasins() {
         VBox lesMag = new VBox(10);
-        Image imgVendeurs = new Image("file:srrc/main/ressources/images/multiple_sellers_silhouette.png");
+
+        Label titre = new Label("Magasins");
+        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        lesMag.getChildren().addAll(titre);
+
+        Image imgVendeurs = new Image("file:src/main/ressources/images/multiple_sellers_silhouette.png");
         ImageView viewVendeurs = new ImageView(imgVendeurs);
-        Image imgPoubelle = new Image("file:srrc/main/ressources/images/trashcan.png");
+        Image imgPoubelle = new Image("file:src/main/ressources/images/trashcan.png");
         ImageView viewPoubelle = new ImageView(imgPoubelle);
         viewVendeurs.setFitHeight(35);
         viewVendeurs.setFitWidth(35);
@@ -293,14 +298,18 @@ public Scene getScene() {
 
         try { for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
             HBox ligneMag = new HBox(10);
-            Label leMag = new Label(unMag.getNom() + "()" + unMag.getVille() + ")");
-            Button vendeursDuMag = new Button(null, viewVendeurs);
-            Button supprimerMag = new Button(null, viewPoubelle);
+            Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
+            Button vendeursDuMag = new Button();
+            vendeursDuMag.setGraphic(viewVendeurs);
+            Button supprimerMag = new Button();
+            supprimerMag.setGraphic(viewPoubelle);
+
 
             //vendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
             //supprimerMag.setOnAction(new ControleurSupprMag(mag));
 
             ligneMag.getChildren().addAll(leMag, vendeursDuMag, supprimerMag);
+            lesMag.getChildren().add(ligneMag);
 
         }
 

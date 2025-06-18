@@ -11,15 +11,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import vue.AppIHM;
 import vue.SceneInterface;
 import vue._components.MenuAsidePane;
 
+/** La scène pour la page administrateur */
 public class AdminScene implements SceneInterface {
     /** La vue principale */
     private AppIHM app;
@@ -60,10 +63,11 @@ public class AdminScene implements SceneInterface {
      * 
      * @return Le header du menu client.
      */
-    public HBox getHeader() {
-        HBox header = new HBox();
-        header.setAlignment(Pos.CENTER_LEFT);
+    public BorderPane getHeader() {
+        BorderPane header = new BorderPane();
+        header.setPadding(new Insets(10, 10, 10, 10));
 
+        // Logo
         ImageView logo = new ImageView("/images/logo.png");
         logo.setFitWidth(3046 / 15);
         logo.setFitHeight(912 / 15);
@@ -73,16 +77,22 @@ public class AdminScene implements SceneInterface {
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
         buttonLogo.setOnAction(new ControleurAcceuil(this));
         buttonLogo.setGraphic(logo);
+        header.setLeft(buttonLogo);
+
+        // Text
+
+        Label labelConnexion = new Label("Connecté en tant qu'administrateur");
+        labelConnexion.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
+        header.setCenter(labelConnexion);
+
+        // Déconnexion
 
         Button deconnexionButton = new Button("Déconnexion");
         deconnexionButton.setMinSize(70, 30);
         deconnexionButton.setOnAction(new ControleurDeconnexion(this.app, this.modele));
-
-        header.getChildren().addAll(buttonLogo, deconnexionButton);
-
-        header.setSpacing(10);
-        header.setPadding(new Insets(10, 20, 10, 20));
-
+        header.setRight(deconnexionButton);
+        BorderPane.setAlignment(deconnexionButton, Pos.CENTER);
+       
         return header;
     }
 

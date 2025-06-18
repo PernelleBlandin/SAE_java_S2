@@ -1,5 +1,6 @@
 package vue.admin;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,22 +11,33 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 
+/** Pane de l'exportation des factures dans la page administrateur */
 public class AdminFacturesPane extends VBox {
     /** La fenêtre principale AdminScene */
-    private AdminScene fenetrePrin;
+    private AdminScene adminScene;
     /** Le modèle */
     private ChaineLibrairie modele;
 
-    public AdminFacturesPane(AdminScene fenetrePrin, ChaineLibrairie modele) {
-        this.fenetrePrin = fenetrePrin;
+    /**
+     * Initiailiser la pane des factures dans la page administrateur.
+     * @param adminScene La scène administrateur.
+     * @param modele Le modèle.
+     */
+    public AdminFacturesPane(AdminScene adminScene, ChaineLibrairie modele) {
+        this.adminScene = adminScene;
         this.modele = modele;
 
-        this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(50);
+        this.setAlignment(Pos.TOP_CENTER);
+        this.setPadding(new Insets(15, 20, 10, 15));
 
         this.getChildren().addAll(this.titre(), this.lesTF(), this.btnExporter());
     }
 
+    /**
+     * Obtenir le titre du menu.
+     * @return Le label du titre du menu.
+     */
     private Label titre() {
         Label titre = new Label("Exporter des factures");
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
@@ -50,7 +62,11 @@ public class AdminFacturesPane extends VBox {
 
         return lesTF;
     }
-        
+    
+    /**
+     * Obtenir le bouton "Exporter".
+     * @return Le bouton "Exporter".
+     */
     private Button btnExporter() {
         Button btnExporter = new Button("Exporter");
         return btnExporter;

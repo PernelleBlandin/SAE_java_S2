@@ -48,6 +48,7 @@ public class VendeurBD {
 
     /**
      * Obtenir la liste des vendeurs de la base de données par magasin.
+     * @param idmag L'identifiant du magasin.
      * @return La liste des vendeurs de la base de données par magasin.
      * @throws SQLException Exception SQL en cas d'erreur.
      */

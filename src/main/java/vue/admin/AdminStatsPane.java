@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import controleurs.admin.ControleurAdminStatsComboBox;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -11,25 +12,29 @@ import javafx.scene.chart.Chart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
-import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertErreurException;
 
+/** Pane des statistiques administrateurs */
 public class AdminStatsPane extends VBox {
     /** Le modèle */
     private ChaineLibrairie modele;
 
+    /**
+     * Initialiser la pane des statistiques administrateurs.
+     * @param modele Le modèle.
+     */
     public AdminStatsPane(ChaineLibrairie modele) {
         this.modele = modele;
 
-        this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
+        this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(15, 20, 10, 15));
 
         this.getChildren().addAll(
             this.getTitle(),
@@ -38,10 +43,18 @@ public class AdminStatsPane extends VBox {
         );
     }
 
-    public void setGraph(Chart chart) {
+    /**
+     * Définir le graphique de la page.
+     * @param chart Un graphique.
+     */
+    public void setChart(Chart chart) {
         this.getChildren().set(2, chart);
     }
 
+    /**
+     * Obtenir le titre du menu.
+     * @return Le label du titre du menu.
+     */
     private Label getTitle() {
         Label title = new Label("Tableau de bord");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 24));
@@ -50,6 +63,10 @@ public class AdminStatsPane extends VBox {
         return title;
     }
 
+    /**
+     * Obtenir le combo-box avec les graphiques possibles.
+     * @return Le combo-box avec les graphiques possibles.
+     */
     private ComboBox<String> getComboBox() {
         ComboBox<String> comboBoxChoix = new ComboBox<>();
         comboBoxChoix.getItems().addAll(
@@ -157,7 +174,6 @@ public class AdminStatsPane extends VBox {
             // pieChartParTheme.setLegendSide(side.RIGHT);
         } catch (SQLException e) {
             new AlertErreurException("Impossible de récupérer les données.", e);
-
         }
         return pieChartGosciny;
     }

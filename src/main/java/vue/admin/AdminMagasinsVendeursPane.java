@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,19 +19,28 @@ import modeles.Magasin;
 import modeles.Vendeur;
 import vue._components.alerts.AlertErreurException;
 
+/** Pane affichant la liste des vendeurs d'un magasin */
 public class AdminMagasinsVendeursPane extends VBox {
-    private AdminScene fenetrePrin;
+    /** La scène de la page administrateur */
+    private AdminScene adminScene;
     /** Le modèle */
     private ChaineLibrairie modele;
     /** Le magasin pris en paramètre */
     private Magasin magasin;
 
-    public AdminMagasinsVendeursPane(AdminScene fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
-        this.fenetrePrin = fenetrePrin;
+    /**
+     * Initialiser la pane affichant la liste des vendeurs d'un magasin.
+     * @param adminScene La scène de la page administrateur.
+     * @param modele Le modèle de données.
+     * @param magasin Un magasin.
+     */
+    public AdminMagasinsVendeursPane(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
+        this.adminScene = adminScene;
         this.modele = modele;
         this.magasin = magasin;
 
         this.setSpacing(50);
+        this.setPadding(new Insets(15, 20, 10, 15));
 
         this.getChildren().addAll(
             this.titre(),
@@ -38,6 +48,10 @@ public class AdminMagasinsVendeursPane extends VBox {
         );
     }
 
+    /**
+     * Obtenir le titre du menu.
+     * @return Le label du titre du menu.
+     */
     private Label titre() {
         Label titre = new Label("Vendeurs de " + this.magasin.getNom());
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));

@@ -289,7 +289,8 @@ public Scene getScene() {
         lesMag.getChildren().addAll(titre);
 
         
-        try { for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
+        try { 
+            for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
             Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
             ImageView viewVendeurs = new ImageView(imgVendeurs);
             Image imgPoubelle = new Image("/images/trashcan.png");
@@ -305,13 +306,13 @@ public Scene getScene() {
 
             Button btnVendeursDuMag = new Button();
             btnVendeursDuMag.setGraphic(viewVendeurs);
-            Button btnsupprimerMag = new Button();
-            btnsupprimerMag.setGraphic(viewPoubelle);
+            Button btnSupprimerMag = new Button();
+            btnSupprimerMag.setGraphic(viewPoubelle);
 
-            lesBtn.getChildren().addAll(btnVendeursDuMag, btnsupprimerMag);
+            lesBtn.getChildren().addAll(btnVendeursDuMag, btnSupprimerMag);
 
             //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
-            //btnsupprimerMag.setOnAction(new ControleurSupprMag(mag));
+            //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
         
             ligneMag.setLeft(leMag);
             ligneMag.setRight(lesBtn);

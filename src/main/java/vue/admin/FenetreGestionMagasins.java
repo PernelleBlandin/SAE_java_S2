@@ -30,96 +30,77 @@ import javafx.scene.text.FontWeight;
     private AdminView fenetrePrin;
     /** Le modèle */
     private ChaineLibrairie modele;
-    /** La fenêtre principale AdminView */
-    private AdminView fenetrePrin;
-    /** Le modèle */
-    private ChaineLibrairie modele;
+
 
     public FenetreGestionMagasins(AdminView fenetrePrin, ChaineLibrairie modele) {
         this.fenetrePrin = fenetrePrin;
         this.modele = modele;
-    }
-    public FenetreGestionMagasins(AdminView fenetrePrin, ChaineLibrairie modele) {
-        this.fenetrePrin = fenetrePrin;
-        this.modele = modele;
+        this.getChildren().addAll(this.titre());
     }
 
-    
-        
-    /**
-     * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
-     * @return lesMag La VBox
-     */
-    public VBox fenetreGestionMagasins() {
-        VBox lesMag = new VBox(10);
-    /**
-     * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
-     * @return lesMag La VBox
-     */
-    public VBox fenetreGestionMagasins() {
-        VBox lesMag = new VBox(10);
 
+
+    private Label titre() {
         Label titre = new Label("Magasins");
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        lesMag.getChildren().add(titre);
-        Label titre = new Label("Magasins");
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        lesMag.getChildren().add(titre);
+        return titre; 
+    }
+
+    /**
+     * VBox à mettre au centre du BorderPane quand on change sa partie centrale pour voir les magasins.
+     * @return laListe La VBox
+     */
+    private HBox listeMagasins() {
+        HBox laListe = new HBox(10);
 
         
         try { 
             for(Magasin unMag : this.modele.getMagasinBD().obtenirListeMagasin()) {
-            Image imgStock = new Image("/images/book.png");
-            ImageView viewStock = new ImageView(imgStock);
-            Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
-            ImageView viewVendeurs = new ImageView(imgVendeurs);
-            Image imgPoubelle = new Image("/images/trashcan.png");
-            ImageView viewPoubelle = new ImageView(imgPoubelle);
-            viewVendeurs.setFitHeight(35);
-            viewVendeurs.setFitWidth(35);
-            viewPoubelle.setFitHeight(35);
-            viewPoubelle.setFitWidth(35);
-            viewStock.setFitHeight(35);
-            viewStock.setFitWidth(35);
 
-            BorderPane ligneMag = new BorderPane();
-            HBox lesBtn = new HBox(10);
-            Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
+                Image imgStock = new Image("/images/book.png");
+                ImageView viewStock = new ImageView(imgStock);
+                Image imgVendeurs = new Image("/images/multiple_sellers_silhouette.png");
+                ImageView viewVendeurs = new ImageView(imgVendeurs);
+                Image imgPoubelle = new Image("/images/trashcan.png");
+                ImageView viewPoubelle = new ImageView(imgPoubelle);
+                
+                viewVendeurs.setFitHeight(35);
+                viewVendeurs.setFitWidth(35);
+                viewPoubelle.setFitHeight(35);
+                viewPoubelle.setFitWidth(35);
+                viewStock.setFitHeight(35);
+                viewStock.setFitWidth(35);
 
-            Button btnVendeursDuMag = new Button();
-            btnVendeursDuMag.setGraphic(viewVendeurs);
-            Button btnSupprimerMag = new Button();
-            btnSupprimerMag.setGraphic(viewPoubelle);
-            Button btnStock = new Button();
-            btnStock.setGraphic(viewStock);
+                BorderPane ligneMag = new BorderPane();
+                HBox lesBtn = new HBox(10);
+                Label leMag = new Label(unMag.getNom() + " - (" + unMag.getVille() + ")");
 
-            lesBtn.getChildren().addAll(btnVendeursDuMag, btnSupprimerMag, btnStock);
+                Button btnVendeursDuMag = new Button();
+                btnVendeursDuMag.setGraphic(viewVendeurs);
+                Button btnSupprimerMag = new Button();
+                btnSupprimerMag.setGraphic(viewPoubelle);
+                Button btnStock = new Button();
+                btnStock.setGraphic(viewStock);
 
-            //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
-            //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
-            //btnStock.setOnAction(new ControleurBoutonStockk(mag));
-        
-            ligneMag.setLeft(leMag);
-            ligneMag.setRight(lesBtn);
+                lesBtn.getChildren().addAll(btnVendeursDuMag, btnSupprimerMag, btnStock);
 
-            lesMag.getChildren().add(ligneMag);
-            lesMag.getChildren().add(ligneMag);
-
-        }
-        }
-
+                //btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
+                //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
+                //btnStock.setOnAction(new ControleurBoutonStockk(mag));
             
-        } catch (Exception e) {
+                ligneMag.setLeft(leMag);
+                ligneMag.setRight(lesBtn);
+
+                laListe.getChildren().add(ligneMag);
+
+
+            }
+        }
+        
+         catch (Exception e) {
             // TODO: handle exception
         }
-        
-        
 
-        return lesMag;
-    }
-        return lesMag;
-    }
-
-    
-
+        return laListe;
  }
+}

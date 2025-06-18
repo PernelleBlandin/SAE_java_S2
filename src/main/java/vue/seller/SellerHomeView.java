@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controleurs.ControleurAcceuilVendeur;
+import controleurs.ControleurPage;
 import controleurs.ControleurDeconnexion;
 import controleurs.ControleurVoirPlusSeller;
 import javafx.geometry.HPos;
@@ -88,6 +89,7 @@ public class SellerHomeView implements MAJVueInterface {
 
         this.scene = new Scene(this.root);
     }
+    
 
     /**
      * Obtenir le header du menu vendeur.
@@ -101,14 +103,12 @@ public class SellerHomeView implements MAJVueInterface {
         ImageView logo = new ImageView("/images/logo.png");
         logo.setFitWidth(304.6);
         logo.setFitHeight(91.2);
-        Button boutonLogo = new Button();
-        boutonLogo.setGraphic(logo);
-        boutonLogo.setOnAction(new ControleurAcceuilVendeur(this.app));
 
         Button buttonLogo = new Button();
         buttonLogo.setAlignment(Pos.CENTER);
         buttonLogo.setStyle("-fx-background-color: transparent;"); // Pour retirer le background gris derrière le bouton
         buttonLogo.setGraphic(logo);
+        buttonLogo.setOnAction(new ControleurAcceuilVendeur(this.app));
 
         TextField searchBar = BibliothequeComposants.getSearchBar("Rechercher un livre...");
 
@@ -133,7 +133,7 @@ public class SellerHomeView implements MAJVueInterface {
         VBox left = new VBox(70);
 
         Button ajouterLivre = new Button("Ajouter un livre");
-        // ajouterLivre.setOnAction(new ControleurAjouterLivre(this.app));
+        ajouterLivre.setOnAction(new ControleurPage(this.app));
 
         Button supprimerLivre = new Button("Supprimer un livre");
         // supprimerLivre.setOnAction(new ControleurSupprimerLivre(this.app));
@@ -149,7 +149,7 @@ public class SellerHomeView implements MAJVueInterface {
 
         left.getChildren().addAll(ajouterLivre, supprimerLivre, majQteLivre, transfertLivre, rpClient);
         left.setPadding(new Insets(30, 50, 0, 15));
-
+        left.setAlignment(Pos.TOP_CENTER);
         return left;
     }
 

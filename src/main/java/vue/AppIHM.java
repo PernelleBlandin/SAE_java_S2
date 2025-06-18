@@ -12,6 +12,7 @@ import modeles.Client;
 import modeles.Vendeur;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerHomeView;
+import vue.seller.SellerAddBookView;
 import vue.seller.SellerHomeView;
 
 /** L'IHM de notre application */
@@ -56,6 +57,14 @@ public class AppIHM extends Application {
     }
 
     /**
+     * Mettre le stage principal de l'IHM.
+     * @return Le stage principal de l'IHM.
+     */
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+    
+    /**
      * Changer de scène pour le mode connexion.
      */
     public void showConnexion(){
@@ -80,6 +89,9 @@ public class AppIHM extends Application {
         this.primaryStage.setScene(vue.getScene());
     }
 
+    /**
+     * Changer de scène pour le mode vendeur.
+     */
     public void showSeller(){
         try {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
@@ -90,6 +102,22 @@ public class AppIHM extends Application {
         }
 
         SellerHomeView vue = new SellerHomeView(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
+    }
+
+    /**
+     * Changer de scène pour le mode "ajouter livre".
+     */
+    public void showAddBookSeller(){
+        try {
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.chaineLibrairie.setVendeurActuel(vendeur);
+        } catch (SQLException e) {
+            System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
+            return;
+        }
+
+        SellerAddBookView vue = new SellerAddBookView(this, this.chaineLibrairie);
         this.primaryStage.setScene(vue.getScene());
     }
 

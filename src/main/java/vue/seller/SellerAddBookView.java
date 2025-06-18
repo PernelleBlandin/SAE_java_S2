@@ -59,7 +59,9 @@ public class SellerAddBookView{
     private TextField titreLivre = new TextField();
     private TextField prix = new TextField();  // TODO : autoriser seulement des int/Integer
     private TextField anneePubli = new TextField();
-    private TextField auteur = new TextField();
+    private TextField nomAuteur = new TextField();
+    private TextField deces = new TextField();
+    private TextField naissance = new TextField();
     private TextField idAuteur = new TextField();
     private TextField editeur = new TextField();
     private TextField classification = new TextField();
@@ -141,28 +143,57 @@ public class SellerAddBookView{
 
         Label titre3 = new Label("Nombre de pages :");
 
-        Label titre4 = new Label("Année de publication");
+        Label titre4 = new Label("Année de publication :");
 
-        Label titre5 = new Label("Nom, année naissance et décès (-1 si vivant) de l'auteur\n(séparés par des virgules)");
+        Label titre5 = new Label("Nom de l'auteur :");
 
-        Label titre6 = new Label("Identifiant de l'auteur");
-        this.idAuteur.setDisable(true);
+        Label titre6 = new Label("Date de naissance de l'auteur :");
 
-        Label titre7 = new Label("Nom de l'éditeur");
+        Label titre7 = new Label("Date de décès de l'auteur (-1 si toujours en vie) :");
 
-        Label titre8 = new Label("Nom de classification");
+        Label titre8 = new Label("Identifiant de l'auteur :");
 
-        Label titre9 = new Label("Identifiant de classification");
-        this.idClassification.setDisable(true);
-        String classificationExistante;
+        Label titre9 = new Label("Nom de l'éditeur :");
+
+        Label titre10 = new Label("Nom de classification :");
+
+        Label titre11 = new Label("Identifiant de classification :");
 
         Button valider = new Button("Valider");
         valider.setOnAction(new ControleurValider(this));
+        try{
+            if (this.modele.getLivreBD().getIdAuteur(nomAuteur.getText()) != null && !this.modele.getLivreBD().getIdAuteur(nomAuteur.getText()).isEmpty()) {
+                idAuteur.setDisable(true);
+            } else {
+                idAuteur.setDisable(false);
+            }
+            if (this.modele.getLivreBD().getIdDewey(classification.getText()) != null &&  !this.modele.getLivreBD().getIdDewey(classification.getText()).isEmpty()) {
+                idClassification.setDisable(true);
+            } else {
+                idClassification.setDisable(false);
+            }
+        }catch (SQLException e) {
+            // TODO erreur handle exception
+        }
 
-        centerLeft.getChildren().addAll(titre1, this.idLivre, titre2, this.titreLivre, titre3, this.prix, titre4, this.anneePubli, titre5, this.auteur, titre7, this.editeur, titre8, this.classification);
+        centerLeft.getChildren().addAll(
+            titre1, this.idLivre,
+            titre2, this.titreLivre,
+            titre3, this.nbPages,
+            titre4, this.anneePubli,
+            titre5, this.nomAuteur,
+            titre6, this.naissance
+        );
         centerLeft.setSpacing(10);
         centerLeft.setPadding(new Insets(10, 20, 10, 20));
-        centerRight.getChildren().addAll(titre6, this.idAuteur, titre9, this.idClassification, valider);
+        centerRight.getChildren().addAll(
+            titre7, this.deces,
+            titre8, this.idAuteur,
+            titre9, this.editeur,
+            titre10, this.classification,
+            titre11, this.idClassification,
+            valider
+        );
         centerRight.setSpacing(10);
         centerRight.setPadding(new Insets(10, 20, 10, 20));
         center.getChildren().addAll(centerLeft, centerRight);
@@ -244,7 +275,7 @@ public class SellerAddBookView{
         this.titreLivre.setText("");
         this.prix.setText("");
         this.anneePubli.setText("");
-        this.auteur.setText("");
+        this.nomAuteur.setText("");
         this.idAuteur.setText("");
         this.editeur.setText("");
         this.classification.setText("");
@@ -274,8 +305,16 @@ public class SellerAddBookView{
         return this.anneePubli;
     }
 
-    public TextField getAuteur(){
-        return this.auteur;
+    public TextField getNomAuteur(){
+        return this.nomAuteur;
+    }
+
+    public TextField getNaissance(){
+        return this.naissance;
+    }
+
+    public TextField getDeces(){
+        return this.deces;
     }
 
     public TextField getIdAuteur(){
@@ -293,12 +332,12 @@ public class SellerAddBookView{
     public TextField getIdClassification(){
         return this.idClassification;
     }
-
-    public ChaineLibrairie getModele(){
-        return this.modele;
-    }
     
     public TextField getNbPages() {
         return this.nbPages;
+    }
+    
+    public ChaineLibrairie getModele(){
+        return this.modele;
     }
 }

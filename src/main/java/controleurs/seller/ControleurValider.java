@@ -23,7 +23,7 @@ public class ControleurValider implements EventHandler<ActionEvent> {
             this.sellerAddBookView.getTitreLivre().getText().length() != 0 && 
             this.sellerAddBookView.getPrix().getText().length() != 0 && 
             this.sellerAddBookView.getAnneePubli().getText().length() != 0 && 
-            this.sellerAddBookView.getAuteur().getText().length() != 0 && 
+            this.sellerAddBookView.getNomAuteur().getText().length() != 0 && 
             this.sellerAddBookView.getEditeur().getText().length() != 0 && 
             this.sellerAddBookView.getClassification().getText().length() != 0) {
             
@@ -41,23 +41,15 @@ public class ControleurValider implements EventHandler<ActionEvent> {
                 // TODO erreur handle exception
             }
             
-            String auteurNom = null;
-            int naissance = -1;
+            String auteurNom = this.sellerAddBookView.getNomAuteur().getText();
+            int naissance = 0;
             int deces = -1;
             
-            if(this.sellerAddBookView.getAuteur().getText() != null){
-                String[] infoAuteurs = this.sellerAddBookView.getAuteur().getText().split(",");
-                if(infoAuteurs.length == 3){
-                    for (int i = 0; i < infoAuteurs.length; i++) {
-                        infoAuteurs[i] = infoAuteurs[i].trim();
-                    }
-                    if (infoAuteurs.length != 3) {
-                        // TODO erreur handle exception
-                    }
-                    auteurNom = infoAuteurs[0];
-                    naissance = Integer.parseInt(infoAuteurs[1]);
-                    deces = Integer.parseInt(infoAuteurs[2]);
-                }
+            try {
+                naissance = Integer.parseInt(this.sellerAddBookView.getNaissance().getText());
+                deces = Integer.parseInt(this.sellerAddBookView.getDeces().getText());
+            } catch (NumberFormatException e) {
+                // TODO erreur handle exception
             }
             
             String editeurNom = this.sellerAddBookView.getEditeur().getText();

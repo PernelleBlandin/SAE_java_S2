@@ -26,6 +26,7 @@ import vue.AppIHM;
 import vue._components.SearchBar;
 import vue._components.bookCard.CustomerBookCardComponent;
 
+/** La scène du client */
 public class CustomerScene {
     /** La vue principal */
     private AppIHM app;
@@ -42,6 +43,7 @@ public class CustomerScene {
     /** Le header */
     private HBox header;
 
+    /** Le pane de la page d'accueil */
     private CustomerHomePane homePane;
 
     /**
@@ -106,11 +108,17 @@ public class CustomerScene {
         return header;
     }
 
+    /**
+     * Afficher la page d'accueil du client.
+     */
     public void showHome() {
         this.homePane.miseAJourAffichage();
         this.root.setCenter(this.homePane);
     }
     
+    /**
+     * Recharger totalement les données de la page d'accueil du client et changer la fenêtre.
+     */
     public void reloadHome() {
         this.homePane = new CustomerHomePane(this, this.modele);
         this.root.setCenter(this.homePane);
@@ -134,6 +142,11 @@ public class CustomerScene {
         this.root.setCenter(customerListBookPane);
     }
 
+    /**
+     * Créer ou obtenir la "carte" d'un livre, affichant les informations de ce dernier.
+     * @param livre Un livre.
+     * @return La carte du livre.
+     */
     public CustomerBookCardComponent createOrGetCardComponent(Livre livre) {
         if (this.bookCards.containsKey(livre)) {
             return this.bookCards.get(livre);

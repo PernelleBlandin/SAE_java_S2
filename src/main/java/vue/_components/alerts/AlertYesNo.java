@@ -15,7 +15,7 @@ public class AlertYesNo extends Alert {
     private String description;
 
     /**
-     * Initialiser l'alerte "Oui/Non"
+     * Initialiser une alerte "Oui/Non"
      * @param windowTitle Le titre de la fenêtre
      * @param headerTitle Le titre de l'alerte
      * @param description La description de l'alerte

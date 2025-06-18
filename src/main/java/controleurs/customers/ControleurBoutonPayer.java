@@ -10,6 +10,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import modeles.ChaineLibrairie;
 import modeles.Client;
+import vue._components.alerts.AlertErreurException;
 import vue.customers.CustomerScene;
 
 /**
@@ -48,7 +49,8 @@ public class ControleurBoutonPayer implements EventHandler<ActionEvent> {
         try {
             client.commander(livraison, 'O');
         } catch (SQLException e) {
-            // TODO: handle exception
+            new AlertErreurException("Une erreur s'est produite lors de l'enregistrement de la commande !", e);
+            return;
         }
 
         Alert alertInfo = new Alert(AlertType.INFORMATION);

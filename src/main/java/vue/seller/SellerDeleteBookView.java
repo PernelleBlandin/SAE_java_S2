@@ -183,9 +183,6 @@ public class SellerDeleteBookView extends BaseListBooksPane{
         }
         
 
-        
-
-
     /**
      * Génère le menu latéral gauche avec les boutons de navigation vendeur.
      * @return Le VBox du menu gauche
@@ -217,9 +214,9 @@ public class SellerDeleteBookView extends BaseListBooksPane{
 
     /**
      * Retourne la scène associée à cette vue.
-     * @return La scène JavaFX
+     * @return La scène associée à cette vue.
      */
-    public Scene getSellerDeleteBookScene() {
+    public Scene getSceneSeller() {
         return this.scene;
     }
 

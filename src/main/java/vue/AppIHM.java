@@ -131,9 +131,9 @@ public class AppIHM extends Application {
             Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
             this.chaineLibrairie.setVendeurActuel(vendeur);
             SellerDeleteBookView vue = new SellerDeleteBookView(this, this.chaineLibrairie);
-            this.primaryStage.setScene(vue.getScene());
+            this.primaryStage.setScene(vue.getSceneSeller());
         } catch (SQLException e) {
-            // TODO 
+            // TODO gérer l'erreur
         }
     } 
 

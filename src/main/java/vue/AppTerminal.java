@@ -470,7 +470,7 @@ public class AppTerminal {
     public void menuClient(Client client) {
         boolean finCommande = false;
         while (!finCommande) {
-            Magasin magasin = client.vendeur();
+            Magasin magasin = client.getMagasin();
 
             this.afficherTitre(String.format("Menu Client - %s | Magasin : %s", client.toString(), magasin.toString()));
             this.afficherTexte("L: Catalogue de livres globaux");
@@ -600,7 +600,7 @@ public class AppTerminal {
             this.afficherSeperateurMilieu();
 
             Panier panierClient = client.getPanier();
-            Magasin magasin = client.vendeur();
+            Magasin magasin = client.getMagasin();
             int quantiteLivrePanier = panierClient.getQuantiteLivre(livre);
 
             int quantiteLivreStock;
@@ -1237,7 +1237,7 @@ public class AppTerminal {
         boolean finCommande = false;
         while (!finCommande) {
             Panier panier = client.getPanier();
-            Magasin magasin = client.vendeur();
+            Magasin magasin = client.getMagasin();
             List<DetailLivre> detailLivresPanier = panier.getDetailLivres();
             this.afficherTitre(String.format("Panier - %s | Magasin : %s", client.toString(), magasin.toString()));
 

@@ -1,6 +1,6 @@
 package vue._components;
 
-import controleurs.ControleurInfoLivre;
+import controleurs.customers.ControleurInfoLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

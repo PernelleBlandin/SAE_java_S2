@@ -80,8 +80,9 @@ public class AdminView {
         this.aside = this.getAside();
         this.root.setLeft(aside);
 
-        this.modeStat(); 
         
+        this.modeStat();
+
         this.scene = new Scene(this.root);
     }
 
@@ -165,13 +166,13 @@ public Scene getScene() {
     }
 
     public void modeFacture() {
-        FenetreFacture fenetreFacture = new FenetreFacture(this, modele);
-        this.root.setCenter(fenetreFacture);
+        //FenetreFacture fenetreFacture = new FenetreFacture(this, modele);
+        //this.root.setCenter(fenetreFacture);
     }
 
     public void modeGestionMagasins() {
-        FenetreGestionMagasins fenetreGestionMagasins = new FenetreGestionMagasins(this, modele);
-        this.root.setCenter(fenetreGestionMagasins);
+        //FenetreGestionMagasins fenetreGestionMagasins = new FenetreGestionMagasins(this, modele);
+        //this.root.setCenter(fenetreGestionMagasins);
     }
 
     public void modeGestionVendeurs(Magasin magasin) {

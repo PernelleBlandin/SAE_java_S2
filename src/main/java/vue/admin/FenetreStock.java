@@ -1,91 +1,91 @@
-package vue.admin;
+// package vue.admin;
 
-import modeles.ChaineLibrairie;
-import modeles.Magasin;
-import modeles.Livre;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+// import modeles.ChaineLibrairie;
+// import modeles.Magasin;
+// import modeles.Livre;
+// import javafx.scene.control.Button;
+// import javafx.scene.control.Label;
+// import javafx.scene.control.TextField;
+// import javafx.scene.image.Image;
+// import javafx.scene.image.ImageView;
+// import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+// import javafx.scene.text.Font;
+// import javafx.scene.text.FontWeight;
 
 public class FenetreStock extends VBox {
-    /** La fenêtre principale AdminView */
-    private AdminView fenetrePrin;
-    /** Le modèle */
-    private ChaineLibrairie modele;
-    /** Le magasin pris en paramètre */
-    private Magasin magasin;
+//     /** La fenêtre principale AdminView */
+//     private AdminView fenetrePrin;
+//     /** Le modèle */
+//     private ChaineLibrairie modele;
+//     /** Le magasin pris en paramètre */
+//     private Magasin magasin;
 
 
-    public FenetreStock(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
-        this.fenetrePrin = fenetrePrin;
-        this.modele = modele;
-        this.magasin = magasin;
-        this.getChildren().addAll(this.titre(), this.barreRecherche());
-    }
+//     public FenetreStock(AdminView fenetrePrin, ChaineLibrairie modele, Magasin magasin) {
+//         this.fenetrePrin = fenetrePrin;
+//         this.modele = modele;
+//         this.magasin = magasin;
+//         this.getChildren().addAll(this.titre(), this.barreRecherche());
+//     }
 
-    private Label titre() {
-        Label titre = new Label("Stock - " + this.magasin.getNom());
-        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
-        return titre;
-    }
+//     private Label titre() {
+//         Label titre = new Label("Stock - " + this.magasin.getNom());
+//         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18)); 
+//         return titre;
+//     }
 
-    private TextField barreRecherche() {
-        TextField barreRecherche = new TextField();
-        barreRecherche.setPromptText("Rechercher");
-        return barreRecherche;
-    }
+//     private TextField barreRecherche() {
+//         TextField barreRecherche = new TextField();
+//         barreRecherche.setPromptText("Rechercher");
+//         return barreRecherche;
+//     }
 
-    private VBox listeLivres() {
-        VBox laListe =new VBox(10);
+//     private VBox listeLivres() {
+//         VBox laListe =new VBox(10);
 
-        try { 
-            for(Livre unLivre : this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin)) {
-            Image imgInfo = new Image("/images/info.png");
-            ImageView viewInfo = new ImageView(imgInfo);
-            Image imgSauvegarde = new Image("/images/disquette.png");
-            ImageView viewSauvegarde = new ImageView(imgSauvegarde);
-            viewInfo.setFitHeight(35);
-            viewInfo.setFitWidth(35);
+//         try { 
+//             for(Livre unLivre : this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin)) {
+//             Image imgInfo = new Image("/images/info.png");
+//             ImageView viewInfo = new ImageView(imgInfo);
+//             Image imgSauvegarde = new Image("/images/disquette.png");
+//             ImageView viewSauvegarde = new ImageView(imgSauvegarde);
+//             viewInfo.setFitHeight(35);
+//             viewInfo.setFitWidth(35);
 
-            BorderPane ligneLivre = new BorderPane();
-            Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
+//             BorderPane ligneLivre = new BorderPane();
+//             Label leLivre = new Label(unLivre.getTitre() + " - " + unLivre.getAuteurs());
 
-            Button btnInfo = new Button();
-            btnInfo.setGraphic(viewInfo);
-            TextField majNbExemplaire = new TextField();
-            majNbExemplaire.setPromptText("Future quantité totale");
-            Button btnSauvegarde = new Button();
-            btnSauvegarde.setGraphic(viewSauvegarde);
+//             Button btnInfo = new Button();
+//             btnInfo.setGraphic(viewInfo);
+//             TextField majNbExemplaire = new TextField();
+//             majNbExemplaire.setPromptText("Future quantité totale");
+//             Button btnSauvegarde = new Button();
+//             btnSauvegarde.setGraphic(viewSauvegarde);
 
-            lesBtn.getChildren().addAll(btnInfo)
+//             lesBtn.getChildren().addAll(btnInfo)
 
 
-            //btnLivresDuMag.setOnAction(new ControleurVoirLivres(mag));
-            //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
+//             //btnLivresDuMag.setOnAction(new ControleurVoirLivres(mag));
+//             //btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
         
-            ligneLivre.setLeft(leLivre);
-            ligneLivre.setRight(btnSupprimerLivre);
+//             ligneLivre.setLeft(leLivre);
+//             ligneLivre.setRight(btnSupprimerLivre);
 
-            laListe.getChildren().add(ligneLivre);
+//             laListe.getChildren().add(ligneLivre);
 
-        }
+//         }
 
             
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+//         } catch (Exception e) {
+//             // TODO: handle exception
+//         }
         
         
 
-        return laListe;
-    }
-}
+//         return laListe;
+//     }
+ }
 
 
 

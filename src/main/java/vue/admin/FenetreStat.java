@@ -12,13 +12,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 
 
 
-public class FenetreStat extends HBox {
+public class FenetreStat extends BorderPane {
 
     /** La fenêtre principale AdminView */
     private AdminView fenetrePrin;
@@ -143,17 +144,16 @@ public class FenetreStat extends HBox {
     //7)  PieChart Map<String, Double> getValeurStockParMagasin()
     public PieChart graphValeurStockParMagasin(){
     PieChart pieChartValStockMag= new PieChart();
-        pieChartValStockMag.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
+        pieChartValStockMag.setTitle("Valeur du stock par magasin");
         pieChartValStockMag.setPrefWidth(500);
         pieChartValStockMag.setPrefHeight(400);
         try{
-            Map<String, Integer> dataStockMag = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
-            System.out.println("Data Gosciny "+ dataGosciny);
-            for(String key: dataGosciny.keySet()){
-                PieChart.Data categorie2=new PieChart.Data(key, dataGosciny.get(key));
-                pieChartValStockMag.getData().add(categorie2);
+            Map<String, Double> dataStockMag = this.modele.getStatistiquesBD().getValeurStockParMagasin();
+            for(String key: dataStockMag.keySet()){
+                PieChart.Data categorie3=new PieChart.Data(key, dataStockMag.get(key));
+                pieChartValStockMag.getData().add(categorie3);
             }
-        //pieChartParTheme.setLegendSide(side.RIGHT);
+
         }catch (SQLException e){
             // TODO: handle exception
            
@@ -204,7 +204,7 @@ public class FenetreStat extends HBox {
                         afficheChart.getChildren().setAll(graphQteLivresGoscinyOrigineClients());
                         break;
                     case "Valeur du stock par magasin":
-                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        afficheChart.getChildren().setAll(graphCA2024ParTheme());
                         break;
                     case "Evolution CA total par client":
                         //afficheChart.getChildren().setAll(graphCA2024ParTheme());

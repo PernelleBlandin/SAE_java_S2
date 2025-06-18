@@ -286,7 +286,7 @@ public Scene getScene() {
 
         Label titre = new Label("Magasins");
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        lesMag.getChildren().addAll(titre);
+        lesMag.getChildren().add(titre);
 
         
         try { 
@@ -317,7 +317,7 @@ public Scene getScene() {
             ligneMag.setLeft(leMag);
             ligneMag.setRight(lesBtn);
 
-            lesMag.getChildren().addAll(titre, ligneMag);
+            lesMag.getChildren().add(ligneMag);
 
         }
 

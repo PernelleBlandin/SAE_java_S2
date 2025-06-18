@@ -45,6 +45,8 @@ public class CustomerScene {
     /** Le header */
     private HBox header;
 
+    private CustomerHomePane homePane;
+
     /**
      * Initialiser la vue de l'accueil d'un client.
      * @param app La vue principal.
@@ -62,6 +64,8 @@ public class CustomerScene {
         this.header = this.getHeader();
         this.root.setTop(this.header);
 
+        // Pour des questions de performance, on l'initialise qu'une seule fois
+        this.homePane = new CustomerHomePane(this, this.modele);
         this.showHome();
 
         this.scene = new Scene(this.root);
@@ -105,8 +109,7 @@ public class CustomerScene {
     }
 
     public void showHome() {
-        CustomerHomePane customerHomePane = new CustomerHomePane(this, this.modele);
-        this.root.setCenter(customerHomePane);
+        this.root.setCenter(this.homePane);
     }
 
     /**

@@ -1,4 +1,5 @@
 package modeles;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -7,8 +8,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Un client */
+/**
+ * Un client
+ */
 public class Client extends Personne {
+
     private String adresse;
     private String codePostal;
     private String ville;
@@ -19,6 +23,7 @@ public class Client extends Personne {
 
     /**
      * Créer un client.
+     *
      * @param id L'identifiant du client.
      * @param nom Le nom du prénom du client.
      * @param prenom Le prénom du client.
@@ -44,6 +49,7 @@ public class Client extends Personne {
 
     /**
      * Obtenir l'adresse du client.
+     *
      * @return Son adresse.
      */
     public String getAdresse() {
@@ -52,6 +58,7 @@ public class Client extends Personne {
 
     /**
      * Obtenir le code postal du client.
+     *
      * @return Son code postal.
      */
     public String getCodePostal() {
@@ -60,6 +67,7 @@ public class Client extends Personne {
 
     /**
      * Obtenir la ville du client.
+     *
      * @return Sa ville.
      */
     public String getVille() {
@@ -68,14 +76,16 @@ public class Client extends Personne {
 
     /**
      * Obtenir le magasin choisi par le client.
+     *
      * @return Le magasin du client pour sa prochaine commande.
      */
-    public Magasin getMagasin() {
+    public Magasin vendeur() {
         return this.magasin;
     }
 
     /**
      * Obtenir la liste des commandes du client.
+     *
      * @return La liste des commandes qu'il a effectuées.
      */
     public List<Commande> getCommandes() {
@@ -84,6 +94,7 @@ public class Client extends Personne {
 
     /**
      * Obtenir le panier du client.
+     *
      * @return Le panier du client.
      */
     public Panier getPanier() {
@@ -92,6 +103,7 @@ public class Client extends Personne {
 
     /**
      * Définir le panier pour un client.
+     *
      * @param panier Le panier du client.
      */
     public void setPanier(Panier panier) {
@@ -100,6 +112,7 @@ public class Client extends Personne {
 
     /**
      * Définir le magasin pour un client.
+     *
      * @param magasin Le nouveau magasin du client.
      */
     public void setMagasin(Magasin magasin) {
@@ -108,10 +121,13 @@ public class Client extends Personne {
 
     /**
      * Commander un livre pour un client.
-     * @param modeLivraison Le mode de livraison : M en magasin / C pour la livraison à domicile.
+     *
+     * @param modeLivraison Le mode de livraison : M en magasin / C pour la
+     * livraison à domicile.
      * @param enLigne O si en ligne, N si la commande a été passée en magasin.
      * @return true si la commande a été passée, sinon false.
-     * @throws SQLException Exception SQL en cas d'erreur avec la base de données.
+     * @throws SQLException Exception SQL en cas d'erreur avec la base de
+     * données.
      */
     public boolean commander(char modeLivraison, char enLigne) throws SQLException {
         Panier panier = this.getPanier();
@@ -137,6 +153,7 @@ public class Client extends Personne {
         this.chaineLibrairie.getCommandeBD().enregistrerCommande(this, commande);
         this.commandes.addFirst(commande);
 
+        // Vider le panier 
         this.panier.viderPanier();
         this.chaineLibrairie.getPanierBD().viderPanier(panier.getId());
         
@@ -145,11 +162,13 @@ public class Client extends Personne {
 
     /**
      * Obtenir les détails de l'ensemble des commandes et panier du client.
-     * @return La liste avec les détails de l'ensemble des commandes et panier du client.
+     *
+     * @return La liste avec les détails de l'ensemble des commandes et panier
+     * du client.
      */
     public List<DetailLivre> getDetailCommandes() {
         List<DetailLivre> detailCommandes = new ArrayList<>();
-        for (Commande commande: this.getCommandes()) {
+        for (Commande commande : this.getCommandes()) {
             detailCommandes.addAll(commande.getDetailCommandes());
         }
 
@@ -161,14 +180,15 @@ public class Client extends Personne {
 
     /**
      * Obtenir la liste des livres achetés par un client.
+     *
      * @return La liste des livres achetés par ce client.
      */
     public List<Livre> getLivresAchetes() {
         List<Livre> livresAchetes = new ArrayList<>();
 
-        for (Commande commande: this.getCommandes()) {
+        for (Commande commande : this.getCommandes()) {
             List<DetailLivre> detailCommandesClient = commande.getDetailCommandes();
-            for (DetailLivre detailCommande: detailCommandesClient) {
+            for (DetailLivre detailCommande : detailCommandesClient) {
                 Livre livreDetailCommande = detailCommande.getLivre();
                 if (!livresAchetes.contains(livreDetailCommande)) {
                     livresAchetes.add(detailCommande.getLivre());
@@ -179,16 +199,19 @@ public class Client extends Personne {
     }
 
     /**
-     * Obtenir la liste des livres non achetés et non mis dans le panier par le client.
+     * Obtenir la liste des livres non achetés et non mis dans le panier par le
+     * client.
+     *
      * @param livres Les livres selectionnés.
-     * @return La liste des livres non achetés et non mis dans le panier par le client.
+     * @return La liste des livres non achetés et non mis dans le panier par le
+     * client.
      */
     public List<Livre> getLivresNonAchetes(List<Livre> livres) {
         List<Livre> livresNonAchetes = new ArrayList<>();
 
         List<Livre> livresAchetes = this.getLivresAchetes();
         List<Livre> livresDansPanier = this.getPanier().getLivres();
-        for (Livre livre: livres) {
+        for (Livre livre : livres) {
             if (!livresAchetes.contains(livre) && !livresDansPanier.contains(livre)) {
                 livresNonAchetes.add(livre);
             }
@@ -198,12 +221,13 @@ public class Client extends Personne {
 
     /**
      * Obtenir l'ensemble des classifications des achats du client.
+     *
      * @return L'ensemble des classifications des achats du client.
      */
     public Set<String> getClassifications() {
         Set<String> classificationsClient = new HashSet<>();
         List<Livre> livresAchetes = this.getLivresAchetes();
-        for (Livre livre: livresAchetes) {
+        for (Livre livre : livresAchetes) {
             classificationsClient.addAll(livre.getClassifications());
         }
         return classificationsClient;

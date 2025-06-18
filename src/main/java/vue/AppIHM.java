@@ -9,8 +9,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import modeles.ChaineLibrairie;
 import modeles.Client;
+import modeles.Vendeur;
 import vue.connection.ConnexionView;
 import vue.customers.CustomerScene;
+import vue.seller.SellerHomeView;
 
 /** L'IHM de notre application */
 public class AppIHM extends Application {
@@ -78,14 +80,17 @@ public class AppIHM extends Application {
         this.primaryStage.setScene(vue.getScene());
     }
 
-    public void modeVendeur(){
+    public void showSeller(){
         try {
-            Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
-            this.chaineLibrairie.setClientActuel(client);
+            Vendeur vendeur = this.chaineLibrairie.getVendeurBD().obtenirVendeurParId(1);
+            this.chaineLibrairie.setVendeurActuel(vendeur);
         } catch (SQLException e) {
             System.err.println("Une erreur est survenue lors de la récupréation du client : " + e.getMessage());
             return;
         }
+
+        SellerHomeView vue = new SellerHomeView(this, this.chaineLibrairie);
+        this.primaryStage.setScene(vue.getScene());
     }
 
     /**

@@ -29,6 +29,6 @@ public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> 
      * //@param event Un événement.
      */
     public void handle(ActionEvent event) {
-        // this.adminScene.showDemandeInfoVendeur(this.magasin);
+        this.adminScene.showDemandeInfoVendeur(this.magasin);
     }
 }

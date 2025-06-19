@@ -2,7 +2,7 @@ package vue.admin;
 
 import java.util.List;
 
-import controleurs.admin.ControleurBoutonAjouteMagasin;
+import controleurs.admin.ControleurBoutonAjouteVendeur;
 import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.admin.ControleurBoutonSupprimerMagasinVendeur;
 import javafx.geometry.Insets;
@@ -73,7 +73,7 @@ public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Ve
         header.setCenter(titre);
 
         Button btnAjouteMagasin = new Button("Ajouter un vendeur");
-        btnAjouteMagasin.setOnAction(new ControleurBoutonAjouteMagasin(this.adminScene));
+        btnAjouteMagasin.setOnAction(new ControleurBoutonAjouteVendeur(this.magasin, this.adminScene));
         header.setRight(btnAjouteMagasin);
 
         return header;

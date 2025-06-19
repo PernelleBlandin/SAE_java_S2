@@ -71,7 +71,7 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                     // TODO: handle exception
                 }
 
-                this.sellerScene.showTransfer(listeLivres, 4, magasin);
+                this.sellerScene.showTransfer(listeLivres, magasin);
                 break;
             }
             case "Agir en tant que client": {

@@ -59,6 +59,32 @@ public class Magasin implements RecherchableInterface {
         return true;
     }
 
+    @Override
+    /**
+     * Vérifier si deux magasins sont égaux.
+     * @param o Un objet à comparer.
+     * @return true si les deux magasins sont égaux, sinon false.
+     */
+    public boolean equals(Object o) {
+        if (o == null) return false;
+
+        if (o == this) return true;
+
+        if (!(o instanceof Magasin)) return false;
+
+        Magasin magasin = (Magasin) o;
+        return this.id.equals(magasin.getId());
+    }
+
+    @Override
+    /**
+     * Obtenir le code de hachage du magasin.
+     * @return Le code de hachage du magasin.
+     */
+    public int hashCode() {
+        return this.id.hashCode();
+    }
+
     /**
      * Obtenir le magasin en chaîne de caractères.
      * @return Le magasin en chaîne de caractères.

@@ -30,13 +30,13 @@ public class ControleurAdminStatsComboBox implements EventHandler<ActionEvent> {
         String graphChoisi = comboBox.getValue();
         switch (graphChoisi) {
             case "Nombre de livres vendus par magasin":
-                //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                this.adminStatsPane.setChart(this.adminStatsPane.graphNbLivresParMagasinParAn());
                 break;
             case "CA 2024 par thème":
                 this.adminStatsPane.setChart(this.adminStatsPane.graphCA2024ParTheme());
                 break;
             case "Evolution CA des magasins par mois en 2024":
-                //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                this.adminStatsPane.setChart(this.adminStatsPane.graphEvolutionCAParMoisParMagasin2024());
                 break;
             case "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin":
                 //afficheChart.getChildren().setAll(graphCA2024ParTheme());
@@ -48,7 +48,7 @@ public class ControleurAdminStatsComboBox implements EventHandler<ActionEvent> {
                 this.adminStatsPane.setChart(this.adminStatsPane.graphQteLivresGoscinyOrigineClients());
                 break;
             case "Valeur du stock par magasin":
-                this.adminStatsPane.setChart(this.adminStatsPane.graphCA2024ParTheme());
+                this.adminStatsPane.setChart(this.adminStatsPane.graphValeurStockParMagasin());
                 break;
             case "Evolution CA total par client":
                 //afficheChart.getChildren().setAll(graphCA2024ParTheme());

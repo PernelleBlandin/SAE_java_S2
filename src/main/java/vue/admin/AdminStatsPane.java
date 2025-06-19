@@ -1,11 +1,14 @@
 package vue.admin;
 
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import controleurs.admin.ControleurAdminStatsComboBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.Chart;
@@ -14,6 +17,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -27,6 +31,7 @@ public class AdminStatsPane extends VBox {
 
     /**
      * Initialiser la pane des statistiques administrateurs.
+     * 
      * @param modele Le modèle.
      */
     public AdminStatsPane(ChaineLibrairie modele) {
@@ -39,12 +44,13 @@ public class AdminStatsPane extends VBox {
         this.getChildren().addAll(
             this.getTitle(),
             this.getComboBox(),
-            this.graphCA2024ParTheme() // TODO: Prendre le premier élément
+            this.graphNbLivresParMagasinParAn()
         );
     }
 
     /**
      * Définir le graphique de la page.
+     * 
      * @param chart Un graphique.
      */
     public void setChart(Chart chart) {
@@ -53,6 +59,7 @@ public class AdminStatsPane extends VBox {
 
     /**
      * Obtenir le titre du menu.
+     * 
      * @return Le label du titre du menu.
      */
     private Label getTitle() {
@@ -65,20 +72,22 @@ public class AdminStatsPane extends VBox {
 
     /**
      * Obtenir le combo-box avec les graphiques possibles.
+     * 
      * @return Le combo-box avec les graphiques possibles.
      */
     private ComboBox<String> getComboBox() {
         ComboBox<String> comboBoxChoix = new ComboBox<>();
         comboBoxChoix.getItems().addAll(
-                "Nombre de livres vendus par magasin",
-                "CA 2024 par thème",
-                "Evolution CA des magasins par mois en 2024",
-                "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
-                "Valeur du stock par magasin",
-                "Evolution CA total par client",
-                "10 éditeurs les plus importants en nombres d'auteurs",
-                "Quantité de livres de René Goscinny achetées en fonction de l'origine des clients");
-        comboBoxChoix.setValue(comboBoxChoix.getItems().get(0));
+            "Nombre de livres vendus par magasin",
+            "CA 2024 par thème",
+            "Evolution CA des magasins par mois en 2024",
+            "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin",
+            "Valeur du stock par magasin",
+            "Evolution CA total par client",
+            "10 éditeurs les plus importants en nombres d'auteurs",
+            "Quantité de livres de René Goscinny achetées en fonction de l'origine des clients"
+        );
+        comboBoxChoix.setValue(comboBoxChoix.getItems().get(0)); // On sélectionne le premier élément par défaut
         comboBoxChoix.setOnAction(new ControleurAdminStatsComboBox(this));
 
         return comboBoxChoix;
@@ -87,20 +96,40 @@ public class AdminStatsPane extends VBox {
     // GRAPH TABLEAU DE BORD
 
     // 1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
-    // BarChart
-    // CategoryAxis xAxis = new CategoryAxis();
-    // NumberAxis yAxis= new NumberAxis();
+    public BarChart<String, Number> graphNbLivresParMagasinParAn() {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
 
-    // XYChart.Series series= new XYChart.Series<>();
-    // Map<String, Map<Integer, Integer>> dataBar =
-    // modele.getStatistiquesBD().getNbLivresParMagasinParAn();
-    // for(String key: dataBar.keySet()){
-    // series.getData().add(new XYChart.Data("key", dataBar.get(key)) {
+        BarChart<String, Number> barChartNbLivresParMagasin = new BarChart<>(xAxis, yAxis);
+        barChartNbLivresParMagasin.setTitle("Nombre de livre vendus par magasin");
+        try {
+            Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
 
-    // })
-    // }
+            Set<Integer> annee = new HashSet<>();
+            for (Map<Integer, Integer> dataAnnee : dataBar.values()) {
+                annee.addAll(dataAnnee.keySet());
+            }
 
-    // BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
+            for (Integer an : annee) {
+                XYChart.Series<String, Number> serieParAn = new XYChart.Series<>();
+                serieParAn.setName(String.valueOf(an));
+
+                for (String magasin : dataBar.keySet()) {
+                    Map<Integer, Integer> venteParAn = dataBar.get(magasin);
+                    if (venteParAn.containsKey(an)) {
+                        int nbLivre = venteParAn.get(an);
+                        serieParAn.getData().add(new XYChart.Data<>(magasin, nbLivre));
+                    }
+                }
+
+                barChartNbLivresParMagasin.getData().add(serieParAn);
+            }
+
+        } catch (SQLException e) {
+            new AlertErreurException("Impossible de récupérer les données.", e);
+        }
+        return barChartNbLivresParMagasin;
+    }
 
     public PieChart graphCA2024ParTheme() {
         // 2)PieChart
@@ -114,24 +143,48 @@ public class AdminStatsPane extends VBox {
             }
         } catch (SQLException e) {
             new AlertErreurException("Impossible de récupérer les données.", e);
-
         }
         return pieChartParTheme;
     }
 
     // 3) AreaChart Map<String, Map<Integer, Double>>
-    // getEvolutionCAParMoisParMagasin2024()
+    public AreaChart<Number, Number> graphEvolutionCAParMoisParMagasin2024() {
+        NumberAxis xAxis = new NumberAxis();
+        NumberAxis yAxis = new NumberAxis();
 
-    // AreaChart
-    // AreaChart areaChartCAParChart = new AreaChart();
+        AreaChart<Number, Number> areaChartCAParMoisParMagasin = new AreaChart<>(xAxis, yAxis);
+        areaChartCAParMoisParMagasin.setTitle("Evolution CA des magasins par mois en 2024");
+        try {
+            Map<String, Map<Integer, Double>> dataAreaChart = this.modele.getStatistiquesBD()
+                    .getEvolutionCAParMoisParMagasin2024();
 
-    // 4) LineChartMap<String, Map<Integer, Double>>
-    // getComparaisonVentesLigneMagasin()
+            for (String magasin : dataAreaChart.keySet()) {
+                XYChart.Series<Number, Number> serie = new XYChart.Series<>();
+                serie.setName(magasin);
 
-    // //LineChart Map<String, Map<Integer, Double>>
+                Map<Integer, Double> caParMois = dataAreaChart.get(magasin);
+                for (int mois = 1; mois <= 12; mois++) {
+                    Double val = caParMois.get(mois);
+                    if (val != null) {
+                        serie.getData().add(new XYChart.Data<>(mois, val));
+                    }
+                }
+                areaChartCAParMoisParMagasin.getData().add(serie);
+            }
+        } catch (SQLException e) {
+            new AlertErreurException("Impossible de récupérer les données.", e);
+        }
+        return areaChartCAParMoisParMagasin;
+    }
+
+    //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
+
+
+//        //LineChart  Map<String, Map<Integer, Double>>
     // NumberAxis xAxisLine = new NumberAxis();
     // NumberAxis yAxisLine = new NumberAxis();
     // //xAxis.setLabel(null);
+
 
     // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
     // XYChart.Series series3 = new XYChart.Series<>();
@@ -140,10 +193,10 @@ public class AdminStatsPane extends VBox {
         // 5) BarChart Map<String, Integer> getTop10EditeursNbAuteurs()
         NumberAxis xAxisBar = new NumberAxis();
         CategoryAxis yAxisBar = new CategoryAxis();
-        
+
         BarChart<Number, String> barChartTopDix = new BarChart<>(xAxisBar, yAxisBar);
         XYChart.Series<Number, String> series4 = new XYChart.Series<>();
-        
+
         barChartTopDix.setTitle("Dix éditeurs les plus important en nombre d'auteurs");
         xAxisBar.setTickLabelRotation(90);
         try {
@@ -187,8 +240,12 @@ public class AdminStatsPane extends VBox {
         try {
             Map<String, Double> dataStockMag = this.modele.getStatistiquesBD().getValeurStockParMagasin();
             for (String key : dataStockMag.keySet()) {
-                PieChart.Data categorie3 = new PieChart.Data(key, dataStockMag.get(key));
-                pieChartValStockMag.getData().add(categorie3);
+                double valeurData= dataStockMag.get(key);
+                PieChart.Data dataStock=new PieChart.Data(key,valeurData );
+                pieChartValStockMag.getData().add(dataStock);
+
+                Tooltip tooltip= new Tooltip(key+ " : "+ String.format("%.2f €", valeurData));
+                Tooltip.install(dataStock.getNode(), tooltip);
             }
         } catch (SQLException e) {
             new AlertErreurException("Impossible de récupérer les données.", e);

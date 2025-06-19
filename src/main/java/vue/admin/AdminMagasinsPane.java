@@ -83,6 +83,9 @@ public class AdminMagasinsPane extends VBox {
             viewStock.setFitWidth(35);
 
             BorderPane ligneMag = new BorderPane();
+            ligneMag.setPadding(new Insets(10, 10, 10, 10));
+            ligneMag.setStyle("-fx-border-color: black; -fx-border-width: 2px;");
+
             HBox lesBtn = new HBox(10);
             Label leMag = new Label(magasin.toString());
 

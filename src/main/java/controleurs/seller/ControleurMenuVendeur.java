@@ -62,7 +62,7 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                 break;
             }
             case "Transférer un livre": {
-                // this.app.showTransfer();
+                this.sellerScene.showTransfer();
                 break;
             }
             case "Agir en tant que client": {

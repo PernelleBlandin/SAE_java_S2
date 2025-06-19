@@ -136,6 +136,11 @@ public class SellerScene implements SceneListBooksInterface {
         this.root.setCenter(sellerDeleteBookPane);
     }
 
+    public void showTransfer() {
+        SellerTransferBook SellerTransferBook = new SellerTransferBook(this.modele);
+        this.root.setCenter(SellerTransferBook);
+    }
+
     /**
      * Afficher la page affichant la liste de livres.
      * @param titre Le titre du menu.

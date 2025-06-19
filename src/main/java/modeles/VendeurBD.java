@@ -163,4 +163,74 @@ public class VendeurBD {
 
         statement.executeUpdate();
     }
+
+     /**
+     * Obtenir l'identifiant du vendeur.
+     * @return L'identifiant du vendeur.
+     */
+    public String getIdVendeur(String nomVendeur, String prenomVendeur) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT idvendeur
+            FROM VENDEUR
+            WHERE nomvendeur = ? AND prenomvendeur = ?
+        """);
+        statement.setString(1, nomVendeur);
+        statement.setString(2, prenomVendeur);
+        ResultSet res = statement.executeQuery();
+        if (res.next()) {
+            return res.getString("idvendeur");
+        } else {
+            Statement statement2 = this.connexionMariaDB.createStatement();
+            ResultSet res2 = statement2.executeQuery("SELECT MAX(idvendeur) FROM VENDEUR");
+            res2.next();
+            String dernierId = res2.getString(1);
+            int nouvelId = Integer.parseInt(dernierId) + 1;
+            String nouvelIdString = String.valueOf(Integer.parseInt(dernierId) + 1);
+
+            PreparedStatement statement3 = this.connexionMariaDB.prepareStatement("""
+                INSERT INTO VENDEUR(idvendeur, nomvendeur, prenomvendeur)
+                VALUES (?, ?, ?)
+            """);
+            statement3.setInt(1, nouvelId);
+            statement3.setString(2, nomVendeur);
+            statement3.setString(3, prenomVendeur);
+            statement3.executeUpdate();
+
+            return nouvelIdString;
+        }
+    }
+
+    /**
+     * Obtenir un vendeur par son identifiant et son magasin.
+     * @param idVendeur L'identifiant du vendeur.
+     * @param idMagasin L'identifiant du magasin.
+     * @return Le vendeur correspondant à l'identifiant et au magasin.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
+    public Vendeur obtenirVendeurParIdEtMagasin(int idVendeur, String idMagasin) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT nomvendeur, prenomvendeur, idmag, nommag, villemag 
+            FROM VENDEUR NATURAL JOIN MAGASIN
+            WHERE idvendeur = ? AND idmag = ?;
+        """);
+        statement.setInt(1, idVendeur);
+        statement.setString(2, idMagasin);
+
+        ResultSet result = statement.executeQuery();
+
+        if(!result.next()){
+            throw new SQLException("Vendeur non trouvé pour ce magasin");
+        }
+        String nom = result.getString("nomvendeur");
+        String prenom = result.getString("prenomvendeur");
+        String idmag = result.getString("idmag");
+        String nommag = result.getString("nommag");
+        String villemag = result.getString("villemag");
+
+        Magasin magasin = new Magasin(idmag, nommag, villemag);
+
+        result.close();
+
+        return new Vendeur(idVendeur, nom, prenom, magasin);
+    }
 }

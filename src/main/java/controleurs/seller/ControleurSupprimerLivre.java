@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import vue.seller.SellerDeleteBookListPane;
+import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertYesNo;
 
 /** Contrôleur sur un livre pour l'ajouter au panier */
@@ -50,8 +51,7 @@ public class ControleurSupprimerLivre implements EventHandler<ActionEvent> {
                 this.sellerDeleteBookPane.retirerLivre(this.livre);
                 this.sellerDeleteBookPane.miseAJourAffichage();
             } catch (SQLException e) {
-                // TODO gérer l'erreur
-                e.printStackTrace();
+                new AlertErreurException("Le livre n'a pas pu être supprimé", e.getMessage());
             }
         }
     }

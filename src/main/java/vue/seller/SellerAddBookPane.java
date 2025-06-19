@@ -20,7 +20,7 @@ public class SellerAddBookPane extends HBox {
 
     private TextField idLivre = new TextField();
     private TextField titreLivre = new TextField();
-    private NumberField prix = new NumberField();  // TODO :double
+    private NumberField prix = new NumberField();  // TODO: DoubleField pour le prix ?
     private NumberField anneePubli = new NumberField();
     private TextField nomAuteur = new TextField();
     private NumberField deces = new NumberField();

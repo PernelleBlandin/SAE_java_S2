@@ -47,16 +47,14 @@ public class ControleurSupprimerLivre implements EventHandler<ActionEvent> {
         );
         confirmee.showAndWait();
         if (confirmee.getResult() == ButtonType.YES) {
-        try {
-            this.modele.getLivreBD().supprimerLivre(livre.getISBN());
-            this.component.supprimerCarte();
-            this.component.getVue().miseAJourAffichage();
-        } catch (SQLException e) {
-            // TODO gérer l'erreur
-        }
-        int curQuantiteStock = this.component.getQuantite();
-        this.component.setQuantite(curQuantiteStock - 1);
-        this.component.miseAJourAffichage();
+            try {
+                this.modele.getLivreBD().supprimerLivre(livre.getISBN());
+                this.component.supprimerCarte();
+                this.component.getVue().miseAJourAffichage();
+            } catch (SQLException e) {
+                // TODO gérer l'erreur
+                e.printStackTrace();
+            }
         }
     }
 }

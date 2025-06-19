@@ -154,4 +154,12 @@ public abstract class BaseListBooksPane extends VBox {
     public void setCurPage(int page) {
         this.curPage = page;
     }
+
+    /**
+     * Définir la liste des livres à afficher.
+     * @param listeLivres La nouvelle liste de livres.
+     */
+    public void setListeLivres(List<Livre> listeLivres) {
+        this.listeLivres = listeLivres;
+    }
 }

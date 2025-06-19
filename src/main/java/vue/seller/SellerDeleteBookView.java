@@ -287,7 +287,7 @@ public class SellerDeleteBookView extends BaseListBooksPane{
      * Cette méthode est appelée pour rafraîchir l'affichage après une action utilisateur.
      */
     public void miseAJourAffichage() {
-        this.center = this.getCenter();
-        this.root.setCenter(this.center);
+        this.setListeLivres(listeLivres(this.modele));
+        super.miseAJourAffichage();
     }
 }

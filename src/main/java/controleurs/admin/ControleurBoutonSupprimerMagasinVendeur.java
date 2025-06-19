@@ -10,6 +10,7 @@ import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue._components.alerts.AlertErreurException;
+import vue._components.alerts.AlertInfo;
 import vue._components.alerts.AlertYesNo;
 import vue.admin.AdminScene;
 
@@ -57,7 +58,10 @@ public class ControleurBoutonSupprimerMagasinVendeur implements EventHandler<Act
             this.modele.getVendeurBD().supprimerVendeur(this.vendeur.getId());
         } catch (SQLException e) {
             new AlertErreurException("Le vendeur n'a pas pu être supprimé.", e.getMessage());
+            return;
         }
+
+        new AlertInfo("Vendeur supprimé", "Le vendeur a été supprimé avec succès.");
 
         // Actualiser de la liste 
         this.adminScene.showVendeurs(this.magasin);

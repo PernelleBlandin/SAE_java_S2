@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import vue._components.alerts.AlertErreur;
+import vue._components.alerts.AlertInfo;
 import vue._components.alerts.AlertYesNo;
 import vue.admin.AdminScene;
 
@@ -54,7 +55,10 @@ public class ControleurBoutonSupprimerMagasin implements EventHandler<ActionEven
             this.modele.getMagasinBD().supprimerMagasin(this.magasin.getId());
         } catch (SQLException e) {
             new AlertErreur("Le magasin contient des vendeurs, stocks, ou commandes, et ne peut pas être supprimé.");
+            return;
         }
+
+        new AlertInfo("Magasin supprimé", "Le magasin a été supprimé avec succès.");
 
         // Actualiser de la liste 
         this.adminScene.showMagasins();

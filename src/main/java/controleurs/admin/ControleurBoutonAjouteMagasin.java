@@ -11,6 +11,7 @@ public class ControleurBoutonAjouteMagasin implements EventHandler<ActionEvent> 
 
     /**
      * Initialiser le contrôleur du bouton "Ajouter magasin".
+     * 
      * @param adminScene La scène de la page administrateur
      */
     public ControleurBoutonAjouteMagasin(AdminScene adminScene) {
@@ -19,11 +20,11 @@ public class ControleurBoutonAjouteMagasin implements EventHandler<ActionEvent> 
 
     @Override
     /**
-     * Recevoir un événement lors du clic sur le bouton "Ajouter magasin" et
+     * Recevoir un événement lors du clic sur le bouton "Ajouter magasin"
      * 
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        // this.adminScene.showDemandeInfoVendeur(this.magasin);
+        this.adminScene.showDemandeInfoMagasin();
     }
 }

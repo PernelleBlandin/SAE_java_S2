@@ -107,9 +107,35 @@ public class FenetreStat extends BorderPane {
 
     //    AreaChart
     public AreaChart graphEvolutionCAParMoisParMagasin2024(){
-        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis= new NumberAxis();
-    }
+
+        AreaChart <Number, Number> areaChartCAParMoisParMagasin= new AreaChart(xAxis, yAxis);
+        areaChartCAParMoisParMagasin.setTitle("Evolution CA des magasins par mois en 2024");
+        try{
+            Map<String, Map<Integer, Double>> dataAreaChart = this.modele.getStatistiquesBD().getEvolutionCAParMoisParMagasin2024();
+
+
+        XYChart.Series series1 = new XYChart.Series();
+        for (String magasin: dataAreaChart.keySet()){
+            XYChart.Series<Number, Number> serie = new XYChart.Series<>();
+            serie.setName(magasin);
+
+            Map<Integer, Double> caParMois = dataAreaChart.get(magasin);
+            for(int mois=1; mois<= 12; mois++){
+                Double val =caParMois.get(mois);
+                if(val!= null){
+                    serie.getData().add(new XYChart.Data<>(mois, val));
+                    }
+            }
+            areaChartCAParMoisParMagasin.getData().add(serie);
+            }
+        }catch (SQLException e){
+            // TODO: handle exception
+           
+        }return areaChartCAParMoisParMagasin;
+        }
+    
         // AreaChart areaChartCAParChart = new AreaChart();
 
 
@@ -232,7 +258,7 @@ public class FenetreStat extends BorderPane {
                         afficheChart.getChildren().setAll(graphCA2024ParTheme());
                         break;
                     case "Evolution CA des magasins par mois en 2024":
-                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        afficheChart.getChildren().setAll(graphEvolutionCAParMoisParMagasin2024());
                         break;
                     case "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin":
                         //afficheChart.getChildren().setAll(graphCA2024ParTheme());

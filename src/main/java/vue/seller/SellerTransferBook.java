@@ -4,10 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controleurs.seller.ControleurValiderAjoutLivre;
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,21 +12,16 @@ import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import vue._components.alerts.AlertErreurException;
-import vue._components.numberField.NumberField;
 
 public class SellerTransferBook extends VBox{
     private ChaineLibrairie modele;
     private TextField titreLivre;
     private TextField qte;
 
-
-
     public SellerTransferBook(ChaineLibrairie modele) {
         this.modele = modele;
         this.titreLivre = new TextField();
         this.qte= new TextField(getAccessibleText());
-
-
     }
 
     public ComboBox<String> getComboBox(){
@@ -40,13 +31,13 @@ public class SellerTransferBook extends VBox{
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les magasins.", e);
+            new AlertErreurException("Impossible de récupérer les magasins.", e.getMessage());
         }
 
         for (Magasin magasin : listeMagasins) {
             comboBoxChoixMag.getItems().add(magasin.getNom());
         }
-    return comboBoxChoixMag;
+        return comboBoxChoixMag;
     }
 
     public VBox getCenter(){

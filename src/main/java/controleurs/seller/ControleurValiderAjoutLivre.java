@@ -1,6 +1,7 @@
 package controleurs.seller;
 
 import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -96,7 +97,15 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                 new AlertErreurException("Erreur lors de la vérification des identifiants : ", e.getMessage());
                 return;
             }
-            
+            try {
+                if (this.modele.getLivreBD().obtenirLivre(isbn) != null) {
+                    new AlertErreur("Un livre avec cet identifiant existe déjà.");
+                    return;
+                }
+            } catch (SQLException e) {
+                new AlertErreurException("Erreur lors de la vérification de l'identifiant du livre : ", e.getMessage());
+                return;
+            }
             try {
                 if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && 
                     this.modele.getLivreBD().getIdDewey(this.sellerAddBookPane.getClassification().getText()) == null) {

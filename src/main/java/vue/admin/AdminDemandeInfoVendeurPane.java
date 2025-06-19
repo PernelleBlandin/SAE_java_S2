@@ -1,16 +1,15 @@
 package vue.admin;
 
+import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.admin.ControleurValiderAjouteVendeur;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
+import vue._components.TitleAndBackButtonPane;
 
 /**
  * La pane pour les demandes d'informations pour l'ajout d'un vendeur.
@@ -53,13 +52,11 @@ public class AdminDemandeInfoVendeurPane extends VBox {
      * Obtenir le titre de la pane.
      * @return Le titre de la pane.
      */
-    private BorderPane titre() {
-        BorderPane titre = new BorderPane();
-        titre.setPadding(new Insets(10, 10, 10, 10));
-        Label label = new Label("Demandes d'informations sur les vendeurs");
-        label.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        titre.setCenter(label);
-        return titre;
+    private TitleAndBackButtonPane titre() {
+        return new TitleAndBackButtonPane(
+            "Création d'un nouveau vendeur dans le magasin " + this.magasin.getNom(),
+            new ControleurBoutonRetourMagasin(this.adminScene)
+        );
     }
 
     /**

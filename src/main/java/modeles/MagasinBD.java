@@ -166,4 +166,21 @@ public class MagasinBD {
 
         statement.executeUpdate();
     }
+
+    /**
+     * Ajouter un vendeur à un magasin.
+     * @param nom Le nom du vendeur.
+     * @param prenom Le prénom du vendeur
+     * @param idVendeur L'identifiant du vendeur
+     * @return true si le vendeur a été ajouté, false sinon
+     * @throws SQLException Exception SQL en cas d'erreur avec les donnée
+     */
+    public void ajouterVendeur(int idVendeur, String nom, String prenom, String idMagasin) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("INSERT INTO VENDEUR(idvendeur, nomvendeur, prenomvendeur, idmag) VALUES (?, ?, ?, ?)");
+        statement.setInt(1, idVendeur);
+        statement.setString(2, nom);
+        statement.setString(3, prenom);
+        statement.setString(4, idMagasin);
+        statement.executeUpdate();
+    }
 }

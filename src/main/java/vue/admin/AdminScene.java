@@ -161,11 +161,16 @@ public class AdminScene implements SceneInterface {
         this.root.setCenter(stockPane);
     }
 
-    // public void showDemandeInfoVendeur(Magasin magasin) {
-    //     AdminDemandeInfoVendeurPane demandeInfoVendeurPane = new AdminDemandeInfoVendeurPane(this, this.modele, magasin);
-    //     this.root.setCenter(demandeInfoVendeurPane);
-    // }
-    
+    /**
+     * Afficher la page pour gérer les demandes d'informations sur les vendeurs.
+     * 
+     * @param magasin Un magasin
+     */
+    public void showDemandeInfoVendeur(Magasin magasin) {
+        AdminDemandeInfoVendeurPane demandeInfoVendeurPane = new AdminDemandeInfoVendeurPane(this, this.modele, magasin);
+        this.root.setCenter(demandeInfoVendeurPane);
+    }
+
     /**
      * Obtenir la scène de l'accueil d'un client.
      * 

@@ -13,7 +13,9 @@ import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import vue._components.numberField.NumberField;
 
+/** Pane de l'ajout d'un livre */
 public class SellerAddBookPane extends HBox {
+    /** Le modèle */
     private ChaineLibrairie modele;
 
     private TextField idLivre = new TextField();
@@ -29,6 +31,10 @@ public class SellerAddBookPane extends HBox {
     private TextField idClassification = new TextField();
     private NumberField nbPages = new NumberField();
 
+    /**
+     * Constructeur de la vue pour ajouter un livre.
+     * @param modele Le modèle de données de la librairie.
+     */
     public SellerAddBookPane(ChaineLibrairie modele) {
         this.modele = modele;
 
@@ -41,6 +47,10 @@ public class SellerAddBookPane extends HBox {
         );
     }
 
+    /**
+     * Obtenir la partie gauche du formulaire d'ajout de livre.
+     * @return La VBox contenant les champs de saisie pour la partie gauche du formulaire.
+     */
     private VBox getCenterLeft() {
         VBox vbox = new VBox();
         vbox.setSpacing(10);
@@ -72,6 +82,10 @@ public class SellerAddBookPane extends HBox {
         return vbox;
     }
 
+    /**
+     * Obtenir la partie droite du formulaire d'ajout de livre.
+     * @return La VBox contenant les champs de saisie pour la partie droite du formulaire.
+     */
     private VBox getCenterRight() {
         VBox vbox = new VBox();
         vbox.setSpacing(10);
@@ -134,6 +148,9 @@ public class SellerAddBookPane extends HBox {
         return vbox;
     }
 
+    /**
+     * Réinitialiser les champs de saisie du formulaire d'ajout de livre.
+     */
     public void resetTextField(){
         this.idLivre.setText("");
         this.titreLivre.setText("");
@@ -159,6 +176,9 @@ public class SellerAddBookPane extends HBox {
         );
     }
 
+    /**
+     * Afficher une alerte pour indiquer que le livre a été ajouté avec succès.
+     */
     public void showPopUpLivreAjoute() {
         Alert alerte = new Alert(Alert.AlertType.INFORMATION);
         alerte.setTitle("Livre Express");
@@ -166,50 +186,98 @@ public class SellerAddBookPane extends HBox {
         alerte.show();
     }
 
+    /**
+     * Obtenir le champ pour l'identifiant du livre.
+     * @return Le champ pour l'identifiant du livre.
+     */
     public TextField getIdLivre(){ 
         return this.idLivre;
     }
 
+    /**
+     * Obtenir le champ pour le titre du livre.
+     * @return Le champ pour le titre du livre.
+     */
     public TextField getTitreLivre(){
         return this.titreLivre;
     }
 
+    /**
+     * Obtenir le champ pour le prix du livre.
+     * @return Le champ pour le prix du livre.
+     */
     public NumberField getPrix(){
         return this.prix;
     }
 
+    /**
+     * Obtenir le champ pour l'année de publication du livre.
+     * @return Le champ pour l'année de publication du livre.
+     */
     public NumberField getAnneePubli(){
         return this.anneePubli;
     }
 
+    /**
+     * Obtenir le champ pour le nom de l'auteur.
+     * @return Le champ pour le nom de l'auteur.
+     */
     public TextField getNomAuteur(){
         return this.nomAuteur;
     }
 
+    /**
+     * Obtenir le champ pour la date de naissance de l'auteur.
+     * @return Le champ pour la date de naissance de l'auteur.
+     */
     public NumberField getNaissance(){
         return this.naissance;
     }
 
+    /**
+     * Obtenir le champ pour la date de décès de l'auteur.
+     * @return Le champ pour la date de décès de l'auteur.
+     */
     public NumberField getDeces(){
         return this.deces;
     }
 
+    /**
+     * Obtenir le champ pour l'identifiant de l'auteur.
+     * @return Le champ pour l'identifiant de l'auteur.
+     */
     public TextField getIdAuteur(){
         return this.idAuteur;
     }
     
+    /**
+     * Obtenir le champ pour l'éditeur du livre.
+     * @return Le champ pour l'éditeur du livre.
+     */
     public TextField getEditeur(){
         return this.editeur;
     }
 
+    /**
+     * Obtenir le champ pour la classification du livre.
+     * @return Le champ pour la classification du livre.
+     */
     public TextField getClassification(){
         return this.classification;
     }
 
+    /**
+     * Obtenir le champ pour l'identifiant de classification.
+     * @return Le champ pour l'identifiant de classification.
+     */
     public TextField getIdClassification(){
         return this.idClassification;
     }
     
+    /**
+     * Obtenir le champ pour le nombre de pages du livre.
+     * @return Le champ pour le nombre de pages du livre.
+     */
     public NumberField getNbPages() {
         return this.nbPages;
     }

@@ -6,6 +6,9 @@ import java.util.List;
 import controleurs.ControleurRechercheList;
 import modeles.RecherchableInterface;
 
+/**
+ * La classe de base pour les listes d'éléments avec une barre de recherche.
+ */
 public abstract class BaseListElementsWithSearchPane<T extends RecherchableInterface> extends BaseListElementsPane<T> {
     /** La barre de recherche */
     public SearchBar searchBar;

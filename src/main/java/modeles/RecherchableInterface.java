@@ -1,5 +1,8 @@
 package modeles;
 
+/**
+ * Interface pour la recherche.
+ */
 public interface RecherchableInterface {
     /**
      * Vérifier si l'élément est inclus dans la recherche.

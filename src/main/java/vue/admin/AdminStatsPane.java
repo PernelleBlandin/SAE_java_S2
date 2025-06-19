@@ -95,7 +95,10 @@ public class AdminStatsPane extends VBox {
 
     // GRAPH TABLEAU DE BORD
 
-    // 1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
+    /**
+     * Obtient le graphique du nombre de livres vendus par magasin par an.
+     * @return Un BarChart représentant le nombre de livres vendus par magasin par an.
+     */
     public BarChart<String, Number> graphNbLivresParMagasinParAn() {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -131,6 +134,10 @@ public class AdminStatsPane extends VBox {
         return barChartNbLivresParMagasin;
     }
 
+    /**
+     * Obtient le graphique du chiffre d'affaire 2024 par thème.
+     * @return Un PieChart représentant le chiffre d'affaire 2024 par thème.
+     */
     public PieChart graphCA2024ParTheme() {
         // 2)PieChart
         PieChart pieChartParTheme = new PieChart();
@@ -147,7 +154,10 @@ public class AdminStatsPane extends VBox {
         return pieChartParTheme;
     }
 
-    // 3) AreaChart Map<String, Map<Integer, Double>>
+    /**
+     * Obtenir le graphique de l'évolution du chiffre d'affaire des magasins par mois en 2024.
+     * @return Un AreaChart représentant l'évolution du chiffre d'affaire des magasins par mois en 2024.
+     */
     public AreaChart<Number, Number> graphEvolutionCAParMoisParMagasin2024() {
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -189,6 +199,10 @@ public class AdminStatsPane extends VBox {
     // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
     // XYChart.Series series3 = new XYChart.Series<>();
 
+    /**
+     * Obtient le graphique de la comparaison des ventes en ligne et en magasin.
+     * @return Un LineChart représentant la comparaison des ventes en ligne et en magasin.
+     */
     public BarChart<Number, String> graphTop10EditeursNbAuteurs() {
         // 5) BarChart Map<String, Integer> getTop10EditeursNbAuteurs()
         NumberAxis xAxisBar = new NumberAxis();
@@ -212,7 +226,10 @@ public class AdminStatsPane extends VBox {
         return barChartTopDix;
     }
 
-    // 6)
+    /**
+     * Obtient le graphique de la quantité de livres de René Gosciny achetés en fonction de l'origine des clients.
+     * @return Un PieChart représentant la quantité de livres de René Gosciny achetés en fonction de l'origine des clients.
+     */
     public PieChart graphQteLivresGoscinyOrigineClients() {
         PieChart pieChartGosciny = new PieChart();
         pieChartGosciny.setTitle("Quantité de livres de René Gosciny achetés\n en fonction de l'origine des clients");
@@ -231,7 +248,10 @@ public class AdminStatsPane extends VBox {
         return pieChartGosciny;
     }
 
-    // 7) PieChart Map<String, Double> getValeurStockParMagasin()
+    /**
+     * Obtient le graphique de la valeur du stock par magasin.
+     * @return Un PieChart représentant la valeur du stock par magasin.
+     */
     public PieChart graphValeurStockParMagasin() {
         PieChart pieChartValStockMag = new PieChart();
         pieChartValStockMag.setTitle("Valeur du stock par magasin");

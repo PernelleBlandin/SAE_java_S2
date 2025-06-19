@@ -17,7 +17,6 @@ import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue._components.BaseListElementsWithSearchPane;
-import vue._components.TitleAndBackButtonPane;
 
 /** Liste des magasins à afficher à l'administrateur */
 public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Vendeur> {
@@ -25,8 +24,16 @@ public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Ve
     private AdminScene adminScene;
     /** Le modèle */
     private ChaineLibrairie modele;
+    /** Le magasin */
     private Magasin magasin;
 
+    /**
+     * Constructeur de la pane des vendeurs d'un magasin.
+     * @param listeVendeurs La liste des vendeurs à afficher dans la pane.
+     * @param adminScene La scène de la page administrateur.
+     * @param modele Le modèle de la librairie.
+     * @param magasin Le magasin pour lequel on affiche les vendeurs.
+     */
     public AdminMagasinsVendeursPane(List<Vendeur> listeVendeurs, AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
         super("Vendeurs de " + magasin.getNom(), listeVendeurs, 5, 1, "Rechercher un vendeur...");
 
@@ -72,6 +79,11 @@ public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Ve
         return header;
     }
 
+    /**
+     * Obtenir la VBox contenant la liste des "cartes" des vendeurs.
+     * @param vendeur Le vendeur à afficher.
+     * @return La VBox contenant la liste des "cartes" des vendeurs.
+     */
     public BorderPane getElementComponent(Vendeur vendeur) {
         Image imgPoubelle = new Image("/images/trashcan.png");
         ImageView viewPoubelle = new ImageView(imgPoubelle);

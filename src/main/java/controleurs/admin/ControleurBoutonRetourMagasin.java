@@ -14,7 +14,6 @@ public class ControleurBoutonRetourMagasin implements EventHandler<ActionEvent> 
     /**
      * Initialiser le contrôleur bouton "Retour" après une page magasin.
      * @param adminScene La scène de la page administrateur
-     * @param magasin Un magasin.
      */
     public ControleurBoutonRetourMagasin(AdminScene adminScene) {
         this.adminScene = adminScene;

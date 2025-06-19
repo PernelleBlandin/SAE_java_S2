@@ -4,12 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controleurs.customers.ControleurChangerMagasin;
 import controleurs.seller.ControleurChangerMagasinSeller;
-import controleurs.seller.ControleurValiderAjoutLivre;
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,34 +13,40 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
-import modeles.Client;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue._components.alerts.AlertErreurException;
 
+/**
+ * La vue pour transférer un livre vers un autre magasin.
+ */
 public class SellerTransferBook extends VBox {
+    /** Le modèle */
     private ChaineLibrairie modele;
+    /** Le textfield du titre du livre */
     private TextField titreLivre;
+    /** Le textfield de la quantité du livre */
     private TextField qte;
 
+    /** La scène du vendeur */
     private SellerScene sellerScene;
 
-
-
+    /**
+     * Initialiser la vue pour transférer un livre vers un autre magasin.
+     * @param modele Le modèle de données.
+     */
     public SellerTransferBook(ChaineLibrairie modele) {
         this.modele = modele;
         this.titreLivre = new TextField();
         this.qte= new TextField(getAccessibleText());
 
         this.getChildren().addAll(this.getCenter());
-
-
     }
 
-    /** TODO refaire docs
-     * Obtenir la liste des magasins, avec un titre et un combo-box pour le changer.
-     * @param client Un client.
-     * @return La liste des magasins et le titre de la VBox.
+    /**
+     * Obtenir la liste des magasins pour le vendeur.
+     * @param vendeur Le vendeur
+     * @return La VBox contenant la liste des magasins.
      */
     private VBox getMagasinsList(Vendeur vendeur) {
         VBox magasinsVBox = new VBox();
@@ -90,6 +91,10 @@ public class SellerTransferBook extends VBox {
     // return comboBoxChoixMag;
     // }
 
+    /**
+     * Obtenir le centre de la vue, contenant les champs pour transférer un livre.
+     * @return La VBox contenant les champs pour transférer un livre.
+     */
     public VBox getCenter(){
         VBox vBox = new VBox();
 

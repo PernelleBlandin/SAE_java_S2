@@ -16,8 +16,13 @@ import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookRemoveCardComponent;
 
+/**
+ * La pane pour afficher la liste des livres à supprimer pour le vendeur.
+ */
 public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
+    /** La scène de la page vendeur */
     private SellerScene sellerScene;
+    /** Le modèle */
     private ChaineLibrairie modele;
 
     /**
@@ -62,6 +67,11 @@ public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
     }
 
+    /**
+     * Obtenir le composant d'un élément de la liste.
+     * @param livre Le livre à afficher.
+     * @return Un composant SellerBookRemoveCardComponent contenant les informations du livre.
+     */
     public SellerBookRemoveCardComponent getElementComponent(Livre livre) {
         Vendeur vendeur = this.modele.getVendeurActuel();
         Magasin magasin = vendeur.getMagasin();

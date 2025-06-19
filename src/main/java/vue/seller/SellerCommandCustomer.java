@@ -25,12 +25,24 @@ import vue._components.alerts.AlertErreurException;
 import vue._components.numberField.NumberField;
 import vue.customers.CustomerHomePane;
 
+/**
+ * La vue pour changer le magasin du vendeur.
+ */
 public class SellerCommandCustomer{
+    /** Le modèle */
     private ChaineLibrairie modele;
+    /** La pane du home de la page vendeur */
     private CustomerHomePane customerHomePane;
 
+    /** L'identifiant client */
     private TextField idClient;
-    public SellerCommandCustomer(ChaineLibrairie modele,CustomerHomePane customerHomePane){
+
+    /**
+     * Constructeur de la vue pour changer le magasin du vendeur.
+     * @param modele Le modèle de données de la librairie.
+     * @param customerHomePane La pane du home de la page vendeur.
+     */
+    public SellerCommandCustomer(ChaineLibrairie modele, CustomerHomePane customerHomePane){
         this.modele = modele;
         this.customerHomePane = customerHomePane;
         this.idClient = new TextField();

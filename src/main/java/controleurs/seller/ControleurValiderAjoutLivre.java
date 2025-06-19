@@ -10,11 +10,20 @@ import vue._components.alerts.AlertErreurException;
 import vue._components.numberField.NumberField;
 import vue.seller.SellerAddBookPane;
 
+/**
+ * Contrôleur pour valider l'ajout d'un livre dans la librairie.
+ */
 public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
-    
+    /** Pane pour l'ajouter d'un livre */
     private SellerAddBookPane sellerAddBookPane;
+    /** Le modèle du livre */
     private ChaineLibrairie modele;
     
+    /**
+     * Constructeur du contrôleur pour valider l'ajout d'un livre.
+     * @param sellerAddBookPane La pane pour l'ajouter d'un livre
+     * @param modele Le modèle de la librairie
+     */
     public ControleurValiderAjoutLivre(SellerAddBookPane sellerAddBookPane, ChaineLibrairie modele) {
         this.sellerAddBookPane = sellerAddBookPane;
         this.modele = modele;

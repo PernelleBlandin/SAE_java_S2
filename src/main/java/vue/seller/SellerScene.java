@@ -125,16 +125,26 @@ public class SellerScene implements SceneListBooksInterface {
         this.root.setCenter(this.homePane);
     }
 
+    /**
+     * Afficher la page pour ajouter un livre.
+     */
     public void showAddBook() {
         SellerAddBookPane sellerAddBookPane = new SellerAddBookPane(this.modele);
         this.root.setCenter(sellerAddBookPane);
     }
 
+    /**
+     * Afficher la page pour supprimer un livre.
+     * @param listeLivres La liste des livres.
+     */
     public void showDeleteBook(List<Livre> listeLivres) {
         SellerDeleteBookListPane sellerDeleteBookPane = new SellerDeleteBookListPane(listeLivres, this, this.modele);
         this.root.setCenter(sellerDeleteBookPane);
     }
 
+    /**
+     * Afficher la page pour transferer un live.
+     */
     public void showTransfer() {
         SellerTransferBook SellerTransferBook = new SellerTransferBook(this.modele);
         this.root.setCenter(SellerTransferBook);

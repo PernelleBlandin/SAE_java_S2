@@ -6,7 +6,8 @@ import modeles.RecherchableInterface;
 import vue._components.BaseListElementsWithSearchPane;
 
 /**
- * Le contrôleur de la barre de recherche 
+ * Le contrôleur de la barre de recherche
+ * @param <T> Le type des élements de la liste. 
  */
 public class ControleurRechercheList<T extends RecherchableInterface> implements EventHandler<KeyEvent> {
     /** La scène de la pane */

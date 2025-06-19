@@ -21,6 +21,7 @@ import vue._components.BaseListElementsWithSearchPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.numberField.NumberFieldDisableButton;
 
+/** Pane pour l'affichage du stock magasin */
 public class AdminMagasinsStockPane extends BaseListElementsWithSearchPane<Livre> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;

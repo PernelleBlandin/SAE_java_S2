@@ -7,6 +7,7 @@ import vue._components.BaseListElementsPane;
 
 /**
  * Le contrôleur des boutons de navigations dans la liste des élements.
+ * @param <T> Le type des élements de la liste.
  */
 public class ControleurNavigation<T> implements EventHandler<ActionEvent> {
     /** Une pane contenant la liste des élements affichés */

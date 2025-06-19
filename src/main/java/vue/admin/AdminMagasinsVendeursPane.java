@@ -85,7 +85,7 @@ public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Ve
      * @return La VBox contenant la liste des "cartes" des vendeurs.
      */
     public BorderPane getElementComponent(Vendeur vendeur) {
-        Image imgPoubelle = new Image("/images/trashcan.png");
+        Image imgPoubelle = new Image(getClass().getResource("/images/trashcan.png").toExternalForm());
         ImageView viewPoubelle = new ImageView(imgPoubelle);
         viewPoubelle.setFitHeight(35);
         viewPoubelle.setFitWidth(35);

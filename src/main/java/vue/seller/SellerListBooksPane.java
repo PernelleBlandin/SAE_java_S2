@@ -32,6 +32,14 @@ public class SellerListBooksPane extends BaseListBooksPane {
     }
 
     /**
+      * Définir la liste des livres à afficher.
+      * @param listeLivres La nouvelle liste de livres.
+      */
+     public void setListeLivres(List<Livre> listeLivres) {
+         this.listeLivres = listeLivres;
+     }
+
+    /**
      * Obtenir le titre et le bouton retour de la pane.
      * @return Le BorderPane contenant ses deux informations.
      */

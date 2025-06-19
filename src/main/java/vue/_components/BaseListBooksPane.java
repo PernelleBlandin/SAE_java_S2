@@ -19,7 +19,7 @@ public abstract class BaseListBooksPane extends VBox {
     /** Le titre de la liste à afficher à l'utilisateur */
     private String titre;
     /** La liste des livres */
-    private List<Livre> listeLivres;
+    protected List<Livre> listeLivres;
 
     /** La page actuelle */
     private int curPage;

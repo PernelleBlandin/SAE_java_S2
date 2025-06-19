@@ -125,13 +125,15 @@ public class SellerScene implements SceneListBooksInterface {
         this.homePane.miseAJourAffichage();
         this.root.setCenter(this.homePane);
     }
-    
-    // /**
-    //  * Recharger totalement les données de la page d'accueil du client et changer la fenêtre.
-    //  */
-    // public void reloadHome() {
-    //     this.homePane = new CustomerHomePane(this, this.modele);
-    //     this.root.setCenter(this.homePane);
+
+    public void showAddBook() {
+        SellerAddBookPane sellerAddBookPane = new SellerAddBookPane(this.modele);
+        this.root.setCenter(sellerAddBookPane);
+    }
+
+    // public void showDeleteBook() {
+    //     SellerDeleteBookPane sellerDeleteBookPane = new SellerDeleteBookPane(this, this.modele);
+    //     this.root.setCenter(sellerDeleteBookPane);
     // }
 
     /**

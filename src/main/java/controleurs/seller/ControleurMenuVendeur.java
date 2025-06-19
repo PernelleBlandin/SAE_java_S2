@@ -30,11 +30,11 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
         String label = bouton.getText();
         switch (label) {
             case "Ajouter un livre": {
-                // this.sellerScene.showAddBookSeller();
+                this.sellerScene.showAddBook();
                 break;
             }
             case "Supprimer un livre":{
-                // this.app.showDeleteBookSeller();
+                this.sellerScene.showRemoveBook();
                 break;
             }
             case "Mettre à jour la quantité d'un livre": {

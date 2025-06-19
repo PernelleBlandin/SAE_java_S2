@@ -28,6 +28,8 @@ public class SellerViewAsCustomerPane extends BaseListElementsWithSearchPane<Cli
      * Initialiser la pane affichant la liste des clients à afficher au vendeur.
      * @param listeClients La liste des clients.
      * @param sellerScene La scène de la page vendeur.
+     * @param appIHM L'application principale.
+     * @param modele Le modèle de la librairie.
      */
     public SellerViewAsCustomerPane(List<Client> listeClients, SellerScene sellerScene, AppIHM appIHM, ChaineLibrairie modele) {
         super("Liste des clients", listeClients, 6, 1, "Rechercher un client...");

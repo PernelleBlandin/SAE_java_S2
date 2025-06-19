@@ -20,6 +20,12 @@ public class ControleurValiderAjouteMagasin implements EventHandler<ActionEvent>
     /** La pane pour les demandes d'informations sur le magasin */
     private AdminDemandeInfoMagasinPane demandeInfoMagasinPane;
 
+    /**
+     * Initialiser le contrôleur pour valider l'ajout d'un magasin.
+     * @param adminScene La scène de la page administrateur.
+     * @param modele Le modèle de la librairie. 
+     * @param demandeInfoMagasinPane La pane pour les demandes d'informations sur le magasin.
+     */
     public ControleurValiderAjouteMagasin(AdminScene adminScene, ChaineLibrairie modele, AdminDemandeInfoMagasinPane demandeInfoMagasinPane) {
         this.adminScene = adminScene;
         this.modele = modele;

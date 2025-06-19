@@ -174,8 +174,6 @@ public class AdminScene implements SceneGestionStockInterface {
 
     /**
      * Afficher la page pour gérer les demandes d'informations un magasin pour le créer.
-     * 
-     * @param magasin Un magasin
      */
     public void showDemandeInfoMagasin() {
         AdminDemandeInfoMagasinPane demandeInfoVendeurPane = new AdminDemandeInfoMagasinPane(this, this.modele);

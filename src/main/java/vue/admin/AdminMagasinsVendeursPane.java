@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonAjouteVendeur;
 import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.admin.ControleurBoutonSupprimerMagasinVendeur;
 import javafx.geometry.Insets;

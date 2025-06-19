@@ -142,7 +142,7 @@ public class AdminMagasinsStockPane extends VBox {
 
     private Button ajouterMagasin() {
         Button btnAjouterMagasin = new Button("Ajouter un nouveau Magasin");
-        btnAjouterMagasin.setOnAction(new )
+        // btnAjouterMagasin.setOnAction(new )
         return btnAjouterMagasin;
     }
 

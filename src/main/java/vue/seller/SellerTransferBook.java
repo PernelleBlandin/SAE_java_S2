@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.customers.ControleurChangerMagasin;
+import controleurs.seller.ControleurChangerMagasinSeller;
 import controleurs.seller.ControleurValiderAjoutLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -13,8 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
+import modeles.Client;
 import modeles.Magasin;
+import modeles.Vendeur;
 import vue._components.alerts.AlertErreurException;
 import vue._components.numberField.NumberField;
 
@@ -23,6 +29,8 @@ public class SellerTransferBook extends VBox{
     private TextField titreLivre;
     private TextField qte;
 
+    private SellerScene sellerScene;
+
 
 
     public SellerTransferBook(ChaineLibrairie modele) {
@@ -30,40 +38,76 @@ public class SellerTransferBook extends VBox{
         this.titreLivre = new TextField();
         this.qte= new TextField(getAccessibleText());
 
-        this.getChildren().addAll(this.getCenter(),this.getComboBox());
+        this.getChildren().addAll(this.getCenter());
 
 
     }
 
-    public ComboBox<String> getComboBox(){
-        ComboBox<String> comboBoxChoixMag = new ComboBox<>();
+    /** TODO refaire docs
+     * Obtenir la liste des magasins, avec un titre et un combo-box pour le changer.
+     * @param client Un client.
+     * @return La liste des magasins et le titre de la VBox.
+     */
+    private VBox getMagasinsList(Vendeur vendeur) {
+        VBox magasinsVBox = new VBox();
+        magasinsVBox.setSpacing(10);
 
+        // Label
+        Label magasinLabel = new Label("Votre magasin");
+        magasinLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+
+        // Combo-box avec liste magasin
         List<Magasin> listeMagasins = new ArrayList<>();
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les magasins.", e.getMessage());
+            new AlertErreurException("La liste des magasins n'a pas pu être récupérée.", e.getMessage());
         }
 
-        for (Magasin magasin : listeMagasins) {
-            comboBoxChoixMag.getItems().add(magasin.getNom());
-        }
-    return comboBoxChoixMag;
+        ComboBox<Magasin> magasinComboBox = new ComboBox<>();
+        magasinComboBox.getItems().addAll(listeMagasins);
+        magasinComboBox.setValue(vendeur.getMagasin());
+        magasinComboBox.setMaxWidth(Double.MAX_VALUE);
+
+        magasinComboBox.setOnAction(new ControleurChangerMagasinSeller(this.sellerScene, this.modele));
+
+        magasinsVBox.getChildren().addAll(magasinLabel, magasinComboBox);
+        return magasinsVBox;
     }
+
+    // public ComboBox<String> getComboBox(){
+    //     ComboBox<String> comboBoxChoixMag = new ComboBox<>();
+
+    //     List<Magasin> listeMagasins = new ArrayList<>();
+    //     try {
+    //         listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
+    //     } catch (SQLException e) {
+    //         new AlertErreurException("Impossible de récupérer les magasins.", e.getMessage());
+    //     }
+
+    //     for (Magasin magasin : listeMagasins) {
+    //         comboBoxChoixMag.getItems().add(magasin.getNom());
+    //     }
+    // return comboBoxChoixMag;
+    // }
 
     public VBox getCenter(){
         VBox vBox = new VBox();
+
         Label titre = new Label("Titre");
+        VBox vboxTitre = new VBox();
+        vboxTitre.getChildren().addAll(titre, this.titreLivre);
 
         Label quantite= new Label("Quantité");
+        VBox vBoxQte= new VBox();
+        vBoxQte.getChildren().addAll(quantite, this.qte);
 
         HBox hboxChamp= new HBox();
-        hboxChamp.getChildren().addAll(this.titreLivre, this.qte);
-        
+
+        hboxChamp.getChildren().addAll(vboxTitre, vBoxQte);
 
         Label madDest= new Label("Magasin de destination");
-        
-        vBox.getChildren().addAll(titre, qte, hboxChamp, this.getComboBox());
+        vBox.getChildren().addAll(hboxChamp,madDest, this.getMagasinsList(null));
         return vBox;
     }
 }

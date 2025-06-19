@@ -30,6 +30,8 @@ public class SellerTransferBook extends VBox{
         this.titreLivre = new TextField();
         this.qte= new TextField(getAccessibleText());
 
+        this.getChildren().add(this.getComboBox());
+
 
     }
 
@@ -40,7 +42,7 @@ public class SellerTransferBook extends VBox{
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les magasins.", e);
+            new AlertErreurException("Impossible de récupérer les magasins.", e.getMessage());
         }
 
         for (Magasin magasin : listeMagasins) {

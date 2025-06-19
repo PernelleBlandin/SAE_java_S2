@@ -3,20 +3,20 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 
 /**
  * Le contrôleur des boutons de navigations dans la liste de livres.
  */
 public class ControleurNavigation implements EventHandler<ActionEvent> {
     /** Une pane contenant la liste des livres affiché */
-    private BaseListBooksPane listBookPane;
+    private BaseListElementsPane listBookPane;
 
     /**
      * Initialiser le contrôleur des boutons de navigations sur le composant des liste de livres.
      * @param listBooksPane Le composant de la liste des livres.
      */
-    public ControleurNavigation(BaseListBooksPane listBooksPane) {
+    public ControleurNavigation(BaseListElementsPane listBooksPane) {
         this.listBookPane = listBooksPane;
     }
 

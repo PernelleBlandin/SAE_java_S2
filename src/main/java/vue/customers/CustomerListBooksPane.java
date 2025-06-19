@@ -5,13 +5,13 @@ import java.util.List;
 import controleurs.ControleurAcceuil;
 import javafx.scene.layout.BorderPane;
 import modeles.Livre;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 import vue._components.TitleAndBackButtonPane;
 
 /**
  * Pane de la liste des livres à afficher au client.
  */
-public class CustomerListBooksPane extends BaseListBooksPane<Livre> {
+public class CustomerListBooksPane extends BaseListElementsPane<Livre> {
     /** La scène de la page client */
     private CustomerScene customerScene;
 

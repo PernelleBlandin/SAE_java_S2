@@ -109,14 +109,14 @@ public class SellerDeleteBookListPane extends BaseListBooksPane {
         try {
             quantiteStock = this.modele.getMagasinBD().obtenirStockLivre(vendeur.getMagasin().getId(), livre.getISBN());
         } catch (SQLException e) {
-            new AlertErreurException("Le stock dans le magasin n'a pas pu être récupéré.", e);
+            new AlertErreurException("Le stock dans le magasin n'a pas pu être récupéré.", e.getMessage());
         }
 
         int nbVentes = 0;
         try {
             nbVentes = this.modele.getLivreBD().getNombreVentesLivreMagasin(livre.getISBN(), magasin.getId());
         } catch (SQLException e) {
-            new AlertErreurException("Le nombre de ventes du livre n'a pas pu être récupéré.", e);
+            new AlertErreurException("Le nombre de ventes du livre n'a pas pu être récupéré.", e.getMessage());
         }
 
         SellerBookRemoveCardComponent bookCard = new SellerBookRemoveCardComponent(livre, quantiteStock, nbVentes, this, this.modele);

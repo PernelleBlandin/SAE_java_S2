@@ -47,7 +47,7 @@ public class ControleurRetirerLivrePanier implements EventHandler<ActionEvent> {
 
             this.customerPanierView.miseAJourAffichage();
         } catch (SQLException e) {
-            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e);
+            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e.getMessage());
             return;
         } catch (LivreIntrouvableException e) {
             new AlertErreur("Le livre n'a pas pu être trouvé dans le panier.");

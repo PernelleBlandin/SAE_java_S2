@@ -126,7 +126,7 @@ public class AdminStatsPane extends VBox {
             }
 
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
         }
         return barChartNbLivresParMagasin;
     }
@@ -142,7 +142,7 @@ public class AdminStatsPane extends VBox {
                 pieChartParTheme.getData().add(categorie);
             }
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
         }
         return pieChartParTheme;
     }
@@ -172,7 +172,7 @@ public class AdminStatsPane extends VBox {
                 areaChartCAParMoisParMagasin.getData().add(serie);
             }
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
         }
         return areaChartCAParMoisParMagasin;
     }
@@ -207,7 +207,7 @@ public class AdminStatsPane extends VBox {
             }
             barChartTopDix.getData().add(series4);
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
         }
         return barChartTopDix;
     }
@@ -226,7 +226,7 @@ public class AdminStatsPane extends VBox {
             }
             // pieChartParTheme.setLegendSide(side.RIGHT);
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
         }
         return pieChartGosciny;
     }
@@ -248,7 +248,7 @@ public class AdminStatsPane extends VBox {
                 Tooltip.install(dataStock.getNode(), tooltip);
             }
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les données.", e);
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
 
         }
         return pieChartValStockMag;

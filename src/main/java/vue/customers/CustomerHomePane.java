@@ -71,7 +71,7 @@ public class CustomerHomePane extends VBox {
         try {
             this.recommendedLivres = this.modele.onVousRecommande(client);
         } catch (SQLException e) {
-            new AlertErreurException("La liste des livres recommendés n'a pas pu être recupérée.", e);
+            new AlertErreurException("La liste des livres recommendés n'a pas pu être recupérée.", e.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public class CustomerHomePane extends VBox {
         try {
             this.meilleursVentesLivres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
         } catch (SQLException e) {
-            new AlertErreurException("La liste des meilleures ventes n'a pas pu être recupérée.", e);
+            new AlertErreurException("La liste des meilleures ventes n'a pas pu être recupérée.", e.getMessage());
         }
     }
 
@@ -119,7 +119,7 @@ public class CustomerHomePane extends VBox {
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            new AlertErreurException("La liste des magasins n'a pas pu être récupérée.", e);
+            new AlertErreurException("La liste des magasins n'a pas pu être récupérée.", e.getMessage());
         }
 
         ComboBox<Magasin> magasinComboBox = new ComboBox<>();

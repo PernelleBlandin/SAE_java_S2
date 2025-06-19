@@ -63,7 +63,7 @@ public class ControleurChangerMagasin implements EventHandler<ActionEvent> {
             this.modele.getPanierBD().changerMagasin(panier);
             this.modele.getClientBD().changerMagasin(client.getId(), magasinChoisi.getId());
         } catch (SQLException e) {
-            new AlertErreurException("Le changement de magasin n'a pas pu être effectuée.", e);
+            new AlertErreurException("Le changement de magasin n'a pas pu être effectuée.", e.getMessage());
             return;
         }
 

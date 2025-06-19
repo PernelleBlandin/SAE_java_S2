@@ -6,6 +6,7 @@ import java.util.List;
 
 import controleurs.admin.ControleurBoutonMagasinStock;
 import controleurs.admin.ControleurBoutonMagasinVendeur;
+import controleurs.admin.ControleurBoutonSupprimerMagasin;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -66,7 +67,7 @@ public class AdminMagasinsPane extends VBox {
         try {
             listeMagasins = this.modele.getMagasinBD().obtenirListeMagasin();
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les magasins.", e);
+            new AlertErreurException("Impossible de récupérer les magasins.", e.getMessage());
         }
 
         for (Magasin magasin : listeMagasins) {
@@ -98,7 +99,7 @@ public class AdminMagasinsPane extends VBox {
             // Supprimer
             Button btnSupprimerMag = new Button();
             btnSupprimerMag.setGraphic(viewPoubelle);
-            // TODO: Contrôleur
+            btnSupprimerMag.setOnAction(new ControleurBoutonSupprimerMagasin(this.adminScene, this.modele, magasin));
 
             lesBtn.getChildren().addAll(btnVendeursDuMag, btnStock, btnSupprimerMag);
 

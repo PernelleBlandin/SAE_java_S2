@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonEnregistrerStock;
 import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.customers.ControleurInfoLivre;
 import javafx.geometry.Insets;
@@ -79,7 +80,7 @@ public class AdminMagasinsStockPane extends VBox {
         try {
             listeLivres = this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les livres.", e);
+            new AlertErreurException("Impossible de récupérer les livres.", e.getMessage());
         }
 
         for (Livre livre: listeLivres) {
@@ -104,9 +105,16 @@ public class AdminMagasinsStockPane extends VBox {
 
             // Number Input
 
-            NumberFieldDisableButton majNbExemplaire = new NumberFieldDisableButton(btnSauvegarde);
+            int currentStock = 0;
+            try {
+                currentStock = this.modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+            } catch (SQLException e) {
+                // On ignore
+            }
+
+            NumberFieldDisableButton majNbExemplaire = new NumberFieldDisableButton(btnSauvegarde, currentStock);
             majNbExemplaire.setPrefHeight(35);
-            majNbExemplaire.setPromptText("Future quantité totale");
+            majNbExemplaire.setPromptText("Quantité");
 
             BorderPane ligneLivre = new BorderPane();
             Label leLivre = new Label(livre.getTitre() + " - " + livre.joinNomAuteurs());
@@ -114,7 +122,7 @@ public class AdminMagasinsStockPane extends VBox {
 
             lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
-            // btnSauveNouveauStock.setOnAction(new ControleurSauveNouveauStock());
+            btnSauvegarde.setOnAction(new ControleurBoutonEnregistrerStock(this.adminScene, this.modele, magasin, livre, majNbExemplaire));
 
             ligneLivre.setLeft(leLivre);
             ligneLivre.setRight(lesBtn);

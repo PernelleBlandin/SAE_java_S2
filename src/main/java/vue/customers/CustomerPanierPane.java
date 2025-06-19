@@ -180,7 +180,7 @@ public class CustomerPanierPane extends VBox {
         RadioButton radioButtonMagasin = new RadioButton("En magasin");
         radioButtonMagasin.setToggleGroup(toggleGroupLivraison);
 
-        RadioButton radioButtonLivraison = new RadioButton("En livraison");
+        RadioButton radioButtonLivraison = new RadioButton("A domicile");
         radioButtonLivraison.setToggleGroup(toggleGroupLivraison);
 
         hboxModeLivraison.getChildren().addAll(radioButtonMagasin,radioButtonLivraison);

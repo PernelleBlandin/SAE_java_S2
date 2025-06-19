@@ -1,13 +1,17 @@
 package vue.admin;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.bouncycastle.jcajce.provider.asymmetric.dsa.DSASigner.dsaRMD160;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -42,22 +46,44 @@ public class FenetreStat extends BorderPane {
 
     //1)BarChart Map<String, Map<Integer, Integer>> getNbLivresParMagasinParAn()
     // BarChart
-        // CategoryAxis xAxis = new CategoryAxis();
-        // NumberAxis yAxis= new NumberAxis();
+    public BarChart graphNbLivresParMagasinParAn(){
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis= new NumberAxis();
 
+        BarChart <String, Number> barChartNbLivresParMagasin= new BarChart<>(xAxis, yAxis);
+        barChartNbLivresParMagasin.setTitle("Nombre de livre vendus par magasin");
+        try{
+        Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
+        
+        Set<Integer> annee= new HashSet<>();
+        for(Map<Integer, Integer> dataAnnee: dataBar.values()){
+            annee.addAll(dataAnnee.keySet());
+        }
 
-        // XYChart.Series series= new XYChart.Series<>();
-        // Map<String, Map<Integer, Integer>> dataBar = modele.getStatistiquesBD().getNbLivresParMagasinParAn();
-        // for(String key: dataBar.keySet()){
-        //    series.getData().add(new XYChart.Data("key",  dataBar.get(key)) {
+        for (Integer an: annee){
+            XYChart.Series<String, Number> serieParAn = new XYChart.Series<>();
+            serieParAn.setName(String.valueOf(an));
+
+            for (String magasin: dataBar.keySet()){
+                Map<Integer, Integer> venteParAn= dataBar.get(magasin);
+                if(venteParAn.containsKey(an)){
+                    int nbLivre= venteParAn.get(an);
+                    serieParAn.getData().add(new XYChart.Data<>(magasin, nbLivre));
+                }
+            }
+        
+            barChartNbLivresParMagasin.getData().add(serieParAn);
+    }   
            
-        //    })
-        // }
-
-
-        // BarChart <String, Number> barChart= new BarChart<>(xAxis, yAxis);
-
-
+        
+        }catch (SQLException e){
+            // TODO: handle exception
+           
+        }return barChartNbLivresParMagasin;
+        
+    }    
+    
+    
     public PieChart graphCA2024ParTheme() {
     //2)PieChart
         PieChart pieChartParTheme= new PieChart();
@@ -80,6 +106,10 @@ public class FenetreStat extends BorderPane {
 
 
     //    AreaChart
+    public AreaChart graphEvolutionCAParMoisParMagasin2024(){
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis= new NumberAxis();
+    }
         // AreaChart areaChartCAParChart = new AreaChart();
 
 
@@ -169,7 +199,8 @@ public class FenetreStat extends BorderPane {
         }return pieChartValStockMag;
 
     }
-    //8)  LineChart Map<String, Double>> getEvolutionCATotalParClient()
+    //8)  LineChart Map<Integer, Map<String, Double>> getEvolutionCATotalParClient()
+
     //
     public VBox fenetreStat() {
     
@@ -195,7 +226,7 @@ public class FenetreStat extends BorderPane {
             if (valCombo != null) {
                 switch (valCombo) {
                     case "Nombre de livres vendus par magasin":
-                        //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                        afficheChart.getChildren().setAll(graphNbLivresParMagasinParAn());
                         break;
                     case "CA 2024 par thème":
                         afficheChart.getChildren().setAll(graphCA2024ParTheme());

@@ -50,7 +50,8 @@ public class AdminMagasinsStockPane extends VBox {
         this.getChildren().addAll(
             this.titre(), 
             this.barreRecherche(), 
-            this.listeLivres()
+            this.listeLivres(),
+            this.ajouterMagasin()
         );
     }
 
@@ -138,4 +139,11 @@ public class AdminMagasinsStockPane extends VBox {
 
         return laListe;
     }
+
+    private Button ajouterMagasin() {
+        Button btnAjouterMagasin = new Button("Ajouter un nouveau Magasin");
+        btnAjouterMagasin.setOnAction(new )
+        return btnAjouterMagasin;
+    }
+
 }

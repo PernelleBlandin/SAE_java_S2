@@ -30,7 +30,7 @@ public class SellerTransferBook extends VBox{
         this.titreLivre = new TextField();
         this.qte= new TextField(getAccessibleText());
 
-        this.getChildren().add(this.getComboBox());
+        this.getChildren().addAll(this.getCenter(),this.getComboBox());
 
 
     }

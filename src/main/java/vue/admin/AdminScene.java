@@ -1,5 +1,6 @@
 package vue.admin;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,9 +20,11 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
+import modeles.Vendeur;
 import vue.AppIHM;
 import vue.SceneInterface;
 import vue._components.MenuAsidePane;
+import vue._components.alerts.AlertErreurException;
 
 /** La scène pour la page administrateur */
 public class AdminScene implements SceneInterface {
@@ -117,7 +120,15 @@ public class AdminScene implements SceneInterface {
      * Afficher la page pour afficher les magasins.
      */
     public void showMagasins() {
-        AdminMagasinsPane magasinsPane = new AdminMagasinsPane(this, this.modele);
+        List<Magasin> magasins = new ArrayList<>();  
+        try {
+            magasins = this.modele.getMagasinBD().obtenirListeMagasin();
+        } catch (SQLException e) {
+            new AlertErreurException("Impossible de récupérer la liste des magasins", e.getMessage());
+            return;
+        }  
+
+        AdminMagasinsPane magasinsPane = new AdminMagasinsPane(magasins, this, this.modele);
         this.root.setCenter(magasinsPane);
     }
 
@@ -127,7 +138,15 @@ public class AdminScene implements SceneInterface {
      * @param magasin Un magasin
      */
     public void showVendeurs(Magasin magasin) {
-        AdminMagasinsVendeursPane vendeursPane = new AdminMagasinsVendeursPane(this, this.modele, magasin);
+        List<Vendeur> listeVendeurs = new ArrayList<>();
+        try {
+            listeVendeurs = this.modele.getVendeurBD().obtenirListeVendeurParMagasin(magasin.getId());
+        } catch (Exception e) {
+            new AlertErreurException("Erreur lors de la récupération des vendeurs du magasin.", e.getMessage());
+            return;
+        }
+
+        AdminMagasinsVendeursPane vendeursPane = new AdminMagasinsVendeursPane(listeVendeurs, this, this.modele, magasin);
         this.root.setCenter(vendeursPane);
     }
 
@@ -138,7 +157,7 @@ public class AdminScene implements SceneInterface {
      * @param magasin Un magasin
      */
     public void showStock(List<Livre> listeLivres, Magasin magasin) {
-        AdminMagasinsStockPane stockPane = new AdminMagasinsStockPane("Livre en stock", listeLivres, 6, this, this.modele, magasin);
+        AdminMagasinsStockPane stockPane = new AdminMagasinsStockPane(listeLivres, 6, this, this.modele, magasin);
         this.root.setCenter(stockPane);
     }
 

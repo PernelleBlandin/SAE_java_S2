@@ -1,6 +1,6 @@
 package modeles;
 /** Un magasin de la chaîne de librairie */
-public class Magasin {
+public class Magasin implements RecherchableInterface {
     private String id;
     private String nom;
     private String ville; 
@@ -39,6 +39,24 @@ public class Magasin {
      */
     public String getVille() {
         return this.ville;
+    }
+
+    /**
+     * Indique si un magasin est inclu dans une recherche donnée.
+     * @param recherche Une recherche utilisateur.
+     * @return true si le magasin est inclu dans la recherche donnée, sinon false.
+     */
+    public boolean estIncluDansRecherche(String recherche) {
+        String nomMagasin = this.getNom().toLowerCase();
+        String villeMagasin = this.getVille().toLowerCase();
+
+        String[] mots = recherche.toLowerCase().split(" ");
+        for (String mot: mots) {
+            if (!(nomMagasin.contains(mot) || villeMagasin.contains(mot))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

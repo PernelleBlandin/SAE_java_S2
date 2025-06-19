@@ -62,7 +62,7 @@ public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
     }
 
-    public SellerBookRemoveCardComponent getBookComponent(Livre livre) {
+    public SellerBookRemoveCardComponent getElementComponent(Livre livre) {
         Vendeur vendeur = this.modele.getVendeurActuel();
         Magasin magasin = vendeur.getMagasin();
 

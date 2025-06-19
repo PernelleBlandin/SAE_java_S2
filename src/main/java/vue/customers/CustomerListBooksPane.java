@@ -36,7 +36,7 @@ public class CustomerListBooksPane extends BaseListElementsPane<Livre> {
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.customerScene));
     }
 
-    public BorderPane getBookComponent(Livre livre) {
+    public BorderPane getElementComponent(Livre livre) {
         return this.customerScene.createOrGetCardComponent(livre);
     }
 }

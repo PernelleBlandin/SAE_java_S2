@@ -14,14 +14,13 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import modeles.Livre;
 
 /** Base de la liste de livres à afficher */
-public abstract class BaseListBooksPane extends VBox {
+public abstract class BaseListBooksPane<T> extends VBox {
     /** Le titre de la liste à afficher à l'utilisateur */
     private String titre;
     /** La liste des livres */
-    protected List<Livre> listeLivres;
+    protected List<T> listeElements;
 
     /** La page actuelle */
     private int curPage;
@@ -31,15 +30,15 @@ public abstract class BaseListBooksPane extends VBox {
     protected int nbColonnes;
 
     /**
-     * Initialiser la base de la liste des livres à afficher.
+     * Initialiser la base de la liste des élements à afficher.
      * @param titre Le titre de la liste. 
-     * @param listeLivres La liste de livres à afficher.
+     * @param listeElements La liste de élements à afficher.
      * @param nbLignes Le nombre de lignes
      * @param nbColonnes Le nombre de colonnes
      */
-    public BaseListBooksPane(String titre, List<Livre> listeLivres, int nbLignes, int nbColonnes) {
+    public BaseListBooksPane(String titre, List<T> listeElements, int nbLignes, int nbColonnes) {
         this.titre = titre;
-        this.listeLivres = listeLivres;
+        this.listeElements = listeElements;
 
         this.curPage = 0;
         this.nbLignes = nbLignes;
@@ -55,7 +54,7 @@ public abstract class BaseListBooksPane extends VBox {
     public void addComponents() {
         this.getChildren().addAll(
             this.getHeaderPane(),
-            this.listeLivres.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
+            this.listeElements.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
             this.getNavigationsBoutonsPane()
         );
     }
@@ -69,11 +68,11 @@ public abstract class BaseListBooksPane extends VBox {
     }
 
     /**
-     * Obtenir la liste des livres.
-     * @return La liste des livres donnés.
+     * Obtenir la liste des éléments.
+     * @return La liste des éléments donnés.
      */
-    public List<Livre> getListeLivres() {
-        return this.listeLivres;
+    public List<T> getListeElements() {
+        return this.listeElements;
     }
 
     /**
@@ -86,10 +85,10 @@ public abstract class BaseListBooksPane extends VBox {
 
     /**
      * Obtenir le composant de livre à afficher.
-     * @param livre Le livre à afficher.
+     * @param element L'élement à afficher.
      * @return La pane avec le livre à afficher.
      */
-    public abstract Pane getBookComponent(Livre livre);
+    public abstract Pane getBookComponent(T element);
 
     /**
      * Obtenir le header de la pane.
@@ -106,16 +105,16 @@ public abstract class BaseListBooksPane extends VBox {
         listeLivresVBox.setSpacing(20);
 
         int nbElementsParPage = this.getElementsParPage();
-        List<Livre> listeLivres = this.getListeLivres();
+        List<T> listeElements = this.getListeElements();
         for (int intLigne = 0; intLigne < nbLignes; intLigne++) {
             HBox hboxLigne = new HBox();
             hboxLigne.setSpacing(15);
 
             for (int intColonne = 0; intColonne < nbColonnes; intColonne++) {
                 int index = (nbElementsParPage * this.getCurPage()) + (intLigne * nbColonnes) + intColonne;
-                if (index >= listeLivres.size()) break;
+                if (index >= listeElements.size()) break;
 
-                Livre livre = listeLivres.get(index);
+                T livre = listeElements.get(index);
 
                 Pane card = this.getBookComponent(livre);
                 HBox.setHgrow(card, Priority.ALWAYS);
@@ -149,7 +148,7 @@ public abstract class BaseListBooksPane extends VBox {
     public HBox getNavigationsBoutonsPane() {
         HBox hboxBoutons = new HBox();
 
-        int maxPages = Math.ceilDiv(this.listeLivres.size(), this.nbColonnes * this.nbLignes);
+        int maxPages = Math.ceilDiv(this.listeElements.size(), this.nbColonnes * this.nbLignes);
 
         Button previousButton = new Button("Précédent");
         if (this.curPage == 0) previousButton.setDisable(true);
@@ -178,7 +177,7 @@ public abstract class BaseListBooksPane extends VBox {
      * Mettre à jour l'affichage de la liste.
      */
     public void miseAJourAffichage() {
-        this.getChildren().set(1, this.listeLivres.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox());
+        this.getChildren().set(1, this.listeElements.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox());
         this.getChildren().set(2, this.getNavigationsBoutonsPane());
     }
 

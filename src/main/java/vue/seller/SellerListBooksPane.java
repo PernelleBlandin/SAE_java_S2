@@ -11,7 +11,7 @@ import vue._components.TitleAndBackButtonPane;
 /**
  * Pane de la liste des livres à afficher au vendeur.
  */
-public class SellerListBooksPane extends BaseListBooksPane {
+public class SellerListBooksPane extends BaseListBooksPane<Livre> {
     /** La scène de la page vendeur */
     private SellerScene sellerScene;
 
@@ -33,7 +33,7 @@ public class SellerListBooksPane extends BaseListBooksPane {
     * @param listeLivres La nouvelle liste de livres.
     */
     public void setListeLivres(List<Livre> listeLivres) {
-        this.listeLivres = listeLivres;
+        this.listeElements = listeLivres;
     }
 
     /**

@@ -40,6 +40,10 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
 
         String label = bouton.getText();
         switch (label) {
+            case "Acceuil": {
+                this.sellerScene.showHome();
+                break;
+            }
             case "Ajouter un livre": {
                 this.sellerScene.showAddBook();
                 break;

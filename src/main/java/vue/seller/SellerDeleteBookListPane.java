@@ -3,25 +3,22 @@ package vue.seller;
 import java.sql.SQLException;
 import java.util.List;
 
-import controleurs.ControleurAcceuil;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
-import vue._components.BaseListElementsPane;
-import vue._components.TitleAndBackButtonPane;
+import vue._components.BaseListElementsWithSearchPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookRemoveCardComponent;
 
 /**
  * La pane pour afficher la liste des livres à supprimer pour le vendeur.
  */
-public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
-    /** La scène de la page vendeur */
-    private SellerScene sellerScene;
+public class SellerDeleteBookListPane extends BaseListElementsWithSearchPane<Livre> {
     /** Le modèle */
     private ChaineLibrairie modele;
 
@@ -31,17 +28,12 @@ public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
      * @param sellerScene La scène de la page vendeur.
      * @param modele Le modèle
      */
-    public SellerDeleteBookListPane(List<Livre> listeLivres, SellerScene sellerScene, ChaineLibrairie modele) {
-        super("Supprimer des livres", listeLivres, 2, 3);
+    public SellerDeleteBookListPane(List<Livre> listeLivres, ChaineLibrairie modele) {
+        super("Supprimer des livres", listeLivres, 2, 3, "Rechercher un livre à supprimer...");
         
-        this.sellerScene = sellerScene;
         this.modele = modele;
 
-        this.setSpacing(30);
-        this.setAlignment(Pos.TOP_CENTER);
-        this.setPadding(new Insets(60, 40, 40, 40));
-
-        this.getChildren().add(this.getListeLivresPane());
+        this.addComponents();
     }
 
     /**
@@ -53,18 +45,15 @@ public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
     }
 
     /**
-     * Mettre à jour l'affichage de la page.
-     */
-    public void miseAJourAffichage() {
-        this.getChildren().set(0, this.getListeLivresPane());
-    }
-
-    /**
-     * Obtenir le titre et le bouton retour de la pane.
+     * Obtenir le titre.
      * @return Le BorderPane contenant ses deux informations.
      */
-    public BorderPane getHeaderPane() {
-        return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
+    public Label getHeaderPane() {
+        Label headerLabel = new Label(this.getTitre());
+        headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        headerLabel.setMaxWidth(Double.MAX_VALUE);
+        headerLabel.setAlignment(Pos.CENTER);
+        return headerLabel;
     }
 
     /**

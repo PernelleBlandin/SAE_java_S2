@@ -29,6 +29,7 @@ import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookInfoCardComponent;
+
 /** La scène du client */
 public class SellerScene implements SceneListBooksInterface {
     /** La vue principale */
@@ -72,6 +73,7 @@ public class SellerScene implements SceneListBooksInterface {
         this.root.setCenter(this.homePane);
 
         List<String> nomsMenu = new ArrayList<>(Arrays.asList(
+            "Accueil",
             "Ajouter un livre",
             "Supprimer un livre",
             "Mettre à jour la quantité d'un livre",
@@ -139,7 +141,7 @@ public class SellerScene implements SceneListBooksInterface {
      * @param listeLivres La liste des livres.
      */
     public void showDeleteBook(List<Livre> listeLivres) {
-        SellerDeleteBookListPane sellerDeleteBookPane = new SellerDeleteBookListPane(listeLivres, this, this.modele);
+        SellerDeleteBookListPane sellerDeleteBookPane = new SellerDeleteBookListPane(listeLivres, this.modele);
         this.root.setCenter(sellerDeleteBookPane);
     }
 

@@ -13,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import modeles.Vendeur;
@@ -77,7 +79,11 @@ public class AdminMagasinsVendeursPane extends VBox {
             viewPoubelle.setFitWidth(35);
 
             BorderPane ligneVendeur = new BorderPane();
+            ligneVendeur.setPadding(new Insets(10, 10, 10, 10));
+            ligneVendeur.setStyle("-fx-border-color: black; -fx-border-width: 2px;");
+
             Label leVendeur = new Label(vendeur.toString());
+            leVendeur.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
             Button btnSupprimerVendeur = new Button();
             btnSupprimerVendeur.setGraphic(viewPoubelle);

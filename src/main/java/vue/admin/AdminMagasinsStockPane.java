@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
@@ -113,13 +115,17 @@ public class AdminMagasinsStockPane extends VBox {
             }
 
             NumberFieldDisableButton majNbExemplaire = new NumberFieldDisableButton(btnSauvegarde, currentStock);
-            majNbExemplaire.setPrefHeight(35);
+            majNbExemplaire.setPrefHeight(40);
             majNbExemplaire.setPromptText("Quantité");
 
             BorderPane ligneLivre = new BorderPane();
-            Label leLivre = new Label(livre.getTitre() + " - " + livre.joinNomAuteurs());
-            HBox lesBtn = new HBox(10);
+            ligneLivre.setPadding(new Insets(5));
+            ligneLivre.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
 
+            Label leLivre = new Label(livre.getTitre() + " - " + livre.joinNomAuteurs());
+            leLivre.setFont(Font.font("Arial", FontWeight.NORMAL, 11));
+            
+            HBox lesBtn = new HBox(10);
             lesBtn.getChildren().addAll(btnInfo, majNbExemplaire, btnSauvegarde);
 
             btnSauvegarde.setOnAction(new ControleurBoutonEnregistrerStock(this.adminScene, this.modele, magasin, livre, majNbExemplaire));

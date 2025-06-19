@@ -11,19 +11,20 @@ import javafx.scene.control.ButtonType;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
+import vue.SceneGestionStockInterface;
 import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertInfo;
 import vue._components.alerts.AlertYesNo;
 import vue._components.numberField.NumberField;
-import vue.admin.AdminScene;
 
 /**
- * Contrôleur du bouton "Enregistrer Stock" pour modifier le stock d'un livre dans un magasin.
+ * Contrôleur du bouton "Enregistrer Stock" pour modifier le stock d'un livre
+ * dans un magasin.
  */
 public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEvent> {
-    /** La scène de la page administrateur */
-    private AdminScene adminScene;
+    /** La scène de gestion de stocks */
+    private SceneGestionStockInterface scene;
     /** Le modèle */
     private ChaineLibrairie modele;
     /** Le magasin */
@@ -36,15 +37,15 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
     /**
      * Initialiser le contrôleur du bouton "Enregistrer Stock".
      * 
-     * @param adminScene  La scène de la page administrateur
+     * @param scene       La scène de la page de gestions de stocks
      * @param modele      Le modèle de données
      * @param magasin     Le magasin dans lequel le stock est modifié
      * @param livre       Le livre dont le stock est modifié
      * @param numberField Le champ de saisie du stock
      */
-    public ControleurBoutonEnregistrerStock(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin, Livre livre,
+    public ControleurBoutonEnregistrerStock(SceneGestionStockInterface scene, ChaineLibrairie modele, Magasin magasin, Livre livre,
             NumberField numberField) {
-        this.adminScene = adminScene;
+        this.scene = scene;
         this.modele = modele;
         this.magasin = magasin;
         this.livre = livre;
@@ -70,7 +71,8 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
             return;
 
         try {
-            this.modele.getMagasinBD().setStockLivre(this.magasin.getId(), this.livre.getISBN(), this.numberField.getValeur());
+            this.modele.getMagasinBD().setStockLivre(this.magasin.getId(), this.livre.getISBN(),
+                    this.numberField.getValeur());
         } catch (SQLException e) {
             new AlertErreur("Le magasin contient des vendeurs, stocks, ou commandes, et ne peut pas être supprimé.");
         }
@@ -86,6 +88,6 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
             return;
         }
 
-        this.adminScene.showStock(livres, this.magasin);
+        this.scene.showStock(livres, this.magasin);
     }
 }

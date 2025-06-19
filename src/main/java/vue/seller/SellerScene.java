@@ -24,6 +24,7 @@ import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
+import vue.SceneGestionStockInterface;
 import vue.SceneListBooksInterface;
 import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
@@ -31,7 +32,7 @@ import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookInfoCardComponent;
 
 /** La scène du client */
-public class SellerScene implements SceneListBooksInterface {
+public class SellerScene implements SceneListBooksInterface, SceneGestionStockInterface {
     /** La vue principale */
     private AppIHM app;
     /** Le modèle */
@@ -158,6 +159,17 @@ public class SellerScene implements SceneListBooksInterface {
     public void showListBooks(String titre, List<Livre> listeLivres) {
         SellerListBooksPane sellerListBooksPane = new SellerListBooksPane(titre, listeLivres, this);
         this.root.setCenter(sellerListBooksPane);
+    }
+
+     /**
+     * Afficher la page pour gérer le stock du magasin du vendeur.
+     * 
+     * @param listeLivres La liste des livres à afficher
+     * @param magasin Le magasin du vendeur
+     */
+    public void showStock(List<Livre> listeLivres, Magasin magasin) {
+        SellerMagasinStockPane stockPane = new SellerMagasinStockPane(listeLivres, 6, this, this.modele, magasin);
+        this.root.setCenter(stockPane);
     }
 
     /**

@@ -22,12 +22,12 @@ import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue.AppIHM;
-import vue.SceneInterface;
+import vue.SceneGestionStockInterface;
 import vue._components.MenuAsidePane;
 import vue._components.alerts.AlertErreurException;
 
 /** La scène pour la page administrateur */
-public class AdminScene implements SceneInterface {
+public class AdminScene implements SceneGestionStockInterface {
     /** La vue principale */
     private AppIHM app;
     /** Le modèle */

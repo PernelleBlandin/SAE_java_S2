@@ -62,7 +62,16 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                 break;
             }
             case "Mettre à jour la quantité d'un livre": {
-                // this.app.showUpdateBook();
+                Magasin magasin = this.modele.getVendeurActuel().getMagasin();
+
+                List<Livre> listeLivres = new ArrayList<>();
+                try {
+                    listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
+                } catch (SQLException e) {
+                    // TODO: handle exception
+                }
+
+                this.sellerScene.showStock(listeLivres, magasin);
                 break;
             }
             case "Transférer un livre": {

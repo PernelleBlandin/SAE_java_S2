@@ -17,11 +17,11 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.numberField.NumberFieldDisableButton;
 
-public class AdminMagasinsStockPane extends BaseListBooksPane<Livre> {
+public class AdminMagasinsStockPane extends BaseListElementsPane<Livre> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
     private ChaineLibrairie modele;

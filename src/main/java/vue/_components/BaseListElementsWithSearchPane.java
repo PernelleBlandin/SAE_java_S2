@@ -5,10 +5,10 @@ import java.util.List;
 
 import modeles.RecherchableInterface;
 
-public abstract class ListBooksWithSearchPane<T extends RecherchableInterface> extends BaseListBooksPane<T> {
+public abstract class BaseListElementsWithSearchPane<T extends RecherchableInterface> extends BaseListElementsPane<T> {
     public SearchBar searchBar;
 
-    public ListBooksWithSearchPane(String titre, List<T> listeElements, int nbLignes, int nbColonnes,
+    public BaseListElementsWithSearchPane(String titre, List<T> listeElements, int nbLignes, int nbColonnes,
             String searchBarPlaceholder) {
         super(titre, listeElements, nbLignes, nbColonnes);
 

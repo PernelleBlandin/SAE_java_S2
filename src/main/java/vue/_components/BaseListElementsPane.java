@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 /** Base de la liste de livres à afficher */
-public abstract class BaseListBooksPane<T> extends VBox {
+public abstract class BaseListElementsPane<T> extends VBox {
     /** Le titre de la liste à afficher à l'utilisateur */
     private String titre;
     /** La liste des livres */
@@ -36,7 +36,7 @@ public abstract class BaseListBooksPane<T> extends VBox {
      * @param nbLignes Le nombre de lignes
      * @param nbColonnes Le nombre de colonnes
      */
-    public BaseListBooksPane(String titre, List<T> listeElements, int nbLignes, int nbColonnes) {
+    public BaseListElementsPane(String titre, List<T> listeElements, int nbLignes, int nbColonnes) {
         this.titre = titre;
         this.listeElements = listeElements;
 

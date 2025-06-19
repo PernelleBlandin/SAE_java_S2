@@ -11,12 +11,12 @@ import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookRemoveCardComponent;
 
-public class SellerDeleteBookListPane extends BaseListBooksPane<Livre> {
+public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
     private SellerScene sellerScene;
     private ChaineLibrairie modele;
 

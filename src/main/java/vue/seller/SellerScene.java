@@ -29,7 +29,6 @@ import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookInfoCardComponent;
-
 /** La scène du client */
 public class SellerScene implements SceneListBooksInterface {
     /** La vue principale */

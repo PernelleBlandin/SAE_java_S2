@@ -4,24 +4,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleurs.ControleurAcceuil;
 import controleurs.seller.ControleurChangerMagasinSeller;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
+import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
+import vue._components.BaseListElementsWithSearchPane;
+import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
+import vue._components.bookCard.SellerBookTransfertComponent;
 
-/**
- * La vue pour transférer un livre vers un autre magasin.
- */
-public class SellerTransferBook extends VBox {
-    /** Le modèle */
+public class SellerTransferBook extends BaseListElementsWithSearchPane<Livre> {
     private ChaineLibrairie modele;
     /** Le textfield du titre du livre */
     private TextField titreLivre;
@@ -31,16 +33,24 @@ public class SellerTransferBook extends VBox {
     /** La scène du vendeur */
     private SellerScene sellerScene;
 
-    /**
-     * Initialiser la vue pour transférer un livre vers un autre magasin.
-     * @param modele Le modèle de données.
-     */
-    public SellerTransferBook(ChaineLibrairie modele) {
+    
+
+
+
+    public SellerTransferBook(List<Livre> listeLivres, int nbLignes, SellerScene sellerScene, ChaineLibrairie modele, Magasin magasin) {
+
+        super("Livres en stock", listeLivres, nbLignes, 1, "Rechercher un livre...");
         this.modele = modele;
         this.titreLivre = new TextField();
-        this.qte= new TextField(getAccessibleText());
+        this.qte= new TextField();
+        this.sellerScene= sellerScene;
 
-        this.getChildren().addAll(this.getCenter());
+        this.addComponents();
+        this.sellerScene= sellerScene;
+
+        //this.getChildren().addAll(this.getCenter());
+
+
     }
 
     /**
@@ -111,7 +121,54 @@ public class SellerTransferBook extends VBox {
         hboxChamp.getChildren().addAll(vboxTitre, vBoxQte);
 
         Label madDest= new Label("Magasin de destination");
-        vBox.getChildren().addAll(hboxChamp,madDest, this.getMagasinsList(null));
-        return vBox;
+        vBox.getChildren().addAll(hboxChamp,madDest);
+
+
+        //adminMagStock
+        // int currentStock = 0;
+        // try {
+        //     currentStock = this.modele.getMagasinBD().obtenirStockLivre(magasin.getId(), livre.getISBN());
+        // } catch (SQLException e) {
+        //     // On ignore
+        // }
+        
+        List<Livre> listelivres = new ArrayList<>();
+        try {
+            listelivres = this.modele.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            new AlertErreurException("La liste des livres n'a pas pu être récupérée.", e.getMessage());
+        }
+
+        for (int i = 0; i < listelivres.size() && i < 4; i++) {
+            Livre livre = listelivres.get(i);
+            BorderPane bookCard = this.sellerScene.createOrGetCardComponent(livre);
+            vBox.getChildren().add(bookCard);
+        }
+            return vBox;
+        }
+    
+    
+    /**
+     * Mettre à jour l'affichage de la page.
+     */
+    public void miseAJourAffichage() {
+        this.getChildren().set(0, this.getListeLivresPane());
     }
+
+    public BorderPane getHeaderPane() {
+    return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
+}
+    public BorderPane getElementComponent(Livre livre) {
+        return this.sellerScene.createOrGetCardComponent(livre);
+    }
+
+    public SellerBookTransfertComponent getElementComponent(Livre livre int quantite, int nbVentes, SellerTransferBook sellerTransferBook, ChaineLibrairie modele){
+        Vendeur vendeur = this.modele.getVendeurActuel();
+        Magasin magasin = vendeur.getMagasin();
+
+        SellerBookTransfertComponent bookCard = new SellerBookTransfertComponent(livre, nbLignes, nbColonnes, null, modele);
+        return bookCard;
+    }
+
+
 }

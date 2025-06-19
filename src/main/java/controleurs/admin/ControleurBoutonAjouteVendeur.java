@@ -17,11 +17,11 @@ public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> 
         this.adminScene = adminScene;
     }
 
-    @Override
+    //@Override
     /**
      * Recevoir un événement lors du clic sur le bouton "Ajouter vendeur" et
      * 
-     * @param event Un événement.
+     * //@param event Un événement.
      */
     public void handle(ActionEvent event) {
         // this.adminScene.showDemandeInfoVendeur(this.magasin);

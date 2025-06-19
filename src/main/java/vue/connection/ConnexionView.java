@@ -60,7 +60,7 @@ public class ConnexionView {
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 15px;");
         ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());
-        logo.setFitWidth(200);
+        logo.setFitWidth(300);
         logo.setFitHeight(200);
         Label connexionLabel = new Label("Bienvenue !");
         connexionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 48));

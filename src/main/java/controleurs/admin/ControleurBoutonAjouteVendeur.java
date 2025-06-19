@@ -17,20 +17,20 @@ public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> 
     /** Le vendeur à supprimer */
     private Vendeur vendeur;
 
-    /**
-     * @param magasin Le magasin dans lequel le vendeur est ajoute
-     */
-    public ControleurBoutonAjouteVendeur(Magasin magasin) {
-        this.magasin = magasin;
-    }
+    // /**
+    //  * @param magasin Le magasin dans lequel le vendeur est ajoute
+    //  */
+    // public ControleurBoutonAjouteVendeur(Magasin magasin) {
+    //     this.magasin = magasin;
+    // }
 
-    @Override
+    //@Override
     /**
      * Recevoir un événement lors du clic sur le bouton "Ajouter vendeur" et
      * 
-     * @param event Un événement.
+     * //@param event Un événement.
      */
-    public void handle(ActionEvent event) {
-        this.adminScene.showDemandeInfoVendeur(this.magasin);
-    }
+     public void handle(ActionEvent event) {
+    //     this.adminScene.showDemandeInfoVendeur(this.magasin);
+     }
 }

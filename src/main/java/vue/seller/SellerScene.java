@@ -135,8 +135,8 @@ public class SellerScene implements SceneListBooksInterface {
         this.root.setCenter(sellerDeleteBookPane);
     }
 
-    public void showTransfer() {
-        SellerTransferBook SellerTransferBook = new SellerTransferBook(this.modele);
+    public void showTransfer(List<Livre> listeLivres, int nbLignes, Magasin magasin) {
+        SellerTransferBook SellerTransferBook = new SellerTransferBook(listeLivres, nbLignes, this, this.modele,magasin);
         this.root.setCenter(SellerTransferBook);
     }
 

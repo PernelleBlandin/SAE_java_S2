@@ -96,7 +96,7 @@ public class AdminMagasinsVendeursPane extends VBox {
             laListe.getChildren().add(ligneVendeur);
         }
         Button ajouterVendeur = new Button("Ajouter un nouveau vendeur");
-        ajouterVendeur.setOnAction(new ControleurBoutonAjouteVendeur(this.magasin));
+        ajouterVendeur.setOnAction(new ControleurBoutonAjouteVendeur(this.magasin, this.adminScene));
         laListe.getChildren().add(ajouterVendeur);
 
         return laListe;

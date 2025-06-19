@@ -1,14 +1,12 @@
 package vue.admin;
 
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.BorderPane;
-
-import java.sql.SQLException;
 import controleurs.admin.ControleurValiderAjouteVendeur;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
@@ -22,6 +20,10 @@ public class AdminDemandeInfoVendeurPane extends VBox {
     private ChaineLibrairie modele;
     /** Le magasin */
     private Magasin magasin;
+    /** Le nom du vendeur */
+    private TextField nom;
+    /** Le prénom du vendeur */
+    private TextField prenom ;
 
     /**
      * Initialiser la pane pour les demandes d'informations sur les vendeurs.
@@ -31,6 +33,8 @@ public class AdminDemandeInfoVendeurPane extends VBox {
         this.adminScene = adminScene;
         this.modele = modele;
         this.magasin = magasin;
+        this.nom = new TextField();
+        this.prenom = new TextField();
 
         this.setSpacing(20);
         this.setPadding(new Insets(15, 20, 10, 15));
@@ -63,30 +67,43 @@ public class AdminDemandeInfoVendeurPane extends VBox {
         message.setSpacing(10);
         message.setPadding(new Insets(10, 10, 10, 10));
         Label nomVendeur = new Label("Nom du vendeur :");
-        TextField nom = new TextField();
         
         Label prenomVendeur = new Label("Prénom du vendeur :");
-        TextField prenom = new TextField();
 
-        String dernierId = "";
-        try {
-            dernierId = this.modele.getVendeurBD().getIdVendeur(nomVendeur.getText(), prenomVendeur.getText());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // TODO handle exception
-        }
-        Label idVendeur = new Label("ID du vendeur : ");
-        TextField id = new TextField(dernierId);
-        id.setEditable(true);
-        int idInt = Integer.parseInt(id.getText());
         Button valider = new Button("Valider");
-        valider.setOnAction(new ControleurValiderAjouteVendeur(this.adminScene, this.modele, this.magasin, nom.getText(), prenom.getText(), idInt));
+        valider.setOnAction(new ControleurValiderAjouteVendeur(this.adminScene, this.modele, this.magasin, this));
         
         message.getChildren().addAll(
-            nomVendeur, nom,
-            prenomVendeur, prenom,
-            idVendeur, id
+            nomVendeur, this.nom,
+            prenomVendeur, this.prenom,
+            valider
         );
         return message;
+    }
+
+    /**
+     * Mettre à jour l'affichage de la pane.
+     */
+    private void miseAJourAffichage() {
+        getChildren().clear();
+        getChildren().addAll(
+            this.titre(),
+            this.messageDemande()
+        );
+    }
+    /**
+     * Obtenir le nom du vendeur.
+     * @return Le champ de texte pour le nom du vendeur
+     */
+    public TextField getNom() {
+        return this.nom;
+    }
+
+    /**
+     * Obtenir le prénom du vendeur.
+     * @return Le champ de texte pour le prenom du vendeur
+     */
+    public TextField getPrenom() {
+        return this.prenom;
     }
 }   

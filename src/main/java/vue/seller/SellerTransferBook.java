@@ -13,7 +13,7 @@ import modeles.ChaineLibrairie;
 import modeles.Magasin;
 import vue._components.alerts.AlertErreurException;
 
-public class SellerTransferBook extends VBox{
+public class SellerTransferBook extends VBox {
     private ChaineLibrairie modele;
     private TextField titreLivre;
     private TextField qte;

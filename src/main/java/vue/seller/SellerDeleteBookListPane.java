@@ -16,7 +16,7 @@ import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookRemoveCardComponent;
 
-public class SellerDeleteBookListPane extends BaseListBooksPane {
+public class SellerDeleteBookListPane extends BaseListBooksPane<Livre> {
     private SellerScene sellerScene;
     private ChaineLibrairie modele;
 
@@ -44,7 +44,7 @@ public class SellerDeleteBookListPane extends BaseListBooksPane {
      * @param livre Un livre.
      */
     public void retirerLivre(Livre livre) {
-        this.listeLivres.remove(livre);
+        this.listeElements.remove(livre);
     }
 
     /**

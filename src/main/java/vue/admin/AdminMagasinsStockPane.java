@@ -21,7 +21,7 @@ import vue._components.BaseListBooksPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.numberField.NumberFieldDisableButton;
 
-public class AdminMagasinsStockPane extends BaseListBooksPane {
+public class AdminMagasinsStockPane extends BaseListBooksPane<Livre> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
     private ChaineLibrairie modele;

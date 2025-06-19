@@ -11,7 +11,7 @@ import vue._components.TitleAndBackButtonPane;
 /**
  * Pane de la liste des livres à afficher au client.
  */
-public class CustomerListBooksPane extends BaseListBooksPane {
+public class CustomerListBooksPane extends BaseListBooksPane<Livre> {
     /** La scène de la page client */
     private CustomerScene customerScene;
 

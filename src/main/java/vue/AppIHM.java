@@ -76,7 +76,6 @@ public class AppIHM extends Application {
      * Changer de scène pour le mode client.
      */
     public void showCustomer(){
-        // TODO: Voir pour client
         try {
             Client client = this.chaineLibrairie.getClientBD().obtenirClientParId(1);
             this.chaineLibrairie.setClientActuel(client);

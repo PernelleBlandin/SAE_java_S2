@@ -7,7 +7,7 @@ import modeles.Magasin;
 import modeles.Vendeur;
 import vue.admin.AdminScene;
 
-public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> {
+public class ControleurBoutonAjouteVenadeur implements EventHandler<ActionEvent> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
     /** Le modèle */

@@ -172,7 +172,7 @@ public class SellerDeleteBookView extends BaseListBooksPane{
                 }
                 Livre livre = listeLivres.get(index);
 
-            BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele);
+            BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele, this);
             HBox.setHgrow(bookCard, javafx.scene.layout.Priority.ALWAYS);
             hboxLigne.getChildren().add(bookCard);
             }
@@ -249,6 +249,10 @@ public class SellerDeleteBookView extends BaseListBooksPane{
         return borderPaneTitre;
     }
 
+    /**
+     * Obtenir la liste des livres à afficher dans la pane.
+     * @return La liste des livres.
+     */
     protected VBox getListeLivresPane() {
         VBox listeLivresVBox = new VBox();
         listeLivresVBox.setSpacing(20);
@@ -268,7 +272,7 @@ public class SellerDeleteBookView extends BaseListBooksPane{
 
                 Livre livre = listeLivres.get(index);
 
-                BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele);
+                BookCardDeleteComponentSeller bookCard = new BookCardDeleteComponentSeller(livre, 1, this.modele, this);
                 HBox.setHgrow(bookCard, Priority.ALWAYS);
                 hboxLigne.getChildren().add(bookCard);
             }
@@ -276,5 +280,14 @@ public class SellerDeleteBookView extends BaseListBooksPane{
         }
 
         return listeLivresVBox;
+    }
+
+    /**
+     * Mettre à jour l'affichage de la vue.
+     * Cette méthode est appelée pour rafraîchir l'affichage après une action utilisateur.
+     */
+    public void miseAJourAffichage() {
+        this.center = this.getCenter();
+        this.root.setCenter(this.center);
     }
 }

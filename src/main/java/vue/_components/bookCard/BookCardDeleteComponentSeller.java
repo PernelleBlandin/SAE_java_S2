@@ -10,11 +10,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
+import vue.seller.SellerDeleteBookView;
 
 /** La carte d'un livre à afficher au client */
 public class BookCardDeleteComponentSeller extends BaseBookCardComponent {
     /** Le modèle */
     private ChaineLibrairie modele;
+
+    /** La vue 
+    */
+    private SellerDeleteBookView vue;
 
     /**
      * Initialiser une carte d'un livre à afficher au client.
@@ -22,11 +27,11 @@ public class BookCardDeleteComponentSeller extends BaseBookCardComponent {
      * @param quantite La quantité du livre présent dans le magasin client.
      * @param modele Le modèle de données.
      */
-    public BookCardDeleteComponentSeller(Livre livre, int quantite, ChaineLibrairie modele) {
+    public BookCardDeleteComponentSeller(Livre livre, int quantite, ChaineLibrairie modele, SellerDeleteBookView vue) {
         super(livre, quantite);
 
         this.modele = modele;
-
+        this.vue = vue;
         HBox bottom = this.bottom();
         this.setBottom(bottom);
     }
@@ -84,5 +89,9 @@ public class BookCardDeleteComponentSeller extends BaseBookCardComponent {
     public void supprimerCarte() {
         Pane parent = (Pane) getParent();
         parent.getChildren().remove(this);
+    }
+
+    public SellerDeleteBookView getVue() {
+        return this.vue;
     }
 }

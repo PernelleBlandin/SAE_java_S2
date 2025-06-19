@@ -50,6 +50,7 @@ public class ControleurSupprimerLivre implements EventHandler<ActionEvent> {
         try {
             this.modele.getLivreBD().supprimerLivre(livre.getISBN());
             this.component.supprimerCarte();
+            this.component.getVue().miseAJourAffichage();
         } catch (SQLException e) {
             // TODO gérer l'erreur
         }

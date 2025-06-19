@@ -60,7 +60,7 @@ public class ConnexionView {
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 15px;");
 
-        Label connexionLabel = new Label("Bienvenue !");
+        Label connexionLabel = new Label("Livre-Express\nBienvenue !");
         connexionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 48));
         root.getChildren().add(connexionLabel);
 

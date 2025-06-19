@@ -105,7 +105,7 @@ public abstract class BaseListBooksPane extends VBox {
      * Obtenir la pane avec les boutons de navigations.
      * @return La pane avec les boutons de navigations.
      */
-    private HBox getNavigationsBoutonsPane() {
+    protected HBox getNavigationsBoutonsPane() {
         HBox hboxBoutons = new HBox();
 
         int maxPages = Math.ceilDiv(this.listeLivres.size(), this.nbColonnes * this.nbLignes);

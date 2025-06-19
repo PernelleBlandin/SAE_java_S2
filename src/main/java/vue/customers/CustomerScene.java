@@ -165,7 +165,7 @@ public class CustomerScene implements SceneListBooksInterface {
                 quantiteStock -= detailLivre.getQuantite();
             }
         } catch (SQLException e) {
-            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e);
+            new AlertErreurException("Le livre n'a pas pu être supprimé du panier.", e.getMessage());
         } catch (LivreIntrouvableException e) {
             // On ignore, cela veut dire que le livre n'est pas dans le panier
         }

@@ -49,7 +49,7 @@ public class ControleurBoutonPayer implements EventHandler<ActionEvent> {
         try {
             client.commander(livraison, 'O');
         } catch (SQLException e) {
-            new AlertErreurException("Une erreur s'est produite lors de l'enregistrement de la commande !", e);
+            new AlertErreurException("Une erreur s'est produite lors de l'enregistrement de la commande !", e.getMessage());
             return;
         }
 

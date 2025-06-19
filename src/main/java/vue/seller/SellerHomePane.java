@@ -61,7 +61,7 @@ public class SellerHomePane extends VBox {
         try {
             this.meilleursVentesLivres = this.modele.getLivreBD().obtenirLivresMeilleuresVentes();
         } catch (SQLException e) {
-            new AlertErreurException("La liste des meilleures ventes n'a pas pu être recupérée.", e);
+            new AlertErreurException("La liste des meilleures ventes n'a pas pu être recupérée.", e.getMessage());
         }
     }
 

@@ -2,17 +2,17 @@ package vue._components.alerts;
 
 /** Alerte d'erreur lors d'une exception*/
 public class AlertErreurException extends AlertErreur {
-    private Exception exception;
+    private String exceptionMessage;
 
     /**
      * Initialiser une alerte en cas d'exception et l'afficher.
      * @param description La description de l'alerte
-     * @param exception Une exception
+     * @param exceptionMessage Une exception
      */
-    public AlertErreurException(String description, Exception exception) {
+    public AlertErreurException(String description, String exceptionMessage) {
         super(description);
 
-        this.exception = exception;
+        this.exceptionMessage = exceptionMessage;
 
         this.setAlertData();
     }
@@ -23,6 +23,6 @@ public class AlertErreurException extends AlertErreur {
     public void setAlertData() {
         super.setAlertData();
 
-        this.setContentText(this.description + "\n" + this.exception.getMessage());
+        this.setContentText(this.description + "\n" + this.exceptionMessage);
     }
 }

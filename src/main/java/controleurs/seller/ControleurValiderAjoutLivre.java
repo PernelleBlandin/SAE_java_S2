@@ -84,7 +84,7 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                     }
                 }
             } catch (SQLException e) {
-                new AlertErreurException("Erreur lors de la vérification des identifiants : ", e);
+                new AlertErreurException("Erreur lors de la vérification des identifiants : ", e.getMessage());
                 return;
             }
             
@@ -102,7 +102,7 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                     this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom);
                 }
             } catch (SQLException e) {
-                new AlertErreurException("Erreur lors de l'ajout du livre : ", e);
+                new AlertErreurException("Erreur lors de l'ajout du livre : ", e.getMessage());
                 return;
             } 
 

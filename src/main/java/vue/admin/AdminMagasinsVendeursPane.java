@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controleurs.admin.ControleurBoutonRetourMagasin;
+import controleurs.admin.ControleurBoutonSupprimerMagasinVendeur;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
@@ -67,7 +67,7 @@ public class AdminMagasinsVendeursPane extends VBox {
         try {
             listeVendeurs = this.modele.getVendeurBD().obtenirListeVendeurParMagasin(this.magasin.getId());
         } catch (SQLException e) {
-            new AlertErreurException("Impossible de récupérer les vendeurs.", e);
+            new AlertErreurException("Impossible de récupérer les vendeurs.", e.getMessage());
         }
 
         for (Vendeur vendeur: listeVendeurs) {
@@ -78,13 +78,10 @@ public class AdminMagasinsVendeursPane extends VBox {
 
             BorderPane ligneVendeur = new BorderPane();
             Label leVendeur = new Label(vendeur.toString());
-            HBox lesBtn = new HBox(10);
 
             Button btnSupprimerVendeur = new Button();
             btnSupprimerVendeur.setGraphic(viewPoubelle);
-
-            // btnVendeursDuMag.setOnAction(new ControleurVoirVendeurs(mag));
-            // btnSupprimerMag.setOnAction(new ControleurSupprMag(mag));
+            btnSupprimerVendeur.setOnAction(new ControleurBoutonSupprimerMagasinVendeur(this.adminScene, this.modele, this.magasin, vendeur));
 
             ligneVendeur.setLeft(leVendeur);
             ligneVendeur.setRight(btnSupprimerVendeur);

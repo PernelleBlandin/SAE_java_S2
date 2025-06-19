@@ -82,16 +82,6 @@ public class AdminDemandeInfoVendeurPane extends VBox {
     }
 
     /**
-     * Mettre à jour l'affichage de la pane.
-     */
-    private void miseAJourAffichage() {
-        getChildren().clear();
-        getChildren().addAll(
-            this.titre(),
-            this.messageDemande()
-        );
-    }
-    /**
      * Obtenir le nom du vendeur.
      * @return Le champ de texte pour le nom du vendeur
      */

@@ -168,7 +168,7 @@ public class VendeurBD {
      * Obtenir l'identifiant du vendeur.
      * @return L'identifiant du vendeur.
      */
-    public String getIdVendeur(String nomVendeur, String prenomVendeur) throws SQLException {
+    public String getIdVendeur(String nomVendeur, String prenomVendeur, String idMagasin) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT idvendeur
             FROM VENDEUR
@@ -188,12 +188,13 @@ public class VendeurBD {
             String nouvelIdString = String.valueOf(Integer.parseInt(dernierId) + 1);
 
             PreparedStatement statement3 = this.connexionMariaDB.prepareStatement("""
-                INSERT INTO VENDEUR(idvendeur, nomvendeur, prenomvendeur)
-                VALUES (?, ?, ?)
+                INSERT INTO VENDEUR(idvendeur, nomvendeur, prenomvendeur, idmag)
+                VALUES (?, ?, ?, ?)
             """);
             statement3.setInt(1, nouvelId);
             statement3.setString(2, nomVendeur);
             statement3.setString(3, prenomVendeur);
+            statement3.setString(4, idMagasin);
             statement3.executeUpdate();
 
             return nouvelIdString;
@@ -232,5 +233,22 @@ public class VendeurBD {
         result.close();
 
         return new Vendeur(idVendeur, nom, prenom, magasin);
+    }
+
+    public String obtenirIdVendeurExistant(String nomVendeur, String prenomVendeur) throws SQLException {
+        PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
+            SELECT idvendeur
+            FROM VENDEUR
+            WHERE nomvendeur = ? AND prenomvendeur = ?
+            """);
+        statement.setString(1, nomVendeur);
+        statement.setString(2, prenomVendeur);
+        ResultSet res = statement.executeQuery();
+        
+        if (res.next()) {
+            return res.getString("idvendeur");
+        } else {
+            return null;
+        }
     }
 }

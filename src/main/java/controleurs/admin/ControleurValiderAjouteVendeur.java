@@ -7,29 +7,27 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
+import vue.admin.AdminDemandeInfoVendeurPane;
 import vue.admin.AdminScene;
 
 public class ControleurValiderAjouteVendeur implements EventHandler<ActionEvent> {
     private AdminScene adminScene;
     private ChaineLibrairie modele;
     private Magasin magasin;
-    private String nom;
-    private String prenom;
-    private int idVendeur;
+    private AdminDemandeInfoVendeurPane demandeInfoVendeurPane;
 
-    public ControleurValiderAjouteVendeur(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin, String nom, String prenom, int idVendeur) {
+    public ControleurValiderAjouteVendeur(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin, AdminDemandeInfoVendeurPane demandeInfoVendeurPane) {
         this.adminScene = adminScene;
         this.modele = modele;
         this.magasin = magasin;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.idVendeur = idVendeur;
+        this.demandeInfoVendeurPane = demandeInfoVendeurPane;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        if (nom == null || this.nom.isEmpty() ||
-            prenom == null || this.prenom.isEmpty()) {
+        String nom = demandeInfoVendeurPane.getNom().getText();
+        String prenom = demandeInfoVendeurPane.getPrenom().getText();
+        if (nom == null || nom.isEmpty() || prenom == null || prenom.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Champs manquants");
@@ -39,24 +37,29 @@ public class ControleurValiderAjouteVendeur implements EventHandler<ActionEvent>
         }
 
         try {
-            if(this.modele.getVendeurBD().obtenirVendeurParIdEtMagasin(this.idVendeur, this.magasin.getId()) != null) {
+            if (this.modele.getVendeurBD().obtenirIdVendeurExistant(nom, prenom) != null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
-                alert.setHeaderText("ID déjà utilisé");
-                alert.setContentText("L'ID du vendeur existe déjà. Choisissez en un autre.");
+                alert.setHeaderText("Vendeur déjà existant");
+                alert.setContentText("Le vendeur existe déjà dans ce magasin.");
                 alert.showAndWait();
                 return;
             }
 
-            this.modele.getMagasinBD().ajouterVendeur(this.idVendeur, this.nom, this.prenom, this.magasin.getId());
+            this.modele.getVendeurBD().getIdVendeur(nom, prenom, this.magasin.getId());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);
-            alert.setContentText("Vendeur ajouté !");
+            alert.setContentText("Vendeur ajouté avec succès !");
             alert.showAndWait();
             adminScene.showVendeurs(this.magasin);
+
         } catch (SQLException e) {
-            // TODO handle exception
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur SQL");
+            alert.setHeaderText("Erreur lors de l'ajout du vendeur");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
     }
 }

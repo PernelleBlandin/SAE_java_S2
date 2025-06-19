@@ -80,6 +80,7 @@ public class CustomerScene implements SceneListBooksInterface {
     public HBox getHeader() {
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
+        header.setStyle("-fx-background-color: #98cef9");
         
         ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());
         logo.setFitWidth(3046 / 15);

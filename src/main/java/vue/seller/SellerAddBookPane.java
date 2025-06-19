@@ -11,22 +11,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
+import vue._components.numberField.NumberField;
 
 public class SellerAddBookPane extends HBox {
     private ChaineLibrairie modele;
 
     private TextField idLivre = new TextField();
     private TextField titreLivre = new TextField();
-    private TextField prix = new TextField();  // TODO : autoriser seulement des int/Integer
-    private TextField anneePubli = new TextField();
+    private NumberField prix = new NumberField();  // TODO :double
+    private NumberField anneePubli = new NumberField();
     private TextField nomAuteur = new TextField();
-    private TextField deces = new TextField();
-    private TextField naissance = new TextField();
+    private NumberField deces = new NumberField();
+    private NumberField naissance = new NumberField();
     private TextField idAuteur = new TextField();
     private TextField editeur = new TextField();
     private TextField classification = new TextField();
     private TextField idClassification = new TextField();
-    private TextField nbPages = new TextField();
+    private NumberField nbPages = new NumberField();
 
     public SellerAddBookPane(ChaineLibrairie modele) {
         this.modele = modele;
@@ -57,7 +58,7 @@ public class SellerAddBookPane extends HBox {
 
         Label titre6 = new Label("Nom de l'auteur :");
 
-        Label titre7 = new Label("Date de naissance de l'auteur :");
+        Label titre7 = new Label("Année de naissance de l'auteur :");
 
         vbox.getChildren().addAll(
             titre1, this.idLivre,
@@ -100,7 +101,7 @@ public class SellerAddBookPane extends HBox {
 
         Label titre11 = new Label("Nom de classification :");
 
-        Label titre12 = new Label("Identifiant de classification :");
+        Label titre12 = new Label("Identifiant de classification (3 caractères max) :");
         this.idClassification.setDisable(true);
         String idClassificationBD = null;
         try {
@@ -173,11 +174,11 @@ public class SellerAddBookPane extends HBox {
         return this.titreLivre;
     }
 
-    public TextField getPrix(){
+    public NumberField getPrix(){
         return this.prix;
     }
 
-    public TextField getAnneePubli(){
+    public NumberField getAnneePubli(){
         return this.anneePubli;
     }
 
@@ -185,11 +186,11 @@ public class SellerAddBookPane extends HBox {
         return this.nomAuteur;
     }
 
-    public TextField getNaissance(){
+    public NumberField getNaissance(){
         return this.naissance;
     }
 
-    public TextField getDeces(){
+    public NumberField getDeces(){
         return this.deces;
     }
 
@@ -209,7 +210,7 @@ public class SellerAddBookPane extends HBox {
         return this.idClassification;
     }
     
-    public TextField getNbPages() {
+    public NumberField getNbPages() {
         return this.nbPages;
     }
 }

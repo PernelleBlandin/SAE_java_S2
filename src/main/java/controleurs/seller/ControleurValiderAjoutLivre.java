@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import modeles.ChaineLibrairie;
+import vue._components.alerts.AlertErreur;
+import vue._components.alerts.AlertErreurException;
+import vue._components.numberField.NumberField;
 import vue.seller.SellerAddBookPane;
 
 public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
@@ -26,33 +29,35 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
         if (this.sellerAddBookPane.getIdLivre().getText().length() != 0 && this.sellerAddBookPane.getTitreLivre().getText().length() != 0 && this.sellerAddBookPane.getPrix().getText().length() != 0 && this.sellerAddBookPane.getAnneePubli().getText().length() != 0 && this.sellerAddBookPane.getNomAuteur().getText().length() != 0 && this.sellerAddBookPane.getEditeur().getText().length() != 0 && this.sellerAddBookPane.getClassification().getText().length() != 0){ 
             String isbn = this.sellerAddBookPane.getIdLivre().getText();
             String titre = this.sellerAddBookPane.getTitreLivre().getText();
-            int nbPages = 0;
-            int anneeDePublication = 0;
-            double prix = 0.0;
-            
-            try {
-                nbPages = Integer.parseInt(this.sellerAddBookPane.getNbPages().getText());
-                anneeDePublication = Integer.parseInt(this.sellerAddBookPane.getAnneePubli().getText());
-                prix = Double.parseDouble(this.sellerAddBookPane.getPrix().getText());
-            } catch (NumberFormatException e) {
-                // TODO erreur handle exception
+
+            NumberField fieldNbPages = this.sellerAddBookPane.getNbPages();
+            NumberField fieldAnneePubli = this.sellerAddBookPane.getAnneePubli();
+            NumberField fieldDeces = this.sellerAddBookPane.getDeces();
+            NumberField fieldNaissance = this.sellerAddBookPane.getNaissance();
+            NumberField fieldPrix = this.sellerAddBookPane.getPrix();
+
+            if (!fieldNbPages.isValid() || !fieldAnneePubli.isValid() || !fieldDeces.isValid() || !fieldNaissance.isValid() || !fieldPrix.isValid()) {
+                new AlertErreur("Mercid d'indiquer des nombres dans les champs correspondant.");
+                return;
             }
+
+            int nbPages = fieldNbPages.getValeur();
+            int anneeDePublication = fieldAnneePubli.getValeur();
+            int prix = fieldPrix.getValeur();
             
             String auteurNom = this.sellerAddBookPane.getNomAuteur().getText();
-            int naissance = 0;
-            int deces = -1;
-            
-            try {
-                naissance = Integer.parseInt(this.sellerAddBookPane.getNaissance().getText());
-                deces = Integer.parseInt(this.sellerAddBookPane.getDeces().getText());
-            } catch (NumberFormatException e) {
-                // TODO erreur handle exception
-            }
+            int naissance = fieldNaissance.getValeur();
+            int deces = fieldDeces.getValeur();
             
             String editeurNom = this.sellerAddBookPane.getEditeur().getText();
             String classificationNom = this.sellerAddBookPane.getClassification().getText();
-            String idClassifications = this.sellerAddBookPane.getIdClassification().getText();
+            String idClassification = this.sellerAddBookPane.getIdClassification().getText();
             String idAuteur = this.sellerAddBookPane.getIdAuteur().getText();
+
+            if (idClassification.length() > 3) {
+                new AlertErreur("L'identifiant de la classification ne doit pas dépasser 3 caractères.");
+                return;
+            }
 
             try {
                 if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null) {
@@ -68,7 +73,7 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                 }
 
                 if (this.modele.getLivreBD().getIdDewey(classificationNom) == null) {
-                    if (idClassifications == null || idClassifications.trim().isEmpty()) {
+                    if (idClassification == null || idClassification.trim().isEmpty()) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Livre Express");
                         alert.setHeaderText("Champ manquant");
@@ -78,32 +83,35 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                         return;
                     }
                 }
-                
             } catch (SQLException e) {
-                // TODO
+                new AlertErreurException("Erreur lors de la vérification des identifiants : ", e);
+                return;
             }
             
             try {
                 if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && 
                     this.modele.getLivreBD().getIdDewey(this.sellerAddBookPane.getClassification().getText()) == null) {
-                    this.modele.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassifications, naissance, deces);
+                    this.modele.getLivreBD().ajouteLivreAuteurNonExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, idClassification, naissance, deces);
                 } else if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && 
                     this.modele.getLivreBD().getIdDewey(this.sellerAddBookPane.getClassification().getText()) != null) {
                     this.modele.getLivreBD().ajouteLivreAuteurNonExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idAuteur, naissance, deces);
                 } else if (this.modele.getLivreBD().getIdAuteur(auteurNom) != null && 
                     this.modele.getLivreBD().getIdDewey(this.sellerAddBookPane.getClassification().getText()) == null) {
-                    this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idClassifications);
+                    this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationNonExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom, idClassification);
                 } else {
                     this.modele.getLivreBD().ajouteLivreAuteurExistantClassificationExistante(isbn, titre, nbPages, anneeDePublication, prix, auteurNom, classificationNom, editeurNom);
                 }
-
-                this.sellerAddBookPane.showPopUpLivreAjoute();
-                this.sellerAddBookPane.resetTextField();
             } catch (SQLException e) {
-                // TODO
-            }
+                new AlertErreurException("Erreur lors de l'ajout du livre : ", e);
+                return;
+            } 
+
+            this.sellerAddBookPane.resetTextField();
+            this.sellerAddBookPane.miseAJourAffichage();
+            this.sellerAddBookPane.showPopUpLivreAjoute();
+        } else {
+            new AlertErreur("Merci de remplir tous les champs.");
+            return;
         }
-        
-        this.sellerAddBookPane.miseAJourAffichage();
     }
 }

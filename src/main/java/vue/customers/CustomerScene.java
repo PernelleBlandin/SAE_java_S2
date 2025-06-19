@@ -12,16 +12,21 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Client;
 import modeles.DetailLivre;
 import modeles.Livre;
 import modeles.LivreIntrouvableException;
+import modeles.Vendeur;
 import vue.AppIHM;
 import vue.SceneListBooksInterface;
 import vue._components.SearchBar;
@@ -44,7 +49,7 @@ public class CustomerScene implements SceneListBooksInterface {
     private HashMap<Livre, CustomerBookCardComponent> bookCards;
 
     /** Le header */
-    private HBox header;
+    private VBox header;
 
     /** Le pane de la page d'accueil */
     private CustomerHomePane homePane;
@@ -77,7 +82,25 @@ public class CustomerScene implements SceneListBooksInterface {
      * Obtenir le header du menu client.
      * @return Le header du menu client.
      */
-    public HBox getHeader() {
+    public VBox getHeader() {
+        VBox vbox = new VBox();
+
+        // Si connecté en tant que vendeur
+        Vendeur vendeur = this.modele.getVendeurActuel();
+        if (vendeur != null) {
+            Label labelVendeur = new Label("Connecté en tant que vendeur  : " + vendeur.toString());
+            labelVendeur.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+            labelVendeur.setPadding(new Insets(10, 0, 10, 20));
+            labelVendeur.setMaxWidth(Double.MAX_VALUE);
+            labelVendeur.setAlignment(Pos.CENTER);
+
+            labelVendeur.setStyle("-fx-background-color: pink;");
+
+            vbox.getChildren().add(labelVendeur);
+        }
+
+        // Header client
+
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
         header.setStyle("-fx-background-color: #98cef9");
@@ -108,8 +131,9 @@ public class CustomerScene implements SceneListBooksInterface {
         
         header.setSpacing(10);
         header.setPadding(new Insets(10, 20, 10, 20));
+        vbox.getChildren().add(header);
 
-        return header;
+        return vbox;
     }
 
     /**

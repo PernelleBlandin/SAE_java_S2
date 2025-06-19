@@ -36,7 +36,11 @@ public class ControleurDeconnexion implements EventHandler<ActionEvent> {
         if (vendeur != null) {
             if (client != null) {
                 this.modele.setClientActuel(null);
+                this.app.showSeller();
+                return;
             }
+
+            this.modele.setVendeurActuel(null);
         } else if (client != null) {
             this.modele.setClientActuel(null);
         }

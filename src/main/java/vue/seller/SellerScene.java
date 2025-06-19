@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import modeles.ChaineLibrairie;
+import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
@@ -175,6 +176,15 @@ public class SellerScene implements SceneListBooksInterface, SceneGestionStockIn
     public void showStock(List<Livre> listeLivres, Magasin magasin) {
         SellerMagasinStockPane stockPane = new SellerMagasinStockPane(listeLivres, 6, this, this.modele, magasin);
         this.root.setCenter(stockPane);
+    }
+
+    /**
+     * Afficher la page pour agir en tant que client.
+     * @param listeClients La liste des clients.
+     */
+    public void showViewAsCustomer(List<Client> listeClients) {
+        SellerViewAsCustomerPane sellerViewAsCustomerPane = new SellerViewAsCustomerPane(listeClients, this, this.app, this.modele);
+        this.root.setCenter(sellerViewAsCustomerPane);
     }
 
     /**

@@ -38,7 +38,7 @@ public abstract class BaseListElementsWithSearchPane<T extends RecherchableInter
         this.getChildren().addAll(
             this.getHeaderPane(),
             this.searchBar,
-            this.listeElements.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
+            this.getListeElements().size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
             this.getNavigationsBoutonsPane()        
         );
     }
@@ -48,7 +48,7 @@ public abstract class BaseListElementsWithSearchPane<T extends RecherchableInter
      */
     @Override
     public void miseAJourAffichage() {
-        this.getChildren().set(2, this.listeElements.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox());
+        this.getChildren().set(2, this.getListeElements().size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox());
         this.getChildren().set(3, this.getNavigationsBoutonsPane());
     }
 

@@ -7,8 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import modeles.ChaineLibrairie;
+import modeles.Client;
 import modeles.Livre;
 import modeles.Magasin;
+import vue._components.alerts.AlertErreurException;
 import vue.seller.SellerScene;
 
 /**
@@ -55,7 +57,8 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                 try {
                     listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
                 } catch (SQLException e) {
-                    // TODO: handle exception
+                    new AlertErreurException("Erreur lors de la récupération des livres en stock", e.getMessage());
+                    return;
                 }
                 
                 this.sellerScene.showDeleteBook(listeLivres);
@@ -68,7 +71,8 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                 try {
                     listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
                 } catch (SQLException e) {
-                    // TODO: handle exception
+                    new AlertErreurException("Erreur lors de la récupération des livres en stock", e.getMessage());
+                    return;
                 }
 
                 this.sellerScene.showStock(listeLivres, magasin);
@@ -81,14 +85,23 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
                 try {
                     listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
                 } catch (SQLException e) {
-                    // TODO: handle exception
+                    new AlertErreurException("Erreur lors de la récupération des livres en stock", e.getMessage());
+                    return;
                 }
 
                 this.sellerScene.showTransfer(listeLivres, magasin);
                 break;
             }
             case "Agir en tant que client": {
-                // this.app.showRpCustomer();
+                List<Client> listeClients = new ArrayList<>();
+                try {
+                    listeClients = this.modele.getClientBD().obtenirListeClient();
+                } catch (SQLException e) {
+                    new AlertErreurException("Erreur lors de la récupération des clients", e.getMessage());
+                    return;
+                }
+
+                this.sellerScene.showViewAsCustomer(listeClients);
                 break;
             }
             default:

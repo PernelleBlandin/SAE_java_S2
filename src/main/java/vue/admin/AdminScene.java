@@ -70,6 +70,7 @@ public class AdminScene implements SceneInterface {
     public BorderPane getHeader() {
         BorderPane header = new BorderPane();
         header.setPadding(new Insets(10, 10, 10, 10));
+        header.setStyle("-fx-background-color: #98cef9");
 
         // Logo
         ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());

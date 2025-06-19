@@ -2,7 +2,7 @@ package vue.seller;
 
 import java.sql.SQLException;
 
-import controleurs.seller.ControleurValider;
+import controleurs.seller.ControleurValiderAjoutLivre;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -120,7 +120,7 @@ public class SellerAddBookPane extends HBox {
         }
     
         Button valider = new Button("Valider");
-        valider.setOnAction(new ControleurValider(this, this.modele));
+        valider.setOnAction(new ControleurValiderAjoutLivre(this, this.modele));
 
         vbox.getChildren().addAll(
             titre8, this.deces,

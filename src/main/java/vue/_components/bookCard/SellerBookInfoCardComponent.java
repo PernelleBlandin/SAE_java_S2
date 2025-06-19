@@ -12,17 +12,17 @@ import javafx.scene.text.FontWeight;
 import modeles.Livre;
 
 /** La carte d'un livre à afficher au vendeur */
-public class SellerBookCardComponent extends BaseBookCardComponent {
+public class SellerBookInfoCardComponent extends BaseBookCardComponent {
     /** Le nombre de ventes dans le magasin du vendeur */
     private int nbVentes;
 
     /**
-     * Initialiser une carte d'un livre à afficher au client.
+     * Initialiser une carte d'un livre à afficher au vendeur.
      * @param livre Un livre. 
      * @param quantite La quantité du livre présent dans le magasin.
      * @param nbVentes Le nombre de ventes dans le magasin du vendeur.
      */
-    public SellerBookCardComponent(Livre livre, int quantite, int nbVentes) {
+    public SellerBookInfoCardComponent(Livre livre, int quantite, int nbVentes) {
         super(livre, quantite);
 
         this.nbVentes = nbVentes;

@@ -19,10 +19,10 @@ public class SellerListBooksPane extends BaseListBooksPane {
     private SellerScene sellerScene;
 
     /**
-     * Initialiser la pane affichant la liste des livres à afficher au client.
+     * Initialiser la pane affichant la liste des livres à afficher au vendeur.
      * @param titre Le titre de la liste.
      * @param listeLivres La liste des livres.
-     * @param sellerScene La scène de la page client.
+     * @param sellerScene La scène de la page vendeur.
      */
     public SellerListBooksPane(String titre, List<Livre> listeLivres, SellerScene sellerScene) {
         super(titre, listeLivres, 2, 3);
@@ -32,12 +32,12 @@ public class SellerListBooksPane extends BaseListBooksPane {
     }
 
     /**
-      * Définir la liste des livres à afficher.
-      * @param listeLivres La nouvelle liste de livres.
-      */
-     public void setListeLivres(List<Livre> listeLivres) {
-         this.listeLivres = listeLivres;
-     }
+    * Définir la liste des livres à afficher.
+    * @param listeLivres La nouvelle liste de livres.
+    */
+    public void setListeLivres(List<Livre> listeLivres) {
+        this.listeLivres = listeLivres;
+    }
 
     /**
      * Obtenir le titre et le bouton retour de la pane.

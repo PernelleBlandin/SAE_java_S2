@@ -7,12 +7,12 @@ import javafx.scene.control.Alert;
 import modeles.ChaineLibrairie;
 import vue.seller.SellerAddBookPane;
 
-public class ControleurValider implements EventHandler<ActionEvent> {
+public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
     
     private SellerAddBookPane sellerAddBookPane;
     private ChaineLibrairie modele;
     
-    public ControleurValider(SellerAddBookPane sellerAddBookPane, ChaineLibrairie modele) {
+    public ControleurValiderAjoutLivre(SellerAddBookPane sellerAddBookPane, ChaineLibrairie modele) {
         this.sellerAddBookPane = sellerAddBookPane;
         this.modele = modele;
     }

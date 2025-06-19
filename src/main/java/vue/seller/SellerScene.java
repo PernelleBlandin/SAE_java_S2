@@ -28,7 +28,7 @@ import vue.SceneListBooksInterface;
 import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
-import vue._components.bookCard.SellerBookCardComponent;
+import vue._components.bookCard.SellerBookInfoCardComponent;
 
 /** La scène du client */
 public class SellerScene implements SceneListBooksInterface {
@@ -43,7 +43,7 @@ public class SellerScene implements SceneListBooksInterface {
     /** La scène principal */
     private BorderPane root;
     /** La liste des "cartes" des livres */
-    private HashMap<Livre, SellerBookCardComponent> bookCards;
+    private HashMap<Livre, SellerBookInfoCardComponent> bookCards;
 
     /** Le header */
     private HBox header;
@@ -79,7 +79,7 @@ public class SellerScene implements SceneListBooksInterface {
             "Transférer un livre",
             "Agir en tant que client"
         ));
-        this.root.setLeft(new MenuAsidePane(nomsMenu, new ControleurMenuVendeur(this)));
+        this.root.setLeft(new MenuAsidePane(nomsMenu, new ControleurMenuVendeur(this, this.modele)));
 
         this.scene = new Scene(this.root);
     }
@@ -131,10 +131,10 @@ public class SellerScene implements SceneListBooksInterface {
         this.root.setCenter(sellerAddBookPane);
     }
 
-    // public void showDeleteBook() {
-    //     SellerDeleteBookPane sellerDeleteBookPane = new SellerDeleteBookPane(this, this.modele);
-    //     this.root.setCenter(sellerDeleteBookPane);
-    // }
+    public void showDeleteBook(List<Livre> listeLivres) {
+        SellerDeleteBookListPane sellerDeleteBookPane = new SellerDeleteBookListPane(listeLivres, this, this.modele);
+        this.root.setCenter(sellerDeleteBookPane);
+    }
 
     /**
      * Afficher la page affichant la liste de livres.
@@ -151,7 +151,7 @@ public class SellerScene implements SceneListBooksInterface {
      * @param livre Un livre.
      * @return La carte du livre.
      */
-    public SellerBookCardComponent createOrGetCardComponent(Livre livre) {
+    public SellerBookInfoCardComponent createOrGetCardComponent(Livre livre) {
         if (this.bookCards.containsKey(livre)) {
             return this.bookCards.get(livre);
         }
@@ -173,7 +173,7 @@ public class SellerScene implements SceneListBooksInterface {
             new AlertErreurException("Le nombre de ventes du livre n'a pas pu être récupéré.", e);
         }
 
-        SellerBookCardComponent bookCard = new SellerBookCardComponent(livre, quantiteStock, nbVentes);
+        SellerBookInfoCardComponent bookCard = new SellerBookInfoCardComponent(livre, quantiteStock, nbVentes);
         this.bookCards.put(livre, bookCard);
 
         return bookCard;

@@ -6,7 +6,7 @@ import java.util.List;
 
 import controleurs.ControleurAcceuil;
 import controleurs.ControleurDeconnexion;
-import controleurs.ControleurRecherche;
+import controleurs.ControleurRechercheHeader;
 import controleurs.customers.ControleurBoutonPanier;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -92,7 +92,7 @@ public class CustomerScene implements SceneListBooksInterface {
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");
-        searchBar.setOnKeyTyped(new ControleurRecherche(this, this.modele));
+        searchBar.setOnKeyTyped(new ControleurRechercheHeader(this, this.modele));
         HBox.setHgrow(searchBar, Priority.ALWAYS);
 
         Button panierButton = new Button("Panier");

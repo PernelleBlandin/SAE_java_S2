@@ -1,6 +1,8 @@
 package controleurs.admin;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import vue._components.alerts.AlertErreur;
+import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertInfo;
 import vue._components.alerts.AlertYesNo;
 import vue._components.numberField.NumberField;
@@ -75,6 +78,14 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
         new AlertInfo("Stock modifié", "Le stock du livre " + this.livre.toString() + " a bien été modifié.");
 
         // Actualiser de la liste
-        this.adminScene.showStock(this.magasin);
+        List<Livre> livres = new ArrayList<>();
+        try {
+            livres = this.modele.getLivreBD().obtenirListeLivre();
+        } catch (SQLException e) {
+            new AlertErreurException("Impossible de récupérer la liste des livres.", e.getMessage());
+            return;
+        }
+
+        this.adminScene.showStock(livres, this.magasin);
     }
 }

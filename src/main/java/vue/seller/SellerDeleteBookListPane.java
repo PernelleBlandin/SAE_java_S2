@@ -7,19 +7,16 @@ import controleurs.ControleurAcceuil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import modeles.Vendeur;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookRemoveCardComponent;
 
-public class SellerDeleteBookListPane extends BaseListBooksPane {
+public class SellerDeleteBookListPane extends BaseListElementsPane<Livre> {
     private SellerScene sellerScene;
     private ChaineLibrairie modele;
 
@@ -47,7 +44,7 @@ public class SellerDeleteBookListPane extends BaseListBooksPane {
      * @param livre Un livre.
      */
     public void retirerLivre(Livre livre) {
-        this.listeLivres.remove(livre);
+        this.listeElements.remove(livre);
     }
 
     /**
@@ -61,47 +58,11 @@ public class SellerDeleteBookListPane extends BaseListBooksPane {
      * Obtenir le titre et le bouton retour de la pane.
      * @return Le BorderPane contenant ses deux informations.
      */
-    protected BorderPane getTitleAndBackButtonPane() {
+    public BorderPane getHeaderPane() {
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurAcceuil(this.sellerScene));
     }
 
-    /**
-     * Obtenir la VBox contenant la liste des "cartes" des livres.
-     * @return La VBox contenant la liste des "cartes" des livres.
-     */
-    protected VBox getListeLivresPane() {
-        VBox listeLivresVBox = new VBox();
-        listeLivresVBox.setSpacing(20);
-
-        int nbElementsParPage = nbLignes * nbColonnes;
-
-        List<Livre> listeLivres = this.getListeLivres();
-        for (int intLigne = 0; intLigne < nbLignes; intLigne++) {
-            HBox hboxLigne = new HBox();
-            hboxLigne.setSpacing(15);
-
-            for (int intColonne = 0; intColonne < nbColonnes; intColonne++) {
-                int index = (nbElementsParPage * this.getCurPage()) + (intLigne * nbColonnes) + intColonne;
-                if (index >= listeLivres.size()) break;
-
-                Livre livre = listeLivres.get(index);
-
-                BorderPane bookCard = this.createDeleteComponent(livre);
-                HBox.setHgrow(bookCard, Priority.ALWAYS);
-                hboxLigne.getChildren().add(bookCard);
-            }
-            listeLivresVBox.getChildren().add(hboxLigne);
-        }
-        listeLivresVBox.getChildren().add(getNavigationsBoutonsPane());
-        return listeLivresVBox;
-    }
-
-    /**
-     * Créer ou obtenir la "carte" d'un livre, affichant les informations de ce dernier et permettant de le supprimer.
-     * @param livre Un livre.
-     * @return La carte du livre.
-     */
-    private SellerBookRemoveCardComponent createDeleteComponent(Livre livre) {
+    public SellerBookRemoveCardComponent getElementComponent(Livre livre) {
         Vendeur vendeur = this.modele.getVendeurActuel();
         Magasin magasin = vendeur.getMagasin();
 

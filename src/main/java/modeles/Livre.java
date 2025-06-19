@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** Un livre */
-public class Livre {
+public class Livre implements RecherchableInterface {
     private String isbn;
     private String titre;
     private Integer nbpages;

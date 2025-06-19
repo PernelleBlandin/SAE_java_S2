@@ -22,9 +22,8 @@ import modeles.Client;
 import modeles.Magasin;
 import modeles.Vendeur;
 import vue._components.alerts.AlertErreurException;
-import vue._components.numberField.NumberField;
 
-public class SellerTransferBook extends VBox{
+public class SellerTransferBook extends VBox {
     private ChaineLibrairie modele;
     private TextField titreLivre;
     private TextField qte;

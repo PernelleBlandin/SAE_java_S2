@@ -8,7 +8,7 @@ import java.util.List;
 
 import controleurs.ControleurAcceuil;
 import controleurs.ControleurDeconnexion;
-import controleurs.ControleurRecherche;
+import controleurs.ControleurRechercheHeader;
 import controleurs.seller.ControleurMenuVendeur;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,7 +29,6 @@ import vue._components.MenuAsidePane;
 import vue._components.SearchBar;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookInfoCardComponent;
-
 /** La scène du client */
 public class SellerScene implements SceneListBooksInterface {
     /** La vue principale */
@@ -103,7 +102,7 @@ public class SellerScene implements SceneListBooksInterface {
         buttonLogo.setGraphic(logo);
         
         TextField searchBar = new SearchBar("Rechercher un livre...");
-        searchBar.setOnKeyTyped(new ControleurRecherche(this, this.modele));
+        searchBar.setOnKeyTyped(new ControleurRechercheHeader(this, this.modele));
         HBox.setHgrow(searchBar, Priority.ALWAYS);
         
         Button deconnexionButton = new Button("Déconnexion");

@@ -1,6 +1,6 @@
 package modeles;
 /** Une personne */
-public abstract class Personne {
+public abstract class Personne implements RecherchableInterface {
     private int id;
     private String nom;
     private String prenom;
@@ -39,6 +39,24 @@ public abstract class Personne {
      */
     public String getPrenom() {
         return this.prenom;
+    }
+
+    /**
+     * Indique si une personne est inclu dans une recherche donnée.
+     * @param recherche Une recherche utilisateur.
+     * @return true si le personne est inclu dans la recherche donnée, sinon false.
+     */
+    public boolean estIncluDansRecherche(String recherche) {
+        String nom = this.getNom().toLowerCase();
+        String prenom = this.getPrenom().toLowerCase();
+
+        String[] mots = recherche.toLowerCase().split(" ");
+        for (String mot: mots) {
+            if (!(nom.contains(mot) || prenom.contains(mot))) {
+                return false;
+            }
+        }
+        return true;
     }
     
     /**

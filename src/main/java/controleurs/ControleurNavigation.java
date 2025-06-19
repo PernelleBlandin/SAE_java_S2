@@ -3,21 +3,21 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import vue._components.BaseListBooksPane;
+import vue._components.BaseListElementsPane;
 
 /**
- * Le contrôleur des boutons de navigations dans la liste de livres.
+ * Le contrôleur des boutons de navigations dans la liste des élements.
  */
-public class ControleurNavigation implements EventHandler<ActionEvent> {
-    /** Une pane contenant la liste des livres affiché */
-    private BaseListBooksPane listBookPane;
+public class ControleurNavigation<T> implements EventHandler<ActionEvent> {
+    /** Une pane contenant la liste des élements affichés */
+    private BaseListElementsPane<T> listElementsPane;
 
     /**
-     * Initialiser le contrôleur des boutons de navigations sur le composant des liste de livres.
-     * @param listBooksPane Le composant de la liste des livres.
+     * Initialiser le contrôleur des boutons de navigations sur le composant des liste des élements.
+     * @param listElementsPane Le composant de la liste des livres.
      */
-    public ControleurNavigation(BaseListBooksPane listBooksPane) {
-        this.listBookPane = listBooksPane;
+    public ControleurNavigation(BaseListElementsPane<T> listElementsPane) {
+        this.listElementsPane = listElementsPane;
     }
 
     @Override
@@ -28,14 +28,14 @@ public class ControleurNavigation implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         Button button = (Button) event.getSource();
 
-        int pageActuelle = this.listBookPane.getCurPage();
+        int pageActuelle = this.listElementsPane.getCurPage();
         String labelText = button.getText();
         if (labelText.equals("Précédent")) {
-            this.listBookPane.setCurPage(--pageActuelle);
+            this.listElementsPane.setCurPage(--pageActuelle);
         } else {
-            this.listBookPane.setCurPage(++pageActuelle);
+            this.listElementsPane.setCurPage(++pageActuelle);
         }
 
-        this.listBookPane.miseAJourAffichage();
+        this.listElementsPane.miseAJourAffichage();
     }
 }

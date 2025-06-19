@@ -8,6 +8,7 @@ import modeles.RecherchableInterface;
 
 /**
  * La classe de base pour les listes d'éléments avec une barre de recherche.
+ * @param <T> Le type des éléments de la liste, qui doit implémenter l'interface RecherchableInterface.
  */
 public abstract class BaseListElementsWithSearchPane<T extends RecherchableInterface> extends BaseListElementsPane<T> {
     /** La barre de recherche */

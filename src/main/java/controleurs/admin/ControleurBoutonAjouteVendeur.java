@@ -12,9 +12,10 @@ public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> 
     /** Le magasin du vendeur à ajouter */
     private Magasin magasin;
 
-
     /**
      * Initialiser le contrôleur du bouton "Ajouter vendeur".
+     * 
+     * @param magasin    Le magasin dans lequel le vendeur sera ajouté
      * @param adminScene La scène de la page administrateur
      */
     public ControleurBoutonAjouteVendeur(Magasin magasin, AdminScene adminScene) {
@@ -22,11 +23,11 @@ public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> 
         this.adminScene = adminScene;
     }
 
-    //@Override
+    @Override
     /**
-     * Recevoir un événement lors du clic sur le bouton "Ajouter vendeur" et
+     * Recevoir un événement lors du clic sur le bouton "Ajouter vendeur"
      * 
-     * //@param event Un événement.
+     * @param event Un événement.
      */
     public void handle(ActionEvent event) {
         this.adminScene.showDemandeInfoVendeur(this.magasin);

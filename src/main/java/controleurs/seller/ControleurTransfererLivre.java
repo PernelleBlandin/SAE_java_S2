@@ -19,13 +19,29 @@ import vue._components.numberField.NumberField;
 import vue.seller.SellerScene;
 import vue.seller.SellerTransferBookPane;
 
-public class ControleurTransfererLivre implements EventHandler<ActionEvent>{
+/**
+ * Contrôleur pour transférer un livre d'un magasin à un autre.
+ */
+public class ControleurTransfererLivre implements EventHandler<ActionEvent> {
+    /** La scène du vendeur */
     private SellerScene sellerScene;
+    /** La pane de transfert de livres */
     private SellerTransferBookPane sellerTransferBook;
+    /** Le modèle de la librairie */
     private ChaineLibrairie modele;
+    /** Le livre à transférer */
     private Livre livre;
+    /** Composant de carte de transfert de livre */
     private SellerBookTransferCardComponent sellerBookTransferCardComponent;
 
+    /**
+     * Constructeur du contrôleur pour transférer un livre d'un magasin à un autre.
+     * @param sellerScene La scène du vendeur.
+     * @param sellerTransferBook La pane de transfert de livres.
+     * @param modele Le modèle de la librairie.
+     * @param livre Le livre à transférer.
+     * @param sellerBookTransferCardComponent Le composant de carte de transfert de livre.
+     */
     public ControleurTransfererLivre(SellerScene sellerScene, SellerTransferBookPane sellerTransferBook, ChaineLibrairie modele, Livre livre, SellerBookTransferCardComponent sellerBookTransferCardComponent){
         this.sellerScene = sellerScene;
         this.sellerTransferBook = sellerTransferBook;
@@ -35,6 +51,10 @@ public class ControleurTransfererLivre implements EventHandler<ActionEvent>{
     }
 
     @Override
+    /**
+     * Gérer l'événement de transfert de livre.
+     * @param event L'événement.
+     */
     public void handle(ActionEvent event) {
         ComboBox<Magasin> magasinComboBox = this.sellerTransferBook.getMagasinComboBox();
         Magasin magasinChoisi = magasinComboBox.getValue();

@@ -34,7 +34,7 @@ public abstract class BaseMagasinsStockPane extends BaseListElementsWithSearchPa
      * Constructeur de la pane des livres en stock d'un magasin.
      * @param listeLivres La liste des livres à afficher dans la pane.
      * @param nbLignes Le nombre de lignes à afficher dans la liste.
-     * @param adminScene La scène de la page administrateur.
+     * @param scene La scène de la page de gestion de stock.
      * @param modele Le modèle de la librairie.
      * @param magasin Le magasin pour lequel on affiche les stocks des livres.
      */

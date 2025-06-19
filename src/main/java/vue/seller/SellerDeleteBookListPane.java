@@ -25,7 +25,6 @@ public class SellerDeleteBookListPane extends BaseListElementsWithSearchPane<Liv
     /**
      * Initialiser la pane affichant la liste des livres à supprimer à afficher au vendeur.
      * @param listeLivres La liste des livres.
-     * @param sellerScene La scène de la page vendeur.
      * @param modele Le modèle
      */
     public SellerDeleteBookListPane(List<Livre> listeLivres, ChaineLibrairie modele) {

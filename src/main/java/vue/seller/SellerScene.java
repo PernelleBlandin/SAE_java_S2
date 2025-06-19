@@ -146,6 +146,11 @@ public class SellerScene implements SceneListBooksInterface, SceneGestionStockIn
         this.root.setCenter(sellerDeleteBookPane);
     }
 
+    /**
+     * Afficher la page pour transférer un livre.
+     * @param listeLivres La liste des livres du magasin du vendeur.
+     * @param magasin Le magasin du vendeur.
+     */
     public void showTransfer(List<Livre> listeLivres, Magasin magasin) {
         SellerTransferBookPane SellerTransferBook = new SellerTransferBookPane(listeLivres, this, this.modele,magasin);
         this.root.setCenter(SellerTransferBook);

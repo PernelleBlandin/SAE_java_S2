@@ -10,12 +10,24 @@ import modeles.Magasin;
 import vue.admin.AdminDemandeInfoVendeurPane;
 import vue.admin.AdminScene;
 
+/** Contrôleur du bouton "Valider" pour ajouter un vendeur */
 public class ControleurValiderAjouteVendeur implements EventHandler<ActionEvent> {
+    /** La scène de la page administrateur */
     private AdminScene adminScene;
+    /** Le modèle de la librairie */
     private ChaineLibrairie modele;
+    /** Le magasin dans lequel le vendeur sera ajouté */
     private Magasin magasin;
+    /** Le pane contenant les informations du vendeur à ajouter */
     private AdminDemandeInfoVendeurPane demandeInfoVendeurPane;
 
+    /**
+     * Constructeur du contrôleur pour valider l'ajout d'un vendeur.
+     * @param adminScene La scène de l'administrateur.
+     * @param modele Le modèle de la librairie.
+     * @param magasin Le magasin dans lequel le vendeur sera ajouté.
+     * @param demandeInfoVendeurPane Le pane contenant les informations du vendeur à ajouter.
+     */
     public ControleurValiderAjouteVendeur(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin, AdminDemandeInfoVendeurPane demandeInfoVendeurPane) {
         this.adminScene = adminScene;
         this.modele = modele;
@@ -24,6 +36,10 @@ public class ControleurValiderAjouteVendeur implements EventHandler<ActionEvent>
     }
 
     @Override
+    /**
+     * Recevoir l'événement de clic sur le bouton "Valider" pour ajouter un vendeur.
+     * @param event L'événement de clic.
+     */
     public void handle(ActionEvent event) {
         String nom = demandeInfoVendeurPane.getNom().getText();
         String prenom = demandeInfoVendeurPane.getPrenom().getText();

@@ -17,10 +17,14 @@ import vue.seller.SellerTransferBookPane;
 
 /** La carte d'un livre à afficher au client */
 public class SellerBookTransferCardComponent extends BaseBookCardComponent {
+    /** Le modèle */
     private ChaineLibrairie modele;
+    /** La scène du vendeur */
     private SellerScene sellerScene;
+    /** La pane de transfert de livres */
     private SellerTransferBookPane sellerTransferBook;
 
+    /** Le NumberField */
     private NumberField quantiteField;
 
     /**
@@ -28,6 +32,8 @@ public class SellerBookTransferCardComponent extends BaseBookCardComponent {
      * @param livre Un livre. 
      * @param quantite La quantité du livre présent dans le magasin client.
      * @param modele Le modèle de données.
+     * @param sellerScene La scène du vendeur.
+     * @param sellerTransferBook La pane de transfert de livres.
      */
     public SellerBookTransferCardComponent(Livre livre, int quantite, ChaineLibrairie modele, SellerScene sellerScene, SellerTransferBookPane sellerTransferBook) {
         super(livre, quantite);
@@ -39,6 +45,10 @@ public class SellerBookTransferCardComponent extends BaseBookCardComponent {
         this.initComponents();
     }
 
+    /**
+     * Obtenir le champ de saisie de la quantité du livre.
+     * @return Le champ de saisie de la quantité du livre.
+     */
     public NumberField getQuantiteField() {
         return this.quantiteField;
     }

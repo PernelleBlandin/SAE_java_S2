@@ -166,6 +166,10 @@ public class VendeurBD {
 
      /**
      * Obtenir l'identifiant du vendeur.
+     * @param nomVendeur Le nom du vendeur.
+     * @param prenomVendeur Le prénom du vendeur.
+     * @param idMagasin L'identifiant du magasin auquel le vendeur est rattaché.
+     * @throws SQLException Exception SQL en cas d'erreur.
      * @return L'identifiant du vendeur.
      */
     public String getIdVendeur(String nomVendeur, String prenomVendeur, String idMagasin) throws SQLException {
@@ -235,6 +239,13 @@ public class VendeurBD {
         return new Vendeur(idVendeur, nom, prenom, magasin);
     }
 
+    /**
+     * Obtenir l'identifiant d'un vendeur existant dans la base de données.
+     * @param nomVendeur Le nom du vendeur.
+     * @param prenomVendeur Le prénom du vendeur.
+     * @return L'identifiant du vendeur s'il existe, sinon null.
+     * @throws SQLException Exception SQL en cas d'erreur.
+     */
     public String obtenirIdVendeurExistant(String nomVendeur, String prenomVendeur) throws SQLException {
         PreparedStatement statement = this.connexionMariaDB.prepareStatement("""
             SELECT idvendeur

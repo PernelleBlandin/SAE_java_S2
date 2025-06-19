@@ -12,7 +12,9 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Magasin;
 
-
+/**
+ * La pane pour les demandes d'informations pour l'ajout d'un vendeur.
+ */
 public class AdminDemandeInfoVendeurPane extends VBox {
     /** La scène administrateur */
     private AdminScene adminScene;
@@ -28,6 +30,8 @@ public class AdminDemandeInfoVendeurPane extends VBox {
     /**
      * Initialiser la pane pour les demandes d'informations sur les vendeurs.
      * @param adminScene La scène administrateur.
+     * @param modele Le modèle de la librairie.
+     * @param magasin Le magasin dans lequel le vendeur sera ajouté.
      */
     public AdminDemandeInfoVendeurPane(AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
         this.adminScene = adminScene;

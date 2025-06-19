@@ -16,12 +16,25 @@ import vue._components.BaseListElementsWithSearchPane;
 import vue._components.alerts.AlertErreurException;
 import vue._components.bookCard.SellerBookTransferCardComponent;
 
+/**
+ * Page pour transférer des livres d'un magasin à un autre.
+ */
 public class SellerTransferBookPane extends BaseListElementsWithSearchPane<Livre> {
+    /** Le modèle */
     private ChaineLibrairie modele;
+    /** La scène du vendeur */
     private SellerScene sellerScene;
 
+    /** La combo box de la liste des magasins */
     private ComboBox<Magasin> magasinComboBox;
 
+    /**
+     * Constructeur de la page de transfert de livres.
+     * @param listeLivres La liste des livres à afficher.
+     * @param sellerScene La scène du vendeur.
+     * @param modele Le modèle de la librairie.
+     * @param magasin Le magasin du vendeur.
+     */
     public SellerTransferBookPane(List<Livre> listeLivres, SellerScene sellerScene, ChaineLibrairie modele,
             Magasin magasin) {
 
@@ -33,10 +46,18 @@ public class SellerTransferBookPane extends BaseListElementsWithSearchPane<Livre
         this.addComponents();
     }
 
+    /**
+     * Obtenir la combo box avec la liste des magasins.
+     * @return La combo box des magasins.
+     */
     public ComboBox<Magasin> getMagasinComboBox() {
         return this.magasinComboBox;
     }
 
+    /**
+     * Obtenir le pane d'en-tête de la page.
+     * @return Le pane d'en-tête de la page.
+     */
     public VBox getHeaderPane() {
         VBox headerBox = new VBox();
         headerBox.setSpacing(10);
@@ -65,6 +86,9 @@ public class SellerTransferBookPane extends BaseListElementsWithSearchPane<Livre
         return headerBox;
     }
 
+    /**
+     * Obtenir le composant d'un livre pour la page de transfert.
+     */
     public BorderPane getElementComponent(Livre livre) {
         Vendeur vendeur = this.modele.getVendeurActuel();
         Magasin magasin = vendeur.getMagasin();

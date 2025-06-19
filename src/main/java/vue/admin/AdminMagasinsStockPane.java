@@ -17,17 +17,17 @@ import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
-import vue._components.BaseListElementsPane;
+import vue._components.BaseListElementsWithSearchPane;
 import vue._components.TitleAndBackButtonPane;
 import vue._components.numberField.NumberFieldDisableButton;
 
-public class AdminMagasinsStockPane extends BaseListElementsPane<Livre> {
+public class AdminMagasinsStockPane extends BaseListElementsWithSearchPane<Livre> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
     private ChaineLibrairie modele;
     private Magasin magasin;
-    public AdminMagasinsStockPane(String titre, List<Livre> listeLivres, int nbLignes, AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
-        super(titre, listeLivres, nbLignes, 1);
+    public AdminMagasinsStockPane(List<Livre> listeLivres, int nbLignes, AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
+        super("Livres en stock", listeLivres, nbLignes, 1, "Rechercher un livre...");
 
         this.adminScene = adminScene;
         this.magasin = magasin;
@@ -44,7 +44,7 @@ public class AdminMagasinsStockPane extends BaseListElementsPane<Livre> {
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurBoutonRetourMagasin(this.adminScene));
     }
 
-    public BorderPane getBookComponent(Livre livre) {
+    public BorderPane getElementComponent(Livre livre) {
         ImageView viewInfo = new ImageView(getClass().getResource("/images/info.png").toExternalForm());
         viewInfo.setFitHeight(35);
         viewInfo.setFitWidth(35);

@@ -5,11 +5,10 @@ import java.util.List;
 import controleurs.ControleurNavigation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -88,13 +87,13 @@ public abstract class BaseListElementsPane<T> extends VBox {
      * @param element L'élement à afficher.
      * @return La pane avec le livre à afficher.
      */
-    public abstract Pane getBookComponent(T element);
+    public abstract Node getElementComponent(T element);
 
     /**
      * Obtenir le header de la pane.
      * @return Le header de la pane.
      */
-    public abstract BorderPane getHeaderPane();
+    public abstract Node getHeaderPane();
     
     /**
      * Obtenir la VBox contenant la liste des "cartes" des livres.
@@ -116,7 +115,7 @@ public abstract class BaseListElementsPane<T> extends VBox {
 
                 T livre = listeElements.get(index);
 
-                Pane card = this.getBookComponent(livre);
+                Node card = this.getElementComponent(livre);
                 HBox.setHgrow(card, Priority.ALWAYS);
                 hboxLigne.getChildren().add(card);
             }
@@ -148,7 +147,7 @@ public abstract class BaseListElementsPane<T> extends VBox {
     public HBox getNavigationsBoutonsPane() {
         HBox hboxBoutons = new HBox();
 
-        int maxPages = Math.ceilDiv(this.listeElements.size(), this.nbColonnes * this.nbLignes);
+        int maxPages = Math.ceilDiv(this.getListeElements().size(), this.nbColonnes * this.nbLignes);
 
         Button previousButton = new Button("Précédent");
         if (this.curPage == 0) previousButton.setDisable(true);

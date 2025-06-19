@@ -14,7 +14,7 @@ import vue.SceneListBooksInterface;
 /**
  * Le contrôleur de la barre de recherche 
  */
-public class ControleurRecherche implements EventHandler<KeyEvent> {
+public class ControleurRechercheHeader implements EventHandler<KeyEvent> {
     /** La scène de la page */
     private SceneListBooksInterface scene;
     /** Le modèle de données */
@@ -27,7 +27,7 @@ public class ControleurRecherche implements EventHandler<KeyEvent> {
      * @param scene La scène de la page.
      * @param modele Le modèle de données.
      */
-    public ControleurRecherche(SceneListBooksInterface scene, ChaineLibrairie modele) {
+    public ControleurRechercheHeader(SceneListBooksInterface scene, ChaineLibrairie modele) {
         this.scene = scene;
         this.modele = modele;
 

@@ -8,7 +8,7 @@ import modeles.ChaineLibrairie;
 import modeles.PasDeCommandeException;
 import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertInfo;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.IntegerField;
 import vue.admin.AdminFacturesPane;
 
 /** Contrôleur du bouton supprimer vendeur */
@@ -34,8 +34,8 @@ public class ControleurExporterFactures implements EventHandler<ActionEvent> {
      * @param event Un événement.
      */
     public void handle(ActionEvent event) {
-        NumberField moisTF = this.adminFacturesPane.getMoisTF();
-        NumberField anneeTF = this.adminFacturesPane.getAnneeTF();
+        IntegerField moisTF = this.adminFacturesPane.getMoisTF();
+        IntegerField anneeTF = this.adminFacturesPane.getAnneeTF();
 
         if (!moisTF.isValid() || !anneeTF.isValid()) {
             new AlertErreur("Veuillez entrer un mois et/ou une année valide.");

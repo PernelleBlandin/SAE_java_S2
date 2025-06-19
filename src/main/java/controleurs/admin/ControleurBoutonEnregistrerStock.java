@@ -16,7 +16,7 @@ import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertInfo;
 import vue._components.alerts.AlertYesNo;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.IntegerField;
 
 /**
  * Contrôleur du bouton "Enregistrer Stock" pour modifier le stock d'un livre
@@ -32,7 +32,7 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
     /** Le livre à modifier */
     private Livre livre;
     /** Le champ de saisie du stock */
-    private NumberField numberField;
+    private IntegerField numberField;
 
     /**
      * Initialiser le contrôleur du bouton "Enregistrer Stock".
@@ -44,7 +44,7 @@ public class ControleurBoutonEnregistrerStock implements EventHandler<ActionEven
      * @param numberField Le champ de saisie du stock
      */
     public ControleurBoutonEnregistrerStock(SceneGestionStockInterface scene, ChaineLibrairie modele, Magasin magasin, Livre livre,
-            NumberField numberField) {
+            IntegerField numberField) {
         this.scene = scene;
         this.modele = modele;
         this.magasin = magasin;

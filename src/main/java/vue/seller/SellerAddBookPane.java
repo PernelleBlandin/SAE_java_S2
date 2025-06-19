@@ -11,7 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modeles.ChaineLibrairie;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.DoubleField;
+import vue._components.numberField.IntegerField;
 
 /** Pane de l'ajout d'un livre */
 public class SellerAddBookPane extends HBox {
@@ -20,16 +21,16 @@ public class SellerAddBookPane extends HBox {
 
     private TextField idLivre = new TextField();
     private TextField titreLivre = new TextField();
-    private NumberField prix = new NumberField();  // TODO: DoubleField pour le prix ?
-    private NumberField anneePubli = new NumberField();
+    private DoubleField prix = new DoubleField();
+    private IntegerField anneePubli = new IntegerField();
     private TextField nomAuteur = new TextField();
-    private NumberField deces = new NumberField();
-    private NumberField naissance = new NumberField();
+    private IntegerField deces = new IntegerField();
+    private IntegerField naissance = new IntegerField();
     private TextField idAuteur = new TextField();
     private TextField editeur = new TextField();
     private TextField classification = new TextField();
     private TextField idClassification = new TextField();
-    private NumberField nbPages = new NumberField();
+    private IntegerField nbPages = new IntegerField();
 
     /**
      * Constructeur de la vue pour ajouter un livre.
@@ -206,7 +207,7 @@ public class SellerAddBookPane extends HBox {
      * Obtenir le champ pour le prix du livre.
      * @return Le champ pour le prix du livre.
      */
-    public NumberField getPrix(){
+    public DoubleField getPrix(){
         return this.prix;
     }
 
@@ -214,7 +215,7 @@ public class SellerAddBookPane extends HBox {
      * Obtenir le champ pour l'année de publication du livre.
      * @return Le champ pour l'année de publication du livre.
      */
-    public NumberField getAnneePubli(){
+    public IntegerField getAnneePubli(){
         return this.anneePubli;
     }
 
@@ -230,7 +231,7 @@ public class SellerAddBookPane extends HBox {
      * Obtenir le champ pour la date de naissance de l'auteur.
      * @return Le champ pour la date de naissance de l'auteur.
      */
-    public NumberField getNaissance(){
+    public IntegerField getNaissance(){
         return this.naissance;
     }
 
@@ -238,7 +239,7 @@ public class SellerAddBookPane extends HBox {
      * Obtenir le champ pour la date de décès de l'auteur.
      * @return Le champ pour la date de décès de l'auteur.
      */
-    public NumberField getDeces(){
+    public IntegerField getDeces(){
         return this.deces;
     }
 
@@ -278,7 +279,7 @@ public class SellerAddBookPane extends HBox {
      * Obtenir le champ pour le nombre de pages du livre.
      * @return Le champ pour le nombre de pages du livre.
      */
-    public NumberField getNbPages() {
+    public IntegerField getNbPages() {
         return this.nbPages;
     }
 }

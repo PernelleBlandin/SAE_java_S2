@@ -10,8 +10,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
 import modeles.Livre;
-import vue._components.numberField.NumberField;
-import vue._components.numberField.NumberFieldDisableButton;
+import vue._components.numberField.IntegerField;
+import vue._components.numberField.IntegerFieldDisableButton;
 import vue.seller.SellerScene;
 import vue.seller.SellerTransferBookPane;
 
@@ -25,7 +25,7 @@ public class SellerBookTransferCardComponent extends BaseBookCardComponent {
     private SellerTransferBookPane sellerTransferBook;
 
     /** Le NumberField */
-    private NumberField quantiteField;
+    private IntegerField quantiteField;
 
     /**
      * Initialiser une carte d'un livre à afficher au client.
@@ -49,7 +49,7 @@ public class SellerBookTransferCardComponent extends BaseBookCardComponent {
      * Obtenir le champ de saisie de la quantité du livre.
      * @return Le champ de saisie de la quantité du livre.
      */
-    public NumberField getQuantiteField() {
+    public IntegerField getQuantiteField() {
         return this.quantiteField;
     }
 
@@ -85,7 +85,7 @@ public class SellerBookTransferCardComponent extends BaseBookCardComponent {
         transferButton.setDisable(true);
         transferButton.setOnAction(new ControleurTransfererLivre(this.sellerScene, this.sellerTransferBook, this.modele, this.livre, this));
 
-        this.quantiteField = new NumberFieldDisableButton(transferButton);
+        this.quantiteField = new IntegerFieldDisableButton(transferButton);
         this.quantiteField.setPromptText("Quantité");
 
         transferButton.setPrefHeight(30);

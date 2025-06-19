@@ -3,24 +3,24 @@ package controleurs;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
-import vue._components.numberField.NumberFieldDisableButton;
+import vue._components.numberField.IntegerFieldDisableButton;
 
-/** Contrôleur d'un NumberField, permettant de désactiver un autre bouton s'il est invalide */
-public class ControleurNumberFieldVerifWithButton implements EventHandler<KeyEvent> {
-    /** Le composant du NumberField */
-    private NumberFieldDisableButton component;
+/** Contrôleur d'un IntegerField, permettant de désactiver un autre bouton s'il est invalide */
+public class ControleurIntegerFieldVerifWithButton implements EventHandler<KeyEvent> {
+    /** Le composant du IntegerField */
+    private IntegerFieldDisableButton component;
 
     /**
      * Initialiser le contrôleur.
      * @param component Un componsant de nombre.
      */
-    public ControleurNumberFieldVerifWithButton(NumberFieldDisableButton component) {
+    public ControleurIntegerFieldVerifWithButton(IntegerFieldDisableButton component) {
         this.component = component;
     }
 
     @Override
     /**
-     * Recevoir un événement et mettre à jour le bouton et le NumberField
+     * Recevoir un événement et mettre à jour le bouton et le IntegerField
      * @param event Un événement.
      */
     public void handle(KeyEvent event) {

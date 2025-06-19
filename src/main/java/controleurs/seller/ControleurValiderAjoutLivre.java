@@ -8,7 +8,8 @@ import javafx.scene.control.Alert;
 import modeles.ChaineLibrairie;
 import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertErreurException;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.DoubleField;
+import vue._components.numberField.IntegerField;
 import vue.seller.SellerAddBookPane;
 
 /**
@@ -40,11 +41,11 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
             String isbn = this.sellerAddBookPane.getIdLivre().getText();
             String titre = this.sellerAddBookPane.getTitreLivre().getText();
 
-            NumberField fieldNbPages = this.sellerAddBookPane.getNbPages();
-            NumberField fieldAnneePubli = this.sellerAddBookPane.getAnneePubli();
-            NumberField fieldDeces = this.sellerAddBookPane.getDeces();
-            NumberField fieldNaissance = this.sellerAddBookPane.getNaissance();
-            NumberField fieldPrix = this.sellerAddBookPane.getPrix();
+            IntegerField fieldNbPages = this.sellerAddBookPane.getNbPages();
+            IntegerField fieldAnneePubli = this.sellerAddBookPane.getAnneePubli();
+            IntegerField fieldDeces = this.sellerAddBookPane.getDeces();
+            IntegerField fieldNaissance = this.sellerAddBookPane.getNaissance();
+            DoubleField fieldPrix = this.sellerAddBookPane.getPrix();
 
             if (!fieldNbPages.isValid() || !fieldAnneePubli.isValid() || !fieldDeces.isValid() || !fieldNaissance.isValid() || !fieldPrix.isValid()) {
                 new AlertErreur("Mercid d'indiquer des nombres dans les champs correspondant.");
@@ -53,7 +54,7 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
 
             int nbPages = fieldNbPages.getValeur();
             int anneeDePublication = fieldAnneePubli.getValeur();
-            int prix = fieldPrix.getValeur();
+            double prix = fieldPrix.getValeur();
             
             String auteurNom = this.sellerAddBookPane.getNomAuteur().getText();
             int naissance = fieldNaissance.getValeur();

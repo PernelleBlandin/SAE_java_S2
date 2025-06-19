@@ -2,24 +2,24 @@ package controleurs;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.IntegerField;
 
-/** Contrôleur d'un NumberField, permettant de vérifier si un nombre inscrit est valide */
-public class ControleurNumberFieldVerif implements EventHandler<KeyEvent> {
-    /** Le composant du NumberField */
-    private NumberField component;
+/** Contrôleur d'un IntegerField, permettant de vérifier si un nombre inscrit est valide */
+public class ControleurIntegerFieldVerif implements EventHandler<KeyEvent> {
+    /** Le composant du IntegerField */
+    private IntegerField component;
 
     /**
      * Initialiser le contrôleur.
      * @param component Un componsant de nombre.
      */
-    public ControleurNumberFieldVerif(NumberField component) {
+    public ControleurIntegerFieldVerif(IntegerField component) {
         this.component = component;
     }
 
     @Override
     /**
-     * Recevoir un événement et mettre à jour le NumberField selon la valeur indiquée.
+     * Recevoir un événement et mettre à jour le IntegerField selon la valeur indiquée.
      * @param event Un événement.
      */
     public void handle(KeyEvent event) {

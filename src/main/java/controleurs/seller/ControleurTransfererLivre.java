@@ -15,7 +15,7 @@ import vue._components.alerts.AlertErreur;
 import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertInfo;
 import vue._components.bookCard.SellerBookTransferCardComponent;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.IntegerField;
 import vue.seller.SellerScene;
 import vue.seller.SellerTransferBookPane;
 
@@ -66,7 +66,7 @@ public class ControleurTransfererLivre implements EventHandler<ActionEvent> {
         Vendeur vendeur = this.modele.getVendeurActuel();
         Magasin vendeurMagasin = vendeur.getMagasin();
 
-        NumberField quantiteField = this.sellerBookTransferCardComponent.getQuantiteField();
+        IntegerField quantiteField = this.sellerBookTransferCardComponent.getQuantiteField();
         int quantiteTransfert = quantiteField.getValeur();
 
         try {

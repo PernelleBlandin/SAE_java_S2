@@ -10,15 +10,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
-import vue._components.numberField.NumberField;
+import vue._components.numberField.IntegerField;
 
 /** Pane de l'exportation des factures dans la page administrateur */
 public class AdminFacturesPane extends VBox {
     /** Le modèle */
     private ChaineLibrairie modele;
 
-    private NumberField moisTF;
-    private NumberField anneeTF;
+    private IntegerField moisTF;
+    private IntegerField anneeTF;
 
     /**
      * Initiailiser la pane des factures dans la page administrateur.
@@ -42,7 +42,7 @@ public class AdminFacturesPane extends VBox {
      * Obtenir le champ de saisie du mois.
      * @return Le champ de saisie du mois.
      */
-    public NumberField getMoisTF() {
+    public IntegerField getMoisTF() {
         return this.moisTF;
     }
 
@@ -50,7 +50,7 @@ public class AdminFacturesPane extends VBox {
      * Obtenir le champ de saisie de l'année.
      * @return Le champ de saisie de l'année.
      */
-    public NumberField getAnneeTF() {
+    public IntegerField getAnneeTF() {
         return this.anneeTF;
     }
 
@@ -70,10 +70,10 @@ public class AdminFacturesPane extends VBox {
      */
     private HBox lesTF() {
         HBox lesTF = new HBox(30);
-        this.moisTF = new NumberField();
+        this.moisTF = new IntegerField();
         this.moisTF.setPromptText("Mois");
 
-        this.anneeTF = new NumberField();
+        this.anneeTF = new IntegerField();
         anneeTF.setPromptText("Année");
 
         lesTF.getChildren().addAll(moisTF, anneeTF);

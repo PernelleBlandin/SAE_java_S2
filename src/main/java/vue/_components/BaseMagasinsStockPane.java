@@ -18,7 +18,7 @@ import modeles.ChaineLibrairie;
 import modeles.Livre;
 import modeles.Magasin;
 import vue.SceneGestionStockInterface;
-import vue._components.numberField.NumberFieldDisableButton;
+import vue._components.numberField.IntegerFieldDisableButton;
 
 /** Pane pour l'affichage du stock magasin */
 public abstract class BaseMagasinsStockPane extends BaseListElementsWithSearchPane<Livre> {
@@ -101,7 +101,7 @@ public abstract class BaseMagasinsStockPane extends BaseListElementsWithSearchPa
             // On ignore
         }
 
-        NumberFieldDisableButton majNbExemplaire = new NumberFieldDisableButton(btnSauvegarde, currentStock);
+        IntegerFieldDisableButton majNbExemplaire = new IntegerFieldDisableButton(btnSauvegarde, currentStock);
         majNbExemplaire.setPrefHeight(40);
         majNbExemplaire.setPromptText("Quantité");
 

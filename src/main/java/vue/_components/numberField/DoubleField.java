@@ -1,24 +1,24 @@
 package vue._components.numberField;
 
-import controleurs.ControleurNumberFieldVerif;
+import controleurs.ControleurDoubleFieldVerif;
 import javafx.scene.control.TextField;
 
-/** Un NumberField */
-public class NumberField extends TextField {
+/** Un DoubleField */
+public class DoubleField extends TextField {
     /**
-     * Initialiser un number field.
+     * Initialiser un double field.
      */
-    public NumberField() {
+    public DoubleField() {
         this.setPrefWidth(80);
 
-        this.setOnKeyTyped(new ControleurNumberFieldVerif(this));
+        this.setOnKeyTyped(new ControleurDoubleFieldVerif(this));
     }
 
     /**
-     * Initialiser un number field avec une entier par défaut.
-     * @param defaultValue Un nombre entier.
+     * Initialiser un number field avec un double par défaut.
+     * @param defaultValue Un double.
      */
-    public NumberField(int defaultValue) {
+    public DoubleField(double defaultValue) {
         this();
 
         this.setText(String.valueOf(defaultValue));
@@ -26,13 +26,13 @@ public class NumberField extends TextField {
 
     /**
      * Récupère la valeur numérique du champ
-     * @return La valeur numérique ou 0 si invalide.
+     * @return La valeur numérique ou 0.0 si invalide.
      */
-    public int getValeur() {
+    public double getValeur() {
         try {
-            return Integer.parseInt(this.getText());
+            return Double.parseDouble(this.getText());
         } catch (NumberFormatException e) {
-            return 0;
+            return 0.0;
         }
     }
 

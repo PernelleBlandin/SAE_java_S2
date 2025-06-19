@@ -1,30 +1,30 @@
 package vue._components.numberField;
 
-import controleurs.ControleurNumberFieldVerifWithButton;
+import controleurs.ControleurIntegerFieldVerifWithButton;
 import javafx.scene.control.Button;
 
-/** Un NumberField, permettant de désactiver un autre bouton si invalide */
-public class NumberFieldDisableButton extends NumberField {
+/** Un IntegerField, permettant de désactiver un autre bouton si invalide */
+public class IntegerFieldDisableButton extends IntegerField {
     /** Le bouton à désactiver/activer */
     private Button button;
     
     /**
-     * Initialiser un number field.
+     * Initialiser un integer field.
      * @param button Le bouton à activer/désactiver si valeur valide ou non.
      */
-    public NumberFieldDisableButton(Button button) {
+    public IntegerFieldDisableButton(Button button) {
         super();
         this.button = button;
 
-        this.setOnKeyTyped(new ControleurNumberFieldVerifWithButton(this));
+        this.setOnKeyTyped(new ControleurIntegerFieldVerifWithButton(this));
     }
 
     /**
-     * Initialiser un number field avec une entier par défaut.
+     * Initialiser un integer field avec un entier par défaut.
      * @param button Le bouton à activer/désactiver si valeur valide ou non.
      * @param defaultValue Un nombre entier.
      */
-    public NumberFieldDisableButton(Button button, int defaultValue) {
+    public IntegerFieldDisableButton(Button button, int defaultValue) {
         this(button);
 
         this.setText(String.valueOf(defaultValue));

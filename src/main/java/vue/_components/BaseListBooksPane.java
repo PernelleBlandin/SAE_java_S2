@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -52,7 +54,7 @@ public abstract class BaseListBooksPane extends VBox {
      */
     public void addComponents() {
         this.getChildren().addAll(
-            this.getTitleAndBackButtonPane(),
+            this.getHeaderPane(),
             this.listeLivres.size() >= 1 ? this.getListeLivresPane() : this.aucunResultatBox(),
             this.getNavigationsBoutonsPane()
         );
@@ -68,29 +70,68 @@ public abstract class BaseListBooksPane extends VBox {
 
     /**
      * Obtenir la liste des livres.
-     * @return La liste des livres donnés..
+     * @return La liste des livres donnés.
      */
     public List<Livre> getListeLivres() {
         return this.listeLivres;
     }
 
     /**
-     * Obtenir la pane avec le titre de la liste et le bouton "Retour".
-     * @return La pane avec le titre de la liste et le bouton "Retour".
+     * Obtenir le nombre d'éléments par page.
+     * @return Le nombre d'éléments par page.
      */
-    protected abstract BorderPane getTitleAndBackButtonPane();
+    public int getElementsParPage() {
+        return this.nbColonnes * this.nbLignes;
+    }
+
+    /**
+     * Obtenir le composant de livre à afficher.
+     * @param livre Le livre à afficher.
+     * @return La pane avec le livre à afficher.
+     */
+    public abstract Pane getBookComponent(Livre livre);
+
+    /**
+     * Obtenir le header de la pane.
+     * @return Le header de la pane.
+     */
+    public abstract BorderPane getHeaderPane();
     
     /**
-     * Obtenir la pane avec la liste des cartes de livres à afficher.
-     * @return La pane avec la liste des cartes de livres à afficher.
+     * Obtenir la VBox contenant la liste des "cartes" des livres.
+     * @return La VBox contenant la liste des "cartes" des livres.
      */
-    protected abstract VBox getListeLivresPane();
+    public VBox getListeLivresPane() {
+        VBox listeLivresVBox = new VBox();
+        listeLivresVBox.setSpacing(20);
+
+        int nbElementsParPage = this.getElementsParPage();
+        List<Livre> listeLivres = this.getListeLivres();
+        for (int intLigne = 0; intLigne < nbLignes; intLigne++) {
+            HBox hboxLigne = new HBox();
+            hboxLigne.setSpacing(15);
+
+            for (int intColonne = 0; intColonne < nbColonnes; intColonne++) {
+                int index = (nbElementsParPage * this.getCurPage()) + (intLigne * nbColonnes) + intColonne;
+                if (index >= listeLivres.size()) break;
+
+                Livre livre = listeLivres.get(index);
+
+                Pane card = this.getBookComponent(livre);
+                HBox.setHgrow(card, Priority.ALWAYS);
+                hboxLigne.getChildren().add(card);
+            }
+            listeLivresVBox.getChildren().add(hboxLigne);
+        }
+
+        return listeLivresVBox;
+    }
 
     /**
      * Obtenir une pane si aucun résultat est présent dans la liste.
      * @return Pane affiché si aucun résultat.
      */
-    private VBox aucunResultatBox() {
+    public VBox aucunResultatBox() {
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
 
@@ -105,7 +146,7 @@ public abstract class BaseListBooksPane extends VBox {
      * Obtenir la pane avec les boutons de navigations.
      * @return La pane avec les boutons de navigations.
      */
-    protected HBox getNavigationsBoutonsPane() {
+    public HBox getNavigationsBoutonsPane() {
         HBox hboxBoutons = new HBox();
 
         int maxPages = Math.ceilDiv(this.listeLivres.size(), this.nbColonnes * this.nbLignes);

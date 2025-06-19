@@ -97,7 +97,7 @@ public class AdminMagasinsPane extends VBox {
             // Stock
             Button btnStock = new Button();
             btnStock.setGraphic(viewStock);
-            btnStock.setOnAction(new ControleurBoutonMagasinStock(this.adminScene, magasin));
+            btnStock.setOnAction(new ControleurBoutonMagasinStock(this.adminScene, this.modele, magasin));
 
             // Supprimer
             Button btnSupprimerMag = new Button();

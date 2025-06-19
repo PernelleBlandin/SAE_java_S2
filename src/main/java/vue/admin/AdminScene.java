@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modeles.ChaineLibrairie;
+import modeles.Livre;
 import modeles.Magasin;
 import vue.AppIHM;
 import vue.SceneInterface;
@@ -133,10 +134,11 @@ public class AdminScene implements SceneInterface {
     /**
      * Afficher la page pour gérer le stock d'un magasin.
      * 
+     * @param listeLivres La liste des livres à afficher
      * @param magasin Un magasin
      */
-    public void showStock(Magasin magasin) {
-        AdminMagasinsStockPane stockPane = new AdminMagasinsStockPane(this, this.modele, magasin);
+    public void showStock(List<Livre> listeLivres, Magasin magasin) {
+        AdminMagasinsStockPane stockPane = new AdminMagasinsStockPane("Livre en stock", listeLivres, 6, this, this.modele, magasin);
         this.root.setCenter(stockPane);
     }
 

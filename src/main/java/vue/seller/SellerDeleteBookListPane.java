@@ -92,7 +92,7 @@ public class SellerDeleteBookListPane extends BaseListBooksPane {
             }
             listeLivresVBox.getChildren().add(hboxLigne);
         }
-
+        listeLivresVBox.getChildren().add(getNavigationsBoutonsPane());
         return listeLivresVBox;
     }
 

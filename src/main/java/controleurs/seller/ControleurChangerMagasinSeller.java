@@ -1,4 +1,4 @@
-package controleurs.customers;
+package controleurs.seller;
 
 import java.sql.SQLException;
 import java.util.Optional;
@@ -13,7 +13,6 @@ import modeles.Magasin;
 import modeles.Panier;
 import vue._components.alerts.AlertErreurException;
 import vue._components.alerts.AlertYesNo;
-import vue.customers.CustomerScene;
 import vue.seller.SellerScene;
 
 /** Le contrôleur du ComboBox pour changer de magasin */

@@ -2,6 +2,7 @@ package vue.admin;
 
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonAjouteMagasin;
 import controleurs.admin.ControleurBoutonRetourMagasin;
 import controleurs.admin.ControleurBoutonSupprimerMagasinVendeur;
 import javafx.geometry.Insets;
@@ -50,11 +51,25 @@ public class AdminMagasinsVendeursPane extends BaseListElementsWithSearchPane<Ve
     }
 
     /**
-     * Obtenir le titre et le bouton retour de la pane.
+     * Obtenir le titre et le bouton "Ajouter Magasin" de la pane.
      * @return Le BorderPane contenant ses deux informations.
      */
-    public TitleAndBackButtonPane getHeaderPane() {
-        return new TitleAndBackButtonPane("Vendeurs de " + this.magasin.getNom(), new ControleurBoutonRetourMagasin(this.adminScene));
+    public BorderPane getHeaderPane() {
+        BorderPane header = new BorderPane();
+
+        Button backButton = new Button("Retour");
+        backButton.setOnAction(new ControleurBoutonRetourMagasin(this.adminScene));
+        header.setLeft(backButton);
+
+        Label titre = new Label("Vendeurs de " + this.magasin.getNom());
+        titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        header.setCenter(titre);
+
+        Button btnAjouteMagasin = new Button("Ajouter un vendeur");
+        btnAjouteMagasin.setOnAction(new ControleurBoutonAjouteMagasin(this.adminScene));
+        header.setRight(btnAjouteMagasin);
+
+        return header;
     }
 
     public BorderPane getElementComponent(Vendeur vendeur) {

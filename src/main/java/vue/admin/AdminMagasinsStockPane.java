@@ -24,8 +24,19 @@ import vue._components.numberField.NumberFieldDisableButton;
 public class AdminMagasinsStockPane extends BaseListElementsWithSearchPane<Livre> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
+    /** Le modèle */
     private ChaineLibrairie modele;
+    /** Le magasin */
     private Magasin magasin;
+
+    /**
+     * Constructeur de la pane des livres en stock d'un magasin.
+     * @param listeLivres La liste des livres à afficher dans la pane.
+     * @param nbLignes Le nombre de lignes à afficher dans la liste.
+     * @param adminScene La scène de la page administrateur.
+     * @param modele Le modèle de la librairie.
+     * @param magasin Le magasin pour lequel on affiche les stocks des livres.
+     */
     public AdminMagasinsStockPane(List<Livre> listeLivres, int nbLignes, AdminScene adminScene, ChaineLibrairie modele, Magasin magasin) {
         super("Livres en stock", listeLivres, nbLignes, 1, "Rechercher un livre...");
 
@@ -44,6 +55,11 @@ public class AdminMagasinsStockPane extends BaseListElementsWithSearchPane<Livre
         return new TitleAndBackButtonPane(this.getTitre(), new ControleurBoutonRetourMagasin(this.adminScene));
     }
 
+    /**
+     * Obtenir le composant d'un élément de la liste.
+     * @param livre Le livre à afficher.
+     * @return Un BorderPane contenant le titre du livre, un bouton pour afficher les informations
+     */
     public BorderPane getElementComponent(Livre livre) {
         ImageView viewInfo = new ImageView(getClass().getResource("/images/info.png").toExternalForm());
         viewInfo.setFitHeight(35);

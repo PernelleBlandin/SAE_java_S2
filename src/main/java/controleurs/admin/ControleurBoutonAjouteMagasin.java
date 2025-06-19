@@ -4,20 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import vue.admin.AdminScene;
 
-public class ControleurBoutonAjouteVendeur implements EventHandler<ActionEvent> {
+public class ControleurBoutonAjouteMagasin implements EventHandler<ActionEvent> {
     /** La scène de la page administrateur */
     private AdminScene adminScene;
 
-    /**
-     * @param magasin Le magasin dans lequel le vendeur est ajoute
-     */
-    public ControleurBoutonAjouteVendeur(AdminScene adminScene) {
+    public ControleurBoutonAjouteMagasin(AdminScene adminScene) {
         this.adminScene = adminScene;
     }
 
     @Override
     /**
-     * Recevoir un événement lors du clic sur le bouton "Ajouter vendeur" et
+     * Recevoir un événement lors du clic sur le bouton "Ajouter magasin" et
      * 
      * @param event Un événement.
      */

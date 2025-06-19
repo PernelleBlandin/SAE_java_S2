@@ -2,6 +2,7 @@ package vue.admin;
 
 import java.util.List;
 
+import controleurs.admin.ControleurBoutonAjouteMagasin;
 import controleurs.admin.ControleurBoutonMagasinStock;
 import controleurs.admin.ControleurBoutonMagasinVendeur;
 import controleurs.admin.ControleurBoutonSupprimerMagasin;
@@ -53,13 +54,21 @@ public class AdminMagasinsPane extends BaseListElementsWithSearchPane<Magasin> {
     }
 
     /**
-     * Obtenir le titre et le bouton retour de la pane.
+     * Obtenir le titre et le bouton "Ajouter Magasin" de la pane.
      * @return Le BorderPane contenant ses deux informations.
      */
-    public Label getHeaderPane() {
+    public BorderPane getHeaderPane() {
+        BorderPane header = new BorderPane();
+
         Label titre = new Label("Magasins");
         titre.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        return titre;
+        header.setLeft(titre);
+
+        Button btnAjouteMagasin = new Button("Ajouter un magasin");
+        btnAjouteMagasin.setOnAction(new ControleurBoutonAjouteMagasin(this.adminScene));
+        header.setRight(btnAjouteMagasin);
+
+        return header;
     }
 
     /**

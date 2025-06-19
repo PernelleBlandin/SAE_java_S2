@@ -46,12 +46,12 @@ public class ControleurSupprimerLivre implements EventHandler<ActionEvent> {
             "Cette action est irréversible."
         );
         confirmee.showAndWait();
-        if (confirmee.getResult() == ButtonType.YES) {
-            try {
+        if (confirmee.getResult().getText().equals("Oui")&&confirmee.getResult()!=null) {
+            try{
                 this.modele.getLivreBD().supprimerLivre(livre.getISBN());
                 this.component.supprimerCarte();
                 this.component.getVue().miseAJourAffichage();
-            } catch (SQLException e) {
+            }catch (SQLException e) {
                 // TODO gérer l'erreur
                 e.printStackTrace();
             }

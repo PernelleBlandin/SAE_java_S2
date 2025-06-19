@@ -152,7 +152,7 @@ public abstract class BaseListElementsPane<T> extends VBox {
 
         Button previousButton = new Button("Précédent");
         if (this.curPage == 0) previousButton.setDisable(true);
-        previousButton.setOnAction(new ControleurNavigation(this));
+        previousButton.setOnAction(new ControleurNavigation<T>(this));
         previousButton.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
         int curPageAffichage = this.curPage;
@@ -163,7 +163,7 @@ public abstract class BaseListElementsPane<T> extends VBox {
 
         Button nextButton = new Button("Suivant");
         if ((this.curPage + 1) >= maxPages) nextButton.setDisable(true);
-        nextButton.setOnAction(new ControleurNavigation(this));
+        nextButton.setOnAction(new ControleurNavigation<T>(this));
         nextButton.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
 
         hboxBoutons.setSpacing(10);

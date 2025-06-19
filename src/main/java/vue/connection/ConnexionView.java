@@ -59,10 +59,12 @@ public class ConnexionView {
 
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 15px;");
-
+        ImageView logo = new ImageView(getClass().getResource("/images/logo.png").toExternalForm());
+        logo.setFitWidth(400);
+        logo.setFitHeight(200);
         Label connexionLabel = new Label("Bienvenue !");
         connexionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-        root.getChildren().add(connexionLabel);
+        root.getChildren().addAll(logo, connexionLabel);
 
         VBox vboxChoixUtilisateurs = new VBox();
         vboxChoixUtilisateurs.setAlignment(Pos.CENTER);

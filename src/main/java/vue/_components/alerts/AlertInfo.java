@@ -29,7 +29,7 @@ public class AlertInfo extends Alert {
      */
     public void setAlertData() {
         this.setTitle(this.titre);
-        this.setHeaderText(this.description);
+        this.setHeaderText(this.titre);
         this.setContentText(this.description);
     }
     

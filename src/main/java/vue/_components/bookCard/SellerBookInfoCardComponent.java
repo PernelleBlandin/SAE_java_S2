@@ -1,6 +1,7 @@
 package vue._components.bookCard;
 
 import controleurs.customers.ControleurInfoLivre;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -56,11 +57,11 @@ public class SellerBookInfoCardComponent extends BaseBookCardComponent {
         hboxBoutons.setMaxHeight(Double.MAX_VALUE);
 
         hboxBoutons.setSpacing(5);
-        hboxBoutons.setAlignment(javafx.geometry.Pos.CENTER);
+        hboxBoutons.setAlignment(Pos.CENTER);
 
         // Bouton d'info
         Button infoButton = new Button("Informations");
-        infoButton.setMaxHeight(Double.MAX_VALUE);
+        infoButton.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(infoButton, Priority.ALWAYS);
         infoButton.setOnAction(new ControleurInfoLivre(this.livre));
 

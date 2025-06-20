@@ -9,6 +9,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import modeles.DetailLivre;
+import modeles.Livre;
+import modeles.LivreIntrouvableException;
+import modeles.Magasin;
+import modeles.Panier;
+
 public class PanierTest {
     private Livre livre1 = new Livre(
         "9782205054750",

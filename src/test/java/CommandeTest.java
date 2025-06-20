@@ -9,6 +9,11 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import modeles.Commande;
+import modeles.DetailLivre;
+import modeles.Livre;
+import modeles.Magasin;
+
 public class CommandeTest {
     private Livre livre1 = new Livre(
         "9782205054750",

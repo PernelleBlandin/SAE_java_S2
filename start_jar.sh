@@ -1,1 +1,1 @@
-java -jar Executable.jar $@
+java -jar ExecutableTerminal.jar $@

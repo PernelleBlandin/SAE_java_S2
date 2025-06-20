@@ -5,6 +5,9 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import modeles.DetailLivre;
+import modeles.Livre;
+
 public class DetailLivreTest {
     private Livre livre1 = new Livre(
         "9780446570992",

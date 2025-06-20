@@ -9,6 +9,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import modeles.Livre;
+
 public class LivreTest {
     private Livre livre1 = new Livre(
         "9782205054750",

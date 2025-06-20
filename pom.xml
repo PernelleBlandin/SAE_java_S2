@@ -31,6 +31,11 @@
             <artifactId>bouncy-castle-adapter</artifactId>
             <version>${itext.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>23.0.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -69,7 +74,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Executable</mainClass>
+                            <mainClass>ExecutableIHM</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

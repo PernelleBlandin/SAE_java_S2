@@ -3,6 +3,9 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import modeles.Livre;
+import modeles.ResultatSelection;
+
 public class ResultatSelectionTest {
     private ResultatSelection<Livre> resultatSelectionVide = new ResultatSelection<>();
 

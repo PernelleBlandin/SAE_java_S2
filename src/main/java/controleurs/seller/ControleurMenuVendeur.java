@@ -55,7 +55,7 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
 
                 List<Livre> listeLivres = new ArrayList<>();
                 try {
-                    listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
+                    listeLivres = this.modele.getLivreBD().obtenirLivreDejaEnStockMagasin(magasin);
                 } catch (SQLException e) {
                     new AlertErreurException("Erreur lors de la récupération des livres en stock", e.getMessage());
                     return;
@@ -69,7 +69,7 @@ public class ControleurMenuVendeur implements EventHandler<ActionEvent>{
 
                 List<Livre> listeLivres = new ArrayList<>();
                 try {
-                    listeLivres = this.modele.getLivreBD().obtenirLivreEnStockMagasin(magasin);
+                    listeLivres = this.modele.getLivreBD().obtenirListeLivre();
                 } catch (SQLException e) {
                     new AlertErreurException("Erreur lors de la récupération des livres en stock", e.getMessage());
                     return;

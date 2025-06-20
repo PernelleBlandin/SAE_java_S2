@@ -259,8 +259,12 @@ public class AdminStatsPane extends VBox {
         try {
             Map<String, Integer> dataGosciny = this.modele.getStatistiquesBD().getQteLivresGoscinyOrigineClients();
             for (String key : dataGosciny.keySet()) {
+                int valeurData = dataGosciny.get(key);
                 PieChart.Data categorie2 = new PieChart.Data(key, dataGosciny.get(key));
                 pieChartGosciny.getData().add(categorie2);
+
+                Tooltip tooltip = new Tooltip(key + " : " + valeurData + " livres");
+                Tooltip.install(categorie2.getNode(), tooltip);
             }
             // pieChartParTheme.setLegendSide(side.RIGHT);
         } catch (SQLException e) {
@@ -294,7 +298,45 @@ public class AdminStatsPane extends VBox {
         }
         return pieChartValStockMag;
     }
+    /**
+     * Crée un graphique représentant l'évolution du chiffre d'affaires total par client.
+     * @return Un LineChart affichant les valeurs minimum, maximum et moyenne par année.
+     */
+    // 8) LineChart Map<Integer, Map<String, Double>> getEvolutionCATotalParClient()
+    public LineChart<String, Number> graphEvoluCAparClient(){
+        CategoryAxis xAxisLine = new CategoryAxis();
+        NumberAxis yAxisLine = new NumberAxis();
 
-    // 8) LineChart Map<String, Double>> getEvolutionCATotalParClient()
-    //
+        LineChart linechartEvolutionCa= new LineChart<>(xAxisLine, yAxisLine);
+        linechartEvolutionCa.setTitle("Evolution CA Total par client");
+        try{
+            Map<Integer, Map<String, Double>> dataLineChartEvolCA = this.modele.getStatistiquesBD().getEvolutionCATotalParClient();
+            
+            XYChart.Series<String, Number> serieMax= new XYChart.Series<>();
+            serieMax.setName("Max - maximum");
+            XYChart.Series<String, Number> serieMin= new XYChart.Series<>();
+            serieMin.setName("Min - minimum");
+            XYChart.Series<String, Number> serieMoy= new XYChart.Series<>();
+            serieMoy.setName("Moyenne - moyenne");
+            for (Integer annee : dataLineChartEvolCA.keySet()){
+                Map <String, Double> valeurs =dataLineChartEvolCA.get(annee);
+
+                    Double max = valeurs.get("maximum");
+                    Double min = valeurs.get("minimum");
+                    Double moy = valeurs.get("moyenne");
+
+                    String anneeStr = annee.toString();
+                    serieMax.getData().add(new XYChart.Data<>(anneeStr, max));
+                    serieMin.getData().add(new XYChart.Data<>(anneeStr, min));
+                    serieMoy.getData().add(new XYChart.Data<>(anneeStr, moy));
+                }
+                linechartEvolutionCa.getData().addAll(serieMax, serieMin, serieMoy);
+
+
+        }catch(SQLException e){
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
+
+        }
+        return linechartEvolutionCa;
+    }
 }

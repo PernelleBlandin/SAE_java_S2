@@ -51,7 +51,7 @@ public class ControleurAdminStatsComboBox implements EventHandler<ActionEvent> {
                 this.adminStatsPane.setChart(this.adminStatsPane.graphValeurStockParMagasin());
                 break;
             case "Evolution CA total par client":
-                //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                this.adminStatsPane.setChart(this.adminStatsPane.graphEvoluCAparClient());
                 break;
             default:
                 break;

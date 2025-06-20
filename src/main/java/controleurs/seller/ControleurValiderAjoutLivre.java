@@ -104,8 +104,7 @@ public class ControleurValiderAjoutLivre implements EventHandler<ActionEvent> {
                     return;
                 }
             } catch (SQLException e) {
-                new AlertErreurException("Erreur lors de la vérification de l'identifiant du livre : ", e.getMessage());
-                return;
+                // On ignore l'erreur, si le livre n'existe pas, on continue
             }
             try {
                 if (this.modele.getLivreBD().getIdAuteur(auteurNom) == null && 

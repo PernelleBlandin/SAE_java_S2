@@ -94,8 +94,6 @@ public class AdminStatsPane extends VBox {
         return comboBoxChoix;
     }
 
-    // GRAPH TABLEAU DE BORD
-
     /**
      * Obtient le graphique du nombre de livres vendus par magasin par an.
      * @return Un BarChart représentant le nombre de livres vendus par magasin par an.
@@ -140,7 +138,6 @@ public class AdminStatsPane extends VBox {
      * @return Un PieChart représentant le chiffre d'affaire 2024 par thème.
      */
     public PieChart graphCA2024ParTheme() {
-        // 2)PieChart
         PieChart pieChartParTheme = new PieChart();
         pieChartParTheme.setTitle("Chiffre d'affaire 2024 par thème");
         try {
@@ -192,11 +189,11 @@ public class AdminStatsPane extends VBox {
      * Crée un graphique comparant les ventes en ligne et en magasin par année. 
      * @return Un LineChart affichant l'évolution annuelle des ventes.
      */
-    public LineChart <String, Number> graphComparLignMag(){
+    public LineChart<String, Number> graphComparLignMag(){
         CategoryAxis xAxisLine = new CategoryAxis();
         NumberAxis yAxisLine = new NumberAxis();
 
-        LineChart lineChartComparLignMag= new LineChart<>(xAxisLine, yAxisLine);
+        LineChart<String, Number> lineChartComparLignMag= new LineChart<>(xAxisLine, yAxisLine);
         lineChartComparLignMag.setTitle("Comparaison ventes en ligne et en magasin");
         try{
             Map<String, Map<Integer, Double>> dataLineChartComp = this.modele.getStatistiquesBD().getComparaisonVentesLigneMagasin();
@@ -225,7 +222,6 @@ public class AdminStatsPane extends VBox {
      * @return Un LineChart représentant la comparaison des ventes en ligne et en magasin.
      */
     public BarChart<Number, String> graphTop10EditeursNbAuteurs() {
-        // 5) BarChart Map<String, Integer> getTop10EditeursNbAuteurs()
         NumberAxis xAxisBar = new NumberAxis();
         CategoryAxis yAxisBar = new CategoryAxis();
 
@@ -302,12 +298,11 @@ public class AdminStatsPane extends VBox {
      * Crée un graphique représentant l'évolution du chiffre d'affaires total par client.
      * @return Un LineChart affichant les valeurs minimum, maximum et moyenne par année.
      */
-    // 8) LineChart Map<Integer, Map<String, Double>> getEvolutionCATotalParClient()
     public LineChart<String, Number> graphEvoluCAparClient(){
         CategoryAxis xAxisLine = new CategoryAxis();
         NumberAxis yAxisLine = new NumberAxis();
 
-        LineChart linechartEvolutionCa= new LineChart<>(xAxisLine, yAxisLine);
+        LineChart<String, Number> linechartEvolutionCa= new LineChart<>(xAxisLine, yAxisLine);
         linechartEvolutionCa.setTitle("Evolution CA Total par client");
         try{
             Map<Integer, Map<String, Double>> dataLineChartEvolCA = this.modele.getStatistiquesBD().getEvolutionCATotalParClient();
@@ -331,9 +326,7 @@ public class AdminStatsPane extends VBox {
                     serieMoy.getData().add(new XYChart.Data<>(anneeStr, moy));
                 }
                 linechartEvolutionCa.getData().addAll(serieMax, serieMin, serieMoy);
-
-
-        }catch(SQLException e){
+        } catch(SQLException e){
             new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
 
         }

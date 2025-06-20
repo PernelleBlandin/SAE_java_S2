@@ -298,6 +298,7 @@ public class AdminStatsPane extends VBox {
      * Crée un graphique représentant l'évolution du chiffre d'affaires total par client.
      * @return Un LineChart affichant les valeurs minimum, maximum et moyenne par année.
      */
+    @SuppressWarnings("unchecked")
     public LineChart<String, Number> graphEvoluCAparClient(){
         CategoryAxis xAxisLine = new CategoryAxis();
         NumberAxis yAxisLine = new NumberAxis();

@@ -55,6 +55,14 @@ public class AdminFacturesPane extends VBox {
     }
 
     /**
+     * Réinitialiser les champs de saisie du mois et de l'année.
+     */
+    public void resetTextFields() {
+        this.moisTF.setText("");
+        this.anneeTF.setText("");
+    }
+
+    /**
      * Obtenir le titre du menu.
      * @return Le label du titre du menu.
      */

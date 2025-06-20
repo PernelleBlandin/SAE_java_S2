@@ -44,6 +44,8 @@ public class ControleurExporterFactures implements EventHandler<ActionEvent> {
 
         try {
             this.modele.exporterFactures(moisTF.getValeur(), anneeTF.getValeur());
+            this.adminFacturesPane.resetTextFields();
+
             new AlertInfo(
                 "Exportation des factures", 
                 "Les factures du mois " + moisTF.getValeur() + " et de l'année " + anneeTF.getValeur() + " ont été exportées avec succès dans le dossier ./factures/" + anneeTF.getValeur() + "-" + moisTF.getValeur() + "."

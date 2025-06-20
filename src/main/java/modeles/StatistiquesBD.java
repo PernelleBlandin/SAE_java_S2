@@ -180,14 +180,10 @@ public class StatistiquesBD {
     public Map<String, Integer> getQteLivresGoscinyOrigineClients() throws SQLException {
         Statement statement = this.connexionMariaDB.createStatement();
         ResultSet resultSet = statement.executeQuery("""
-            select distinct idcli, nomcli, prenomcli, adressecli, codepostal, villecli from CLIENT
-            natural join COMMANDE
-            natural join DETAILCOMMANDE
-            natural join LIVRE
-            natural join ECRIRE
-            natural join AUTEUR
-            where YEAR(datecom)=2021 and nomauteur= 'René Goscinny'
-            order by idcli;
+            SELECT villecli ville, SUM(qte) qte
+            FROM CLIENT NATURAL JOIN COMMANDE NATURAL JOIN DETAILCOMMANDE NATURAL JOIN LIVRE NATURAL JOIN ECRIRE NATURAL JOIN AUTEUR
+            WHERE nomauteur = 'René Goscinny'
+            GROUP BY villecli;
         """);
 
         Map<String, Integer> statistiques = new HashMap<>();

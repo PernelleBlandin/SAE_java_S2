@@ -39,8 +39,10 @@ public class ConnexionView {
         StackPane root = new StackPane();
 
         ImageView image = new ImageView(getClass().getResource("/images/connexionBackground.jpg").toExternalForm());
-        image.setFitWidth(1280);
-        image.setFitHeight(720);
+
+        // https://stackoverflow.com/questions/65052979/how-can-i-make-responsive-imageview-in-fxml-javafx
+        image.fitWidthProperty().bind(root.widthProperty());
+        image.fitHeightProperty().bind(root.heightProperty());
 
         VBox connexionBox = this.getConnexionBox();
         StackPane.setMargin(connexionBox, new Insets(200, 300, 200, 300));

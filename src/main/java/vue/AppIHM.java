@@ -123,7 +123,6 @@ public class AppIHM extends Application {
 
         this.primaryStage.setWidth(1280);
         this.primaryStage.setHeight(720);
-        this.primaryStage.setResizable(false);
 
         this.showConnexion();
         primaryStage.show();

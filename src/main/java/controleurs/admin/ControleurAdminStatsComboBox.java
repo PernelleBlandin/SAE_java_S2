@@ -39,7 +39,7 @@ public class ControleurAdminStatsComboBox implements EventHandler<ActionEvent> {
                 this.adminStatsPane.setChart(this.adminStatsPane.graphEvolutionCAParMoisParMagasin2024());
                 break;
             case "Evolution chiffre d'affaire, comparaison ventes en ligne et en magasin":
-                //afficheChart.getChildren().setAll(graphCA2024ParTheme());
+                this.adminStatsPane.getChildren().setAll(this.adminStatsPane.graphComparLignMag());
                 break;
             case "10 éditeurs les plus importants en nombres d'auteurs":
                 this.adminStatsPane.setChart(this.adminStatsPane.graphTop10EditeursNbAuteurs());

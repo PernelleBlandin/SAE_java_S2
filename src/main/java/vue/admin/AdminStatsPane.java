@@ -12,6 +12,7 @@ import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.Chart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -188,11 +189,36 @@ public class AdminStatsPane extends VBox {
     }
 
     //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
+    public LineChart <Number, Number> graphComparLignMag(){
+        NumberAxis xAxisLine = new NumberAxis();
+        NumberAxis yAxisLine = new NumberAxis();
 
+        LineChart lineChartComparLignMag= new LineChart<>(xAxisLine, yAxisLine);
+        lineChartComparLignMag.setTitle("Comparaison ventes en ligne et en magasin");
+        try{
+            Map<String, Map<Integer, Double>> dataLineChartComp = this.modele.getStatistiquesBD().getComparaisonVentesLigneMagasin();
+            for (String magasin: dataLineChartComp.keySet()){
+                XYChart.Series<Number, Number> serie = new XYChart.Series<>();
+                serie.setName(magasin);
+
+                Map <Integer, Double> vente =dataLineChartComp.get(magasin);
+                for(Integer annee: vente.keySet()){
+                    Double montant = vente.get(annee);
+                    serie.getData().add(new XYChart.Data<Number,Number>(annee, montant));
+                }
+                lineChartComparLignMag.getData().add(serie);
+
+            }
+
+        }catch(SQLException e){
+            new AlertErreurException("Impossible de récupérer les données.", e.getMessage());
+
+        }
+        return lineChartComparLignMag;
+    }
 
 //        //LineChart  Map<String, Map<Integer, Double>>
-    // NumberAxis xAxisLine = new NumberAxis();
-    // NumberAxis yAxisLine = new NumberAxis();
+
     // //xAxis.setLabel(null);
 
 

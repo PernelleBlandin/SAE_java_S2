@@ -44,12 +44,12 @@ public class ControleurExporterFactures implements EventHandler<ActionEvent> {
 
         try {
             this.modele.exporterFactures(moisTF.getValeur(), anneeTF.getValeur());
-            this.adminFacturesPane.resetTextFields();
 
             new AlertInfo(
                 "Exportation des factures", 
                 "Les factures du mois " + moisTF.getValeur() + " et de l'année " + anneeTF.getValeur() + " ont été exportées avec succès dans le dossier ./factures/" + anneeTF.getValeur() + "-" + moisTF.getValeur() + "."
             );
+            this.adminFacturesPane.resetTextFields();
         } catch (PasDeCommandeException e) {
             new AlertErreur("Aucune facture trouvée pour le mois " + moisTF.getValeur() + " et l'année " + anneeTF.getValeur() + ".");
         }  catch (SQLException e) {

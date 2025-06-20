@@ -188,9 +188,12 @@ public class AdminStatsPane extends VBox {
         return areaChartCAParMoisParMagasin;
     }
 
-    //4) LineChartMap<String, Map<Integer, Double>> getComparaisonVentesLigneMagasin()
-    public LineChart <Number, Number> graphComparLignMag(){
-        NumberAxis xAxisLine = new NumberAxis();
+    /**
+     * Crée un graphique comparant les ventes en ligne et en magasin par année. 
+     * @return Un LineChart affichant l'évolution annuelle des ventes.
+     */
+    public LineChart <String, Number> graphComparLignMag(){
+        CategoryAxis xAxisLine = new CategoryAxis();
         NumberAxis yAxisLine = new NumberAxis();
 
         LineChart lineChartComparLignMag= new LineChart<>(xAxisLine, yAxisLine);
@@ -198,13 +201,13 @@ public class AdminStatsPane extends VBox {
         try{
             Map<String, Map<Integer, Double>> dataLineChartComp = this.modele.getStatistiquesBD().getComparaisonVentesLigneMagasin();
             for (String magasin: dataLineChartComp.keySet()){
-                XYChart.Series<Number, Number> serie = new XYChart.Series<>();
+                XYChart.Series<String, Number> serie = new XYChart.Series<>();
                 serie.setName(magasin);
 
                 Map <Integer, Double> vente =dataLineChartComp.get(magasin);
                 for(Integer annee: vente.keySet()){
                     Double montant = vente.get(annee);
-                    serie.getData().add(new XYChart.Data<Number,Number>(annee, montant));
+                    serie.getData().add(new XYChart.Data<>(annee.toString(), montant));
                 }
                 lineChartComparLignMag.getData().add(serie);
 
@@ -216,14 +219,6 @@ public class AdminStatsPane extends VBox {
         }
         return lineChartComparLignMag;
     }
-
-//        //LineChart  Map<String, Map<Integer, Double>>
-
-    // //xAxis.setLabel(null);
-
-
-    // LineChart lineCompLigneMagasin = new LineChart(xAxisLine, yAxisLine);
-    // XYChart.Series series3 = new XYChart.Series<>();
 
     /**
      * Obtient le graphique de la comparaison des ventes en ligne et en magasin.
